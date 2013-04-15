@@ -1,3 +1,12 @@
+/**
+ * @file vector3d.cpp
+ * @author Adhish Majumdar
+ * @version 0.0
+ * @date 15/04/2013
+ * @brief Definition of the Vector3d class and its functions.
+ * @details This file defines the Vector3d class representing a single 3-dimensional vector in the simulation and its member functions and operators.
+ */
+
 #include "vector3d.h"
 
 /**
