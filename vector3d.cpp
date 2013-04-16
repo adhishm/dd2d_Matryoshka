@@ -14,9 +14,9 @@
  */
 Vector3d::Vector3d ()
 {
- this->x[0] = 0.0;
- this->x[1] = 0.0;
- this->x[2] = 0.0;
+  this->x[0] = 0.0;
+  this->x[1] = 0.0;
+  this->x[2] = 0.0;
 }
 /**
  * Constructor with values provided in an array.
@@ -42,7 +42,7 @@ Vector3d::Vector3d (double a1, double a2, double a3)
   this->x[2] = a3;
 }
 
-// Access functions
+// Assignment functions
 /**
  * Function to set the value of an element of the vector.
  * @param index Index of the element whose value is to be set.
@@ -51,9 +51,9 @@ Vector3d::Vector3d (double a1, double a2, double a3)
 void Vector3d::setValue (int index, double value)
 {
   if (index>=0 && index <3)
-  {
-    this->x[index] = value;
-  }
+    {
+      this->x[index] = value;
+    }
 }
 
 /**
@@ -67,6 +67,7 @@ void Vector3d::setVector (double* a)
   this->x[2] = a[2];
 }
 
+// Access functions
 /**
  * Function to get the value of an element of the vector.
  * @param index Index of the element whose value is to be got.
@@ -74,13 +75,13 @@ void Vector3d::setVector (double* a)
 double Vector3d::getValue (int index)
 {
   if (index>=0 && index<3)
-  {
-    return (this->x[index]);
-  }
+    {
+      return (this->x[index]);
+    }
   else
-  {
-    return (0);
-  }
+    {
+      return (0);
+    }
 }
 
 /**
@@ -106,9 +107,9 @@ double Vector3d::sum ()
   int i;
   
   for (i=0; i<3; i++)
-  {
-    s += this->x[i];
-  }
+    {
+      s += this->x[i];
+    }
   
   return (s);
 }
@@ -125,9 +126,9 @@ Vector3d Vector3d::operator+ (const Vector3d& p) const
   int i;
   
   for (i=0; i<3; i++)
-  {
-    r.x[i] = this->x[i] + p.x[i];
-  }
+    {
+      r.x[i] = this->x[i] + p.x[i];
+    }
   
   return (r);
 }
@@ -141,9 +142,9 @@ void Vector3d::operator+= (const Vector3d& p)
   int i;
   
   for (i=0; i<3; i++)
-  {
-    this->x[i] += p.x[i];
-  }
+    {
+      this->x[i] += p.x[i];
+    }
 }
 
 // Subtraction
@@ -157,9 +158,9 @@ Vector3d Vector3d::operator- (const Vector3d& p) const
   int i;
   
   for (i=0; i<3; i++)
-  {
-    r.x[i] = this->x[i] - p.x[i];
-  }
+    {
+      r.x[i] = this->x[i] - p.x[i];
+    }
   
   return (r);
 }
@@ -173,9 +174,9 @@ void Vector3d::operator-= (const Vector3d& p)
   int i;
   
   for (i=0; i<3; i++)
-  {
-    this->x[i] -= p.x[i];
-  }
+    {
+      this->x[i] -= p.x[i];
+    }
 }
 
 // Multiplication
@@ -189,9 +190,9 @@ Vector3d Vector3d::operator* (const double& p) const
   int i;
   
   for (i=0; i<3; i++)
-  {
-    r.x[i] = this->x[i] * p;
-  }
+    {
+      r.x[i] = this->x[i] * p;
+    }
   
   return (r);
 }
@@ -205,9 +206,9 @@ void Vector3d::operator*= (const double& p)
   int i;
   
   for (i=0; i<3; i++)
-  {
-    this->x[i] *= p;
-  }
+    {
+      this->x[i] *= p;
+    }
 }
 
 /**
@@ -219,9 +220,9 @@ double Vector3d::operator* (const Vector3d& p) const
   int i;
   
   for (i=0; i<3; i++)
-  {
-    s += this->x[i] * p.x[i];
-  }
+    {
+      s += this->x[i] * p.x[i];
+    }
   
   return (s);
 }
