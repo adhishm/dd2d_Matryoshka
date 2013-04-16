@@ -42,7 +42,7 @@ Vector3d::Vector3d (double a1, double a2, double a3)
   this->x[2] = a3;
 }
 
-// Access functions
+// Assignment functions
 /**
  * Function to set the value of an element of the vector.
  * @param index Index of the element whose value is to be set.
@@ -67,6 +67,7 @@ void Vector3d::setVector (double* a)
   this->x[2] = a[2];
 }
 
+// Access functions
 /**
  * Function to get the value of an element of the vector.
  * @param index Index of the element whose value is to be got.

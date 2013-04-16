@@ -39,7 +39,7 @@ class Vector3d
    */
   Vector3d (double a1, double a2, double a3);
 
-  // Access functions
+  // Assignment functions
   /**
    * Function to set the value of an element of the vector.
    * @param index Index of the element whose value is to be set.
@@ -51,6 +51,8 @@ class Vector3d
    * @param a Pointer ot the array containing the values of the elements of the vector.
    */
   void setVector (double* a);
+  
+  // Access functions
   /**
    * Function to get the value of an element of the vector.
    * @param index Index of the element whose value is to be got.
