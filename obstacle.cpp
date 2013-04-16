@@ -8,9 +8,9 @@
 Obstacle::Obstacle ()
 {
   for (int i=0; i<3; i++)
-  {
-    this->pos.setValue(i, 0.0);
-  }
+    {
+      this->pos.setValue(i, 0.0);
+    }
 }
 
 /**

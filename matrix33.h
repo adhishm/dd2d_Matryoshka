@@ -18,50 +18,50 @@
 class Matrix33
 {
  protected:
-   /**
-    * Array containing the elements of the matrix.
-    */
-   double x[3][3];
+  /**
+   * Array containing the elements of the matrix.
+   */
+  double x[3][3];
  public:
-   // Constructors
-   /**
-    * Default constructor.
-    */
-   Matrix33 ();
-   /**
-    * Constructor with the values provided in a 3x3 matrix.
-    * @param a Pointer to the two-dimensional 3x3 array.
-    */
-   Matrix33 (double** a);
-   /**
-    * Constructor to create the matrix from the dyadic product of a vector with itself.
-    * @param a The vector whose dyadic product results in the matrix.
-    */
-   Matrix33 (Vector3d a);
-   /**
-    * Constructor with the vectors, the product of which will result in the matrix.
-    * @param a First vector.
-    * @param b Second vector.
-    */
-   Matrix33 (Vector3d a, Vector3d b);
+  // Constructors
+  /**
+   * Default constructor.
+   */
+  Matrix33 ();
+  /**
+   * Constructor with the values provided in a 3x3 matrix.
+   * @param a Pointer to the two-dimensional 3x3 array.
+   */
+  Matrix33 (double** a);
+  /**
+   * Constructor to create the matrix from the dyadic product of a vector with itself.
+   * @param a The vector whose dyadic product results in the matrix.
+   */
+  Matrix33 (Vector3d a);
+  /**
+   * Constructor with the vectors, the product of which will result in the matrix.
+   * @param a First vector.
+   * @param b Second vector.
+   */
+  Matrix33 (Vector3d a, Vector3d b);
    
-   // Functions
-   /**
-    * Function to set the value of an element indicated by its position.
-    * @param row Row index of the element.
-    * @param column Column index of the element.
-    * @param value Value that the element is to be set to.
-    */
-   void setValue (int row, int column, double value);
-   /**
-    * Returns the value of the element located by the row and column indices provided.
-    * @param row Row index of the element.
-    * @param column Column index of the element.
-    */
-   double getValue (int row, int column);
+  // Functions
+  /**
+   * Function to set the value of an element indicated by its position.
+   * @param row Row index of the element.
+   * @param column Column index of the element.
+   * @param value Value that the element is to be set to.
+   */
+  void setValue (int row, int column, double value);
+  /**
+   * Returns the value of the element located by the row and column indices provided.
+   * @param row Row index of the element.
+   * @param column Column index of the element.
+   */
+  double getValue (int row, int column);
    
-   // Operators
-   // Addition
+  // Operators
+  // Addition
   /**
    * Operator for addition of two matrices.
    * Adds the current matrix to the provided matrix and returns a third matrix with the result.
