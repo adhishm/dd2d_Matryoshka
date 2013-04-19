@@ -7,7 +7,7 @@ var searchData=
   ['sety',['setY',['../d5/d4f/classDefect.html#a268606391a4eaee3de029d2005648b6f',1,'Defect']]],
   ['setz',['setZ',['../d5/d4f/classDefect.html#abb0b16c44a1b04d782f5c5f598b49d5b',1,'Defect']]],
   ['shearstresses',['shearStresses',['../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf',1,'Stress']]],
-  ['stress',['Stress',['../d1/d1c/classStress.html',1,'Stress'],['../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e',1,'Stress::Stress()']]],
+  ['stress',['Stress',['../d1/d1c/classStress.html',1,'Stress'],['../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e',1,'Stress::Stress()'],['../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab',1,'Stress::Stress(double *principal, double *shear)']]],
   ['stress_2ecpp',['stress.cpp',['../d4/d58/stress_8cpp.html',1,'']]],
   ['stress_2eh',['stress.h',['../d2/d50/stress_8h.html',1,'']]],
   ['stressfield',['stressField',['../d5/d4f/classDefect.html#a2a2c8170e7fa9e2247527291483ce586',1,'Defect']]],

@@ -17,6 +17,7 @@ Defect::Defect ()
  * Constructor specifying the position.
  * @param x X-coordinate of the defect.
  * @param y Y-coordinate of the defect
+ * @param z Z-coordinate of the defect.
  */
 Defect::Defect (double x, double y, double z)
 {

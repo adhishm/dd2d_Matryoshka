@@ -36,6 +36,20 @@ class Stress : public Matrix33
    * Fills the stress tensor with zeros.
    */
   Stress ();
+  /**
+   * Constructor specifying the principal and shear stresses.
+   * @param principal Pointer to the array containing principal stresses.
+   * @param shear Pointer to the array containing shear stresses.
+   */
+  Stress (double *principal, double *shear);
+
+  // Assignment functions
+  /**
+   * Takes the values in principalStresses and shearStresses and constructs the stress matrix.
+   */
+  void populateMatrix ();
+  
+  
 };
 
 #endif
