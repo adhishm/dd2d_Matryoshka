@@ -30,7 +30,7 @@
    <div id="projectname">DD2.5D
    &#160;<span id="projectnumber">0</span>
    </div>
-   <div id="projectbrief">Thisprojectprovidesasetofclassesdefiningthebehaviourofcrystallinedefects.</div>
+   <div id="projectbrief">This project provides a set of classes defining the behaviour of crystalline defects.</div>
   </td>
   
   
@@ -85,13 +85,16 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!--header-->
 <div class="contents">
 <!-- doxytag: class="Matrix33" -->
+<p><a class="el" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> class representing a 3x3 square matrix.  
+ <a href="../../de/d82/classMatrix33.html#details">More...</a></p>
+
 <p><code>#include &lt;<a class="el" href="../../db/d46/matrix33_8h_source.html">matrix33.h</a>&gt;</code></p>
 <div class="dynheader">
 Inheritance diagram for Matrix33:</div>
 <div class="dyncontent">
 <div class="center"><img src="../../dc/dfe/classMatrix33__inherit__graph.png" border="0" usemap="#Matrix33_inherit__map" alt="Inheritance graph"/></div>
 <map name="Matrix33_inherit__map" id="Matrix33_inherit__map">
-<area shape="rect" id="node3" href="../../d1/d1c/classStress.html" title="Stress" alt="" coords="12,83,71,112"/></map>
+<area shape="rect" id="node3" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor." alt="" coords="12,83,71,112"/></map>
 <center><span class="legend">[<a href="../../graph_legend.html">legend</a>]</span></center></div>
 <table class="memberdecls">
 <tr><td colspan="2"><h2><a name="pub-methods"></a>
@@ -119,9 +122,10 @@ Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a> [3][3]</td></tr>
 </table>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
-<div class="textblock"><p><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> class representing a 3x3 square matrix. </p>
+<div class="textblock"><p><a class="el" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> class representing a 3x3 square matrix. </p>
+<p>This class represents a 3x3 square matrix. The member functions and operators define various operations that may be carried out on the matrix. </p>
 
-<p>Definition at line <a class="el" href="../../db/d46/matrix33_8h_source.html#l00018">18</a> of file <a class="el" href="../../db/d46/matrix33_8h_source.html">matrix33.h</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d46/matrix33_8h_source.html#l00020">20</a> of file <a class="el" href="../../db/d46/matrix33_8h_source.html">matrix33.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="a70acb6647b172d017cc4265a29a7d263"></a><!-- doxytag: member="Matrix33::Matrix33" ref="a70acb6647b172d017cc4265a29a7d263" args="()" -->
 <div class="memitem">
@@ -341,7 +345,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00319">319</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> r;   <span class="comment">// Result matrix</span>
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;   <span class="comment">// Result matrix</span>
   
   <span class="keywordtype">double</span> determinant = ~(*this);
   
@@ -354,10 +358,10 @@ Protected Attributes</h2></td></tr>
   <span class="comment">// If we are still here, the matrix is invertible</span>
   
   <span class="comment">//  Transpose</span>
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> tr = ^(*this);
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> tr = ^(*this);
   
   <span class="comment">// Find Adjugate matrix</span>
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> adj;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> adj;
   
   adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[0][0] = (tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[1][1]*tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[2][2]) - (tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[1][2]*tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[2][1]);
   adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[0][1] = (tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[1][2]*tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[2][0]) - (tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[1][0]*tr.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd">x</a>[2][2]);
@@ -398,7 +402,7 @@ Protected Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00190">190</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i, j;
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> r;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;
   
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
@@ -432,7 +436,7 @@ Protected Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00227">227</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i, j, k;
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> r;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;
   
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
@@ -469,7 +473,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00265">265</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <a class="code" href="../../df/dd0/classVector3d.html">Vector3d</a> r(0.0, 0.0, 0.0);
+  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r(0.0, 0.0, 0.0);
   <span class="keywordtype">int</span> i, j;
   
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
@@ -534,7 +538,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00251">251</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a>* r = <span class="keyword">new</span> <a class="code" href="../../de/d82/classMatrix33.html#a70acb6647b172d017cc4265a29a7d263">Matrix33</a>;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a>* r = <span class="keyword">new</span> <a class="code" href="../../de/d82/classMatrix33.html#a70acb6647b172d017cc4265a29a7d263">Matrix33</a>;
   
   *r = (*this) * p;
   *<span class="keyword">this</span> = *r;
@@ -564,7 +568,7 @@ Protected Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00114">114</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i, j;
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> r;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;
   
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
@@ -629,7 +633,7 @@ Protected Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00152">152</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i, j;
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> r;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;
   
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
@@ -692,7 +696,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00285">285</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
-  <a class="code" href="../../de/d82/classMatrix33.html">Matrix33</a> r;
+  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;
   <span class="keywordtype">int</span> i, j;
   
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
@@ -802,7 +806,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Array containing the elements of the matrix. </p>
 
-<p>Definition at line <a class="el" href="../../db/d46/matrix33_8h_source.html#l00024">24</a> of file <a class="el" href="../../db/d46/matrix33_8h_source.html">matrix33.h</a>.</p>
+<p>Definition at line <a class="el" href="../../db/d46/matrix33_8h_source.html#l00026">26</a> of file <a class="el" href="../../db/d46/matrix33_8h_source.html">matrix33.h</a>.</p>
 
 </div>
 </div>
@@ -828,7 +832,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 19 2013 17:06:58 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 19 2013 17:26:16 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

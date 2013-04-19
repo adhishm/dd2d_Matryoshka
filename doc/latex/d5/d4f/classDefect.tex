@@ -3,6 +3,11 @@
 }
 
 
+\-Class \hyperlink{classDefect}{\-Defect} representing a generic defect in a material.  
+
+
+
+
 {\ttfamily \#include $<$defect.\-h$>$}
 
 
@@ -53,9 +58,11 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 
 
 \subsection{\-Detailed \-Description}
-\-Class \hyperlink{classDefect}{\-Defect}. \-Defines the \hyperlink{classDefect}{\-Defect} class representing an defect in the simulation. \-This is simply a generic description class with virtual functions. \-Later classes like dislocations, precipitates, boundaries etc will inherit from this class. 
+\-Class \hyperlink{classDefect}{\-Defect} representing a generic defect in a material. 
 
-\-Definition at line 23 of file defect.\-h.
+\-Defines the \hyperlink{classDefect}{\-Defect} class representing an defect in the simulation. \-This is simply a generic description class with virtual functions. \-Later classes like dislocations, precipitates, boundaries etc will inherit from this class. 
+
+\-Definition at line 24 of file defect.\-h.
 
 
 
@@ -298,6 +305,16 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 {\em x} & \-X-\/coordinate of the defect. \\
 \hline
 \end{DoxyParams}
+
+
+\-Definition at line 66 of file defect.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  this->pos.setValue (0, x);
+}
+\end{DoxyCode}
 \hypertarget{classDefect_a268606391a4eaee3de029d2005648b6f}{\index{\-Defect@{\-Defect}!set\-Y@{set\-Y}}
 \index{set\-Y@{set\-Y}!Defect@{\-Defect}}
 \subsubsection[{set\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Defect\-::set\-Y} (
@@ -359,7 +376,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyReturn}
 
 
-\-Definition at line 112 of file defect.\-h.
+\-Definition at line 113 of file defect.\-h.
 
 
 \begin{DoxyCode}
@@ -380,7 +397,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \subsubsection[{pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf \-Defect\-::pos}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{d5/d4f/classDefect_aed2731c1beefc22e3db6ad5b18194cdd}
 \-Position of the defect in 2\-D space. 
 
-\-Definition at line 29 of file defect.\-h.
+\-Definition at line 30 of file defect.\-h.
 
 
 

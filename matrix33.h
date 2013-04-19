@@ -10,10 +10,12 @@
 #ifndef MATRIX33_H
 #define MATRIX33_H
 
-#include "vector2d.h"
+#include "vector3d.h"
 
 /**
- * Matrix33 class representing a 3x3 square matrix.
+ * @brief Matrix33 class representing a 3x3 square matrix.
+ *
+ * @details This class represents a 3x3 square matrix. The member functions and operators define various operations that may be carried out on the matrix.
  */
 class Matrix33
 {

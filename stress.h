@@ -13,9 +13,9 @@
 #include "matrix33.h"
 
 /**
- * Stress class to represent the stress tensor.
+ * @brief Stress class to represent the stress tensor.
  *
- * The member functions of this class construct the symmetric stress tensor and operate on it.
+ * @details The member functions of this class construct the symmetric stress tensor and operate on it.
  */
 class Stress : public Matrix33
 {

@@ -63,7 +63,7 @@ void Defect::setPosition (double x, double y, double z)
  * Sets the X-coordinate of the defect.
  * @param x X-coordinate of the defect.
  */
-void setX (double x)
+void Defect::setX (double x)
 {
   this->pos.setValue (0, x);
 }
