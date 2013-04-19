@@ -49,3 +49,52 @@ void Stress::populateMatrix ()
   this->x[0][2] = this->x[2][0] = this->shearStresses [1];
   this->x[1][2] = this->x[2][1] = this->shearStresses [2];
 }
+
+/**
+ * Returns a 3-member array with the principal stresses.
+ * @return 3-member array with the principal stresses.
+ */
+double* Stress::getPrincipalStresses ()
+{
+  double p[3];
+  int i;
+  
+  for (i=0; i<3; i++)
+    {
+      p[i] = this->principalStresses[i];
+    }
+  
+  return (p);
+}
+
+/**
+ * Returns a 3-member array with the shear stresses.
+ * @return 3-member array with the shear stresses.
+ */
+double* Stress::getShearStresses ()
+{
+  double s[3];
+  int i;
+  
+  for (i=0; i<3; i++)
+    {
+      s[i] = this->shearStresses[i];
+    }
+  
+  return (s);
+}
+
+/**
+ * Rotates the present stress matrix using the rotation matrix supplied and returns the result.
+ * @param alpha Rotation matrix.
+ * @result Rotated stress tensor.
+ */
+Stress Stress::rotate (Matrix33 alpha)
+{
+  Matrix33 alphaT = ^alpha;
+  Stress sNew;
+  
+  sNew = alpha * (*this) * alphaT;
+  
+  return (sNew);
+}

@@ -48,6 +48,26 @@ class Stress : public Matrix33
    * Takes the values in principalStresses and shearStresses and constructs the stress matrix.
    */
   void populateMatrix ();
+
+  // Retrieval functions
+  /**
+   * Returns a 3-member array with the principal stresses.
+   * @return 3-member array with the principal stresses.
+   */
+  double* getPrincipalStresses ();
+  /**
+   * Returns a 3-member array with the shear stresses.
+   * @return 3-member array with the shear stresses.
+   */
+  double* getShearStresses ();
+  
+  // Operations
+  /**
+   * Rotates the present stress matrix using the rotation matrix supplied and returns the result.
+   * @param alpha Rotation matrix.
+   * @result Rotated stress tensor.
+   */
+  Stress rotate (Matrix33 alpha);
   
   
 };
