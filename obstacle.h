@@ -105,7 +105,7 @@ class Obstacle
   virtual Matrix33 stressField (Vector3d p)
   {
     // This virtual function returns a zero matrix.
-    // Inheriting classes will have functions implementing this in their own way
+    // Inheriting classes will have functions implementing this in their own way.
     // They will override this behaviour.
     Matrix33 r;
     return (r);
