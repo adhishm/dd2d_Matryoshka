@@ -3,8 +3,10 @@
  * @author Adhish Majumdar
  * @version 0.0
  * @date 16/04/2013
- * @brief Definition of the Defect class.
- * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
+ * @section BRIEF
+ * Definition of the Defect class.
+ * @section DETAILS
+ * This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
 
 #ifndef DEFECT_H
@@ -86,14 +88,17 @@ class Defect
   void getPosition (double* a);
   /**
    * Returns the X-coordinate of the defect.
+   * @return X-coordinate of the defect.
    */
   double getX ();
   /**
    * Returns the Y-coordinate of the defect.
+   * @return Y-coordinate of the defect.
    */
   double getY ();
   /**
    * Returns the Z-coordinate of the defect.
+   * @return Z-coordinate of the defect.
    */
   double getZ ();
     
@@ -101,6 +106,7 @@ class Defect
   /**
    * Returns the value of the stress field of the given defect at the position given by the argument.
    * @param p Position vector of the the point where the stress field is to be calculated.
+   * @return Stress field value at the position p.
    */
   virtual Matrix33 stressField (Vector3d p)
   {

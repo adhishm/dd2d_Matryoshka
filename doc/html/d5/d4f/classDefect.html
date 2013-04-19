@@ -116,7 +116,7 @@ Protected Attributes</h2></td></tr>
 <hr/><a name="details" id="details"></a><h2>Detailed Description</h2>
 <div class="textblock"><p>Class <a class="el" href="../../d5/d4f/classDefect.html">Defect</a>. Defines the <a class="el" href="../../d5/d4f/classDefect.html">Defect</a> class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class. </p>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00021">21</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00023">23</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afc84dd2d7250a01746ee67b002dbbad9"></a><!-- doxytag: member="Defect::Defect" ref="afc84dd2d7250a01746ee67b002dbbad9" args="()" -->
 <div class="memitem">
@@ -286,6 +286,8 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Returns the X-coordinate of the defect. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>X-coordinate of the defect.</dd></dl>
+<p>Returns the X-coordinate of the defect. </p>
 
 <p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -308,6 +310,8 @@ Protected Attributes</h2></td></tr>
 </div>
 <div class="memdoc">
 <p>Returns the Y-coordinate of the defect. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Y-coordinate of the defect.</dd></dl>
+<p>Returns the Y-coordinate of the defect. </p>
 
 <p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00117">117</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
@@ -329,6 +333,8 @@ Protected Attributes</h2></td></tr>
       </table>
 </div>
 <div class="memdoc">
+<p>Returns the Z-coordinate of the defect. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Z-coordinate of the defect.</dd></dl>
 <p>Returns the Z-coordinate of the defect. </p>
 
 <p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
@@ -519,8 +525,9 @@ Protected Attributes</h2></td></tr>
   </table>
   </dd>
 </dl>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Stress field value at the position p. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00105">105</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00111">111</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     <span class="comment">// This virtual function returns a zero matrix.</span>
     <span class="comment">// Inheriting classes will have functions implementing this in their own way</span>
@@ -544,7 +551,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>Position of the defect in 2D space. </p>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00027">27</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00029">29</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 
 </div>
 </div>
@@ -570,7 +577,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 19 2013 14:25:42 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 19 2013 15:00:11 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
