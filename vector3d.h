@@ -11,7 +11,9 @@
 #define VECTOR3D_H
 
 /**
- * Vector3d class representing a single 3-dimensional vector in the simulation.
+ * @brief Vector3d class representing a single 3-dimensional vector in the simulation.
+ *
+ * @details This class represents a vector in 3D space. The member functions and operators define various operations on the vector and its interactions with other data types.
  */
 class Vector3d
 {
