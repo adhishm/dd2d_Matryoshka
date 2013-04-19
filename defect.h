@@ -1,28 +1,28 @@
 /**
- * @file obstacle.h
+ * @file defect.h
  * @author Adhish Majumdar
  * @version 0.0
  * @date 16/04/2013
- * @brief Definition of the Obstacle class.
- * @details This file defines the Obstacle class representing an obstacle in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
+ * @brief Definition of the Defect class.
+ * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
 
-#ifndef OBSTACLE_H
-#define OBSTACLE_H
+#ifndef DEFECT_H
+#define DEFECT_H
 
 #include "vector3d.h"
 #include "matrix33.h"
 
 /**
- * Class Obstacle.
- * Defines the Obstacle class representing an obstacle in the simulation. This is simply a generic description class with virtual functions.
+ * Class Defect.
+ * Defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions.
  * Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
-class Obstacle
+class Defect
 {
  protected:
   /**
-   * Position of the obstacle in 2D space.
+   * Position of the defect in 2D space.
    */
   Vector3d pos;
     
@@ -32,45 +32,45 @@ class Obstacle
    * Default constructor.
    * Creates the object with position (0.0, 0.0, 0.0).
    */
-  Obstacle ();
+  Defect ();
   /**
    * Constructor specifying the position.
-   * @param x X-coordinate of the obstacle.
-   * @param y Y-coordinate of the obstacle
+   * @param x X-coordinate of the defect.
+   * @param y Y-coordinate of the defect
    */
-  Obstacle (double x, double y, double z);
+  Defect (double x, double y, double z);
   /**
    * Constructor specifying the position.
-   * @param p Pointer to the array containing the coordinates of the obstacle.
+   * @param p Pointer to the array containing the coordinates of the defect.
    */
-  Obstacle (double* p);
+  Defect (double* p);
   
   // Assignment functions
   /**
-   * Sets the position of the obstacle as the values in the array pointed to by the argument.
-   * @param a Pointer to the array containing the coordinates of the obstacle.
+   * Sets the position of the defect as the values in the array pointed to by the argument.
+   * @param a Pointer to the array containing the coordinates of the defect.
    */
   void setPosition (double* a);
   /**
-   * Sets the position of the obstacle as the coordinates provided as arguments.
-   * @param x X-coordinate of the obstacle.
-   * @param y Y-coordinate of the obstacle.
-   * @param z Z-coordinate of the obstacle.
+   * Sets the position of the defect as the coordinates provided as arguments.
+   * @param x X-coordinate of the defect.
+   * @param y Y-coordinate of the defect.
+   * @param z Z-coordinate of the defect.
    */
   void setPosition (double x, double y, double z);
   /**
-   * Sets the X-coordinate of the obstacle.
-   * @param x X-coordinate of the obstacle.
+   * Sets the X-coordinate of the defect.
+   * @param x X-coordinate of the defect.
    */
   void setX (double x);
   /**
-   * Sets the Y-coordinate of the obstacle.
-   * @param y Y-coordinate of the obstacle.
+   * Sets the Y-coordinate of the defect.
+   * @param y Y-coordinate of the defect.
    */
   void setY (double y);
   /**
-   * Sets the Z-coordinate of the obstacle.
-   * @param z Z-coordinate of the obstacle.
+   * Sets the Z-coordinate of the defect.
+   * @param z Z-coordinate of the defect.
    */
   void setZ (double z);
     
@@ -80,26 +80,26 @@ class Obstacle
    */
   double* getPosition ();
   /**
-   * Returns in the array provided in the argument the position of the obstacle. The array must be pre-allocated.
-   * @param a Pointer to the location where the obstacle coordinates are to be populated.
+   * Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.
+   * @param a Pointer to the location where the defect coordinates are to be populated.
    */
   void getPosition (double* a);
   /**
-   * Returns the X-coordinate of the obstacle.
+   * Returns the X-coordinate of the defect.
    */
   double getX ();
   /**
-   * Returns the Y-coordinate of the obstacle.
+   * Returns the Y-coordinate of the defect.
    */
   double getY ();
   /**
-   * Returns the Z-coordinate of the obstacle.
+   * Returns the Z-coordinate of the defect.
    */
   double getZ ();
     
   // Virtual functions
   /**
-   * Returns the value of the stress field of the given obstacle at the position given by the argument.
+   * Returns the value of the stress field of the given defect at the position given by the argument.
    * @param p Position vector of the the point where the stress field is to be calculated.
    */
   virtual Matrix33 stressField (Vector3d p)
