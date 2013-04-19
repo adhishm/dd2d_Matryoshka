@@ -1,0 +1,611 @@
+\hypertarget{classMatrix33}{\section{\-Matrix33 \-Class \-Reference}
+\label{de/d82/classMatrix33}\index{\-Matrix33@{\-Matrix33}}
+}
+
+
+{\ttfamily \#include $<$matrix33.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{\-Matrix33} ()
+\item 
+\hyperlink{classMatrix33_a4399c6da8f1ac31ce514550282c823cf}{\-Matrix33} (double $\ast$$\ast$a)
+\item 
+\hyperlink{classMatrix33_a1f070a29a710043c38b56cee8214e6f7}{\-Matrix33} (\hyperlink{classVector3d}{\-Vector3d} a)
+\item 
+\hyperlink{classMatrix33_a7f1deae895c26e47c39c76bfaa31d3d2}{\-Matrix33} (\hyperlink{classVector3d}{\-Vector3d} a, \hyperlink{classVector3d}{\-Vector3d} b)
+\item 
+void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
+\item 
+double \hyperlink{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{get\-Value} (int row, int column)
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\item 
+void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{operator-\/} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\item 
+void \hyperlink{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{operator-\/=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{operator$\ast$} (const double \&) const 
+\item 
+void \hyperlink{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{operator$\ast$=} (const double \&)
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{operator$\ast$} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\item 
+void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{operator$\ast$} (const \hyperlink{classVector3d}{\-Vector3d} \&) const 
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_ad4ab7b9674a44a297502282e1993ef54}{operator$^\wedge$} () const 
+\item 
+double \hyperlink{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{operator$\sim$} () const 
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
+\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
+\begin{DoxyCompactItemize}
+\item 
+double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{classMatrix33}{\-Matrix33} class representing a 3x3 square matrix. 
+
+\-Definition at line 18 of file matrix33.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{\index{\-Matrix33@{\-Matrix33}!\-Matrix33@{\-Matrix33}}
+\index{\-Matrix33@{\-Matrix33}!Matrix33@{\-Matrix33}}
+\subsubsection[{\-Matrix33}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33\-::\-Matrix33} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a70acb6647b172d017cc4265a29a7d263}
+\-Default constructor. 
+
+\-Definition at line 7 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] = 0.0;
+        }
+    }
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a4399c6da8f1ac31ce514550282c823cf}{\index{\-Matrix33@{\-Matrix33}!\-Matrix33@{\-Matrix33}}
+\index{\-Matrix33@{\-Matrix33}!Matrix33@{\-Matrix33}}
+\subsubsection[{\-Matrix33}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33\-::\-Matrix33} (
+\begin{DoxyParamCaption}
+\item[{double $\ast$$\ast$}]{a}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a4399c6da8f1ac31ce514550282c823cf}
+\-Constructor with the values provided in a 3x3 matrix. 
+\begin{DoxyParams}{\-Parameters}
+{\em a} & \-Pointer to the two-\/dimensional 3x3 array. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 24 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] = a[i][j];
+        }
+    }
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a1f070a29a710043c38b56cee8214e6f7}{\index{\-Matrix33@{\-Matrix33}!\-Matrix33@{\-Matrix33}}
+\index{\-Matrix33@{\-Matrix33}!Matrix33@{\-Matrix33}}
+\subsubsection[{\-Matrix33}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33\-::\-Matrix33} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Vector3d}}]{a}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a1f070a29a710043c38b56cee8214e6f7}
+\-Constructor to create the matrix from the dyadic product of a vector with itself. 
+\begin{DoxyParams}{\-Parameters}
+{\em a} & \-The vector whose dyadic product results in the matrix. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 41 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] = a.x[i] * a.x[j];
+        }
+    }
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a7f1deae895c26e47c39c76bfaa31d3d2}{\index{\-Matrix33@{\-Matrix33}!\-Matrix33@{\-Matrix33}}
+\index{\-Matrix33@{\-Matrix33}!Matrix33@{\-Matrix33}}
+\subsubsection[{\-Matrix33}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33\-::\-Matrix33} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Vector3d}}]{a, }
+\item[{{\bf \-Vector3d}}]{b}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a7f1deae895c26e47c39c76bfaa31d3d2}
+\-Constructor with the vectors, the product of which will result in the matrix. 
+\begin{DoxyParams}{\-Parameters}
+{\em a} & \-First vector. \\
+\hline
+{\em b} & \-Second vector. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 59 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] = a.x[i] * b.x[j];
+        }
+    }
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{\index{\-Matrix33@{\-Matrix33}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!Matrix33@{\-Matrix33}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::get\-Value} (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a849bbdf7b456ddacf7185b087fca4015}
+\-Returns the value of the element located by the row and column indices provided. 
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-Row index of the element. \\
+\hline
+{\em column} & \-Column index of the element. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 95 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  if (row>=0 && row<3)
+    {
+      if (column>=0 && column<3)
+        {
+          return (this->x[row][column]);
+        }
+    }
+  
+  return (0.0);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{\index{\-Matrix33@{\-Matrix33}!operator!@{operator!}}
+\index{operator!@{operator!}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator!}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::operator!} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
+\-Returns in a new matrix the inverse of the current matrix. \-If the current matrix is non-\/invertible, a zero matrix is returned. 
+
+\-Definition at line 319 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33 r;   // Result matrix
+  
+  double determinant = ~(*this);
+  
+  if (determinant == 0.0)
+    {
+      // The matrix is non-invertible
+      return (r);       // Zero matrix
+    }
+  
+  // If we are still here, the matrix is invertible
+  
+  //  Transpose
+  Matrix33 tr = ^(*this);
+  
+  // Find Adjugate matrix
+  Matrix33 adj;
+  
+  adj.x[0][0] = (tr.x[1][1]*tr.x[2][2]) - (tr.x[1][2]*tr.x[2][1]);
+  adj.x[0][1] = (tr.x[1][2]*tr.x[2][0]) - (tr.x[1][0]*tr.x[2][2]);
+  adj.x[0][2] = (tr.x[1][0]*tr.x[2][1]) - (tr.x[1][1]*tr.x[2][0]);
+  
+  adj.x[1][0] = (tr.x[2][1]*tr.x[0][2]) - (tr.x[0][1]*tr.x[2][2]);
+  adj.x[1][1] = (tr.x[2][2]*tr.x[0][0]) - (tr.x[2][0]*tr.x[0][2]);
+  adj.x[1][2] = (tr.x[2][0]*tr.x[0][1]) - (tr.x[2][1]*tr.x[0][0]);
+  
+  adj.x[2][0] = (tr.x[0][1]*tr.x[1][2]) - (tr.x[0][2]*tr.x[1][1]);
+  adj.x[2][1] = (tr.x[0][2]*tr.x[1][0]) - (tr.x[0][0]*tr.x[1][2]);
+  adj.x[2][2] = (tr.x[0][0]*tr.x[1][1]) - (tr.x[1][0]*tr.x[0][1]);
+  
+  // Calculate the inverse by dividing the adjugate matrix by the determinant
+  r = adj * (1.0/determinant);
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{\-Matrix33@{\-Matrix33}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
+\-Operator for scaling the matrix by a scalar. \-Scales the current matrix by the scalar provided and returns the result in a third matrix. 
+
+\-Definition at line 190 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.x[i][j] = this->x[i][j] * p;
+        }
+    }
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{\-Matrix33@{\-Matrix33}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
+\-Operator for the multiplication of two matrices. \-Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. 
+
+\-Definition at line 227 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j, k;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.x[i][j] = 0.0;
+          for (k=0; k<3; k++)
+            {
+              r.x[i][j] += this->x[i][k] * p.x[k][j];
+            }
+        }
+    }
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{\-Matrix33@{\-Matrix33}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} \-Matrix33\-::operator$\ast$ (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Vector3d} \&}]{v}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
+\-Returns in a vector the result of the multiplication of the current matrix with the provided vector. 
+
+\-Definition at line 265 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Vector3d r(0.0, 0.0, 0.0);
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r[i] += this->x[i][j] * v.x[j];
+        }
+    }
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{\-Matrix33@{\-Matrix33}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator$\ast$= (
+\begin{DoxyParamCaption}
+\item[{const double \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
+\-Operator for reflexive scaling of the matrix by a scalar. \-Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
+
+\-Definition at line 210 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] *= p;
+        }
+    }
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{\-Matrix33@{\-Matrix33}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator$\ast$= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
+\-Operator for reflexive multiplication of two matrices. \-Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
+
+\-Definition at line 251 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33* r = new Matrix33;
+  
+  *r = (*this) * p;
+  *this = *r;
+  
+  delete(r);
+  r = NULL;
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{\-Matrix33@{\-Matrix33}!operator+@{operator+}}
+\index{operator+@{operator+}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
+\-Operator for addition of two matrices. \-Adds the current matrix to the provided matrix and returns a third matrix with the result. 
+
+\-Definition at line 114 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.x[i][j] = this->x[i][j] + p.x[i][j];
+        }
+    }
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{\-Matrix33@{\-Matrix33}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator+= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
+\-Operator for reflexive addition of two matrices. \-Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
+
+\-Definition at line 134 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] += p.x[i][j];
+        }
+    }
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{\-Matrix33@{\-Matrix33}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator-\/ (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
+\-Operator for the subtraction of two matrices. \-Subtracts the given matrix from the current matrix and returns the result in a new matrix. 
+
+\-Definition at line 152 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.x[i][j] = this->x[i][j] - p.x[i][j];
+        }
+    }
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{\-Matrix33@{\-Matrix33}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator-\/= (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
+\-Operator for reflexive subtraction of two matrices. \-Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
+
+\-Definition at line 172 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] -= p.x[i][j];
+        }
+    }
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_ad4ab7b9674a44a297502282e1993ef54}{\index{\-Matrix33@{\-Matrix33}!operator$^\wedge$@{operator$^\wedge$}}
+\index{operator$^\wedge$@{operator$^\wedge$}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$^\wedge$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$^\wedge$ (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_ad4ab7b9674a44a297502282e1993ef54}
+\-Returns in a new matrix the transpose of the current matrix. 
+
+\-Definition at line 285 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33 r;
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.x[i][j] = this->x[j][i];
+        }
+    }
+  
+  return (r);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{\-Matrix33@{\-Matrix33}!operator$\sim$@{operator$\sim$}}
+\index{operator$\sim$@{operator$\sim$}!Matrix33@{\-Matrix33}}
+\subsubsection[{operator$\sim$}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::operator$\sim$} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
+\-Returns the determinant of the current matrix. 
+
+\-Definition at line 304 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  double d = 0.0;
+  
+  d += this.x[0][0] * ( (this->x[1][1]*this->x[2][2]) - (this->x[2][1]*this->x[
+      1][2]) );
+  d += this.x[0][1] * ( (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[
+      2][2]) );
+  d += this.x[0][2] * ( (this->x[1][0]*this->x[2][1]) - (this->x[2][0]*this->x[
+      1][1]) );
+  
+  return (d);
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{\-Matrix33@{\-Matrix33}!set\-Value@{set\-Value}}
+\index{set\-Value@{set\-Value}!Matrix33@{\-Matrix33}}
+\subsubsection[{set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Matrix33\-::set\-Value} (
+\begin{DoxyParamCaption}
+\item[{int}]{row, }
+\item[{int}]{column, }
+\item[{double}]{value}
+\end{DoxyParamCaption}
+)}}\label{de/d82/classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}
+\-Function to set the value of an element indicated by its position. 
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-Row index of the element. \\
+\hline
+{\em column} & \-Column index of the element. \\
+\hline
+{\em value} & \-Value that the element is to be set to. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 79 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  if (row>=0 && row<3)
+    {
+      if (column>=0 && column<3)
+        {
+          this->x[row][column] = value;
+        }
+    }
+}
+\end{DoxyCode}
+
+
+\subsection{\-Field \-Documentation}
+\hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{\-Matrix33@{\-Matrix33}!x@{x}}
+\index{x@{x}!Matrix33@{\-Matrix33}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::x}\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{de/d82/classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}
+\-Array containing the elements of the matrix. 
+
+\-Definition at line 24 of file matrix33.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{matrix33_8h}{matrix33.\-h}\item 
+\hyperlink{matrix33_8cpp}{matrix33.\-cpp}\end{DoxyCompactItemize}
