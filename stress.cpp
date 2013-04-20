@@ -91,10 +91,10 @@ double* Stress::getShearStresses ()
  */
 Stress Stress::rotate (Matrix33 alpha)
 {
-  Matrix33 alphaT = ^alpha;
+  Matrix33 alphaT = ^alpha;  // Transpose
   Stress sNew;
   
-  sNew = alpha * (*this) * alphaT;
+  sNew = alpha * (*this) * alphaT;  // Rotate the stress matrix
   
   return (sNew);
 }
