@@ -14,44 +14,44 @@
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classVector3d_aac098d8695c4288e4844835e62945244}{Vector3d} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d_a9e5a8c606f27fe366d2075f6bc4759a6}{Vector3d} (double $\ast$a)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor with values provided in an array. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d_af61756bf2e679ccf2a5c0fd742ae3e6c}{Vector3d} (double a1, double a2, double a3)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor with values provided explicitly. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{set\-Value} (int index, double value)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to set the value of an element of the vector. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a82c251f7203e08ec50ea55222f40525f}{set\-Vector} (double $\ast$a)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to set the value of the entire vector using an array. \end{DoxyCompactList}\item 
 double \hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{get\-Value} (int index)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to get the value of an element of the vector. \end{DoxyCompactList}\item 
 double $\ast$ \hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{get\-Vector} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Function to get the values of the elements of the vector in an array. \end{DoxyCompactList}\item 
 double \hyperlink{classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}{sum} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Computes the sum of the elements of the vector. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classVector3d_ad714ad56910f370335c18262dc5cc13a}{operator+} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for addition of two vectors. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a034e9f847d613c9cba1cb47202b8143a}{operator+=} (const \hyperlink{classVector3d}{Vector3d} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive addition of two vectors. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classVector3d_a727932bfb1f230c8f256e10a0d45a8c7}{operator-\/} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for the subtraction of two vectors. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a14d45e123683a1f1a2ba32d43083fcd7}{operator-\/=} (const \hyperlink{classVector3d}{Vector3d} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive subtraction of two vectors. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classVector3d_a656a4a90ae5619c4deb7851da2aaa2e8}{operator$\ast$} (const double \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for scaling the vector by a scalar. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a3014b4a7a5feded758421dfb7df4daa2}{operator$\ast$=} (const double \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive scaling of the vector by a scalar. \end{DoxyCompactList}\item 
 double \hyperlink{classVector3d_a43b3a3d87cedd5a88539d030a8853590}{operator$\ast$} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for the scalar product of two vectors. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classVector3d_a3a8254737a895334fc887d98e8446298}{operator$^\wedge$} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for the vector product of two vectors. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a868e89192951f4a25f63b958ec419f6f}{operator$^\wedge$=} (const \hyperlink{classVector3d}{Vector3d} \&)
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Operator for reflexive vector product of two vectors. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\mbox{]}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em The elements of the vector. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -71,9 +71,13 @@ Definition at line 18 of file vector3d.\-h.
 {}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_aac098d8695c4288e4844835e62945244}
+
+
 Default constructor. 
 
-Definition at line 15 of file vector3d.\-cpp.
+Initializes the vector with all elements equal to 0.\-0. 
+
+Definition at line 16 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -90,14 +94,18 @@ Definition at line 15 of file vector3d.\-cpp.
 \item[{double $\ast$}]{a}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a9e5a8c606f27fe366d2075f6bc4759a6}
+
+
 Constructor with values provided in an array. 
+
+Initializes the vector with the values provided in the array. 
 \begin{DoxyParams}{Parameters}
 {\em a} & Pointer to the array containing the elements of the vector \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 25 of file vector3d.\-cpp.
+Definition at line 28 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -116,7 +124,11 @@ Definition at line 25 of file vector3d.\-cpp.
 \item[{double}]{a3}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_af61756bf2e679ccf2a5c0fd742ae3e6c}
+
+
 Constructor with values provided explicitly. 
+
+Initializes the vector with the three values provided as arguments. 
 \begin{DoxyParams}{Parameters}
 {\em a1} & Value of the first element of the vector. \\
 \hline
@@ -127,7 +139,7 @@ Constructor with values provided explicitly.
 \end{DoxyParams}
 
 
-Definition at line 38 of file vector3d.\-cpp.
+Definition at line 42 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -147,14 +159,21 @@ Definition at line 38 of file vector3d.\-cpp.
 \item[{int}]{index}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}
+
+
 Function to get the value of an element of the vector. 
+
+Returns the value of the element at the position indicated by the argument index. 
 \begin{DoxyParams}{Parameters}
 {\em index} & Index of the element whose value is to be got. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The value of the element of the vector at the position 
+\end{DoxyReturn}
 
 
-Definition at line 75 of file vector3d.\-cpp.
+Definition at line 83 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -176,9 +195,16 @@ Definition at line 75 of file vector3d.\-cpp.
 {}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}
+
+
 Function to get the values of the elements of the vector in an array. 
 
-Definition at line 90 of file vector3d.\-cpp.
+The vector is returned in an array. \begin{DoxyReturn}{Returns}
+Pointer to the first term of an array containing the elements of the vector. 
+\end{DoxyReturn}
+
+
+Definition at line 100 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -199,9 +225,16 @@ Definition at line 90 of file vector3d.\-cpp.
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{df/dd0/classVector3d_a656a4a90ae5619c4deb7851da2aaa2e8}
-Operator for scaling the vector by a scalar. Scales the current vector by the scalar provided and returns the result in a third vector. 
 
-Definition at line 187 of file vector3d.\-cpp.
+
+Operator for scaling the vector by a scalar. 
+
+Scales the current vector by the scalar provided and returns the result in a third vector. \begin{DoxyReturn}{Returns}
+Vector containing the result of scaling the current vector by the scala provided as argument. 
+\end{DoxyReturn}
+
+
+Definition at line 202 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -224,9 +257,16 @@ Definition at line 187 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{df/dd0/classVector3d_a43b3a3d87cedd5a88539d030a8853590}
+
+
 Operator for the scalar product of two vectors. 
 
-Definition at line 217 of file vector3d.\-cpp.
+Performs the scalar product or dot product of the current vector with the one provided as argument and returns the result. \begin{DoxyReturn}{Returns}
+Scalar value of the scalar product of dot product of the current vector with the one provided as argument. 
+\end{DoxyReturn}
+
+
+Definition at line 234 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -249,9 +289,13 @@ Definition at line 217 of file vector3d.\-cpp.
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a3014b4a7a5feded758421dfb7df4daa2}
-Operator for reflexive scaling of the vector by a scalar. Scales the current vector by the scalar provided and populates the current vector elements with the result. 
 
-Definition at line 204 of file vector3d.\-cpp.
+
+Operator for reflexive scaling of the vector by a scalar. 
+
+Scales the current vector by the scalar provided and populates the current vector elements with the result. 
+
+Definition at line 219 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -271,9 +315,16 @@ Definition at line 204 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{df/dd0/classVector3d_ad714ad56910f370335c18262dc5cc13a}
-Operator for addition of two vectors. Adds the current vector to the provided vector and returns a third vector with the result. 
 
-Definition at line 123 of file vector3d.\-cpp.
+
+Operator for addition of two vectors. 
+
+Adds the current vector to the provided vector and returns a third vector with the result. \begin{DoxyReturn}{Returns}
+Vector containing the sum of the current vector with the one provided as argument. 
+\end{DoxyReturn}
+
+
+Definition at line 136 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -296,9 +347,13 @@ Definition at line 123 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a034e9f847d613c9cba1cb47202b8143a}
-Operator for reflexive addition of two vectors. Adds the current vector to the provided vector and populates the current vector elements with the result. 
 
-Definition at line 140 of file vector3d.\-cpp.
+
+Operator for reflexive addition of two vectors. 
+
+Adds the current vector to the provided vector and populates the current vector elements with the result. 
+
+Definition at line 153 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -318,9 +373,16 @@ Definition at line 140 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{df/dd0/classVector3d_a727932bfb1f230c8f256e10a0d45a8c7}
-Operator for the subtraction of two vectors. Subtracts the given vector from the current vector and returns the result in a new vector. 
 
-Definition at line 155 of file vector3d.\-cpp.
+
+Operator for the subtraction of two vectors. 
+
+Subtracts the given vector from the current vector and returns the result in a new vector. \begin{DoxyReturn}{Returns}
+Vector containing the result of subtracting the vector provided as argument from the current vector. 
+\end{DoxyReturn}
+
+
+Definition at line 169 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -343,9 +405,13 @@ Definition at line 155 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a14d45e123683a1f1a2ba32d43083fcd7}
-Operator for reflexive subtraction of two vectors. Subtracts the given vector from the current vector and populates the current vector with the result. 
 
-Definition at line 172 of file vector3d.\-cpp.
+
+Operator for reflexive subtraction of two vectors. 
+
+Subtracts the given vector from the current vector and populates the current vector with the result. 
+
+Definition at line 186 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -365,9 +431,16 @@ Definition at line 172 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{df/dd0/classVector3d_a3a8254737a895334fc887d98e8446298}
-Operator for the vector product of two vectors. Evaluates the vector product of the current vector with the provided vector and returns the result in a third vector. 
 
-Definition at line 234 of file vector3d.\-cpp.
+
+Operator for the vector product of two vectors. 
+
+Evaluates the vector product of the current vector with the provided vector and returns the result in a third vector. \begin{DoxyReturn}{Returns}
+Vector containing the result of the vector product of the current vector with the one provided as argument. 
+\end{DoxyReturn}
+
+
+Definition at line 252 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -388,9 +461,13 @@ Definition at line 234 of file vector3d.\-cpp.
 \item[{const {\bf Vector3d} \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a868e89192951f4a25f63b958ec419f6f}
-Operator for reflexive vector product of two vectors. Evaluates the vector product of the current vector and the one provided, and populates the result in the current vector. 
 
-Definition at line 249 of file vector3d.\-cpp.
+
+Operator for reflexive vector product of two vectors. 
+
+Evaluates the vector product of the current vector and the one provided, and populates the result in the current vector. 
+
+Definition at line 267 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -415,7 +492,11 @@ Definition at line 249 of file vector3d.\-cpp.
 \item[{double}]{value}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_ac20e0cda09c96f83cc41e23300c303ca}
+
+
 Function to set the value of an element of the vector. 
+
+Sets the value of the element indicated by the index argument. 
 \begin{DoxyParams}{Parameters}
 {\em index} & Index of the element whose value is to be set. \\
 \hline
@@ -424,7 +505,7 @@ Function to set the value of an element of the vector.
 \end{DoxyParams}
 
 
-Definition at line 51 of file vector3d.\-cpp.
+Definition at line 56 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -442,14 +523,18 @@ Definition at line 51 of file vector3d.\-cpp.
 \item[{double $\ast$}]{a}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a82c251f7203e08ec50ea55222f40525f}
+
+
 Function to set the value of the entire vector using an array. 
+
+Sets the values of the elements if the vector to values in the array pointed to by the argument a. 
 \begin{DoxyParams}{Parameters}
 {\em a} & Pointer ot the array containing the values of the elements of the vector. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 63 of file vector3d.\-cpp.
+Definition at line 69 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -466,9 +551,16 @@ Definition at line 63 of file vector3d.\-cpp.
 {}
 \end{DoxyParamCaption}
 )}}\label{df/dd0/classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}
+
+
 Computes the sum of the elements of the vector. 
 
-Definition at line 104 of file vector3d.\-cpp.
+Sums the elements of the vector and returns the result. \begin{DoxyReturn}{Returns}
+The sum of the elements of the vector. 
+\end{DoxyReturn}
+
+
+Definition at line 116 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -490,7 +582,11 @@ Definition at line 104 of file vector3d.\-cpp.
 \hypertarget{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{\index{Vector3d@{Vector3d}!x@{x}}
 \index{x@{x}!Vector3d@{Vector3d}}
 \subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double Vector3d\-::x\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{df/dd0/classVector3d_ae5e82a2be7cc2e195e56875a5befe509}
-The elements if the vector. 
+
+
+The elements of the vector. 
+
+
 
 Definition at line 24 of file vector3d.\-h.
 

@@ -2,15 +2,16 @@
  * @file vector3d.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 15/04/2013
- * @brief Definition of the Vector3d class and its functions.
- * @details This file defines the Vector3d class representing a single 3-dimensional vector in the simulation and its member functions and operators.
+ * @date 22/04/2013
+ * @brief Definition of member functions and operators of the Vector3d class.
+ * @details This file defines the member functions and operators of the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
 
 #include "vector3d.h"
 
 /**
- * Default constructor.
+ * @brief Default constructor.
+ * @details Initializes the vector with all elements equal to 0.0.
  */
 Vector3d::Vector3d ()
 {
@@ -18,8 +19,10 @@ Vector3d::Vector3d ()
   this->x[1] = 0.0;
   this->x[2] = 0.0;
 }
+
 /**
- * Constructor with values provided in an array.
+ * @brief Constructor with values provided in an array.
+ * @details Initializes the vector with the values provided in the array.
  * @param a Pointer to the array containing the elements of the vector
  */
 Vector3d::Vector3d (double* a)
@@ -30,7 +33,8 @@ Vector3d::Vector3d (double* a)
 }
 
 /**
- * Constructor with values provided explicitly.
+ * @brief Constructor with values provided explicitly.
+ * @details Initializes the vector with the three values provided as arguments.
  * @param a1 Value of the first element of the vector.
  * @param a2 Value of the second element of the vector.
  * @param a3 Value of the third element of the vector.
@@ -44,7 +48,8 @@ Vector3d::Vector3d (double a1, double a2, double a3)
 
 // Assignment functions
 /**
- * Function to set the value of an element of the vector.
+ * @brief Function to set the value of an element of the vector.
+ * @details Sets the value of the element indicated by the index argument.
  * @param index Index of the element whose value is to be set.
  * @param value Value that is to be given to the element.
  */
@@ -57,7 +62,8 @@ void Vector3d::setValue (int index, double value)
 }
 
 /**
- * Function to set the value of the entire vector using an array.
+ * @brief Function to set the value of the entire vector using an array.
+ * @details Sets the values of the elements if the vector to values in the array pointed to by the argument a.
  * @param a Pointer ot the array containing the values of the elements of the vector.
  */
 void Vector3d::setVector (double* a)
@@ -69,8 +75,10 @@ void Vector3d::setVector (double* a)
 
 // Access functions
 /**
- * Function to get the value of an element of the vector.
+ * @brief Function to get the value of an element of the vector.
+ * @details Returns the value of the element at the position indicated by the argument index.
  * @param index Index of the element whose value is to be got.
+ * @return The value of the element of the vector at the position
  */
 double Vector3d::getValue (int index)
 {
@@ -85,7 +93,9 @@ double Vector3d::getValue (int index)
 }
 
 /**
- * Function to get the values of the elements of the vector in an array.
+ * @brief Function to get the values of the elements of the vector in an array.
+ * @details The vector is returned in an array.
+ * @return Pointer to the first term of an array containing the elements of the vector.
  */
 double* Vector3d::getVector ()
 {
@@ -99,7 +109,9 @@ double* Vector3d::getVector ()
 }
 
 /**
- * Computes the sum of the elements of the vector.
+ * @brief Computes the sum of the elements of the vector.
+ * @details Sums the elements of the vector and returns the result.
+ * @return The sum of the elements of the vector.
  */
 double Vector3d::sum ()
 {
@@ -117,8 +129,9 @@ double Vector3d::sum ()
 // Operators
 // Addition
 /**
- * Operator for addition of two vectors.
- * Adds the current vector to the provided vector and returns a third vector with the result.
+ * @brief Operator for addition of two vectors.
+ * @details Adds the current vector to the provided vector and returns a third vector with the result.
+ * @return Vector containing the sum of the current vector with the one provided as argument.
  */
 Vector3d Vector3d::operator+ (const Vector3d& p) const
 {
@@ -134,8 +147,8 @@ Vector3d Vector3d::operator+ (const Vector3d& p) const
 }
 
 /**
- * Operator for reflexive addition of two vectors.
- * Adds the current vector to the provided vector and populates the current vector elements with the result.
+ * @brief Operator for reflexive addition of two vectors.
+ * @details Adds the current vector to the provided vector and populates the current vector elements with the result.
  */
 void Vector3d::operator+= (const Vector3d& p)
 {
@@ -149,8 +162,9 @@ void Vector3d::operator+= (const Vector3d& p)
 
 // Subtraction
 /**
- * Operator for the subtraction of two vectors.
- * Subtracts the given vector from the current vector and returns the result in a new vector.
+ * @brief Operator for the subtraction of two vectors.
+ * @details Subtracts the given vector from the current vector and returns the result in a new vector.
+ * @return Vector containing the result of subtracting the vector provided as argument from the current vector.
  */
 Vector3d Vector3d::operator- (const Vector3d& p) const
 {
@@ -166,8 +180,8 @@ Vector3d Vector3d::operator- (const Vector3d& p) const
 }
 
 /**
- * Operator for reflexive subtraction of two vectors.
- * Subtracts the given vector from the current vector and populates the current vector with the result.
+ * @brief Operator for reflexive subtraction of two vectors.
+ * @details Subtracts the given vector from the current vector and populates the current vector with the result.
  */
 void Vector3d::operator-= (const Vector3d& p)
 {
@@ -181,8 +195,9 @@ void Vector3d::operator-= (const Vector3d& p)
 
 // Multiplication
 /**
- * Operator for scaling the vector by a scalar.
- * Scales the current vector by the scalar provided and returns the result in a third vector.
+ * @brief Operator for scaling the vector by a scalar.
+ * @details Scales the current vector by the scalar provided and returns the result in a third vector.
+ * @return Vector containing the result of scaling the current vector by the scala provided as argument.
  */
 Vector3d Vector3d::operator* (const double& p) const
 {
@@ -198,8 +213,8 @@ Vector3d Vector3d::operator* (const double& p) const
 }
    
 /**
- * Operator for reflexive scaling of the vector by a scalar.
- * Scales the current vector by the scalar provided and populates the current vector elements with the result.
+ * @brief Operator for reflexive scaling of the vector by a scalar.
+ * @details Scales the current vector by the scalar provided and populates the current vector elements with the result.
  */
 void Vector3d::operator*= (const double& p)
 {
@@ -212,7 +227,9 @@ void Vector3d::operator*= (const double& p)
 }
 
 /**
- * Operator for the scalar product of two vectors.
+ * @brief Operator for the scalar product of two vectors.
+ * @details Performs the scalar product or dot product of the current vector with the one provided as argument and returns the result.
+ * @return Scalar value of the scalar product of dot product of the current vector with the one provided as argument.
  */
 double Vector3d::operator* (const Vector3d& p) const
 {
@@ -228,8 +245,9 @@ double Vector3d::operator* (const Vector3d& p) const
 }
 
 /**
- * Operator for the vector product of two vectors.
- * Evaluates the vector product of the current vector with the provided vector and returns the result in a third vector.
+ * @brief Operator for the vector product of two vectors.
+ * @details Evaluates the vector product of the current vector with the provided vector and returns the result in a third vector.
+ * @return Vector containing the result of the vector product of the current vector with the one provided as argument.
  */
 Vector3d Vector3d::operator^ (const Vector3d& p) const
 {
@@ -243,8 +261,8 @@ Vector3d Vector3d::operator^ (const Vector3d& p) const
 }
 
 /**
- * Operator for reflexive vector product of two vectors.
- * Evaluates the vector product of the current vector and the one provided, and populates the result in the current vector.
+ * @brief Operator for reflexive vector product of two vectors.
+ * @details Evaluates the vector product of the current vector and the one provided, and populates the result in the current vector.
  */
 void Vector3d::operator^= (const Vector3d& p)
 {
