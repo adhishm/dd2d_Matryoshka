@@ -32,17 +32,17 @@ Collaboration diagram for Stress\-:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classStress_aa01e83a3f6791cbadc5a368e3a40515e}{Stress} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}{Stress} (double $\ast$principal, double $\ast$shear)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor specifying the principal and shear stresses. \end{DoxyCompactList}\item 
 void \hyperlink{classStress_aa395d5763df8feb4689e0c5524c9e562}{populate\-Matrix} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Construct the stress tensor from the principal and shear stresses. \end{DoxyCompactList}\item 
 double $\ast$ \hyperlink{classStress_aca57d2719f43701dd2ebf2ab00afa539}{get\-Principal\-Stresses} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the principal stresses. \end{DoxyCompactList}\item 
 double $\ast$ \hyperlink{classStress_afe8214b8e9061930e6598e1970fd61f5}{get\-Shear\-Stresses} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Get the shear stresses. \end{DoxyCompactList}\item 
 \hyperlink{classStress}{Stress} \hyperlink{classStress_a61fa75450c0232bb0fa427072d1b6a35}{rotate} (\hyperlink{classMatrix33}{Matrix33} alpha)
-\item 
+\begin{DoxyCompactList}\small\item\em Rotate the stress tensor from one coordinate system to another. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
 \begin{DoxyCompactList}\small\item\em Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{get\-Value} (int row, int column)
@@ -101,11 +101,13 @@ Definition at line 20 of file stress.\-h.
 {}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_aa01e83a3f6791cbadc5a368e3a40515e}
-Default constructor.
 
-Fills the stress tensor with zeros. 
 
-Definition at line 17 of file stress.\-cpp.
+Default constructor. 
+
+Initializes the stress tensor with zeros. 
+
+Definition at line 16 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
@@ -129,7 +131,11 @@ Definition at line 17 of file stress.\-cpp.
 \item[{double $\ast$}]{shear}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}
+
+
 Constructor specifying the principal and shear stresses. 
+
+The principal and shear stresses are provided in the arguments and the symmetrical stress tensor is contstructed using them. 
 \begin{DoxyParams}{Parameters}
 {\em principal} & Pointer to the array containing principal stresses. \\
 \hline
@@ -203,12 +209,16 @@ Definition at line 129 of file matrix33.\-cpp.
 {}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_aca57d2719f43701dd2ebf2ab00afa539}
-Returns a 3-\/member array with the principal stresses. \begin{DoxyReturn}{Returns}
+
+
+Get the principal stresses. 
+
+Returns a 3-\/member array with the principal stresses\-: s11 s22 s33. \begin{DoxyReturn}{Returns}
 3-\/member array with the principal stresses. 
 \end{DoxyReturn}
 
 
-Definition at line 66 of file stress.\-cpp.
+Definition at line 68 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
@@ -231,12 +241,16 @@ Definition at line 66 of file stress.\-cpp.
 {}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_afe8214b8e9061930e6598e1970fd61f5}
-Returns a 3-\/member array with the shear stresses. \begin{DoxyReturn}{Returns}
+
+
+Get the shear stresses. 
+
+Returns a 3-\/member array with the shear stresses\-: s12 s13 s23. \begin{DoxyReturn}{Returns}
 3-\/member array with the shear stresses. 
 \end{DoxyReturn}
 
 
-Definition at line 83 of file stress.\-cpp.
+Definition at line 86 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
@@ -705,9 +719,13 @@ Definition at line 354 of file matrix33.\-cpp.
 {}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_aa395d5763df8feb4689e0c5524c9e562}
-Takes the values in principal\-Stresses and shear\-Stresses and constructs the stress matrix. 
 
-Definition at line 51 of file stress.\-cpp.
+
+Construct the stress tensor from the principal and shear stresses. 
+
+Takes the values in principal\-Stresses and shear\-Stresses and constructs the symmetrical stress matrix. 
+
+Definition at line 52 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
@@ -728,7 +746,11 @@ Definition at line 51 of file stress.\-cpp.
 \item[{{\bf Matrix33}}]{alpha}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_a61fa75450c0232bb0fa427072d1b6a35}
-Rotates the present stress matrix using the rotation matrix supplied and returns the result. 
+
+
+Rotate the stress tensor from one coordinate system to another. 
+
+Rotates the present stress matrix from one coordinate system to another using the rotation matrix supplied. The result is returned in a new \hyperlink{classStress}{Stress} matrix. 
 \begin{DoxyParams}{Parameters}
 {\em alpha} & Rotation matrix. \\
 \hline
@@ -738,7 +760,7 @@ Rotated stress tensor.
 \end{DoxyReturn}
 
 
-Definition at line 101 of file stress.\-cpp.
+Definition at line 105 of file stress.\-cpp.
 
 
 \begin{DoxyCode}

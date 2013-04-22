@@ -12,6 +12,7 @@
 
 #include "vector3d.h"
 #include "matrix33.h"
+#include "stress.h"
 
 /**
  * @brief Class Defect representing a generic defect in a material.
@@ -118,13 +119,13 @@ class Defect
    * @param p Position vector of the the point where the stress field is to be calculated.
    * @return Stress field value at the position p.
    */
-  virtual Matrix33 stressField (Vector3d p)
+  virtual Stress stressField (Vector3d p)
   {
     // This virtual function returns a zero matrix.
     // Inheriting classes will have functions implementing this in their own way
     // They will override this behaviour.
-    Matrix33 r;
-    return (r);
+    Stress s;
+    return (s);
   }
 };
 

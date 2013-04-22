@@ -48,7 +48,7 @@ double \hyperlink{classDefect_a9ea8df3b4c621762a327813056e63911}{get\-Y} ()
 \begin{DoxyCompactList}\small\item\em Returns the Y-\/coordinate of the defect. \end{DoxyCompactList}\item 
 double \hyperlink{classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}{get\-Z} ()
 \begin{DoxyCompactList}\small\item\em Returns the Z-\/coordinate of the defect. \end{DoxyCompactList}\item 
-virtual \hyperlink{classMatrix33}{Matrix33} \hyperlink{classDefect_a2a2c8170e7fa9e2247527291483ce586}{stress\-Field} (\hyperlink{classVector3d}{Vector3d} p)
+virtual \hyperlink{classStress}{Stress} \hyperlink{classDefect_af25282562571e6fe3340e82d02c7ae93}{stress\-Field} (\hyperlink{classVector3d}{Vector3d} p)
 \begin{DoxyCompactList}\small\item\em Virtual function for calculating the stress field. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -62,7 +62,7 @@ Class \hyperlink{classDefect}{Defect} representing a generic defect in a materia
 
 Defines the \hyperlink{classDefect}{Defect} class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class. 
 
-Definition at line 22 of file defect.\-h.
+Definition at line 23 of file defect.\-h.
 
 
 
@@ -414,13 +414,13 @@ Definition at line 98 of file defect.\-cpp.
   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a2a2c8170e7fa9e2247527291483ce586}{\index{Defect@{Defect}!stress\-Field@{stress\-Field}}
+\hypertarget{classDefect_af25282562571e6fe3340e82d02c7ae93}{\index{Defect@{Defect}!stress\-Field@{stress\-Field}}
 \index{stress\-Field@{stress\-Field}!Defect@{Defect}}
-\subsubsection[{stress\-Field}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Matrix33} Defect\-::stress\-Field (
+\subsubsection[{stress\-Field}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf Stress} Defect\-::stress\-Field (
 \begin{DoxyParamCaption}
 \item[{{\bf Vector3d}}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{d5/d4f/classDefect_a2a2c8170e7fa9e2247527291483ce586}
+)\hspace{0.3cm}{\ttfamily [inline]}, {\ttfamily [virtual]}}}\label{d5/d4f/classDefect_af25282562571e6fe3340e82d02c7ae93}
 
 
 Virtual function for calculating the stress field. 
@@ -435,7 +435,7 @@ Returns the value of the stress field of the given defect at the position given 
 \end{DoxyReturn}
 
 
-Definition at line 121 of file defect.\-h.
+Definition at line 122 of file defect.\-h.
 
 
 \begin{DoxyCode}
@@ -444,8 +444,8 @@ Definition at line 121 of file defect.\-h.
     \textcolor{comment}{// Inheriting classes will have functions implementing this in their own
        way}
     \textcolor{comment}{// They will override this behaviour.}
-    \hyperlink{classMatrix33}{Matrix33} r;
-    \textcolor{keywordflow}{return} (r);
+    \hyperlink{classStress}{Stress} s;
+    \textcolor{keywordflow}{return} (s);
   \}
 \end{DoxyCode}
 
@@ -460,7 +460,7 @@ Position vector of the defect in 2\-D space.
 
 
 
-Definition at line 28 of file defect.\-h.
+Definition at line 29 of file defect.\-h.
 
 
 
