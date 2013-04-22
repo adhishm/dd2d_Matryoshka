@@ -104,6 +104,29 @@ double Matrix33::getValue (int row, int column)
   
   return (0.0);
 }
+
+/**
+ * Returns the adjugate matrix of the present matrix.
+ * @return The adjugate matrix of the present matrix.
+ */
+Matrix33 adjugate ()
+{
+  Matrix33 adj;
+  
+  adj.x[0][0] = (this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2][1]);
+  adj.x[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
+  adj.x[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+  
+  adj.x[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
+  adj.x[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
+  adj.x[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+  
+  adj.x[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
+  adj.x[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
+  adj.x[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+
+  return (adj);
+}
    
 // Operators
 // Addition
@@ -334,19 +357,7 @@ Matrix33 Matrix33::operator! () const
   Matrix33 tr = ^(*this);
   
   // Find Adjugate matrix
-  Matrix33 adj;
-  
-  adj.x[0][0] = (tr.x[1][1]*tr.x[2][2]) - (tr.x[1][2]*tr.x[2][1]);
-  adj.x[0][1] = (tr.x[1][2]*tr.x[2][0]) - (tr.x[1][0]*tr.x[2][2]);
-  adj.x[0][2] = (tr.x[1][0]*tr.x[2][1]) - (tr.x[1][1]*tr.x[2][0]);
-  
-  adj.x[1][0] = (tr.x[2][1]*tr.x[0][2]) - (tr.x[0][1]*tr.x[2][2]);
-  adj.x[1][1] = (tr.x[2][2]*tr.x[0][0]) - (tr.x[2][0]*tr.x[0][2]);
-  adj.x[1][2] = (tr.x[2][0]*tr.x[0][1]) - (tr.x[2][1]*tr.x[0][0]);
-  
-  adj.x[2][0] = (tr.x[0][1]*tr.x[1][2]) - (tr.x[0][2]*tr.x[1][1]);
-  adj.x[2][1] = (tr.x[0][2]*tr.x[1][0]) - (tr.x[0][0]*tr.x[1][2]);
-  adj.x[2][2] = (tr.x[0][0]*tr.x[1][1]) - (tr.x[1][0]*tr.x[0][1]);
+  Matrix33 adj = tr.adjugate();
   
   // Calculate the inverse by dividing the adjugate matrix by the determinant
   r = adj * (1.0/determinant);
