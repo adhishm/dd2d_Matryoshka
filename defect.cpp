@@ -14,11 +14,12 @@ Defect::Defect ()
 }
 
 /**
- * Constructor specifying the position.
- * @param x X-coordinate of the defect.
- * @param y Y-coordinate of the defect
- * @param z Z-coordinate of the defect.
- */
+ * @brief Constructor specifying the position.
+ * @details The object is initialized with the position specified by the arguments (x, y, z).
+   * @param x X-coordinate of the defect.
+   * @param y Y-coordinate of the defect
+   * @param z Z-coordinate of the defect.
+   */
 Defect::Defect (double x, double y, double z)
 {
   this->pos.setValue (0, x);
