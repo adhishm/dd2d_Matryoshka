@@ -208,6 +208,30 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 \-Returns the adjugate matrix of the present matrix. \begin{DoxyReturn}{\-Returns}
 \-The adjugate matrix of the present matrix. 
 \end{DoxyReturn}
+
+
+\-Definition at line 112 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33 adj;
+  
+  adj.x[0][0] = (this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2][1]);
+  adj.x[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
+  adj.x[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+  
+  adj.x[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
+  adj.x[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
+  adj.x[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+  
+  adj.x[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
+  adj.x[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
+  adj.x[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+
+  return (adj);
+}
+\end{DoxyCode}
 \hypertarget{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{\index{\-Matrix33@{\-Matrix33}!get\-Value@{get\-Value}}
 \index{get\-Value@{get\-Value}!Matrix33@{\-Matrix33}}
 \subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::get\-Value} (

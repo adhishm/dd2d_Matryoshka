@@ -109,7 +109,7 @@ double Matrix33::getValue (int row, int column)
  * Returns the adjugate matrix of the present matrix.
  * @return The adjugate matrix of the present matrix.
  */
-Matrix33 adjugate ()
+Matrix33 Matrix33::adjugate ()
 {
   Matrix33 adj;
   
