@@ -23,48 +23,48 @@ Inheritance diagram for Matrix33\-:\nopagebreak
 \begin{DoxyCompactItemize}
 \item 
 \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33_a4399c6da8f1ac31ce514550282c823cf}{Matrix33} (double $\ast$$\ast$a)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor with the values provided in a 3x3 matrix. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33_a1f070a29a710043c38b56cee8214e6f7}{Matrix33} (\hyperlink{classVector3d}{Vector3d} a)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor to create the matrix from the dyadic product of a vector with itself. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33_a7f1deae895c26e47c39c76bfaa31d3d2}{Matrix33} (\hyperlink{classVector3d}{Vector3d} a, \hyperlink{classVector3d}{Vector3d} b)
-\item 
+\begin{DoxyCompactList}\small\item\em Constructor with the vectors, the product of which will result in the matrix. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
-\item 
+\begin{DoxyCompactList}\small\item\em Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{get\-Value} (int row, int column)
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the value of the element located by the row and column indices provided. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate} ()
-\item 
+\begin{DoxyCompactList}\small\item\em Returns the adjugate matrix of the present matrix. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for addition of two matrices. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive addition of two matrices. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{operator-\/} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for the subtraction of two matrices. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{operator-\/=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive subtraction of two matrices. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{operator$\ast$} (const double \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for scaling the matrix by a scalar. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{operator$\ast$=} (const double \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive scaling of the matrix by a scalar. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{operator$\ast$} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for the multiplication of two matrices. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for reflexive multiplication of two matrices. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{operator$\ast$} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\item 
+\begin{DoxyCompactList}\small\item\em Operator for the multiplication of a matrix with a vector. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_ad4ab7b9674a44a297502282e1993ef54}{operator$^\wedge$} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Transpose. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{operator$\sim$} () const 
-\item 
+\begin{DoxyCompactList}\small\item\em Determinant. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Inverse. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
 \item 
 double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
-\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em Array containing the elements of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
 \subsection{Detailed Description}
@@ -84,7 +84,11 @@ Definition at line 20 of file matrix33.\-h.
 {}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a70acb6647b172d017cc4265a29a7d263}
+
+
 Default constructor. 
+
+Initializes the matrix with all elements equal to 0.\-0. 
 
 Definition at line 7 of file matrix33.\-cpp.
 
@@ -109,6 +113,15 @@ Definition at line 7 of file matrix33.\-cpp.
 \item[{double $\ast$$\ast$}]{a}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a4399c6da8f1ac31ce514550282c823cf}
+
+
+Constructor with the values provided in a 3x3 matrix. 
+
+Populated the mstrix with data present in corresponding elements of the provided 3x3 array. 
+\begin{DoxyParams}{Parameters}
+{\em a} & Pointer to the two-\/dimensional 3x3 array.\\
+\hline
+\end{DoxyParams}
 Constructor with the values provided in a 3x3 matrix. 
 \begin{DoxyParams}{Parameters}
 {\em a} & Pointer to the two-\/dimensional 3x3 array. \\
@@ -139,6 +152,15 @@ Definition at line 24 of file matrix33.\-cpp.
 \item[{{\bf Vector3d}}]{a}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a1f070a29a710043c38b56cee8214e6f7}
+
+
+Constructor to create the matrix from the dyadic product of a vector with itself. 
+
+The matrix is created by performing the dyadic product of the provided vector with itself. 
+\begin{DoxyParams}{Parameters}
+{\em a} & The vector whose dyadic product results in the matrix.\\
+\hline
+\end{DoxyParams}
 Constructor to create the matrix from the dyadic product of a vector with itself. 
 \begin{DoxyParams}{Parameters}
 {\em a} & The vector whose dyadic product results in the matrix. \\
@@ -170,6 +192,17 @@ Definition at line 41 of file matrix33.\-cpp.
 \item[{{\bf Vector3d}}]{b}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a7f1deae895c26e47c39c76bfaa31d3d2}
+
+
+Constructor with the vectors, the product of which will result in the matrix. 
+
+The matrix is created from the product the first vector with the second. 
+\begin{DoxyParams}{Parameters}
+{\em a} & First vector. \\
+\hline
+{\em b} & Second vector.\\
+\hline
+\end{DoxyParams}
 Constructor with the vectors, the product of which will result in the matrix. 
 \begin{DoxyParams}{Parameters}
 {\em a} & First vector. \\
@@ -205,6 +238,13 @@ Definition at line 59 of file matrix33.\-cpp.
 {}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}
+
+
+Returns the adjugate matrix of the present matrix. 
+
+The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix. \begin{DoxyReturn}{Returns}
+The adjugate matrix of the present matrix.
+\end{DoxyReturn}
 Returns the adjugate matrix of the present matrix. \begin{DoxyReturn}{Returns}
 The adjugate matrix of the present matrix. 
 \end{DoxyReturn}
@@ -241,7 +281,11 @@ Definition at line 112 of file matrix33.\-cpp.
 \item[{int}]{column}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a849bbdf7b456ddacf7185b087fca4015}
+
+
 Returns the value of the element located by the row and column indices provided. 
+
+The value of the element indicated by the arguments row and column is returned. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.\-0 is returned. 
 \begin{DoxyParams}{Parameters}
 {\em row} & Row index of the element. \\
 \hline
@@ -283,6 +327,13 @@ Definition at line 95 of file matrix33.\-cpp.
 {}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
+
+
+Inverse. 
+
+Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. \begin{DoxyReturn}{Returns}
+Matrix with the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned.
+\end{DoxyReturn}
 Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. 
 
 Definition at line 342 of file matrix33.\-cpp.
@@ -321,6 +372,13 @@ Definition at line 342 of file matrix33.\-cpp.
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
+
+
+Operator for scaling the matrix by a scalar. 
+
+Scales the current matrix by the scalar provided and returns the result in a third matrix. \begin{DoxyReturn}{Returns}
+Matrix containing the result of scaling the current matrix by the scalar provided as argument.
+\end{DoxyReturn}
 Operator for scaling the matrix by a scalar. Scales the current matrix by the scalar provided and returns the result in a third matrix. 
 
 Definition at line 213 of file matrix33.\-cpp.
@@ -349,6 +407,13 @@ Definition at line 213 of file matrix33.\-cpp.
 \item[{const {\bf Matrix33} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
+
+
+Operator for the multiplication of two matrices. 
+
+Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
+The result of the multiplication of the current matrix with the one provided as argument.
+\end{DoxyReturn}
 Operator for the multiplication of two matrices. Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. 
 
 Definition at line 250 of file matrix33.\-cpp.
@@ -381,6 +446,13 @@ Definition at line 250 of file matrix33.\-cpp.
 \item[{const {\bf Vector3d} \&}]{v}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
+
+
+Operator for the multiplication of a matrix with a vector. 
+
+Returns in a vector the result of the multiplication of the current matrix with the provided vector. \begin{DoxyReturn}{Returns}
+The vector resulting from the multiplication of the current matrix with a vector.
+\end{DoxyReturn}
 Returns in a vector the result of the multiplication of the current matrix with the provided vector. 
 
 Definition at line 288 of file matrix33.\-cpp.
@@ -409,6 +481,12 @@ Definition at line 288 of file matrix33.\-cpp.
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
+
+
+Operator for reflexive scaling of the matrix by a scalar. 
+
+Scales the current matrix by the scalar provided and populates the current matrix elements with the result.
+
 Operator for reflexive scaling of the matrix by a scalar. Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
 
 Definition at line 233 of file matrix33.\-cpp.
@@ -434,6 +512,12 @@ Definition at line 233 of file matrix33.\-cpp.
 \item[{const {\bf Matrix33} \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
+
+
+Operator for reflexive multiplication of two matrices. 
+
+Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result.
+
 Operator for reflexive multiplication of two matrices. Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
 
 Definition at line 274 of file matrix33.\-cpp.
@@ -457,6 +541,13 @@ Definition at line 274 of file matrix33.\-cpp.
 \item[{const {\bf Matrix33} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
+
+
+Operator for addition of two matrices. 
+
+Adds the current matrix to the provided matrix and returns a third matrix with the result. \begin{DoxyReturn}{Returns}
+Matrix containing the sum of the present matrix and the one provided.
+\end{DoxyReturn}
 Operator for addition of two matrices. Adds the current matrix to the provided matrix and returns a third matrix with the result. 
 
 Definition at line 137 of file matrix33.\-cpp.
@@ -485,6 +576,12 @@ Definition at line 137 of file matrix33.\-cpp.
 \item[{const {\bf Matrix33} \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
+
+
+Operator for reflexive addition of two matrices. 
+
+Adds the current matrix to the provided matrix and populates the current matrix elements with the result.
+
 Operator for reflexive addition of two matrices. Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
 
 Definition at line 157 of file matrix33.\-cpp.
@@ -510,6 +607,13 @@ Definition at line 157 of file matrix33.\-cpp.
 \item[{const {\bf Matrix33} \&}]{p}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
+
+
+Operator for the subtraction of two matrices. 
+
+Subtracts the given matrix from the current matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
+Matrix containing the result of subtracting the provided matrix from the current matrix.
+\end{DoxyReturn}
 Operator for the subtraction of two matrices. Subtracts the given matrix from the current matrix and returns the result in a new matrix. 
 
 Definition at line 175 of file matrix33.\-cpp.
@@ -538,6 +642,12 @@ Definition at line 175 of file matrix33.\-cpp.
 \item[{const {\bf Matrix33} \&}]{p}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
+
+
+Operator for reflexive subtraction of two matrices. 
+
+Subtracts the given matrix from the current matrix and populates the current matrix with the result.
+
 Operator for reflexive subtraction of two matrices. Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
 
 Definition at line 195 of file matrix33.\-cpp.
@@ -563,6 +673,13 @@ Definition at line 195 of file matrix33.\-cpp.
 {}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_ad4ab7b9674a44a297502282e1993ef54}
+
+
+Transpose. 
+
+Performs the transpose of the current matrix. \begin{DoxyReturn}{Returns}
+A new matrix with the transpose of the current matrix.
+\end{DoxyReturn}
 Returns in a new matrix the transpose of the current matrix. 
 
 Definition at line 308 of file matrix33.\-cpp.
@@ -591,6 +708,13 @@ Definition at line 308 of file matrix33.\-cpp.
 {}
 \end{DoxyParamCaption}
 ) const}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
+
+
+Determinant. 
+
+Calculates the determinant of the current matrix. \begin{DoxyReturn}{Returns}
+Returns the determinant of the current matrix.
+\end{DoxyReturn}
 Returns the determinant of the current matrix. 
 
 Definition at line 327 of file matrix33.\-cpp.
@@ -619,6 +743,19 @@ Definition at line 327 of file matrix33.\-cpp.
 \item[{double}]{value}
 \end{DoxyParamCaption}
 )}}\label{de/d82/classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}
+
+
+Function to set the value of an element indicated by its position. 
+
+The element indicated by the arguments row and column is set to the value provided. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.\-0 is returned. 
+\begin{DoxyParams}{Parameters}
+{\em row} & Row index of the element. \\
+\hline
+{\em column} & Column index of the element. \\
+\hline
+{\em value} & Value that the element is to be set to.\\
+\hline
+\end{DoxyParams}
 Function to set the value of an element indicated by its position. 
 \begin{DoxyParams}{Parameters}
 {\em row} & Row index of the element. \\
@@ -650,7 +787,11 @@ Definition at line 79 of file matrix33.\-cpp.
 \hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{Matrix33@{Matrix33}!x@{x}}
 \index{x@{x}!Matrix33@{Matrix33}}
 \subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::x\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{de/d82/classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}
+
+
 Array containing the elements of the matrix. 
+
+
 
 Definition at line 26 of file matrix33.\-h.
 
