@@ -47,6 +47,8 @@ void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (in
 \item 
 double \hyperlink{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{get\-Value} (int row, int column)
 \item 
+\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate} ()
+\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
 \item 
 void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{Matrix33} \&)
@@ -155,6 +157,41 @@ Definition at line 26 of file stress.\-cpp.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{\index{Stress@{Stress}!adjugate@{adjugate}}
+\index{adjugate@{adjugate}!Stress@{Stress}}
+\subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::adjugate (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}
+Returns the adjugate matrix of the present matrix. \begin{DoxyReturn}{Returns}
+The adjugate matrix of the present matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 112 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+\{
+  \hyperlink{classMatrix33}{Matrix33} adj;
+  
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][
+      1]);
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+  
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+  
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
+  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+
+  \textcolor{keywordflow}{return} (adj);
+\}
+\end{DoxyCode}
 \hypertarget{classStress_aca57d2719f43701dd2ebf2ab00afa539}{\index{Stress@{Stress}!get\-Principal\-Stresses@{get\-Principal\-Stresses}}
 \index{get\-Principal\-Stresses@{get\-Principal\-Stresses}!Stress@{Stress}}
 \subsubsection[{get\-Principal\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Stress\-::get\-Principal\-Stresses (
@@ -226,6 +263,16 @@ Returns the value of the element located by the row and column indices provided.
 {\em column} & Column index of the element. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Value of the element located at the given position.
+\end{DoxyReturn}
+Returns the value of the element located by the row and column indices provided. 
+\begin{DoxyParams}{Parameters}
+{\em row} & Row index of the element. \\
+\hline
+{\em column} & Column index of the element. \\
+\hline
+\end{DoxyParams}
 
 
 Definition at line 95 of file matrix33.\-cpp.
@@ -253,7 +300,7 @@ Definition at line 95 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
 Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. 
 
-Definition at line 319 of file matrix33.\-cpp.
+Definition at line 342 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -274,19 +321,7 @@ Definition at line 319 of file matrix33.\-cpp.
   \hyperlink{classMatrix33}{Matrix33} tr = ^(*this);
   
   \textcolor{comment}{// Find Adjugate matrix}
-  \hyperlink{classMatrix33}{Matrix33} adj;
-  
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]);
-  
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0]);
-  
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) - (tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*tr.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1]);
+  \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate}();
   
   \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
   r = adj * (1.0/determinant);
@@ -303,7 +338,7 @@ Definition at line 319 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
 Operator for scaling the matrix by a scalar. Scales the current matrix by the scalar provided and returns the result in a third matrix. 
 
-Definition at line 190 of file matrix33.\-cpp.
+Definition at line 213 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -331,7 +366,7 @@ Definition at line 190 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
 Operator for the multiplication of two matrices. Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. 
 
-Definition at line 227 of file matrix33.\-cpp.
+Definition at line 250 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -363,7 +398,7 @@ Definition at line 227 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
 Returns in a vector the result of the multiplication of the current matrix with the provided vector. 
 
-Definition at line 265 of file matrix33.\-cpp.
+Definition at line 288 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -391,7 +426,7 @@ Definition at line 265 of file matrix33.\-cpp.
 )\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
 Operator for reflexive scaling of the matrix by a scalar. Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
 
-Definition at line 210 of file matrix33.\-cpp.
+Definition at line 233 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -416,7 +451,7 @@ Definition at line 210 of file matrix33.\-cpp.
 )\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
 Operator for reflexive multiplication of two matrices. Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
 
-Definition at line 251 of file matrix33.\-cpp.
+Definition at line 274 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -439,7 +474,7 @@ Definition at line 251 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
 Operator for addition of two matrices. Adds the current matrix to the provided matrix and returns a third matrix with the result. 
 
-Definition at line 114 of file matrix33.\-cpp.
+Definition at line 137 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -467,7 +502,7 @@ Definition at line 114 of file matrix33.\-cpp.
 )\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
 Operator for reflexive addition of two matrices. Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
 
-Definition at line 134 of file matrix33.\-cpp.
+Definition at line 157 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -492,7 +527,7 @@ Definition at line 134 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
 Operator for the subtraction of two matrices. Subtracts the given matrix from the current matrix and returns the result in a new matrix. 
 
-Definition at line 152 of file matrix33.\-cpp.
+Definition at line 175 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -520,7 +555,7 @@ Definition at line 152 of file matrix33.\-cpp.
 )\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
 Operator for reflexive subtraction of two matrices. Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
 
-Definition at line 172 of file matrix33.\-cpp.
+Definition at line 195 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -545,7 +580,7 @@ Definition at line 172 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ad4ab7b9674a44a297502282e1993ef54}
 Returns in a new matrix the transpose of the current matrix. 
 
-Definition at line 285 of file matrix33.\-cpp.
+Definition at line 308 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -573,7 +608,7 @@ Definition at line 285 of file matrix33.\-cpp.
 ) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
 Returns the determinant of the current matrix. 
 
-Definition at line 304 of file matrix33.\-cpp.
+Definition at line 327 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -635,10 +670,10 @@ Definition at line 92 of file stress.\-cpp.
 
 \begin{DoxyCode}
 \{
-  \hyperlink{classMatrix33}{Matrix33} alphaT = ^alpha;
+  \hyperlink{classMatrix33}{Matrix33} alphaT = ^alpha;  \textcolor{comment}{// Transpose}
   \hyperlink{classStress}{Stress} sNew;
   
-  sNew = alpha * (*this) * alphaT;
+  sNew = alpha * (*this) * alphaT;  \textcolor{comment}{// Rotate the stress matrix}
   
   \textcolor{keywordflow}{return} (sNew);
 \}
