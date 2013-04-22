@@ -59,8 +59,14 @@ class Matrix33
    * Returns the value of the element located by the row and column indices provided.
    * @param row Row index of the element.
    * @param column Column index of the element.
+   * @return Value of the element located at the given position.
    */
   double getValue (int row, int column);
+  /**
+   * Returns the adjugate matrix of the present matrix.
+   * @return The adjugate matrix of the present matrix.
+   */
+  Matrix33 adjugate ();
    
   // Operators
   // Addition
