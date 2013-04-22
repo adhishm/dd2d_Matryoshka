@@ -10,10 +10,12 @@
 #ifndef MATRIX33_H
 #define MATRIX33_H
 
-#include "vector2d.h"
+#include "vector3d.h"
 
 /**
- * Matrix33 class representing a 3x3 square matrix.
+ * @brief Matrix33 class representing a 3x3 square matrix.
+ *
+ * @details This class represents a 3x3 square matrix. The member functions and operators define various operations that may be carried out on the matrix.
  */
 class Matrix33
 {
@@ -57,8 +59,14 @@ class Matrix33
    * Returns the value of the element located by the row and column indices provided.
    * @param row Row index of the element.
    * @param column Column index of the element.
+   * @return Value of the element located at the given position.
    */
   double getValue (int row, int column);
+  /**
+   * Returns the adjugate matrix of the present matrix.
+   * @return The adjugate matrix of the present matrix.
+   */
+  Matrix33 adjugate ();
    
   // Operators
   // Addition

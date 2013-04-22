@@ -16,8 +16,9 @@
 #include "matrix33.h"
 
 /**
- * Class Defect.
- * Defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions.
+ * @brief Class Defect representing a generic defect in a material.
+ *
+ * @details Defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions.
  * Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
 class Defect
@@ -39,6 +40,7 @@ class Defect
    * Constructor specifying the position.
    * @param x X-coordinate of the defect.
    * @param y Y-coordinate of the defect
+   * @param z Z-coordinate of the defect.
    */
   Defect (double x, double y, double z);
   /**

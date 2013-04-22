@@ -3,6 +3,11 @@
 }
 
 
+\-Class \hyperlink{classDefect}{\-Defect} representing a generic defect in a material.  
+
+
+
+
 {\ttfamily \#include $<$defect.\-h$>$}
 
 
@@ -53,9 +58,11 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 
 
 \subsection{\-Detailed \-Description}
-\-Class \hyperlink{classDefect}{\-Defect}. \-Defines the \hyperlink{classDefect}{\-Defect} class representing an defect in the simulation. \-This is simply a generic description class with virtual functions. \-Later classes like dislocations, precipitates, boundaries etc will inherit from this class. 
+\-Class \hyperlink{classDefect}{\-Defect} representing a generic defect in a material. 
 
-\-Definition at line 23 of file defect.\-h.
+\-Defines the \hyperlink{classDefect}{\-Defect} class representing an defect in the simulation. \-This is simply a generic description class with virtual functions. \-Later classes like dislocations, precipitates, boundaries etc will inherit from this class. 
+
+\-Definition at line 24 of file defect.\-h.
 
 
 
@@ -95,10 +102,12 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \hline
 {\em y} & \-Y-\/coordinate of the defect \\
 \hline
+{\em z} & \-Z-\/coordinate of the defect. \\
+\hline
 \end{DoxyParams}
 
 
-\-Definition at line 21 of file defect.\-cpp.
+\-Definition at line 22 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -122,7 +131,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyParams}
 
 
-\-Definition at line 32 of file defect.\-cpp.
+\-Definition at line 33 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -142,7 +151,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 )}}\label{d5/d4f/classDefect_a6842fba3ad14032766ccf0437afcbced}
 \-Returns in an array the position. 
 
-\-Definition at line 92 of file defect.\-cpp.
+\-Definition at line 93 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -164,7 +173,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyParams}
 
 
-\-Definition at line 101 of file defect.\-cpp.
+\-Definition at line 102 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -184,7 +193,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyReturn}
 \-Returns the \-X-\/coordinate of the defect. 
 
-\-Definition at line 109 of file defect.\-cpp.
+\-Definition at line 110 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -204,7 +213,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyReturn}
 \-Returns the \-Y-\/coordinate of the defect. 
 
-\-Definition at line 117 of file defect.\-cpp.
+\-Definition at line 118 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -224,7 +233,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyReturn}
 \-Returns the \-Z-\/coordinate of the defect. 
 
-\-Definition at line 125 of file defect.\-cpp.
+\-Definition at line 126 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -246,7 +255,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyParams}
 
 
-\-Definition at line 43 of file defect.\-cpp.
+\-Definition at line 44 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -274,7 +283,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyParams}
 
 
-\-Definition at line 54 of file defect.\-cpp.
+\-Definition at line 55 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -296,6 +305,16 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 {\em x} & \-X-\/coordinate of the defect. \\
 \hline
 \end{DoxyParams}
+
+
+\-Definition at line 66 of file defect.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  this->pos.setValue (0, x);
+}
+\end{DoxyCode}
 \hypertarget{classDefect_a268606391a4eaee3de029d2005648b6f}{\index{\-Defect@{\-Defect}!set\-Y@{set\-Y}}
 \index{set\-Y@{set\-Y}!Defect@{\-Defect}}
 \subsubsection[{set\-Y}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Defect\-::set\-Y} (
@@ -310,7 +329,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyParams}
 
 
-\-Definition at line 74 of file defect.\-cpp.
+\-Definition at line 75 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -332,7 +351,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \end{DoxyParams}
 
 
-\-Definition at line 83 of file defect.\-cpp.
+\-Definition at line 84 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
@@ -353,11 +372,11 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{\-Returns}
-\-Stress field value at the position p. 
+\hyperlink{classStress}{\-Stress} field value at the position p. 
 \end{DoxyReturn}
 
 
-\-Definition at line 111 of file defect.\-h.
+\-Definition at line 113 of file defect.\-h.
 
 
 \begin{DoxyCode}
@@ -378,7 +397,7 @@ virtual \hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classDefect_a2a2c8170e7
 \subsubsection[{pos}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf \-Defect\-::pos}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{d5/d4f/classDefect_aed2731c1beefc22e3db6ad5b18194cdd}
 \-Position of the defect in 2\-D space. 
 
-\-Definition at line 29 of file defect.\-h.
+\-Definition at line 30 of file defect.\-h.
 
 
 
