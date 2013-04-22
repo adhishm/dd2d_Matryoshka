@@ -2,11 +2,52 @@
 \label{d8/d8e/matrix33_8cpp}\index{matrix33.\-cpp@{matrix33.\-cpp}}
 }
 {\ttfamily \#include \char`\"{}matrix33.\-h\char`\"{}}\*
-\-Include dependency graph for matrix33.\-cpp\-:
-\nopagebreak
+\-Include dependency graph for matrix33.\-cpp\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=152pt]{d8/d6d/matrix33_8cpp__incl}
 \end{center}
 \end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{matrix33_8cpp_a863917b20a72f1800bb47531bd798ecc}{adjugate} ()
+\end{DoxyCompactItemize}
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{matrix33_8cpp_a863917b20a72f1800bb47531bd798ecc}{\index{matrix33.\-cpp@{matrix33.\-cpp}!adjugate@{adjugate}}
+\index{adjugate@{adjugate}!matrix33.cpp@{matrix33.\-cpp}}
+\subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf adjugate} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d8/d8e/matrix33_8cpp_a863917b20a72f1800bb47531bd798ecc}
+\-Returns the adjugate matrix of the present matrix. \begin{DoxyReturn}{\-Returns}
+\-The adjugate matrix of the present matrix. 
+\end{DoxyReturn}
+
+
+\-Definition at line 112 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33 adj;
+  
+  adj.x[0][0] = (this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2][1]);
+  adj.x[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
+  adj.x[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+  
+  adj.x[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
+  adj.x[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
+  adj.x[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+  
+  adj.x[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
+  adj.x[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
+  adj.x[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+
+  return (adj);
+}
+\end{DoxyCode}
