@@ -157,7 +157,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p>Class <a class="el" href="../../d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a> representing a generic defect in a material. </p>
 <p>Defines the <a class="el" href="../../d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a> class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class. </p>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00024">24</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00022">22</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afc84dd2d7250a01746ee67b002dbbad9"></a>
 <div class="memitem">
@@ -175,7 +175,7 @@ Protected Attributes</h2></td></tr>
 <p>Default constructor. </p>
 <p>Creates the object with position (0.0, 0.0, 0.0). </p>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00008">8</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00017">17</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i=0; i&lt;3; i++)</div>
 <div class="line">    {</div>
@@ -226,7 +226,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00023">23</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00032">32</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (0, x);</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (1, y);</div>
@@ -258,7 +258,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00035">35</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00044">44</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (p);</div>
 <div class="line">}</div>
@@ -283,7 +283,7 @@ Protected Attributes</h2></td></tr>
 <p>The position of the defect is saved in an array and a pointer to its first term is returned. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to the first term of the array containing the position of the defect. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00100">100</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00109">109</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#a12ca89ab46c79eb78fa6b75cad1a3616" title="Function to get the values of the elements of the vector in an array.">getVector</a> ());</div>
 <div class="line">}</div>
@@ -313,7 +313,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00110">110</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00119">119</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  a = this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#a12ca89ab46c79eb78fa6b75cad1a3616" title="Function to get the values of the elements of the vector in an array.">getVector</a> ();</div>
 <div class="line">}</div>
@@ -336,7 +336,7 @@ Protected Attributes</h2></td></tr>
 <p>Returns the X-coordinate of the defect. </p>
 <dl class="section return"><dt>Returns</dt><dd>X-coordinate of the defect. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00119">119</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00128">128</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> (this-&gt;getValue (0));</div>
 <div class="line">}</div>
@@ -359,7 +359,7 @@ Protected Attributes</h2></td></tr>
 <p>Returns the Y-coordinate of the defect. </p>
 <dl class="section return"><dt>Returns</dt><dd>Y-coordinate of the defect. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00128">128</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00137">137</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#a37055dde72eed6770cf3b2b11b56f0f8" title="Function to get the value of an element of the vector.">getValue</a> (1));</div>
 <div class="line">}</div>
@@ -382,7 +382,7 @@ Protected Attributes</h2></td></tr>
 <p>Returns the Z-coordinate of the defect. </p>
 <dl class="section return"><dt>Returns</dt><dd>Z-coordinate of the defect. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00137">137</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00146">146</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#a37055dde72eed6770cf3b2b11b56f0f8" title="Function to get the value of an element of the vector.">getValue</a> (2));</div>
 <div class="line">}</div>
@@ -412,7 +412,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00047">47</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00056">56</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (a);</div>
 <div class="line">}</div>
@@ -460,7 +460,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00060">60</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00069">69</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (0, x);</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (1, y);</div>
@@ -491,7 +491,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00071">71</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (0, x);</div>
 <div class="line">}</div>
@@ -520,7 +520,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (1, y);</div>
 <div class="line">}</div>
@@ -549,7 +549,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../dd/def/defect_8cpp_source.html#l00098">98</a> of file <a class="el" href="../../dd/def/defect_8cpp_source.html">defect.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>.<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (2, z);</div>
 <div class="line">}</div>
@@ -588,7 +588,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> field value at the position p. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00123">123</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00121">121</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 <div class="fragment"><div class="line">  {</div>
 <div class="line">    <span class="comment">// This virtual function returns a zero matrix.</span></div>
 <div class="line">    <span class="comment">// Inheriting classes will have functions implementing this in their own way</span></div>
@@ -620,7 +620,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Position vector of the defect in 2D space. </p>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00030">30</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00028">28</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 
 </div>
 </div>
@@ -631,7 +631,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 22 2013 16:18:11 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 22 2013 16:23:18 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

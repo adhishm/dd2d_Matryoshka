@@ -2,7 +2,7 @@
  * @file stress.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 19/04/2013
+ * @date 22/04/2013
  * @brief Definition of the Stress class.
  * @details This file defines the Stress class for the stress tensor.
  */

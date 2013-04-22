@@ -1,3 +1,12 @@
+/**
+ * @file defect.cpp
+ * @author Adhish Majumdar
+ * @version 0.0
+ * @date 22/04/2013
+ * @brief Definition of member functions of the Defect class.
+ * @details This file defines the member functions of the Defect class representing a single defect in the simulation.
+ */
+
 #include "defect.h"
 
 // Constructors

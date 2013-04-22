@@ -3,10 +3,8 @@
  * @author Adhish Majumdar
  * @version 0.0
  * @date 22/04/2013
- * @section BRIEF
- * Definition of the Defect class.
- * @section DETAILS
- * This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
+ * @brief Definition of the Defect class.
+ * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
 
 #ifndef DEFECT_H

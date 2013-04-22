@@ -1,3 +1,12 @@
+/**
+ * @file stress.cpp
+ * @author Adhish Majumdar
+ * @version 0.0
+ * @date 22/04/2013
+ * @brief Definition of the member functions if the Stress class.
+ * @details This file defines the member functions of the Stress class for the stress tensor.
+ */
+
 #include "stress.h"
 
 /**
