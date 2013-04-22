@@ -169,14 +169,11 @@ Definition at line 26 of file stress.\-cpp.
 Returns the adjugate matrix of the present matrix. 
 
 The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix. \begin{DoxyReturn}{Returns}
-The adjugate matrix of the present matrix.
-\end{DoxyReturn}
-Returns the adjugate matrix of the present matrix. \begin{DoxyReturn}{Returns}
 The adjugate matrix of the present matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 112 of file matrix33.\-cpp.
+Definition at line 129 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -275,18 +272,11 @@ The value of the element indicated by the arguments row and column is returned. 
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Value of the element located at the given position.
+Value of the element located at the given position. 
 \end{DoxyReturn}
-Returns the value of the element located by the row and column indices provided. 
-\begin{DoxyParams}{Parameters}
-{\em row} & Row index of the element. \\
-\hline
-{\em column} & Column index of the element. \\
-\hline
-\end{DoxyParams}
 
 
-Definition at line 95 of file matrix33.\-cpp.
+Definition at line 111 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -314,11 +304,11 @@ Definition at line 95 of file matrix33.\-cpp.
 Inverse. 
 
 Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. \begin{DoxyReturn}{Returns}
-Matrix with the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned.
+Matrix with the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. 
 \end{DoxyReturn}
-Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. 
 
-Definition at line 342 of file matrix33.\-cpp.
+
+Definition at line 370 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -359,11 +349,11 @@ Definition at line 342 of file matrix33.\-cpp.
 Operator for scaling the matrix by a scalar. 
 
 Scales the current matrix by the scalar provided and returns the result in a third matrix. \begin{DoxyReturn}{Returns}
-Matrix containing the result of scaling the current matrix by the scalar provided as argument.
+Matrix containing the result of scaling the current matrix by the scalar provided as argument. 
 \end{DoxyReturn}
-Operator for scaling the matrix by a scalar. Scales the current matrix by the scalar provided and returns the result in a third matrix. 
 
-Definition at line 213 of file matrix33.\-cpp.
+
+Definition at line 233 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -394,11 +384,11 @@ Definition at line 213 of file matrix33.\-cpp.
 Operator for the multiplication of two matrices. 
 
 Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
-The result of the multiplication of the current matrix with the one provided as argument.
+The result of the multiplication of the current matrix with the one provided as argument. 
 \end{DoxyReturn}
-Operator for the multiplication of two matrices. Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. 
 
-Definition at line 250 of file matrix33.\-cpp.
+
+Definition at line 271 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -433,11 +423,11 @@ Definition at line 250 of file matrix33.\-cpp.
 Operator for the multiplication of a matrix with a vector. 
 
 Returns in a vector the result of the multiplication of the current matrix with the provided vector. \begin{DoxyReturn}{Returns}
-The vector resulting from the multiplication of the current matrix with a vector.
+The vector resulting from the multiplication of the current matrix with a vector. 
 \end{DoxyReturn}
-Returns in a vector the result of the multiplication of the current matrix with the provided vector. 
 
-Definition at line 288 of file matrix33.\-cpp.
+
+Definition at line 311 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -467,11 +457,9 @@ Definition at line 288 of file matrix33.\-cpp.
 
 Operator for reflexive scaling of the matrix by a scalar. 
 
-Scales the current matrix by the scalar provided and populates the current matrix elements with the result.
+Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
 
-Operator for reflexive scaling of the matrix by a scalar. Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
-
-Definition at line 233 of file matrix33.\-cpp.
+Definition at line 253 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -498,11 +486,9 @@ Definition at line 233 of file matrix33.\-cpp.
 
 Operator for reflexive multiplication of two matrices. 
 
-Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result.
+Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
 
-Operator for reflexive multiplication of two matrices. Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
-
-Definition at line 274 of file matrix33.\-cpp.
+Definition at line 295 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -528,11 +514,11 @@ Definition at line 274 of file matrix33.\-cpp.
 Operator for addition of two matrices. 
 
 Adds the current matrix to the provided matrix and returns a third matrix with the result. \begin{DoxyReturn}{Returns}
-Matrix containing the sum of the present matrix and the one provided.
+Matrix containing the sum of the present matrix and the one provided. 
 \end{DoxyReturn}
-Operator for addition of two matrices. Adds the current matrix to the provided matrix and returns a third matrix with the result. 
 
-Definition at line 137 of file matrix33.\-cpp.
+
+Definition at line 155 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -562,11 +548,9 @@ Definition at line 137 of file matrix33.\-cpp.
 
 Operator for reflexive addition of two matrices. 
 
-Adds the current matrix to the provided matrix and populates the current matrix elements with the result.
+Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
 
-Operator for reflexive addition of two matrices. Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
-
-Definition at line 157 of file matrix33.\-cpp.
+Definition at line 175 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -594,11 +578,11 @@ Definition at line 157 of file matrix33.\-cpp.
 Operator for the subtraction of two matrices. 
 
 Subtracts the given matrix from the current matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
-Matrix containing the result of subtracting the provided matrix from the current matrix.
+Matrix containing the result of subtracting the provided matrix from the current matrix. 
 \end{DoxyReturn}
-Operator for the subtraction of two matrices. Subtracts the given matrix from the current matrix and returns the result in a new matrix. 
 
-Definition at line 175 of file matrix33.\-cpp.
+
+Definition at line 194 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -628,11 +612,9 @@ Definition at line 175 of file matrix33.\-cpp.
 
 Operator for reflexive subtraction of two matrices. 
 
-Subtracts the given matrix from the current matrix and populates the current matrix with the result.
+Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
 
-Operator for reflexive subtraction of two matrices. Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
-
-Definition at line 195 of file matrix33.\-cpp.
+Definition at line 214 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -660,11 +642,11 @@ Definition at line 195 of file matrix33.\-cpp.
 Transpose. 
 
 Performs the transpose of the current matrix. \begin{DoxyReturn}{Returns}
-A new matrix with the transpose of the current matrix.
+A new matrix with the transpose of the current matrix. 
 \end{DoxyReturn}
-Returns in a new matrix the transpose of the current matrix. 
 
-Definition at line 308 of file matrix33.\-cpp.
+
+Definition at line 333 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -695,11 +677,11 @@ Definition at line 308 of file matrix33.\-cpp.
 Determinant. 
 
 Calculates the determinant of the current matrix. \begin{DoxyReturn}{Returns}
-Returns the determinant of the current matrix.
-\end{DoxyReturn}
 Returns the determinant of the current matrix. 
+\end{DoxyReturn}
 
-Definition at line 327 of file matrix33.\-cpp.
+
+Definition at line 354 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
@@ -788,21 +770,12 @@ The element indicated by the arguments row and column is set to the value provid
 \hline
 {\em column} & Column index of the element. \\
 \hline
-{\em value} & Value that the element is to be set to.\\
-\hline
-\end{DoxyParams}
-Function to set the value of an element indicated by its position. 
-\begin{DoxyParams}{Parameters}
-{\em row} & Row index of the element. \\
-\hline
-{\em column} & Column index of the element. \\
-\hline
 {\em value} & Value that the element is to be set to. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 79 of file matrix33.\-cpp.
+Definition at line 93 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
