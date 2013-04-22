@@ -86,20 +86,20 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a href="../../d4/d58/stress_8cpp.html">Go to the documentation of this file.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;</div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="../../d2/d50/stress_8h.html" title="Definition of the Stress class.">stress.h</a>&quot;</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;</div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">   17</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">Stress::Stress</a> ()</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [i] = 0.0;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;      <a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = 0.0;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">populateMatrix</a> ();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;}</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab">   35</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">Stress::Stress</a> (<span class="keywordtype">double</span> *principal, <span class="keywordtype">double</span> *shear)</div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">   16</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e" title="Default constructor.">Stress::Stress</a> ()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;      <a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [i] = 0.0;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;      <a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = 0.0;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab">   35</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e" title="Default constructor.">Stress::Stress</a> (<span class="keywordtype">double</span> *principal, <span class="keywordtype">double</span> *shear)</div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;{</div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  <span class="keywordtype">int</span> i;</div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  </div>
@@ -109,59 +109,59 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;      this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = shear [i];</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    }</div>
 <div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">populateMatrix</a> ();</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00051"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">   51</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">Stress::populateMatrix</a> ()</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;{</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [0];</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [1];</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [2];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [0];</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [1];</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [2];</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
-<div class="line"><a name="l00066"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539">   66</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539">Stress::getPrincipalStresses</a> ()</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;{</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;  <span class="keywordtype">double</span> p[3];</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  </div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      p[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a>[i];</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    }</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  </div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">return</span> (p);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5">   83</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5">Stress::getShearStresses</a> ()</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordtype">double</span> s[3];</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  </div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    {</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;      s[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a>[i];</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;  </div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  <span class="keywordflow">return</span> (s);</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00101"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">  101</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">Stress::rotate</a> (<a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alpha)</div>
-<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sNew;</div>
-<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;  </div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  sNew = alpha * (*this) * alphaT;  <span class="comment">// Rotate the stress matrix</span></div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  </div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <span class="keywordflow">return</span> (sNew);</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">Stress::populateMatrix</a> ()</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [0];</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [1];</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [2];</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  </div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [0];</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [1];</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [2];</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539">   68</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539" title="Get the principal stresses.">Stress::getPrincipalStresses</a> ()</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">double</span> p[3];</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  </div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      p[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a>[i];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;  </div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">return</span> (p);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
+<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5">   86</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5" title="Get the shear stresses.">Stress::getShearStresses</a> ()</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">double</span> s[3];</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">int</span> i;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  </div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      s[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a>[i];</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;  </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> (s);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">  105</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35" title="Rotate the stress tensor from one coordinate system to another.">Stress::rotate</a> (<a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alpha)</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span></div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sNew;</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  sNew = alpha * (*this) * alphaT;  <span class="comment">// Rotate the stress matrix</span></div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;  </div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> (sNew);</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 22 2013 16:23:18 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 22 2013 16:41:06 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

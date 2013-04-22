@@ -112,16 +112,22 @@ Collaboration diagram for Stress:</div>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aa01e83a3f6791cbadc5a368e3a40515e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">Stress</a> ()</td></tr>
+<tr class="memdesc:aa01e83a3f6791cbadc5a368e3a40515e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Default constructor.  <a href="#aa01e83a3f6791cbadc5a368e3a40515e"></a><br/></td></tr>
 <tr class="separator:aa01e83a3f6791cbadc5a368e3a40515e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae4e2f6250e3bdd4d3d78a9c6bdde7bab"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab">Stress</a> (double *principal, double *shear)</td></tr>
+<tr class="memdesc:ae4e2f6250e3bdd4d3d78a9c6bdde7bab"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor specifying the principal and shear stresses.  <a href="#ae4e2f6250e3bdd4d3d78a9c6bdde7bab"></a><br/></td></tr>
 <tr class="separator:ae4e2f6250e3bdd4d3d78a9c6bdde7bab"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa395d5763df8feb4689e0c5524c9e562"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">populateMatrix</a> ()</td></tr>
+<tr class="memdesc:aa395d5763df8feb4689e0c5524c9e562"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the stress tensor from the principal and shear stresses.  <a href="#aa395d5763df8feb4689e0c5524c9e562"></a><br/></td></tr>
 <tr class="separator:aa395d5763df8feb4689e0c5524c9e562"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca57d2719f43701dd2ebf2ab00afa539"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539">getPrincipalStresses</a> ()</td></tr>
+<tr class="memdesc:aca57d2719f43701dd2ebf2ab00afa539"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the principal stresses.  <a href="#aca57d2719f43701dd2ebf2ab00afa539"></a><br/></td></tr>
 <tr class="separator:aca57d2719f43701dd2ebf2ab00afa539"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe8214b8e9061930e6598e1970fd61f5"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5">getShearStresses</a> ()</td></tr>
+<tr class="memdesc:afe8214b8e9061930e6598e1970fd61f5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the shear stresses.  <a href="#afe8214b8e9061930e6598e1970fd61f5"></a><br/></td></tr>
 <tr class="separator:afe8214b8e9061930e6598e1970fd61f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a61fa75450c0232bb0fa427072d1b6a35"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">rotate</a> (<a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> alpha)</td></tr>
+<tr class="memdesc:a61fa75450c0232bb0fa427072d1b6a35"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate the stress tensor from one coordinate system to another.  <a href="#a61fa75450c0232bb0fa427072d1b6a35"></a><br/></td></tr>
 <tr class="separator:a61fa75450c0232bb0fa427072d1b6a35"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cdcec77fd089b2e73ad7ae85ecff30b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b">setValue</a> (int row, int column, double value)</td></tr>
 <tr class="memdesc:a6cdcec77fd089b2e73ad7ae85ecff30b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set the value of an element indicated by its position.  <a href="#a6cdcec77fd089b2e73ad7ae85ecff30b"></a><br/></td></tr>
@@ -197,10 +203,11 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Default constructor.</p>
-<p>Fills the stress tensor with zeros. </p>
 
-<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00017">17</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
+<p>Default constructor. </p>
+<p>Initializes the stress tensor with zeros. </p>
+
+<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00016">16</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">int</span> i, j;</div>
 <div class="line">  </div>
@@ -210,7 +217,7 @@ Protected Attributes</h2></td></tr>
 <div class="line">      <a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = 0.0;</div>
 <div class="line">    }</div>
 <div class="line"></div>
-<div class="line">  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">populateMatrix</a> ();</div>
+<div class="line">  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -238,7 +245,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
+
 <p>Constructor specifying the principal and shear stresses. </p>
+<p>The principal and shear stresses are provided in the arguments and the symmetrical stress tensor is contstructed using them. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">principal</td><td>Pointer to the array containing principal stresses. </td></tr>
@@ -257,7 +266,7 @@ Protected Attributes</h2></td></tr>
 <div class="line">      this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = shear [i];</div>
 <div class="line">    }</div>
 <div class="line">  </div>
-<div class="line">  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">populateMatrix</a> ();</div>
+<div class="line">  this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();</div>
 <div class="line">}</div>
 </div><!-- fragment -->
 </div>
@@ -321,10 +330,12 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns a 3-member array with the principal stresses. </p>
+
+<p>Get the principal stresses. </p>
+<p>Returns a 3-member array with the principal stresses: s11 s22 s33. </p>
 <dl class="section return"><dt>Returns</dt><dd>3-member array with the principal stresses. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00066">66</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">double</span> p[3];</div>
 <div class="line">  <span class="keywordtype">int</span> i;</div>
@@ -351,10 +362,12 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Returns a 3-member array with the shear stresses. </p>
+
+<p>Get the shear stresses. </p>
+<p>Returns a 3-member array with the shear stresses: s12 s13 s23. </p>
 <dl class="section return"><dt>Returns</dt><dd>3-member array with the shear stresses. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00083">83</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <span class="keywordtype">double</span> s[3];</div>
 <div class="line">  <span class="keywordtype">int</span> i;</div>
@@ -955,9 +968,11 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Takes the values in principalStresses and shearStresses and constructs the stress matrix. </p>
 
-<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00051">51</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
+<p>Construct the stress tensor from the principal and shear stresses. </p>
+<p>Takes the values in principalStresses and shearStresses and constructs the symmetrical stress matrix. </p>
+
+<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [0];</div>
 <div class="line">  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [1];</div>
@@ -983,7 +998,9 @@ Protected Attributes</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Rotates the present stress matrix using the rotation matrix supplied and returns the result. </p>
+
+<p>Rotate the stress tensor from one coordinate system to another. </p>
+<p>Rotates the present stress matrix from one coordinate system to another using the rotation matrix supplied. The result is returned in a new <a class="el" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> matrix. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">alpha</td><td>Rotation matrix. </td></tr>
@@ -992,7 +1009,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rotated stress tensor. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00101">101</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><div class="line">{</div>
 <div class="line">  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span></div>
 <div class="line">  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sNew;</div>
@@ -1144,7 +1161,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 22 2013 16:23:18 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 22 2013 16:41:07 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>

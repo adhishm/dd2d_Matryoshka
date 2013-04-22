@@ -96,27 +96,27 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00030"></a><span class="lineno"><a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">   30</a></span>&#160;  <span class="keywordtype">double</span> <a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a>[3];</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; <span class="keyword">public</span>:</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;  <span class="comment">// Constructors</span></div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"></span>  <a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">Stress</a> ();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">Stress</a> (<span class="keywordtype">double</span> *principal, <span class="keywordtype">double</span> *shear);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"></span>  <a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e" title="Default constructor.">Stress</a> ();</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e" title="Default constructor.">Stress</a> (<span class="keywordtype">double</span> *principal, <span class="keywordtype">double</span> *shear);</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  <span class="comment">// Assignment functions</span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment"></span>  <span class="keywordtype">void</span> <a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562">populateMatrix</a> ();</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;  <span class="comment">// Retrieval functions</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"></span>  <span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539">getPrincipalStresses</a> ();</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5">getShearStresses</a> ();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;  <span class="comment">// Operations</span></div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment"></span>  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">rotate</a> (<a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alpha);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  </div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  </div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;};</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment"></span>  <span class="keywordtype">void</span> <a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  <span class="comment">// Retrieval functions</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;<span class="comment"></span>  <span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539" title="Get the principal stresses.">getPrincipalStresses</a> ();</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  <span class="keywordtype">double</span>* <a class="code" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5" title="Get the shear stresses.">getShearStresses</a> ();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;  </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  <span class="comment">// Operations</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;<span class="comment"></span>  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35" title="Rotate the stress tensor from one coordinate system to another.">rotate</a> (<a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alpha);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  </div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  </div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;};</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 22 2013 16:23:18 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 22 2013 16:41:06 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.2
 </small></address>
