@@ -11,6 +11,7 @@
 #define STRESS_H
 
 #include "matrix33.h"
+#include "rotationMatrix.h"
 
 /**
  * @brief Stress class to represent the stress tensor.
@@ -71,9 +72,7 @@ class Stress : public Matrix33
    * @param alpha Rotation matrix.
    * @result Rotated stress tensor.
    */
-  Stress rotate (Matrix33 alpha);
-  
-  
+  Stress rotate (RotationMatrix alpha);  
 };
 
 #endif
