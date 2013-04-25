@@ -16,7 +16,7 @@
 Stress::Stress ()
 {
   int i, j;
-  
+
   for (i=0; i<3; i++)
     {
       principalStresses [i] = 0.0;
@@ -35,13 +35,13 @@ Stress::Stress ()
 Stress::Stress (double *principal, double *shear)
 {
   int i;
-  
+
   for (i=0; i<3; i++)
     {
       this->principalStresses [i] = principal [i];
       this->shearStresses [i] = shear [i];
     }
-  
+
   this->populateMatrix ();
 }
 
@@ -54,7 +54,7 @@ void Stress::populateMatrix ()
   this->x[0][0] = this->principalStresses [0];
   this->x[1][1] = this->principalStresses [1];
   this->x[2][2] = this->principalStresses [2];
-  
+
   this->x[0][1] = this->x[1][0] = this->shearStresses [0];
   this->x[0][2] = this->x[2][0] = this->shearStresses [1];
   this->x[1][2] = this->x[2][1] = this->shearStresses [2];
@@ -69,12 +69,12 @@ double* Stress::getPrincipalStresses ()
 {
   double p[3];
   int i;
-  
+
   for (i=0; i<3; i++)
     {
       p[i] = this->principalStresses[i];
     }
-  
+
   return (p);
 }
 
@@ -87,12 +87,12 @@ double* Stress::getShearStresses ()
 {
   double s[3];
   int i;
-  
+
   for (i=0; i<3; i++)
     {
       s[i] = this->shearStresses[i];
     }
-  
+
   return (s);
 }
 
@@ -102,12 +102,12 @@ double* Stress::getShearStresses ()
  * @param alpha Rotation matrix.
  * @result Rotated stress tensor.
  */
-Stress Stress::rotate (Matrix33 alpha)
+Stress Stress::rotate (RotationMatrix alpha)
 {
   Matrix33 alphaT = ^alpha;  // Transpose
   Stress sNew;
-  
+
   sNew = alpha * (*this) * alphaT;  // Rotate the stress matrix
-  
+
   return (sNew);
 }

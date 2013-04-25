@@ -102,7 +102,7 @@ double* Strain::getShearStrains ()
  * @param alpha Rotation matrix.
  * @result Rotated strain tensor.
  */
-Strain Strain::rotate (Matrix33 alpha)
+Strain Strain::rotate (RotationMatrix alpha)
 {
   Matrix33 alphaT = ^alpha;  // Transpose
   Strain sNew;

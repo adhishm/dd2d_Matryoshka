@@ -71,7 +71,7 @@ class Strain : public Matrix33
    * @param alpha Rotation matrix.
    * @result Rotated strain tensor.
    */
-  Strain rotate (Matrix33 alpha);  
+  Strain rotate (RotationMatrix alpha);  
 };
 
 #endif

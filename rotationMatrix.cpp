@@ -33,7 +33,8 @@ RotationMatrix::RotationMatrix ()
  * @param unPrimed Pointer to the array containing the three axes vectors of the unprimed (old) system.
  * @param primed Pointer to the array containing the three axes vectors of the primed (new) system.
  */
-RotationMatrix::RotationMatrix (Vector3d *unPrimed, Vector3d *primed) {
+RotationMatrix::RotationMatrix (Vector3d *unPrimed, Vector3d *primed)
+{
     int i, j;
 
     for ( i=0; i<3; i++ ) {

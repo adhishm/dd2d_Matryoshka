@@ -41,7 +41,7 @@ double $\ast$ \hyperlink{classStress_aca57d2719f43701dd2ebf2ab00afa539}{get\-Pri
 \begin{DoxyCompactList}\small\item\em \-Get the principal stresses. \end{DoxyCompactList}\item 
 double $\ast$ \hyperlink{classStress_afe8214b8e9061930e6598e1970fd61f5}{get\-Shear\-Stresses} ()
 \begin{DoxyCompactList}\small\item\em \-Get the shear stresses. \end{DoxyCompactList}\item 
-\hyperlink{classStress}{\-Stress} \hyperlink{classStress_a61fa75450c0232bb0fa427072d1b6a35}{rotate} (\hyperlink{classMatrix33}{\-Matrix33} alpha)
+\hyperlink{classStress}{\-Stress} \hyperlink{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{rotate} (\hyperlink{classRotationMatrix}{\-Rotation\-Matrix} alpha)
 \begin{DoxyCompactList}\small\item\em \-Rotate the stress tensor from one coordinate system to another. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
 \begin{DoxyCompactList}\small\item\em \-Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
@@ -89,7 +89,7 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 
 \-The member functions of this class construct the symmetric stress tensor and operate on it. 
 
-\-Definition at line 20 of file stress.\-h.
+\-Definition at line 21 of file stress.\-h.
 
 
 
@@ -113,7 +113,7 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 \begin{DoxyCode}
 {
   int i, j;
-  
+
   for (i=0; i<3; i++)
     {
       principalStresses [i] = 0.0;
@@ -150,13 +150,13 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 \begin{DoxyCode}
 {
   int i;
-  
+
   for (i=0; i<3; i++)
     {
       this->principalStresses [i] = principal [i];
       this->shearStresses [i] = shear [i];
     }
-  
+
   this->populateMatrix ();
 }
 \end{DoxyCode}
@@ -224,12 +224,12 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 {
   double p[3];
   int i;
-  
+
   for (i=0; i<3; i++)
     {
       p[i] = this->principalStresses[i];
     }
-  
+
   return (p);
 }
 \end{DoxyCode}
@@ -256,12 +256,12 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 {
   double s[3];
   int i;
-  
+
   for (i=0; i<3; i++)
     {
       s[i] = this->shearStresses[i];
     }
-  
+
   return (s);
 }
 \end{DoxyCode}
@@ -732,19 +732,19 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
   this->x[0][0] = this->principalStresses [0];
   this->x[1][1] = this->principalStresses [1];
   this->x[2][2] = this->principalStresses [2];
-  
+
   this->x[0][1] = this->x[1][0] = this->shearStresses [0];
   this->x[0][2] = this->x[2][0] = this->shearStresses [1];
   this->x[1][2] = this->x[2][1] = this->shearStresses [2];
 }
 \end{DoxyCode}
-\hypertarget{classStress_a61fa75450c0232bb0fa427072d1b6a35}{\index{\-Stress@{\-Stress}!rotate@{rotate}}
+\hypertarget{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{\index{\-Stress@{\-Stress}!rotate@{rotate}}
 \index{rotate@{rotate}!Stress@{\-Stress}}
 \subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Stress} {\bf \-Stress\-::rotate} (
 \begin{DoxyParamCaption}
-\item[{{\bf \-Matrix33}}]{alpha}
+\item[{{\bf \-Rotation\-Matrix}}]{alpha}
 \end{DoxyParamCaption}
-)}}\label{d1/d1c/classStress_a61fa75450c0232bb0fa427072d1b6a35}
+)}}\label{d1/d1c/classStress_a8bbcd34d10748bf6febd32213ac5bf8e}
 
 
 \-Rotate the stress tensor from one coordinate system to another. 
@@ -766,9 +766,9 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 {
   Matrix33 alphaT = ^alpha;  // Transpose
   Stress sNew;
-  
+
   sNew = alpha * (*this) * alphaT;  // Rotate the stress matrix
-  
+
   return (sNew);
 }
 \end{DoxyCode}
@@ -818,14 +818,14 @@ double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\
 \subsubsection[{principal\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Stress\-::principal\-Stresses}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{d1/d1c/classStress_aea8c3e40aa59a89d7ba79d2c916050a6}
 \-The three principal stresses\-: s11, s22, s33. 
 
-\-Definition at line 26 of file stress.\-h.
+\-Definition at line 27 of file stress.\-h.
 
 \hypertarget{classStress_a77e8705e56c2fb56826a638edf3f78bf}{\index{\-Stress@{\-Stress}!shear\-Stresses@{shear\-Stresses}}
 \index{shear\-Stresses@{shear\-Stresses}!Stress@{\-Stress}}
 \subsubsection[{shear\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Stress\-::shear\-Stresses}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{d1/d1c/classStress_a77e8705e56c2fb56826a638edf3f78bf}
 \-The three shear stresses\-: s12, s13, s23, 
 
-\-Definition at line 30 of file stress.\-h.
+\-Definition at line 31 of file stress.\-h.
 
 \hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{\-Stress@{\-Stress}!x@{x}}
 \index{x@{x}!Stress@{\-Stress}}
