@@ -1,9 +1,12 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$df/d55/defect_8h.html" title="Definition of the Defect class." alt="" coords="12,237,81,267"/>
-<area shape="rect" id="node7" href="$db/d46/matrix33_8h.html" title="Definition of the Matrix33 class." alt="" coords="69,83,152,112"/>
-<area shape="rect" id="node17" href="$d7/d35/vector3d_8cpp.html" title="Definition of member functions and operators of the Vector3d class." alt="" coords="176,83,272,112"/>
+<area shape="rect" id="node7" href="$db/d46/matrix33_8h.html" title="Definition of the Matrix33 class." alt="" coords="199,83,281,112"/>
+<area shape="rect" id="node17" href="$da/d76/rotationMatrix_8h.html" title="Definition of the RotationMatrix class." alt="" coords="400,160,512,189"/>
+<area shape="rect" id="node24" href="$d7/d35/vector3d_8cpp.html" title="Definition of member functions and operators of the Vector3d class." alt="" coords="356,83,452,112"/>
 <area shape="rect" id="node5" href="$dd/def/defect_8cpp.html" title="Definition of member functions of the Defect class." alt="" coords="5,315,88,344"/>
 <area shape="rect" id="node10" href="$d2/d50/stress_8h.html" title="Definition of the Stress class." alt="" coords="99,160,168,189"/>
 <area shape="rect" id="node15" href="$d8/d8e/matrix33_8cpp.html" title="Definition of the member functions and operators of the Matrix33 class." alt="" coords="192,160,288,189"/>
+<area shape="rect" id="node19" href="$df/dc2/strain_8h.html" title="Definition of the Strain class." alt="" coords="312,160,376,189"/>
 <area shape="rect" id="node13" href="$d4/d58/stress_8cpp.html" title="Definition of the member functions if the Stress class." alt="" coords="105,237,188,267"/>
+<area shape="rect" id="node21" href="$d7/db1/strain_8cpp.html" title="Definition of the member functions if the Strain class." alt="" coords="305,237,383,267"/>
 </map>

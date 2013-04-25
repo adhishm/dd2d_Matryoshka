@@ -2,7 +2,7 @@
  * @file strain.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 22/04/2013
+ * @date 25/04/2013
  * @brief Definition of the Strain class.
  * @details This file defines the Strain class for the strain tensor.
  */

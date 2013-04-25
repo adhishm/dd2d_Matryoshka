@@ -1,3 +1,5 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$d1/d1c/classStress.html" title="Stress class to represent the stress tensor." alt="" coords="12,83,71,112"/>
+<area shape="rect" id="node3" href="$d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix." alt="" coords="5,83,112,112"/>
+<area shape="rect" id="node5" href="$d1/d3c/classStrain.html" title="Strain class to represent the strain tensor." alt="" coords="136,83,192,112"/>
+<area shape="rect" id="node7" href="$d1/d1c/classStress.html" title="Stress class to represent the stress tensor." alt="" coords="216,83,275,112"/>
 </map>
