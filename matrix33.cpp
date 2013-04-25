@@ -1,8 +1,18 @@
+/**
+ * @file matrix33.cpp
+ * @author Adhish Majumdar
+ * @version 0.0
+ * @date 22/04/2013
+ * @brief Definition of the member functions and operators of the Matrix33 class.
+ * @details This file defines the member functions and operators of the Matrix33 class representing a 3x3 matrix in the simulation.
+ */
+
 #include "matrix33.h"
 
 // Constructors
 /**
- * Default constructor.
+ * @brief Default constructor.
+ * @details Initializes the matrix with all elements equal to 0.0.
  */
 Matrix33::Matrix33 ()
 {
@@ -18,7 +28,8 @@ Matrix33::Matrix33 ()
 }
 
 /**
- * Constructor with the values provided in a 3x3 matrix.
+ * @brief Constructor with the values provided in a 3x3 matrix.
+ * @details Populated the mstrix with data present in corresponding elements of the provided 3x3 array.
  * @param a Pointer to the two-dimensional 3x3 array.
  */
 Matrix33::Matrix33 (double** a)
@@ -35,7 +46,8 @@ Matrix33::Matrix33 (double** a)
 }
 
 /**
- * Constructor to create the matrix from the dyadic product of a vector with itself.
+ * @brief Constructor to create the matrix from the dyadic product of a vector with itself.
+ * @details The matrix is created by performing the dyadic product of the provided vector with itself.
  * @param a The vector whose dyadic product results in the matrix.
  */
 Matrix33::Matrix33 (Vector3d a)
@@ -52,7 +64,8 @@ Matrix33::Matrix33 (Vector3d a)
 }
 
 /**
- * Constructor with the vectors, the product of which will result in the matrix.
+ * @brief Constructor with the vectors, the product of which will result in the matrix.
+ * @details The matrix is created from the product the first vector with the second.
  * @param a First vector.
  * @param b Second vector.
  */
@@ -71,7 +84,8 @@ Matrix33::Matrix33 (Vector3d a, Vector3d b)
 
 // Functions
 /**
- * Function to set the value of an element indicated by its position.
+ * @brief Function to set the value of an element indicated by its position.
+ * @details The element indicated by the arguments row and column is set to the value provided. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.0 is returned.
  * @param row Row index of the element.
  * @param column Column index of the element.
  * @param value Value that the element is to be set to.
@@ -88,9 +102,11 @@ void Matrix33::setValue (int row, int column, double value)
 }
 
 /**
- * Returns the value of the element located by the row and column indices provided.
+ * @brief Returns the value of the element located by the row and column indices provided.
+ * @details The value of the element indicated by the arguments row and column is returned. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.0 is returned.
  * @param row Row index of the element.
  * @param column Column index of the element.
+ * @return Value of the element located at the given position.
  */
 double Matrix33::getValue (int row, int column)
 {
@@ -106,7 +122,8 @@ double Matrix33::getValue (int row, int column)
 }
 
 /**
- * Returns the adjugate matrix of the present matrix.
+ * @brief Returns the adjugate matrix of the present matrix.
+ * @details The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix.
  * @return The adjugate matrix of the present matrix.
  */
 Matrix33 Matrix33::adjugate ()
@@ -131,8 +148,9 @@ Matrix33 Matrix33::adjugate ()
 // Operators
 // Addition
 /**
- * Operator for addition of two matrices.
- * Adds the current matrix to the provided matrix and returns a third matrix with the result.
+ * @brief Operator for addition of two matrices.
+ * @details Adds the current matrix to the provided matrix and returns a third matrix with the result.
+ * @return Matrix containing the sum of the present matrix and the one provided.
  */
 Matrix33 Matrix33::operator+ (const Matrix33& p) const
 {
@@ -151,8 +169,8 @@ Matrix33 Matrix33::operator+ (const Matrix33& p) const
 }
 
 /**
- * Operator for reflexive addition of two matrices.
- * Adds the current matrix to the provided matrix and populates the current matrix elements with the result.
+ * @brief Operator for reflexive addition of two matrices.
+ * @details Adds the current matrix to the provided matrix and populates the current matrix elements with the result.
  */
 void Matrix33::operator+= (const Matrix33& p)
 {
@@ -169,8 +187,9 @@ void Matrix33::operator+= (const Matrix33& p)
 
 // Subtraction
 /**
- * Operator for the subtraction of two matrices.
- * Subtracts the given matrix from the current matrix and returns the result in a new matrix.
+ * @brief Operator for the subtraction of two matrices.
+ * @details Subtracts the given matrix from the current matrix and returns the result in a new matrix.
+ * @return Matrix containing the result of subtracting the provided matrix from the current matrix.
  */
 Matrix33 Matrix33::operator- (const Matrix33& p) const
 {
@@ -189,8 +208,8 @@ Matrix33 Matrix33::operator- (const Matrix33& p) const
 }
 
 /**
- * Operator for reflexive subtraction of two matrices.
- * Subtracts the given matrix from the current matrix and populates the current matrix with the result.
+ * @brief Operator for reflexive subtraction of two matrices.
+ * @details Subtracts the given matrix from the current matrix and populates the current matrix with the result.
  */
 void Matrix33::operator-= (const Matrix33& p)
 {
@@ -207,8 +226,9 @@ void Matrix33::operator-= (const Matrix33& p)
 
 // Multiplication
 /**
- * Operator for scaling the matrix by a scalar.
- * Scales the current matrix by the scalar provided and returns the result in a third matrix.
+ * @brief Operator for scaling the matrix by a scalar.
+ * @details Scales the current matrix by the scalar provided and returns the result in a third matrix.
+ * @return Matrix containing the result of scaling the current matrix by the scalar provided as argument.
  */
 Matrix33 Matrix33::operator* (const double& p) const
 {
@@ -227,8 +247,8 @@ Matrix33 Matrix33::operator* (const double& p) const
 }
 
 /**
- * Operator for reflexive scaling of the matrix by a scalar.
- * Scales the current matrix by the scalar provided and populates the current matrix elements with the result.
+ * @brief Operator for reflexive scaling of the matrix by a scalar.
+ * @details Scales the current matrix by the scalar provided and populates the current matrix elements with the result.
  */
 void Matrix33::operator*= (const double& p)
 {
@@ -244,8 +264,9 @@ void Matrix33::operator*= (const double& p)
 }
 
 /**
- * Operator for the multiplication of two matrices.
- * Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix.
+ * @brief Operator for the multiplication of two matrices.
+ * @details Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix.
+ * @return The result of the multiplication of the current matrix with the one provided as argument.
  */
 Matrix33 Matrix33::operator* (const Matrix33& p) const
 {
@@ -255,21 +276,21 @@ Matrix33 Matrix33::operator* (const Matrix33& p) const
   for (i=0; i<3; i++)
     {
       for (j=0; j<3; j++)
-	{
-	  r.x[i][j] = 0.0;
-	  for (k=0; k<3; k++)
-	    {
-	      r.x[i][j] += this->x[i][k] * p.x[k][j];
-	    }
-	}
+   	{
+   	  r.x[i][j] = 0.0;
+   	  for (k=0; k<3; k++)
+   	    {
+   	      r.x[i][j] += this->x[i][k] * p.x[k][j];
+   	    }
+   	}
     }
   
   return (r);
 }
-  
+     
 /**
- * Operator for reflexive multiplication of two matrices.
- * Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result.
+ * @brief Operator for reflexive multiplication of two matrices.
+ * @details Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result.
  */
 void Matrix33::operator*= (const Matrix33& p)
 {
@@ -283,7 +304,9 @@ void Matrix33::operator*= (const Matrix33& p)
 }
   
 /**
- * Returns in a vector the result of the multiplication of the current matrix with the provided vector.
+ * @brief Operator for the multiplication of a matrix with a vector.
+ * @details Returns in a vector the result of the multiplication of the current matrix with the provided vector.
+ * @return The vector resulting from the multiplication of the current matrix with a vector.
  */
 Vector3d Matrix33::operator* (const Vector3d& v) const
 {
@@ -303,7 +326,9 @@ Vector3d Matrix33::operator* (const Vector3d& v) const
 
 // Matrix operations
 /**
- * Returns in a new matrix the transpose of the current matrix.
+ * @brief Transpose
+ * @details Performs the transpose of the current matrix.
+ * @return A new matrix with the transpose of the current matrix.
  */
 Matrix33 Matrix33::operator^ () const
 {
@@ -322,7 +347,9 @@ Matrix33 Matrix33::operator^ () const
 }
   
 /**
- * Returns the determinant of the current matrix.
+ * @brief Determinant.
+ * @details Calculates the determinant of the current matrix.
+ * @return Returns the determinant of the current matrix.
  */
 double Matrix33::operator~ () const
 {
@@ -336,8 +363,9 @@ double Matrix33::operator~ () const
 }
 
 /**
- * Returns in a new matrix the inverse of the current matrix.
- * If the current matrix is non-invertible, a zero matrix is returned.
+ * @brief Inverse
+ * @details Returns in a new matrix the inverse of the current matrix. If the current matrix is non-invertible, a zero matrix is returned.
+ * @return Matrix with the inverse of the current matrix. If the current matrix is non-invertible, a zero matrix is returned.
  */
 Matrix33 Matrix33::operator! () const
 {
