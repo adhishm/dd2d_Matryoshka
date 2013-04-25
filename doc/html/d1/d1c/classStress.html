@@ -116,8 +116,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the principal stresses.  <a href="#aca57d2719f43701dd2ebf2ab00afa539"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5">getShearStresses</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the shear stresses.  <a href="#afe8214b8e9061930e6598e1970fd61f5"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">rotate</a> (<a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> alpha)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate the stress tensor from one coordinate system to another.  <a href="#a61fa75450c0232bb0fa427072d1b6a35"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d1c/classStress.html#a8bbcd34d10748bf6febd32213ac5bf8e">rotate</a> (<a class="el" href="../../d2/d4a/classRotationMatrix.html">RotationMatrix</a> alpha)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate the stress tensor from one coordinate system to another.  <a href="#a8bbcd34d10748bf6febd32213ac5bf8e"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b">setValue</a> (int row, int column, double value)</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set the value of an element indicated by its position.  <a href="#a6cdcec77fd089b2e73ad7ae85ecff30b"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a849bbdf7b456ddacf7185b087fca4015">getValue</a> (int row, int column)</td></tr>
@@ -159,7 +159,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p><a class="el" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> class to represent the stress tensor. </p>
 <p>The member functions of this class construct the symmetric stress tensor and operate on it. </p>
 
-<p>Definition at line <a class="el" href="../../d2/d50/stress_8h_source.html#l00020">20</a> of file <a class="el" href="../../d2/d50/stress_8h_source.html">stress.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/d50/stress_8h_source.html#l00021">21</a> of file <a class="el" href="../../d2/d50/stress_8h_source.html">stress.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aa01e83a3f6791cbadc5a368e3a40515e"></a><!-- doxytag: member="Stress::Stress" ref="aa01e83a3f6791cbadc5a368e3a40515e" args="()" -->
 <div class="memitem">
@@ -181,7 +181,7 @@ Protected Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00016">16</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i, j;
-  
+
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
       <a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [i] = 0.0;
@@ -231,13 +231,13 @@ Protected Attributes</h2></td></tr>
 <p>Definition at line <a class="el" href="../../d4/d58/stress_8cpp_source.html#l00035">35</a> of file <a class="el" href="../../d4/d58/stress_8cpp_source.html">stress.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i;
-  
+
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
       this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [i] = principal [i];
       this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = shear [i];
     }
-  
+
   this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();
 }
 </pre></div>
@@ -305,12 +305,12 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">double</span> p[3];
   <span class="keywordtype">int</span> i;
-  
+
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
       p[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a>[i];
     }
-  
+
   <span class="keywordflow">return</span> (p);
 }
 </pre></div>
@@ -338,12 +338,12 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">double</span> s[3];
   <span class="keywordtype">int</span> i;
-  
+
   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
     {
       s[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a>[i];
     }
-  
+
   <span class="keywordflow">return</span> (s);
 }
 </pre></div>
@@ -854,7 +854,7 @@ Protected Attributes</h2></td></tr>
   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [0];
   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [1];
   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [2];
-  
+
   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [0];
   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [1];
   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [2];
@@ -862,14 +862,14 @@ Protected Attributes</h2></td></tr>
 </pre></div>
 </div>
 </div>
-<a class="anchor" id="a61fa75450c0232bb0fa427072d1b6a35"></a><!-- doxytag: member="Stress::rotate" ref="a61fa75450c0232bb0fa427072d1b6a35" args="(Matrix33 alpha)" -->
+<a class="anchor" id="a8bbcd34d10748bf6febd32213ac5bf8e"></a><!-- doxytag: member="Stress::rotate" ref="a8bbcd34d10748bf6febd32213ac5bf8e" args="(RotationMatrix alpha)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname"><a class="el" href="../../d1/d1c/classStress.html">Stress</a> <a class="el" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">Stress::rotate</a> </td>
+          <td class="memname"><a class="el" href="../../d1/d1c/classStress.html">Stress</a> <a class="el" href="../../d1/d1c/classStress.html#a8bbcd34d10748bf6febd32213ac5bf8e">Stress::rotate</a> </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td>
+          <td class="paramtype"><a class="el" href="../../d2/d4a/classRotationMatrix.html">RotationMatrix</a>&#160;</td>
           <td class="paramname"><em>alpha</em></td><td>)</td>
           <td></td>
         </tr>
@@ -891,9 +891,9 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span>
   <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sNew;
-  
+
   sNew = alpha * (*this) * alphaT;  <span class="comment">// Rotate the stress matrix</span>
-  
+
   <span class="keywordflow">return</span> (sNew);
 }
 </pre></div>
@@ -967,7 +967,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>The three principal stresses: s11, s22, s33. </p>
 
-<p>Definition at line <a class="el" href="../../d2/d50/stress_8h_source.html#l00026">26</a> of file <a class="el" href="../../d2/d50/stress_8h_source.html">stress.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/d50/stress_8h_source.html#l00027">27</a> of file <a class="el" href="../../d2/d50/stress_8h_source.html">stress.h</a>.</p>
 
 </div>
 </div>
@@ -983,7 +983,7 @@ Protected Attributes</h2></td></tr>
 <div class="memdoc">
 <p>The three shear stresses: s12, s13, s23, </p>
 
-<p>Definition at line <a class="el" href="../../d2/d50/stress_8h_source.html#l00030">30</a> of file <a class="el" href="../../d2/d50/stress_8h_source.html">stress.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d2/d50/stress_8h_source.html#l00031">31</a> of file <a class="el" href="../../d2/d50/stress_8h_source.html">stress.h</a>.</p>
 
 </div>
 </div>
@@ -1026,7 +1026,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 25 2013 15:39:23 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 25 2013 16:55:19 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

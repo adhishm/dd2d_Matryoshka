@@ -84,7 +84,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00016"></a><a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">00016</a> <a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e" title="Default constructor.">Stress::Stress</a> ()
 <a name="l00017"></a>00017 {
 <a name="l00018"></a>00018   <span class="keywordtype">int</span> i, j;
-<a name="l00019"></a>00019   
+<a name="l00019"></a>00019 
 <a name="l00020"></a>00020   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
 <a name="l00021"></a>00021     {
 <a name="l00022"></a>00022       <a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [i] = 0.0;
@@ -97,13 +97,13 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00035"></a><a class="code" href="../../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab">00035</a> <a class="code" href="../../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e" title="Default constructor.">Stress::Stress</a> (<span class="keywordtype">double</span> *principal, <span class="keywordtype">double</span> *shear)
 <a name="l00036"></a>00036 {
 <a name="l00037"></a>00037   <span class="keywordtype">int</span> i;
-<a name="l00038"></a>00038   
+<a name="l00038"></a>00038 
 <a name="l00039"></a>00039   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
 <a name="l00040"></a>00040     {
 <a name="l00041"></a>00041       this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [i] = principal [i];
 <a name="l00042"></a>00042       this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [i] = shear [i];
 <a name="l00043"></a>00043     }
-<a name="l00044"></a>00044   
+<a name="l00044"></a>00044 
 <a name="l00045"></a>00045   this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aa395d5763df8feb4689e0c5524c9e562" title="Construct the stress tensor from the principal and shear stresses.">populateMatrix</a> ();
 <a name="l00046"></a>00046 }
 <a name="l00047"></a>00047 
@@ -112,7 +112,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00054"></a>00054   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [0];
 <a name="l00055"></a>00055   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [1];
 <a name="l00056"></a>00056   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a> [2];
-<a name="l00057"></a>00057   
+<a name="l00057"></a>00057 
 <a name="l00058"></a>00058   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [0];
 <a name="l00059"></a>00059   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [1];
 <a name="l00060"></a>00060   this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a> [2];
@@ -122,12 +122,12 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00069"></a>00069 {
 <a name="l00070"></a>00070   <span class="keywordtype">double</span> p[3];
 <a name="l00071"></a>00071   <span class="keywordtype">int</span> i;
-<a name="l00072"></a>00072   
+<a name="l00072"></a>00072 
 <a name="l00073"></a>00073   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
 <a name="l00074"></a>00074     {
 <a name="l00075"></a>00075       p[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#aea8c3e40aa59a89d7ba79d2c916050a6">principalStresses</a>[i];
 <a name="l00076"></a>00076     }
-<a name="l00077"></a>00077   
+<a name="l00077"></a>00077 
 <a name="l00078"></a>00078   <span class="keywordflow">return</span> (p);
 <a name="l00079"></a>00079 }
 <a name="l00080"></a>00080 
@@ -135,22 +135,22 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00087"></a>00087 {
 <a name="l00088"></a>00088   <span class="keywordtype">double</span> s[3];
 <a name="l00089"></a>00089   <span class="keywordtype">int</span> i;
-<a name="l00090"></a>00090   
+<a name="l00090"></a>00090 
 <a name="l00091"></a>00091   <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
 <a name="l00092"></a>00092     {
 <a name="l00093"></a>00093       s[i] = this-&gt;<a class="code" href="../../d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">shearStresses</a>[i];
 <a name="l00094"></a>00094     }
-<a name="l00095"></a>00095   
+<a name="l00095"></a>00095 
 <a name="l00096"></a>00096   <span class="keywordflow">return</span> (s);
 <a name="l00097"></a>00097 }
 <a name="l00098"></a>00098 
-<a name="l00105"></a><a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35">00105</a> <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d1/d1c/classStress.html#a61fa75450c0232bb0fa427072d1b6a35" title="Rotate the stress tensor from one coordinate system to another.">Stress::rotate</a> (<a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alpha)
+<a name="l00105"></a><a class="code" href="../../d1/d1c/classStress.html#a8bbcd34d10748bf6febd32213ac5bf8e">00105</a> <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d1/d1c/classStress.html#a8bbcd34d10748bf6febd32213ac5bf8e" title="Rotate the stress tensor from one coordinate system to another.">Stress::rotate</a> (<a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a> alpha)
 <a name="l00106"></a>00106 {
 <a name="l00107"></a>00107   <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span>
 <a name="l00108"></a>00108   <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sNew;
-<a name="l00109"></a>00109   
+<a name="l00109"></a>00109 
 <a name="l00110"></a>00110   sNew = alpha * (*this) * alphaT;  <span class="comment">// Rotate the stress matrix</span>
-<a name="l00111"></a>00111   
+<a name="l00111"></a>00111 
 <a name="l00112"></a>00112   <span class="keywordflow">return</span> (sNew);
 <a name="l00113"></a>00113 }
 </pre></div></div><!-- contents -->
@@ -171,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 25 2013 15:39:23 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Thu Apr 25 2013 16:55:19 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
