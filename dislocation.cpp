@@ -117,4 +117,6 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 
     double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );
 
+    // Calculate the rotation matrix for transforming vectors and tensors
+    // from the local coordinate system of the dislocation to the
 }
