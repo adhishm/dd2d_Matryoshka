@@ -11,6 +11,7 @@
 #define DISLOCATION_H
 
 #include "defect.h"
+#include "dislocationDefaults.h"
 
 /**
  * @brief Dislocation class representing a dislocation in the simulation.
@@ -41,6 +42,7 @@ public:
  * Position: (0.0, 0.0, 0.0)
  * Burgers vector: Default value set in defaults file.
  * Line vector: Default value set in defaults file.
+ * Mobile: true.
  */
     Dislocation ();
 /**
@@ -49,8 +51,9 @@ public:
  * @param burgers Burgers vector.
  * @param line Line vector.
  * @param position Position of the dislocation.
+ * @param m Mobility (true/false).
  */
-    Dislocation (Vector3d burgers, Vector3d line, Vector3d position);
+    Dislocation (Vector3d burgers, Vector3d line, Vector3d position, bool m);
 
 // Assignment functions
 /**
@@ -61,13 +64,30 @@ public:
  * @brief Sets the line vector of the dislocation.
  */
     void setLineVector (Vector3d line);
-    
+/**
+ * @brief Sets the dislocation as mobile.
+ * @details Sets the flag mobile to true.
+ */
+    void setMobile ();
+/**
+ * @brief Sets the dislocation as pinned.
+ * @details Sets the flag mobile to false.
+ */
+    void setPinned ();
+        
 // Access functions
 /**
  * @brief Gets the Burgers vector of the dislocation.
  * @return Burgers vector in a variable of type Vector3d.
  */
     Vector3d getBurgers ();
+    /**
+     * @brief Gets the line vector of the dislocation.
+     * @return Line vector in a variable of type Vector3d.
+     */
+    Vector3d getLineVector ();
+
+// 
     
 };
 
