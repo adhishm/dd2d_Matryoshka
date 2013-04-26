@@ -87,7 +87,15 @@ public:
      */
     Vector3d getLineVector ();
 
-// 
+// Stress field
+/**
+ * @brief Calculates the stress field due to this dislocation at the position given as argument.
+ * @details The stress field of the dislocation is calculated at the position indicated by the argument.
+ * @param p Position vector of the point where the stress field is to be calculated.
+ * @return Stress tensor giving the value of the stress field at position p.
+ */
+    Stress stressField (Vector3d p);
+    
     
 };
 
