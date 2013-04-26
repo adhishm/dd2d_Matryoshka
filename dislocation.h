@@ -27,6 +27,24 @@ protected:
  * @brief Line vector if the dislocation.
  */
     Vector3d lvec;
+public:
+/**
+ * @brief Default constructor.
+ * @details Initializes the dislocation with the following default parameters:
+ * Position: (0.0, 0.0, 0.0)
+ * Burgers vector: Default value set in defaults file.
+ * Line vector: Default value set in defaults file.
+ */
+    Dislocation ();
+/**
+ * @brief Constructor that explicitly specifies all parameters.
+ * @details All parameters: Burgers vector, line vector, position, are specified.
+ * @param burgers Burgers vector.
+ * @param line Line vector.
+ * @param position Position.
+ */
+    Dislocation (Vector3d burgers, Vector3d line, Vector3d position);
     
+};
 
 #endif
