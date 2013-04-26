@@ -30,10 +30,10 @@
 /**
  * @brief Default values of the line vector y-coordinate.
  */
-#define DEFAULT_LINEVECTOR_1 1.0
+#define DEFAULT_LINEVECTOR_1 -1.0
 /**
  * @brief Default values of the line vector z-coordinate.
  */
-#define DEFAULT_LINEVECTOR_2 0.0
+#define DEFAULT_LINEVECTOR_2 -2.0
 
 #endif
