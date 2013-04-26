@@ -27,7 +27,14 @@ protected:
  * @brief Line vector if the dislocation.
  */
     Vector3d lvec;
+/**
+ * @brief Boolean term indicating mobility.
+ * @details For mobile dislocations this term is true and for pinned dislocations it is false.
+ */
+    bool mobile;
+    
 public:
+// Constructors
 /**
  * @brief Default constructor.
  * @details Initializes the dislocation with the following default parameters:
@@ -41,9 +48,26 @@ public:
  * @details All parameters: Burgers vector, line vector, position, are specified.
  * @param burgers Burgers vector.
  * @param line Line vector.
- * @param position Position.
+ * @param position Position of the dislocation.
  */
     Dislocation (Vector3d burgers, Vector3d line, Vector3d position);
+
+// Assignment functions
+/**
+ * @brief Sets the Burgers vector of the dislocation.
+ */
+    void setBurgers (Vector3d burgers);
+/**
+ * @brief Sets the line vector of the dislocation.
+ */
+    void setLineVector (Vector3d line);
+    
+// Access functions
+/**
+ * @brief Gets the Burgers vector of the dislocation.
+ * @return Burgers vector in a variable of type Vector3d.
+ */
+    Vector3d getBurgers ();
     
 };
 

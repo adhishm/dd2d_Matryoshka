@@ -10,8 +10,6 @@
 #ifndef DEFECT_H
 #define DEFECT_H
 
-#include "vector3d.h"
-#include "matrix33.h"
 #include "stress.h"
 
 /**
