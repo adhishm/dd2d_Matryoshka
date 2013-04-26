@@ -12,6 +12,7 @@
 
 #include "defect.h"
 #include "dislocationDefaults.h"
+#include "constants.h"
 
 /**
  * @brief Dislocation class representing a dislocation in the simulation.
@@ -33,7 +34,13 @@ protected:
  * @details For mobile dislocations this term is true and for pinned dislocations it is false.
  */
     bool mobile;
-    
+
+/**
+ * @brief Magnitude of the Burgers vector in metres.
+ * @details The magnitude of the Burgers vector is useful for several calculations such as stress field around the dislocation.
+ */
+    double bmag;
+        
 public:
 // Constructors
 /**
@@ -42,6 +49,7 @@ public:
  * Position: (0.0, 0.0, 0.0)
  * Burgers vector: Default value set in defaults file.
  * Line vector: Default value set in defaults file.
+ * Burgers vector magnitude: Default value set in teh defaults file.
  * Mobile: true.
  */
     Dislocation ();
@@ -51,9 +59,10 @@ public:
  * @param burgers Burgers vector.
  * @param line Line vector.
  * @param position Position of the dislocation.
+ * @param bm Magnitude of the Burgers vector in metres.
  * @param m Mobility (true/false).
  */
-    Dislocation (Vector3d burgers, Vector3d line, Vector3d position, bool m);
+    Dislocation (Vector3d burgers, Vector3d line, Vector3d position, double bm, bool m);
 
 // Assignment functions
 /**
@@ -92,9 +101,11 @@ public:
  * @brief Calculates the stress field due to this dislocation at the position given as argument.
  * @details The stress field of the dislocation is calculated at the position indicated by the argument.
  * @param p Position vector of the point where the stress field is to be calculated.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
  * @return Stress tensor giving the value of the stress field at position p.
  */
-    Stress stressField (Vector3d p);
+    Stress stressField (Vector3d p, double mu, double nu);
     
     
 };

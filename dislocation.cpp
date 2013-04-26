@@ -15,6 +15,7 @@
  * Position: (0.0, 0.0, 0.0)
  * Burgers vector: Default value set in defaults file.
  * Line vector: Default value set in defaults file.
+ * Burgers vector magnitude: Default value set in teh defaults file.
  * Mobile: true.
  */
 Dislocation::Dislocation ()
@@ -22,6 +23,7 @@ Dislocation::Dislocation ()
     this->setPosition ( 0.0, 0.0, 0.0 );
     this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
     this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
+    this->bmag = DEFAULT_BURGERS_MAGNITUDE;
     this->mobile = true;
 }
 
@@ -31,14 +33,16 @@ Dislocation::Dislocation ()
  * @param burgers Burgers vector.
  * @param line Line vector.
  * @param position Position of the dislocation.
+ * @param bm Magnitude of the Burgers vector in metres.
  * @param m Mobility (true/false).
  */
-Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  bool m)
+Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  double bm, bool m)
 {
     this->bvec   = burgers;
     this->lvec   = line;
     this->pos    = position;
     this->mobile = m;
+    this->bmag   = bm;
 }
 
 // Assignment functions
@@ -100,10 +104,17 @@ Vector3d Dislocation::getLineVector ()
  * @brief Calculates the stress field due to this dislocation at the position given as argument.
  * @details The stress field of the dislocation is calculated at the position indicated by the argument.
  * @param p Position vector of the point where the stress field is to be calculated.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
  * @return Stress tensor giving the value of the stress field at position p.
  */
-Stress Dislocation::stressField (Vector3d p)
+Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
-    Stress s; // Variable for holding the stress tensor
+    Stress s;    // Variable for holding the stress tensor
+    Vector3d r;  // Vector joining the present dislocation to the point p
+
+    r = p - this->pos;
+
+    double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );
 
 }

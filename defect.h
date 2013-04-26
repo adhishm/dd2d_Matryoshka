@@ -115,9 +115,11 @@ class Defect
    * @brief Virtual function for calculating the stress field.
    * @details Returns the value of the stress field of the given defect at the position given by the argument. This is a virtual function and always returns a zero matrix. Classes which inherit this function should have their own implementations of this function to override its behaviour.
    * @param p Position vector of the the point where the stress field is to be calculated.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
    * @return Stress field value at the position p.
    */
-  virtual Stress stressField (Vector3d p)
+  virtual Stress stressField (Vector3d p, double mu, double nu)
   {
     // This virtual function returns a zero matrix.
     // Inheriting classes will have functions implementing this in their own way

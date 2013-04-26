@@ -11,28 +11,33 @@
 #define DISLOCATIONDEFAULTS_H
 
 /**
- * @brief Default values of the Burgers vector x-coordinate.
+ * @brief Default value of the magnitude of the Burgers vector.
+ */
+#define DEFAULT_BURGERS_MAGNITUDE 5.0e-09
+
+/**
+ * @brief Default value of the Burgers vector x-coordinate.
  */
 #define DEFAULT_BURGERS_0 1.0
 /**
- * @brief Default values of the Burgers vector y-coordinate.
+ * @brief Default value of the Burgers vector y-coordinate.
  */
 #define DEFAULT_BURGERS_1 1.0
 /**
- * @brief Default values of the Burgers vector z-coordinate.
+ * @brief Default value of the Burgers vector z-coordinate.
  */
 #define DEFAULT_BURGERS_2 0.0
 
 /**
- * @brief Default values of the line vector x-coordinate.
+ * @brief Default value of the line vector x-coordinate.
  */
 #define DEFAULT_LINEVECTOR_0 1.0
 /**
- * @brief Default values of the line vector y-coordinate.
+ * @brief Default value of the line vector y-coordinate.
  */
 #define DEFAULT_LINEVECTOR_1 -1.0
 /**
- * @brief Default values of the line vector z-coordinate.
+ * @brief Default value of the line vector z-coordinate.
  */
 #define DEFAULT_LINEVECTOR_2 -2.0
 

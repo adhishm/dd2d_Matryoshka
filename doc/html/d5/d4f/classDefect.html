@@ -132,8 +132,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Y-coordinate of the defect.  <a href="#a9ea8df3b4c621762a327813056e63911"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#a6f59edeca7ca8bfa01c54fd6b1a62374">getZ</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the Z-coordinate of the defect.  <a href="#a6f59edeca7ca8bfa01c54fd6b1a62374"></a><br/></td></tr>
-<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#af25282562571e6fe3340e82d02c7ae93">stressField</a> (<a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> p)</td></tr>
-<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual function for calculating the stress field.  <a href="#af25282562571e6fe3340e82d02c7ae93"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">virtual <a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2">stressField</a> (<a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> p, double mu, double nu)</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Virtual function for calculating the stress field.  <a href="#a5730a89ce804d75090c9fa35ffdfefa2"></a><br/></td></tr>
 <tr><td colspan="2"><h2><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd">pos</a></td></tr>
@@ -555,16 +555,32 @@ Protected Attributes</h2></td></tr>
 </pre></div>
 </div>
 </div>
-<a class="anchor" id="af25282562571e6fe3340e82d02c7ae93"></a><!-- doxytag: member="Defect::stressField" ref="af25282562571e6fe3340e82d02c7ae93" args="(Vector3d p)" -->
+<a class="anchor" id="a5730a89ce804d75090c9fa35ffdfefa2"></a><!-- doxytag: member="Defect::stressField" ref="a5730a89ce804d75090c9fa35ffdfefa2" args="(Vector3d p, double mu, double nu)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">virtual <a class="el" href="../../d1/d1c/classStress.html">Stress</a> <a class="el" href="../../d5/d4f/classDefect.html#af25282562571e6fe3340e82d02c7ae93">Defect::stressField</a> </td>
+          <td class="memname">virtual <a class="el" href="../../d1/d1c/classStress.html">Stress</a> <a class="el" href="../../d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2">Defect::stressField</a> </td>
           <td>(</td>
           <td class="paramtype"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td>
-          <td class="paramname"><em>p</em></td><td>)</td>
-          <td><code> [inline, virtual]</code></td>
+          <td class="paramname"><em>p</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>mu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>nu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td><code> [inline, virtual]</code></td>
         </tr>
       </table>
 </div>
@@ -575,14 +591,16 @@ Protected Attributes</h2></td></tr>
 <dl class="params"><dt><b>Parameters:</b></dt><dd>
   <table class="params">
     <tr><td class="paramname">p</td><td>Position vector of the the point where the stress field is to be calculated. </td></tr>
+    <tr><td class="paramname">mu</td><td>Shear modulus in Pascals. </td></tr>
+    <tr><td class="paramname">nu</td><td>Poisson's ratio. </td></tr>
   </table>
   </dd>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd><a class="el" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> field value at the position p. </dd></dl>
 
-<p>Reimplemented in <a class="el" href="../../d3/dc6/classDislocation.html#a1eb7162e9fa238ba331b9d61c4952e8c">Dislocation</a>.</p>
+<p>Reimplemented in <a class="el" href="../../d3/dc6/classDislocation.html#af61cedf5305080ce0f55eb7177efe529">Dislocation</a>.</p>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00120">120</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00122">122</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 <div class="fragment"><pre class="fragment">  {
     <span class="comment">// This virtual function returns a zero matrix.</span>
     <span class="comment">// Inheriting classes will have functions implementing this in their own way</span>
@@ -633,7 +651,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri Apr 26 2013 16:27:41 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Apr 26 2013 17:05:11 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -57,7 +57,7 @@ double \hyperlink{classDefect_a9ea8df3b4c621762a327813056e63911}{get\-Y} ()
 \begin{DoxyCompactList}\small\item\em \-Returns the \-Y-\/coordinate of the defect. \end{DoxyCompactList}\item 
 double \hyperlink{classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}{get\-Z} ()
 \begin{DoxyCompactList}\small\item\em \-Returns the \-Z-\/coordinate of the defect. \end{DoxyCompactList}\item 
-virtual \hyperlink{classStress}{\-Stress} \hyperlink{classDefect_af25282562571e6fe3340e82d02c7ae93}{stress\-Field} (\hyperlink{classVector3d}{\-Vector3d} p)
+virtual \hyperlink{classStress}{\-Stress} \hyperlink{classDefect_a5730a89ce804d75090c9fa35ffdfefa2}{stress\-Field} (\hyperlink{classVector3d}{\-Vector3d} p, double mu, double nu)
 \begin{DoxyCompactList}\small\item\em \-Virtual function for calculating the stress field. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
@@ -423,13 +423,15 @@ virtual \hyperlink{classStress}{\-Stress} \hyperlink{classDefect_af25282562571e6
   this->pos.setValue (2, z);
 }
 \end{DoxyCode}
-\hypertarget{classDefect_af25282562571e6fe3340e82d02c7ae93}{\index{\-Defect@{\-Defect}!stress\-Field@{stress\-Field}}
+\hypertarget{classDefect_a5730a89ce804d75090c9fa35ffdfefa2}{\index{\-Defect@{\-Defect}!stress\-Field@{stress\-Field}}
 \index{stress\-Field@{stress\-Field}!Defect@{\-Defect}}
 \subsubsection[{stress\-Field}]{\setlength{\rightskip}{0pt plus 5cm}virtual {\bf \-Stress} {\bf \-Defect\-::stress\-Field} (
 \begin{DoxyParamCaption}
-\item[{{\bf \-Vector3d}}]{p}
+\item[{{\bf \-Vector3d}}]{p, }
+\item[{double}]{mu, }
+\item[{double}]{nu}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}\label{d5/d4f/classDefect_af25282562571e6fe3340e82d02c7ae93}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inline, virtual\mbox{]}}}}\label{d5/d4f/classDefect_a5730a89ce804d75090c9fa35ffdfefa2}
 
 
 \-Virtual function for calculating the stress field. 
@@ -438,17 +440,21 @@ virtual \hyperlink{classStress}{\-Stress} \hyperlink{classDefect_af25282562571e6
 \begin{DoxyParams}{\-Parameters}
 {\em p} & \-Position vector of the the point where the stress field is to be calculated. \\
 \hline
+{\em mu} & \-Shear modulus in \-Pascals. \\
+\hline
+{\em nu} & \-Poisson's ratio. \\
+\hline
 \end{DoxyParams}
 \begin{DoxyReturn}{\-Returns}
 \hyperlink{classStress}{\-Stress} field value at the position p. 
 \end{DoxyReturn}
 
 
-\-Reimplemented in \hyperlink{classDislocation_a1eb7162e9fa238ba331b9d61c4952e8c}{\-Dislocation}.
+\-Reimplemented in \hyperlink{classDislocation_af61cedf5305080ce0f55eb7177efe529}{\-Dislocation}.
 
 
 
-\-Definition at line 120 of file defect.\-h.
+\-Definition at line 122 of file defect.\-h.
 
 
 \begin{DoxyCode}
