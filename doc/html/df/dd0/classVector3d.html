@@ -108,6 +108,10 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to get the values of the elements of the vector in an array.  <a href="#a12ca89ab46c79eb78fa6b75cad1a3616"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd0/classVector3d.html#a76fa7fc5a86ba77a6764eb0d9072e90a">sum</a> ()</td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the sum of the elements of the vector.  <a href="#a76fa7fc5a86ba77a6764eb0d9072e90a"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29">magnitude</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Computes the magnitude of the vector.  <a href="#a9fd3cba8bbdf983db6c2a2eae00c4b29"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd0/classVector3d.html#a24acba00068d9d1612404243f2a01078">normalize</a> ()</td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the vector normalized to be a unit vector.  <a href="#a24acba00068d9d1612404243f2a01078"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd0/classVector3d.html#ad714ad56910f370335c18262dc5cc13a">operator+</a> (const <a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> &amp;) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator for addition of two vectors.  <a href="#ad714ad56910f370335c18262dc5cc13a"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../df/dd0/classVector3d.html#a034e9f847d613c9cba1cb47202b8143a">operator+=</a> (const <a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> &amp;)</td></tr>
@@ -135,7 +139,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p><a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> class representing a single 3-dimensional vector in the simulation. </p>
 <p>This class represents a vector in 3D space. The member functions and operators define various operations on the vector and its interactions with other data types. </p>
 
-<p>Definition at line <a class="el" href="../../d9/df8/vector3d_8h_source.html#l00018">18</a> of file <a class="el" href="../../d9/df8/vector3d_8h_source.html">vector3d.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d9/df8/vector3d_8h_source.html#l00020">20</a> of file <a class="el" href="../../d9/df8/vector3d_8h_source.html">vector3d.h</a>.</p>
 </div><hr/><h2>Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="aac098d8695c4288e4844835e62945244"></a><!-- doxytag: member="Vector3d::Vector3d" ref="aac098d8695c4288e4844835e62945244" args="()" -->
 <div class="memitem">
@@ -318,6 +322,73 @@ Protected Attributes</h2></td></tr>
 </pre></div>
 </div>
 </div>
+<a class="anchor" id="a9fd3cba8bbdf983db6c2a2eae00c4b29"></a><!-- doxytag: member="Vector3d::magnitude" ref="a9fd3cba8bbdf983db6c2a2eae00c4b29" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29">Vector3d::magnitude</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Computes the magnitude of the vector. </p>
+<p>Computes the magnitude of the vector. Basically the square root of the sum of the squares of the vector elements. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The magnitude of the vector. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordtype">double</span> s = 0.0;
+  <span class="keywordtype">int</span> i;
+  
+  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)
+  {
+    s += this-&gt;<a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509" title="The elements of the vector.">x</a>[i] * this-&gt;<a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509" title="The elements of the vector.">x</a>[i];
+  }
+  
+  <span class="keywordflow">return</span> ( sqrt (s) );
+}  
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a24acba00068d9d1612404243f2a01078"></a><!-- doxytag: member="Vector3d::normalize" ref="a24acba00068d9d1612404243f2a01078" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> <a class="el" href="../../df/dd0/classVector3d.html#a24acba00068d9d1612404243f2a01078">Vector3d::normalize</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Returns the vector normalized to be a unit vector. </p>
+<p>This function normalizes a vector by dividing its elements by the magnitude. In case the magnitude is zero, a zero vector is returned. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>Normalized vector. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00152">152</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+  <span class="keywordtype">double</span> m = this-&gt;<a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a> ();
+  
+  <span class="keywordflow">if</span> (m==0.0)
+  {
+    <span class="keywordflow">return</span> (<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> ());
+  }
+  <span class="keywordflow">else</span>
+  {
+    <span class="keywordflow">return</span> ((*<span class="keyword">this</span>) * (1.0/m));
+  }
+}
+</pre></div>
+</div>
+</div>
 <a class="anchor" id="a656a4a90ae5619c4deb7851da2aaa2e8"></a><!-- doxytag: member="Vector3d::operator*" ref="a656a4a90ae5619c4deb7851da2aaa2e8" args="(const double &amp;) const " -->
 <div class="memitem">
 <div class="memproto">
@@ -337,7 +408,7 @@ Protected Attributes</h2></td></tr>
 <p>Scales the current vector by the scalar provided and returns the result in a third vector. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Vector containing the result of scaling the current vector by the scala provided as argument. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00202">202</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00239">239</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r(0.0, 0.0, 0.0);
   <span class="keywordtype">int</span> i;
@@ -371,7 +442,7 @@ Protected Attributes</h2></td></tr>
 <p>Performs the scalar product or dot product of the current vector with the one provided as argument and returns the result. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Scalar value of the scalar product of dot product of the current vector with the one provided as argument. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00234">234</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00271">271</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">double</span> s = 0.0;
   <span class="keywordtype">int</span> i;
@@ -404,7 +475,7 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive scaling of the vector by a scalar. </p>
 <p>Scales the current vector by the scalar provided and populates the current vector elements with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00219">219</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00256">256</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i;
   
@@ -435,7 +506,7 @@ Protected Attributes</h2></td></tr>
 <p>Adds the current vector to the provided vector and returns a third vector with the result. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Vector containing the sum of the current vector with the one provided as argument. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00136">136</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00173">173</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r (0.0, 0.0, 0.0);
   <span class="keywordtype">int</span> i;
@@ -468,7 +539,7 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive addition of two vectors. </p>
 <p>Adds the current vector to the provided vector and populates the current vector elements with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00153">153</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00190">190</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i;
   
@@ -499,7 +570,7 @@ Protected Attributes</h2></td></tr>
 <p>Subtracts the given vector from the current vector and returns the result in a new vector. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Vector containing the result of subtracting the vector provided as argument from the current vector. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00169">169</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00206">206</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r(0.0, 0.0, 0.0);
   <span class="keywordtype">int</span> i;
@@ -532,7 +603,7 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive subtraction of two vectors. </p>
 <p>Subtracts the given vector from the current vector and populates the current vector with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00186">186</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00223">223</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> i;
   
@@ -563,7 +634,7 @@ Protected Attributes</h2></td></tr>
 <p>Evaluates the vector product of the current vector with the provided vector and returns the result in a third vector. </p>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Vector containing the result of the vector product of the current vector with the one provided as argument. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00252">252</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00289">289</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r(0.0, 0.0, 0.0);
   
@@ -594,7 +665,7 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive vector product of two vectors. </p>
 <p>Evaluates the vector product of the current vector and the one provided, and populates the result in the current vector. </p>
 
-<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00267">267</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../d7/d35/vector3d_8cpp_source.html#l00304">304</a> of file <a class="el" href="../../d7/d35/vector3d_8cpp_source.html">vector3d.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>* r = <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a>(0.0, 0.0, 0.0);
   
@@ -735,7 +806,7 @@ Protected Attributes</h2></td></tr>
 
 <p>The elements of the vector. </p>
 
-<p>Definition at line <a class="el" href="../../d9/df8/vector3d_8h_source.html#l00024">24</a> of file <a class="el" href="../../d9/df8/vector3d_8h_source.html">vector3d.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d9/df8/vector3d_8h_source.html#l00026">26</a> of file <a class="el" href="../../d9/df8/vector3d_8h_source.html">vector3d.h</a>.</p>
 
 </div>
 </div>
@@ -761,7 +832,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Apr 29 2013 10:15:03 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 29 2013 11:11:53 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -143,6 +143,25 @@ double Vector3d::magnitude ()
   
   return ( sqrt (s) );
 }  
+
+/**
+ * @brief Returns the vector normalized to be a unit vector.
+ * @details This function normalizes a vector by dividing its elements by the magnitude. In case the magnitude is zero, a zero vector is returned.
+ * @return Normalized vector.
+ */
+Vector3d Vector3d::normalize ()
+{
+  double m = this->magnitude ();
+  
+  if (m==0.0)
+  {
+    return (Vector3d ());
+  }
+  else
+  {
+    return ((*this) * (1.0/m));
+  }
+}
   
 // Operators
 // Addition

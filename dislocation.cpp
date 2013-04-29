@@ -99,6 +99,30 @@ Vector3d Dislocation::getLineVector ()
   return ( this->lvec );
 }
 
+// Rotation matrix
+/**
+ * @brief Calculate the roation matrix.
+ * @details This function calculates the rotation matrix for this dislocation using the global and local co-ordinate systems. The matrix rotationMatrix is for rotation from the old (unprimed, global) to the new (primed, dislocation) system.
+ */
+void Dislocation::calculateRotationMatrix ()
+{
+  Vector3d globalSystem[3];	// Global co-ordinate systems
+  Vector3d localSystem[3];	// Dislocation co-ordinate system
+  
+  // Vectors of the global co-ordinate system
+  globalSystem[0] = Vector3d (1.0, 0.0, 0.0);
+  globalSystem[1] = Vector3d (0.0, 1.0, 0.0);
+  globalSystem[2] = Vector3d (0.0, 0.0, 1.0);
+  
+  // Vectors of the dislocation co-ordinate system
+  localSystem[0] = bvec.normalize ();
+  localSystem[2] = lvec.normalize ();
+  localSystem[1] = (lvec ^ bvec).normalize ();
+  
+  // Calculate rotation matrix
+  this->rotationMatrix = RotationMatrix (globalSystem, localSystem);
+}
+  
 // Stress field
 /**
  * @brief Calculates the stress field due to this dislocation at the position given as argument.

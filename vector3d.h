@@ -87,6 +87,12 @@ class Vector3d
    * @return The magnitude of the vector.
    */
   double magnitude ();
+  /**
+   * @brief Returns the vector normalized to be a unit vector.
+   * @details This function normalizes a vector by dividing its elements by the magnitude. In case the magnitude is zero, a zero vector is returned.
+   * @return Normalized vector.
+   */
+  Vector3d normalize ();
 
   // Operators
   // Addition
