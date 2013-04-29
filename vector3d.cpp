@@ -2,7 +2,7 @@
  * @file vector3d.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 22/04/2013
+ * @date 29/04/2013
  * @brief Definition of member functions and operators of the Vector3d class.
  * @details This file defines the member functions and operators of the Vector3d class representing a single 3-dimensional vector in the simulation.
  */

@@ -19,5 +19,6 @@ var searchData=
   ['stress_2ecpp',['stress.cpp',['../d4/d58/stress_8cpp.html',1,'']]],
   ['stress_2eh',['stress.h',['../d2/d50/stress_8h.html',1,'']]],
   ['stressfield',['stressField',['../d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2',1,'Defect::stressField()'],['../d3/dc6/classDislocation.html#af61cedf5305080ce0f55eb7177efe529',1,'Dislocation::stressField()']]],
+  ['stressfieldlocal',['stressFieldLocal',['../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84',1,'Dislocation']]],
   ['sum',['sum',['../df/dd0/classVector3d.html#a76fa7fc5a86ba77a6764eb0d9072e90a',1,'Vector3d']]]
 ];

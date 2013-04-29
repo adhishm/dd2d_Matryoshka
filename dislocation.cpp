@@ -2,7 +2,7 @@
  * @file dislocation.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 26/04/2013
+ * @date 29/04/2013
  * @brief Definition of constructors and member functions of the Dislocation class.
  * @details This file defines the constructors and member functions of the Dislocation class. This class inherits from the Defect class.
  */
@@ -132,17 +132,51 @@ void Dislocation::calculateRotationMatrix ()
  * @param p Position vector of the point where the stress field is to be calculated.
  * @param mu Shear modulus in Pascals.
  * @param nu Poisson's ratio.
- * @return Stress tensor giving the value of the stress field at position p.
+ * @return Stress tensor, expressed in the global co-ordinate system, giving the value of the stress field at position p.
  */
 Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
-  Stress s;    // Variable for holding the stress tensor
+  double principalStresses[3];
+  double shearStresses[3];
   Vector3d r;  // Vector joining the present dislocation to the point p
   
-  r = p - this->pos;
+  r = p - this->pos;	// Still in global coordinate system
+  Vector3d rLocal = this->rotationMatrix * r;	// Rotated to local co-ordinate system
   
-  double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );
+  // Calculate the stress field in the local co-ordinate system
+  Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
   
-  // Calculate the rotation matrix for transforming vectors and tensors
-  // from the local coordinate system of the dislocation to the
+  // Calculate the stress field in the global co-ordinate system
+  Stress sGlobal = (this->rotationMatrix) * sLocal * (^(this->rotationMatrix));
+  
+  return (sGlobal);
+}
+
+/**
+ * @brief Calculates the stress field doe to the dislocation in the local co-ordinate system.
+ * @details The stress field due to the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+ * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
+ * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
+ */
+Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
+{
+  double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+  
+  double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
+  
+  x = p.getValue (0);
+  y = p.getValue (1);
+  denominator = pow ( ((x*x) + (y*y)), 2);
+  
+  principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
+  principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
+  principalStresses[2] = nu * ( principalStresses[0] + principalStresses[1] );
+  
+  shearStresses[0] = D * x * ( (x*x) - (y*y) ) / denominator;
+  shearStresses[1] = 0.0;
+  shearStresses[2] = 0.0;
+  
+  return (Stress(principalStresses, shearStresses));
 }

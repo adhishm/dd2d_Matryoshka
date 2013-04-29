@@ -2,7 +2,7 @@
  * @file dislocation.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 26/04/2013
+ * @date 29/04/2013
  * @brief Definition of the Dislocation class.
  * @details This file defines the Dislocation class representing a dislocation in the simulation. This class inherits from the Defect class.
  */
@@ -116,10 +116,19 @@ public:
    * @param p Position vector of the point where the stress field is to be calculated.
    * @param mu Shear modulus in Pascals.
    * @param nu Poisson's ratio.
-   * @return Stress tensor giving the value of the stress field at position p.
+   * @return Stress tensor, expressed in the global co-ordinate system, giving the value of the stress field at position p.
    */
   Stress stressField (Vector3d p, double mu, double nu);
   
+  /**
+   * @brief Calculates the stress field doe to the dislocation in the local co-ordinate system.
+   * @details The stress field due to the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+   * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
+   */
+  Stress stressFieldLocal (Vector3d p, double mu, double nu);
   
 };
 
