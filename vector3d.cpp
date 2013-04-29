@@ -126,6 +126,24 @@ double Vector3d::sum ()
   return (s);
 }
 
+/**
+ * @brief Computes the magnitude of the vector.
+ * @details Computes the magnitude of the vector. Basically the square root of the sum of the squares of the vector elements.
+ * @return The magnitude of the vector.
+ */
+double Vector3d::magnitude ()
+{
+  double s = 0.0;
+  int i;
+  
+  for (i=0; i<3; i++)
+  {
+    s += this->x[i] * this->x[i];
+  }
+  
+  return ( sqrt (s) );
+}  
+  
 // Operators
 // Addition
 /**
