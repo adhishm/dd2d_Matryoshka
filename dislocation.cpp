@@ -25,6 +25,7 @@ Dislocation::Dislocation ()
   this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
   this->bmag = DEFAULT_BURGERS_MAGNITUDE;
   this->mobile = true;
+  this->calculateRotationMatrix ();
 }
 
 /**
@@ -43,6 +44,7 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  d
   this->pos    = position;
   this->mobile = m;
   this->bmag   = bm;
+  this->calculateRotationMatrix ();
 }
 
 // Assignment functions
