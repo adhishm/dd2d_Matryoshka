@@ -20,11 +20,11 @@
  */
 Dislocation::Dislocation ()
 {
-    this->setPosition ( 0.0, 0.0, 0.0 );
-    this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
-    this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
-    this->bmag = DEFAULT_BURGERS_MAGNITUDE;
-    this->mobile = true;
+  this->setPosition ( 0.0, 0.0, 0.0 );
+  this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
+  this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
+  this->bmag = DEFAULT_BURGERS_MAGNITUDE;
+  this->mobile = true;
 }
 
 /**
@@ -38,11 +38,11 @@ Dislocation::Dislocation ()
  */
 Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  double bm, bool m)
 {
-    this->bvec   = burgers;
-    this->lvec   = line;
-    this->pos    = position;
-    this->mobile = m;
-    this->bmag   = bm;
+  this->bvec   = burgers;
+  this->lvec   = line;
+  this->pos    = position;
+  this->mobile = m;
+  this->bmag   = bm;
 }
 
 // Assignment functions
@@ -51,7 +51,7 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  d
  */
 void Dislocation::setBurgers (Vector3d burgers)
 {
-    this->bvec = burgers;
+  this->bvec = burgers;
 }
 
 /**
@@ -59,7 +59,7 @@ void Dislocation::setBurgers (Vector3d burgers)
  */
 void Dislocation::setLineVector (Vector3d line)
 {
-    this->lvec = line;
+  this->lvec = line;
 }
 
 /**
@@ -68,7 +68,7 @@ void Dislocation::setLineVector (Vector3d line)
  */
 void Dislocation::setMobile ()
 {
-    this->mobile = true;
+  this->mobile = true;
 }
 
 /**
@@ -77,7 +77,7 @@ void Dislocation::setMobile ()
  */
 void Dislocation::setPinned ()
 {
-    this->mobile = false;
+  this->mobile = false;
 }
 
 // Access functions
@@ -87,7 +87,7 @@ void Dislocation::setPinned ()
  */
 Vector3d Dislocation::getBurgers ()
 {
-    return ( this->bvec );
+  return ( this->bvec );
 }
 
 /**
@@ -96,7 +96,7 @@ Vector3d Dislocation::getBurgers ()
  */
 Vector3d Dislocation::getLineVector ()
 {
-    return ( this->lvec );
+  return ( this->lvec );
 }
 
 // Stress field
@@ -110,13 +110,13 @@ Vector3d Dislocation::getLineVector ()
  */
 Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
-    Stress s;    // Variable for holding the stress tensor
-    Vector3d r;  // Vector joining the present dislocation to the point p
-
-    r = p - this->pos;
-
-    double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );
-
-    // Calculate the rotation matrix for transforming vectors and tensors
-    // from the local coordinate system of the dislocation to the
+  Stress s;    // Variable for holding the stress tensor
+  Vector3d r;  // Vector joining the present dislocation to the point p
+  
+  r = p - this->pos;
+  
+  double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );
+  
+  // Calculate the rotation matrix for transforming vectors and tensors
+  // from the local coordinate system of the dislocation to the
 }
