@@ -15,4 +15,19 @@
  */
 #define PI 3.141592654
 
+/**
+ * @brief The square root of 2.
+ */
+#define SQRT2 1.414213562
+
+/**
+ * @brief The square root of 3.
+ */
+#define SQRT3 1.732050808
+
+/**
+ * @brief The square root of 5.
+ */
+#define SQRT5 2.236067978
+
 #endif

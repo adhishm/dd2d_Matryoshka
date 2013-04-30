@@ -29,6 +29,10 @@ double $\ast$ \hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{get\-V
 \begin{DoxyCompactList}\small\item\em \-Function to get the values of the elements of the vector in an array. \end{DoxyCompactList}\item 
 double \hyperlink{classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}{sum} ()
 \begin{DoxyCompactList}\small\item\em \-Computes the sum of the elements of the vector. \end{DoxyCompactList}\item 
+double \hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude} ()
+\begin{DoxyCompactList}\small\item\em \-Computes the magnitude of the vector. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{classVector3d_a24acba00068d9d1612404243f2a01078}{normalize} ()
+\begin{DoxyCompactList}\small\item\em \-Returns the vector normalized to be a unit vector. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{\-Vector3d} \hyperlink{classVector3d_ad714ad56910f370335c18262dc5cc13a}{operator+} (const \hyperlink{classVector3d}{\-Vector3d} \&) const 
 \begin{DoxyCompactList}\small\item\em \-Operator for addition of two vectors. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a034e9f847d613c9cba1cb47202b8143a}{operator+=} (const \hyperlink{classVector3d}{\-Vector3d} \&)
@@ -59,7 +63,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 \-This class represents a vector in 3\-D space. \-The member functions and operators define various operations on the vector and its interactions with other data types. 
 
-\-Definition at line 18 of file vector3d.\-h.
+\-Definition at line 20 of file vector3d.\-h.
 
 
 
@@ -218,6 +222,71 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
   return (a);
 }
 \end{DoxyCode}
+\hypertarget{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{\index{\-Vector3d@{\-Vector3d}!magnitude@{magnitude}}
+\index{magnitude@{magnitude}!Vector3d@{\-Vector3d}}
+\subsubsection[{magnitude}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Vector3d\-::magnitude} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{df/dd0/classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}
+
+
+\-Computes the magnitude of the vector. 
+
+\-Computes the magnitude of the vector. \-Basically the square root of the sum of the squares of the vector elements. \begin{DoxyReturn}{\-Returns}
+\-The magnitude of the vector. 
+\end{DoxyReturn}
+
+
+\-Definition at line 134 of file vector3d.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  double s = 0.0;
+  int i;
+  
+  for (i=0; i<3; i++)
+  {
+    s += this->x[i] * this->x[i];
+  }
+  
+  return ( sqrt (s) );
+}  
+\end{DoxyCode}
+\hypertarget{classVector3d_a24acba00068d9d1612404243f2a01078}{\index{\-Vector3d@{\-Vector3d}!normalize@{normalize}}
+\index{normalize@{normalize}!Vector3d@{\-Vector3d}}
+\subsubsection[{normalize}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf \-Vector3d\-::normalize} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{df/dd0/classVector3d_a24acba00068d9d1612404243f2a01078}
+
+
+\-Returns the vector normalized to be a unit vector. 
+
+\-This function normalizes a vector by dividing its elements by the magnitude. \-In case the magnitude is zero, a zero vector is returned. \begin{DoxyReturn}{\-Returns}
+\-Normalized vector. 
+\end{DoxyReturn}
+
+
+\-Definition at line 152 of file vector3d.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  double m = this->magnitude ();
+  
+  if (m==0.0)
+  {
+    return (Vector3d ());
+  }
+  else
+  {
+    return ((*this) * (1.0/m));
+  }
+}
+\end{DoxyCode}
 \hypertarget{classVector3d_a656a4a90ae5619c4deb7851da2aaa2e8}{\index{\-Vector3d@{\-Vector3d}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Vector3d@{\-Vector3d}}
 \subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} \-Vector3d\-::operator$\ast$ (
@@ -234,7 +303,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 \end{DoxyReturn}
 
 
-\-Definition at line 202 of file vector3d.\-cpp.
+\-Definition at line 239 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -266,7 +335,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 \end{DoxyReturn}
 
 
-\-Definition at line 234 of file vector3d.\-cpp.
+\-Definition at line 271 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -295,7 +364,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 \-Scales the current vector by the scalar provided and populates the current vector elements with the result. 
 
-\-Definition at line 219 of file vector3d.\-cpp.
+\-Definition at line 256 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -324,7 +393,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 \end{DoxyReturn}
 
 
-\-Definition at line 136 of file vector3d.\-cpp.
+\-Definition at line 173 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -353,7 +422,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 \-Adds the current vector to the provided vector and populates the current vector elements with the result. 
 
-\-Definition at line 153 of file vector3d.\-cpp.
+\-Definition at line 190 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -382,7 +451,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 \end{DoxyReturn}
 
 
-\-Definition at line 169 of file vector3d.\-cpp.
+\-Definition at line 206 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -411,7 +480,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 \-Subtracts the given vector from the current vector and populates the current vector with the result. 
 
-\-Definition at line 186 of file vector3d.\-cpp.
+\-Definition at line 223 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -440,7 +509,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 \end{DoxyReturn}
 
 
-\-Definition at line 252 of file vector3d.\-cpp.
+\-Definition at line 289 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -467,7 +536,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 \-Evaluates the vector product of the current vector and the one provided, and populates the result in the current vector. 
 
-\-Definition at line 267 of file vector3d.\-cpp.
+\-Definition at line 304 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
@@ -588,7 +657,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 
 
-\-Definition at line 24 of file vector3d.\-h.
+\-Definition at line 26 of file vector3d.\-h.
 
 
 

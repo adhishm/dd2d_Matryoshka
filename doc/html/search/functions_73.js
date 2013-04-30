@@ -13,5 +13,6 @@ var searchData=
   ['strain',['Strain',['../d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38',1,'Strain::Strain()'],['../d1/d3c/classStrain.html#a808b5a0e273cc87e19138f3be221fe53',1,'Strain::Strain(double *principal, double *shear)']]],
   ['stress',['Stress',['../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e',1,'Stress::Stress()'],['../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab',1,'Stress::Stress(double *principal, double *shear)']]],
   ['stressfield',['stressField',['../d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2',1,'Defect::stressField()'],['../d3/dc6/classDislocation.html#af61cedf5305080ce0f55eb7177efe529',1,'Dislocation::stressField()']]],
+  ['stressfieldlocal',['stressFieldLocal',['../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84',1,'Dislocation']]],
   ['sum',['sum',['../df/dd0/classVector3d.html#a76fa7fc5a86ba77a6764eb0d9072e90a',1,'Vector3d']]]
 ];
