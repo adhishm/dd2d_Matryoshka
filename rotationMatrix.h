@@ -10,7 +10,6 @@
 #ifndef	ROTATIONMATRIX_H
 #define ROTATIONMATRIX_H
 
-#include "vector3d.h"
 #include "matrix33.h"
 
 /**

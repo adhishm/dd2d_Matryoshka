@@ -11,6 +11,7 @@
 #define STRAIN_H
 
 #include "matrix33.h"
+#include "rotationMatrix.h"
 
 /**
  * @brief Strain class to represent the strain tensor.
