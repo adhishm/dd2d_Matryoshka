@@ -2,7 +2,7 @@
  * @file vector3d.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 22/04/2013
+ * @date 29/04/2013
  * @brief Definition of member functions and operators of the Vector3d class.
  * @details This file defines the member functions and operators of the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
@@ -126,6 +126,43 @@ double Vector3d::sum ()
   return (s);
 }
 
+/**
+ * @brief Computes the magnitude of the vector.
+ * @details Computes the magnitude of the vector. Basically the square root of the sum of the squares of the vector elements.
+ * @return The magnitude of the vector.
+ */
+double Vector3d::magnitude ()
+{
+  double s = 0.0;
+  int i;
+  
+  for (i=0; i<3; i++)
+  {
+    s += this->x[i] * this->x[i];
+  }
+  
+  return ( sqrt (s) );
+}  
+
+/**
+ * @brief Returns the vector normalized to be a unit vector.
+ * @details This function normalizes a vector by dividing its elements by the magnitude. In case the magnitude is zero, a zero vector is returned.
+ * @return Normalized vector.
+ */
+Vector3d Vector3d::normalize ()
+{
+  double m = this->magnitude ();
+  
+  if (m==0.0)
+  {
+    return (Vector3d ());
+  }
+  else
+  {
+    return ((*this) * (1.0/m));
+  }
+}
+  
 // Operators
 // Addition
 /**

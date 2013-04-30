@@ -70,6 +70,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
   <div id="navrow2" class="tabs2">
     <ul class="tablist">
       <li><a href="../../files.html"><span>File&#160;List</span></a></li>
+      <li><a href="../../globals.html"><span>Globals</span></a></li>
     </ul>
   </div>
 </div>
@@ -82,48 +83,52 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <a name="l00010"></a>00010 <span class="preprocessor">#ifndef VECTOR3D_H</span>
 <a name="l00011"></a>00011 <span class="preprocessor"></span><span class="preprocessor">#define VECTOR3D_H</span>
 <a name="l00012"></a>00012 <span class="preprocessor"></span>
-<a name="l00018"></a><a class="code" href="../../df/dd0/classVector3d.html">00018</a> <span class="keyword">class </span><a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>
-<a name="l00019"></a>00019 {
-<a name="l00020"></a>00020  <span class="keyword">protected</span>:
-<a name="l00024"></a><a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509">00024</a>   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509" title="The elements of the vector.">x</a>[3];
-<a name="l00025"></a>00025  <span class="keyword">public</span>:
-<a name="l00026"></a>00026   <span class="comment">// Constructors</span>
-<a name="l00031"></a>00031 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a> ();
-<a name="l00037"></a>00037   <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a> (<span class="keywordtype">double</span>* a);
-<a name="l00045"></a>00045   <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a> (<span class="keywordtype">double</span> a1, <span class="keywordtype">double</span> a2, <span class="keywordtype">double</span> a3);
-<a name="l00046"></a>00046 
-<a name="l00047"></a>00047   <span class="comment">// Assignment functions</span>
-<a name="l00054"></a>00054 <span class="comment"></span>  <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> value);
-<a name="l00060"></a>00060   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a82c251f7203e08ec50ea55222f40525f" title="Function to set the value of the entire vector using an array.">setVector</a> (<span class="keywordtype">double</span>* a);
-<a name="l00061"></a>00061   
-<a name="l00062"></a>00062   <span class="comment">// Access functions</span>
-<a name="l00069"></a>00069 <span class="comment"></span>  <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a37055dde72eed6770cf3b2b11b56f0f8" title="Function to get the value of an element of the vector.">getValue</a> (<span class="keywordtype">int</span> index);
-<a name="l00075"></a>00075   <span class="keywordtype">double</span>* <a class="code" href="../../df/dd0/classVector3d.html#a12ca89ab46c79eb78fa6b75cad1a3616" title="Function to get the values of the elements of the vector in an array.">getVector</a> ();
-<a name="l00081"></a>00081   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a76fa7fc5a86ba77a6764eb0d9072e90a" title="Computes the sum of the elements of the vector.">sum</a> ();
-<a name="l00082"></a>00082 
-<a name="l00083"></a>00083   <span class="comment">// Operators</span>
-<a name="l00084"></a>00084   <span class="comment">// Addition</span>
-<a name="l00090"></a>00090 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#ad714ad56910f370335c18262dc5cc13a" title="Operator for addition of two vectors.">operator+ </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
-<a name="l00095"></a>00095   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a034e9f847d613c9cba1cb47202b8143a" title="Operator for reflexive addition of two vectors.">operator+= </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;);
-<a name="l00096"></a>00096   <span class="comment">// Subtraction</span>
-<a name="l00102"></a>00102 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a727932bfb1f230c8f256e10a0d45a8c7" title="Operator for the subtraction of two vectors.">operator- </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
-<a name="l00107"></a>00107   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a14d45e123683a1f1a2ba32d43083fcd7" title="Operator for reflexive subtraction of two vectors.">operator-= </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;);
-<a name="l00108"></a>00108   <span class="comment">// Multiplication</span>
-<a name="l00114"></a>00114 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a656a4a90ae5619c4deb7851da2aaa2e8" title="Operator for scaling the vector by a scalar.">operator* </a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;) <span class="keyword">const</span>;
-<a name="l00119"></a>00119   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a3014b4a7a5feded758421dfb7df4daa2" title="Operator for reflexive scaling of the vector by a scalar.">operator*= </a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);
-<a name="l00125"></a>00125   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a656a4a90ae5619c4deb7851da2aaa2e8" title="Operator for scaling the vector by a scalar.">operator* </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
-<a name="l00131"></a>00131   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a3a8254737a895334fc887d98e8446298" title="Operator for the vector product of two vectors.">operator^ </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
-<a name="l00136"></a>00136   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a868e89192951f4a25f63b958ec419f6f" title="Operator for reflexive vector product of two vectors.">operator^= </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;);
-<a name="l00137"></a>00137 };
-<a name="l00138"></a>00138 
-<a name="l00139"></a>00139 <span class="preprocessor">#endif</span>
+<a name="l00013"></a>00013 <span class="preprocessor">#include &lt;math.h&gt;</span>
+<a name="l00014"></a>00014 
+<a name="l00020"></a><a class="code" href="../../df/dd0/classVector3d.html">00020</a> <span class="keyword">class </span><a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>
+<a name="l00021"></a>00021 {
+<a name="l00022"></a>00022  <span class="keyword">protected</span>:
+<a name="l00026"></a><a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509">00026</a>   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509" title="The elements of the vector.">x</a>[3];
+<a name="l00027"></a>00027  <span class="keyword">public</span>:
+<a name="l00028"></a>00028   <span class="comment">// Constructors</span>
+<a name="l00033"></a>00033 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a> ();
+<a name="l00039"></a>00039   <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a> (<span class="keywordtype">double</span>* a);
+<a name="l00047"></a>00047   <a class="code" href="../../df/dd0/classVector3d.html#aac098d8695c4288e4844835e62945244" title="Default constructor.">Vector3d</a> (<span class="keywordtype">double</span> a1, <span class="keywordtype">double</span> a2, <span class="keywordtype">double</span> a3);
+<a name="l00048"></a>00048 
+<a name="l00049"></a>00049   <span class="comment">// Assignment functions</span>
+<a name="l00056"></a>00056 <span class="comment"></span>  <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a> (<span class="keywordtype">int</span> index, <span class="keywordtype">double</span> value);
+<a name="l00062"></a>00062   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a82c251f7203e08ec50ea55222f40525f" title="Function to set the value of the entire vector using an array.">setVector</a> (<span class="keywordtype">double</span>* a);
+<a name="l00063"></a>00063   
+<a name="l00064"></a>00064   <span class="comment">// Access functions</span>
+<a name="l00071"></a>00071 <span class="comment"></span>  <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a37055dde72eed6770cf3b2b11b56f0f8" title="Function to get the value of an element of the vector.">getValue</a> (<span class="keywordtype">int</span> index);
+<a name="l00077"></a>00077   <span class="keywordtype">double</span>* <a class="code" href="../../df/dd0/classVector3d.html#a12ca89ab46c79eb78fa6b75cad1a3616" title="Function to get the values of the elements of the vector in an array.">getVector</a> ();
+<a name="l00083"></a>00083   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a76fa7fc5a86ba77a6764eb0d9072e90a" title="Computes the sum of the elements of the vector.">sum</a> ();
+<a name="l00089"></a>00089   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a> ();
+<a name="l00095"></a>00095   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a24acba00068d9d1612404243f2a01078" title="Returns the vector normalized to be a unit vector.">normalize</a> ();
+<a name="l00096"></a>00096 
+<a name="l00097"></a>00097   <span class="comment">// Operators</span>
+<a name="l00098"></a>00098   <span class="comment">// Addition</span>
+<a name="l00104"></a>00104 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#ad714ad56910f370335c18262dc5cc13a" title="Operator for addition of two vectors.">operator+ </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
+<a name="l00109"></a>00109   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a034e9f847d613c9cba1cb47202b8143a" title="Operator for reflexive addition of two vectors.">operator+= </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;);
+<a name="l00110"></a>00110   <span class="comment">// Subtraction</span>
+<a name="l00116"></a>00116 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a727932bfb1f230c8f256e10a0d45a8c7" title="Operator for the subtraction of two vectors.">operator- </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
+<a name="l00121"></a>00121   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a14d45e123683a1f1a2ba32d43083fcd7" title="Operator for reflexive subtraction of two vectors.">operator-= </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;);
+<a name="l00122"></a>00122   <span class="comment">// Multiplication</span>
+<a name="l00128"></a>00128 <span class="comment"></span>  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a656a4a90ae5619c4deb7851da2aaa2e8" title="Operator for scaling the vector by a scalar.">operator* </a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;) <span class="keyword">const</span>;
+<a name="l00133"></a>00133   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a3014b4a7a5feded758421dfb7df4daa2" title="Operator for reflexive scaling of the vector by a scalar.">operator*= </a>(<span class="keyword">const</span> <span class="keywordtype">double</span>&amp;);
+<a name="l00139"></a>00139   <span class="keywordtype">double</span> <a class="code" href="../../df/dd0/classVector3d.html#a656a4a90ae5619c4deb7851da2aaa2e8" title="Operator for scaling the vector by a scalar.">operator* </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
+<a name="l00145"></a>00145   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../df/dd0/classVector3d.html#a3a8254737a895334fc887d98e8446298" title="Operator for the vector product of two vectors.">operator^ </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;) <span class="keyword">const</span>;
+<a name="l00150"></a>00150   <span class="keywordtype">void</span> <a class="code" href="../../df/dd0/classVector3d.html#a868e89192951f4a25f63b958ec419f6f" title="Operator for reflexive vector product of two vectors.">operator^= </a>(<span class="keyword">const</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>&amp;);
+<a name="l00151"></a>00151 };
+<a name="l00152"></a>00152 
+<a name="l00153"></a>00153 <span class="preprocessor">#endif</span>
 </pre></div></div><!-- contents -->
 <!-- window showing the filter options -->
 <div id="MSearchSelectWindow"
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Defines</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -135,7 +140,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Apr 25 2013 16:55:19 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Apr 29 2013 14:12:36 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>

@@ -2,13 +2,15 @@
  * @file vector3d.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 22/04/2013
+ * @date 29/04/2013
  * @brief Definition of the Vector3d class.
  * @details This file defines the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
 
 #ifndef VECTOR3D_H
 #define VECTOR3D_H
+
+#include <math.h>
 
 /**
  * @brief Vector3d class representing a single 3-dimensional vector in the simulation.
@@ -79,6 +81,18 @@ class Vector3d
    * @return The sum of the elements of the vector.
    */
   double sum ();
+  /**
+   * @brief Computes the magnitude of the vector.
+   * @details Computes the magnitude of the vector. Basically the square root of the sum of the squares of the vector elements.
+   * @return The magnitude of the vector.
+   */
+  double magnitude ();
+  /**
+   * @brief Returns the vector normalized to be a unit vector.
+   * @details This function normalizes a vector by dividing its elements by the magnitude. In case the magnitude is zero, a zero vector is returned.
+   * @return Normalized vector.
+   */
+  Vector3d normalize ();
 
   // Operators
   // Addition

@@ -1,6 +1,6 @@
 <map id="G" name="G">
-<area shape="rect" id="node3" href="$d2/d50/stress_8h.html" title="Definition of the Stress class." alt="" coords="44,83,113,112"/>
+<area shape="rect" id="node3" href="$d2/d50/stress_8h.html" title="Definition of the Stress class." alt="" coords="12,83,81,112"/>
 <area shape="rect" id="node5" href="$db/d46/matrix33_8h.html" title="Definition of the Matrix33 class." alt="" coords="5,237,88,267"/>
-<area shape="rect" id="node9" href="$da/d76/rotationMatrix_8h.html" title="Definition of the RotationMatrix class." alt="" coords="69,160,181,189"/>
-<area shape="rect" id="node7" href="$d9/df8/vector3d_8h.html" title="Definition of the Vector3d class." alt="" coords="44,315,127,344"/>
+<area shape="rect" id="node11" href="$da/d76/rotationMatrix_8h.html" title="Definition of the RotationMatrix class." alt="" coords="37,160,149,189"/>
+<area shape="rect" id="node7" href="$d9/df8/vector3d_8h.html" title="Definition of the Vector3d class." alt="" coords="5,315,88,344"/>
 </map>
