@@ -1,3 +1,4 @@
-<map id="Graphical Class Hierarchy" name="Graphical Class Hierarchy">
-<area shape="rect" id="node1" href="$d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material." alt="" coords="5,5,67,32"/>
+<map id="G" name="G">
+<area shape="rect" id="node1" href="$d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material." alt="" coords="5,5,67,35"/>
+<area shape="rect" id="node3" href="$d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation." alt="" coords="116,5,201,35"/>
 </map>
