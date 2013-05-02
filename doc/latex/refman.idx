@@ -58,8 +58,8 @@
 \indexentry{set\discretionary {-}{}{}Mobile@{set\discretionary {-}{}{}Mobile}!Dislocation@{Dislocation}|hyperpage}{18}
 \indexentry{Dislocation@{Dislocation}!set\discretionary {-}{}{}Pinned@{set\discretionary {-}{}{}Pinned}|hyperpage}{18}
 \indexentry{set\discretionary {-}{}{}Pinned@{set\discretionary {-}{}{}Pinned}!Dislocation@{Dislocation}|hyperpage}{18}
-\indexentry{Dislocation@{Dislocation}!set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}|hyperpage}{18}
-\indexentry{set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}!Dislocation@{Dislocation}|hyperpage}{18}
+\indexentry{Dislocation@{Dislocation}!set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}|hyperpage}{19}
+\indexentry{set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}!Dislocation@{Dislocation}|hyperpage}{19}
 \indexentry{Dislocation@{Dislocation}!set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}|hyperpage}{19}
 \indexentry{set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}!Dislocation@{Dislocation}|hyperpage}{19}
 \indexentry{Dislocation@{Dislocation}!set\discretionary {-}{}{}X@{set\discretionary {-}{}{}X}|hyperpage}{19}
@@ -70,272 +70,326 @@
 \indexentry{set\discretionary {-}{}{}Z@{set\discretionary {-}{}{}Z}!Dislocation@{Dislocation}|hyperpage}{20}
 \indexentry{Dislocation@{Dislocation}!stress\discretionary {-}{}{}Field@{stress\discretionary {-}{}{}Field}|hyperpage}{20}
 \indexentry{stress\discretionary {-}{}{}Field@{stress\discretionary {-}{}{}Field}!Dislocation@{Dislocation}|hyperpage}{20}
-\indexentry{Dislocation@{Dislocation}!stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local@{stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local}|hyperpage}{20}
-\indexentry{stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local@{stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local}!Dislocation@{Dislocation}|hyperpage}{20}
+\indexentry{Dislocation@{Dislocation}!stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local@{stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local}|hyperpage}{21}
+\indexentry{stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local@{stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local}!Dislocation@{Dislocation}|hyperpage}{21}
 \indexentry{Dislocation@{Dislocation}!bmag@{bmag}|hyperpage}{21}
 \indexentry{bmag@{bmag}!Dislocation@{Dislocation}|hyperpage}{21}
 \indexentry{Dislocation@{Dislocation}!bvec@{bvec}|hyperpage}{21}
 \indexentry{bvec@{bvec}!Dislocation@{Dislocation}|hyperpage}{21}
 \indexentry{Dislocation@{Dislocation}!lvec@{lvec}|hyperpage}{21}
 \indexentry{lvec@{lvec}!Dislocation@{Dislocation}|hyperpage}{21}
-\indexentry{Dislocation@{Dislocation}!mobile@{mobile}|hyperpage}{21}
-\indexentry{mobile@{mobile}!Dislocation@{Dislocation}|hyperpage}{21}
+\indexentry{Dislocation@{Dislocation}!mobile@{mobile}|hyperpage}{22}
+\indexentry{mobile@{mobile}!Dislocation@{Dislocation}|hyperpage}{22}
 \indexentry{Dislocation@{Dislocation}!pos@{pos}|hyperpage}{22}
 \indexentry{pos@{pos}!Dislocation@{Dislocation}|hyperpage}{22}
 \indexentry{Dislocation@{Dislocation}!rotation\discretionary {-}{}{}Matrix@{rotation\discretionary {-}{}{}Matrix}|hyperpage}{22}
 \indexentry{rotation\discretionary {-}{}{}Matrix@{rotation\discretionary {-}{}{}Matrix}!Dislocation@{Dislocation}|hyperpage}{22}
-\indexentry{Matrix33@{Matrix33}|hyperpage}{22}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{24}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{24}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{24}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{24}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{24}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{24}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{25}
-\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{25}
-\indexentry{Matrix33@{Matrix33}!adjugate@{adjugate}|hyperpage}{25}
-\indexentry{adjugate@{adjugate}!Matrix33@{Matrix33}|hyperpage}{25}
-\indexentry{Matrix33@{Matrix33}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{25}
-\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Matrix33@{Matrix33}|hyperpage}{25}
-\indexentry{Matrix33@{Matrix33}!operator!@{operator!}|hyperpage}{26}
-\indexentry{operator!@{operator!}!Matrix33@{Matrix33}|hyperpage}{26}
-\indexentry{Matrix33@{Matrix33}!operator$\ast $@{operator$\ast $}|hyperpage}{26}
-\indexentry{operator$\ast $@{operator$\ast $}!Matrix33@{Matrix33}|hyperpage}{26}
-\indexentry{Matrix33@{Matrix33}!operator$\ast $@{operator$\ast $}|hyperpage}{27}
-\indexentry{operator$\ast $@{operator$\ast $}!Matrix33@{Matrix33}|hyperpage}{27}
-\indexentry{Matrix33@{Matrix33}!operator$\ast $@{operator$\ast $}|hyperpage}{27}
-\indexentry{operator$\ast $@{operator$\ast $}!Matrix33@{Matrix33}|hyperpage}{27}
-\indexentry{Matrix33@{Matrix33}!operator$\ast $=@{operator$\ast $=}|hyperpage}{28}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Matrix33@{Matrix33}|hyperpage}{28}
-\indexentry{Matrix33@{Matrix33}!operator$\ast $=@{operator$\ast $=}|hyperpage}{28}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Matrix33@{Matrix33}|hyperpage}{28}
-\indexentry{Matrix33@{Matrix33}!operator+@{operator+}|hyperpage}{28}
-\indexentry{operator+@{operator+}!Matrix33@{Matrix33}|hyperpage}{28}
-\indexentry{Matrix33@{Matrix33}!operator+=@{operator+=}|hyperpage}{29}
-\indexentry{operator+=@{operator+=}!Matrix33@{Matrix33}|hyperpage}{29}
-\indexentry{Matrix33@{Matrix33}!operator-\/@{operator-\/}|hyperpage}{29}
-\indexentry{operator-\/@{operator-\/}!Matrix33@{Matrix33}|hyperpage}{29}
-\indexentry{Matrix33@{Matrix33}!operator-\/=@{operator-\/=}|hyperpage}{29}
-\indexentry{operator-\/=@{operator-\/=}!Matrix33@{Matrix33}|hyperpage}{29}
-\indexentry{Matrix33@{Matrix33}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{30}
-\indexentry{operator$^\wedge $@{operator$^\wedge $}!Matrix33@{Matrix33}|hyperpage}{30}
-\indexentry{Matrix33@{Matrix33}!operator$\sim $@{operator$\sim $}|hyperpage}{30}
-\indexentry{operator$\sim $@{operator$\sim $}!Matrix33@{Matrix33}|hyperpage}{30}
-\indexentry{Matrix33@{Matrix33}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{30}
-\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Matrix33@{Matrix33}|hyperpage}{30}
-\indexentry{Matrix33@{Matrix33}!x@{x}|hyperpage}{31}
-\indexentry{x@{x}!Matrix33@{Matrix33}|hyperpage}{31}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{31}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{33}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{33}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{33}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{33}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!adjugate@{adjugate}|hyperpage}{34}
-\indexentry{adjugate@{adjugate}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{34}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{34}
-\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{34}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator!@{operator!}|hyperpage}{34}
-\indexentry{operator!@{operator!}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{34}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $@{operator$\ast $}|hyperpage}{35}
-\indexentry{operator$\ast $@{operator$\ast $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{35}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $@{operator$\ast $}|hyperpage}{35}
-\indexentry{operator$\ast $@{operator$\ast $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{35}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $@{operator$\ast $}|hyperpage}{36}
-\indexentry{operator$\ast $@{operator$\ast $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{36}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $=@{operator$\ast $=}|hyperpage}{36}
-\indexentry{operator$\ast $=@{operator$\ast $=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{36}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $=@{operator$\ast $=}|hyperpage}{36}
-\indexentry{operator$\ast $=@{operator$\ast $=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{36}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator+@{operator+}|hyperpage}{37}
-\indexentry{operator+@{operator+}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{37}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator+=@{operator+=}|hyperpage}{37}
-\indexentry{operator+=@{operator+=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{37}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator-\/@{operator-\/}|hyperpage}{37}
-\indexentry{operator-\/@{operator-\/}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{37}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator-\/=@{operator-\/=}|hyperpage}{38}
-\indexentry{operator-\/=@{operator-\/=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{38}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{38}
-\indexentry{operator$^\wedge $@{operator$^\wedge $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{38}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\sim $@{operator$\sim $}|hyperpage}{38}
-\indexentry{operator$\sim $@{operator$\sim $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{38}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{39}
-\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{39}
-\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!x@{x}|hyperpage}{39}
-\indexentry{x@{x}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{39}
-\indexentry{Strain@{Strain}|hyperpage}{40}
-\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{41}
-\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{41}
-\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{42}
-\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{42}
-\indexentry{Strain@{Strain}!adjugate@{adjugate}|hyperpage}{42}
-\indexentry{adjugate@{adjugate}!Strain@{Strain}|hyperpage}{42}
-\indexentry{Strain@{Strain}!get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}|hyperpage}{43}
-\indexentry{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{43}
-\indexentry{Strain@{Strain}!get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}|hyperpage}{43}
-\indexentry{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{43}
-\indexentry{Strain@{Strain}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{43}
-\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Strain@{Strain}|hyperpage}{43}
-\indexentry{Strain@{Strain}!operator!@{operator!}|hyperpage}{44}
-\indexentry{operator!@{operator!}!Strain@{Strain}|hyperpage}{44}
-\indexentry{Strain@{Strain}!operator$\ast $@{operator$\ast $}|hyperpage}{44}
-\indexentry{operator$\ast $@{operator$\ast $}!Strain@{Strain}|hyperpage}{44}
-\indexentry{Strain@{Strain}!operator$\ast $@{operator$\ast $}|hyperpage}{45}
-\indexentry{operator$\ast $@{operator$\ast $}!Strain@{Strain}|hyperpage}{45}
-\indexentry{Strain@{Strain}!operator$\ast $@{operator$\ast $}|hyperpage}{45}
-\indexentry{operator$\ast $@{operator$\ast $}!Strain@{Strain}|hyperpage}{45}
-\indexentry{Strain@{Strain}!operator$\ast $=@{operator$\ast $=}|hyperpage}{45}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Strain@{Strain}|hyperpage}{45}
-\indexentry{Strain@{Strain}!operator$\ast $=@{operator$\ast $=}|hyperpage}{46}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Strain@{Strain}|hyperpage}{46}
-\indexentry{Strain@{Strain}!operator+@{operator+}|hyperpage}{46}
-\indexentry{operator+@{operator+}!Strain@{Strain}|hyperpage}{46}
-\indexentry{Strain@{Strain}!operator+=@{operator+=}|hyperpage}{46}
-\indexentry{operator+=@{operator+=}!Strain@{Strain}|hyperpage}{46}
-\indexentry{Strain@{Strain}!operator-\/@{operator-\/}|hyperpage}{47}
-\indexentry{operator-\/@{operator-\/}!Strain@{Strain}|hyperpage}{47}
-\indexentry{Strain@{Strain}!operator-\/=@{operator-\/=}|hyperpage}{47}
-\indexentry{operator-\/=@{operator-\/=}!Strain@{Strain}|hyperpage}{47}
-\indexentry{Strain@{Strain}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{47}
-\indexentry{operator$^\wedge $@{operator$^\wedge $}!Strain@{Strain}|hyperpage}{47}
-\indexentry{Strain@{Strain}!operator$\sim $@{operator$\sim $}|hyperpage}{48}
-\indexentry{operator$\sim $@{operator$\sim $}!Strain@{Strain}|hyperpage}{48}
-\indexentry{Strain@{Strain}!populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}|hyperpage}{48}
-\indexentry{populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}!Strain@{Strain}|hyperpage}{48}
-\indexentry{Strain@{Strain}!rotate@{rotate}|hyperpage}{48}
-\indexentry{rotate@{rotate}!Strain@{Strain}|hyperpage}{48}
-\indexentry{Strain@{Strain}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{49}
-\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Strain@{Strain}|hyperpage}{49}
-\indexentry{Strain@{Strain}!principal\discretionary {-}{}{}Strains@{principal\discretionary {-}{}{}Strains}|hyperpage}{49}
-\indexentry{principal\discretionary {-}{}{}Strains@{principal\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{49}
-\indexentry{Strain@{Strain}!shear\discretionary {-}{}{}Strains@{shear\discretionary {-}{}{}Strains}|hyperpage}{49}
-\indexentry{shear\discretionary {-}{}{}Strains@{shear\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{49}
-\indexentry{Strain@{Strain}!x@{x}|hyperpage}{50}
-\indexentry{x@{x}!Strain@{Strain}|hyperpage}{50}
-\indexentry{Stress@{Stress}|hyperpage}{50}
-\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{52}
-\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{52}
-\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{52}
-\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{52}
-\indexentry{Stress@{Stress}!adjugate@{adjugate}|hyperpage}{52}
-\indexentry{adjugate@{adjugate}!Stress@{Stress}|hyperpage}{52}
-\indexentry{Stress@{Stress}!get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}|hyperpage}{53}
-\indexentry{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{53}
-\indexentry{Stress@{Stress}!get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}|hyperpage}{53}
-\indexentry{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{53}
-\indexentry{Stress@{Stress}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{53}
-\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Stress@{Stress}|hyperpage}{53}
-\indexentry{Stress@{Stress}!operator!@{operator!}|hyperpage}{54}
-\indexentry{operator!@{operator!}!Stress@{Stress}|hyperpage}{54}
-\indexentry{Stress@{Stress}!operator$\ast $@{operator$\ast $}|hyperpage}{54}
-\indexentry{operator$\ast $@{operator$\ast $}!Stress@{Stress}|hyperpage}{54}
-\indexentry{Stress@{Stress}!operator$\ast $@{operator$\ast $}|hyperpage}{55}
-\indexentry{operator$\ast $@{operator$\ast $}!Stress@{Stress}|hyperpage}{55}
-\indexentry{Stress@{Stress}!operator$\ast $@{operator$\ast $}|hyperpage}{55}
-\indexentry{operator$\ast $@{operator$\ast $}!Stress@{Stress}|hyperpage}{55}
-\indexentry{Stress@{Stress}!operator$\ast $=@{operator$\ast $=}|hyperpage}{56}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Stress@{Stress}|hyperpage}{56}
-\indexentry{Stress@{Stress}!operator$\ast $=@{operator$\ast $=}|hyperpage}{56}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Stress@{Stress}|hyperpage}{56}
-\indexentry{Stress@{Stress}!operator+@{operator+}|hyperpage}{56}
-\indexentry{operator+@{operator+}!Stress@{Stress}|hyperpage}{56}
-\indexentry{Stress@{Stress}!operator+=@{operator+=}|hyperpage}{57}
-\indexentry{operator+=@{operator+=}!Stress@{Stress}|hyperpage}{57}
-\indexentry{Stress@{Stress}!operator-\/@{operator-\/}|hyperpage}{57}
-\indexentry{operator-\/@{operator-\/}!Stress@{Stress}|hyperpage}{57}
-\indexentry{Stress@{Stress}!operator-\/=@{operator-\/=}|hyperpage}{57}
-\indexentry{operator-\/=@{operator-\/=}!Stress@{Stress}|hyperpage}{57}
-\indexentry{Stress@{Stress}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{58}
-\indexentry{operator$^\wedge $@{operator$^\wedge $}!Stress@{Stress}|hyperpage}{58}
-\indexentry{Stress@{Stress}!operator$\sim $@{operator$\sim $}|hyperpage}{58}
-\indexentry{operator$\sim $@{operator$\sim $}!Stress@{Stress}|hyperpage}{58}
-\indexentry{Stress@{Stress}!populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}|hyperpage}{58}
-\indexentry{populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}!Stress@{Stress}|hyperpage}{58}
-\indexentry{Stress@{Stress}!rotate@{rotate}|hyperpage}{59}
-\indexentry{rotate@{rotate}!Stress@{Stress}|hyperpage}{59}
-\indexentry{Stress@{Stress}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{59}
-\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Stress@{Stress}|hyperpage}{59}
-\indexentry{Stress@{Stress}!principal\discretionary {-}{}{}Stresses@{principal\discretionary {-}{}{}Stresses}|hyperpage}{60}
-\indexentry{principal\discretionary {-}{}{}Stresses@{principal\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{60}
-\indexentry{Stress@{Stress}!shear\discretionary {-}{}{}Stresses@{shear\discretionary {-}{}{}Stresses}|hyperpage}{60}
-\indexentry{shear\discretionary {-}{}{}Stresses@{shear\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{60}
-\indexentry{Stress@{Stress}!x@{x}|hyperpage}{60}
-\indexentry{x@{x}!Stress@{Stress}|hyperpage}{60}
-\indexentry{Vector3d@{Vector3d}|hyperpage}{60}
-\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{61}
-\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{61}
-\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{61}
-\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{61}
-\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{62}
-\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{62}
-\indexentry{Vector3d@{Vector3d}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{62}
-\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Vector3d@{Vector3d}|hyperpage}{62}
-\indexentry{Vector3d@{Vector3d}!get\discretionary {-}{}{}Vector@{get\discretionary {-}{}{}Vector}|hyperpage}{63}
-\indexentry{get\discretionary {-}{}{}Vector@{get\discretionary {-}{}{}Vector}!Vector3d@{Vector3d}|hyperpage}{63}
-\indexentry{Vector3d@{Vector3d}!magnitude@{magnitude}|hyperpage}{63}
-\indexentry{magnitude@{magnitude}!Vector3d@{Vector3d}|hyperpage}{63}
-\indexentry{Vector3d@{Vector3d}!normalize@{normalize}|hyperpage}{63}
-\indexentry{normalize@{normalize}!Vector3d@{Vector3d}|hyperpage}{63}
-\indexentry{Vector3d@{Vector3d}!operator$\ast $@{operator$\ast $}|hyperpage}{64}
-\indexentry{operator$\ast $@{operator$\ast $}!Vector3d@{Vector3d}|hyperpage}{64}
-\indexentry{Vector3d@{Vector3d}!operator$\ast $@{operator$\ast $}|hyperpage}{64}
-\indexentry{operator$\ast $@{operator$\ast $}!Vector3d@{Vector3d}|hyperpage}{64}
-\indexentry{Vector3d@{Vector3d}!operator$\ast $=@{operator$\ast $=}|hyperpage}{64}
-\indexentry{operator$\ast $=@{operator$\ast $=}!Vector3d@{Vector3d}|hyperpage}{64}
-\indexentry{Vector3d@{Vector3d}!operator+@{operator+}|hyperpage}{65}
-\indexentry{operator+@{operator+}!Vector3d@{Vector3d}|hyperpage}{65}
-\indexentry{Vector3d@{Vector3d}!operator+=@{operator+=}|hyperpage}{65}
-\indexentry{operator+=@{operator+=}!Vector3d@{Vector3d}|hyperpage}{65}
-\indexentry{Vector3d@{Vector3d}!operator-\/@{operator-\/}|hyperpage}{65}
-\indexentry{operator-\/@{operator-\/}!Vector3d@{Vector3d}|hyperpage}{65}
-\indexentry{Vector3d@{Vector3d}!operator-\/=@{operator-\/=}|hyperpage}{66}
-\indexentry{operator-\/=@{operator-\/=}!Vector3d@{Vector3d}|hyperpage}{66}
-\indexentry{Vector3d@{Vector3d}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{66}
-\indexentry{operator$^\wedge $@{operator$^\wedge $}!Vector3d@{Vector3d}|hyperpage}{66}
-\indexentry{Vector3d@{Vector3d}!operator$^\wedge $=@{operator$^\wedge $=}|hyperpage}{66}
-\indexentry{operator$^\wedge $=@{operator$^\wedge $=}!Vector3d@{Vector3d}|hyperpage}{66}
-\indexentry{Vector3d@{Vector3d}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{67}
-\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Vector3d@{Vector3d}|hyperpage}{67}
-\indexentry{Vector3d@{Vector3d}!set\discretionary {-}{}{}Vector@{set\discretionary {-}{}{}Vector}|hyperpage}{67}
-\indexentry{set\discretionary {-}{}{}Vector@{set\discretionary {-}{}{}Vector}!Vector3d@{Vector3d}|hyperpage}{67}
-\indexentry{Vector3d@{Vector3d}!sum@{sum}|hyperpage}{67}
-\indexentry{sum@{sum}!Vector3d@{Vector3d}|hyperpage}{67}
-\indexentry{Vector3d@{Vector3d}!x@{x}|hyperpage}{68}
-\indexentry{x@{x}!Vector3d@{Vector3d}|hyperpage}{68}
-\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}|hyperpage}{69}
-\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!P\discretionary {-}{}{}I@{P\discretionary {-}{}{}I}|hyperpage}{70}
-\indexentry{P\discretionary {-}{}{}I@{P\discretionary {-}{}{}I}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{70}
-\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}|hyperpage}{70}
-\indexentry{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{70}
-\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}|hyperpage}{70}
-\indexentry{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{70}
-\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}|hyperpage}{70}
-\indexentry{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{70}
-\indexentry{defect.\discretionary {-}{}{}cpp@{defect.\discretionary {-}{}{}cpp}|hyperpage}{70}
-\indexentry{defect.\discretionary {-}{}{}h@{defect.\discretionary {-}{}{}h}|hyperpage}{72}
-\indexentry{dislocation.\discretionary {-}{}{}cpp@{dislocation.\discretionary {-}{}{}cpp}|hyperpage}{73}
-\indexentry{dislocation.\discretionary {-}{}{}h@{dislocation.\discretionary {-}{}{}h}|hyperpage}{75}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{76}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}|hyperpage}{78}
-\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{78}
-\indexentry{matrix33.\discretionary {-}{}{}cpp@{matrix33.\discretionary {-}{}{}cpp}|hyperpage}{78}
-\indexentry{matrix33.\discretionary {-}{}{}h@{matrix33.\discretionary {-}{}{}h}|hyperpage}{79}
-\indexentry{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp@{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp}|hyperpage}{81}
-\indexentry{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h@{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h}|hyperpage}{81}
-\indexentry{strain.\discretionary {-}{}{}cpp@{strain.\discretionary {-}{}{}cpp}|hyperpage}{83}
-\indexentry{strain.\discretionary {-}{}{}h@{strain.\discretionary {-}{}{}h}|hyperpage}{85}
-\indexentry{stress.\discretionary {-}{}{}cpp@{stress.\discretionary {-}{}{}cpp}|hyperpage}{86}
-\indexentry{stress.\discretionary {-}{}{}h@{stress.\discretionary {-}{}{}h}|hyperpage}{88}
-\indexentry{vector3d.\discretionary {-}{}{}cpp@{vector3d.\discretionary {-}{}{}cpp}|hyperpage}{89}
-\indexentry{vector3d.\discretionary {-}{}{}h@{vector3d.\discretionary {-}{}{}h}|hyperpage}{90}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{22}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{24}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{24}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{24}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{24}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!get\discretionary {-}{}{}Position@{get\discretionary {-}{}{}Position}|hyperpage}{25}
+\indexentry{get\discretionary {-}{}{}Position@{get\discretionary {-}{}{}Position}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{25}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!get\discretionary {-}{}{}Position@{get\discretionary {-}{}{}Position}|hyperpage}{25}
+\indexentry{get\discretionary {-}{}{}Position@{get\discretionary {-}{}{}Position}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{25}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!get\discretionary {-}{}{}X@{get\discretionary {-}{}{}X}|hyperpage}{25}
+\indexentry{get\discretionary {-}{}{}X@{get\discretionary {-}{}{}X}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{25}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!get\discretionary {-}{}{}Y@{get\discretionary {-}{}{}Y}|hyperpage}{26}
+\indexentry{get\discretionary {-}{}{}Y@{get\discretionary {-}{}{}Y}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{26}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!get\discretionary {-}{}{}Z@{get\discretionary {-}{}{}Z}|hyperpage}{26}
+\indexentry{get\discretionary {-}{}{}Z@{get\discretionary {-}{}{}Z}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{26}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}Burgers@{set\discretionary {-}{}{}Burgers}|hyperpage}{26}
+\indexentry{set\discretionary {-}{}{}Burgers@{set\discretionary {-}{}{}Burgers}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{26}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}Line\discretionary {-}{}{}Vector@{set\discretionary {-}{}{}Line\discretionary {-}{}{}Vector}|hyperpage}{26}
+\indexentry{set\discretionary {-}{}{}Line\discretionary {-}{}{}Vector@{set\discretionary {-}{}{}Line\discretionary {-}{}{}Vector}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{26}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}|hyperpage}{27}
+\indexentry{set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{27}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}|hyperpage}{27}
+\indexentry{set\discretionary {-}{}{}Position@{set\discretionary {-}{}{}Position}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{27}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}X@{set\discretionary {-}{}{}X}|hyperpage}{27}
+\indexentry{set\discretionary {-}{}{}X@{set\discretionary {-}{}{}X}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{27}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}Y@{set\discretionary {-}{}{}Y}|hyperpage}{28}
+\indexentry{set\discretionary {-}{}{}Y@{set\discretionary {-}{}{}Y}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{28}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!set\discretionary {-}{}{}Z@{set\discretionary {-}{}{}Z}|hyperpage}{28}
+\indexentry{set\discretionary {-}{}{}Z@{set\discretionary {-}{}{}Z}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{28}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!stress\discretionary {-}{}{}Field@{stress\discretionary {-}{}{}Field}|hyperpage}{28}
+\indexentry{stress\discretionary {-}{}{}Field@{stress\discretionary {-}{}{}Field}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{28}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!bmag@{bmag}|hyperpage}{29}
+\indexentry{bmag@{bmag}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!bvec@{bvec}|hyperpage}{29}
+\indexentry{bvec@{bvec}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!lvec@{lvec}|hyperpage}{29}
+\indexentry{lvec@{lvec}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!mobile@{mobile}|hyperpage}{29}
+\indexentry{mobile@{mobile}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!n\discretionary {-}{}{}Iterations@{n\discretionary {-}{}{}Iterations}|hyperpage}{29}
+\indexentry{n\discretionary {-}{}{}Iterations@{n\discretionary {-}{}{}Iterations}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!pos@{pos}|hyperpage}{29}
+\indexentry{pos@{pos}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!rotation\discretionary {-}{}{}Matrix@{rotation\discretionary {-}{}{}Matrix}|hyperpage}{29}
+\indexentry{rotation\discretionary {-}{}{}Matrix@{rotation\discretionary {-}{}{}Matrix}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{29}
+\indexentry{Dislocation\discretionary {-}{}{}Source@{Dislocation\discretionary {-}{}{}Source}!tau\discretionary {-}{}{}Critical@{tau\discretionary {-}{}{}Critical}|hyperpage}{30}
+\indexentry{tau\discretionary {-}{}{}Critical@{tau\discretionary {-}{}{}Critical}!DislocationSource@{Dislocation\discretionary {-}{}{}Source}|hyperpage}{30}
+\indexentry{Matrix33@{Matrix33}|hyperpage}{30}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{31}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{31}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{32}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{32}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{32}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{32}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{32}
+\indexentry{Matrix33@{Matrix33}!Matrix33@{Matrix33}|hyperpage}{32}
+\indexentry{Matrix33@{Matrix33}!adjugate@{adjugate}|hyperpage}{33}
+\indexentry{adjugate@{adjugate}!Matrix33@{Matrix33}|hyperpage}{33}
+\indexentry{Matrix33@{Matrix33}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{33}
+\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Matrix33@{Matrix33}|hyperpage}{33}
+\indexentry{Matrix33@{Matrix33}!operator!@{operator!}|hyperpage}{34}
+\indexentry{operator!@{operator!}!Matrix33@{Matrix33}|hyperpage}{34}
+\indexentry{Matrix33@{Matrix33}!operator$\ast $@{operator$\ast $}|hyperpage}{34}
+\indexentry{operator$\ast $@{operator$\ast $}!Matrix33@{Matrix33}|hyperpage}{34}
+\indexentry{Matrix33@{Matrix33}!operator$\ast $@{operator$\ast $}|hyperpage}{35}
+\indexentry{operator$\ast $@{operator$\ast $}!Matrix33@{Matrix33}|hyperpage}{35}
+\indexentry{Matrix33@{Matrix33}!operator$\ast $@{operator$\ast $}|hyperpage}{35}
+\indexentry{operator$\ast $@{operator$\ast $}!Matrix33@{Matrix33}|hyperpage}{35}
+\indexentry{Matrix33@{Matrix33}!operator$\ast $=@{operator$\ast $=}|hyperpage}{35}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Matrix33@{Matrix33}|hyperpage}{35}
+\indexentry{Matrix33@{Matrix33}!operator$\ast $=@{operator$\ast $=}|hyperpage}{36}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Matrix33@{Matrix33}|hyperpage}{36}
+\indexentry{Matrix33@{Matrix33}!operator+@{operator+}|hyperpage}{36}
+\indexentry{operator+@{operator+}!Matrix33@{Matrix33}|hyperpage}{36}
+\indexentry{Matrix33@{Matrix33}!operator+=@{operator+=}|hyperpage}{36}
+\indexentry{operator+=@{operator+=}!Matrix33@{Matrix33}|hyperpage}{36}
+\indexentry{Matrix33@{Matrix33}!operator-\/@{operator-\/}|hyperpage}{37}
+\indexentry{operator-\/@{operator-\/}!Matrix33@{Matrix33}|hyperpage}{37}
+\indexentry{Matrix33@{Matrix33}!operator-\/=@{operator-\/=}|hyperpage}{37}
+\indexentry{operator-\/=@{operator-\/=}!Matrix33@{Matrix33}|hyperpage}{37}
+\indexentry{Matrix33@{Matrix33}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{37}
+\indexentry{operator$^\wedge $@{operator$^\wedge $}!Matrix33@{Matrix33}|hyperpage}{37}
+\indexentry{Matrix33@{Matrix33}!operator$\sim $@{operator$\sim $}|hyperpage}{38}
+\indexentry{operator$\sim $@{operator$\sim $}!Matrix33@{Matrix33}|hyperpage}{38}
+\indexentry{Matrix33@{Matrix33}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{38}
+\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Matrix33@{Matrix33}|hyperpage}{38}
+\indexentry{Matrix33@{Matrix33}!x@{x}|hyperpage}{39}
+\indexentry{x@{x}!Matrix33@{Matrix33}|hyperpage}{39}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{39}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{41}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{41}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{41}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{41}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!adjugate@{adjugate}|hyperpage}{42}
+\indexentry{adjugate@{adjugate}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{42}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{42}
+\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{42}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator!@{operator!}|hyperpage}{42}
+\indexentry{operator!@{operator!}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{42}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $@{operator$\ast $}|hyperpage}{43}
+\indexentry{operator$\ast $@{operator$\ast $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{43}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $@{operator$\ast $}|hyperpage}{43}
+\indexentry{operator$\ast $@{operator$\ast $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{43}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $@{operator$\ast $}|hyperpage}{44}
+\indexentry{operator$\ast $@{operator$\ast $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{44}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $=@{operator$\ast $=}|hyperpage}{44}
+\indexentry{operator$\ast $=@{operator$\ast $=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{44}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\ast $=@{operator$\ast $=}|hyperpage}{44}
+\indexentry{operator$\ast $=@{operator$\ast $=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{44}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator+@{operator+}|hyperpage}{45}
+\indexentry{operator+@{operator+}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{45}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator+=@{operator+=}|hyperpage}{45}
+\indexentry{operator+=@{operator+=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{45}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator-\/@{operator-\/}|hyperpage}{45}
+\indexentry{operator-\/@{operator-\/}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{45}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator-\/=@{operator-\/=}|hyperpage}{46}
+\indexentry{operator-\/=@{operator-\/=}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{46}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{46}
+\indexentry{operator$^\wedge $@{operator$^\wedge $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{46}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!operator$\sim $@{operator$\sim $}|hyperpage}{46}
+\indexentry{operator$\sim $@{operator$\sim $}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{46}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{47}
+\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{47}
+\indexentry{Rotation\discretionary {-}{}{}Matrix@{Rotation\discretionary {-}{}{}Matrix}!x@{x}|hyperpage}{47}
+\indexentry{x@{x}!RotationMatrix@{Rotation\discretionary {-}{}{}Matrix}|hyperpage}{47}
+\indexentry{Strain@{Strain}|hyperpage}{48}
+\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{49}
+\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{49}
+\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{50}
+\indexentry{Strain@{Strain}!Strain@{Strain}|hyperpage}{50}
+\indexentry{Strain@{Strain}!adjugate@{adjugate}|hyperpage}{50}
+\indexentry{adjugate@{adjugate}!Strain@{Strain}|hyperpage}{50}
+\indexentry{Strain@{Strain}!get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}|hyperpage}{51}
+\indexentry{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{51}
+\indexentry{Strain@{Strain}!get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}|hyperpage}{51}
+\indexentry{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{51}
+\indexentry{Strain@{Strain}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{51}
+\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Strain@{Strain}|hyperpage}{51}
+\indexentry{Strain@{Strain}!operator!@{operator!}|hyperpage}{52}
+\indexentry{operator!@{operator!}!Strain@{Strain}|hyperpage}{52}
+\indexentry{Strain@{Strain}!operator$\ast $@{operator$\ast $}|hyperpage}{52}
+\indexentry{operator$\ast $@{operator$\ast $}!Strain@{Strain}|hyperpage}{52}
+\indexentry{Strain@{Strain}!operator$\ast $@{operator$\ast $}|hyperpage}{53}
+\indexentry{operator$\ast $@{operator$\ast $}!Strain@{Strain}|hyperpage}{53}
+\indexentry{Strain@{Strain}!operator$\ast $@{operator$\ast $}|hyperpage}{53}
+\indexentry{operator$\ast $@{operator$\ast $}!Strain@{Strain}|hyperpage}{53}
+\indexentry{Strain@{Strain}!operator$\ast $=@{operator$\ast $=}|hyperpage}{53}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Strain@{Strain}|hyperpage}{53}
+\indexentry{Strain@{Strain}!operator$\ast $=@{operator$\ast $=}|hyperpage}{54}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Strain@{Strain}|hyperpage}{54}
+\indexentry{Strain@{Strain}!operator+@{operator+}|hyperpage}{54}
+\indexentry{operator+@{operator+}!Strain@{Strain}|hyperpage}{54}
+\indexentry{Strain@{Strain}!operator+=@{operator+=}|hyperpage}{54}
+\indexentry{operator+=@{operator+=}!Strain@{Strain}|hyperpage}{54}
+\indexentry{Strain@{Strain}!operator-\/@{operator-\/}|hyperpage}{55}
+\indexentry{operator-\/@{operator-\/}!Strain@{Strain}|hyperpage}{55}
+\indexentry{Strain@{Strain}!operator-\/=@{operator-\/=}|hyperpage}{55}
+\indexentry{operator-\/=@{operator-\/=}!Strain@{Strain}|hyperpage}{55}
+\indexentry{Strain@{Strain}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{55}
+\indexentry{operator$^\wedge $@{operator$^\wedge $}!Strain@{Strain}|hyperpage}{55}
+\indexentry{Strain@{Strain}!operator$\sim $@{operator$\sim $}|hyperpage}{56}
+\indexentry{operator$\sim $@{operator$\sim $}!Strain@{Strain}|hyperpage}{56}
+\indexentry{Strain@{Strain}!populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}|hyperpage}{56}
+\indexentry{populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}!Strain@{Strain}|hyperpage}{56}
+\indexentry{Strain@{Strain}!rotate@{rotate}|hyperpage}{56}
+\indexentry{rotate@{rotate}!Strain@{Strain}|hyperpage}{56}
+\indexentry{Strain@{Strain}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{57}
+\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Strain@{Strain}|hyperpage}{57}
+\indexentry{Strain@{Strain}!principal\discretionary {-}{}{}Strains@{principal\discretionary {-}{}{}Strains}|hyperpage}{57}
+\indexentry{principal\discretionary {-}{}{}Strains@{principal\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{57}
+\indexentry{Strain@{Strain}!shear\discretionary {-}{}{}Strains@{shear\discretionary {-}{}{}Strains}|hyperpage}{57}
+\indexentry{shear\discretionary {-}{}{}Strains@{shear\discretionary {-}{}{}Strains}!Strain@{Strain}|hyperpage}{57}
+\indexentry{Strain@{Strain}!x@{x}|hyperpage}{58}
+\indexentry{x@{x}!Strain@{Strain}|hyperpage}{58}
+\indexentry{Stress@{Stress}|hyperpage}{58}
+\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{60}
+\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{60}
+\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{60}
+\indexentry{Stress@{Stress}!Stress@{Stress}|hyperpage}{60}
+\indexentry{Stress@{Stress}!adjugate@{adjugate}|hyperpage}{60}
+\indexentry{adjugate@{adjugate}!Stress@{Stress}|hyperpage}{60}
+\indexentry{Stress@{Stress}!get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}|hyperpage}{61}
+\indexentry{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{61}
+\indexentry{Stress@{Stress}!get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}|hyperpage}{61}
+\indexentry{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses@{get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{61}
+\indexentry{Stress@{Stress}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{61}
+\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Stress@{Stress}|hyperpage}{61}
+\indexentry{Stress@{Stress}!operator!@{operator!}|hyperpage}{62}
+\indexentry{operator!@{operator!}!Stress@{Stress}|hyperpage}{62}
+\indexentry{Stress@{Stress}!operator$\ast $@{operator$\ast $}|hyperpage}{62}
+\indexentry{operator$\ast $@{operator$\ast $}!Stress@{Stress}|hyperpage}{62}
+\indexentry{Stress@{Stress}!operator$\ast $@{operator$\ast $}|hyperpage}{63}
+\indexentry{operator$\ast $@{operator$\ast $}!Stress@{Stress}|hyperpage}{63}
+\indexentry{Stress@{Stress}!operator$\ast $@{operator$\ast $}|hyperpage}{63}
+\indexentry{operator$\ast $@{operator$\ast $}!Stress@{Stress}|hyperpage}{63}
+\indexentry{Stress@{Stress}!operator$\ast $=@{operator$\ast $=}|hyperpage}{64}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Stress@{Stress}|hyperpage}{64}
+\indexentry{Stress@{Stress}!operator$\ast $=@{operator$\ast $=}|hyperpage}{64}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Stress@{Stress}|hyperpage}{64}
+\indexentry{Stress@{Stress}!operator+@{operator+}|hyperpage}{64}
+\indexentry{operator+@{operator+}!Stress@{Stress}|hyperpage}{64}
+\indexentry{Stress@{Stress}!operator+=@{operator+=}|hyperpage}{65}
+\indexentry{operator+=@{operator+=}!Stress@{Stress}|hyperpage}{65}
+\indexentry{Stress@{Stress}!operator-\/@{operator-\/}|hyperpage}{65}
+\indexentry{operator-\/@{operator-\/}!Stress@{Stress}|hyperpage}{65}
+\indexentry{Stress@{Stress}!operator-\/=@{operator-\/=}|hyperpage}{65}
+\indexentry{operator-\/=@{operator-\/=}!Stress@{Stress}|hyperpage}{65}
+\indexentry{Stress@{Stress}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{66}
+\indexentry{operator$^\wedge $@{operator$^\wedge $}!Stress@{Stress}|hyperpage}{66}
+\indexentry{Stress@{Stress}!operator$\sim $@{operator$\sim $}|hyperpage}{66}
+\indexentry{operator$\sim $@{operator$\sim $}!Stress@{Stress}|hyperpage}{66}
+\indexentry{Stress@{Stress}!populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}|hyperpage}{66}
+\indexentry{populate\discretionary {-}{}{}Matrix@{populate\discretionary {-}{}{}Matrix}!Stress@{Stress}|hyperpage}{66}
+\indexentry{Stress@{Stress}!rotate@{rotate}|hyperpage}{67}
+\indexentry{rotate@{rotate}!Stress@{Stress}|hyperpage}{67}
+\indexentry{Stress@{Stress}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{67}
+\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Stress@{Stress}|hyperpage}{67}
+\indexentry{Stress@{Stress}!principal\discretionary {-}{}{}Stresses@{principal\discretionary {-}{}{}Stresses}|hyperpage}{68}
+\indexentry{principal\discretionary {-}{}{}Stresses@{principal\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{68}
+\indexentry{Stress@{Stress}!shear\discretionary {-}{}{}Stresses@{shear\discretionary {-}{}{}Stresses}|hyperpage}{68}
+\indexentry{shear\discretionary {-}{}{}Stresses@{shear\discretionary {-}{}{}Stresses}!Stress@{Stress}|hyperpage}{68}
+\indexentry{Stress@{Stress}!x@{x}|hyperpage}{68}
+\indexentry{x@{x}!Stress@{Stress}|hyperpage}{68}
+\indexentry{Vector3d@{Vector3d}|hyperpage}{68}
+\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{69}
+\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{69}
+\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{69}
+\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{69}
+\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{70}
+\indexentry{Vector3d@{Vector3d}!Vector3d@{Vector3d}|hyperpage}{70}
+\indexentry{Vector3d@{Vector3d}!get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}|hyperpage}{70}
+\indexentry{get\discretionary {-}{}{}Value@{get\discretionary {-}{}{}Value}!Vector3d@{Vector3d}|hyperpage}{70}
+\indexentry{Vector3d@{Vector3d}!get\discretionary {-}{}{}Vector@{get\discretionary {-}{}{}Vector}|hyperpage}{71}
+\indexentry{get\discretionary {-}{}{}Vector@{get\discretionary {-}{}{}Vector}!Vector3d@{Vector3d}|hyperpage}{71}
+\indexentry{Vector3d@{Vector3d}!magnitude@{magnitude}|hyperpage}{71}
+\indexentry{magnitude@{magnitude}!Vector3d@{Vector3d}|hyperpage}{71}
+\indexentry{Vector3d@{Vector3d}!normalize@{normalize}|hyperpage}{71}
+\indexentry{normalize@{normalize}!Vector3d@{Vector3d}|hyperpage}{71}
+\indexentry{Vector3d@{Vector3d}!operator$\ast $@{operator$\ast $}|hyperpage}{72}
+\indexentry{operator$\ast $@{operator$\ast $}!Vector3d@{Vector3d}|hyperpage}{72}
+\indexentry{Vector3d@{Vector3d}!operator$\ast $@{operator$\ast $}|hyperpage}{72}
+\indexentry{operator$\ast $@{operator$\ast $}!Vector3d@{Vector3d}|hyperpage}{72}
+\indexentry{Vector3d@{Vector3d}!operator$\ast $=@{operator$\ast $=}|hyperpage}{72}
+\indexentry{operator$\ast $=@{operator$\ast $=}!Vector3d@{Vector3d}|hyperpage}{72}
+\indexentry{Vector3d@{Vector3d}!operator+@{operator+}|hyperpage}{73}
+\indexentry{operator+@{operator+}!Vector3d@{Vector3d}|hyperpage}{73}
+\indexentry{Vector3d@{Vector3d}!operator+=@{operator+=}|hyperpage}{73}
+\indexentry{operator+=@{operator+=}!Vector3d@{Vector3d}|hyperpage}{73}
+\indexentry{Vector3d@{Vector3d}!operator-\/@{operator-\/}|hyperpage}{73}
+\indexentry{operator-\/@{operator-\/}!Vector3d@{Vector3d}|hyperpage}{73}
+\indexentry{Vector3d@{Vector3d}!operator-\/=@{operator-\/=}|hyperpage}{74}
+\indexentry{operator-\/=@{operator-\/=}!Vector3d@{Vector3d}|hyperpage}{74}
+\indexentry{Vector3d@{Vector3d}!operator$^\wedge $@{operator$^\wedge $}|hyperpage}{74}
+\indexentry{operator$^\wedge $@{operator$^\wedge $}!Vector3d@{Vector3d}|hyperpage}{74}
+\indexentry{Vector3d@{Vector3d}!operator$^\wedge $=@{operator$^\wedge $=}|hyperpage}{74}
+\indexentry{operator$^\wedge $=@{operator$^\wedge $=}!Vector3d@{Vector3d}|hyperpage}{74}
+\indexentry{Vector3d@{Vector3d}!set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}|hyperpage}{75}
+\indexentry{set\discretionary {-}{}{}Value@{set\discretionary {-}{}{}Value}!Vector3d@{Vector3d}|hyperpage}{75}
+\indexentry{Vector3d@{Vector3d}!set\discretionary {-}{}{}Vector@{set\discretionary {-}{}{}Vector}|hyperpage}{75}
+\indexentry{set\discretionary {-}{}{}Vector@{set\discretionary {-}{}{}Vector}!Vector3d@{Vector3d}|hyperpage}{75}
+\indexentry{Vector3d@{Vector3d}!sum@{sum}|hyperpage}{75}
+\indexentry{sum@{sum}!Vector3d@{Vector3d}|hyperpage}{75}
+\indexentry{Vector3d@{Vector3d}!x@{x}|hyperpage}{76}
+\indexentry{x@{x}!Vector3d@{Vector3d}|hyperpage}{76}
+\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}|hyperpage}{77}
+\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!P\discretionary {-}{}{}I@{P\discretionary {-}{}{}I}|hyperpage}{78}
+\indexentry{P\discretionary {-}{}{}I@{P\discretionary {-}{}{}I}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{78}
+\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}|hyperpage}{78}
+\indexentry{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{78}
+\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}|hyperpage}{78}
+\indexentry{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{78}
+\indexentry{constants.\discretionary {-}{}{}h@{constants.\discretionary {-}{}{}h}!S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}|hyperpage}{78}
+\indexentry{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5@{S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}!constants.h@{constants.\discretionary {-}{}{}h}|hyperpage}{78}
+\indexentry{defect.\discretionary {-}{}{}cpp@{defect.\discretionary {-}{}{}cpp}|hyperpage}{78}
+\indexentry{defect.\discretionary {-}{}{}h@{defect.\discretionary {-}{}{}h}|hyperpage}{80}
+\indexentry{dislocation.\discretionary {-}{}{}cpp@{dislocation.\discretionary {-}{}{}cpp}|hyperpage}{81}
+\indexentry{dislocation.\discretionary {-}{}{}h@{dislocation.\discretionary {-}{}{}h}|hyperpage}{83}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{84}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}|hyperpage}{86}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}!dislocationDefaults.h@{dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp@{dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp}|hyperpage}{86}
+\indexentry{dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h}|hyperpage}{88}
+\indexentry{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{89}
+\indexentry{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}|hyperpage}{90}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}!dislocationSourceDefaults.h@{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{90}
+\indexentry{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h@{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}!D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L}|hyperpage}{90}
+\indexentry{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L@{D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L}!dislocationSourceDefaults.h@{dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}|hyperpage}{90}
+\indexentry{matrix33.\discretionary {-}{}{}cpp@{matrix33.\discretionary {-}{}{}cpp}|hyperpage}{90}
+\indexentry{matrix33.\discretionary {-}{}{}h@{matrix33.\discretionary {-}{}{}h}|hyperpage}{91}
+\indexentry{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp@{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp}|hyperpage}{93}
+\indexentry{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h@{rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h}|hyperpage}{93}
+\indexentry{strain.\discretionary {-}{}{}cpp@{strain.\discretionary {-}{}{}cpp}|hyperpage}{96}
+\indexentry{strain.\discretionary {-}{}{}h@{strain.\discretionary {-}{}{}h}|hyperpage}{97}
+\indexentry{stress.\discretionary {-}{}{}cpp@{stress.\discretionary {-}{}{}cpp}|hyperpage}{98}
+\indexentry{stress.\discretionary {-}{}{}h@{stress.\discretionary {-}{}{}h}|hyperpage}{100}
+\indexentry{vector3d.\discretionary {-}{}{}cpp@{vector3d.\discretionary {-}{}{}cpp}|hyperpage}{102}
+\indexentry{vector3d.\discretionary {-}{}{}h@{vector3d.\discretionary {-}{}{}h}|hyperpage}{102}
