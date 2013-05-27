@@ -124,6 +124,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:adf7d0b496f5935909daf071a0d733b17"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de3/classDislocationSource.html#adf7d0b496f5935909daf071a0d733b17">setLineVector</a> (<a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> line)</td></tr>
 <tr class="memdesc:adf7d0b496f5935909daf071a0d733b17"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the line vector of the dislocation.  <a href="#adf7d0b496f5935909daf071a0d733b17">More...</a><br/></td></tr>
 <tr class="separator:adf7d0b496f5935909daf071a0d733b17"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab1a6ecda50cd9bcd70882b75ec6552ac"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/de3/classDislocationSource.html#ab1a6ecda50cd9bcd70882b75ec6552ac">dipoleNucleationLength</a> (double tau, double mu, double nu)</td></tr>
+<tr class="memdesc:ab1a6ecda50cd9bcd70882b75ec6552ac"><td class="mdescLeft">&#160;</td><td class="mdescRight">The nucleation length of the dipole.  <a href="#ab1a6ecda50cd9bcd70882b75ec6552ac">More...</a><br/></td></tr>
+<tr class="separator:ab1a6ecda50cd9bcd70882b75ec6552ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f">setPosition</a> (double *a)</td></tr>
 <tr class="memdesc:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the defect.  <a href="#a2d233d13a8a93f6fba463a1fbc1c6c9f">More...</a><br/></td></tr>
 <tr class="separator:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -294,6 +297,62 @@ Protected Attributes</h2></td></tr>
 </div>
 </div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="ab1a6ecda50cd9bcd70882b75ec6552ac"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DislocationSource::dipoleNucleationLength </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>tau</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>mu</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>nu</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>The nucleation length of the dipole. </p>
+<p>When a dislocation source has experienced a shear stress greater than the critical value for a certain amount of time, it emits a dislocation dipole. In three dimensions, this is equivalent to a dislocation loop emitted by a Frank-Read source. The length of the dipole (or diameter of the loop in 3D) is such that the interaction force between the two dislocations (or line tension in 3D) balances out the applied shear stress. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">tau</td><td>The shear stress experienced by the dislocation source. </td></tr>
+    <tr><td class="paramname">mu</td><td>Shear modulus of the material, in Pa. </td></tr>
+    <tr><td class="paramname">nu</td><td>Poisson's ratio. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The length of the dislocation dipole. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00078">78</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">double</span> L = 0.0;</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> (tau &gt;= <a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    L = (mu * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>) / ( 2.0 * <a class="code" href="../../d2/d6f/constants_8h.html#a598a3330b3c21701223ee0ca14316eca" title="The irrational number pi.">PI</a> * (1.0 - nu) * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> );</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  </div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> (L);</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <a class="anchor" id="a6842fba3ad14032766ccf0437afcbced"></a>
 <div class="memitem">
 <div class="memproto">
@@ -990,7 +1049,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 27 2013 13:52:14 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 27 2013 14:12:58 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

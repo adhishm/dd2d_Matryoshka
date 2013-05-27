@@ -39,6 +39,8 @@ void \hyperlink{classDislocationSource_ae1a26d9f8149206b884436f44e92f4c3}{set\-B
 \begin{DoxyCompactList}\small\item\em Sets the Burgers vector of the dislocation. \end{DoxyCompactList}\item 
 void \hyperlink{classDislocationSource_adf7d0b496f5935909daf071a0d733b17}{set\-Line\-Vector} (\hyperlink{classVector3d}{Vector3d} line)
 \begin{DoxyCompactList}\small\item\em Sets the line vector of the dislocation. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}{dipole\-Nucleation\-Length} (double tau, double mu, double nu)
+\begin{DoxyCompactList}\small\item\em The nucleation length of the dipole. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_ad1a6acd8399d2ecabb7ce2b77623bbec}{set\-Position} (double x, double y, double z)
@@ -169,6 +171,48 @@ Definition at line 42 of file dislocation\-Source.\-cpp.
 
 
 \subsection{Member Function Documentation}
+\hypertarget{classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}{\index{Dislocation\-Source@{Dislocation\-Source}!dipole\-Nucleation\-Length@{dipole\-Nucleation\-Length}}
+\index{dipole\-Nucleation\-Length@{dipole\-Nucleation\-Length}!DislocationSource@{Dislocation\-Source}}
+\subsubsection[{dipole\-Nucleation\-Length}]{\setlength{\rightskip}{0pt plus 5cm}double Dislocation\-Source\-::dipole\-Nucleation\-Length (
+\begin{DoxyParamCaption}
+\item[{double}]{tau, }
+\item[{double}]{mu, }
+\item[{double}]{nu}
+\end{DoxyParamCaption}
+)}}\label{de/de3/classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}
+
+
+The nucleation length of the dipole. 
+
+When a dislocation source has experienced a shear stress greater than the critical value for a certain amount of time, it emits a dislocation dipole. In three dimensions, this is equivalent to a dislocation loop emitted by a Frank-\/\-Read source. The length of the dipole (or diameter of the loop in 3\-D) is such that the interaction force between the two dislocations (or line tension in 3\-D) balances out the applied shear stress. 
+\begin{DoxyParams}{Parameters}
+{\em tau} & The shear stress experienced by the dislocation source. \\
+\hline
+{\em mu} & Shear modulus of the material, in Pa. \\
+\hline
+{\em nu} & Poisson's ratio. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The length of the dislocation dipole. 
+\end{DoxyReturn}
+
+
+Definition at line 78 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+79 \{
+80   \textcolor{keywordtype}{double} L = 0.0;
+81   
+82   \textcolor{keywordflow}{if} (tau >= \hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical})
+83   \{
+84     L = (mu * this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag}) / ( 2.0 * \hyperlink{constants_8h_a598a3330b3c21701223ee0ca14316eca}{PI} * (1.0 - nu) * this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} );
+85   \}
+86   
+87   \textcolor{keywordflow}{return} (L);
+88 \}
+\end{DoxyCode}
 \hypertarget{classDefect_a6842fba3ad14032766ccf0437afcbced}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Defect\-::get\-Position (

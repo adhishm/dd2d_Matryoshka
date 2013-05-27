@@ -100,6 +100,17 @@ public:
    */
   void setLineVector (Vector3d line);
   
+  // Operations
+  /**
+   * @brief The nucleation length of the dipole.
+   * @details When a dislocation source has experienced a shear stress greater than the critical value for a certain amount of time, it emits a dislocation dipole. In three dimensions, this is equivalent to a dislocation loop emitted by a Frank-Read source. The length of the dipole (or diameter of the loop in 3D) is such that the interaction force between the two dislocations (or line tension in 3D) balances out the applied shear stress.
+   * @param tau The shear stress experienced by the dislocation source.
+   * @param mu Shear modulus of the material, in Pa.
+   * @param nu Poisson's ratio.
+   * @return The length of the dislocation dipole.
+   */
+  double dipoleNucleationLength (double tau, double mu, double nu);
+  
 };
 
 #endif
