@@ -62,6 +62,12 @@ protected:
    */
   int nIterations;
   
+  /**
+   * @brief Counter variable for the number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value.
+   * @details A dislocation source needs to experience a shear stress higher than a critical value, given by tauCritical, for a certain amount of time before it is triggered and it emits a dislocation dipole. This limiting number of iterations is given by the variable nIterations, and this variable countIterations is a counter variable. Once this limit is reached, a dipole is emitted and this counter variable is set to zero.
+   */
+  int countIterations;
+  
 public:
   // Constructors
   /**
@@ -113,6 +119,11 @@ public:
    */
   void setNumIterations (int nIter);
   
+  /**
+   * @brief Sets the iteration counter to zero.
+   */
+  void resetIterationCounter ();
+  
   // Access functions
   /**
    * @brief Returns the Burgers vector of the dislocations in the dipole.
@@ -142,7 +153,13 @@ public:
    * @brief Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
    * @return The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
    */
-  double getNumIterations ();
+  int getNumIterations ();
+  
+  /**
+   * @brief Get the count of the iterations spent at higher than critical shear stress.
+   * @return Number of iterations spent at higher than critical shear stress.
+   */
+  int getIterationCount ();
   
   // Operations specific to the class
   /**
@@ -155,6 +172,17 @@ public:
    */
   double dipoleNucleationLength (double tau, double mu, double nu);
   
+  /**
+   * @brief Increments the variable countIterations by 1.
+   */
+  void incrementIterationCount ();
+  
+  /**
+   * @brief Checks if the dislocation source has experienced higher than critical shear stress for long enough to emit a dipole.
+   * @details The number of iterations for which the dislocation source must experience a shear stress higher than the critical value is given in the member nIterations. When the counter variable countIterations reaches this value, the source is ready to emit a dipole, so a true value is returned. In other cases, false is returned.
+   * @return The boolean result of whether the count of iterations is greater than the limiting number of iterations provided at input.
+   */
+  bool ifEmitDipole ();
 };
 
 #endif

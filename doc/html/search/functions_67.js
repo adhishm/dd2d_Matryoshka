@@ -2,8 +2,9 @@ var searchData=
 [
   ['getburgers',['getBurgers',['../d3/dc6/classDislocation.html#a8b9d5bfd379a6933b2dfd5d0962c9bc2',1,'Dislocation::getBurgers()'],['../de/de3/classDislocationSource.html#a4c07b688946410963dd41ce3bfc3a022',1,'DislocationSource::getBurgers()']]],
   ['getburgersmag',['getBurgersMag',['../de/de3/classDislocationSource.html#a20360b318adfa4457786d6bbd28fd99d',1,'DislocationSource']]],
+  ['getiterationcount',['getIterationCount',['../de/de3/classDislocationSource.html#aed222f6992a63a66952d9d9e8d2fe6ac',1,'DislocationSource']]],
   ['getlinevector',['getLineVector',['../d3/dc6/classDislocation.html#a393b62c79e74458b7d69b4d28adc476e',1,'Dislocation::getLineVector()'],['../de/de3/classDislocationSource.html#a896f35e3c84654958d75b1cc964c42a1',1,'DislocationSource::getLineVector()']]],
-  ['getnumiterations',['getNumIterations',['../de/de3/classDislocationSource.html#ac0bddda0a01124bd861ace83b0b6a254',1,'DislocationSource']]],
+  ['getnumiterations',['getNumIterations',['../de/de3/classDislocationSource.html#a0df8fa36aa46044808227044113f14fe',1,'DislocationSource']]],
   ['getposition',['getPosition',['../d5/d4f/classDefect.html#a6842fba3ad14032766ccf0437afcbced',1,'Defect::getPosition()'],['../d5/d4f/classDefect.html#aace5c752b85c368631746abc3d5bd714',1,'Defect::getPosition(double *a)']]],
   ['getprincipalstrains',['getPrincipalStrains',['../d1/d3c/classStrain.html#ad76c72271c32b27122c7fa86376edea3',1,'Strain']]],
   ['getprincipalstresses',['getPrincipalStresses',['../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539',1,'Stress']]],
