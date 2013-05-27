@@ -80,7 +80,7 @@ public:
    * @details All parameters: Burgers vector, line vector, position, are specified.
    * @param burgers Burgers vector.
    * @param line Line vector.
-   * @param position Position of the dislocation.
+   * @param position Position of the dislocation source.
    * @param bm Magnitude of the Burgers vector in metres.
    * @param tau Critical shear stress value.
    * @param nIter Number of iterations of experiencing critical stress before a dipole is emitted.
@@ -90,7 +90,7 @@ public:
   // Assignment functions
   /**
    * @brief Sets the Burgers vector of the dislocation.
-   * @param burgers Bergers vector of the dislocation.
+   * @param burgers Burgers vector of the dislocation.
    */
   void setBurgers (Vector3d burgers);
   
@@ -100,7 +100,44 @@ public:
    */
   void setLineVector (Vector3d line);
   
-  // Operations
+  /**
+   * @brief Sets the position of the dislocation source.
+   * @param position The position vector giving the position of the dislocation source.
+   */
+  void setPosition (Vector3d position);
+  
+  // Access functions
+  /**
+   * @brief Returns the Burgers vector of the dislocations in the dipole.
+   * @return The Burgers vector of the dislocations in the dipole.
+   */
+  Vector3d getBurgers ();
+  
+  /**
+   * @brief Returns the line vector of the dislocations in the dipole.
+   * @return The line vector of the dislocations in the dipole.
+   */
+  Vector3d getLineVector ();
+  
+  /**
+   * @brief Returns the position vector of the dislocation source.
+   * @return The position vector of the dislocation source.
+   */
+  Vector3d getPosition ();
+  
+  /**
+   * @brief Returns the magnitude of the Burgers vector.
+   * @return The magnitude of the Burgers vector.
+   */
+  double getBurgersMag ();
+  
+  /**
+   * @brief Returns the critical shear stress value for dipole emission.
+   * @return The critical shear stress value for dipole emission.
+   */
+  double getTauCritical ();
+  
+  // Operations specific to the class
   /**
    * @brief The nucleation length of the dipole.
    * @details When a dislocation source has experienced a shear stress greater than the critical value for a certain amount of time, it emits a dislocation dipole. In three dimensions, this is equivalent to a dislocation loop emitted by a Frank-Read source. The length of the dipole (or diameter of the loop in 3D) is such that the interaction force between the two dislocations (or line tension in 3D) balances out the applied shear stress.

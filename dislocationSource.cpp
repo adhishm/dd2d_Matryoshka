@@ -51,7 +51,7 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
 
 /**
  * @brief Sets the Burgers vector of the dislocation.
- * @param burgers Bergers vector of the dislocation.
+ * @param burgers Burgers vector of the dislocation.
  */
 void DislocationSource::setBurgers (Vector3d burgers)
 {
@@ -66,6 +66,38 @@ void DislocationSource::setLineVector (Vector3d line)
 {
   this->lvec = line;
 }
+
+/**
+ * @brief Returns the Burgers vector of the dislocations in the dipole.
+ * @return The Burgers vector of the dislocations in the dipole.
+ */
+Vector3d DislocationSource::getBurgers ()
+{
+  return (this->bvec);
+}
+
+/**
+ * @brief Returns the line vector of the dislocations in the dipole.
+ * @return The line vector of the dislocations in the dipole.
+ */
+Vector3d DislocationSource::getLineVector ()
+{
+  return (this->lvec);
+}
+
+
+
+/**
+ * @brief Returns the magnitude of the Burgers vector.
+ * @return The magnitude of the Burgers vector.
+ */
+double getBurgersMag ();
+
+/**
+ * @brief Returns the critical shear stress value for dipole emission.
+ * @return The critical shear stress value for dipole emission.
+ */
+double getTauCritical ();
 
 /**
  * @brief The nucleation length of the dipole.
