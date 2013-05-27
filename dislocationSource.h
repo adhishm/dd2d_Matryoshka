@@ -100,6 +100,24 @@ public:
    */
   void setLineVector (Vector3d line);
   
+  /**
+   * @brief Set the magnitude of the Burgers vector.
+   * @param bm Magnitude of the Burgers vector.
+   */
+  void setBurgersMagnitude (double bm);
+  
+  /**
+   * @brief Set the critical shear stres for dipole emission.
+   * @param tauC Critical shear stress for dipole emission.
+   */
+  void setTauCritical (double tauC);
+  
+  /**
+   * @brief Set the number of iterations before a dipole is emitted.
+   * @param nIter Number of iterations spent at a high shear stress value before a dislocation dipole is emitted.
+   */
+  void setNumIterations (int nIter);
+  
   // Access functions
   /**
    * @brief Returns the Burgers vector of the dislocations in the dipole.
@@ -124,6 +142,12 @@ public:
    * @return The critical shear stress value for dipole emission.
    */
   double getTauCritical ();
+  
+  /**
+   * @brief Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+   * @return The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+   */
+  double getNumIterations ();
   
   // Operations specific to the class
   /**

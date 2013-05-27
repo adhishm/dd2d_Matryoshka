@@ -9,6 +9,7 @@
 
 #include "dislocationSource.h"
 
+// Constructors
 /**
  * @brief Default constructor.
  * @details Initializes the dislocation with the following default parameters:
@@ -49,6 +50,7 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
   this->nIterations = nIter;
 }
 
+// Assignment functions
 /**
  * @brief Sets the Burgers vector of the dislocation.
  * @param burgers Burgers vector of the dislocation.
@@ -68,6 +70,34 @@ void DislocationSource::setLineVector (Vector3d line)
 }
 
 /**
+ * @brief Set the magnitude of the Burgers vector.
+ * @param bm Magnitude of the Burgers vector.
+ */
+void DislocationSource::setBurgersMagnitude (double bm)
+{
+  this->bmag = bm;
+}
+
+/**
+ * @brief Set the critical shear stres for dipole emission.
+ * @param tauC Critical shear stress for dipole emission.
+ */
+void DislocationSource::setTauCritical (double tauC)
+{
+  this->tauCritical = tauC;
+}
+
+/**
+ * @brief Set the number of iterations before a dipole is emitted.
+ * @param nIter Number of iterations spent at a high shear stress value before a dislocation dipole is emitted.
+ */
+void DislocationSource::setNumIterations (int nIter)
+{
+  this->nIterations = nIter;
+}
+
+// Access functions
+/**
  * @brief Returns the Burgers vector of the dislocations in the dipole.
  * @return The Burgers vector of the dislocations in the dipole.
  */
@@ -85,20 +115,34 @@ Vector3d DislocationSource::getLineVector ()
   return (this->lvec);
 }
 
-
-
 /**
  * @brief Returns the magnitude of the Burgers vector.
  * @return The magnitude of the Burgers vector.
  */
-double getBurgersMag ();
+double DislocationSource::getBurgersMag ()
+{
+  return (this->bmag);
+}
 
 /**
  * @brief Returns the critical shear stress value for dipole emission.
  * @return The critical shear stress value for dipole emission.
  */
-double getTauCritical ();
+double DislocationSource::getTauCritical ()
+{
+  return (this->tauCritical);
+}
 
+/**
+ * @brief Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+ * @return The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+ */
+double DislocationSource::getNumIterations ()
+{
+  return (this->nIterations);
+}
+
+// Operations specific to the class
 /**
  * @brief The nucleation length of the dipole.
  * @details When a dislocation source has experienced a shear stress greater than the critical value for a certain amount of time, it emits a dislocation dipole. In three dimensions, this is equivalent to a dislocation loop emitted by a Frank-Read source. The length of the dipole (or diameter of the loop in 3D) is such that the interaction force between the two dislocations (or line tension in 3D) balances out the applied shear stress.

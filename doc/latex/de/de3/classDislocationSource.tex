@@ -39,6 +39,12 @@ void \hyperlink{classDislocationSource_ae1a26d9f8149206b884436f44e92f4c3}{set\-B
 \begin{DoxyCompactList}\small\item\em Sets the Burgers vector of the dislocation. \end{DoxyCompactList}\item 
 void \hyperlink{classDislocationSource_adf7d0b496f5935909daf071a0d733b17}{set\-Line\-Vector} (\hyperlink{classVector3d}{Vector3d} line)
 \begin{DoxyCompactList}\small\item\em Sets the line vector of the dislocation. \end{DoxyCompactList}\item 
+void \hyperlink{classDislocationSource_a41c1f953f9ad57a2b1a9b8d412980d91}{set\-Burgers\-Magnitude} (double bm)
+\begin{DoxyCompactList}\small\item\em Set the magnitude of the Burgers vector. \end{DoxyCompactList}\item 
+void \hyperlink{classDislocationSource_a3294cb807ec8dd0e1fa6ab6e51eeafa2}{set\-Tau\-Critical} (double tau\-C)
+\begin{DoxyCompactList}\small\item\em Set the critical shear stres for dipole emission. \end{DoxyCompactList}\item 
+void \hyperlink{classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}{set\-Num\-Iterations} (int n\-Iter)
+\begin{DoxyCompactList}\small\item\em Set the number of iterations before a dipole is emitted. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocationSource_a4c07b688946410963dd41ce3bfc3a022}{get\-Burgers} ()
 \begin{DoxyCompactList}\small\item\em Returns the Burgers vector of the dislocations in the dipole. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocationSource_a896f35e3c84654958d75b1cc964c42a1}{get\-Line\-Vector} ()
@@ -47,6 +53,8 @@ double \hyperlink{classDislocationSource_a20360b318adfa4457786d6bbd28fd99d}{get\
 \begin{DoxyCompactList}\small\item\em Returns the magnitude of the Burgers vector. \end{DoxyCompactList}\item 
 double \hyperlink{classDislocationSource_aede21b6b4e323423ec1f6cb9261cb311}{get\-Tau\-Critical} ()
 \begin{DoxyCompactList}\small\item\em Returns the critical shear stress value for dipole emission. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocationSource_ac0bddda0a01124bd861ace83b0b6a254}{get\-Num\-Iterations} ()
+\begin{DoxyCompactList}\small\item\em Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. \end{DoxyCompactList}\item 
 double \hyperlink{classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}{dipole\-Nucleation\-Length} (double tau, double mu, double nu)
 \begin{DoxyCompactList}\small\item\em The nucleation length of the dipole. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
@@ -117,20 +125,20 @@ Default constructor.
 
 Initializes the dislocation with the following default parameters\-: Position\-: (0.\-0, 0.\-0, 0.\-0) Burgers vector\-: Default value set in defaults file. Line vector\-: Default value set in defaults file. Burgers vector magnitude\-: Default value set in the defaults file. Tau critical\-: Default value set in the defaults file. n\-Iterations\-: Default value set in the defaults file. 
 
-Definition at line 22 of file dislocation\-Source.\-cpp.
+Definition at line 23 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-23 \{
-24   this->\hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{setPosition} ( 0.0, 0.0, 0.0 );
-25   this->\hyperlink{classDislocationSource_ae1a26d9f8149206b884436f44e92f4c3}{setBurgers} ( \hyperlink{classVector3d}{Vector3d} ( \hyperlink{dislocationDefaults_8h_a8bc0403713fea52c48652247734ed060}{DEFAULT\_BURGERS\_0}, 
+24 \{
+25   this->\hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{setPosition} ( 0.0, 0.0, 0.0 );
+26   this->\hyperlink{classDislocationSource_ae1a26d9f8149206b884436f44e92f4c3}{setBurgers} ( \hyperlink{classVector3d}{Vector3d} ( \hyperlink{dislocationDefaults_8h_a8bc0403713fea52c48652247734ed060}{DEFAULT\_BURGERS\_0}, 
       \hyperlink{dislocationDefaults_8h_a77a5b4d23da175ef84909c513649d6bf}{DEFAULT\_BURGERS\_1}, \hyperlink{dislocationDefaults_8h_a340578d3def7d31536ca2ae4ae444ee1}{DEFAULT\_BURGERS\_2} ) );
-26   this->\hyperlink{classDislocationSource_adf7d0b496f5935909daf071a0d733b17}{setLineVector} ( \hyperlink{classVector3d}{Vector3d} ( \hyperlink{dislocationDefaults_8h_a3969abd5a63f951f079c148314416bd2}{DEFAULT\_LINEVECTOR\_0}, 
+27   this->\hyperlink{classDislocationSource_adf7d0b496f5935909daf071a0d733b17}{setLineVector} ( \hyperlink{classVector3d}{Vector3d} ( \hyperlink{dislocationDefaults_8h_a3969abd5a63f951f079c148314416bd2}{DEFAULT\_LINEVECTOR\_0}, 
       \hyperlink{dislocationDefaults_8h_a5d1040038b6cc2afcdf3f935785a118b}{DEFAULT\_LINEVECTOR\_1}, \hyperlink{dislocationDefaults_8h_a517bab607d45c13734cc8450a1062b1d}{DEFAULT\_LINEVECTOR\_2}) );
-27   this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag} = \hyperlink{dislocationDefaults_8h_a48b2523eeb3e024b79124f9f4c50004b}{DEFAULT\_BURGERS\_MAGNITUDE};
-28   this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} = \hyperlink{dislocationSourceDefaults_8h_a685134aa063113b1324cc06492a1995b}{DEFAULT\_TAU\_CRITICAL};
-29   this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations} = \hyperlink{dislocationSourceDefaults_8h_ab5c9c41cecc5e0bb1f87710a8c6a9d48}{DEFAULT\_NITERATIONS};
-30 \}
+28   this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag} = \hyperlink{dislocationDefaults_8h_a48b2523eeb3e024b79124f9f4c50004b}{DEFAULT\_BURGERS\_MAGNITUDE};
+29   this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} = \hyperlink{dislocationSourceDefaults_8h_a685134aa063113b1324cc06492a1995b}{DEFAULT\_TAU\_CRITICAL};
+30   this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations} = \hyperlink{dislocationSourceDefaults_8h_ab5c9c41cecc5e0bb1f87710a8c6a9d48}{DEFAULT\_NITERATIONS};
+31 \}
 \end{DoxyCode}
 \hypertarget{classDislocationSource_aa5adcc1a0862d8cfa6d8d1a632c3855f}{\index{Dislocation\-Source@{Dislocation\-Source}!Dislocation\-Source@{Dislocation\-Source}}
 \index{Dislocation\-Source@{Dislocation\-Source}!DislocationSource@{Dislocation\-Source}}
@@ -180,18 +188,18 @@ All parameters\-: Burgers vector, line vector, position, are specified.
 \end{DoxyParams}
 
 
-Definition at line 42 of file dislocation\-Source.\-cpp.
+Definition at line 43 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-43 \{
-44   this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec}   = burgers;
-45   this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec}   = line;
-46   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}    = position;
-47   this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag}   = bm;
-48   this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} = tau;
-49   this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations} = nIter;
-50 \}
+44 \{
+45   this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec}   = burgers;
+46   this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec}   = line;
+47   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}    = position;
+48   this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag}   = bm;
+49   this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} = tau;
+50   this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations} = nIter;
+51 \}
 \end{DoxyCode}
 
 
@@ -223,20 +231,20 @@ The length of the dislocation dipole.
 \end{DoxyReturn}
 
 
-Definition at line 110 of file dislocation\-Source.\-cpp.
+Definition at line 154 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-111 \{
-112   \textcolor{keywordtype}{double} L = 0.0;
-113   
-114   \textcolor{keywordflow}{if} (tau >= \hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical})
-115   \{
-116     L = (mu * this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag}) / ( 2.0 * \hyperlink{constants_8h_a598a3330b3c21701223ee0ca14316eca}{PI} * (1.0 - nu) * this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} );
-117   \}
-118   
-119   \textcolor{keywordflow}{return} (L);
-120 \}
+155 \{
+156   \textcolor{keywordtype}{double} L = 0.0;
+157   
+158   \textcolor{keywordflow}{if} (tau >= \hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical})
+159   \{
+160     L = (mu * this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag}) / ( 2.0 * \hyperlink{constants_8h_a598a3330b3c21701223ee0ca14316eca}{PI} * (1.0 - nu) * this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} );
+161   \}
+162   
+163   \textcolor{keywordflow}{return} (L);
+164 \}
 \end{DoxyCode}
 \hypertarget{classDislocationSource_a4c07b688946410963dd41ce3bfc3a022}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Burgers@{get\-Burgers}}
 \index{get\-Burgers@{get\-Burgers}!DislocationSource@{Dislocation\-Source}}
@@ -254,13 +262,13 @@ The Burgers vector of the dislocations in the dipole.
 \end{DoxyReturn}
 
 
-Definition at line 74 of file dislocation\-Source.\-cpp.
+Definition at line 104 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-75 \{
-76   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec});
-77 \}
+105 \{
+106   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec});
+107 \}
 \end{DoxyCode}
 \hypertarget{classDislocationSource_a20360b318adfa4457786d6bbd28fd99d}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Burgers\-Mag@{get\-Burgers\-Mag}}
 \index{get\-Burgers\-Mag@{get\-Burgers\-Mag}!DislocationSource@{Dislocation\-Source}}
@@ -276,6 +284,16 @@ Returns the magnitude of the Burgers vector.
 \begin{DoxyReturn}{Returns}
 The magnitude of the Burgers vector. 
 \end{DoxyReturn}
+
+
+Definition at line 122 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+123 \{
+124   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag});
+125 \}
+\end{DoxyCode}
 \hypertarget{classDislocationSource_a896f35e3c84654958d75b1cc964c42a1}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Line\-Vector@{get\-Line\-Vector}}
 \index{get\-Line\-Vector@{get\-Line\-Vector}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Line\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Dislocation\-Source\-::get\-Line\-Vector (
@@ -292,13 +310,37 @@ The line vector of the dislocations in the dipole.
 \end{DoxyReturn}
 
 
-Definition at line 83 of file dislocation\-Source.\-cpp.
+Definition at line 113 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-84 \{
-85   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec});
-86 \}
+114 \{
+115   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec});
+116 \}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_ac0bddda0a01124bd861ace83b0b6a254}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Num\-Iterations@{get\-Num\-Iterations}}
+\index{get\-Num\-Iterations@{get\-Num\-Iterations}!DislocationSource@{Dislocation\-Source}}
+\subsubsection[{get\-Num\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}double Dislocation\-Source\-::get\-Num\-Iterations (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{de/de3/classDislocationSource_ac0bddda0a01124bd861ace83b0b6a254}
+
+
+Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
+
+\begin{DoxyReturn}{Returns}
+The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
+\end{DoxyReturn}
+
+
+Definition at line 140 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+141 \{
+142   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations});
+143 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a6842fba3ad14032766ccf0437afcbced}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!DislocationSource@{Dislocation\-Source}}
@@ -364,6 +406,16 @@ Returns the critical shear stress value for dipole emission.
 \begin{DoxyReturn}{Returns}
 The critical shear stress value for dipole emission. 
 \end{DoxyReturn}
+
+
+Definition at line 131 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+132 \{
+133   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical});
+134 \}
+\end{DoxyCode}
 \hypertarget{classDefect_a01b96c453c13db82b5835682e1849dc0}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-X@{get\-X}}
 \index{get\-X@{get\-X}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}double Defect\-::get\-X (
@@ -454,13 +506,39 @@ Sets the Burgers vector of the dislocation.
 \end{DoxyParams}
 
 
-Definition at line 56 of file dislocation\-Source.\-cpp.
+Definition at line 58 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-57 \{
-58   this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec} = burgers;
-59 \}
+59 \{
+60   this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec} = burgers;
+61 \}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_a41c1f953f9ad57a2b1a9b8d412980d91}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Burgers\-Magnitude@{set\-Burgers\-Magnitude}}
+\index{set\-Burgers\-Magnitude@{set\-Burgers\-Magnitude}!DislocationSource@{Dislocation\-Source}}
+\subsubsection[{set\-Burgers\-Magnitude}]{\setlength{\rightskip}{0pt plus 5cm}void Dislocation\-Source\-::set\-Burgers\-Magnitude (
+\begin{DoxyParamCaption}
+\item[{double}]{bm}
+\end{DoxyParamCaption}
+)}}\label{de/de3/classDislocationSource_a41c1f953f9ad57a2b1a9b8d412980d91}
+
+
+Set the magnitude of the Burgers vector. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em bm} & Magnitude of the Burgers vector. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 76 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+77 \{
+78   this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag} = bm;
+79 \}
 \end{DoxyCode}
 \hypertarget{classDislocationSource_adf7d0b496f5935909daf071a0d733b17}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Line\-Vector@{set\-Line\-Vector}}
 \index{set\-Line\-Vector@{set\-Line\-Vector}!DislocationSource@{Dislocation\-Source}}
@@ -480,13 +558,39 @@ Sets the line vector of the dislocation.
 \end{DoxyParams}
 
 
-Definition at line 65 of file dislocation\-Source.\-cpp.
+Definition at line 67 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
-66 \{
-67   this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec} = line;
-68 \}
+68 \{
+69   this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec} = line;
+70 \}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Num\-Iterations@{set\-Num\-Iterations}}
+\index{set\-Num\-Iterations@{set\-Num\-Iterations}!DislocationSource@{Dislocation\-Source}}
+\subsubsection[{set\-Num\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}void Dislocation\-Source\-::set\-Num\-Iterations (
+\begin{DoxyParamCaption}
+\item[{int}]{n\-Iter}
+\end{DoxyParamCaption}
+)}}\label{de/de3/classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}
+
+
+Set the number of iterations before a dipole is emitted. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em n\-Iter} & Number of iterations spent at a high shear stress value before a dislocation dipole is emitted. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 94 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+95 \{
+96   this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations} = nIter;
+97 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Position@{set\-Position}}
 \index{set\-Position@{set\-Position}!DislocationSource@{Dislocation\-Source}}
@@ -573,6 +677,32 @@ Definition at line 81 of file defect.\-cpp.
 82 \{
 83   this->position = a;
 84 \}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_a3294cb807ec8dd0e1fa6ab6e51eeafa2}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Tau\-Critical@{set\-Tau\-Critical}}
+\index{set\-Tau\-Critical@{set\-Tau\-Critical}!DislocationSource@{Dislocation\-Source}}
+\subsubsection[{set\-Tau\-Critical}]{\setlength{\rightskip}{0pt plus 5cm}void Dislocation\-Source\-::set\-Tau\-Critical (
+\begin{DoxyParamCaption}
+\item[{double}]{tau\-C}
+\end{DoxyParamCaption}
+)}}\label{de/de3/classDislocationSource_a3294cb807ec8dd0e1fa6ab6e51eeafa2}
+
+
+Set the critical shear stres for dipole emission. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em tau\-C} & Critical shear stress for dipole emission. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 85 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+86 \{
+87   this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical} = tauC;
+88 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a5a65f73da6a572d9e7109b31239e441d}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-X@{set\-X}}
 \index{set\-X@{set\-X}!DislocationSource@{Dislocation\-Source}}
