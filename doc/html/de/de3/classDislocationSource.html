@@ -219,7 +219,7 @@ Protected Attributes</h2></td></tr>
 <div class="textblock"><p><a class="el" href="../../de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation.">DislocationSource</a> class representing a source of dislocations in the simulation. </p>
 <p>This class inherits from the <a class="el" href="../../d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a> class. This object is basically the representation of a Frank-Read source emitting dislocation dipoles. When the dislocation source experiences a shear stress greater than a critical value for a certain amount of time (or number of iterations), it emits a dislocation dipole with a length that is a function of the applied stress. The properties of this class and the member functions will be declared here. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00021">21</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00022">22</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 </div><h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
 <a class="anchor" id="afc9b7984d9486354b6f3d82033707577"></a>
 <div class="memitem">
@@ -235,17 +235,17 @@ Protected Attributes</h2></td></tr>
 </div><div class="memdoc">
 
 <p>Default constructor. </p>
-<p>Initializes the dislocation with the following default parameters: Position: (0.0, 0.0, 0.0) Burgers vector: Default value set in defaults file. Line vector: Default value set in defaults file. Burgers vector magnitude: Default value set in the defaults file. Tau critical: Default value set in the defaults file. nIterations: Default value set in the defaults file. </p>
+<p>Initializes the dislocation with the default parameters provided in the files <a class="el" href="../../d4/da6/dislocationDefaults_8h.html" title="Definition of certain default values for members of the Dislocation class.">dislocationDefaults.h</a> and <a class="el" href="../../d4/d0f/dislocationSourceDefaults_8h.html" title="Definition of certain default values for members of the DislocationSource class.">dislocationSourceDefaults.h</a>. </p>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00023">23</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;{</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f" title="Sets the position of the defect.">setPosition</a> ( 0.0, 0.0, 0.0 );</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ae1a26d9f8149206b884436f44e92f4c3" title="Sets the Burgers vector of the dislocation.">setBurgers</a> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> ( <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a8bc0403713fea52c48652247734ed060" title="Default value of the Burgers vector x-coordinate.">DEFAULT_BURGERS_0</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a77a5b4d23da175ef84909c513649d6bf" title="Default value of the Burgers vector y-coordinate.">DEFAULT_BURGERS_1</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a340578d3def7d31536ca2ae4ae444ee1" title="Default value of the Burgers vector z-coordinate.">DEFAULT_BURGERS_2</a> ) );</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#adf7d0b496f5935909daf071a0d733b17" title="Sets the line vector of the dislocation.">setLineVector</a> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> ( <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a3969abd5a63f951f079c148314416bd2" title="Default value of the line vector x-coordinate.">DEFAULT_LINEVECTOR_0</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a5d1040038b6cc2afcdf3f935785a118b" title="Default value of the line vector y-coordinate.">DEFAULT_LINEVECTOR_1</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a517bab607d45c13734cc8450a1062b1d" title="Default value of the line vector z-coordinate.">DEFAULT_LINEVECTOR_2</a>) );</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a> = <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a48b2523eeb3e024b79124f9f4c50004b" title="Default value of the magnitude of the Burgers vector.">DEFAULT_BURGERS_MAGNITUDE</a>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> = <a class="code" href="../../d4/d0f/dislocationSourceDefaults_8h.html#a685134aa063113b1324cc06492a1995b" title="Default value of the critical shear stress for a dislocation source to emit a dipole.">DEFAULT_TAU_CRITICAL</a>;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a> = <a class="code" href="../../d4/d0f/dislocationSourceDefaults_8h.html#ab5c9c41cecc5e0bb1f87710a8c6a9d48" title="Default value of the number of iterations required for a dislocation source to emit a dipole...">DEFAULT_NITERATIONS</a>;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00017">17</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f" title="Sets the position of the defect.">setPosition</a> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> ( <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a797caa5c52e49fd8d7db6af9bceea257" title="Default value of the position vector x-coordinate.">DEFAULT_POSITION_0</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a88a33ddda5bafb85a662e09f9cf28e6d" title="Default value of the position vector y-coordinate.">DEFAULT_POSITION_1</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#ad61c6c206e346b3f239c0bba69773eeb" title="Default value of the position vector z-coordinate.">DEFAULT_POSITION_2</a> ) );</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ae1a26d9f8149206b884436f44e92f4c3" title="Sets the Burgers vector of the dislocation.">setBurgers</a> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> ( <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a8bc0403713fea52c48652247734ed060" title="Default value of the Burgers vector x-coordinate.">DEFAULT_BURGERS_0</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a77a5b4d23da175ef84909c513649d6bf" title="Default value of the Burgers vector y-coordinate.">DEFAULT_BURGERS_1</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a340578d3def7d31536ca2ae4ae444ee1" title="Default value of the Burgers vector z-coordinate.">DEFAULT_BURGERS_2</a> ) );</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#adf7d0b496f5935909daf071a0d733b17" title="Sets the line vector of the dislocation.">setLineVector</a> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> ( <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a3969abd5a63f951f079c148314416bd2" title="Default value of the line vector x-coordinate.">DEFAULT_LINEVECTOR_0</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a5d1040038b6cc2afcdf3f935785a118b" title="Default value of the line vector y-coordinate.">DEFAULT_LINEVECTOR_1</a>, <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a517bab607d45c13734cc8450a1062b1d" title="Default value of the line vector z-coordinate.">DEFAULT_LINEVECTOR_2</a>) );</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a> = <a class="code" href="../../d4/da6/dislocationDefaults_8h.html#a48b2523eeb3e024b79124f9f4c50004b" title="Default value of the magnitude of the Burgers vector.">DEFAULT_BURGERS_MAGNITUDE</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> = <a class="code" href="../../d4/d0f/dislocationSourceDefaults_8h.html#a685134aa063113b1324cc06492a1995b" title="Default value of the critical shear stress for a dislocation source to emit a dipole.">DEFAULT_TAU_CRITICAL</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a> = <a class="code" href="../../d4/d0f/dislocationSourceDefaults_8h.html#ab5c9c41cecc5e0bb1f87710a8c6a9d48" title="Default value of the number of iterations required for a dislocation source to emit a dipole...">DEFAULT_NITERATIONS</a>;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -323,15 +323,15 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00043">43</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;{</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a>   = burgers;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a>   = line;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>    = position;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>   = bm;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> = tau;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a> = nIter;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00037">37</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a>   = burgers;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a>   = line;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;  this-&gt;<a class="code" href="../../d5/d4f/classDefect.html#aed2731c1beefc22e3db6ad5b18194cdd" title="Position vector of the defect in 2D space.">pos</a>    = position;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>   = bm;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> = tau;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a> = nIter;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -378,17 +378,17 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The length of the dislocation dipole. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00154">154</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;{</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">double</span> L = 0.0;</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  </div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">if</span> (tau &gt;= <a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>)</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  {</div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;    L = (mu * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>) / ( 2.0 * <a class="code" href="../../d2/d6f/constants_8h.html#a598a3330b3c21701223ee0ca14316eca" title="The irrational number pi.">PI</a> * (1.0 - nu) * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> );</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;  }</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;  </div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;  <span class="keywordflow">return</span> (L);</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00148">148</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;{</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <span class="keywordtype">double</span> L = 0.0;</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160;  </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">if</span> (tau &gt;= <a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>)</div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;  {</div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    L = (mu * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>) / ( 2.0 * <a class="code" href="../../d2/d6f/constants_8h.html#a598a3330b3c21701223ee0ca14316eca" title="The irrational number pi.">PI</a> * (1.0 - nu) * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> );</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  }</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  </div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordflow">return</span> (L);</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -408,10 +408,10 @@ Protected Attributes</h2></td></tr>
 <p>Returns the Burgers vector of the dislocations in the dipole. </p>
 <dl class="section return"><dt>Returns</dt><dd>The Burgers vector of the dislocations in the dipole. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00104">104</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;{</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a>);</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00098">98</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a>);</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -431,10 +431,10 @@ Protected Attributes</h2></td></tr>
 <p>Returns the magnitude of the Burgers vector. </p>
 <dl class="section return"><dt>Returns</dt><dd>The magnitude of the Burgers vector. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00122">122</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;{</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>);</div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>);</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -454,10 +454,10 @@ Protected Attributes</h2></td></tr>
 <p>Returns the line vector of the dislocations in the dipole. </p>
 <dl class="section return"><dt>Returns</dt><dd>The line vector of the dislocations in the dipole. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00113">113</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;{</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a>);</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00107">107</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a>);</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -477,10 +477,10 @@ Protected Attributes</h2></td></tr>
 <p>Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00140">140</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;{</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a>);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a>);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -570,10 +570,10 @@ Protected Attributes</h2></td></tr>
 <p>Returns the critical shear stress value for dipole emission. </p>
 <dl class="section return"><dt>Returns</dt><dd>The critical shear stress value for dipole emission. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00131">131</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;{</div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00125">125</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;{</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>);</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -692,10 +692,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00058">58</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;{</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a> = burgers;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a> = burgers;</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -721,10 +721,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00076">76</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;{</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a> = bm;</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a> = bm;</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -750,10 +750,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00067">67</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;{</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a> = line;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00061">61</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;{</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a> = line;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -779,10 +779,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00094">94</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;{</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a> = nIter;</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00088">88</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;{</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#aacf42c7505f28b50280b23b435024e17" title="Number of iterations before a dipole is emitted.">nIterations</a> = nIter;</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -942,10 +942,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00085">85</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;{</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> = tauC;</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html#l00079">79</a> of file <a class="el" href="../../d8/d5c/dislocationSource_8cpp_source.html">dislocationSource.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;{</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> = tauC;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1145,7 +1145,7 @@ Protected Attributes</h2></td></tr>
 <p>Magnitude of the Burgers vector in metres. </p>
 <p>The magnitude of the Burgers vector is useful for several calculations such as stress field around the dislocation. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00044">44</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00045">45</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1169,7 +1169,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Burgers vector of the dislocation. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00027">27</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00028">28</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1193,7 +1193,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Line vector if the dislocation. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00032">32</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00033">33</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1218,7 +1218,7 @@ Protected Attributes</h2></td></tr>
 <p>Boolean term indicating mobility. </p>
 <p>For mobile dislocations this term is true and for pinned dislocations it is false. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00038">38</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00039">39</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1243,7 +1243,7 @@ Protected Attributes</h2></td></tr>
 <p>Number of iterations before a dipole is emitted. </p>
 <p>A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. The amount of time is represented instead by a number of iterations nIterations. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00062">62</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00063">63</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1292,7 +1292,7 @@ Protected Attributes</h2></td></tr>
 <p>The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa. </p>
 <p>This is the rotation matrix that represents the relationship between the global and local co-ordinate systems. It is used to convert tensors and vectors between the two systems. The rotation matrix needs to be calculated once and may be refreshed periodically if lattice rotation is implemented. In the absence of lattice rotation, the matrix will remain invariant. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00050">50</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00051">51</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1317,7 +1317,7 @@ Protected Attributes</h2></td></tr>
 <p>Critical stress for the emission of a dislocation dipole. </p>
 <p>A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. This critical stress is given by tauCritical. </p>
 
-<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00056">56</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
+<p>Definition at line <a class="el" href="../../da/d0c/dislocationSource_8h_source.html#l00057">57</a> of file <a class="el" href="../../da/d0c/dislocationSource_8h_source.html">dislocationSource.h</a>.</p>
 
 </div>
 </div>
@@ -1328,7 +1328,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 27 2013 15:54:25 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 27 2013 16:00:55 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

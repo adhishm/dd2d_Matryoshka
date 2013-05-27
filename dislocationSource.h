@@ -12,6 +12,7 @@
 
 #include "dislocation.h"
 #include "constants.h"
+#include "dislocationDefaults.h"
 #include "dislocationSourceDefaults.h"
 
 /**
@@ -65,13 +66,7 @@ public:
   // Constructors
   /**
    * @brief Default constructor.
-   * @details Initializes the dislocation with the following default parameters:
-   * Position: (0.0, 0.0, 0.0)
-   * Burgers vector: Default value set in defaults file.
-   * Line vector: Default value set in defaults file.
-   * Burgers vector magnitude: Default value set in the defaults file.
-   * Tau critical: Default value set in the defaults file.
-   * nIterations: Default value set in the defaults file.
+   * @details Initializes the dislocation with the default parameters provided in the files dislocationDefaults.h and dislocationSourceDefaults.h.
    */
   DislocationSource ();
   

@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.12)  27 MAY 2013 15:54
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.12)  27 MAY 2013 16:01
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1413,15 +1413,15 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
  [2] [3] [4]
 [5] [6] [7]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 288.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 291.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 288.
+(Font)              scaled to size 10.79993pt on input line 291.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 288.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 291.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 288.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 291.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 288.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 291.
 )
 \tf@toc=\write5
 \openout5 = `refman.toc'.
@@ -1470,7 +1470,7 @@ LaTeX Font Info:    Try loading font information for T1+pcr on input line 11.
 (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
 File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
 )
-<de/d48/classDefect__inherit__graph.pdf, id=1642, 263.98625pt x 156.585pt>
+<de/d48/classDefect__inherit__graph.pdf, id=1657, 263.98625pt x 156.585pt>
 File: de/d48/classDefect__inherit__graph.pdf Graphic file (type pdf)
 
 <use de/d48/classDefect__inherit__graph.pdf>
@@ -1478,7 +1478,7 @@ Package pdftex.def Info: de/d48/classDefect__inherit__graph.pdf used on input l
 ine 19.
 (pdftex.def)             Requested size: 263.0pt x 156.00879pt.
 
-<d7/d09/classDefect__coll__graph.pdf, id=1643, 136.51pt x 168.63pt>
+<d7/d09/classDefect__coll__graph.pdf, id=1658, 136.51pt x 168.63pt>
 File: d7/d09/classDefect__coll__graph.pdf Graphic file (type pdf)
 
 <use d7/d09/classDefect__coll__graph.pdf>
@@ -1568,7 +1568,7 @@ Underfull \vbox (badness 10000) detected at line 475
  []
 
 ) (./d3/dc6/classDislocation.tex
-<df/dfa/classDislocation__inherit__graph.pdf, id=1777, 146.5475pt x 156.585pt>
+<df/dfa/classDislocation__inherit__graph.pdf, id=1792, 146.5475pt x 156.585pt>
 File: df/dfa/classDislocation__inherit__graph.pdf Graphic file (type pdf)
 
 <use df/dfa/classDislocation__inherit__graph.pdf>
@@ -1576,7 +1576,7 @@ Package pdftex.def Info: df/dfa/classDislocation__inherit__graph.pdf used on in
 put line 19.
 (pdftex.def)             Requested size: 146.0pt x 155.99922pt.
 
-<d7/d80/classDislocation__coll__graph.pdf, id=1778, 271.0125pt x 238.8925pt>
+<d7/d80/classDislocation__coll__graph.pdf, id=1793, 271.0125pt x 238.8925pt>
 File: d7/d80/classDislocation__coll__graph.pdf Graphic file (type pdf)
 
 <use d7/d80/classDislocation__coll__graph.pdf>
@@ -1715,7 +1715,7 @@ ct_aed2731c1beefc22e3db6ad5b18194cdd}) has been already used, duplicate ignored
 l.799 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{d5/d4f/classDefect_...
 ) (./de/de3/classDislocationSource.tex
-<dc/d96/classDislocationSource__inherit__graph.pdf, id=2005, 178.6675pt x 156.5
+<dc/d96/classDislocationSource__inherit__graph.pdf, id=2020, 178.6675pt x 156.5
 85pt>
 File: dc/d96/classDislocationSource__inherit__graph.pdf Graphic file (type pdf)
 
@@ -1724,7 +1724,7 @@ Package pdftex.def Info: dc/d96/classDislocationSource__inherit__graph.pdf used
  on input line 19.
 (pdftex.def)             Requested size: 178.0pt x 156.00879pt.
 
-<da/d4c/classDislocationSource__coll__graph.pdf, id=2006, 271.0125pt x 238.8925
+<da/d4c/classDislocationSource__coll__graph.pdf, id=2021, 271.0125pt x 238.8925
 pt>
 File: da/d4c/classDislocationSource__coll__graph.pdf Graphic file (type pdf)
  <use da/d4c/classDislocationSource__coll__graph.pdf>
@@ -1736,15 +1736,15 @@ Underfull \vbox (badness 4765) has occurred while \output is active []
 
  [25 <./dc/d96/classDislocationSource__inherit__graph.pdf>] [26 <./da/d4c/class
 DislocationSource__coll__graph.pdf>] [27]
-Underfull \vbox (badness 10000) detected at line 173
+Underfull \vbox (badness 10000) detected at line 174
  []
 
 
-Underfull \vbox (badness 10000) detected at line 188
+Underfull \vbox (badness 10000) detected at line 189
  []
 
 [28]
-Underfull \vbox (badness 10000) detected at line 228
+Underfull \vbox (badness 10000) detected at line 229
  []
 
 [29]pdfTeX warning (ext4): destination with the same identifier (name{classDefe
@@ -1752,16 +1752,16 @@ ct_a6842fba3ad14032766ccf0437afcbced}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.351 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.352 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a684...
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 ace5c752b85c368631746abc3d5bd714}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.375 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.376 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_aace...
 
-Underfull \vbox (badness 10000) detected at line 384
+Underfull \vbox (badness 10000) detected at line 385
  []
 
 [30]pdfTeX warning (ext4): destination with the same identifier (name{classDefe
@@ -1769,118 +1769,118 @@ ct_a01b96c453c13db82b5835682e1849dc0}) has been already used, duplicate ignored
 
 <to be read again> 
                    \relax 
-l.425 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.426 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a01b...
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 9ea8df3b4c621762a327813056e63911}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.449 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.450 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a9ea...
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 6f59edeca7ca8bfa01c54fd6b1a62374}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.473 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.474 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a6f5...
 [31]
-Underfull \vbox (badness 10000) detected at line 506
+Underfull \vbox (badness 10000) detected at line 507
  []
 
 
-Underfull \vbox (badness 10000) detected at line 532
+Underfull \vbox (badness 10000) detected at line 533
  []
 
 
-Underfull \vbox (badness 10000) detected at line 558
+Underfull \vbox (badness 10000) detected at line 559
  []
 
 
-Underfull \vbox (badness 10000) detected at line 584
+Underfull \vbox (badness 10000) detected at line 585
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 2d233d13a8a93f6fba463a1fbc1c6c9f}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.601 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.602 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a2d2...
 [32]
-Underfull \vbox (badness 10000) detected at line 610
+Underfull \vbox (badness 10000) detected at line 611
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 d1a6acd8399d2ecabb7ce2b77623bbec}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.629 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.630 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_ad1a...
 
-Underfull \vbox (badness 10000) detected at line 642
+Underfull \vbox (badness 10000) detected at line 643
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 36ffa9b4b01d38ed8a95ca2c78973cc4}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.661 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.662 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a36f...
 
-Underfull \vbox (badness 10000) detected at line 670
+Underfull \vbox (badness 10000) detected at line 671
  []
 
 [33]
-Underfull \vbox (badness 10000) detected at line 696
+Underfull \vbox (badness 10000) detected at line 697
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 5a65f73da6a572d9e7109b31239e441d}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.713 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.714 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a5a6...
 
-Underfull \vbox (badness 10000) detected at line 722
+Underfull \vbox (badness 10000) detected at line 723
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 268606391a4eaee3de029d2005648b6f}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.739 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.740 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_a268...
 
-Underfull \vbox (badness 10000) detected at line 748
+Underfull \vbox (badness 10000) detected at line 749
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 bb0b16c44a1b04d782f5c5f598b49d5b}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.765 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+l.766 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{d5/d4f/classDefect_abb0...
 
-Underfull \vbox (badness 10000) detected at line 774
+Underfull \vbox (badness 10000) detected at line 775
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 5730a89ce804d75090c9fa35ffdfefa2}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.793 ...ily [virtual]}, {\ttfamily [inherited]}}}
+l.794 ...ily [virtual]}, {\ttfamily [inherited]}}}
                                                   \label{d5/d4f/classDefect_...
 [34]
-Underfull \vbox (badness 10000) detected at line 806
+Underfull \vbox (badness 10000) detected at line 807
  []
 
 pdfTeX warning (ext4): destination with the same identifier (name{classDefect_a
 ed2731c1beefc22e3db6ad5b18194cdd}) has been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.888 ...y [protected]}, {\ttfamily [inherited]}}}
+l.889 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{d5/d4f/classDefect_...
 [35]) (./de/d82/classMatrix33.tex
-<dc/dfe/classMatrix33__inherit__graph.pdf, id=2222, 284.06125pt x 156.585pt>
+<dc/dfe/classMatrix33__inherit__graph.pdf, id=2247, 284.06125pt x 156.585pt>
 File: dc/dfe/classMatrix33__inherit__graph.pdf Graphic file (type pdf)
 
 <use dc/dfe/classMatrix33__inherit__graph.pdf>
@@ -1999,7 +1999,7 @@ Underfull \vbox (badness 10000) detected at line 722
  []
 
 [44]) (./d2/d4a/classRotationMatrix.tex
-<d5/d4d/classRotationMatrix__inherit__graph.pdf, id=2410, 160.6pt x 156.585pt>
+<d5/d4d/classRotationMatrix__inherit__graph.pdf, id=2435, 160.6pt x 156.585pt>
 File: d5/d4d/classRotationMatrix__inherit__graph.pdf Graphic file (type pdf)
 
 <use d5/d4d/classRotationMatrix__inherit__graph.pdf>
@@ -2007,7 +2007,7 @@ Package pdftex.def Info: d5/d4d/classRotationMatrix__inherit__graph.pdf used on
  input line 19.
 (pdftex.def)             Requested size: 160.0pt x 156.004pt.
 
-<d5/dc0/classRotationMatrix__coll__graph.pdf, id=2411, 160.6pt x 156.585pt>
+<d5/dc0/classRotationMatrix__coll__graph.pdf, id=2436, 160.6pt x 156.585pt>
 File: d5/dc0/classRotationMatrix__coll__graph.pdf Graphic file (type pdf)
 
 <use d5/dc0/classRotationMatrix__coll__graph.pdf>
@@ -2221,7 +2221,7 @@ _af7f01fa466616eb7c8eda2e4d9f85cdd}) has been already used, duplicate ignored
 l.682 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{de/d82/classMatrix3...
 ) (./d1/d3c/classStrain.tex [53]
-<d6/d0f/classStrain__inherit__graph.pdf, id=2576, 134.5025pt x 156.585pt>
+<d6/d0f/classStrain__inherit__graph.pdf, id=2602, 134.5025pt x 156.585pt>
 File: d6/d0f/classStrain__inherit__graph.pdf Graphic file (type pdf)
 
 <use d6/d0f/classStrain__inherit__graph.pdf>
@@ -2229,7 +2229,7 @@ Package pdftex.def Info: d6/d0f/classStrain__inherit__graph.pdf used on input l
 ine 19.
 (pdftex.def)             Requested size: 134.0pt x 156.00162pt.
 
-<db/db8/classStrain__coll__graph.pdf, id=2577, 134.5025pt x 156.585pt>
+<db/db8/classStrain__coll__graph.pdf, id=2603, 134.5025pt x 156.585pt>
 File: db/db8/classStrain__coll__graph.pdf Graphic file (type pdf)
 
 <use db/db8/classStrain__coll__graph.pdf>
@@ -2448,7 +2448,7 @@ _af7f01fa466616eb7c8eda2e4d9f85cdd}) has been already used, duplicate ignored
 l.832 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{de/d82/classMatrix3...
 [63]) (./d1/d1c/classStress.tex
-<dd/d46/classStress__inherit__graph.pdf, id=2783, 134.5025pt x 156.585pt>
+<dd/d46/classStress__inherit__graph.pdf, id=2808, 134.5025pt x 156.585pt>
 File: dd/d46/classStress__inherit__graph.pdf Graphic file (type pdf)
 
 <use dd/d46/classStress__inherit__graph.pdf>
@@ -2456,7 +2456,7 @@ Package pdftex.def Info: dd/d46/classStress__inherit__graph.pdf used on input l
 ine 19.
 (pdftex.def)             Requested size: 134.0pt x 156.00162pt.
 
-<d7/dfa/classStress__coll__graph.pdf, id=2784, 134.5025pt x 156.585pt>
+<d7/dfa/classStress__coll__graph.pdf, id=2809, 134.5025pt x 156.585pt>
 File: d7/dfa/classStress__coll__graph.pdf Graphic file (type pdf)
 
 <use d7/dfa/classStress__coll__graph.pdf>
@@ -2767,7 +2767,7 @@ Underfull \vbox (badness 10000) detected at line 603
 [81]) [82]
 Chapter 6.
 (./d2/d6f/constants_8h.tex
-<dd/d0e/constants_8h__dep__incl.pdf, id=3151, 291.0875pt x 269.005pt>
+<dd/d0e/constants_8h__dep__incl.pdf, id=3176, 291.0875pt x 269.005pt>
 File: dd/d0e/constants_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/d0e/constants_8h__dep__incl.pdf>
@@ -2777,21 +2777,21 @@ Package pdftex.def Info: dd/d0e/constants_8h__dep__incl.pdf used on input line
  [83
 
  <./dd/d0e/constants_8h__dep__incl.pdf>]) (./dd/def/defect_8cpp.tex
-<dd/dcf/defect_8cpp__incl.pdf, id=3172, 188.705pt x 437.635pt>
+<dd/dcf/defect_8cpp__incl.pdf, id=3197, 188.705pt x 437.635pt>
 File: dd/dcf/defect_8cpp__incl.pdf Graphic file (type pdf)
 
 <use dd/dcf/defect_8cpp__incl.pdf>
 Package pdftex.def Info: dd/dcf/defect_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 435.99786pt.
  [84]) (./df/d55/defect_8h.tex [85 <./dd/dcf/defect_8cpp__incl.pdf>]
-<d2/d68/defect_8h__incl.pdf, id=3193, 188.705pt x 381.425pt>
+<d2/d68/defect_8h__incl.pdf, id=3218, 188.705pt x 381.425pt>
 File: d2/d68/defect_8h__incl.pdf Graphic file (type pdf)
 
 <use d2/d68/defect_8h__incl.pdf>
 Package pdftex.def Info: d2/d68/defect_8h__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 379.99814pt.
 
-<dc/d4d/defect_8h__dep__incl.pdf, id=3194, 312.16624pt x 269.005pt>
+<dc/d4d/defect_8h__dep__incl.pdf, id=3219, 312.16624pt x 269.005pt>
 File: dc/d4d/defect_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dc/d4d/defect_8h__dep__incl.pdf>
@@ -2802,7 +2802,7 @@ Package pdftex.def Info: dc/d4d/defect_8h__dep__incl.pdf used on input line 21.
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
  [86 <./d2/d68/defect_8h__incl.pdf>]) (./d3/d7f/dislocation_8cpp.tex
-<d2/d80/dislocation_8cpp__incl.pdf, id=3211, 351.3125pt x 493.845pt>
+<d2/d80/dislocation_8cpp__incl.pdf, id=3236, 351.3125pt x 493.845pt>
 File: d2/d80/dislocation_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d2/d80/dislocation_8cpp__incl.pdf>
@@ -2811,7 +2811,7 @@ Package pdftex.def Info: d2/d80/dislocation_8cpp__incl.pdf used on input line 1
 (pdftex.def)             Requested size: 350.0pt x 492.03526pt.
  [87 <./dc/d4d/defect_8h__dep__incl.pdf>] [88 <./d2/d80/dislocation_8cpp__incl.
 pdf>]) (./de/df3/dislocation_8h.tex
-<dc/dd3/dislocation_8h__incl.pdf, id=3240, 351.3125pt x 437.635pt>
+<dc/dd3/dislocation_8h__incl.pdf, id=3266, 351.3125pt x 437.635pt>
 File: dc/dd3/dislocation_8h__incl.pdf Graphic file (type pdf)
 
 <use dc/dd3/dislocation_8h__incl.pdf>
@@ -2819,7 +2819,7 @@ Package pdftex.def Info: dc/dd3/dislocation_8h__incl.pdf used on input line 16.
 
 (pdftex.def)             Requested size: 350.0pt x 436.03125pt.
 
-<dd/d31/dislocation_8h__dep__incl.pdf, id=3241, 292.09125pt x 212.795pt>
+<dd/d31/dislocation_8h__dep__incl.pdf, id=3267, 292.09125pt x 212.795pt>
 File: dd/d31/dislocation_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/d31/dislocation_8h__dep__incl.pdf>
@@ -2831,46 +2831,50 @@ Underfull \vbox (badness 4341) has occurred while \output is active []
 
  [89 <./dc/dd3/dislocation_8h__incl.pdf>]) (./d4/da6/dislocationDefaults_8h.tex
 
-<d0/dcc/dislocationDefaults_8h__dep__incl.pdf, id=3261, 292.09125pt x 269.005pt
+<d0/dcc/dislocationDefaults_8h__dep__incl.pdf, id=3286, 288.07625pt x 277.035pt
 >
 File: d0/dcc/dislocationDefaults_8h__dep__incl.pdf Graphic file (type pdf)
  <use d0/dcc/dislocationDefaults_8h__dep__incl.pdf>
 Package pdftex.def Info: d0/dcc/dislocationDefaults_8h__dep__incl.pdf used on i
-nput line 13.
-(pdftex.def)             Requested size: 291.0pt x 268.0233pt.
+nput line 14.
+(pdftex.def)             Requested size: 287.0pt x 276.01132pt.
  [90 <./dd/d31/dislocation_8h__dep__incl.pdf>] [91 <./d0/dcc/dislocationDefault
-s_8h__dep__incl.pdf>])
-(./d8/d5c/dislocationSource_8cpp.tex
-<df/dbd/dislocationSource_8cpp__incl.pdf, id=3296, 477.785pt x 550.055pt>
+s_8h__dep__incl.pdf>]
+[92]) (./d8/d5c/dislocationSource_8cpp.tex
+<df/dbd/dislocationSource_8cpp__incl.pdf, id=3329, 462.72874pt x 568.1225pt>
 File: df/dbd/dislocationSource_8cpp__incl.pdf Graphic file (type pdf)
 
 <use df/dbd/dislocationSource_8cpp__incl.pdf>
 Package pdftex.def Info: df/dbd/dislocationSource_8cpp__incl.pdf used on input 
-line 14.
-(pdftex.def)             Requested size: 350.0pt x 402.93846pt.
- [92])
-(./da/d0c/dislocationSource_8h.tex [93 <./df/dbd/dislocationSource_8cpp__incl.p
-df>] <df/daf/dislocationSource_8h__incl.pdf, id=3318, 477.785pt x 493.845pt>
+line 15.
+(pdftex.def)             Requested size: 350.0pt x 429.72305pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [93]
+[94 <./df/dbd/dislocationSource_8cpp__incl.pdf>])
+(./da/d0c/dislocationSource_8h.tex
+<df/daf/dislocationSource_8h__incl.pdf, id=3351, 462.72874pt x 509.905pt>
 File: df/daf/dislocationSource_8h__incl.pdf Graphic file (type pdf)
 
 <use df/daf/dislocationSource_8h__incl.pdf>
 Package pdftex.def Info: df/daf/dislocationSource_8h__incl.pdf used on input li
-ne 16.
-(pdftex.def)             Requested size: 350.0pt x 361.76227pt.
+ne 18.
+(pdftex.def)             Requested size: 350.0pt x 385.68784pt.
 
-<d4/d58/dislocationSource_8h__dep__incl.pdf, id=3319, 194.7275pt x 156.585pt>
+<d4/d58/dislocationSource_8h__dep__incl.pdf, id=3352, 194.7275pt x 156.585pt>
 File: d4/d58/dislocationSource_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use d4/d58/dislocationSource_8h__dep__incl.pdf>
 Package pdftex.def Info: d4/d58/dislocationSource_8h__dep__incl.pdf used on inp
-ut line 23.
+ut line 25.
 (pdftex.def)             Requested size: 194.0pt x 156.0064pt.
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
+Underfull \vbox (badness 5217) has occurred while \output is active []
 
- [94 <./df/daf/dislocationSource_8h__incl.pdf>])
-(./d4/d0f/dislocationSourceDefaults_8h.tex
-<da/d68/dislocationSourceDefaults_8h__dep__incl.pdf, id=3338, 222.8325pt x 212.
+ [95 <./df/daf/dislocationSource_8h__incl.pdf>]) (./d4/d0f/dislocationSourceDef
+aults_8h.tex
+<da/d68/dislocationSourceDefaults_8h__dep__incl.pdf, id=3371, 222.8325pt x 212.
 795pt>
 File: da/d68/dislocationSourceDefaults_8h__dep__incl.pdf Graphic file (type pdf
 )
@@ -2878,25 +2882,25 @@ File: da/d68/dislocationSourceDefaults_8h__dep__incl.pdf Graphic file (type pdf
 Package pdftex.def Info: da/d68/dislocationSourceDefaults_8h__dep__incl.pdf use
 d on input line 13.
 (pdftex.def)             Requested size: 222.0pt x 212.0022pt.
- [95 <./d4/d58/dislocationSource_8h__dep__incl.pdf>] [96 <./da/d68/dislocationS
+ [96 <./d4/d58/dislocationSource_8h__dep__incl.pdf>] [97 <./da/d68/dislocationS
 ourceDefaults_8h__dep__incl.pdf>]) (./d5/d4d/mainpage_8dox.tex) (./d8/d8e/matri
 x33_8cpp.tex
-<d8/d6d/matrix33_8cpp__incl.pdf, id=3370, 152.57pt x 269.005pt>
+<d8/d6d/matrix33_8cpp__incl.pdf, id=3402, 152.57pt x 269.005pt>
 File: d8/d6d/matrix33_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d8/d6d/matrix33_8cpp__incl.pdf>
 Package pdftex.def Info: d8/d6d/matrix33_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 152.0pt x 268.01099pt.
- [97 <./d8/d6d/matrix33_8cpp__incl.pdf>])
+ [98 <./d8/d6d/matrix33_8cpp__incl.pdf>])
 (./db/d46/matrix33_8h.tex
-<d7/dc7/matrix33_8h__incl.pdf, id=3386, 142.5325pt x 212.795pt>
+<d7/dc7/matrix33_8h__incl.pdf, id=3418, 142.5325pt x 212.795pt>
 File: d7/dc7/matrix33_8h__incl.pdf Graphic file (type pdf)
 
 <use d7/dc7/matrix33_8h__incl.pdf>
 Package pdftex.def Info: d7/dc7/matrix33_8h__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 142.0pt x 211.99895pt.
 
-<dd/d84/matrix33_8h__dep__incl.pdf, id=3387, 425.59pt x 437.635pt>
+<dd/d84/matrix33_8h__dep__incl.pdf, id=3419, 425.59pt x 437.635pt>
 File: dd/d84/matrix33_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/d84/matrix33_8h__dep__incl.pdf>
@@ -2906,9 +2910,9 @@ Package pdftex.def Info: dd/d84/matrix33_8h__dep__incl.pdf used on input line 2
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [98 <./d7/dc7/matrix33_8h__incl.pdf>]) (./d9/d5c/rotationMatrix_8cpp.tex [99 <
-./dd/d84/matrix33_8h__dep__incl.pdf>]) (./da/d76/rotationMatrix_8h.tex
-<dc/d6c/rotationMatrix_8h__incl.pdf, id=3422, 162.6075pt x 269.005pt>
+ [99 <./d7/dc7/matrix33_8h__incl.pdf>]) (./d9/d5c/rotationMatrix_8cpp.tex [100 
+<./dd/d84/matrix33_8h__dep__incl.pdf>]) (./da/d76/rotationMatrix_8h.tex
+<dc/d6c/rotationMatrix_8h__incl.pdf, id=3454, 162.6075pt x 269.005pt>
 File: dc/d6c/rotationMatrix_8h__incl.pdf Graphic file (type pdf)
 
 <use dc/d6c/rotationMatrix_8h__incl.pdf>
@@ -2916,31 +2920,31 @@ Package pdftex.def Info: dc/d6c/rotationMatrix_8h__incl.pdf used on input line
 14.
 (pdftex.def)             Requested size: 162.0pt x 268.0192pt.
 
-<dd/da3/rotationMatrix_8h__dep__incl.pdf, id=3423, 338.26375pt x 381.425pt>
+<dd/da3/rotationMatrix_8h__dep__incl.pdf, id=3455, 338.26375pt x 381.425pt>
 File: dd/da3/rotationMatrix_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/da3/rotationMatrix_8h__dep__incl.pdf>
 Package pdftex.def Info: dd/da3/rotationMatrix_8h__dep__incl.pdf used on input 
 line 21.
 (pdftex.def)             Requested size: 337.0pt x 380.00977pt.
- [100 <./dc/d6c/rotationMatrix_8h__incl.pdf>]) (./d7/db1/strain_8cpp.tex [101 <
+ [101 <./dc/d6c/rotationMatrix_8h__incl.pdf>]) (./d7/db1/strain_8cpp.tex [102 <
 ./dd/da3/rotationMatrix_8h__dep__incl.pdf>] <d1/da4/strain_8cpp__incl.pdf, id=3
-453, 188.705pt x 381.425pt>
+485, 188.705pt x 381.425pt>
 File: d1/da4/strain_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d1/da4/strain_8cpp__incl.pdf>
 Package pdftex.def Info: d1/da4/strain_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 379.99814pt.
- [102 <./d1/da4/strain_8cpp__incl.pdf>])
+ [103 <./d1/da4/strain_8cpp__incl.pdf>])
 (./df/dc2/strain_8h.tex
-<df/dd8/strain_8h__incl.pdf, id=3469, 188.705pt x 325.215pt>
+<df/dd8/strain_8h__incl.pdf, id=3501, 188.705pt x 325.215pt>
 File: df/dd8/strain_8h__incl.pdf Graphic file (type pdf)
 
 <use df/dd8/strain_8h__incl.pdf>
 Package pdftex.def Info: df/dd8/strain_8h__incl.pdf used on input line 15.
 (pdftex.def)             Requested size: 188.0pt x 323.99841pt.
 
-<d0/d58/strain_8h__dep__incl.pdf, id=3470, 138.5175pt x 156.585pt>
+<d0/d58/strain_8h__dep__incl.pdf, id=3502, 138.5175pt x 156.585pt>
 File: d0/d58/strain_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use d0/d58/strain_8h__dep__incl.pdf>
@@ -2950,8 +2954,8 @@ Package pdftex.def Info: d0/d58/strain_8h__dep__incl.pdf used on input line 22.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [103 <./df/dd8/strain_8h__incl.pdf>]) (./d4/d58/stress_8cpp.tex
-<d0/d28/stress_8cpp__incl.pdf, id=3488, 188.705pt x 381.425pt>
+ [104 <./df/dd8/strain_8h__incl.pdf>]) (./d4/d58/stress_8cpp.tex
+<d0/d28/stress_8cpp__incl.pdf, id=3520, 188.705pt x 381.425pt>
 File: d0/d28/stress_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d0/d28/stress_8cpp__incl.pdf>
@@ -2960,8 +2964,8 @@ Package pdftex.def Info: d0/d28/stress_8cpp__incl.pdf used on input line 14.
 
 Underfull \vbox (badness 2443) has occurred while \output is active []
 
- [104 <./d0/d58/strain_8h__dep__incl.pdf>]) (./d2/d50/stress_8h.tex [105 <./d0/
-d28/stress_8cpp__incl.pdf>] <df/d2b/stress_8h__incl.pdf, id=3517, 188.705pt x 3
+ [105 <./d0/d58/strain_8h__dep__incl.pdf>]) (./d2/d50/stress_8h.tex [106 <./d0/
+d28/stress_8cpp__incl.pdf>] <df/d2b/stress_8h__incl.pdf, id=3549, 188.705pt x 3
 25.215pt>
 File: df/d2b/stress_8h__incl.pdf Graphic file (type pdf)
 
@@ -2969,7 +2973,7 @@ File: df/d2b/stress_8h__incl.pdf Graphic file (type pdf)
 Package pdftex.def Info: df/d2b/stress_8h__incl.pdf used on input line 15.
 (pdftex.def)             Requested size: 188.0pt x 323.99841pt.
 
-<dc/d05/stress_8h__dep__incl.pdf, id=3518, 312.16624pt x 325.215pt>
+<dc/d05/stress_8h__dep__incl.pdf, id=3550, 312.16624pt x 325.215pt>
 File: dc/d05/stress_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dc/d05/stress_8h__dep__incl.pdf>
@@ -2979,23 +2983,23 @@ Package pdftex.def Info: dc/d05/stress_8h__dep__incl.pdf used on input line 22.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [106 <./df/d2b/stress_8h__incl.pdf>]) (./d7/d35/vector3d_8cpp.tex [107 <./dc/d
+ [107 <./df/d2b/stress_8h__incl.pdf>]) (./d7/d35/vector3d_8cpp.tex [108 <./dc/d
 05/stress_8h__dep__incl.pdf>]
-<d5/d7b/vector3d_8cpp__incl.pdf, id=3547, 154.5775pt x 212.795pt>
+<d5/d7b/vector3d_8cpp__incl.pdf, id=3580, 154.5775pt x 212.795pt>
 File: d5/d7b/vector3d_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d5/d7b/vector3d_8cpp__incl.pdf>
 Package pdftex.def Info: d5/d7b/vector3d_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 154.0pt x 212.01843pt.
 ) (./d9/df8/vector3d_8h.tex
-<dc/db1/vector3d_8h__incl.pdf, id=3552, 142.5325pt x 156.585pt>
+<dc/db1/vector3d_8h__incl.pdf, id=3585, 142.5325pt x 156.585pt>
 File: dc/db1/vector3d_8h__incl.pdf Graphic file (type pdf)
 
 <use dc/db1/vector3d_8h__incl.pdf>
 Package pdftex.def Info: dc/db1/vector3d_8h__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 142.0pt x 155.99922pt.
- [108 <./d5/d7b/vector3d_8cpp__incl.pdf>]
-<d3/dd7/vector3d_8h__dep__incl.pdf, id=3565, 425.59pt x 493.845pt>
+ [109 <./d5/d7b/vector3d_8cpp__incl.pdf>]
+<d3/dd7/vector3d_8h__dep__incl.pdf, id=3597, 425.59pt x 493.845pt>
 File: d3/dd7/vector3d_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use d3/dd7/vector3d_8h__dep__incl.pdf>
@@ -3005,13 +3009,13 @@ Package pdftex.def Info: d3/dd7/vector3d_8h__dep__incl.pdf used on input line 2
 
 Underfull \vbox (badness 1072) has occurred while \output is active []
 
- [109 <./dc/db1/vector3d_8h__incl.pdf> <./d3/dd7/vector3d_8h__dep__incl.pdf
+ [110 <./dc/db1/vector3d_8h__incl.pdf> <./d3/dd7/vector3d_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./d3/dd7/vector3d_8h__dep__incl.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
->]) (./refman.ind [110] [111
+>]) (./refman.ind [111] [112
 
-] [112] [113] [114
+] [113] [114] [115
 
 ])
 Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
@@ -3020,7 +3024,7 @@ Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
 Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
 Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 19674870FA30E5E1EEFB3B605295AF17;40609.
+(rerunfilecheck)             Checksum: 124B9DA8519091C7E8372CB507D3B920;41117.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -3031,10 +3035,10 @@ LaTeX Warning: There were multiply-defined labels.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
  ) 
 Here is how much of TeX's memory you used:
- 12958 strings out of 493485
- 195499 string characters out of 3143526
- 290057 words of memory out of 3000000
- 15202 multiletter control sequences out of 15000+200000
+ 12971 strings out of 493485
+ 196004 string characters out of 3143526
+ 289057 words of memory out of 3000000
+ 15208 multiletter control sequences out of 15000+200000
  75609 words of font info for 114 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
  41i,13n,58p,731b,524s stack positions out of 5000i,500n,10000p,200000b,50000s
@@ -3103,10 +3107,10 @@ w/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
 hvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (124 pages, 442285 bytes).
+Output written on refman.pdf (125 pages, 444639 bytes).
 PDF statistics:
- 4113 PDF objects out of 4296 (max. 8388607)
- 3862 compressed objects within 39 object streams
- 660 named destinations out of 1000 (max. 500000)
- 2500 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4147 PDF objects out of 4296 (max. 8388607)
+ 3895 compressed objects within 39 object streams
+ 667 named destinations out of 1000 (max. 500000)
+ 2524 words of extra memory for PDF output out of 10000 (max. 10000000)
 

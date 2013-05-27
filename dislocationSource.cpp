@@ -12,17 +12,11 @@
 // Constructors
 /**
  * @brief Default constructor.
- * @details Initializes the dislocation with the following default parameters:
- * Position: (0.0, 0.0, 0.0)
- * Burgers vector: Default value set in defaults file.
- * Line vector: Default value set in defaults file.
- * Burgers vector magnitude: Default value set in the defaults file.
- * Tau critical: Default value set in the defaults file.
- * nIterations: Default value set in the defaults file.
+ * @details Initializes the dislocation with the default parameters provided in the files dislocationDefaults.h and dislocationSourceDefaults.h.
  */
 DislocationSource::DislocationSource ()
 {
-  this->setPosition ( 0.0, 0.0, 0.0 );
+  this->setPosition ( Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) );
   this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
   this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
   this->bmag = DEFAULT_BURGERS_MAGNITUDE;

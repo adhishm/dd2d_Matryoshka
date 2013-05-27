@@ -254,35 +254,38 @@
 \contentsline {subsubsection}{\numberline {6.6.2.4}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}{92}{subsubsection.6.6.2.4}
 \contentsline {subsubsection}{\numberline {6.6.2.5}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}{92}{subsubsection.6.6.2.5}
 \contentsline {subsubsection}{\numberline {6.6.2.6}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}{92}{subsubsection.6.6.2.6}
-\contentsline {subsubsection}{\numberline {6.6.2.7}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}{92}{subsubsection.6.6.2.7}
-\contentsline {section}{\numberline {6.7}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp File Reference}{92}{section.6.7}
-\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{93}{subsection.6.7.1}
-\contentsline {section}{\numberline {6.8}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h File Reference}{94}{section.6.8}
-\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{95}{subsection.6.8.1}
-\contentsline {section}{\numberline {6.9}dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h File Reference}{95}{section.6.9}
-\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{96}{subsection.6.9.1}
-\contentsline {subsection}{\numberline {6.9.2}Macro Definition Documentation}{96}{subsection.6.9.2}
-\contentsline {subsubsection}{\numberline {6.9.2.1}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}{96}{subsubsection.6.9.2.1}
-\contentsline {subsubsection}{\numberline {6.9.2.2}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L}{97}{subsubsection.6.9.2.2}
-\contentsline {section}{\numberline {6.10}mainpage.\discretionary {-}{}{}dox File Reference}{97}{section.6.10}
-\contentsline {section}{\numberline {6.11}matrix33.\discretionary {-}{}{}cpp File Reference}{97}{section.6.11}
-\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{97}{subsection.6.11.1}
-\contentsline {section}{\numberline {6.12}matrix33.\discretionary {-}{}{}h File Reference}{98}{section.6.12}
-\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{99}{subsection.6.12.1}
-\contentsline {section}{\numberline {6.13}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp File Reference}{100}{section.6.13}
-\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{100}{subsection.6.13.1}
-\contentsline {section}{\numberline {6.14}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h File Reference}{100}{section.6.14}
-\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{101}{subsection.6.14.1}
-\contentsline {section}{\numberline {6.15}strain.\discretionary {-}{}{}cpp File Reference}{102}{section.6.15}
-\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{102}{subsection.6.15.1}
-\contentsline {section}{\numberline {6.16}strain.\discretionary {-}{}{}h File Reference}{103}{section.6.16}
-\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{104}{subsection.6.16.1}
-\contentsline {section}{\numberline {6.17}stress.\discretionary {-}{}{}cpp File Reference}{104}{section.6.17}
-\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{105}{subsection.6.17.1}
-\contentsline {section}{\numberline {6.18}stress.\discretionary {-}{}{}h File Reference}{106}{section.6.18}
-\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{107}{subsection.6.18.1}
-\contentsline {section}{\numberline {6.19}vector3d.\discretionary {-}{}{}cpp File Reference}{108}{section.6.19}
-\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{108}{subsection.6.19.1}
-\contentsline {section}{\numberline {6.20}vector3d.\discretionary {-}{}{}h File Reference}{108}{section.6.20}
-\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{110}{subsection.6.20.1}
-\contentsline {part}{Index}{110}{subsection.6.20.1}
+\contentsline {subsubsection}{\numberline {6.6.2.7}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}{93}{subsubsection.6.6.2.7}
+\contentsline {subsubsection}{\numberline {6.6.2.8}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}0}{93}{subsubsection.6.6.2.8}
+\contentsline {subsubsection}{\numberline {6.6.2.9}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}1}{93}{subsubsection.6.6.2.9}
+\contentsline {subsubsection}{\numberline {6.6.2.10}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}2}{93}{subsubsection.6.6.2.10}
+\contentsline {section}{\numberline {6.7}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp File Reference}{93}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{94}{subsection.6.7.1}
+\contentsline {section}{\numberline {6.8}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h File Reference}{95}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{96}{subsection.6.8.1}
+\contentsline {section}{\numberline {6.9}dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h File Reference}{96}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{97}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Macro Definition Documentation}{97}{subsection.6.9.2}
+\contentsline {subsubsection}{\numberline {6.9.2.1}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}{97}{subsubsection.6.9.2.1}
+\contentsline {subsubsection}{\numberline {6.9.2.2}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L}{98}{subsubsection.6.9.2.2}
+\contentsline {section}{\numberline {6.10}mainpage.\discretionary {-}{}{}dox File Reference}{98}{section.6.10}
+\contentsline {section}{\numberline {6.11}matrix33.\discretionary {-}{}{}cpp File Reference}{98}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{98}{subsection.6.11.1}
+\contentsline {section}{\numberline {6.12}matrix33.\discretionary {-}{}{}h File Reference}{99}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{100}{subsection.6.12.1}
+\contentsline {section}{\numberline {6.13}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp File Reference}{101}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{101}{subsection.6.13.1}
+\contentsline {section}{\numberline {6.14}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h File Reference}{101}{section.6.14}
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{102}{subsection.6.14.1}
+\contentsline {section}{\numberline {6.15}strain.\discretionary {-}{}{}cpp File Reference}{103}{section.6.15}
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{103}{subsection.6.15.1}
+\contentsline {section}{\numberline {6.16}strain.\discretionary {-}{}{}h File Reference}{104}{section.6.16}
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{105}{subsection.6.16.1}
+\contentsline {section}{\numberline {6.17}stress.\discretionary {-}{}{}cpp File Reference}{105}{section.6.17}
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{106}{subsection.6.17.1}
+\contentsline {section}{\numberline {6.18}stress.\discretionary {-}{}{}h File Reference}{107}{section.6.18}
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{108}{subsection.6.18.1}
+\contentsline {section}{\numberline {6.19}vector3d.\discretionary {-}{}{}cpp File Reference}{109}{section.6.19}
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{109}{subsection.6.19.1}
+\contentsline {section}{\numberline {6.20}vector3d.\discretionary {-}{}{}h File Reference}{109}{section.6.20}
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{111}{subsection.6.20.1}
+\contentsline {part}{Index}{111}{subsection.6.20.1}
