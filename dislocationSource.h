@@ -2,9 +2,9 @@
  * @file dislocationSource.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 02/05/2013
+ * @date 27/05/2013
  * @brief Definition of the DislocationSource class.
- * @details This file defines the DislocationSource class representing a source of dislocations in the simulation. This class inherits from the Defect class. This object is basically the representation of a Frank-Read source emitting dislocation dipoles.
+ * @details This file defines the DislocationSource class representing a source of dislocations in the simulation. This class inherits from the Defect class. This object is basically the representation of a Frank-Read source emitting dislocation dipoles. When the dislocation source experiences a shear stress greater than a critical value for a certain amount of time (or number of iterations), it emits a dislocation dipole with a length that is a function of the applied stress.
  */
 
 #ifndef DISLOCATIONSOURCE_H
@@ -16,7 +16,7 @@
 
 /**
  * @brief DislocationSource class representing a source of dislocations in the simulation.
- * @details This class inherits from the Defect class. This object is basically the representation of a Frank-Read source emitting dislocation dipoles. The properties of this class and the member functions will be declared here.
+ * @details This class inherits from the Defect class. This object is basically the representation of a Frank-Read source emitting dislocation dipoles. When the dislocation source experiences a shear stress greater than a critical value for a certain amount of time (or number of iterations), it emits a dislocation dipole with a length that is a function of the applied stress. The properties of this class and the member functions will be declared here.
  */
 class DislocationSource : public Defect
 {
