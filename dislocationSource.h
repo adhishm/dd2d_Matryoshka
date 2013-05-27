@@ -100,12 +100,6 @@ public:
    */
   void setLineVector (Vector3d line);
   
-  /**
-   * @brief Sets the position of the dislocation source.
-   * @param position The position vector giving the position of the dislocation source.
-   */
-  void setPosition (Vector3d position);
-  
   // Access functions
   /**
    * @brief Returns the Burgers vector of the dislocations in the dipole.
@@ -118,12 +112,6 @@ public:
    * @return The line vector of the dislocations in the dipole.
    */
   Vector3d getLineVector ();
-  
-  /**
-   * @brief Returns the position vector of the dislocation source.
-   * @return The position vector of the dislocation source.
-   */
-  Vector3d getPosition ();
   
   /**
    * @brief Returns the magnitude of the Burgers vector.

@@ -118,21 +118,37 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;  this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a> = line;</div>
 <div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
 <div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno"><a class="code" href="../../de/de3/classDislocationSource.html#ab1a6ecda50cd9bcd70882b75ec6552ac">   78</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="../../de/de3/classDislocationSource.html#ab1a6ecda50cd9bcd70882b75ec6552ac" title="The nucleation length of the dipole.">DislocationSource::dipoleNucleationLength</a> (<span class="keywordtype">double</span> tau, <span class="keywordtype">double</span> mu, <span class="keywordtype">double</span> nu)</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;{</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;  <span class="keywordtype">double</span> L = 0.0;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;  </div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">if</span> (tau &gt;= <a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>)</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;  {</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    L = (mu * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>) / ( 2.0 * <a class="code" href="../../d2/d6f/constants_8h.html#a598a3330b3c21701223ee0ca14316eca" title="The irrational number pi.">PI</a> * (1.0 - nu) * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> );</div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  }</div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;  </div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;  <span class="keywordflow">return</span> (L);</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;}</div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="code" href="../../de/de3/classDislocationSource.html#a4c07b688946410963dd41ce3bfc3a022">   74</a></span>&#160;<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../de/de3/classDislocationSource.html#a4c07b688946410963dd41ce3bfc3a022" title="Returns the Burgers vector of the dislocations in the dipole.">DislocationSource::getBurgers</a> ()</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;{</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ade4753ac6106317c693c2bba4f83a568" title="Burgers vector of the dislocation.">bvec</a>);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;</div>
+<div class="line"><a name="l00083"></a><span class="lineno"><a class="code" href="../../de/de3/classDislocationSource.html#a896f35e3c84654958d75b1cc964c42a1">   83</a></span>&#160;<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../de/de3/classDislocationSource.html#a896f35e3c84654958d75b1cc964c42a1" title="Returns the line vector of the dislocations in the dipole.">DislocationSource::getLineVector</a> ()</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a6a1ab6dc549236d2335a200e601781ea" title="Line vector if the dislocation.">lvec</a>);</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;<span class="keywordtype">double</span> <a class="code" href="../../d8/d5c/dislocationSource_8cpp.html#a5b4d3b563d423574f203d3d3c5378e5d" title="Returns the magnitude of the Burgers vector.">getBurgersMag</a> ();</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;<span class="keywordtype">double</span> <a class="code" href="../../d8/d5c/dislocationSource_8cpp.html#a96e84462a57a2eee5fc0cd843b0be39c" title="Returns the critical shear stress value for dipole emission.">getTauCritical</a> ();</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;</div>
+<div class="line"><a name="l00110"></a><span class="lineno"><a class="code" href="../../de/de3/classDislocationSource.html#ab1a6ecda50cd9bcd70882b75ec6552ac">  110</a></span>&#160;<span class="keywordtype">double</span> <a class="code" href="../../de/de3/classDislocationSource.html#ab1a6ecda50cd9bcd70882b75ec6552ac" title="The nucleation length of the dipole.">DislocationSource::dipoleNucleationLength</a> (<span class="keywordtype">double</span> tau, <span class="keywordtype">double</span> mu, <span class="keywordtype">double</span> nu)</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordtype">double</span> L = 0.0;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;  </div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;  <span class="keywordflow">if</span> (tau &gt;= <a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a>)</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;  {</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;    L = (mu * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#a59c95f3cb5af5180d2c42792413f7816" title="Magnitude of the Burgers vector in metres.">bmag</a>) / ( 2.0 * <a class="code" href="../../d2/d6f/constants_8h.html#a598a3330b3c21701223ee0ca14316eca" title="The irrational number pi.">PI</a> * (1.0 - nu) * this-&gt;<a class="code" href="../../de/de3/classDislocationSource.html#ad91294a3ab5b6f6156a2ad67b9df954e" title="Critical stress for the emission of a dislocation dipole.">tauCritical</a> );</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;  }</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  </div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;  <span class="keywordflow">return</span> (L);</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 27 2013 14:12:58 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 27 2013 15:36:59 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
