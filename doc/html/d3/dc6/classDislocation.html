@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>DD2.5D: Dislocation Class Reference</title>
+<title>DD2D: Dislocation Class Reference</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -22,10 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DD2.5D
+   <div id="projectname">DD2D
    &#160;<span id="projectnumber">0</span>
    </div>
-   <div id="projectbrief">This project provides a set of classes defining the behaviour of crystalline defects.</div>
+   <div id="projectbrief">This project provides a set of classes defining the behaviour of crystalline defects, with the final goal of carrying out dislocation dynamics simulations in two dimensions.</div>
   </td>
  </tr>
  </tbody>
@@ -143,7 +143,7 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:af61cedf5305080ce0f55eb7177efe529"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the stress field due to this dislocation at the position given as argument.  <a href="#af61cedf5305080ce0f55eb7177efe529">More...</a><br/></td></tr>
 <tr class="separator:af61cedf5305080ce0f55eb7177efe529"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84">stressFieldLocal</a> (<a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> p, double mu, double nu)</td></tr>
-<tr class="memdesc:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the stress field doe to the dislocation in the local co-ordinate system.  <a href="#a163d6c52c2281a1b7fa9aab058c8fb84">More...</a><br/></td></tr>
+<tr class="memdesc:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the stress field due to the dislocation in the local co-ordinate system.  <a href="#a163d6c52c2281a1b7fa9aab058c8fb84">More...</a><br/></td></tr>
 <tr class="separator:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f">setPosition</a> (double *a)</td></tr>
 <tr class="memdesc:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the defect.  <a href="#a2d233d13a8a93f6fba463a1fbc1c6c9f">More...</a><br/></td></tr>
@@ -919,7 +919,7 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> rLocal = this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a> * r;   <span class="comment">// Rotated to local co-ordinate system</span></div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  </div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment">// Calculate the stress field in the local co-ordinate system</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sLocal = this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84" title="Calculates the stress field doe to the dislocation in the local co-ordinate system.">stressFieldLocal</a> (rLocal, mu, nu);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sLocal = this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84" title="Calculates the stress field due to the dislocation in the local co-ordinate system.">stressFieldLocal</a> (rLocal, mu, nu);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  </div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="comment">// Calculate the stress field in the global co-ordinate system</span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sGlobal = (this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a>) * sLocal * (^(this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a>));</div>
@@ -959,7 +959,7 @@ Protected Attributes</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p>Calculates the stress field doe to the dislocation in the local co-ordinate system. </p>
+<p>Calculates the stress field due to the dislocation in the local co-ordinate system. </p>
 <p>The stress field due to the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system. </p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
@@ -1113,7 +1113,7 @@ Protected Attributes</h2></td></tr>
 
 <p>Position vector of the defect in 2D space. </p>
 
-<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00027">27</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
+<p>Definition at line <a class="el" href="../../df/d55/defect_8h_source.html#l00026">26</a> of file <a class="el" href="../../df/d55/defect_8h_source.html">defect.h</a>.</p>
 
 </div>
 </div>
@@ -1149,7 +1149,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 27 2013 11:33:35 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 27 2013 13:52:14 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

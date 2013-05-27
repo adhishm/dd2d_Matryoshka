@@ -125,7 +125,7 @@ public:
   Stress stressField (Vector3d p, double mu, double nu);
   
   /**
-   * @brief Calculates the stress field doe to the dislocation in the local co-ordinate system.
+   * @brief Calculates the stress field due to the dislocation in the local co-ordinate system.
    * @details The stress field due to the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
    * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
    * @param mu Shear modulus in Pascals.

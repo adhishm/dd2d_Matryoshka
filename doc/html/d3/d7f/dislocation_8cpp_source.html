@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>DD2.5D: dislocation.cpp Source File</title>
+<title>DD2D: dislocation.cpp Source File</title>
 <link href="../../tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="../../jquery.js"></script>
 <script type="text/javascript" src="../../dynsections.js"></script>
@@ -22,10 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DD2.5D
+   <div id="projectname">DD2D
    &#160;<span id="projectnumber">0</span>
    </div>
-   <div id="projectbrief">This project provides a set of classes defining the behaviour of crystalline defects.</div>
+   <div id="projectbrief">This project provides a set of classes defining the behaviour of crystalline defects, with the final goal of carrying out dislocation dynamics simulations in two dimensions.</div>
   </td>
  </tr>
  </tbody>
@@ -171,7 +171,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> rLocal = this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a> * r;   <span class="comment">// Rotated to local co-ordinate system</span></div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  </div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment">// Calculate the stress field in the local co-ordinate system</span></div>
-<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sLocal = this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84" title="Calculates the stress field doe to the dislocation in the local co-ordinate system.">stressFieldLocal</a> (rLocal, mu, nu);</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sLocal = this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84" title="Calculates the stress field due to the dislocation in the local co-ordinate system.">stressFieldLocal</a> (rLocal, mu, nu);</div>
 <div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  </div>
 <div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="comment">// Calculate the stress field in the global co-ordinate system</span></div>
 <div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sGlobal = (this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a>) * sLocal * (^(this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a>));</div>
@@ -179,7 +179,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;  <span class="keywordflow">return</span> (sGlobal);</div>
 <div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;}</div>
 <div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;</div>
-<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84">  163</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84" title="Calculates the stress field doe to the dislocation in the local co-ordinate system.">Dislocation::stressFieldLocal</a> (<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p, <span class="keywordtype">double</span> mu, <span class="keywordtype">double</span> nu)</div>
+<div class="line"><a name="l00163"></a><span class="lineno"><a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84">  163</a></span>&#160;<a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> <a class="code" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84" title="Calculates the stress field due to the dislocation in the local co-ordinate system.">Dislocation::stressFieldLocal</a> (<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p, <span class="keywordtype">double</span> mu, <span class="keywordtype">double</span> nu)</div>
 <div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;{</div>
 <div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordtype">double</span> D = ( mu * this-&gt;bm ) / ( 2.0 * <a class="code" href="../../d2/d6f/constants_8h.html#a598a3330b3c21701223ee0ca14316eca" title="The irrational number pi.">PI</a> * ( 1.0 - nu ) );   <span class="comment">// Constant for all components of the stress tensor</span></div>
 <div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;  </div>
@@ -202,7 +202,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 27 2013 11:33:35 for DD2.5D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon May 27 2013 13:52:14 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
