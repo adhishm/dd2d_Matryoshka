@@ -2,7 +2,7 @@
  * @file defect.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 22/04/2013
+ * @date 27/05/2013
  * @brief Definition of the Defect class.
  * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
@@ -14,7 +14,6 @@
 
 /**
  * @brief Class Defect representing a generic defect in a material.
- *
  * @details Defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions.
  * Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
@@ -56,6 +55,7 @@ class Defect
    * @param a Pointer to the array containing the coordinates of the defect.
    */
   void setPosition (double* a);
+  
   /**
    * @brief Sets the position of the defect.
    * @details The position of the defect is set to the co-ordinates specified by the arguments (x, y, z).
@@ -65,16 +65,26 @@ class Defect
    * @param z Z-coordinate of the defect.
    */
   void setPosition (double x, double y, double z);
+  
+  /**
+   * @brief Sets the position of the defect.
+   * @details The position of the defect is set to the position vector fiven by the argument a.
+   * @param a Position vector of the defect.
+   */
+  void setPosition (Vector3d a);
+  
   /**
    * @brief Sets the X-coordinate of the defect.
    * @param x X-coordinate of the defect.
    */
   void setX (double x);
+  
   /**
    * @brief Sets the Y-coordinate of the defect.
    * @param y Y-coordinate of the defect.
    */
   void setY (double y);
+  
   /**
    * @brief Sets the Z-coordinate of the defect.
    * @param z Z-coordinate of the defect.
@@ -88,22 +98,26 @@ class Defect
    * @return Pointer to the first term of the array containing the position of the defect.
    */
   double* getPosition ();
+  
   /**
    * @brief Returns the array position in a pre-allocated array.
    * @details Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.
    * @param a Pointer to the location where the defect coordinates are to be populated.
    */
   void getPosition (double* a);
+  
   /**
    * @brief Returns the X-coordinate of the defect.
    * @return X-coordinate of the defect.
    */
   double getX ();
+  
   /**
    * @brief Returns the Y-coordinate of the defect.
    * @return Y-coordinate of the defect.
    */
   double getY ();
+  
   /**
    * @brief Returns the Z-coordinate of the defect.
    * @return Z-coordinate of the defect.

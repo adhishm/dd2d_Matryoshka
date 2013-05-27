@@ -25,10 +25,12 @@ protected:
    * @brief Burgers vector of the dislocation.
    */
   Vector3d bvec;
+  
   /**
    * @brief Line vector if the dislocation.
    */
   Vector3d lvec;
+  
   /**
    * @brief Boolean term indicating mobility.
    * @details For mobile dislocations this term is true and for pinned dislocations it is false.
@@ -55,7 +57,7 @@ public:
    * Position: (0.0, 0.0, 0.0)
    * Burgers vector: Default value set in defaults file.
    * Line vector: Default value set in defaults file.
-   * Burgers vector magnitude: Default value set in teh defaults file.
+   * Burgers vector magnitude: Default value set in the defaults file.
    * Mobile: true.
    */
   Dislocation ();
@@ -73,10 +75,12 @@ public:
   // Assignment functions
   /**
    * @brief Sets the Burgers vector of the dislocation.
+   * @param burgers Bergers vector of the dislocation.
    */
   void setBurgers (Vector3d burgers);
   /**
    * @brief Sets the line vector of the dislocation.
+   * @param line Line vector of the dislocation.
    */
   void setLineVector (Vector3d line);
   /**
@@ -121,7 +125,7 @@ public:
   Stress stressField (Vector3d p, double mu, double nu);
   
   /**
-   * @brief Calculates the stress field doe to the dislocation in the local co-ordinate system.
+   * @brief Calculates the stress field due to the dislocation in the local co-ordinate system.
    * @details The stress field due to the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
    * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
    * @param mu Shear modulus in Pascals.

@@ -55,7 +55,7 @@ Defect::Defect (double* p)
  */
 void Defect::setPosition (double* a)
 {
-  this->pos.setValue (a);
+  this->pos.setVector (a);
 }
 
 /**
@@ -71,6 +71,16 @@ void Defect::setPosition (double x, double y, double z)
   this->pos.setValue (0, x);
   this->pos.setValue (1, y);
   this->pos.setValue (2, z);
+}
+
+/**
+ * @brief Sets the position of the defect.
+ * @details The position of the defect is set to the position vector fiven by the argument a.
+ * @param a Position vector of the defect.
+ */
+void Defect::setPosition (Vector3d a)
+{
+  this->position = a;
 }
 
 /**

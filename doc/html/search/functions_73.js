@@ -1,10 +1,13 @@
 var searchData=
 [
-  ['setburgers',['setBurgers',['../d3/dc6/classDislocation.html#ab827fcf321729c1238caaa3bceff323a',1,'Dislocation']]],
-  ['setlinevector',['setLineVector',['../d3/dc6/classDislocation.html#a6e814df21c8dfbd1e2e8f492673a79b2',1,'Dislocation']]],
+  ['setburgers',['setBurgers',['../d3/dc6/classDislocation.html#ab827fcf321729c1238caaa3bceff323a',1,'Dislocation::setBurgers()'],['../de/de3/classDislocationSource.html#ae1a26d9f8149206b884436f44e92f4c3',1,'DislocationSource::setBurgers()']]],
+  ['setburgersmagnitude',['setBurgersMagnitude',['../de/de3/classDislocationSource.html#a41c1f953f9ad57a2b1a9b8d412980d91',1,'DislocationSource']]],
+  ['setlinevector',['setLineVector',['../d3/dc6/classDislocation.html#a6e814df21c8dfbd1e2e8f492673a79b2',1,'Dislocation::setLineVector()'],['../de/de3/classDislocationSource.html#adf7d0b496f5935909daf071a0d733b17',1,'DislocationSource::setLineVector()']]],
   ['setmobile',['setMobile',['../d3/dc6/classDislocation.html#a59d404cb0d3dbaaa3380e4fd4018c4d3',1,'Dislocation']]],
+  ['setnumiterations',['setNumIterations',['../de/de3/classDislocationSource.html#a3042d73ee7ee346d825ab810dc5a6e83',1,'DislocationSource']]],
   ['setpinned',['setPinned',['../d3/dc6/classDislocation.html#a769db83b0546e7785b5890a5979a8d82',1,'Dislocation']]],
-  ['setposition',['setPosition',['../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f',1,'Defect::setPosition(double *a)'],['../d5/d4f/classDefect.html#ad1a6acd8399d2ecabb7ce2b77623bbec',1,'Defect::setPosition(double x, double y, double z)']]],
+  ['setposition',['setPosition',['../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f',1,'Defect::setPosition(double *a)'],['../d5/d4f/classDefect.html#ad1a6acd8399d2ecabb7ce2b77623bbec',1,'Defect::setPosition(double x, double y, double z)'],['../d5/d4f/classDefect.html#a36ffa9b4b01d38ed8a95ca2c78973cc4',1,'Defect::setPosition(Vector3d a)']]],
+  ['settaucritical',['setTauCritical',['../de/de3/classDislocationSource.html#a3294cb807ec8dd0e1fa6ab6e51eeafa2',1,'DislocationSource']]],
   ['setvalue',['setValue',['../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b',1,'Matrix33::setValue()'],['../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca',1,'Vector3d::setValue()']]],
   ['setvector',['setVector',['../df/dd0/classVector3d.html#a82c251f7203e08ec50ea55222f40525f',1,'Vector3d']]],
   ['setx',['setX',['../d5/d4f/classDefect.html#a5a65f73da6a572d9e7109b31239e441d',1,'Defect']]],
