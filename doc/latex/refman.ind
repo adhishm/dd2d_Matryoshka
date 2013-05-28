@@ -3,8 +3,8 @@
   \item {adjugate}
     \subitem {Matrix33}, \hyperpage{40}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{49}
-    \subitem {Strain}, \hyperpage{58}
-    \subitem {Stress}, \hyperpage{68}
+    \subitem {Strain}, \hyperpage{67}
+    \subitem {Stress}, \hyperpage{77}
 
   \indexspace
 
@@ -19,14 +19,15 @@
 
   \item {calculate\discretionary {-}{}{}Rotation\discretionary {-}{}{}Matrix}
     \subitem {Dislocation}, \hyperpage{18}
-  \item {constants.\discretionary {-}{}{}h}, \hyperpage{85}
-    \subitem {P\discretionary {-}{}{}I}, \hyperpage{86}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{58}
+  \item {constants.\discretionary {-}{}{}h}, \hyperpage{95}
+    \subitem {P\discretionary {-}{}{}I}, \hyperpage{96}
     \subitem {S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}, 
-		\hyperpage{86}
+		\hyperpage{96}
     \subitem {S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}, 
-		\hyperpage{86}
+		\hyperpage{96}
     \subitem {S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}, 
-		\hyperpage{86}
+		\hyperpage{96}
   \item {count\discretionary {-}{}{}Iterations}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{36}
 
@@ -34,25 +35,25 @@
 
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}
     \subitem {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{94}
+		\hyperpage{104}
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}
     \subitem {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{94}
+		\hyperpage{104}
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}
     \subitem {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{94}
+		\hyperpage{104}
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}
     \subitem {dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{99}
+		\hyperpage{110}
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}0}
     \subitem {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{95}
+		\hyperpage{105}
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}1}
     \subitem {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{95}
+		\hyperpage{105}
   \item {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}2}
     \subitem {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{95}
+		\hyperpage{105}
   \item {Defect}, \hyperpage{9}
     \subitem {Defect}, \hyperpage{11}
     \subitem {get\discretionary {-}{}{}Position}, \hyperpage{11, 12}
@@ -65,8 +66,8 @@
     \subitem {set\discretionary {-}{}{}Y}, \hyperpage{14}
     \subitem {set\discretionary {-}{}{}Z}, \hyperpage{14}
     \subitem {stress\discretionary {-}{}{}Field}, \hyperpage{14}
-  \item {defect.\discretionary {-}{}{}cpp}, \hyperpage{86}
-  \item {defect.\discretionary {-}{}{}h}, \hyperpage{88}
+  \item {defect.\discretionary {-}{}{}cpp}, \hyperpage{97}
+  \item {defect.\discretionary {-}{}{}h}, \hyperpage{98}
   \item {dipole\discretionary {-}{}{}Nucleation\discretionary {-}{}{}Length}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{29}
   \item {Dislocation}, \hyperpage{15}
@@ -98,22 +99,22 @@
     \subitem {stress\discretionary {-}{}{}Field}, \hyperpage{23}
     \subitem {stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local}, 
 		\hyperpage{23}
-  \item {dislocation.\discretionary {-}{}{}cpp}, \hyperpage{89}
-  \item {dislocation.\discretionary {-}{}{}h}, \hyperpage{91}
+  \item {dislocation.\discretionary {-}{}{}cpp}, \hyperpage{100}
+  \item {dislocation.\discretionary {-}{}{}h}, \hyperpage{101}
   \item {dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{92}
+		\hyperpage{102}
     \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}, 
-		\hyperpage{94}
+		\hyperpage{104}
     \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}, 
-		\hyperpage{94}
+		\hyperpage{104}
     \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}, 
-		\hyperpage{94}
+		\hyperpage{104}
     \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}0}, 
-		\hyperpage{95}
+		\hyperpage{105}
     \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}1}, 
-		\hyperpage{95}
+		\hyperpage{105}
     \subitem {D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}2}, 
-		\hyperpage{95}
+		\hyperpage{105}
   \item {Dislocation\discretionary {-}{}{}Source}, \hyperpage{25}
     \subitem {bmag}, \hyperpage{36}
     \subitem {bvec}, \hyperpage{36}
@@ -164,24 +165,49 @@
     \subitem {stress\discretionary {-}{}{}Field}, \hyperpage{36}
     \subitem {tau\discretionary {-}{}{}Critical}, \hyperpage{37}
   \item {dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp}, 
-		\hyperpage{95}
+		\hyperpage{105}
   \item {dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h}, 
-		\hyperpage{97}
+		\hyperpage{107}
   \item {dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h}, 
-		\hyperpage{98}
+		\hyperpage{108}
+  \item {dislocation\discretionary {-}{}{}Sources}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{64}
+  \item {dislocations}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{63}
 
   \indexspace
 
+  \item {extremities}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{64}
+
+  \indexspace
+
+  \item {get\discretionary {-}{}{}Axis}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{58}
   \item {get\discretionary {-}{}{}Burgers}
     \subitem {Dislocation}, \hyperpage{19}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{29}
   \item {get\discretionary {-}{}{}Burgers\discretionary {-}{}{}Mag}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{29}
+  \item {get\discretionary {-}{}{}Dislocation}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{59}
+  \item {get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}List}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{60}
+  \item {get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{60}
+  \item {get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}List}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{60}
+  \item {get\discretionary {-}{}{}Extremities}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{61}
+  \item {get\discretionary {-}{}{}Extremity}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{61}
   \item {get\discretionary {-}{}{}Iteration\discretionary {-}{}{}Count}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{30}
   \item {get\discretionary {-}{}{}Line\discretionary {-}{}{}Vector}
     \subitem {Dislocation}, \hyperpage{19}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{30}
+  \item {get\discretionary {-}{}{}Normal}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{61}
   \item {get\discretionary {-}{}{}Num\discretionary {-}{}{}Iterations}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{30}
   \item {get\discretionary {-}{}{}Position}
@@ -189,24 +215,27 @@
     \subitem {Dislocation}, \hyperpage{19}
     \subitem {Dislocation\discretionary {-}{}{}Source}, 
 		\hyperpage{30, 31}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{62}
   \item {get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}
-    \subitem {Strain}, \hyperpage{58}
+    \subitem {Strain}, \hyperpage{68}
   \item {get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}
-    \subitem {Stress}, \hyperpage{69}
+    \subitem {Stress}, \hyperpage{78}
+  \item {get\discretionary {-}{}{}Rotation\discretionary {-}{}{}Matrix}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{62}
   \item {get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}
-    \subitem {Strain}, \hyperpage{58}
+    \subitem {Strain}, \hyperpage{68}
   \item {get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}
-    \subitem {Stress}, \hyperpage{69}
+    \subitem {Stress}, \hyperpage{78}
   \item {get\discretionary {-}{}{}Tau\discretionary {-}{}{}Critical}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{31}
   \item {get\discretionary {-}{}{}Value}
     \subitem {Matrix33}, \hyperpage{41}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{49}
-    \subitem {Strain}, \hyperpage{59}
-    \subitem {Stress}, \hyperpage{69}
-    \subitem {Vector3d}, \hyperpage{78}
+    \subitem {Strain}, \hyperpage{68}
+    \subitem {Stress}, \hyperpage{78}
+    \subitem {Vector3d}, \hyperpage{87}
   \item {get\discretionary {-}{}{}Vector}
-    \subitem {Vector3d}, \hyperpage{78}
+    \subitem {Vector3d}, \hyperpage{88}
   \item {get\discretionary {-}{}{}X}
     \subitem {Defect}, \hyperpage{12}
     \subitem {Dislocation}, \hyperpage{20}
@@ -236,8 +265,8 @@
   \indexspace
 
   \item {magnitude}
-    \subitem {Vector3d}, \hyperpage{79}
-  \item {mainpage.\discretionary {-}{}{}dox}, \hyperpage{100}
+    \subitem {Vector3d}, \hyperpage{88}
+  \item {mainpage.\discretionary {-}{}{}dox}, \hyperpage{110}
   \item {Matrix33}, \hyperpage{37}
     \subitem {adjugate}, \hyperpage{40}
     \subitem {get\discretionary {-}{}{}Value}, \hyperpage{41}
@@ -252,8 +281,8 @@
     \subitem {operator-\/=}, \hyperpage{45}
     \subitem {set\discretionary {-}{}{}Value}, \hyperpage{46}
     \subitem {x}, \hyperpage{46}
-  \item {matrix33.\discretionary {-}{}{}cpp}, \hyperpage{100}
-  \item {matrix33.\discretionary {-}{}{}h}, \hyperpage{101}
+  \item {matrix33.\discretionary {-}{}{}cpp}, \hyperpage{110}
+  \item {matrix33.\discretionary {-}{}{}h}, \hyperpage{111}
   \item {mobile}
     \subitem {Dislocation}, \hyperpage{24}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{37}
@@ -262,84 +291,88 @@
 
   \item {n\discretionary {-}{}{}Iterations}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{37}
+  \item {normal\discretionary {-}{}{}Vector}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{64}
   \item {normalize}
-    \subitem {Vector3d}, \hyperpage{79}
+    \subitem {Vector3d}, \hyperpage{88}
 
   \indexspace
 
   \item {operator$\ast $}
     \subitem {Matrix33}, \hyperpage{42, 43}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{50, 51}
-    \subitem {Strain}, \hyperpage{60, 61}
-    \subitem {Stress}, \hyperpage{70, 71}
-    \subitem {Vector3d}, \hyperpage{79, 80}
+    \subitem {Strain}, \hyperpage{69, 70}
+    \subitem {Stress}, \hyperpage{79, 80}
+    \subitem {Vector3d}, \hyperpage{89}
   \item {operator$\ast $=}
     \subitem {Matrix33}, \hyperpage{43}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{52}
-    \subitem {Strain}, \hyperpage{61}
-    \subitem {Stress}, \hyperpage{71, 72}
-    \subitem {Vector3d}, \hyperpage{80}
+    \subitem {Strain}, \hyperpage{70, 71}
+    \subitem {Stress}, \hyperpage{81}
+    \subitem {Vector3d}, \hyperpage{89}
   \item {operator$\sim $}
     \subitem {Matrix33}, \hyperpage{45}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{54}
-    \subitem {Strain}, \hyperpage{63}
-    \subitem {Stress}, \hyperpage{74}
+    \subitem {Strain}, \hyperpage{73}
+    \subitem {Stress}, \hyperpage{83}
   \item {operator$^\wedge $}
     \subitem {Matrix33}, \hyperpage{45}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{54}
-    \subitem {Strain}, \hyperpage{63}
-    \subitem {Stress}, \hyperpage{73}
-    \subitem {Vector3d}, \hyperpage{82}
+    \subitem {Strain}, \hyperpage{72}
+    \subitem {Stress}, \hyperpage{83}
+    \subitem {Vector3d}, \hyperpage{91}
   \item {operator$^\wedge $=}
-    \subitem {Vector3d}, \hyperpage{82}
+    \subitem {Vector3d}, \hyperpage{91}
   \item {operator+}
     \subitem {Matrix33}, \hyperpage{44}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{52}
-    \subitem {Strain}, \hyperpage{62}
-    \subitem {Stress}, \hyperpage{72}
-    \subitem {Vector3d}, \hyperpage{80}
+    \subitem {Strain}, \hyperpage{71}
+    \subitem {Stress}, \hyperpage{81}
+    \subitem {Vector3d}, \hyperpage{90}
   \item {operator+=}
     \subitem {Matrix33}, \hyperpage{44}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{53}
-    \subitem {Strain}, \hyperpage{62}
-    \subitem {Stress}, \hyperpage{72}
-    \subitem {Vector3d}, \hyperpage{81}
+    \subitem {Strain}, \hyperpage{71}
+    \subitem {Stress}, \hyperpage{82}
+    \subitem {Vector3d}, \hyperpage{90}
   \item {operator-\/}
     \subitem {Matrix33}, \hyperpage{44}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{53}
-    \subitem {Strain}, \hyperpage{62}
-    \subitem {Stress}, \hyperpage{73}
-    \subitem {Vector3d}, \hyperpage{81}
+    \subitem {Strain}, \hyperpage{72}
+    \subitem {Stress}, \hyperpage{82}
+    \subitem {Vector3d}, \hyperpage{90}
   \item {operator-\/=}
     \subitem {Matrix33}, \hyperpage{45}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{53}
-    \subitem {Strain}, \hyperpage{63}
-    \subitem {Stress}, \hyperpage{73}
-    \subitem {Vector3d}, \hyperpage{81}
+    \subitem {Strain}, \hyperpage{72}
+    \subitem {Stress}, \hyperpage{82}
+    \subitem {Vector3d}, \hyperpage{91}
 
   \indexspace
 
   \item {P\discretionary {-}{}{}I}
-    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{86}
+    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{96}
   \item {populate\discretionary {-}{}{}Matrix}
-    \subitem {Strain}, \hyperpage{64}
-    \subitem {Stress}, \hyperpage{74}
+    \subitem {Strain}, \hyperpage{73}
+    \subitem {Stress}, \hyperpage{83}
   \item {pos}
     \subitem {Defect}, \hyperpage{15}
     \subitem {Dislocation}, \hyperpage{25}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{37}
+  \item {position}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{64}
   \item {principal\discretionary {-}{}{}Strains}
-    \subitem {Strain}, \hyperpage{65}
+    \subitem {Strain}, \hyperpage{74}
   \item {principal\discretionary {-}{}{}Stresses}
-    \subitem {Stress}, \hyperpage{75}
+    \subitem {Stress}, \hyperpage{85}
 
   \indexspace
 
   \item {reset\discretionary {-}{}{}Iteration\discretionary {-}{}{}Counter}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{32}
   \item {rotate}
-    \subitem {Strain}, \hyperpage{64}
-    \subitem {Stress}, \hyperpage{74}
+    \subitem {Strain}, \hyperpage{73}
+    \subitem {Stress}, \hyperpage{84}
   \item {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{47}
     \subitem {adjugate}, \hyperpage{49}
     \subitem {get\discretionary {-}{}{}Value}, \hyperpage{49}
@@ -358,29 +391,38 @@
   \item {rotation\discretionary {-}{}{}Matrix}
     \subitem {Dislocation}, \hyperpage{25}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{37}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{64}
   \item {rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp}, 
-		\hyperpage{103}
+		\hyperpage{113}
   \item {rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h}, 
-		\hyperpage{103}
+		\hyperpage{113}
 
   \indexspace
 
   \item {S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}
-    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{86}
+    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{96}
   \item {S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}
-    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{86}
+    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{96}
   \item {S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}
-    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{86}
+    \subitem {constants.\discretionary {-}{}{}h}, \hyperpage{96}
   \item {set\discretionary {-}{}{}Burgers}
     \subitem {Dislocation}, \hyperpage{20}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{33}
   \item {set\discretionary {-}{}{}Burgers\discretionary {-}{}{}Magnitude}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{33}
+  \item {set\discretionary {-}{}{}Dislocation\discretionary {-}{}{}List}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{62}
+  \item {set\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}List}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{62}
+  \item {set\discretionary {-}{}{}Extremities}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{63}
   \item {set\discretionary {-}{}{}Line\discretionary {-}{}{}Vector}
     \subitem {Dislocation}, \hyperpage{21}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{33}
   \item {set\discretionary {-}{}{}Mobile}
     \subitem {Dislocation}, \hyperpage{21}
+  \item {set\discretionary {-}{}{}Normal}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{63}
   \item {set\discretionary {-}{}{}Num\discretionary {-}{}{}Iterations}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{33}
   \item {set\discretionary {-}{}{}Pinned}
@@ -389,16 +431,17 @@
     \subitem {Defect}, \hyperpage{13}
     \subitem {Dislocation}, \hyperpage{21, 22}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{34}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{63}
   \item {set\discretionary {-}{}{}Tau\discretionary {-}{}{}Critical}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{35}
   \item {set\discretionary {-}{}{}Value}
     \subitem {Matrix33}, \hyperpage{46}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{54}
-    \subitem {Strain}, \hyperpage{65}
-    \subitem {Stress}, \hyperpage{75}
-    \subitem {Vector3d}, \hyperpage{82}
+    \subitem {Strain}, \hyperpage{74}
+    \subitem {Stress}, \hyperpage{84}
+    \subitem {Vector3d}, \hyperpage{92}
   \item {set\discretionary {-}{}{}Vector}
-    \subitem {Vector3d}, \hyperpage{83}
+    \subitem {Vector3d}, \hyperpage{92}
   \item {set\discretionary {-}{}{}X}
     \subitem {Defect}, \hyperpage{14}
     \subitem {Dislocation}, \hyperpage{22}
@@ -412,57 +455,96 @@
     \subitem {Dislocation}, \hyperpage{23}
     \subitem {Dislocation\discretionary {-}{}{}Source}, \hyperpage{35}
   \item {shear\discretionary {-}{}{}Strains}
-    \subitem {Strain}, \hyperpage{65}
+    \subitem {Strain}, \hyperpage{74}
   \item {shear\discretionary {-}{}{}Stresses}
-    \subitem {Stress}, \hyperpage{75}
-  \item {Strain}, \hyperpage{55}
-    \subitem {adjugate}, \hyperpage{58}
+    \subitem {Stress}, \hyperpage{85}
+  \item {Slip\discretionary {-}{}{}Plane}, \hyperpage{55}
+    \subitem {calculate\discretionary {-}{}{}Rotation\discretionary {-}{}{}Matrix}, 
+		\hyperpage{58}
+    \subitem {dislocation\discretionary {-}{}{}Sources}, \hyperpage{64}
+    \subitem {dislocations}, \hyperpage{63}
+    \subitem {extremities}, \hyperpage{64}
+    \subitem {get\discretionary {-}{}{}Axis}, \hyperpage{58}
+    \subitem {get\discretionary {-}{}{}Dislocation}, \hyperpage{59}
+    \subitem {get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}List}, 
+		\hyperpage{60}
+    \subitem {get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source}, 
+		\hyperpage{60}
+    \subitem {get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}List}, 
+		\hyperpage{60}
+    \subitem {get\discretionary {-}{}{}Extremities}, \hyperpage{61}
+    \subitem {get\discretionary {-}{}{}Extremity}, \hyperpage{61}
+    \subitem {get\discretionary {-}{}{}Normal}, \hyperpage{61}
+    \subitem {get\discretionary {-}{}{}Position}, \hyperpage{62}
+    \subitem {get\discretionary {-}{}{}Rotation\discretionary {-}{}{}Matrix}, 
+		\hyperpage{62}
+    \subitem {normal\discretionary {-}{}{}Vector}, \hyperpage{64}
+    \subitem {position}, \hyperpage{64}
+    \subitem {rotation\discretionary {-}{}{}Matrix}, \hyperpage{64}
+    \subitem {set\discretionary {-}{}{}Dislocation\discretionary {-}{}{}List}, 
+		\hyperpage{62}
+    \subitem {set\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}List}, 
+		\hyperpage{62}
+    \subitem {set\discretionary {-}{}{}Extremities}, \hyperpage{63}
+    \subitem {set\discretionary {-}{}{}Normal}, \hyperpage{63}
+    \subitem {set\discretionary {-}{}{}Position}, \hyperpage{63}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{57}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{57}
+    \subitem {slip\discretionary {-}{}{}Plane.\discretionary {-}{}{}cpp}, 
+		\hyperpage{116}
+  \item {slip\discretionary {-}{}{}Plane.\discretionary {-}{}{}cpp}, 
+		\hyperpage{115}
+    \subitem {Slip\discretionary {-}{}{}Plane}, \hyperpage{116}
+  \item {slip\discretionary {-}{}{}Plane.\discretionary {-}{}{}h}, 
+		\hyperpage{116}
+  \item {Strain}, \hyperpage{65}
+    \subitem {adjugate}, \hyperpage{67}
     \subitem {get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}, 
-		\hyperpage{58}
+		\hyperpage{68}
     \subitem {get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}, 
-		\hyperpage{58}
-    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{59}
-    \subitem {operator$\ast $}, \hyperpage{60, 61}
-    \subitem {operator$\ast $=}, \hyperpage{61}
-    \subitem {operator$\sim $}, \hyperpage{63}
-    \subitem {operator$^\wedge $}, \hyperpage{63}
-    \subitem {operator+}, \hyperpage{62}
-    \subitem {operator+=}, \hyperpage{62}
-    \subitem {operator-\/}, \hyperpage{62}
-    \subitem {operator-\/=}, \hyperpage{63}
-    \subitem {populate\discretionary {-}{}{}Matrix}, \hyperpage{64}
-    \subitem {principal\discretionary {-}{}{}Strains}, \hyperpage{65}
-    \subitem {rotate}, \hyperpage{64}
-    \subitem {set\discretionary {-}{}{}Value}, \hyperpage{65}
-    \subitem {shear\discretionary {-}{}{}Strains}, \hyperpage{65}
-    \subitem {Strain}, \hyperpage{57}
-    \subitem {x}, \hyperpage{65}
-  \item {strain.\discretionary {-}{}{}cpp}, \hyperpage{105}
-  \item {strain.\discretionary {-}{}{}h}, \hyperpage{106}
-  \item {Stress}, \hyperpage{65}
-    \subitem {adjugate}, \hyperpage{68}
+		\hyperpage{68}
+    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{68}
+    \subitem {operator$\ast $}, \hyperpage{69, 70}
+    \subitem {operator$\ast $=}, \hyperpage{70, 71}
+    \subitem {operator$\sim $}, \hyperpage{73}
+    \subitem {operator$^\wedge $}, \hyperpage{72}
+    \subitem {operator+}, \hyperpage{71}
+    \subitem {operator+=}, \hyperpage{71}
+    \subitem {operator-\/}, \hyperpage{72}
+    \subitem {operator-\/=}, \hyperpage{72}
+    \subitem {populate\discretionary {-}{}{}Matrix}, \hyperpage{73}
+    \subitem {principal\discretionary {-}{}{}Strains}, \hyperpage{74}
+    \subitem {rotate}, \hyperpage{73}
+    \subitem {set\discretionary {-}{}{}Value}, \hyperpage{74}
+    \subitem {shear\discretionary {-}{}{}Strains}, \hyperpage{74}
+    \subitem {Strain}, \hyperpage{66, 67}
+    \subitem {x}, \hyperpage{75}
+  \item {strain.\discretionary {-}{}{}cpp}, \hyperpage{118}
+  \item {strain.\discretionary {-}{}{}h}, \hyperpage{120}
+  \item {Stress}, \hyperpage{75}
+    \subitem {adjugate}, \hyperpage{77}
     \subitem {get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}, 
-		\hyperpage{69}
+		\hyperpage{78}
     \subitem {get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}, 
-		\hyperpage{69}
-    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{69}
-    \subitem {operator$\ast $}, \hyperpage{70, 71}
-    \subitem {operator$\ast $=}, \hyperpage{71, 72}
-    \subitem {operator$\sim $}, \hyperpage{74}
-    \subitem {operator$^\wedge $}, \hyperpage{73}
-    \subitem {operator+}, \hyperpage{72}
-    \subitem {operator+=}, \hyperpage{72}
-    \subitem {operator-\/}, \hyperpage{73}
-    \subitem {operator-\/=}, \hyperpage{73}
-    \subitem {populate\discretionary {-}{}{}Matrix}, \hyperpage{74}
-    \subitem {principal\discretionary {-}{}{}Stresses}, \hyperpage{75}
-    \subitem {rotate}, \hyperpage{74}
-    \subitem {set\discretionary {-}{}{}Value}, \hyperpage{75}
-    \subitem {shear\discretionary {-}{}{}Stresses}, \hyperpage{75}
-    \subitem {Stress}, \hyperpage{67, 68}
-    \subitem {x}, \hyperpage{76}
-  \item {stress.\discretionary {-}{}{}cpp}, \hyperpage{107}
-  \item {stress.\discretionary {-}{}{}h}, \hyperpage{109}
+		\hyperpage{78}
+    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{78}
+    \subitem {operator$\ast $}, \hyperpage{79, 80}
+    \subitem {operator$\ast $=}, \hyperpage{81}
+    \subitem {operator$\sim $}, \hyperpage{83}
+    \subitem {operator$^\wedge $}, \hyperpage{83}
+    \subitem {operator+}, \hyperpage{81}
+    \subitem {operator+=}, \hyperpage{82}
+    \subitem {operator-\/}, \hyperpage{82}
+    \subitem {operator-\/=}, \hyperpage{82}
+    \subitem {populate\discretionary {-}{}{}Matrix}, \hyperpage{83}
+    \subitem {principal\discretionary {-}{}{}Stresses}, \hyperpage{85}
+    \subitem {rotate}, \hyperpage{84}
+    \subitem {set\discretionary {-}{}{}Value}, \hyperpage{84}
+    \subitem {shear\discretionary {-}{}{}Stresses}, \hyperpage{85}
+    \subitem {Stress}, \hyperpage{77}
+    \subitem {x}, \hyperpage{85}
+  \item {stress.\discretionary {-}{}{}cpp}, \hyperpage{121}
+  \item {stress.\discretionary {-}{}{}h}, \hyperpage{123}
   \item {stress\discretionary {-}{}{}Field}
     \subitem {Defect}, \hyperpage{14}
     \subitem {Dislocation}, \hyperpage{23}
@@ -470,7 +552,7 @@
   \item {stress\discretionary {-}{}{}Field\discretionary {-}{}{}Local}
     \subitem {Dislocation}, \hyperpage{23}
   \item {sum}
-    \subitem {Vector3d}, \hyperpage{83}
+    \subitem {Vector3d}, \hyperpage{92}
 
   \indexspace
 
@@ -479,34 +561,34 @@
 
   \indexspace
 
-  \item {Vector3d}, \hyperpage{76}
-    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{78}
-    \subitem {get\discretionary {-}{}{}Vector}, \hyperpage{78}
-    \subitem {magnitude}, \hyperpage{79}
-    \subitem {normalize}, \hyperpage{79}
-    \subitem {operator$\ast $}, \hyperpage{79, 80}
-    \subitem {operator$\ast $=}, \hyperpage{80}
-    \subitem {operator$^\wedge $}, \hyperpage{82}
-    \subitem {operator$^\wedge $=}, \hyperpage{82}
-    \subitem {operator+}, \hyperpage{80}
-    \subitem {operator+=}, \hyperpage{81}
-    \subitem {operator-\/}, \hyperpage{81}
-    \subitem {operator-\/=}, \hyperpage{81}
-    \subitem {set\discretionary {-}{}{}Value}, \hyperpage{82}
-    \subitem {set\discretionary {-}{}{}Vector}, \hyperpage{83}
-    \subitem {sum}, \hyperpage{83}
-    \subitem {Vector3d}, \hyperpage{77}
-    \subitem {x}, \hyperpage{83}
-  \item {vector3d.\discretionary {-}{}{}cpp}, \hyperpage{111}
-  \item {vector3d.\discretionary {-}{}{}h}, \hyperpage{111}
+  \item {Vector3d}, \hyperpage{85}
+    \subitem {get\discretionary {-}{}{}Value}, \hyperpage{87}
+    \subitem {get\discretionary {-}{}{}Vector}, \hyperpage{88}
+    \subitem {magnitude}, \hyperpage{88}
+    \subitem {normalize}, \hyperpage{88}
+    \subitem {operator$\ast $}, \hyperpage{89}
+    \subitem {operator$\ast $=}, \hyperpage{89}
+    \subitem {operator$^\wedge $}, \hyperpage{91}
+    \subitem {operator$^\wedge $=}, \hyperpage{91}
+    \subitem {operator+}, \hyperpage{90}
+    \subitem {operator+=}, \hyperpage{90}
+    \subitem {operator-\/}, \hyperpage{90}
+    \subitem {operator-\/=}, \hyperpage{91}
+    \subitem {set\discretionary {-}{}{}Value}, \hyperpage{92}
+    \subitem {set\discretionary {-}{}{}Vector}, \hyperpage{92}
+    \subitem {sum}, \hyperpage{92}
+    \subitem {Vector3d}, \hyperpage{86, 87}
+    \subitem {x}, \hyperpage{93}
+  \item {vector3d.\discretionary {-}{}{}cpp}, \hyperpage{125}
+  \item {vector3d.\discretionary {-}{}{}h}, \hyperpage{125}
 
   \indexspace
 
   \item {x}
     \subitem {Matrix33}, \hyperpage{46}
     \subitem {Rotation\discretionary {-}{}{}Matrix}, \hyperpage{55}
-    \subitem {Strain}, \hyperpage{65}
-    \subitem {Stress}, \hyperpage{76}
-    \subitem {Vector3d}, \hyperpage{83}
+    \subitem {Strain}, \hyperpage{75}
+    \subitem {Stress}, \hyperpage{85}
+    \subitem {Vector3d}, \hyperpage{93}
 
 \end{theindex}

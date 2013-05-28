@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.12)  28 MAY 2013 10:43
+This is pdfTeX, Version 3.1415926-2.4-1.40.13 (TeX Live 2012/Debian) (format=pdflatex 2013.5.12)  28 MAY 2013 16:30
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1411,22 +1411,24 @@ LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <7> not available
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 6.29996pt on input line 71.
  [2] [3] [4]
-[5] [6] [7]
+[5] [6] [7] [8]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 296.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 331.
 LaTeX Font Info:    Font shape `T1/phv/b/n' will be
-(Font)              scaled to size 10.79993pt on input line 296.
+(Font)              scaled to size 10.79993pt on input line 331.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <12> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 331.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <9> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 331.
 LaTeX Font Info:    Font shape `OT1/ptm/bx/n' in size <7> not available
-(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 296.
+(Font)              Font shape `OT1/ptm/b/n' tried instead on input line 331.
 )
 \tf@toc=\write5
 \openout5 = `refman.toc'.
 
- [8]
+ [9] [10
+
+]
 Package hyperref Info: Option `pageanchor' set `true' on input line 65.
 
 Chapter 1.
@@ -1438,8 +1440,12 @@ LaTeX Font Info:    Font shape `T1/phv/b/n' will be
 (Font)              scaled to size 18.66588pt on input line 66.
 LaTeX Font Info:    Font shape `OT1/phv/bc/n' will be
 (Font)              scaled to size 18.66588pt on input line 66.
-(./index.tex) [1
-
+(./index.tex
+LaTeX Font Info:    Try loading font information for T1+pcr on input line 5.
+ (/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
+File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
+))
+[1
 
 ] [2
 
@@ -1460,17 +1466,10 @@ Chapter 3.
 
 ]
 Chapter 4.
-(./files.tex) [7] [8
-
-]
+(./files.tex [7]) [8]
 Chapter 5.
 (./d5/d4f/classDefect.tex
-LaTeX Font Info:    Try loading font information for T1+pcr on input line 11.
-
-(/usr/share/texlive/texmf-dist/tex/latex/psnfss/t1pcr.fd
-File: t1pcr.fd 2001/06/04 font definitions for T1/pcr.
-)
-<de/d48/classDefect__inherit__graph.pdf, id=1684, 263.98625pt x 156.585pt>
+<de/d48/classDefect__inherit__graph.pdf, id=1882, 263.98625pt x 156.585pt>
 File: de/d48/classDefect__inherit__graph.pdf Graphic file (type pdf)
 
 <use de/d48/classDefect__inherit__graph.pdf>
@@ -1478,7 +1477,7 @@ Package pdftex.def Info: de/d48/classDefect__inherit__graph.pdf used on input l
 ine 19.
 (pdftex.def)             Requested size: 263.0pt x 156.00879pt.
 
-<d7/d09/classDefect__coll__graph.pdf, id=1685, 136.51pt x 168.63pt>
+<d7/d09/classDefect__coll__graph.pdf, id=1883, 136.51pt x 168.63pt>
 File: d7/d09/classDefect__coll__graph.pdf Graphic file (type pdf)
 
 <use d7/d09/classDefect__coll__graph.pdf>
@@ -1494,8 +1493,10 @@ File: ts1phv.fd 2001/06/04 scalable font definitions for TS1/phv.
 )
 LaTeX Font Info:    Font shape `TS1/phv/m/n' will be
 (Font)              scaled to size 8.99994pt on input line 34.
- [9 <./de/d48/classDefect__inherit__graph.pdf> <./d7/d09/classDefect__coll__gra
-ph.pdf
+ [9
+
+ <./de/d48/classDefect__inherit__graph.pdf> <./d7/d09/classDefect__coll__graph.
+pdf
 
 pdfTeX warning: pdflatex (file ./d7/d09/classDefect__coll__graph.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
@@ -1568,7 +1569,7 @@ Underfull \vbox (badness 10000) detected at line 475
  []
 
 ) (./d3/dc6/classDislocation.tex
-<df/dfa/classDislocation__inherit__graph.pdf, id=1819, 146.5475pt x 156.585pt>
+<df/dfa/classDislocation__inherit__graph.pdf, id=2016, 146.5475pt x 156.585pt>
 File: df/dfa/classDislocation__inherit__graph.pdf Graphic file (type pdf)
 
 <use df/dfa/classDislocation__inherit__graph.pdf>
@@ -1576,7 +1577,7 @@ Package pdftex.def Info: df/dfa/classDislocation__inherit__graph.pdf used on in
 put line 19.
 (pdftex.def)             Requested size: 146.0pt x 155.99922pt.
 
-<d7/d80/classDislocation__coll__graph.pdf, id=1820, 271.0125pt x 238.8925pt>
+<d7/d80/classDislocation__coll__graph.pdf, id=2017, 271.0125pt x 238.8925pt>
 File: d7/d80/classDislocation__coll__graph.pdf Graphic file (type pdf)
 
 <use d7/d80/classDislocation__coll__graph.pdf>
@@ -1715,7 +1716,7 @@ ct_aed2731c1beefc22e3db6ad5b18194cdd}) has been already used, duplicate ignored
 l.799 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{d5/d4f/classDefect_...
 ) (./de/de3/classDislocationSource.tex
-<dc/d96/classDislocationSource__inherit__graph.pdf, id=2047, 178.6675pt x 156.5
+<dc/d96/classDislocationSource__inherit__graph.pdf, id=2244, 178.6675pt x 156.5
 85pt>
 File: dc/d96/classDislocationSource__inherit__graph.pdf Graphic file (type pdf)
 
@@ -1724,7 +1725,7 @@ Package pdftex.def Info: dc/d96/classDislocationSource__inherit__graph.pdf used
  on input line 19.
 (pdftex.def)             Requested size: 178.0pt x 156.00879pt.
 
-<da/d4c/classDislocationSource__coll__graph.pdf, id=2048, 271.0125pt x 238.8925
+<da/d4c/classDislocationSource__coll__graph.pdf, id=2245, 271.0125pt x 238.8925
 pt>
 File: da/d4c/classDislocationSource__coll__graph.pdf Graphic file (type pdf)
  <use da/d4c/classDislocationSource__coll__graph.pdf>
@@ -1889,7 +1890,7 @@ ct_aed2731c1beefc22e3db6ad5b18194cdd}) has been already used, duplicate ignored
 l.1002 ... [protected]}, {\ttfamily [inherited]}}}
                                                   \label{d5/d4f/classDefect_...
 ) (./de/d82/classMatrix33.tex
-<dc/dfe/classMatrix33__inherit__graph.pdf, id=2295, 284.06125pt x 156.585pt>
+<dc/dfe/classMatrix33__inherit__graph.pdf, id=2491, 284.06125pt x 156.585pt>
 File: dc/dfe/classMatrix33__inherit__graph.pdf Graphic file (type pdf)
 
 <use dc/dfe/classMatrix33__inherit__graph.pdf>
@@ -2008,7 +2009,7 @@ Underfull \vbox (badness 10000) detected at line 722
  []
 
 ) (./d2/d4a/classRotationMatrix.tex [46]
-<d5/d4d/classRotationMatrix__inherit__graph.pdf, id=2488, 160.6pt x 156.585pt>
+<d5/d4d/classRotationMatrix__inherit__graph.pdf, id=2684, 160.6pt x 156.585pt>
 File: d5/d4d/classRotationMatrix__inherit__graph.pdf Graphic file (type pdf)
 
 <use d5/d4d/classRotationMatrix__inherit__graph.pdf>
@@ -2016,7 +2017,7 @@ Package pdftex.def Info: d5/d4d/classRotationMatrix__inherit__graph.pdf used on
  input line 19.
 (pdftex.def)             Requested size: 160.0pt x 156.004pt.
 
-<d5/dc0/classRotationMatrix__coll__graph.pdf, id=2489, 160.6pt x 156.585pt>
+<d5/dc0/classRotationMatrix__coll__graph.pdf, id=2685, 160.6pt x 156.585pt>
 File: d5/dc0/classRotationMatrix__coll__graph.pdf Graphic file (type pdf)
 
 <use d5/dc0/classRotationMatrix__coll__graph.pdf>
@@ -2230,8 +2231,60 @@ ed
                    \relax 
 l.682 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{de/d82/classMatrix3...
-) (./d1/d3c/classStrain.tex
-<d6/d0f/classStrain__inherit__graph.pdf, id=2649, 134.5025pt x 156.585pt>
+) (./db/d25/classSlipPlane.tex
+<d2/da3/classSlipPlane__coll__graph.pdf, id=2845, 486.81876pt x 427.5975pt>
+File: d2/da3/classSlipPlane__coll__graph.pdf Graphic file (type pdf)
+
+<use d2/da3/classSlipPlane__coll__graph.pdf>
+Package pdftex.def Info: d2/da3/classSlipPlane__coll__graph.pdf used on input l
+ine 19.
+(pdftex.def)             Requested size: 350.0pt x 307.41975pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [55]
+[56 <./d2/da3/classSlipPlane__coll__graph.pdf>] [57]
+Underfull \vbox (badness 10000) detected at line 126
+ []
+
+[58]
+Underfull \vbox (badness 10000) detected at line 203
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 255
+ []
+
+[59]
+Underfull \vbox (badness 10000) detected at line 319
+ []
+
+[60]
+Underfull \vbox (badness 10000) detected at line 404
+ []
+
+[61]
+Underfull \vbox (badness 10000) detected at line 512
+ []
+
+[62]
+Underfull \vbox (badness 10000) detected at line 538
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 564
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 591
+ []
+
+
+Underfull \vbox (badness 10000) detected at line 617
+ []
+
+[63]) (./d1/d3c/classStrain.tex [64]
+<d6/d0f/classStrain__inherit__graph.pdf, id=3038, 134.5025pt x 156.585pt>
 File: d6/d0f/classStrain__inherit__graph.pdf Graphic file (type pdf)
 
 <use d6/d0f/classStrain__inherit__graph.pdf>
@@ -2239,248 +2292,19 @@ Package pdftex.def Info: d6/d0f/classStrain__inherit__graph.pdf used on input l
 ine 19.
 (pdftex.def)             Requested size: 134.0pt x 156.00162pt.
 
-<db/db8/classStrain__coll__graph.pdf, id=2650, 134.5025pt x 156.585pt>
+<db/db8/classStrain__coll__graph.pdf, id=3039, 134.5025pt x 156.585pt>
 File: db/db8/classStrain__coll__graph.pdf Graphic file (type pdf)
 
 <use db/db8/classStrain__coll__graph.pdf>
 Package pdftex.def Info: db/db8/classStrain__coll__graph.pdf used on input line
  28.
 (pdftex.def)             Requested size: 134.0pt x 156.00162pt.
-
-Underfull \vbox (badness 6316) has occurred while \output is active []
-
- [55 <./d6/d0f/classStrain__inherit__graph.pdf>] [56 <./db/db8/classStrain__col
-l__graph.pdf>]
-Underfull \vbox (badness 10000) detected at line 144
- []
-
-
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [57]pdfTeX warning (ext4): destination with the same identifier (name{classMat
-rix33_a4e64ab5af4921c24b8270a0c9050f4ba}) has been already used, duplicate igno
-red
-<to be read again> 
-                   \relax 
-l.172 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_a4...
-[58]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
-ix33_a849bbdf7b456ddacf7185b087fca4015}) has been already used, duplicate ignor
-ed
-<to be read again> 
-                   \relax 
-l.275 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_a8...
-
-Underfull \vbox (badness 10000) detected at line 286
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_a1b822a20343a26b3c9bb7fd5c1247f37}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.314 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-[59]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
-ix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}) has been already used, duplicate ignor
-ed
-<to be read again> 
-                   \relax 
-l.359 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 359.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ast' on input line 359.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 359.
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_a525f14614255ff81c0cbab8060e8e065}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.394 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 394.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ast' on input line 394.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 394.
-
-[60]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
-ix33_a601584a1edbaae7c6a2a2874605d6f61}) has been already used, duplicate ignor
-ed
-<to be read again> 
-                   \relax 
-l.433 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 433.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ast' on input line 433.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 433.
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_a83162791813bef030b1ceb5df3c5cae3}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.468 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_a8...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 468.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ast' on input line 468.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 468.
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_ac3937bdeb034cc83b4adcad16cd58a26}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.497 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_ac...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 497.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\ast' on input line 497.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 497.
-
-[61]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
-ix33_adc58ec5739c9250ff1150c725d0e868e}) has been already used, duplicate ignor
-ed
-<to be read again> 
-                   \relax 
-l.524 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_acb59e59d3937e075521f478ba83b7165}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.559 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_ac...
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_a372f71ec208bb6d3045acd4324b7cb06}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.588 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-[62]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
-ix33_abc889e10a9c7c532195c7031c1344a74}) has been already used, duplicate ignor
-ed
-<to be read again> 
-                   \relax 
-l.623 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_ab...
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_ad4ab7b9674a44a297502282e1993ef54}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.652 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 652.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `superscript' on input line 652.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\wedge' on input line 652.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 652.
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_a15b37caa6ab0d9f4a9f0d95846abd675}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.687 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 687.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `\sim' on input line 687.
-
-
-Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `math shift' on input line 687.
-
-[63]
-Underfull \vbox (badness 10000) detected at line 756
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_a6cdcec77fd089b2e73ad7ae85ecff30b}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.783 )\hspace{0.3cm}{\ttfamily [inherited]}}}
-                                              \label{de/d82/classMatrix33_a6...
-[64]
-Underfull \vbox (badness 10000) detected at line 796
- []
-
-pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
-_af7f01fa466616eb7c8eda2e4d9f85cdd}) has been already used, duplicate ignored
-<to be read again> 
-                   \relax 
-l.832 ...y [protected]}, {\ttfamily [inherited]}}}
-                                                  \label{de/d82/classMatrix3...
-) (./d1/d1c/classStress.tex
-<dd/d46/classStress__inherit__graph.pdf, id=2855, 134.5025pt x 156.585pt>
-File: dd/d46/classStress__inherit__graph.pdf Graphic file (type pdf)
-
-<use dd/d46/classStress__inherit__graph.pdf>
-Package pdftex.def Info: dd/d46/classStress__inherit__graph.pdf used on input l
-ine 19.
-(pdftex.def)             Requested size: 134.0pt x 156.00162pt.
- [65]
-<d7/dfa/classStress__coll__graph.pdf, id=2861, 134.5025pt x 156.585pt>
-File: d7/dfa/classStress__coll__graph.pdf Graphic file (type pdf)
-
-<use d7/dfa/classStress__coll__graph.pdf>
-Package pdftex.def Info: d7/dfa/classStress__coll__graph.pdf used on input line
- 28.
-(pdftex.def)             Requested size: 134.0pt x 156.00162pt.
- [66 <./dd/d46/classStress__inherit__graph.pdf> <./d7/dfa/classStress__coll__gr
+ [65 <./d6/d0f/classStrain__inherit__graph.pdf> <./db/db8/classStrain__coll__gr
 aph.pdf
 
-pdfTeX warning: pdflatex (file ./d7/dfa/classStress__coll__graph.pdf): PDF incl
+pdfTeX warning: pdflatex (file ./db/db8/classStrain__coll__graph.pdf): PDF incl
 usion: multiple pdfs with page group included in a single page
->] [67]
+>] [66]
 Underfull \vbox (badness 10000) detected at line 144
  []
 
@@ -2490,7 +2314,7 @@ _a4e64ab5af4921c24b8270a0c9050f4ba}) has been already used, duplicate ignored
                    \relax 
 l.172 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{de/d82/classMatrix33_a4...
-[68]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+[67]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
 ix33_a849bbdf7b456ddacf7185b087fca4015}) has been already used, duplicate ignor
 ed
 <to be read again> 
@@ -2501,7 +2325,7 @@ l.275 )\hspace{0.3cm}{\ttfamily [inherited]}}}
 Underfull \vbox (badness 10000) detected at line 286
  []
 
-[69]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+[68]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
 ix33_a1b822a20343a26b3c9bb7fd5c1247f37}) has been already used, duplicate ignor
 ed
 <to be read again> 
@@ -2526,7 +2350,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 359.
 
-[70]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+[69]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
 ix33_a525f14614255ff81c0cbab8060e8e065}) has been already used, duplicate ignor
 ed
 <to be read again> 
@@ -2581,7 +2405,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 468.
 
-[71]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+[70]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
 ix33_ac3937bdeb034cc83b4adcad16cd58a26}) has been already used, duplicate ignor
 ed
 <to be read again> 
@@ -2612,7 +2436,7 @@ _acb59e59d3937e075521f478ba83b7165}) has been already used, duplicate ignored
                    \relax 
 l.559 )\hspace{0.3cm}{\ttfamily [inherited]}}}
                                               \label{de/d82/classMatrix33_ac...
-[72]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+[71]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
 ix33_a372f71ec208bb6d3045acd4324b7cb06}) has been already used, duplicate ignor
 ed
 <to be read again> 
@@ -2647,7 +2471,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 652.
 
-[73]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+[72]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
 ix33_a15b37caa6ab0d9f4a9f0d95846abd675}) has been already used, duplicate ignor
 ed
 <to be read again> 
@@ -2666,7 +2490,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 687.
 
-[74]
+[73]
 Underfull \vbox (badness 10000) detected at line 756
  []
 
@@ -2686,11 +2510,238 @@ _af7f01fa466616eb7c8eda2e4d9f85cdd}) has been already used, duplicate ignored
                    \relax 
 l.832 ...y [protected]}, {\ttfamily [inherited]}}}
                                                   \label{de/d82/classMatrix3...
-[75]) (./df/dd0/classVector3d.tex [76]
+[74]) (./d1/d1c/classStress.tex
+<dd/d46/classStress__inherit__graph.pdf, id=3244, 134.5025pt x 156.585pt>
+File: dd/d46/classStress__inherit__graph.pdf Graphic file (type pdf)
+
+<use dd/d46/classStress__inherit__graph.pdf>
+Package pdftex.def Info: dd/d46/classStress__inherit__graph.pdf used on input l
+ine 19.
+(pdftex.def)             Requested size: 134.0pt x 156.00162pt.
+
+<d7/dfa/classStress__coll__graph.pdf, id=3245, 134.5025pt x 156.585pt>
+File: d7/dfa/classStress__coll__graph.pdf Graphic file (type pdf)
+
+<use d7/dfa/classStress__coll__graph.pdf>
+Package pdftex.def Info: d7/dfa/classStress__coll__graph.pdf used on input line
+ 28.
+(pdftex.def)             Requested size: 134.0pt x 156.00162pt.
+ [75 <./dd/d46/classStress__inherit__graph.pdf> <./d7/dfa/classStress__coll__gr
+aph.pdf
+
+pdfTeX warning: pdflatex (file ./d7/dfa/classStress__coll__graph.pdf): PDF incl
+usion: multiple pdfs with page group included in a single page
+>] [76]
+Underfull \vbox (badness 10000) detected at line 144
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a4e64ab5af4921c24b8270a0c9050f4ba}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.172 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_a4...
+[77]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+ix33_a849bbdf7b456ddacf7185b087fca4015}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.275 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_a8...
+[78]
+Underfull \vbox (badness 10000) detected at line 286
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a1b822a20343a26b3c9bb7fd5c1247f37}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.314 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.359 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 359.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ast' on input line 359.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 359.
+
+[79]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+ix33_a525f14614255ff81c0cbab8060e8e065}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.394 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 394.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ast' on input line 394.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 394.
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a601584a1edbaae7c6a2a2874605d6f61}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.433 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 433.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ast' on input line 433.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 433.
+
+[80]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+ix33_a83162791813bef030b1ceb5df3c5cae3}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.468 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_a8...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 468.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ast' on input line 468.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 468.
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_ac3937bdeb034cc83b4adcad16cd58a26}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.497 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_ac...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 497.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\ast' on input line 497.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 497.
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_adc58ec5739c9250ff1150c725d0e868e}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.524 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+[81]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+ix33_acb59e59d3937e075521f478ba83b7165}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.559 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_ac...
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a372f71ec208bb6d3045acd4324b7cb06}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.588 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_abc889e10a9c7c532195c7031c1344a74}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.623 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_ab...
+[82]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+ix33_ad4ab7b9674a44a297502282e1993ef54}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.652 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 652.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `superscript' on input line 652.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\wedge' on input line 652.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 652.
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a15b37caa6ab0d9f4a9f0d95846abd675}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.687 ...st\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 687.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `\sim' on input line 687.
+
+
+Package hyperref Warning: Token not allowed in a PDF string (Unicode):
+(hyperref)                removing `math shift' on input line 687.
+
+[83]
+Underfull \vbox (badness 10000) detected at line 756
+ []
+
+pdfTeX warning (ext4): destination with the same identifier (name{classMatrix33
+_a6cdcec77fd089b2e73ad7ae85ecff30b}) has been already used, duplicate ignored
+<to be read again> 
+                   \relax 
+l.783 )\hspace{0.3cm}{\ttfamily [inherited]}}}
+                                              \label{de/d82/classMatrix33_a6...
+
+Underfull \vbox (badness 10000) detected at line 796
+ []
+
+[84]pdfTeX warning (ext4): destination with the same identifier (name{classMatr
+ix33_af7f01fa466616eb7c8eda2e4d9f85cdd}) has been already used, duplicate ignor
+ed
+<to be read again> 
+                   \relax 
+l.832 ...y [protected]}, {\ttfamily [inherited]}}}
+                                                  \label{de/d82/classMatrix3...
+) (./df/dd0/classVector3d.tex [85] [86]
 Underfull \vbox (badness 10000) detected at line 109
  []
 
-[77]
+
 Underfull \vbox (badness 10000) detected at line 143
  []
 
@@ -2698,7 +2749,7 @@ Underfull \vbox (badness 10000) detected at line 143
 Underfull \vbox (badness 10000) detected at line 174
  []
 
-[78]
+[87] [88]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 296.
@@ -2711,7 +2762,6 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 296.
 
-[79]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 328.
@@ -2736,7 +2786,7 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 360.
 
-[80] [81]
+[89] [90]
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 502.
@@ -2769,62 +2819,63 @@ Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
 (hyperref)                removing `math shift' on input line 532.
 
-
+[91]
 Underfull \vbox (badness 10000) detected at line 574
  []
 
-[82]
+
 Underfull \vbox (badness 10000) detected at line 603
  []
 
-) [83] [84
+[92]) [93] [94
 
 ]
 Chapter 6.
 (./d2/d6f/constants_8h.tex
-<dd/d0e/constants_8h__dep__incl.pdf, id=3228, 291.0875pt x 269.005pt>
+<dd/d0e/constants_8h__dep__incl.pdf, id=3616, 353.32pt x 335.2525pt>
 File: dd/d0e/constants_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/d0e/constants_8h__dep__incl.pdf>
 Package pdftex.def Info: dd/d0e/constants_8h__dep__incl.pdf used on input line 
 13.
-(pdftex.def)             Requested size: 290.0pt x 268.0192pt.
- [85 <./dd/d0e/constants_8h__dep__incl.pdf>]) (./dd/def/defect_8cpp.tex
-<dd/dcf/defect_8cpp__incl.pdf, id=3249, 188.705pt x 437.635pt>
+(pdftex.def)             Requested size: 350.0pt x 332.10562pt.
+ [95 <./dd/d0e/constants_8h__dep__incl.pdf>]) (./dd/def/defect_8cpp.tex
+<dd/dcf/defect_8cpp__incl.pdf, id=3636, 188.705pt x 437.635pt>
 File: dd/dcf/defect_8cpp__incl.pdf Graphic file (type pdf)
 
 <use dd/dcf/defect_8cpp__incl.pdf>
 Package pdftex.def Info: dd/dcf/defect_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 435.99786pt.
- [86]) (./df/d55/defect_8h.tex [87 <./dd/dcf/defect_8cpp__incl.pdf>]
-<d2/d68/defect_8h__incl.pdf, id=3272, 188.705pt x 381.425pt>
+ [96] [97 <./dd/dcf/defect_8cpp__incl.pdf>])
+(./df/d55/defect_8h.tex
+<d2/d68/defect_8h__incl.pdf, id=3659, 188.705pt x 381.425pt>
 File: d2/d68/defect_8h__incl.pdf Graphic file (type pdf)
 
 <use d2/d68/defect_8h__incl.pdf>
 Package pdftex.def Info: d2/d68/defect_8h__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 379.99814pt.
 
-<dc/d4d/defect_8h__dep__incl.pdf, id=3273, 312.16624pt x 269.005pt>
+<dc/d4d/defect_8h__dep__incl.pdf, id=3660, 361.35pt x 335.2525pt>
 File: dc/d4d/defect_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dc/d4d/defect_8h__dep__incl.pdf>
 Package pdftex.def Info: dc/d4d/defect_8h__dep__incl.pdf used on input line 21.
 
-(pdftex.def)             Requested size: 311.0pt x 268.00688pt.
+(pdftex.def)             Requested size: 350.0pt x 324.7239pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [88 <./d2/d68/defect_8h__incl.pdf>]) (./d3/d7f/dislocation_8cpp.tex
-<d2/d80/dislocation_8cpp__incl.pdf, id=3290, 351.3125pt x 493.845pt>
+ [98 <./d2/d68/defect_8h__incl.pdf>]) (./d3/d7f/dislocation_8cpp.tex [99 <./dc/
+d4d/defect_8h__dep__incl.pdf>]
+<d2/d80/dislocation_8cpp__incl.pdf, id=3690, 351.3125pt x 493.845pt>
 File: d2/d80/dislocation_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d2/d80/dislocation_8cpp__incl.pdf>
 Package pdftex.def Info: d2/d80/dislocation_8cpp__incl.pdf used on input line 1
 4.
 (pdftex.def)             Requested size: 350.0pt x 492.03526pt.
- [89 <./dc/d4d/defect_8h__dep__incl.pdf>] [90 <./d2/d80/dislocation_8cpp__incl.
-pdf>]) (./de/df3/dislocation_8h.tex
-<dc/dd3/dislocation_8h__incl.pdf, id=3318, 351.3125pt x 437.635pt>
+ [100 <./d2/d80/dislocation_8cpp__incl.pdf>]) (./de/df3/dislocation_8h.tex
+<dc/dd3/dislocation_8h__incl.pdf, id=3706, 351.3125pt x 437.635pt>
 File: dc/dd3/dislocation_8h__incl.pdf Graphic file (type pdf)
 
 <use dc/dd3/dislocation_8h__incl.pdf>
@@ -2832,29 +2883,26 @@ Package pdftex.def Info: dc/dd3/dislocation_8h__incl.pdf used on input line 16.
 
 (pdftex.def)             Requested size: 350.0pt x 436.03125pt.
 
-<dd/d31/dislocation_8h__dep__incl.pdf, id=3319, 292.09125pt x 212.795pt>
+<dd/d31/dislocation_8h__dep__incl.pdf, id=3707, 348.30125pt x 277.035pt>
 File: dd/d31/dislocation_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/d31/dislocation_8h__dep__incl.pdf>
 Package pdftex.def Info: dd/d31/dislocation_8h__dep__incl.pdf used on input lin
 e 23.
-(pdftex.def)             Requested size: 291.0pt x 212.01843pt.
-
-Underfull \vbox (badness 4341) has occurred while \output is active []
-
- [91 <./dc/dd3/dislocation_8h__incl.pdf>]) (./d4/da6/dislocationDefaults_8h.tex
-
-<d0/dcc/dislocationDefaults_8h__dep__incl.pdf, id=3338, 288.07625pt x 277.035pt
->
+(pdftex.def)             Requested size: 347.0pt x 276.01132pt.
+ [101 <./dc/dd3/dislocation_8h__incl.pdf>]) (./d4/da6/dislocationDefaults_8h.te
+x
+<d0/dcc/dislocationDefaults_8h__dep__incl.pdf, id=3726, 353.32pt x 335.2525pt>
 File: d0/dcc/dislocationDefaults_8h__dep__incl.pdf Graphic file (type pdf)
- <use d0/dcc/dislocationDefaults_8h__dep__incl.pdf>
+
+<use d0/dcc/dislocationDefaults_8h__dep__incl.pdf>
 Package pdftex.def Info: d0/dcc/dislocationDefaults_8h__dep__incl.pdf used on i
 nput line 13.
-(pdftex.def)             Requested size: 287.0pt x 276.01132pt.
- [92 <./dd/d31/dislocation_8h__dep__incl.pdf>] [93 <./d0/dcc/dislocationDefault
-s_8h__dep__incl.pdf>]
-[94]) (./d8/d5c/dislocationSource_8cpp.tex
-<df/dbd/dislocationSource_8cpp__incl.pdf, id=3383, 462.72874pt x 568.1225pt>
+(pdftex.def)             Requested size: 350.0pt x 332.10562pt.
+ [102 <./dd/d31/dislocation_8h__dep__incl.pdf>] [103 <./d0/dcc/dislocationDefau
+lts_8h__dep__incl.pdf>]
+[104]) (./d8/d5c/dislocationSource_8cpp.tex
+<df/dbd/dislocationSource_8cpp__incl.pdf, id=3771, 462.72874pt x 568.1225pt>
 File: df/dbd/dislocationSource_8cpp__incl.pdf Graphic file (type pdf)
 
 <use df/dbd/dislocationSource_8cpp__incl.pdf>
@@ -2864,10 +2912,10 @@ line 14.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [95]
-[96 <./df/dbd/dislocationSource_8cpp__incl.pdf>])
+ [105]
+[106 <./df/dbd/dislocationSource_8cpp__incl.pdf>])
 (./da/d0c/dislocationSource_8h.tex
-<df/daf/dislocationSource_8h__incl.pdf, id=3403, 462.72874pt x 509.905pt>
+<df/daf/dislocationSource_8h__incl.pdf, id=3791, 462.72874pt x 509.905pt>
 File: df/daf/dislocationSource_8h__incl.pdf Graphic file (type pdf)
 
 <use df/daf/dislocationSource_8h__incl.pdf>
@@ -2875,57 +2923,56 @@ Package pdftex.def Info: df/daf/dislocationSource_8h__incl.pdf used on input li
 ne 17.
 (pdftex.def)             Requested size: 350.0pt x 385.68784pt.
 
-<d4/d58/dislocationSource_8h__dep__incl.pdf, id=3404, 194.7275pt x 156.585pt>
+<d4/d58/dislocationSource_8h__dep__incl.pdf, id=3792, 280.04625pt x 218.8175pt>
 File: d4/d58/dislocationSource_8h__dep__incl.pdf Graphic file (type pdf)
-
 <use d4/d58/dislocationSource_8h__dep__incl.pdf>
 Package pdftex.def Info: d4/d58/dislocationSource_8h__dep__incl.pdf used on inp
 ut line 24.
-(pdftex.def)             Requested size: 194.0pt x 156.0064pt.
+(pdftex.def)             Requested size: 279.0pt x 218.00894pt.
 
 Underfull \vbox (badness 5217) has occurred while \output is active []
 
- [97 <./df/daf/dislocationSource_8h__incl.pdf>]) (./d4/d0f/dislocationSourceDef
-aults_8h.tex
-<da/d68/dislocationSourceDefaults_8h__dep__incl.pdf, id=3423, 222.8325pt x 212.
-795pt>
+ [107 <./df/daf/dislocationSource_8h__incl.pdf>])
+(./d4/d0f/dislocationSourceDefaults_8h.tex
+<da/d68/dislocationSourceDefaults_8h__dep__incl.pdf, id=3811, 280.04625pt x 277
+.035pt>
 File: da/d68/dislocationSourceDefaults_8h__dep__incl.pdf Graphic file (type pdf
 )
  <use da/d68/dislocationSourceDefaults_8h__dep__incl.pdf>
 Package pdftex.def Info: da/d68/dislocationSourceDefaults_8h__dep__incl.pdf use
 d on input line 13.
-(pdftex.def)             Requested size: 222.0pt x 212.0022pt.
- [98 <./d4/d58/dislocationSource_8h__dep__incl.pdf>] [99 <./da/d68/dislocationS
-ourceDefaults_8h__dep__incl.pdf>]) (./d5/d4d/mainpage_8dox.tex) (./d8/d8e/matri
-x33_8cpp.tex
-<d8/d6d/matrix33_8cpp__incl.pdf, id=3455, 152.57pt x 269.005pt>
+(pdftex.def)             Requested size: 279.0pt x 276.01132pt.
+ [108 <./d4/d58/dislocationSource_8h__dep__incl.pdf>] [109 <./da/d68/dislocatio
+nSourceDefaults_8h__dep__incl.pdf>]) (./d5/d4d/mainpage_8dox.tex) (./d8/d8e/mat
+rix33_8cpp.tex
+<d8/d6d/matrix33_8cpp__incl.pdf, id=3844, 152.57pt x 269.005pt>
 File: d8/d6d/matrix33_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d8/d6d/matrix33_8cpp__incl.pdf>
 Package pdftex.def Info: d8/d6d/matrix33_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 152.0pt x 268.01099pt.
- [100 <./d8/d6d/matrix33_8cpp__incl.pdf>])
+ [110 <./d8/d6d/matrix33_8cpp__incl.pdf>])
 (./db/d46/matrix33_8h.tex
-<d7/dc7/matrix33_8h__incl.pdf, id=3472, 142.5325pt x 212.795pt>
+<d7/dc7/matrix33_8h__incl.pdf, id=3860, 142.5325pt x 212.795pt>
 File: d7/dc7/matrix33_8h__incl.pdf Graphic file (type pdf)
 
 <use d7/dc7/matrix33_8h__incl.pdf>
 Package pdftex.def Info: d7/dc7/matrix33_8h__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 142.0pt x 211.99895pt.
 
-<dd/d84/matrix33_8h__dep__incl.pdf, id=3473, 425.59pt x 437.635pt>
+<dd/d84/matrix33_8h__dep__incl.pdf, id=3861, 528.97626pt x 509.905pt>
 File: dd/d84/matrix33_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/d84/matrix33_8h__dep__incl.pdf>
 Package pdftex.def Info: dd/d84/matrix33_8h__dep__incl.pdf used on input line 2
 1.
-(pdftex.def)             Requested size: 350.0pt x 359.92477pt.
+(pdftex.def)             Requested size: 350.0pt x 337.37863pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [101 <./d7/dc7/matrix33_8h__incl.pdf>]) (./d9/d5c/rotationMatrix_8cpp.tex [102
+ [111 <./d7/dc7/matrix33_8h__incl.pdf>]) (./d9/d5c/rotationMatrix_8cpp.tex [112
  <./dd/d84/matrix33_8h__dep__incl.pdf>]) (./da/d76/rotationMatrix_8h.tex
-<dc/d6c/rotationMatrix_8h__incl.pdf, id=3507, 162.6075pt x 269.005pt>
+<dc/d6c/rotationMatrix_8h__incl.pdf, id=3895, 162.6075pt x 269.005pt>
 File: dc/d6c/rotationMatrix_8h__incl.pdf Graphic file (type pdf)
 
 <use dc/d6c/rotationMatrix_8h__incl.pdf>
@@ -2933,109 +2980,145 @@ Package pdftex.def Info: dc/d6c/rotationMatrix_8h__incl.pdf used on input line
 14.
 (pdftex.def)             Requested size: 162.0pt x 268.0192pt.
 
-<dd/da3/rotationMatrix_8h__dep__incl.pdf, id=3508, 338.26375pt x 381.425pt>
+<dd/da3/rotationMatrix_8h__dep__incl.pdf, id=3896, 441.65pt x 451.6875pt>
 File: dd/da3/rotationMatrix_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dd/da3/rotationMatrix_8h__dep__incl.pdf>
 Package pdftex.def Info: dd/da3/rotationMatrix_8h__dep__incl.pdf used on input 
 line 21.
-(pdftex.def)             Requested size: 337.0pt x 380.00977pt.
- [103 <./dc/d6c/rotationMatrix_8h__incl.pdf>]) (./d7/db1/strain_8cpp.tex [104 <
-./dd/da3/rotationMatrix_8h__dep__incl.pdf>] <d1/da4/strain_8cpp__incl.pdf, id=3
-537, 188.705pt x 381.425pt>
+(pdftex.def)             Requested size: 350.0pt x 357.97331pt.
+ [113 <./dc/d6c/rotationMatrix_8h__incl.pdf>]) (./db/dab/slipPlane_8cpp.tex [11
+4 <./dd/da3/rotationMatrix_8h__dep__incl.pdf>] <d1/dfb/slipPlane_8cpp__incl.pdf
+, id=3927, 483.8075pt x 626.34pt>
+File: d1/dfb/slipPlane_8cpp__incl.pdf Graphic file (type pdf)
+
+<use d1/dfb/slipPlane_8cpp__incl.pdf>
+Package pdftex.def Info: d1/dfb/slipPlane_8cpp__incl.pdf used on input line 14.
+
+(pdftex.def)             Requested size: 350.0pt x 453.13393pt.
+ [115 <./d1/dfb/slipPlane_8cpp__incl.pdf>]) (./d5/d03/slipPlane_8h.tex
+<d9/d1d/slipPlane_8h__incl.pdf, id=3946, 483.8075pt x 568.1225pt>
+File: d9/d1d/slipPlane_8h__incl.pdf Graphic file (type pdf)
+
+<use d9/d1d/slipPlane_8h__incl.pdf>
+Package pdftex.def Info: d9/d1d/slipPlane_8h__incl.pdf used on input line 17.
+(pdftex.def)             Requested size: 350.0pt x 411.0157pt.
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [116]
+<dc/da2/slipPlane_8h__dep__incl.pdf, id=3952, 154.5775pt x 160.6pt>
+File: dc/da2/slipPlane_8h__dep__incl.pdf Graphic file (type pdf)
+
+<use dc/da2/slipPlane_8h__dep__incl.pdf>
+Package pdftex.def Info: dc/da2/slipPlane_8h__dep__incl.pdf used on input line 
+24.
+(pdftex.def)             Requested size: 154.0pt x 160.0139pt.
+
+Underfull \vbox (badness 1558) has occurred while \output is active []
+
+ [117 <./d9/d1d/slipPlane_8h__incl.pdf> <./dc/da2/slipPlane_8h__dep__incl.pdf
+
+pdfTeX warning: pdflatex (file ./dc/da2/slipPlane_8h__dep__incl.pdf): PDF inclu
+sion: multiple pdfs with page group included in a single page
+>]) (./d7/db1/strain_8cpp.tex
+<d1/da4/strain_8cpp__incl.pdf, id=3974, 188.705pt x 381.425pt>
 File: d1/da4/strain_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d1/da4/strain_8cpp__incl.pdf>
 Package pdftex.def Info: d1/da4/strain_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 379.99814pt.
- [105 <./d1/da4/strain_8cpp__incl.pdf>])
-(./df/dc2/strain_8h.tex
-<df/dd8/strain_8h__incl.pdf, id=3554, 188.705pt x 325.215pt>
+
+Underfull \vbox (badness 10000) has occurred while \output is active []
+
+ [118])
+(./df/dc2/strain_8h.tex [119 <./d1/da4/strain_8cpp__incl.pdf>]
+<df/dd8/strain_8h__incl.pdf, id=3996, 188.705pt x 325.215pt>
 File: df/dd8/strain_8h__incl.pdf Graphic file (type pdf)
 
 <use df/dd8/strain_8h__incl.pdf>
 Package pdftex.def Info: df/dd8/strain_8h__incl.pdf used on input line 15.
 (pdftex.def)             Requested size: 188.0pt x 323.99841pt.
 
-<d0/d58/strain_8h__dep__incl.pdf, id=3555, 138.5175pt x 156.585pt>
+<d0/d58/strain_8h__dep__incl.pdf, id=3997, 138.5175pt x 156.585pt>
 File: d0/d58/strain_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use d0/d58/strain_8h__dep__incl.pdf>
 Package pdftex.def Info: d0/d58/strain_8h__dep__incl.pdf used on input line 22.
 
 (pdftex.def)             Requested size: 138.0pt x 156.00162pt.
+ [120 <./df/dd8/strain_8h__incl.pdf> <./d0/d58/strain_8h__dep__incl.pdf
 
-Underfull \vbox (badness 10000) has occurred while \output is active []
-
- [106 <./df/dd8/strain_8h__incl.pdf>]) (./d4/d58/stress_8cpp.tex
-<d0/d28/stress_8cpp__incl.pdf, id=3574, 188.705pt x 381.425pt>
+pdfTeX warning: pdflatex (file ./d0/d58/strain_8h__dep__incl.pdf): PDF inclusio
+n: multiple pdfs with page group included in a single page
+>]) (./d4/d58/stress_8cpp.tex
+<d0/d28/stress_8cpp__incl.pdf, id=4020, 188.705pt x 381.425pt>
 File: d0/d28/stress_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d0/d28/stress_8cpp__incl.pdf>
 Package pdftex.def Info: d0/d28/stress_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 188.0pt x 379.99814pt.
 
-Underfull \vbox (badness 2443) has occurred while \output is active []
+Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [107 <./d0/d58/strain_8h__dep__incl.pdf>]) (./d2/d50/stress_8h.tex [108 <./d0/
-d28/stress_8cpp__incl.pdf>] <df/d2b/stress_8h__incl.pdf, id=3602, 188.705pt x 3
-25.215pt>
+ [121])
+(./d2/d50/stress_8h.tex [122 <./d0/d28/stress_8cpp__incl.pdf>]
+<df/d2b/stress_8h__incl.pdf, id=4043, 188.705pt x 325.215pt>
 File: df/d2b/stress_8h__incl.pdf Graphic file (type pdf)
 
 <use df/d2b/stress_8h__incl.pdf>
 Package pdftex.def Info: df/d2b/stress_8h__incl.pdf used on input line 15.
 (pdftex.def)             Requested size: 188.0pt x 323.99841pt.
 
-<dc/d05/stress_8h__dep__incl.pdf, id=3603, 312.16624pt x 325.215pt>
+<dc/d05/stress_8h__dep__incl.pdf, id=4044, 365.365pt x 393.47pt>
 File: dc/d05/stress_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use dc/d05/stress_8h__dep__incl.pdf>
 Package pdftex.def Info: dc/d05/stress_8h__dep__incl.pdf used on input line 22.
 
-(pdftex.def)             Requested size: 311.0pt x 324.00833pt.
+(pdftex.def)             Requested size: 350.0pt x 376.94038pt.
 
 Underfull \vbox (badness 10000) has occurred while \output is active []
 
- [109 <./df/d2b/stress_8h__incl.pdf>]) (./d7/d35/vector3d_8cpp.tex [110 <./dc/d
+ [123 <./df/d2b/stress_8h__incl.pdf>]) (./d7/d35/vector3d_8cpp.tex [124 <./dc/d
 05/stress_8h__dep__incl.pdf>]
-<d5/d7b/vector3d_8cpp__incl.pdf, id=3632, 154.5775pt x 212.795pt>
+<d5/d7b/vector3d_8cpp__incl.pdf, id=4073, 154.5775pt x 212.795pt>
 File: d5/d7b/vector3d_8cpp__incl.pdf Graphic file (type pdf)
 
 <use d5/d7b/vector3d_8cpp__incl.pdf>
 Package pdftex.def Info: d5/d7b/vector3d_8cpp__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 154.0pt x 212.01843pt.
 ) (./d9/df8/vector3d_8h.tex
-<dc/db1/vector3d_8h__incl.pdf, id=3637, 142.5325pt x 156.585pt>
+<dc/db1/vector3d_8h__incl.pdf, id=4078, 142.5325pt x 156.585pt>
 File: dc/db1/vector3d_8h__incl.pdf Graphic file (type pdf)
 
 <use dc/db1/vector3d_8h__incl.pdf>
 Package pdftex.def Info: dc/db1/vector3d_8h__incl.pdf used on input line 14.
 (pdftex.def)             Requested size: 142.0pt x 155.99922pt.
- [111 <./d5/d7b/vector3d_8cpp__incl.pdf>]
-<d3/dd7/vector3d_8h__dep__incl.pdf, id=3650, 425.59pt x 493.845pt>
+ [125 <./d5/d7b/vector3d_8cpp__incl.pdf>]
+<d3/dd7/vector3d_8h__dep__incl.pdf, id=4090, 528.97626pt x 568.1225pt>
 File: d3/dd7/vector3d_8h__dep__incl.pdf Graphic file (type pdf)
 
 <use d3/dd7/vector3d_8h__dep__incl.pdf>
 Package pdftex.def Info: d3/dd7/vector3d_8h__dep__incl.pdf used on input line 2
 1.
-(pdftex.def)             Requested size: 350.0pt x 406.15364pt.
-
-Underfull \vbox (badness 1072) has occurred while \output is active []
-
- [112 <./dc/db1/vector3d_8h__incl.pdf> <./d3/dd7/vector3d_8h__dep__incl.pdf
+(pdftex.def)             Requested size: 350.0pt x 375.89822pt.
+ [126 <./dc/db1/vector3d_8h__incl.pdf> <./d3/dd7/vector3d_8h__dep__incl.pdf
 
 pdfTeX warning: pdflatex (file ./d3/dd7/vector3d_8h__dep__incl.pdf): PDF inclus
 ion: multiple pdfs with page group included in a single page
->]) (./refman.ind [113] [114
+>]) (./refman.ind [127] [128
 
-] [115] [116] [117])
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 106.
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 106.
+] [129] [130] [131] [132
+
+])
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 109.
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 109.
  (./refman.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 106.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 106.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 109.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 109.
 Package rerunfilecheck Info: File `refman.out' has not changed.
-(rerunfilecheck)             Checksum: 6D8C94FBA25C1A67EB30D9BAAD3DB508;41926.
+(rerunfilecheck)             Checksum: 09BD6A04B7E60832AD35761D0B9E1654;47398.
 
 
 LaTeX Font Warning: Some font shapes were not available, defaults substituted.
@@ -3043,16 +3126,16 @@ LaTeX Font Warning: Some font shapes were not available, defaults substituted.
 
 LaTeX Warning: There were multiply-defined labels.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 106.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 109.
  ) 
 Here is how much of TeX's memory you used:
- 12993 strings out of 493485
- 196853 string characters out of 3143526
- 288103 words of memory out of 3000000
- 15218 multiletter control sequences out of 15000+200000
+ 13193 strings out of 493485
+ 202304 string characters out of 3143526
+ 289103 words of memory out of 3000000
+ 15307 multiletter control sequences out of 15000+200000
  75609 words of font info for 114 fonts, out of 3000000 for 9000
  957 hyphenation exceptions out of 8191
- 41i,13n,58p,731b,524s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 41i,13n,58p,837b,524s stack positions out of 5000i,500n,10000p,200000b,50000s
 pdfTeX warning (dest): name{vector3d_8h_source} has been referenced but does 
 not exist, replaced by a fixed one
 
@@ -3070,6 +3153,12 @@ exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{strain_8cpp_source} has been referenced but does no
 t exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{slipPlane_8h_source} has been referenced but does n
+ot exist, replaced by a fixed one
+
+pdfTeX warning (dest): name{slipPlane_8cpp_source} has been referenced but does
+ not exist, replaced by a fixed one
 
 pdfTeX warning (dest): name{rotationMatrix_8h_source} has been referenced but d
 oes not exist, replaced by a fixed one
@@ -3118,10 +3207,10 @@ w/helvetic/uhvb8a.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/u
 hvb8ac.pfb></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvbo8ac.pfb
 ></usr/share/texlive/texmf-dist/fonts/type1/urw/helvetic/uhvr8a.pfb></usr/share
 /texlive/texmf-dist/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on refman.pdf (127 pages, 455047 bytes).
+Output written on refman.pdf (144 pages, 506039 bytes).
 PDF statistics:
- 4238 PDF objects out of 4296 (max. 8388607)
- 3983 compressed objects within 40 object streams
- 679 named destinations out of 1000 (max. 500000)
- 2564 words of extra memory for PDF output out of 10000 (max. 10000000)
+ 4751 PDF objects out of 5155 (max. 8388607)
+ 4466 compressed objects within 45 object streams
+ 773 named destinations out of 1000 (max. 500000)
+ 2864 words of extra memory for PDF output out of 10000 (max. 10000000)
 

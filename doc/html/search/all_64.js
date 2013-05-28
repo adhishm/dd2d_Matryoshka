@@ -20,8 +20,10 @@ var searchData=
   ['dislocation_2ecpp',['dislocation.cpp',['../d3/d7f/dislocation_8cpp.html',1,'']]],
   ['dislocation_2eh',['dislocation.h',['../de/df3/dislocation_8h.html',1,'']]],
   ['dislocationdefaults_2eh',['dislocationDefaults.h',['../d4/da6/dislocationDefaults_8h.html',1,'']]],
+  ['dislocations',['dislocations',['../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910',1,'SlipPlane']]],
   ['dislocationsource',['DislocationSource',['../de/de3/classDislocationSource.html',1,'DislocationSource'],['../de/de3/classDislocationSource.html#afc9b7984d9486354b6f3d82033707577',1,'DislocationSource::DislocationSource()'],['../de/de3/classDislocationSource.html#aa5adcc1a0862d8cfa6d8d1a632c3855f',1,'DislocationSource::DislocationSource(Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, int nIter)']]],
   ['dislocationsource_2ecpp',['dislocationSource.cpp',['../d8/d5c/dislocationSource_8cpp.html',1,'']]],
   ['dislocationsource_2eh',['dislocationSource.h',['../da/d0c/dislocationSource_8h.html',1,'']]],
-  ['dislocationsourcedefaults_2eh',['dislocationSourceDefaults.h',['../d4/d0f/dislocationSourceDefaults_8h.html',1,'']]]
+  ['dislocationsourcedefaults_2eh',['dislocationSourceDefaults.h',['../d4/d0f/dislocationSourceDefaults_8h.html',1,'']]],
+  ['dislocationsources',['dislocationSources',['../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc',1,'SlipPlane']]]
 ];
