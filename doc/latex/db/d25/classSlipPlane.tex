@@ -1,0 +1,702 @@
+\hypertarget{classSlipPlane}{\section{Slip\-Plane Class Reference}
+\label{db/d25/classSlipPlane}\index{Slip\-Plane@{Slip\-Plane}}
+}
+
+
+\hyperlink{classSlipPlane}{Slip\-Plane} class representing a slip plane in the simulation.  
+
+
+
+
+{\ttfamily \#include $<$slip\-Plane.\-h$>$}
+
+
+
+Collaboration diagram for Slip\-Plane\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d2/da3/classSlipPlane__coll__graph}
+\end{center}
+\end{figure}
+\subsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classSlipPlane_a0d73579f211b7059ee2af1a2816f4eb2}{Slip\-Plane} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classSlipPlane_aa1cfea0af8f0a0179490ff8cae715990}{Slip\-Plane} (\hyperlink{classVector3d}{Vector3d} $\ast$ends, \hyperlink{classVector3d}{Vector3d} normal, \hyperlink{classVector3d}{Vector3d} pos, std\-::vector$<$ \hyperlink{classDislocation}{Dislocation} $>$ dislocation\-List, std\-::vector$<$ \hyperlink{classDislocationSource}{Dislocation\-Source} $>$ dislocation\-Source\-List)
+\begin{DoxyCompactList}\small\item\em Constructor that specifies all members explicitly. \end{DoxyCompactList}\item 
+void \hyperlink{classSlipPlane_aa6b39899a9280d47a3cdef2162dd847c}{set\-Extremities} (\hyperlink{classVector3d}{Vector3d} $\ast$ends)
+\begin{DoxyCompactList}\small\item\em Set the extremities of the slip plane. \end{DoxyCompactList}\item 
+void \hyperlink{classSlipPlane_ac0d07f48b5a8515bca8f12cb3eb2d264}{set\-Normal} (\hyperlink{classVector3d}{Vector3d} normal)
+\begin{DoxyCompactList}\small\item\em Set the normal vector of the slip plane. \end{DoxyCompactList}\item 
+void \hyperlink{classSlipPlane_a58ead6125387ef790742374f0a507522}{set\-Position} (\hyperlink{classVector3d}{Vector3d} pos)
+\begin{DoxyCompactList}\small\item\em Set the position of the slip plane. \end{DoxyCompactList}\item 
+void \hyperlink{classSlipPlane_a3efa3644ca3200d1c84801b3f9eb8ecf}{set\-Dislocation\-List} (std\-::vector$<$ \hyperlink{classDislocation}{Dislocation} $>$ dislocation\-List)
+\begin{DoxyCompactList}\small\item\em Set the list of dislocations of the slip plane. \end{DoxyCompactList}\item 
+void \hyperlink{classSlipPlane_a6f520005b3c7e8c93df0b893201cea29}{set\-Dislocation\-Source\-List} (std\-::vector$<$ \hyperlink{classDislocationSource}{Dislocation\-Source} $>$ dislocation\-Source\-List)
+\begin{DoxyCompactList}\small\item\em Set the list of dislocation sources on the slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_ad2879c70242d30e34cc4c52d90413ef4}{get\-Extremity} (int i)
+\begin{DoxyCompactList}\small\item\em Get the position vector of the extremity whose index is provided as argument. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} $\ast$ \hyperlink{classSlipPlane_a9d872e85ce5993f5cd6a8661fb26cac7}{get\-Extremities} ()
+\begin{DoxyCompactList}\small\item\em Get the position vectors of the extremities of the slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_ab272f2aca3f35aed68343cf02354b7ba}{get\-Normal} ()
+\begin{DoxyCompactList}\small\item\em Get the normal vector of the slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_a151558f8f223ac316f4208246d16afca}{get\-Position} ()
+\begin{DoxyCompactList}\small\item\em Get the position vector of the slip plane. \end{DoxyCompactList}\item 
+bool \hyperlink{classSlipPlane_a78a1ad5ab85d8ec3c3c4a7d430a0e610}{get\-Dislocation} (int i, \hyperlink{classDislocation}{Dislocation} $\ast$d)
+\begin{DoxyCompactList}\small\item\em Get the dislocation on the slip plane indicated by the index provided as argument. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classDislocation}{Dislocation} $>$ \hyperlink{classSlipPlane_aeaa4af766101e8bb21d557acd10c7cf6}{get\-Dislocation\-List} ()
+\begin{DoxyCompactList}\small\item\em Get the entire vector container which holds the dislocations lying on this slip plane. \end{DoxyCompactList}\item 
+bool \hyperlink{classSlipPlane_a9829ea40c2c647cbee1f238c680295a1}{get\-Dislocation\-Source} (int i, \hyperlink{classDislocationSource}{Dislocation\-Source} $\ast$d\-Source)
+\begin{DoxyCompactList}\small\item\em Get the dislocation source on the slip plane indicated by the index provided as argument. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classDislocationSource}{Dislocation\-Source} $>$ \hyperlink{classSlipPlane_afcda214ca418f8becaaf4f3d13c46d82}{get\-Dislocation\-Source\-List} ()
+\begin{DoxyCompactList}\small\item\em Get the entire vector container which holds the dislocation sources lying on this slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classRotationMatrix}{Rotation\-Matrix} \hyperlink{classSlipPlane_af61e666e8704b1442eb8b5c1699e9071}{get\-Rotation\-Matrix} ()
+\begin{DoxyCompactList}\small\item\em Get the rotation matrix for this slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{get\-Axis} (int i)
+\begin{DoxyCompactList}\small\item\em Get the axis (expressed in the global co-\/ordinate system) of the slip plane's local co-\/ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z). \end{DoxyCompactList}\item 
+void \hyperlink{classSlipPlane_a5d9054f21be225f50860ad1351e3a86f}{calculate\-Rotation\-Matrix} ()
+\begin{DoxyCompactList}\small\item\em Calculates the rotation matrix for this slip plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{Protected Attributes}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities} \mbox{[}2\mbox{]}
+\begin{DoxyCompactList}\small\item\em The extremities of the slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{normal\-Vector}
+\begin{DoxyCompactList}\small\item\em The normal vector to the slip plane. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classSlipPlane_ac2ac59e22e9638a990c9e45aaa096d9a}{position}
+\begin{DoxyCompactList}\small\item\em The position vector of the slip plane. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classDislocation}{Dislocation} $>$ \hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}
+\begin{DoxyCompactList}\small\item\em S\-T\-L vector container with dislocations. \end{DoxyCompactList}\item 
+std\-::vector$<$ \hyperlink{classDislocationSource}{Dislocation\-Source} $>$ \hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocation\-Sources}
+\begin{DoxyCompactList}\small\item\em S\-T\-L vector container with dislocation sources. \end{DoxyCompactList}\item 
+\hyperlink{classRotationMatrix}{Rotation\-Matrix} \hyperlink{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{rotation\-Matrix}
+\begin{DoxyCompactList}\small\item\em Rotation matrix for co-\/ordinate system transformations. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{Detailed Description}
+\hyperlink{classSlipPlane}{Slip\-Plane} class representing a slip plane in the simulation. 
+
+This is the definition of the class \hyperlink{classSlipPlane}{Slip\-Plane}. It represents a slip plane in the simulation. A slip plane is considered to be a collection of defects, such as dislocations and dislocation sources. In these simulations in two dimensions, the slip plane becomes a straight line. Its attributes are\-: position vectors of the extremities, normal vector (since we are concerned with the cubic system here, the normal vector's indices are the same as those of the plane), and the collection of defects. 
+
+Definition at line 26 of file slip\-Plane.\-h.
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\hypertarget{classSlipPlane_a0d73579f211b7059ee2af1a2816f4eb2}{\index{Slip\-Plane@{Slip\-Plane}!Slip\-Plane@{Slip\-Plane}}
+\index{Slip\-Plane@{Slip\-Plane}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{Slip\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}Slip\-Plane\-::\-Slip\-Plane (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a0d73579f211b7059ee2af1a2816f4eb2}
+
+
+Default constructor. 
+
+The slip plane is initialized with default parameters. \hypertarget{classSlipPlane_aa1cfea0af8f0a0179490ff8cae715990}{\index{Slip\-Plane@{Slip\-Plane}!Slip\-Plane@{Slip\-Plane}}
+\index{Slip\-Plane@{Slip\-Plane}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{Slip\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}Slip\-Plane\-::\-Slip\-Plane (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3d} $\ast$}]{ends, }
+\item[{{\bf Vector3d}}]{normal, }
+\item[{{\bf Vector3d}}]{pos, }
+\item[{std\-::vector$<$ {\bf Dislocation} $>$}]{dislocation\-List, }
+\item[{std\-::vector$<$ {\bf Dislocation\-Source} $>$}]{dislocation\-Source\-List}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_aa1cfea0af8f0a0179490ff8cae715990}
+
+
+Constructor that specifies all members explicitly. 
+
+The slip plane is initialized with parameters specified in the arguments. 
+\begin{DoxyParams}{Parameters}
+{\em ends} & Pointer to an array of type \hyperlink{classVector3d}{Vector3d}, containing the position vectors of the extremities of the slip plane in consecutive locations. \\
+\hline
+{\em normal} & The normal vector of the slip plane. \\
+\hline
+{\em pos} & The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system) \\
+\hline
+{\em dislocation\-List} & A vector container of type \hyperlink{classDislocation}{Dislocation} containing the dislocations lying on this slip plane. \\
+\hline
+{\em dislocation\-Source\-List} & A vector container of type \hyperlink{classDislocationSource}{Dislocation\-Source} containing the dislocation sources lying on this slip plane. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 28 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+29 \{
+30   this->\hyperlink{classSlipPlane_aa6b39899a9280d47a3cdef2162dd847c}{setExtremities} (ends);
+31   this->\hyperlink{classSlipPlane_ac0d07f48b5a8515bca8f12cb3eb2d264}{setNormal} (normal);
+32   this->\hyperlink{classSlipPlane_a58ead6125387ef790742374f0a507522}{setPosition} (pos);
+33   this->\hyperlink{classSlipPlane_a3efa3644ca3200d1c84801b3f9eb8ecf}{setDislocationList} (dislocationList);
+34   this->\hyperlink{classSlipPlane_a6f520005b3c7e8c93df0b893201cea29}{setDislocationSourceList} (dislocationSourceList);
+35   
+36   this->\hyperlink{classSlipPlane_a5d9054f21be225f50860ad1351e3a86f}{calculateRotationMatrix} ();
+37 \}
+\end{DoxyCode}
+
+
+\subsection{Member Function Documentation}
+\hypertarget{classSlipPlane_a5d9054f21be225f50860ad1351e3a86f}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Rotation\-Matrix@{calculate\-Rotation\-Matrix}}
+\index{calculate\-Rotation\-Matrix@{calculate\-Rotation\-Matrix}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{calculate\-Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::calculate\-Rotation\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a5d9054f21be225f50860ad1351e3a86f}
+
+
+Calculates the rotation matrix for this slip plane. 
+
+The slip plane has a local co-\/ordinate system whose axes are the following\-: z-\/axis$|$$|$normal vector and x-\/axis$|$$|$slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-\/ordinate systems. 
+
+Definition at line 234 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+235 \{
+236   \hyperlink{classVector3d}{Vector3d} *unPrimed = \textcolor{keyword}{new} \hyperlink{classVector3d}{Vector3d}[3]; \textcolor{comment}{// Old system (global)}
+237   \hyperlink{classVector3d}{Vector3d} *primed   = \textcolor{keyword}{new} \hyperlink{classVector3d}{Vector3d}[3]; \textcolor{comment}{// New system (local)}
+238     
+239   \textcolor{keywordtype}{int} i, j;
+240   
+241   \textcolor{comment}{// Prepare the global and local systems}
+242   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+243   \{
+244     \textcolor{keywordflow}{for} (j=0; j<3; j++)
+245     \{
+246       unPrimed[i].\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue}(j, (\textcolor{keywordtype}{double})(i==j));
+247     \}
+248     
+249     primed[i] = this->\hyperlink{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{getAxis}(i);
+250   \}
+251   
+252   \textcolor{comment}{// Calculate the rotationMatrix}
+253   this->\hyperlink{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{rotationMatrix} = \hyperlink{classRotationMatrix}{RotationMatrix}(unPrimed, primed);
+254   
+255   \textcolor{comment}{// Free memory}
+256   \textcolor{keyword}{delete}(unPrimed);     unPrimed = NULL;
+257   \textcolor{keyword}{delete}(primed);       primed = NULL;
+258 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{\index{Slip\-Plane@{Slip\-Plane}!get\-Axis@{get\-Axis}}
+\index{get\-Axis@{get\-Axis}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Axis}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::get\-Axis (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a2e0139563665d1765f04582bfeebabc9}
+
+
+Get the axis (expressed in the global co-\/ordinate system) of the slip plane's local co-\/ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z). 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Index of the axis that is to be returned. (0, 1, 2)=(x, y, z). \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The desired axis of the slip plane's local co-\/ordinate system, expressed in the global co-\/ordinate system. In case of invalid argument, a zero vector is returned. 
+\end{DoxyReturn}
+
+
+Definition at line 204 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+205 \{
+206   \hyperlink{classVector3d}{Vector3d} = axis;
+207   
+208   \textcolor{keywordflow}{if} (i==2)
+209   \{
+210     \textcolor{comment}{// Z-axis}
+211     axis = this->\hyperlink{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{normalVector};
+212   \}
+213   
+214   \textcolor{keywordflow}{if} (i==0)
+215   \{
+216     \textcolor{comment}{// X-axis}
+217     axis = (this->\hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities}[1] - this->\hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities}[0]);
+218   \}
+219   
+220   \textcolor{keywordflow}{if} (i==1)
+221   \{
+222     \textcolor{comment}{// Y-axis = Z x X}
+223     axis = this->\hyperlink{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{getAxis}(2) ^ this->\hyperlink{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{getAxis}(0);
+224   \}
+225   
+226   \textcolor{keywordflow}{return} ( axis.normaize() );
+227 \}     
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a78a1ad5ab85d8ec3c3c4a7d430a0e610}{\index{Slip\-Plane@{Slip\-Plane}!get\-Dislocation@{get\-Dislocation}}
+\index{get\-Dislocation@{get\-Dislocation}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Dislocation}]{\setlength{\rightskip}{0pt plus 5cm}bool Slip\-Plane\-::get\-Dislocation (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{{\bf Dislocation} $\ast$}]{d}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a78a1ad5ab85d8ec3c3c4a7d430a0e610}
+
+
+Get the dislocation on the slip plane indicated by the index provided as argument. 
+
+The slip plane contains several dislocations that are stored in a vector container. This function returns the dislocation in that vector that corresponds to the index provided as argument. 
+\begin{DoxyParams}{Parameters}
+{\em i} & Index of the required dislocation in the vector. This value should be greater than or equal to 0 and less than the number of dislocations on the slip plane. \\
+\hline
+{\em d} & Pointer to the memory location where the required dislocation is to be stored. Space in memory must be pre-\/allocated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the \hyperlink{classDislocation}{Dislocation} data). Otherwise, the return value is false. 
+\end{DoxyReturn}
+
+
+Definition at line 139 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+140 \{
+141   \textcolor{keywordflow}{if} (i>=0 && i<this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size ())
+142   \{
+143     *d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i];
+144     \textcolor{keywordflow}{return} (\textcolor{keyword}{true});
+145   \}
+146   \textcolor{keywordflow}{else}
+147   \{
+148     \textcolor{keywordflow}{return} (\textcolor{keyword}{false});
+149   \}
+150 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_aeaa4af766101e8bb21d557acd10c7cf6}{\index{Slip\-Plane@{Slip\-Plane}!get\-Dislocation\-List@{get\-Dislocation\-List}}
+\index{get\-Dislocation\-List@{get\-Dislocation\-List}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Dislocation\-List}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf Dislocation} $>$ Slip\-Plane\-::get\-Dislocation\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_aeaa4af766101e8bb21d557acd10c7cf6}
+
+
+Get the entire vector container which holds the dislocations lying on this slip plane. 
+
+\begin{DoxyReturn}{Returns}
+The vector of dislocations lying on this slip plane. 
+\end{DoxyReturn}
+
+
+Definition at line 156 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+157 \{
+158   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations});
+159 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a9829ea40c2c647cbee1f238c680295a1}{\index{Slip\-Plane@{Slip\-Plane}!get\-Dislocation\-Source@{get\-Dislocation\-Source}}
+\index{get\-Dislocation\-Source@{get\-Dislocation\-Source}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Dislocation\-Source}]{\setlength{\rightskip}{0pt plus 5cm}bool Slip\-Plane\-::get\-Dislocation\-Source (
+\begin{DoxyParamCaption}
+\item[{int}]{i, }
+\item[{{\bf Dislocation\-Source} $\ast$}]{d\-Source}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a9829ea40c2c647cbee1f238c680295a1}
+
+
+Get the dislocation source on the slip plane indicated by the index provided as argument. 
+
+The slip plane contains several dislocation sources that are stored in a vector container. This function returns the dislocation source in that vector that corresponds to the index provided as argument. 
+\begin{DoxyParams}{Parameters}
+{\em i} & Index of the required dislocation source in the vector. This value should be greater than or equal to 0 and less than the number of dislocation sources on the slip plane. \\
+\hline
+{\em d\-Source} & Pointer to the memory location where the required dislocation source is to be stored. Space in memory must be pre-\/allocated. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the \hyperlink{classDislocationSource}{Dislocation\-Source} data). Otherwise, the return value is false. 
+\end{DoxyReturn}
+
+
+Definition at line 168 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+169 \{
+170   \textcolor{keywordflow}{if} (i>=0 && i<this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}.size ())
+171   \{
+172     *dSource = this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}[i];
+173     \textcolor{keywordflow}{return} (\textcolor{keyword}{true});
+174   \}
+175   \textcolor{keywordflow}{else}
+176   \{
+177     \textcolor{keywordflow}{return} (\textcolor{keyword}{false});
+178   \}
+179 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_afcda214ca418f8becaaf4f3d13c46d82}{\index{Slip\-Plane@{Slip\-Plane}!get\-Dislocation\-Source\-List@{get\-Dislocation\-Source\-List}}
+\index{get\-Dislocation\-Source\-List@{get\-Dislocation\-Source\-List}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Dislocation\-Source\-List}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ {\bf Dislocation\-Source} $>$ Slip\-Plane\-::get\-Dislocation\-Source\-List (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_afcda214ca418f8becaaf4f3d13c46d82}
+
+
+Get the entire vector container which holds the dislocation sources lying on this slip plane. 
+
+\begin{DoxyReturn}{Returns}
+The vector of dislocation sources lying on this slip plane. 
+\end{DoxyReturn}
+
+
+Definition at line 185 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+186 \{
+187   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources});
+188 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a9d872e85ce5993f5cd6a8661fb26cac7}{\index{Slip\-Plane@{Slip\-Plane}!get\-Extremities@{get\-Extremities}}
+\index{get\-Extremities@{get\-Extremities}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Extremities}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} $\ast$ Slip\-Plane\-::get\-Extremities (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a9d872e85ce5993f5cd6a8661fb26cac7}
+
+
+Get the position vectors of the extremities of the slip plane. 
+
+\begin{DoxyReturn}{Returns}
+Pointer to an array containing the position vectors of the two extremities of the slip plane, variables of type \hyperlink{classVector3d}{Vector3d}. 
+\end{DoxyReturn}
+
+
+Definition at line 108 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+109 \{
+110   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities});
+111 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_ad2879c70242d30e34cc4c52d90413ef4}{\index{Slip\-Plane@{Slip\-Plane}!get\-Extremity@{get\-Extremity}}
+\index{get\-Extremity@{get\-Extremity}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Extremity}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::get\-Extremity (
+\begin{DoxyParamCaption}
+\item[{int}]{i}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_ad2879c70242d30e34cc4c52d90413ef4}
+
+
+Get the position vector of the extremity whose index is provided as argument. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em i} & Index of the extremity. Possible values\-: 0, 1 \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Position vector of the extremity indicated by the argument, returned as a variable of type \hyperlink{classVector3d}{Vector3d}. 
+\end{DoxyReturn}
+
+
+Definition at line 92 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+93 \{
+94   \textcolor{keywordflow}{if} (i==0 || i==1)
+95   \{
+96     \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities}[i];
+97   \}
+98   \textcolor{keywordflow}{else}
+99   \{
+100     \textcolor{keywordflow}{return} (\hyperlink{classVector3d}{Vector3d}());
+101   \}
+102 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_ab272f2aca3f35aed68343cf02354b7ba}{\index{Slip\-Plane@{Slip\-Plane}!get\-Normal@{get\-Normal}}
+\index{get\-Normal@{get\-Normal}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Normal}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::get\-Normal (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_ab272f2aca3f35aed68343cf02354b7ba}
+
+
+Get the normal vector of the slip plane. 
+
+\begin{DoxyReturn}{Returns}
+The normal vector of the slip plane, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
+\end{DoxyReturn}
+
+
+Definition at line 117 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+118 \{
+119   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{normalVector});
+120 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a151558f8f223ac316f4208246d16afca}{\index{Slip\-Plane@{Slip\-Plane}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::get\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a151558f8f223ac316f4208246d16afca}
+
+
+Get the position vector of the slip plane. 
+
+This function returns the position vector of the slip plane. The position vector is redundant because the slip plane is completely defined by its extremities and the normal vector. Nevertheless, this value can be useful to locate the slip plane within a slip system. \begin{DoxyReturn}{Returns}
+Position vector of the slip plane, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
+\end{DoxyReturn}
+
+
+Definition at line 127 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+128 \{
+129   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_ac2ac59e22e9638a990c9e45aaa096d9a}{position});
+130 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_af61e666e8704b1442eb8b5c1699e9071}{\index{Slip\-Plane@{Slip\-Plane}!get\-Rotation\-Matrix@{get\-Rotation\-Matrix}}
+\index{get\-Rotation\-Matrix@{get\-Rotation\-Matrix}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{get\-Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rotation\-Matrix} Slip\-Plane\-::get\-Rotation\-Matrix (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_af61e666e8704b1442eb8b5c1699e9071}
+
+
+Get the rotation matrix for this slip plane. 
+
+\begin{DoxyReturn}{Returns}
+The rotation matrix of this slip plane, in a variable of type \hyperlink{classRotationMatrix}{Rotation\-Matrix}. 
+\end{DoxyReturn}
+
+
+Definition at line 194 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+195 \{
+196   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{rotationMatrix});
+197 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a3efa3644ca3200d1c84801b3f9eb8ecf}{\index{Slip\-Plane@{Slip\-Plane}!set\-Dislocation\-List@{set\-Dislocation\-List}}
+\index{set\-Dislocation\-List@{set\-Dislocation\-List}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{set\-Dislocation\-List}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::set\-Dislocation\-List (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Dislocation} $>$}]{dislocation\-List}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a3efa3644ca3200d1c84801b3f9eb8ecf}
+
+
+Set the list of dislocations of the slip plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dislocation\-List} & A vector container of type \hyperlink{classDislocation}{Dislocation} containing the dislocations lying on this slip plane. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 72 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+73 \{
+74   this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations} = dislocationList;
+75 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a6f520005b3c7e8c93df0b893201cea29}{\index{Slip\-Plane@{Slip\-Plane}!set\-Dislocation\-Source\-List@{set\-Dislocation\-Source\-List}}
+\index{set\-Dislocation\-Source\-List@{set\-Dislocation\-Source\-List}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{set\-Dislocation\-Source\-List}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::set\-Dislocation\-Source\-List (
+\begin{DoxyParamCaption}
+\item[{std\-::vector$<$ {\bf Dislocation\-Source} $>$}]{dislocation\-Source\-List}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a6f520005b3c7e8c93df0b893201cea29}
+
+
+Set the list of dislocation sources on the slip plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em dislocation\-Source\-List} & A vector container of type \hyperlink{classDislocationSource}{Dislocation\-Source} containing the dislocation sources lying on this slip plane. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 81 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+82 \{
+83   this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources} = dislocationSourceList;
+84 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_aa6b39899a9280d47a3cdef2162dd847c}{\index{Slip\-Plane@{Slip\-Plane}!set\-Extremities@{set\-Extremities}}
+\index{set\-Extremities@{set\-Extremities}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{set\-Extremities}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::set\-Extremities (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3d} $\ast$}]{ends}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_aa6b39899a9280d47a3cdef2162dd847c}
+
+
+Set the extremities of the slip plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em ends} & Pointer to an array of type \hyperlink{classVector3d}{Vector3d}, containing the position vectors of the extremities of the slip plane in consecutive locations. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 44 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+45 \{
+46   this->\hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities}[0] = *(ends);
+47   this->\hyperlink{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{extremities}[1] = *(ends+1);
+48 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_ac0d07f48b5a8515bca8f12cb3eb2d264}{\index{Slip\-Plane@{Slip\-Plane}!set\-Normal@{set\-Normal}}
+\index{set\-Normal@{set\-Normal}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{set\-Normal}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::set\-Normal (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3d}}]{normal}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_ac0d07f48b5a8515bca8f12cb3eb2d264}
+
+
+Set the normal vector of the slip plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em normal} & The normal vector of the slip plane. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 54 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+55 \{
+56   this->\hyperlink{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{normalVector} = normal;
+57 \}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a58ead6125387ef790742374f0a507522}{\index{Slip\-Plane@{Slip\-Plane}!set\-Position@{set\-Position}}
+\index{set\-Position@{set\-Position}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{set\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::set\-Position (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3d}}]{pos}
+\end{DoxyParamCaption}
+)}}\label{db/d25/classSlipPlane_a58ead6125387ef790742374f0a507522}
+
+
+Set the position of the slip plane. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em pos} & The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system) \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 63 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+64 \{
+65   this->\hyperlink{classSlipPlane_ac2ac59e22e9638a990c9e45aaa096d9a}{position} = pos;
+66 \}
+\end{DoxyCode}
+
+
+\subsection{Field Documentation}
+\hypertarget{classSlipPlane_ad92c7c409f7e161db449528389180910}{\index{Slip\-Plane@{Slip\-Plane}!dislocations@{dislocations}}
+\index{dislocations@{dislocations}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{dislocations}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Dislocation}$>$ Slip\-Plane\-::dislocations\hspace{0.3cm}{\ttfamily [protected]}}}\label{db/d25/classSlipPlane_ad92c7c409f7e161db449528389180910}
+
+
+S\-T\-L vector container with dislocations. 
+
+A slip plane may contain several dislocations. These are stored in this vector container dislocations. 
+
+Definition at line 51 of file slip\-Plane.\-h.
+
+\hypertarget{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{\index{Slip\-Plane@{Slip\-Plane}!dislocation\-Sources@{dislocation\-Sources}}
+\index{dislocation\-Sources@{dislocation\-Sources}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{dislocation\-Sources}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<${\bf Dislocation\-Source}$>$ Slip\-Plane\-::dislocation\-Sources\hspace{0.3cm}{\ttfamily [protected]}}}\label{db/d25/classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}
+
+
+S\-T\-L vector container with dislocation sources. 
+
+A slip plane may contain several dislocation sources. These are stored in this vector container dislocation\-Sources. 
+
+Definition at line 57 of file slip\-Plane.\-h.
+
+\hypertarget{classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}{\index{Slip\-Plane@{Slip\-Plane}!extremities@{extremities}}
+\index{extremities@{extremities}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{extremities}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::extremities\mbox{[}2\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{db/d25/classSlipPlane_a52df6a08ab40ffd0dfb4a467e45d2835}
+
+
+The extremities of the slip plane. 
+
+The slip plane is represented as a straight line in these two dimensional simulations. The position vectors of the two ends are given here. 
+
+Definition at line 33 of file slip\-Plane.\-h.
+
+\hypertarget{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{\index{Slip\-Plane@{Slip\-Plane}!normal\-Vector@{normal\-Vector}}
+\index{normal\-Vector@{normal\-Vector}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{normal\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::normal\-Vector\hspace{0.3cm}{\ttfamily [protected]}}}\label{db/d25/classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}
+
+
+The normal vector to the slip plane. 
+
+This is the vector normal to the slip plane. Since we are concerned with the cubic system here, the indices of the normal vector are the same as those of the slip plane. 
+
+Definition at line 39 of file slip\-Plane.\-h.
+
+\hypertarget{classSlipPlane_ac2ac59e22e9638a990c9e45aaa096d9a}{\index{Slip\-Plane@{Slip\-Plane}!position@{position}}
+\index{position@{position}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Slip\-Plane\-::position\hspace{0.3cm}{\ttfamily [protected]}}}\label{db/d25/classSlipPlane_ac2ac59e22e9638a990c9e45aaa096d9a}
+
+
+The position vector of the slip plane. 
+
+This position vector is redundant because the combination of the position vectors of the extremities and the normal vector define the slip plane completely. However, this vector, position, is useful to locate the slip plane in a given slip system. 
+
+Definition at line 45 of file slip\-Plane.\-h.
+
+\hypertarget{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{\index{Slip\-Plane@{Slip\-Plane}!rotation\-Matrix@{rotation\-Matrix}}
+\index{rotation\-Matrix@{rotation\-Matrix}!SlipPlane@{Slip\-Plane}}
+\subsubsection[{rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Rotation\-Matrix} Slip\-Plane\-::rotation\-Matrix\hspace{0.3cm}{\ttfamily [protected]}}}\label{db/d25/classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}
+
+
+Rotation matrix for co-\/ordinate system transformations. 
+
+The slip plane's local co-\/ordinate system is defined as follows\-: z-\/axis$|$$|$\-Normal\-Vector; x-\/axis$|$$|$slip\-Plane line. The rotation matrix is created using this convention. 
+
+Definition at line 63 of file slip\-Plane.\-h.
+
+
+
+The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{slipPlane_8h}{slip\-Plane.\-h}\item 
+\hyperlink{slipPlane_8cpp}{slip\-Plane.\-cpp}\end{DoxyCompactItemize}

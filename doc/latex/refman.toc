@@ -151,146 +151,181 @@
 \contentsline {subsubsection}{\numberline {5.5.3.15}set\discretionary {-}{}{}Value}{54}{subsubsection.5.5.3.15}
 \contentsline {subsection}{\numberline {5.5.4}Field Documentation}{55}{subsection.5.5.4}
 \contentsline {subsubsection}{\numberline {5.5.4.1}x}{55}{subsubsection.5.5.4.1}
-\contentsline {section}{\numberline {5.6}Strain Class Reference}{55}{section.5.6}
+\contentsline {section}{\numberline {5.6}Slip\discretionary {-}{}{}Plane Class Reference}{55}{section.5.6}
 \contentsline {subsection}{\numberline {5.6.1}Detailed Description}{57}{subsection.5.6.1}
 \contentsline {subsection}{\numberline {5.6.2}Constructor \& Destructor Documentation}{57}{subsection.5.6.2}
-\contentsline {subsubsection}{\numberline {5.6.2.1}Strain}{57}{subsubsection.5.6.2.1}
-\contentsline {subsubsection}{\numberline {5.6.2.2}Strain}{57}{subsubsection.5.6.2.2}
+\contentsline {subsubsection}{\numberline {5.6.2.1}Slip\discretionary {-}{}{}Plane}{57}{subsubsection.5.6.2.1}
+\contentsline {subsubsection}{\numberline {5.6.2.2}Slip\discretionary {-}{}{}Plane}{58}{subsubsection.5.6.2.2}
 \contentsline {subsection}{\numberline {5.6.3}Member Function Documentation}{58}{subsection.5.6.3}
-\contentsline {subsubsection}{\numberline {5.6.3.1}adjugate}{58}{subsubsection.5.6.3.1}
-\contentsline {subsubsection}{\numberline {5.6.3.2}get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}{58}{subsubsection.5.6.3.2}
-\contentsline {subsubsection}{\numberline {5.6.3.3}get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}{59}{subsubsection.5.6.3.3}
-\contentsline {subsubsection}{\numberline {5.6.3.4}get\discretionary {-}{}{}Value}{59}{subsubsection.5.6.3.4}
-\contentsline {subsubsection}{\numberline {5.6.3.5}operator!}{59}{subsubsection.5.6.3.5}
-\contentsline {subsubsection}{\numberline {5.6.3.6}operator$\ast $}{60}{subsubsection.5.6.3.6}
-\contentsline {subsubsection}{\numberline {5.6.3.7}operator$\ast $}{60}{subsubsection.5.6.3.7}
-\contentsline {subsubsection}{\numberline {5.6.3.8}operator$\ast $}{61}{subsubsection.5.6.3.8}
-\contentsline {subsubsection}{\numberline {5.6.3.9}operator$\ast $=}{61}{subsubsection.5.6.3.9}
-\contentsline {subsubsection}{\numberline {5.6.3.10}operator$\ast $=}{61}{subsubsection.5.6.3.10}
-\contentsline {subsubsection}{\numberline {5.6.3.11}operator+}{62}{subsubsection.5.6.3.11}
-\contentsline {subsubsection}{\numberline {5.6.3.12}operator+=}{62}{subsubsection.5.6.3.12}
-\contentsline {subsubsection}{\numberline {5.6.3.13}operator-\/}{62}{subsubsection.5.6.3.13}
-\contentsline {subsubsection}{\numberline {5.6.3.14}operator-\/=}{63}{subsubsection.5.6.3.14}
-\contentsline {subsubsection}{\numberline {5.6.3.15}operator$^\wedge $}{63}{subsubsection.5.6.3.15}
-\contentsline {subsubsection}{\numberline {5.6.3.16}operator$\sim $}{64}{subsubsection.5.6.3.16}
-\contentsline {subsubsection}{\numberline {5.6.3.17}populate\discretionary {-}{}{}Matrix}{64}{subsubsection.5.6.3.17}
-\contentsline {subsubsection}{\numberline {5.6.3.18}rotate}{64}{subsubsection.5.6.3.18}
-\contentsline {subsubsection}{\numberline {5.6.3.19}set\discretionary {-}{}{}Value}{65}{subsubsection.5.6.3.19}
-\contentsline {subsection}{\numberline {5.6.4}Field Documentation}{65}{subsection.5.6.4}
-\contentsline {subsubsection}{\numberline {5.6.4.1}principal\discretionary {-}{}{}Strains}{65}{subsubsection.5.6.4.1}
-\contentsline {subsubsection}{\numberline {5.6.4.2}shear\discretionary {-}{}{}Strains}{65}{subsubsection.5.6.4.2}
-\contentsline {subsubsection}{\numberline {5.6.4.3}x}{65}{subsubsection.5.6.4.3}
-\contentsline {section}{\numberline {5.7}Stress Class Reference}{65}{section.5.7}
-\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{67}{subsection.5.7.1}
-\contentsline {subsection}{\numberline {5.7.2}Constructor \& Destructor Documentation}{67}{subsection.5.7.2}
-\contentsline {subsubsection}{\numberline {5.7.2.1}Stress}{67}{subsubsection.5.7.2.1}
-\contentsline {subsubsection}{\numberline {5.7.2.2}Stress}{68}{subsubsection.5.7.2.2}
-\contentsline {subsection}{\numberline {5.7.3}Member Function Documentation}{68}{subsection.5.7.3}
-\contentsline {subsubsection}{\numberline {5.7.3.1}adjugate}{68}{subsubsection.5.7.3.1}
-\contentsline {subsubsection}{\numberline {5.7.3.2}get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}{69}{subsubsection.5.7.3.2}
-\contentsline {subsubsection}{\numberline {5.7.3.3}get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}{69}{subsubsection.5.7.3.3}
-\contentsline {subsubsection}{\numberline {5.7.3.4}get\discretionary {-}{}{}Value}{69}{subsubsection.5.7.3.4}
-\contentsline {subsubsection}{\numberline {5.7.3.5}operator!}{70}{subsubsection.5.7.3.5}
-\contentsline {subsubsection}{\numberline {5.7.3.6}operator$\ast $}{70}{subsubsection.5.7.3.6}
-\contentsline {subsubsection}{\numberline {5.7.3.7}operator$\ast $}{71}{subsubsection.5.7.3.7}
-\contentsline {subsubsection}{\numberline {5.7.3.8}operator$\ast $}{71}{subsubsection.5.7.3.8}
-\contentsline {subsubsection}{\numberline {5.7.3.9}operator$\ast $=}{72}{subsubsection.5.7.3.9}
-\contentsline {subsubsection}{\numberline {5.7.3.10}operator$\ast $=}{72}{subsubsection.5.7.3.10}
-\contentsline {subsubsection}{\numberline {5.7.3.11}operator+}{72}{subsubsection.5.7.3.11}
-\contentsline {subsubsection}{\numberline {5.7.3.12}operator+=}{73}{subsubsection.5.7.3.12}
-\contentsline {subsubsection}{\numberline {5.7.3.13}operator-\/}{73}{subsubsection.5.7.3.13}
-\contentsline {subsubsection}{\numberline {5.7.3.14}operator-\/=}{73}{subsubsection.5.7.3.14}
-\contentsline {subsubsection}{\numberline {5.7.3.15}operator$^\wedge $}{74}{subsubsection.5.7.3.15}
-\contentsline {subsubsection}{\numberline {5.7.3.16}operator$\sim $}{74}{subsubsection.5.7.3.16}
-\contentsline {subsubsection}{\numberline {5.7.3.17}populate\discretionary {-}{}{}Matrix}{74}{subsubsection.5.7.3.17}
-\contentsline {subsubsection}{\numberline {5.7.3.18}rotate}{75}{subsubsection.5.7.3.18}
-\contentsline {subsubsection}{\numberline {5.7.3.19}set\discretionary {-}{}{}Value}{75}{subsubsection.5.7.3.19}
-\contentsline {subsection}{\numberline {5.7.4}Field Documentation}{75}{subsection.5.7.4}
-\contentsline {subsubsection}{\numberline {5.7.4.1}principal\discretionary {-}{}{}Stresses}{75}{subsubsection.5.7.4.1}
-\contentsline {subsubsection}{\numberline {5.7.4.2}shear\discretionary {-}{}{}Stresses}{75}{subsubsection.5.7.4.2}
-\contentsline {subsubsection}{\numberline {5.7.4.3}x}{76}{subsubsection.5.7.4.3}
-\contentsline {section}{\numberline {5.8}Vector3d Class Reference}{76}{section.5.8}
+\contentsline {subsubsection}{\numberline {5.6.3.1}calculate\discretionary {-}{}{}Rotation\discretionary {-}{}{}Matrix}{58}{subsubsection.5.6.3.1}
+\contentsline {subsubsection}{\numberline {5.6.3.2}get\discretionary {-}{}{}Axis}{59}{subsubsection.5.6.3.2}
+\contentsline {subsubsection}{\numberline {5.6.3.3}get\discretionary {-}{}{}Dislocation}{59}{subsubsection.5.6.3.3}
+\contentsline {subsubsection}{\numberline {5.6.3.4}get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}List}{60}{subsubsection.5.6.3.4}
+\contentsline {subsubsection}{\numberline {5.6.3.5}get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source}{60}{subsubsection.5.6.3.5}
+\contentsline {subsubsection}{\numberline {5.6.3.6}get\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}List}{60}{subsubsection.5.6.3.6}
+\contentsline {subsubsection}{\numberline {5.6.3.7}get\discretionary {-}{}{}Extremities}{61}{subsubsection.5.6.3.7}
+\contentsline {subsubsection}{\numberline {5.6.3.8}get\discretionary {-}{}{}Extremity}{61}{subsubsection.5.6.3.8}
+\contentsline {subsubsection}{\numberline {5.6.3.9}get\discretionary {-}{}{}Normal}{61}{subsubsection.5.6.3.9}
+\contentsline {subsubsection}{\numberline {5.6.3.10}get\discretionary {-}{}{}Position}{62}{subsubsection.5.6.3.10}
+\contentsline {subsubsection}{\numberline {5.6.3.11}get\discretionary {-}{}{}Rotation\discretionary {-}{}{}Matrix}{62}{subsubsection.5.6.3.11}
+\contentsline {subsubsection}{\numberline {5.6.3.12}set\discretionary {-}{}{}Dislocation\discretionary {-}{}{}List}{62}{subsubsection.5.6.3.12}
+\contentsline {subsubsection}{\numberline {5.6.3.13}set\discretionary {-}{}{}Dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}List}{62}{subsubsection.5.6.3.13}
+\contentsline {subsubsection}{\numberline {5.6.3.14}set\discretionary {-}{}{}Extremities}{63}{subsubsection.5.6.3.14}
+\contentsline {subsubsection}{\numberline {5.6.3.15}set\discretionary {-}{}{}Normal}{63}{subsubsection.5.6.3.15}
+\contentsline {subsubsection}{\numberline {5.6.3.16}set\discretionary {-}{}{}Position}{63}{subsubsection.5.6.3.16}
+\contentsline {subsection}{\numberline {5.6.4}Field Documentation}{63}{subsection.5.6.4}
+\contentsline {subsubsection}{\numberline {5.6.4.1}dislocations}{64}{subsubsection.5.6.4.1}
+\contentsline {subsubsection}{\numberline {5.6.4.2}dislocation\discretionary {-}{}{}Sources}{64}{subsubsection.5.6.4.2}
+\contentsline {subsubsection}{\numberline {5.6.4.3}extremities}{64}{subsubsection.5.6.4.3}
+\contentsline {subsubsection}{\numberline {5.6.4.4}normal\discretionary {-}{}{}Vector}{64}{subsubsection.5.6.4.4}
+\contentsline {subsubsection}{\numberline {5.6.4.5}position}{64}{subsubsection.5.6.4.5}
+\contentsline {subsubsection}{\numberline {5.6.4.6}rotation\discretionary {-}{}{}Matrix}{64}{subsubsection.5.6.4.6}
+\contentsline {section}{\numberline {5.7}Strain Class Reference}{65}{section.5.7}
+\contentsline {subsection}{\numberline {5.7.1}Detailed Description}{66}{subsection.5.7.1}
+\contentsline {subsection}{\numberline {5.7.2}Constructor \& Destructor Documentation}{66}{subsection.5.7.2}
+\contentsline {subsubsection}{\numberline {5.7.2.1}Strain}{66}{subsubsection.5.7.2.1}
+\contentsline {subsubsection}{\numberline {5.7.2.2}Strain}{67}{subsubsection.5.7.2.2}
+\contentsline {subsection}{\numberline {5.7.3}Member Function Documentation}{67}{subsection.5.7.3}
+\contentsline {subsubsection}{\numberline {5.7.3.1}adjugate}{67}{subsubsection.5.7.3.1}
+\contentsline {subsubsection}{\numberline {5.7.3.2}get\discretionary {-}{}{}Principal\discretionary {-}{}{}Strains}{68}{subsubsection.5.7.3.2}
+\contentsline {subsubsection}{\numberline {5.7.3.3}get\discretionary {-}{}{}Shear\discretionary {-}{}{}Strains}{68}{subsubsection.5.7.3.3}
+\contentsline {subsubsection}{\numberline {5.7.3.4}get\discretionary {-}{}{}Value}{68}{subsubsection.5.7.3.4}
+\contentsline {subsubsection}{\numberline {5.7.3.5}operator!}{69}{subsubsection.5.7.3.5}
+\contentsline {subsubsection}{\numberline {5.7.3.6}operator$\ast $}{69}{subsubsection.5.7.3.6}
+\contentsline {subsubsection}{\numberline {5.7.3.7}operator$\ast $}{70}{subsubsection.5.7.3.7}
+\contentsline {subsubsection}{\numberline {5.7.3.8}operator$\ast $}{70}{subsubsection.5.7.3.8}
+\contentsline {subsubsection}{\numberline {5.7.3.9}operator$\ast $=}{71}{subsubsection.5.7.3.9}
+\contentsline {subsubsection}{\numberline {5.7.3.10}operator$\ast $=}{71}{subsubsection.5.7.3.10}
+\contentsline {subsubsection}{\numberline {5.7.3.11}operator+}{71}{subsubsection.5.7.3.11}
+\contentsline {subsubsection}{\numberline {5.7.3.12}operator+=}{72}{subsubsection.5.7.3.12}
+\contentsline {subsubsection}{\numberline {5.7.3.13}operator-\/}{72}{subsubsection.5.7.3.13}
+\contentsline {subsubsection}{\numberline {5.7.3.14}operator-\/=}{72}{subsubsection.5.7.3.14}
+\contentsline {subsubsection}{\numberline {5.7.3.15}operator$^\wedge $}{73}{subsubsection.5.7.3.15}
+\contentsline {subsubsection}{\numberline {5.7.3.16}operator$\sim $}{73}{subsubsection.5.7.3.16}
+\contentsline {subsubsection}{\numberline {5.7.3.17}populate\discretionary {-}{}{}Matrix}{73}{subsubsection.5.7.3.17}
+\contentsline {subsubsection}{\numberline {5.7.3.18}rotate}{74}{subsubsection.5.7.3.18}
+\contentsline {subsubsection}{\numberline {5.7.3.19}set\discretionary {-}{}{}Value}{74}{subsubsection.5.7.3.19}
+\contentsline {subsection}{\numberline {5.7.4}Field Documentation}{74}{subsection.5.7.4}
+\contentsline {subsubsection}{\numberline {5.7.4.1}principal\discretionary {-}{}{}Strains}{74}{subsubsection.5.7.4.1}
+\contentsline {subsubsection}{\numberline {5.7.4.2}shear\discretionary {-}{}{}Strains}{74}{subsubsection.5.7.4.2}
+\contentsline {subsubsection}{\numberline {5.7.4.3}x}{75}{subsubsection.5.7.4.3}
+\contentsline {section}{\numberline {5.8}Stress Class Reference}{75}{section.5.8}
 \contentsline {subsection}{\numberline {5.8.1}Detailed Description}{77}{subsection.5.8.1}
 \contentsline {subsection}{\numberline {5.8.2}Constructor \& Destructor Documentation}{77}{subsection.5.8.2}
-\contentsline {subsubsection}{\numberline {5.8.2.1}Vector3d}{77}{subsubsection.5.8.2.1}
-\contentsline {subsubsection}{\numberline {5.8.2.2}Vector3d}{77}{subsubsection.5.8.2.2}
-\contentsline {subsubsection}{\numberline {5.8.2.3}Vector3d}{78}{subsubsection.5.8.2.3}
-\contentsline {subsection}{\numberline {5.8.3}Member Function Documentation}{78}{subsection.5.8.3}
-\contentsline {subsubsection}{\numberline {5.8.3.1}get\discretionary {-}{}{}Value}{78}{subsubsection.5.8.3.1}
-\contentsline {subsubsection}{\numberline {5.8.3.2}get\discretionary {-}{}{}Vector}{78}{subsubsection.5.8.3.2}
-\contentsline {subsubsection}{\numberline {5.8.3.3}magnitude}{79}{subsubsection.5.8.3.3}
-\contentsline {subsubsection}{\numberline {5.8.3.4}normalize}{79}{subsubsection.5.8.3.4}
-\contentsline {subsubsection}{\numberline {5.8.3.5}operator$\ast $}{79}{subsubsection.5.8.3.5}
+\contentsline {subsubsection}{\numberline {5.8.2.1}Stress}{77}{subsubsection.5.8.2.1}
+\contentsline {subsubsection}{\numberline {5.8.2.2}Stress}{77}{subsubsection.5.8.2.2}
+\contentsline {subsection}{\numberline {5.8.3}Member Function Documentation}{77}{subsection.5.8.3}
+\contentsline {subsubsection}{\numberline {5.8.3.1}adjugate}{77}{subsubsection.5.8.3.1}
+\contentsline {subsubsection}{\numberline {5.8.3.2}get\discretionary {-}{}{}Principal\discretionary {-}{}{}Stresses}{78}{subsubsection.5.8.3.2}
+\contentsline {subsubsection}{\numberline {5.8.3.3}get\discretionary {-}{}{}Shear\discretionary {-}{}{}Stresses}{78}{subsubsection.5.8.3.3}
+\contentsline {subsubsection}{\numberline {5.8.3.4}get\discretionary {-}{}{}Value}{79}{subsubsection.5.8.3.4}
+\contentsline {subsubsection}{\numberline {5.8.3.5}operator!}{79}{subsubsection.5.8.3.5}
 \contentsline {subsubsection}{\numberline {5.8.3.6}operator$\ast $}{80}{subsubsection.5.8.3.6}
-\contentsline {subsubsection}{\numberline {5.8.3.7}operator$\ast $=}{80}{subsubsection.5.8.3.7}
-\contentsline {subsubsection}{\numberline {5.8.3.8}operator+}{80}{subsubsection.5.8.3.8}
-\contentsline {subsubsection}{\numberline {5.8.3.9}operator+=}{81}{subsubsection.5.8.3.9}
-\contentsline {subsubsection}{\numberline {5.8.3.10}operator-\/}{81}{subsubsection.5.8.3.10}
-\contentsline {subsubsection}{\numberline {5.8.3.11}operator-\/=}{81}{subsubsection.5.8.3.11}
-\contentsline {subsubsection}{\numberline {5.8.3.12}operator$^\wedge $}{82}{subsubsection.5.8.3.12}
-\contentsline {subsubsection}{\numberline {5.8.3.13}operator$^\wedge $=}{82}{subsubsection.5.8.3.13}
-\contentsline {subsubsection}{\numberline {5.8.3.14}set\discretionary {-}{}{}Value}{82}{subsubsection.5.8.3.14}
-\contentsline {subsubsection}{\numberline {5.8.3.15}set\discretionary {-}{}{}Vector}{83}{subsubsection.5.8.3.15}
-\contentsline {subsubsection}{\numberline {5.8.3.16}sum}{83}{subsubsection.5.8.3.16}
-\contentsline {subsection}{\numberline {5.8.4}Field Documentation}{83}{subsection.5.8.4}
-\contentsline {subsubsection}{\numberline {5.8.4.1}x}{83}{subsubsection.5.8.4.1}
-\contentsline {chapter}{\numberline {6}File Documentation}{85}{chapter.6}
-\contentsline {section}{\numberline {6.1}constants.\discretionary {-}{}{}h File Reference}{85}{section.6.1}
-\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{86}{subsection.6.1.1}
-\contentsline {subsection}{\numberline {6.1.2}Macro Definition Documentation}{86}{subsection.6.1.2}
-\contentsline {subsubsection}{\numberline {6.1.2.1}P\discretionary {-}{}{}I}{86}{subsubsection.6.1.2.1}
-\contentsline {subsubsection}{\numberline {6.1.2.2}S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}{86}{subsubsection.6.1.2.2}
-\contentsline {subsubsection}{\numberline {6.1.2.3}S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}{86}{subsubsection.6.1.2.3}
-\contentsline {subsubsection}{\numberline {6.1.2.4}S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}{86}{subsubsection.6.1.2.4}
-\contentsline {section}{\numberline {6.2}defect.\discretionary {-}{}{}cpp File Reference}{86}{section.6.2}
-\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{87}{subsection.6.2.1}
-\contentsline {section}{\numberline {6.3}defect.\discretionary {-}{}{}h File Reference}{88}{section.6.3}
-\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{89}{subsection.6.3.1}
-\contentsline {section}{\numberline {6.4}dislocation.\discretionary {-}{}{}cpp File Reference}{89}{section.6.4}
-\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{90}{subsection.6.4.1}
-\contentsline {section}{\numberline {6.5}dislocation.\discretionary {-}{}{}h File Reference}{91}{section.6.5}
-\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{92}{subsection.6.5.1}
-\contentsline {section}{\numberline {6.6}dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h File Reference}{92}{section.6.6}
-\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{93}{subsection.6.6.1}
-\contentsline {subsection}{\numberline {6.6.2}Macro Definition Documentation}{94}{subsection.6.6.2}
-\contentsline {subsubsection}{\numberline {6.6.2.1}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}{94}{subsubsection.6.6.2.1}
-\contentsline {subsubsection}{\numberline {6.6.2.2}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}{94}{subsubsection.6.6.2.2}
-\contentsline {subsubsection}{\numberline {6.6.2.3}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}{94}{subsubsection.6.6.2.3}
-\contentsline {subsubsection}{\numberline {6.6.2.4}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}{94}{subsubsection.6.6.2.4}
-\contentsline {subsubsection}{\numberline {6.6.2.5}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}{94}{subsubsection.6.6.2.5}
-\contentsline {subsubsection}{\numberline {6.6.2.6}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}{94}{subsubsection.6.6.2.6}
-\contentsline {subsubsection}{\numberline {6.6.2.7}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}{95}{subsubsection.6.6.2.7}
-\contentsline {subsubsection}{\numberline {6.6.2.8}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}0}{95}{subsubsection.6.6.2.8}
-\contentsline {subsubsection}{\numberline {6.6.2.9}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}1}{95}{subsubsection.6.6.2.9}
-\contentsline {subsubsection}{\numberline {6.6.2.10}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}2}{95}{subsubsection.6.6.2.10}
-\contentsline {section}{\numberline {6.7}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp File Reference}{95}{section.6.7}
-\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{96}{subsection.6.7.1}
-\contentsline {section}{\numberline {6.8}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h File Reference}{97}{section.6.8}
-\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{98}{subsection.6.8.1}
-\contentsline {section}{\numberline {6.9}dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h File Reference}{98}{section.6.9}
-\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{99}{subsection.6.9.1}
-\contentsline {subsection}{\numberline {6.9.2}Macro Definition Documentation}{99}{subsection.6.9.2}
-\contentsline {subsubsection}{\numberline {6.9.2.1}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}{99}{subsubsection.6.9.2.1}
-\contentsline {subsubsection}{\numberline {6.9.2.2}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L}{100}{subsubsection.6.9.2.2}
-\contentsline {section}{\numberline {6.10}mainpage.\discretionary {-}{}{}dox File Reference}{100}{section.6.10}
-\contentsline {section}{\numberline {6.11}matrix33.\discretionary {-}{}{}cpp File Reference}{100}{section.6.11}
-\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{100}{subsection.6.11.1}
-\contentsline {section}{\numberline {6.12}matrix33.\discretionary {-}{}{}h File Reference}{101}{section.6.12}
-\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{102}{subsection.6.12.1}
-\contentsline {section}{\numberline {6.13}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp File Reference}{103}{section.6.13}
-\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{103}{subsection.6.13.1}
-\contentsline {section}{\numberline {6.14}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h File Reference}{103}{section.6.14}
-\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{104}{subsection.6.14.1}
-\contentsline {section}{\numberline {6.15}strain.\discretionary {-}{}{}cpp File Reference}{105}{section.6.15}
-\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{105}{subsection.6.15.1}
-\contentsline {section}{\numberline {6.16}strain.\discretionary {-}{}{}h File Reference}{106}{section.6.16}
-\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{107}{subsection.6.16.1}
-\contentsline {section}{\numberline {6.17}stress.\discretionary {-}{}{}cpp File Reference}{107}{section.6.17}
-\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{108}{subsection.6.17.1}
-\contentsline {section}{\numberline {6.18}stress.\discretionary {-}{}{}h File Reference}{109}{section.6.18}
-\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{110}{subsection.6.18.1}
-\contentsline {section}{\numberline {6.19}vector3d.\discretionary {-}{}{}cpp File Reference}{111}{section.6.19}
-\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{111}{subsection.6.19.1}
-\contentsline {section}{\numberline {6.20}vector3d.\discretionary {-}{}{}h File Reference}{111}{section.6.20}
-\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{113}{subsection.6.20.1}
-\contentsline {part}{Index}{113}{subsection.6.20.1}
+\contentsline {subsubsection}{\numberline {5.8.3.7}operator$\ast $}{80}{subsubsection.5.8.3.7}
+\contentsline {subsubsection}{\numberline {5.8.3.8}operator$\ast $}{80}{subsubsection.5.8.3.8}
+\contentsline {subsubsection}{\numberline {5.8.3.9}operator$\ast $=}{81}{subsubsection.5.8.3.9}
+\contentsline {subsubsection}{\numberline {5.8.3.10}operator$\ast $=}{81}{subsubsection.5.8.3.10}
+\contentsline {subsubsection}{\numberline {5.8.3.11}operator+}{81}{subsubsection.5.8.3.11}
+\contentsline {subsubsection}{\numberline {5.8.3.12}operator+=}{82}{subsubsection.5.8.3.12}
+\contentsline {subsubsection}{\numberline {5.8.3.13}operator-\/}{82}{subsubsection.5.8.3.13}
+\contentsline {subsubsection}{\numberline {5.8.3.14}operator-\/=}{83}{subsubsection.5.8.3.14}
+\contentsline {subsubsection}{\numberline {5.8.3.15}operator$^\wedge $}{83}{subsubsection.5.8.3.15}
+\contentsline {subsubsection}{\numberline {5.8.3.16}operator$\sim $}{83}{subsubsection.5.8.3.16}
+\contentsline {subsubsection}{\numberline {5.8.3.17}populate\discretionary {-}{}{}Matrix}{84}{subsubsection.5.8.3.17}
+\contentsline {subsubsection}{\numberline {5.8.3.18}rotate}{84}{subsubsection.5.8.3.18}
+\contentsline {subsubsection}{\numberline {5.8.3.19}set\discretionary {-}{}{}Value}{84}{subsubsection.5.8.3.19}
+\contentsline {subsection}{\numberline {5.8.4}Field Documentation}{85}{subsection.5.8.4}
+\contentsline {subsubsection}{\numberline {5.8.4.1}principal\discretionary {-}{}{}Stresses}{85}{subsubsection.5.8.4.1}
+\contentsline {subsubsection}{\numberline {5.8.4.2}shear\discretionary {-}{}{}Stresses}{85}{subsubsection.5.8.4.2}
+\contentsline {subsubsection}{\numberline {5.8.4.3}x}{85}{subsubsection.5.8.4.3}
+\contentsline {section}{\numberline {5.9}Vector3d Class Reference}{85}{section.5.9}
+\contentsline {subsection}{\numberline {5.9.1}Detailed Description}{86}{subsection.5.9.1}
+\contentsline {subsection}{\numberline {5.9.2}Constructor \& Destructor Documentation}{86}{subsection.5.9.2}
+\contentsline {subsubsection}{\numberline {5.9.2.1}Vector3d}{86}{subsubsection.5.9.2.1}
+\contentsline {subsubsection}{\numberline {5.9.2.2}Vector3d}{87}{subsubsection.5.9.2.2}
+\contentsline {subsubsection}{\numberline {5.9.2.3}Vector3d}{87}{subsubsection.5.9.2.3}
+\contentsline {subsection}{\numberline {5.9.3}Member Function Documentation}{87}{subsection.5.9.3}
+\contentsline {subsubsection}{\numberline {5.9.3.1}get\discretionary {-}{}{}Value}{87}{subsubsection.5.9.3.1}
+\contentsline {subsubsection}{\numberline {5.9.3.2}get\discretionary {-}{}{}Vector}{88}{subsubsection.5.9.3.2}
+\contentsline {subsubsection}{\numberline {5.9.3.3}magnitude}{88}{subsubsection.5.9.3.3}
+\contentsline {subsubsection}{\numberline {5.9.3.4}normalize}{88}{subsubsection.5.9.3.4}
+\contentsline {subsubsection}{\numberline {5.9.3.5}operator$\ast $}{89}{subsubsection.5.9.3.5}
+\contentsline {subsubsection}{\numberline {5.9.3.6}operator$\ast $}{89}{subsubsection.5.9.3.6}
+\contentsline {subsubsection}{\numberline {5.9.3.7}operator$\ast $=}{90}{subsubsection.5.9.3.7}
+\contentsline {subsubsection}{\numberline {5.9.3.8}operator+}{90}{subsubsection.5.9.3.8}
+\contentsline {subsubsection}{\numberline {5.9.3.9}operator+=}{90}{subsubsection.5.9.3.9}
+\contentsline {subsubsection}{\numberline {5.9.3.10}operator-\/}{90}{subsubsection.5.9.3.10}
+\contentsline {subsubsection}{\numberline {5.9.3.11}operator-\/=}{91}{subsubsection.5.9.3.11}
+\contentsline {subsubsection}{\numberline {5.9.3.12}operator$^\wedge $}{91}{subsubsection.5.9.3.12}
+\contentsline {subsubsection}{\numberline {5.9.3.13}operator$^\wedge $=}{91}{subsubsection.5.9.3.13}
+\contentsline {subsubsection}{\numberline {5.9.3.14}set\discretionary {-}{}{}Value}{92}{subsubsection.5.9.3.14}
+\contentsline {subsubsection}{\numberline {5.9.3.15}set\discretionary {-}{}{}Vector}{92}{subsubsection.5.9.3.15}
+\contentsline {subsubsection}{\numberline {5.9.3.16}sum}{92}{subsubsection.5.9.3.16}
+\contentsline {subsection}{\numberline {5.9.4}Field Documentation}{93}{subsection.5.9.4}
+\contentsline {subsubsection}{\numberline {5.9.4.1}x}{93}{subsubsection.5.9.4.1}
+\contentsline {chapter}{\numberline {6}File Documentation}{95}{chapter.6}
+\contentsline {section}{\numberline {6.1}constants.\discretionary {-}{}{}h File Reference}{95}{section.6.1}
+\contentsline {subsection}{\numberline {6.1.1}Detailed Description}{96}{subsection.6.1.1}
+\contentsline {subsection}{\numberline {6.1.2}Macro Definition Documentation}{96}{subsection.6.1.2}
+\contentsline {subsubsection}{\numberline {6.1.2.1}P\discretionary {-}{}{}I}{96}{subsubsection.6.1.2.1}
+\contentsline {subsubsection}{\numberline {6.1.2.2}S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T2}{96}{subsubsection.6.1.2.2}
+\contentsline {subsubsection}{\numberline {6.1.2.3}S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T3}{96}{subsubsection.6.1.2.3}
+\contentsline {subsubsection}{\numberline {6.1.2.4}S\discretionary {-}{}{}Q\discretionary {-}{}{}R\discretionary {-}{}{}T5}{96}{subsubsection.6.1.2.4}
+\contentsline {section}{\numberline {6.2}defect.\discretionary {-}{}{}cpp File Reference}{97}{section.6.2}
+\contentsline {subsection}{\numberline {6.2.1}Detailed Description}{97}{subsection.6.2.1}
+\contentsline {section}{\numberline {6.3}defect.\discretionary {-}{}{}h File Reference}{98}{section.6.3}
+\contentsline {subsection}{\numberline {6.3.1}Detailed Description}{99}{subsection.6.3.1}
+\contentsline {section}{\numberline {6.4}dislocation.\discretionary {-}{}{}cpp File Reference}{100}{section.6.4}
+\contentsline {subsection}{\numberline {6.4.1}Detailed Description}{100}{subsection.6.4.1}
+\contentsline {section}{\numberline {6.5}dislocation.\discretionary {-}{}{}h File Reference}{101}{section.6.5}
+\contentsline {subsection}{\numberline {6.5.1}Detailed Description}{102}{subsection.6.5.1}
+\contentsline {section}{\numberline {6.6}dislocation\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h File Reference}{102}{section.6.6}
+\contentsline {subsection}{\numberline {6.6.1}Detailed Description}{104}{subsection.6.6.1}
+\contentsline {subsection}{\numberline {6.6.2}Macro Definition Documentation}{104}{subsection.6.6.2}
+\contentsline {subsubsection}{\numberline {6.6.2.1}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}0}{104}{subsubsection.6.6.2.1}
+\contentsline {subsubsection}{\numberline {6.6.2.2}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}1}{104}{subsubsection.6.6.2.2}
+\contentsline {subsubsection}{\numberline {6.6.2.3}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}2}{104}{subsubsection.6.6.2.3}
+\contentsline {subsubsection}{\numberline {6.6.2.4}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}B\discretionary {-}{}{}U\discretionary {-}{}{}R\discretionary {-}{}{}G\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}S\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}M\discretionary {-}{}{}A\discretionary {-}{}{}G\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}U\discretionary {-}{}{}D\discretionary {-}{}{}E}{104}{subsubsection.6.6.2.4}
+\contentsline {subsubsection}{\numberline {6.6.2.5}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}0}{104}{subsubsection.6.6.2.5}
+\contentsline {subsubsection}{\numberline {6.6.2.6}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}1}{104}{subsubsection.6.6.2.6}
+\contentsline {subsubsection}{\numberline {6.6.2.7}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}L\discretionary {-}{}{}I\discretionary {-}{}{}N\discretionary {-}{}{}E\discretionary {-}{}{}V\discretionary {-}{}{}E\discretionary {-}{}{}C\discretionary {-}{}{}T\discretionary {-}{}{}O\discretionary {-}{}{}R\discretionary {-}{}{}\_\discretionary {-}{}{}2}{105}{subsubsection.6.6.2.7}
+\contentsline {subsubsection}{\numberline {6.6.2.8}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}0}{105}{subsubsection.6.6.2.8}
+\contentsline {subsubsection}{\numberline {6.6.2.9}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}1}{105}{subsubsection.6.6.2.9}
+\contentsline {subsubsection}{\numberline {6.6.2.10}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}P\discretionary {-}{}{}O\discretionary {-}{}{}S\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}\_\discretionary {-}{}{}2}{105}{subsubsection.6.6.2.10}
+\contentsline {section}{\numberline {6.7}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}cpp File Reference}{105}{section.6.7}
+\contentsline {subsection}{\numberline {6.7.1}Detailed Description}{106}{subsection.6.7.1}
+\contentsline {section}{\numberline {6.8}dislocation\discretionary {-}{}{}Source.\discretionary {-}{}{}h File Reference}{107}{section.6.8}
+\contentsline {subsection}{\numberline {6.8.1}Detailed Description}{108}{subsection.6.8.1}
+\contentsline {section}{\numberline {6.9}dislocation\discretionary {-}{}{}Source\discretionary {-}{}{}Defaults.\discretionary {-}{}{}h File Reference}{108}{section.6.9}
+\contentsline {subsection}{\numberline {6.9.1}Detailed Description}{109}{subsection.6.9.1}
+\contentsline {subsection}{\numberline {6.9.2}Macro Definition Documentation}{110}{subsection.6.9.2}
+\contentsline {subsubsection}{\numberline {6.9.2.1}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}N\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}E\discretionary {-}{}{}R\discretionary {-}{}{}A\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}O\discretionary {-}{}{}N\discretionary {-}{}{}S}{110}{subsubsection.6.9.2.1}
+\contentsline {subsubsection}{\numberline {6.9.2.2}D\discretionary {-}{}{}E\discretionary {-}{}{}F\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}L\discretionary {-}{}{}T\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}T\discretionary {-}{}{}A\discretionary {-}{}{}U\discretionary {-}{}{}\_\discretionary {-}{}{}\discretionary {-}{}{}C\discretionary {-}{}{}R\discretionary {-}{}{}I\discretionary {-}{}{}T\discretionary {-}{}{}I\discretionary {-}{}{}C\discretionary {-}{}{}A\discretionary {-}{}{}L}{110}{subsubsection.6.9.2.2}
+\contentsline {section}{\numberline {6.10}mainpage.\discretionary {-}{}{}dox File Reference}{110}{section.6.10}
+\contentsline {section}{\numberline {6.11}matrix33.\discretionary {-}{}{}cpp File Reference}{110}{section.6.11}
+\contentsline {subsection}{\numberline {6.11.1}Detailed Description}{110}{subsection.6.11.1}
+\contentsline {section}{\numberline {6.12}matrix33.\discretionary {-}{}{}h File Reference}{111}{section.6.12}
+\contentsline {subsection}{\numberline {6.12.1}Detailed Description}{112}{subsection.6.12.1}
+\contentsline {section}{\numberline {6.13}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}cpp File Reference}{113}{section.6.13}
+\contentsline {subsection}{\numberline {6.13.1}Detailed Description}{113}{subsection.6.13.1}
+\contentsline {section}{\numberline {6.14}rotation\discretionary {-}{}{}Matrix.\discretionary {-}{}{}h File Reference}{113}{section.6.14}
+\contentsline {subsection}{\numberline {6.14.1}Detailed Description}{114}{subsection.6.14.1}
+\contentsline {section}{\numberline {6.15}slip\discretionary {-}{}{}Plane.\discretionary {-}{}{}cpp File Reference}{115}{section.6.15}
+\contentsline {subsection}{\numberline {6.15.1}Detailed Description}{115}{subsection.6.15.1}
+\contentsline {subsection}{\numberline {6.15.2}Function Documentation}{116}{subsection.6.15.2}
+\contentsline {subsubsection}{\numberline {6.15.2.1}Slip\discretionary {-}{}{}Plane}{116}{subsubsection.6.15.2.1}
+\contentsline {section}{\numberline {6.16}slip\discretionary {-}{}{}Plane.\discretionary {-}{}{}h File Reference}{116}{section.6.16}
+\contentsline {subsection}{\numberline {6.16.1}Detailed Description}{118}{subsection.6.16.1}
+\contentsline {section}{\numberline {6.17}strain.\discretionary {-}{}{}cpp File Reference}{118}{section.6.17}
+\contentsline {subsection}{\numberline {6.17.1}Detailed Description}{119}{subsection.6.17.1}
+\contentsline {section}{\numberline {6.18}strain.\discretionary {-}{}{}h File Reference}{120}{section.6.18}
+\contentsline {subsection}{\numberline {6.18.1}Detailed Description}{121}{subsection.6.18.1}
+\contentsline {section}{\numberline {6.19}stress.\discretionary {-}{}{}cpp File Reference}{121}{section.6.19}
+\contentsline {subsection}{\numberline {6.19.1}Detailed Description}{122}{subsection.6.19.1}
+\contentsline {section}{\numberline {6.20}stress.\discretionary {-}{}{}h File Reference}{123}{section.6.20}
+\contentsline {subsection}{\numberline {6.20.1}Detailed Description}{124}{subsection.6.20.1}
+\contentsline {section}{\numberline {6.21}vector3d.\discretionary {-}{}{}cpp File Reference}{125}{section.6.21}
+\contentsline {subsection}{\numberline {6.21.1}Detailed Description}{125}{subsection.6.21.1}
+\contentsline {section}{\numberline {6.22}vector3d.\discretionary {-}{}{}h File Reference}{125}{section.6.22}
+\contentsline {subsection}{\numberline {6.22.1}Detailed Description}{127}{subsection.6.22.1}
+\contentsline {part}{Index}{127}{subsection.6.22.1}

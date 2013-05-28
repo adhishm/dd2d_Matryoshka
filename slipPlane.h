@@ -178,9 +178,16 @@ public:
   /**
    * @brief Get the axis (expressed in the global co-ordinate system) of the slip plane's local co-ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z).
    * @param i Index of the axis that is to be returned. (0, 1, 2)=(x, y, z).
-   * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system.
+   * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.
    */
   Vector3d getAxis (int i);
+  
+  // Operations
+  /**
+   * @brief Calculates the rotation matrix for this slip plane.
+   * @details The slip plane has a local co-ordinate system whose axes are the following: z-axis||normal vector and x-axis||slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-ordinate systems.
+   */
+  void calculateRotationMatrix ();
 };
 
 #endif
