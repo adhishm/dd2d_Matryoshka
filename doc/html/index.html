@@ -4,7 +4,7 @@
 <meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.3.1"/>
-<title>DD2D: Main Page</title>
+<title>DD2D - Matryushka approach: Main Page</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -22,10 +22,10 @@
  <tbody>
  <tr style="height: 56px;">
   <td style="padding-left: 0.5em;">
-   <div id="projectname">DD2D
+   <div id="projectname">DD2D - Matryushka approach
    &#160;<span id="projectnumber">0</span>
    </div>
-   <div id="projectbrief">This project provides a set of classes defining the behaviour of crystalline defects, with the final goal of carrying out dislocation dynamics simulations in two dimensions.</div>
+   <div id="projectbrief">A set of classes defining the behaviour of crystalline defects, with the final goal of carrying out dislocation dynamics simulations in two dimensions.</div>
   </td>
  </tr>
  </tbody>
@@ -76,16 +76,17 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 
 <div class="header">
   <div class="headertitle">
-<div class="title">DD2D Documentation</div>  </div>
+<div class="title">DD2D - Matryushka approach Documentation</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p>This is a program to carry out dislocation dynamics simulations in two-dimensions.</p>
-<p>A hierarchical data structure tree is created so that various entities in the simulations, such as dislocations, dislocation sources, slip planes, etc., can be managed efficiently. This program will also take advantage of the functionality provided by the C++ STL to manage lists of various objects in the simulation.</p>
+<div class="textblock"><p>The files in this program provide a heirarchical data structure system for carrying out dislocation dynamics simulations in two dimensions. The base class is <a class="el" href="d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a>, which represents a generic defect in a metallic crystal. All other defects, such as dislocations, dislocation sources, precipitates, etc., are represented by their own classes which inherit certain functions from the <a class="el" href="d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a> class.</p>
+<p>The goal of carrying out these simulations in two dimensions is to be able to simulate plastic deformation of up to a few percent. Current three dimensional dislocation dynamics simulations are computationally expensive. This approach hopes to sacrifice some of the precision in order to gain in speed and flexibility.</p>
+<p>The program is under development now, with the data structures being defined. When it will be complete, it is intended to have data structures nested within each other, hence the name Matryushka. For example, a polycrystal is a collection of grains; a grain is a collection of slip systems; a slip system is a collection of slip planes; a slip plane is a collection of dislocations, dislocation sources and other defects. This program will also take advantage of the functionality provided by the C++ STL to manage lists of various objects in the simulation. Once the base simulations execute successfully, other defects will be introduced.</p>
 <p>To view the hierarchical structure, go to the section labeled Data Structures &gt; Class Heirarchy. A good place to start would be the <a class="el" href="d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a> class, which is the generic base class for most of the entities present in the simulation. </p>
 </div></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon May 27 2013 16:58:38 for DD2D by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Tue May 28 2013 10:41:49 for DD2D - Matryushka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
