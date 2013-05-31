@@ -12,9 +12,29 @@
 // Constructors
 /**
  * @brief Default constructor.
- * @details The slip plane is initialized with default parameters.
+ * @details The slip plane is initialized with default parameters specified in the file slipPlaneDefaults.h.
  */
-SlipPlane ();
+SlipPlane::SlipPlane ()
+{
+  // Initialize the default variables.
+  Vector3d pos(DEFAULT_SLIPPLANE_POSITION_0,
+	       DEFAULT_SLIPPLANE_POSITION_1,
+	       DEFAULT_SLIPPLANE_POSITION_2);
+  Vector3d normal(DEFAULT_SLIPPLANE_NORMALVECTOR_0,
+		  DEFAULT_SLIPPLANE_NORMALVECTOR_1,
+		  DEFAULT_SLIPPLANE_NORMALVECTOR_2);
+  Vector3d ends[2];
+  ends[0] = Vector3d(DEFAULT_SLIPPLANE_EXTREMITY1_0,
+		     DEFAULT_SLIPPLANE_EXTREMITY1_1,
+		     DEFAULT_SLIPPLANE_EXTREMITY1_2);
+  ends[1] = Vector3d(DEFAULT_SLIPPLANE_EXTREMITY2_0,
+		     DEFAULT_SLIPPLANE_EXTREMITY2_1,
+		     DEFAULT_SLIPPLANE_EXTREMITY2_2);
+  std::vector<Dislocation> dislocationList(1, Dislocation());
+  std::vector<DislocationSource> dislocationSourceList(1, DislocationSource());
+  
+  *this = SlipPlane(ends, normal, pos, dislocationList, dislocationSourceList);
+}
 
 /**
  * @brief Constructor that specifies all members explicitly.
@@ -223,7 +243,7 @@ Vector3d SlipPlane::getAxis (int i)
     axis = this->getAxis(2) ^ this->getAxis(0);
   }
   
-  return ( axis.normaize() );
+  return ( axis.normalize() );
 }     
 
 // Operations

@@ -13,6 +13,9 @@
 // STL containers
 #include <vector>
 
+// Default values
+#include "slipPlaneDefaults.h"
+
 // Defects
 #include "defect.h"
 #include "dislocation.h"
@@ -66,7 +69,7 @@ public:
   // Constructors
   /**
    * @brief Default constructor.
-   * @details The slip plane is initialized with default parameters.
+   * @details The slip plane is initialized with default parameters specified in the file slipPlaneDefaults.h.
    */
   SlipPlane ();
   
