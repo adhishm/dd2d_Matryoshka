@@ -52,6 +52,9 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
   this->setPosition (pos);
   this->setDislocationList (dislocationList);
   this->setDislocationSourceList (dislocationSourceList);
+
+  // Fill the velocity vector with zero vectors
+  this->velocities.resize(this->getNumDislocations (), Vector3d());
   
   this->calculateRotationMatrix ();
 }
@@ -179,6 +182,15 @@ std::vector<Dislocation> SlipPlane::getDislocationList ()
 }
 
 /**
+ * @brief Get the number of dislocations.
+ * @return The number of dislocations on the slip plane.
+ */
+ int SlipPlane::getNumDislocations ()
+ {
+   return (this->dislocations.size ());
+ }
+
+/**
  * @brief Get the dislocation source on the slip plane indicated by the index provided as argument.
  * @details The slip plane contains several dislocation sources that are stored in a vector container. This function returns the dislocation source in that vector that corresponds to the index provided as argument.
  * @param i Index of the required dislocation source in the vector. This value should be greater than or equal to 0 and less than the number of dislocation sources on the slip plane.
@@ -206,6 +218,15 @@ std::vector<DislocationSource> SlipPlane::getDislocationSourceList ()
 {
   return (this->dislocationSources);
 }
+
+/**
+ * @brief Get the number of dislocation sources.
+ * @return The number of dislocation sources on the slip plane.
+ */
+ int SlipPlane::getNumDislocationSources ()
+ {
+   return (this->dislocationSources.size ());
+ }
 
 /**
  * @brief Get the rotation matrix for this slip plane.

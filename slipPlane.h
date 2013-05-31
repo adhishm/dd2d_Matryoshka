@@ -52,6 +52,12 @@ protected:
    * @details A slip plane may contain several dislocations. These are stored in this vector container dislocations.
    */
   std::vector<Dislocation> dislocations;
+
+  /**
+   * @brief STL vector container with dislocation velocities.
+   * @details The dislocations on this slip plane will have a velocity associated with them. These velocity vectors are stored in this container. The order is the same as the order of the dislocations.
+   */
+  std::vector<Vector3d> velocities;
   
   /**
    * @brief STL vector container with dislocation sources.
@@ -156,6 +162,12 @@ public:
    * @return The vector of dislocations lying on this slip plane.
    */
   std::vector<Dislocation> getDislocationList ();
+
+  /**
+   * @brief Get the number of dislocations.
+   * @return The number of dislocations on the slip plane.
+   */
+  int getNumDislocations ();
   
   /**
    * @brief Get the dislocation source on the slip plane indicated by the index provided as argument.
@@ -165,6 +177,12 @@ public:
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the DislocationSource data). Otherwise, the return value is false.
    */
   bool getDislocationSource (int i, DislocationSource* dSource);
+
+  /**
+   * @brief Get the number of dislocation sources.
+   * @return The number of dislocation sources on the slip plane.
+   */
+  int getNumDislocationSources ();
   
   /**
    * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
