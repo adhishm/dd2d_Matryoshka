@@ -53,6 +53,8 @@ void \hyperlink{classDislocation_aa249f1f46486fd183757ed5049586e73}{calculate\-R
 \begin{DoxyCompactList}\small\item\em Calculates the stress field due to this dislocation at the position given as argument. \end{DoxyCompactList}\item 
 \hyperlink{classStress}{Stress} \hyperlink{classDislocation_a163d6c52c2281a1b7fa9aab058c8fb84}{stress\-Field\-Local} (\hyperlink{classVector3d}{Vector3d} p, double mu, double nu)
 \begin{DoxyCompactList}\small\item\em Calculates the stress field due to the dislocation in the local co-\/ordinate system. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocation_ae0d8ef2fca67102648ce56cd95f5f7fc}{force\-Peach\-Koehler} (\hyperlink{classStress}{Stress} sigma)
+\begin{DoxyCompactList}\small\item\em Calculate the Peach-\/\-Koehler force acting on the dislocation due the stress. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_ad1a6acd8399d2ecabb7ce2b77623bbec}{set\-Position} (double x, double y, double z)
@@ -212,6 +214,36 @@ Definition at line 109 of file dislocation.\-cpp.
 124   \textcolor{comment}{// Calculate rotation matrix}
 125   this->\hyperlink{classDislocation_a5699d2984949af836396c8b7e5f21a5e}{rotationMatrix} = \hyperlink{classRotationMatrix}{RotationMatrix} (globalSystem, localSystem);
 126 \}
+\end{DoxyCode}
+\hypertarget{classDislocation_ae0d8ef2fca67102648ce56cd95f5f7fc}{\index{Dislocation@{Dislocation}!force\-Peach\-Koehler@{force\-Peach\-Koehler}}
+\index{force\-Peach\-Koehler@{force\-Peach\-Koehler}!Dislocation@{Dislocation}}
+\subsubsection[{force\-Peach\-Koehler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Dislocation\-::force\-Peach\-Koehler (
+\begin{DoxyParamCaption}
+\item[{{\bf Stress}}]{sigma}
+\end{DoxyParamCaption}
+)}}\label{d3/dc6/classDislocation_ae0d8ef2fca67102648ce56cd95f5f7fc}
+
+
+Calculate the Peach-\/\-Koehler force acting on the dislocation due the stress. 
+
+This function calculates the Peach-\/\-Koehler force in the dislocation due to the stress (expressed in the global co-\/ordinate system) provided as argument. The force returned is also in the global co-\/ordinate system. 
+\begin{DoxyParams}{Parameters}
+{\em sigma} & The stress tensor, expressed in the global co-\/ordinate system. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The Peach-\/\-Koehler force on the dislocation, expressed in the global co-\/ordinate system. 
+\end{DoxyReturn}
+
+
+Definition at line 191 of file dislocation.\-cpp.
+
+
+\begin{DoxyCode}
+192 \{
+193   \hyperlink{classVector3d}{Vector3d} force = sigma * ((this->\hyperlink{classDislocation_aad45c2eaade195f374707afb648ed17e}{bvec})^(this->\hyperlink{classDislocation_a69d16092777d9ead2d4eedf7c3d47877}{lvec}));
+194   \textcolor{keywordflow}{return} (force);
+195 \}
 \end{DoxyCode}
 \hypertarget{classDislocation_a8b9d5bfd379a6933b2dfd5d0962c9bc2}{\index{Dislocation@{Dislocation}!get\-Burgers@{get\-Burgers}}
 \index{get\-Burgers@{get\-Burgers}!Dislocation@{Dislocation}}

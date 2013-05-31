@@ -145,6 +145,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84">stressFieldLocal</a> (<a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> p, double mu, double nu)</td></tr>
 <tr class="memdesc:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the stress field due to the dislocation in the local co-ordinate system.  <a href="#a163d6c52c2281a1b7fa9aab058c8fb84">More...</a><br/></td></tr>
 <tr class="separator:a163d6c52c2281a1b7fa9aab058c8fb84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0d8ef2fca67102648ce56cd95f5f7fc"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc6/classDislocation.html#ae0d8ef2fca67102648ce56cd95f5f7fc">forcePeachKoehler</a> (<a class="el" href="../../d1/d1c/classStress.html">Stress</a> sigma)</td></tr>
+<tr class="memdesc:ae0d8ef2fca67102648ce56cd95f5f7fc"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the Peach-Koehler force acting on the dislocation due the stress.  <a href="#ae0d8ef2fca67102648ce56cd95f5f7fc">More...</a><br/></td></tr>
+<tr class="separator:ae0d8ef2fca67102648ce56cd95f5f7fc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f">setPosition</a> (double *a)</td></tr>
 <tr class="memdesc:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Sets the position of the defect.  <a href="#a2d233d13a8a93f6fba463a1fbc1c6c9f">More...</a><br/></td></tr>
 <tr class="separator:a2d233d13a8a93f6fba463a1fbc1c6c9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -337,6 +340,38 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="comment">// Calculate rotation matrix</span></div>
 <div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a> = <a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a> (globalSystem, localSystem);</div>
 <div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="ae0d8ef2fca67102648ce56cd95f5f7fc"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> Dislocation::forcePeachKoehler </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../d1/d1c/classStress.html">Stress</a>&#160;</td>
+          <td class="paramname"><em>sigma</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the Peach-Koehler force acting on the dislocation due the stress. </p>
+<p>This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">sigma</td><td>The stress tensor, expressed in the global co-ordinate system. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d3/d7f/dislocation_8cpp_source.html#l00191">191</a> of file <a class="el" href="../../d3/d7f/dislocation_8cpp_source.html">dislocation.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> force = sigma * ((this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#aad45c2eaade195f374707afb648ed17e" title="Burgers vector of the dislocation.">bvec</a>)^(this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a69d16092777d9ead2d4eedf7c3d47877" title="Line vector if the dislocation.">lvec</a>));</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="keywordflow">return</span> (force);</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1190,7 +1225,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue May 28 2013 16:26:54 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri May 31 2013 16:54:17 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
