@@ -134,6 +134,14 @@ public:
    */
   Stress stressFieldLocal (Vector3d p, double mu, double nu);
   
+  // Force
+  /**
+   * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
+   * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system.
+   * @param sigma The stress tensor, expressed in the global co-ordinate system.
+   * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
+   */
+  Vector3d forcePeachKoehler (Stress sigma);
 };
 
 #endif

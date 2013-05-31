@@ -2,7 +2,7 @@
  * @file dislocation.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 29/04/2013
+ * @date 31/05/2013
  * @brief Definition of constructors and member functions of the Dislocation class.
  * @details This file defines the constructors and member functions of the Dislocation class. This class inherits from the Defect class.
  */
@@ -179,4 +179,17 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
   shearStresses[2] = 0.0;
   
   return (Stress(principalStresses, shearStresses));
+}
+
+// Force
+/**
+ * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
+ * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system.
+ * @param sigma The stress tensor, expressed in the global co-ordinate system.
+ * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
+ */
+Vector3d Dislocation::forcePeachKoehler (Stress sigma)
+{
+  Vector3d force = sigma * ((this->bvec)^(this->lvec));
+  return (force);
 }
