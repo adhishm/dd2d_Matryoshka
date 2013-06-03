@@ -33,7 +33,7 @@ protected:
    * @brief The extremities of the slip plane.
    * @details The slip plane is represented as a straight line in these two dimensional simulations. The position vectors of the two ends are given here.
    */
-  Vector3d extremities[2];
+  Defect extremities[2];
   
   /**
    * @brief The normal vector to the slip plane.
@@ -149,9 +149,9 @@ public:
   
   /**
    * @brief Get the position vectors of the extremities of the slip plane.
-   * @return Pointer to an array containing the position vectors of the two extremities of the slip plane, variables of type Vector3d.
+   * @return Pointer to an array containing the two extremities of the slip plane, variables of type Defect.
    */
-  Vector3d* getExtremities ();
+  Defect* getExtremities ();
   
   /**
    * @brief Get the normal vector of the slip plane.

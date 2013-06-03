@@ -212,3 +212,55 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss)
 
   return (force);
 }
+
+/**
+ * @brief Returns the ideal time increment for the dislocation.
+ * @details A dislocation is not allowed to approach another dislocation of equal sign beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with another dislocation.
+ * @param v0 Velocity of the dislocation.
+ * @param minDistance Minimum distance of approach to the dislocation.
+ * @param d The defect for which the present dislocation's time increment is to be calculated.
+ * @param v1 Velocity of the other defect.
+ * @return The ideal time increment for this dislocation.
+ */
+double Dislocation::idealTimeIncrement (Vector3d v0, double minDistance, Defect d, Vector3d v1)
+{
+  double norm_v0 = v0.magnitude();
+  if (norm_v0 == 0.0)
+    {
+      // This dislocation is not moving
+      return (1000.0);
+    }
+
+  // Positions
+  Vector3d p0 = this->getPosition();
+  Vector3d p1 = d.getPosition();
+  Vector3d p01 = p1 - p0;
+  double norm_p01 = p01.magnitude();
+
+  if (norm_p01 == 0.0)
+    {
+      // The dislocation is lying on top of the obstacle - so it should not move
+      return (0.0);
+    }
+  else
+    {
+      // Find out if the dislocation is approaching the defect or not
+
+      // Velocities
+      Vector3d v01 = v1 - v0;
+      double norm_v01 = v01.magnitude();
+      double dotProduct = v01 * p01;
+      double cosine = dotProduct/(norm_v01 * norm_p01);
+      if (cosine < 0.0)
+	{
+	  // The dislocation is approaching the other defect
+	  return ( (norm_p01 - minDistance)/norm_v01 );
+	}
+      else
+	{
+	  // They are diverging
+	  // So any time increment will do
+	  return (1000.0);
+	}
+    }
+}

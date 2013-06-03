@@ -82,7 +82,8 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#nested-classes">Data Structures</a>  </div>
+<a href="#nested-classes">Data Structures</a> &#124;
+<a href="#func-members">Functions</a>  </div>
   <div class="headertitle">
 <div class="title">dislocation.h File Reference</div>  </div>
 </div><!--header-->
@@ -115,6 +116,12 @@ Data Structures</h2></td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d3/dc6/classDislocation.html">Dislocation</a></td></tr>
 <tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a class="el" href="../../d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation.">Dislocation</a> class representing a dislocation in the simulation.  <a href="../../d3/dc6/classDislocation.html#details">More...</a><br/></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
+Functions</h2></td></tr>
+<tr class="memitem:ab79ff28442fea06055020a2bba087f78"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/df3/dislocation_8h.html#ab79ff28442fea06055020a2bba087f78">idealTimeIncrement</a> (<a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> v0, double minDistance, <a class="el" href="../../d5/d4f/classDefect.html">Defect</a> d, <a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> v1)</td></tr>
+<tr class="memdesc:ab79ff28442fea06055020a2bba087f78"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the ideal time increment for the dislocation.  <a href="#ab79ff28442fea06055020a2bba087f78">More...</a><br/></td></tr>
+<tr class="separator:ab79ff28442fea06055020a2bba087f78"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>Definition of the <a class="el" href="../../d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation.">Dislocation</a> class. </p>
@@ -124,10 +131,105 @@ Data Structures</h2></td></tr>
 <p>This file defines the <a class="el" href="../../d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation.">Dislocation</a> class representing a dislocation in the simulation. This class inherits from the <a class="el" href="../../d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material.">Defect</a> class. </p>
 
 <p>Definition in file <a class="el" href="../../de/df3/dislocation_8h_source.html">dislocation.h</a>.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">Function Documentation</h2>
+<a class="anchor" id="ab79ff28442fea06055020a2bba087f78"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Dislocation::idealTimeIncrement </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td>
+          <td class="paramname"><em>v0</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>minDistance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../d5/d4f/classDefect.html">Defect</a>&#160;</td>
+          <td class="paramname"><em>d</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td>
+          <td class="paramname"><em>v1</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Returns the ideal time increment for the dislocation. </p>
+<p>A dislocation is not allowed to approach another dislocation of equal sign beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with another dislocation. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">v0</td><td>Velocity of the dislocation. </td></tr>
+    <tr><td class="paramname">minDistance</td><td>Minimum distance of approach to the dislocation. </td></tr>
+    <tr><td class="paramname">d</td><td>The defect for which the present dislocation's time increment is to be calculated. </td></tr>
+    <tr><td class="paramname">v1</td><td>Velocity of the other defect. </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>Returns</dt><dd>The ideal time increment for this dislocation. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d3/d7f/dislocation_8cpp_source.html#l00225">225</a> of file <a class="el" href="../../d3/d7f/dislocation_8cpp_source.html">dislocation.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;{</div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="keywordtype">double</span> norm_v0 = v0.<a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a>();</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;  <span class="keywordflow">if</span> (norm_v0 == 0.0)</div>
+<div class="line"><a name="l00229"></a><span class="lineno">  229</span>&#160;    {</div>
+<div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160;      <span class="comment">// This dislocation is not moving</span></div>
+<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;      <span class="keywordflow">return</span> (1000.0);</div>
+<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160;    }</div>
+<div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160;</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;  <span class="comment">// Positions</span></div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p0 = this-&gt;getPosition();</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p1 = d.<a class="code" href="../../d5/d4f/classDefect.html#a270caed3561fa5fa284af6427b6ca2e4" title="Returns in an array the position.">getPosition</a>();</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p01 = p1 - p0;</div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordtype">double</span> norm_p01 = p01.<a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a>();</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordflow">if</span> (norm_p01 == 0.0)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;    {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;      <span class="comment">// The dislocation is lying on top of the obstacle - so it should not move</span></div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;      <span class="keywordflow">return</span> (0.0);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;    {</div>
+<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;      <span class="comment">// Find out if the dislocation is approaching the defect or not</span></div>
+<div class="line"><a name="l00248"></a><span class="lineno">  248</span>&#160;</div>
+<div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;      <span class="comment">// Velocities</span></div>
+<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;      <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> v01 = v1 - v0;</div>
+<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;      <span class="keywordtype">double</span> norm_v01 = v01.<a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a>();</div>
+<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;      <span class="keywordtype">double</span> dotProduct = v01 * p01;</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;      <span class="keywordtype">double</span> cosine = dotProduct/(norm_v01 * norm_p01);</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;      <span class="keywordflow">if</span> (cosine &lt; 0.0)</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;        {</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;          <span class="comment">// The dislocation is approaching the other defect</span></div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;          <span class="keywordflow">return</span> ( (norm_p01 - minDistance)/norm_v01 );</div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;        }</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        {</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;          <span class="comment">// They are diverging</span></div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;          <span class="comment">// So any time increment will do</span></div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;          <span class="keywordflow">return</span> (1000.0);</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;        }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;    }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 11:59:03 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 13:45:22 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

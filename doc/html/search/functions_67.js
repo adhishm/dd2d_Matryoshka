@@ -7,7 +7,7 @@ var searchData=
   ['getdislocationlist',['getDislocationList',['../db/d25/classSlipPlane.html#aeaa4af766101e8bb21d557acd10c7cf6',1,'SlipPlane']]],
   ['getdislocationsource',['getDislocationSource',['../db/d25/classSlipPlane.html#a9829ea40c2c647cbee1f238c680295a1',1,'SlipPlane']]],
   ['getdislocationsourcelist',['getDislocationSourceList',['../db/d25/classSlipPlane.html#afcda214ca418f8becaaf4f3d13c46d82',1,'SlipPlane']]],
-  ['getextremities',['getExtremities',['../db/d25/classSlipPlane.html#a9d872e85ce5993f5cd6a8661fb26cac7',1,'SlipPlane']]],
+  ['getextremities',['getExtremities',['../db/d25/classSlipPlane.html#a6559d8a911b5c13e7b2ff4e99372d5b2',1,'SlipPlane']]],
   ['getextremity',['getExtremity',['../db/d25/classSlipPlane.html#ad2879c70242d30e34cc4c52d90413ef4',1,'SlipPlane']]],
   ['getiterationcount',['getIterationCount',['../de/de3/classDislocationSource.html#aed222f6992a63a66952d9d9e8d2fe6ac',1,'DislocationSource']]],
   ['getlinevector',['getLineVector',['../d3/dc6/classDislocation.html#a393b62c79e74458b7d69b4d28adc476e',1,'Dislocation::getLineVector()'],['../de/de3/classDislocationSource.html#a896f35e3c84654958d75b1cc964c42a1',1,'DislocationSource::getLineVector()']]],

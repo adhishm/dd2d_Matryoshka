@@ -72,8 +72,8 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
  */
 void SlipPlane::setExtremities (Vector3d *ends)
 {
-  this->extremities[0] = *(ends);
-  this->extremities[1] = *(ends+1);
+  this->extremities[0] = Defect(ends);
+  this->extremities[1] = Defect(ends+1);
 }
 
 /**
@@ -122,7 +122,7 @@ Vector3d SlipPlane::getExtremity (int i)
 {
   if (i==0 || i==1)
   {
-    return (this->extremities[i];
+    return (this->extremities[i].getPosition());
   }
   else
   {
@@ -134,7 +134,7 @@ Vector3d SlipPlane::getExtremity (int i)
  * @brief Get the position vectors of the extremities of the slip plane.
  * @return Pointer to an array containing the position vectors of the two extremities of the slip plane, variables of type Vector3d.
  */
-Vector3d* SlipPlane::getExtremities ()
+Defect* SlipPlane::getExtremities ()
 {
   return (this->extremities);
 }
@@ -261,7 +261,15 @@ Vector3d SlipPlane::getAxis (int i)
   if (i==0)
   {
     // X-axis
-    axis = (this->extremities[1] - this->extremities[0]);
+    Vector3d *e1 = new Vector3d;
+    Vector3d *e2 = new Vector3d;
+
+    *e1 = this->extremities[0].getPosition();
+    *e2 = this->extremities[1].getPosition();
+    axis = ((*e2) - (*e1));
+
+    delete(e1);  e1 = NULL;
+    delete(e2);  e2 = NULL;
   }
   
   if (i==1)
