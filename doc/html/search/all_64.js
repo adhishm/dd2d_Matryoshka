@@ -41,5 +41,6 @@ var searchData=
   ['dislocationsources',['dislocationSources',['../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc',1,'SlipPlane']]],
   ['dislocationstresses',['dislocationStresses',['../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd',1,'SlipPlane']]],
   ['dislocationvelocities',['dislocationVelocities',['../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c',1,'SlipPlane']]],
+  ['distancefromextremity',['distanceFromExtremity',['../db/d25/classSlipPlane.html#a3523030cccb520b5253a811d062f3ddf',1,'SlipPlane']]],
   ['dt',['dt',['../db/d25/classSlipPlane.html#ad786135547799363ad2931e43522c2be',1,'SlipPlane']]]
 ];

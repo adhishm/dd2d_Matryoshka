@@ -23,6 +23,7 @@ var searchData=
   ['slipplane_2ecpp',['slipPlane.cpp',['../db/dab/slipPlane_8cpp.html',1,'']]],
   ['slipplane_2eh',['slipPlane.h',['../d5/d03/slipPlane_8h.html',1,'']]],
   ['slipplanedefaults_2eh',['slipPlaneDefaults.h',['../d1/d4f/slipPlaneDefaults_8h.html',1,'']]],
+  ['sortdislocations',['sortDislocations',['../db/d25/classSlipPlane.html#a7fc607c17e5532aed5e93339dc03b18d',1,'SlipPlane']]],
   ['sqrt2',['SQRT2',['../d2/d6f/constants_8h.html#a514396dd60fa0621c83072091fb2a0cd',1,'constants.h']]],
   ['sqrt3',['SQRT3',['../d2/d6f/constants_8h.html#ae42978afd835c3a1f70d409a1b5f5a39',1,'constants.h']]],
   ['sqrt5',['SQRT5',['../d2/d6f/constants_8h.html#a9096473cd4539c628de1fa47d919ef78',1,'constants.h']]],

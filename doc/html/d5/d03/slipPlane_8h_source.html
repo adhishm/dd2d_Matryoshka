@@ -176,13 +176,19 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#aff7af69ba5235da6c8b142193509683c" title="Calculates the velocities of dislocations and stores them in the std::vector container velocities...">calculateVelocities</a> (<span class="keywordtype">double</span> B);</div>
 <div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;</div>
 <div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#a5418245f8c716d4a35405d68db53bc66" title="Calculate the time increment based on the velocities of the dislocations.">calculateTimeIncrement</a> (<span class="keywordtype">double</span> minDistance, <span class="keywordtype">double</span> minDt);</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;};</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#a02482abbb9b9db28a9bb19e6a1c181b5" title="Displaces the dislocations according to their velocities and the time increment.">moveDislocations</a> ();</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;</div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="../../db/d25/classSlipPlane.html#a3523030cccb520b5253a811d062f3ddf" title="The distance of the point pos from the n^th extremity is returned.">distanceFromExtremity</a>(<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> pos, <span class="keywordtype">int</span> n);</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  </div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#a7fc607c17e5532aed5e93339dc03b18d" title="Sorts the dislocations present on the slip plane in the ascending order of distance from the first ex...">sortDislocations</a> ();</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;};</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 14:07:49 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 14:47:50 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

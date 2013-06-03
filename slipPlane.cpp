@@ -389,6 +389,10 @@ void SlipPlane::calculateRotationMatrix ()
 	 {
 	   *v = (*f)/B;
 	 }
+       else
+	 {
+	   *v = Vector3d(0.0, 0.0, 0.0);
+	 }
        d++;
        f++;
        v++;
@@ -439,6 +443,10 @@ void SlipPlane::calculateRotationMatrix ()
        // This dislocation should not move in this iteration because it might collide with the next defect
        timeIncrement[0] = minDt;
        this->dislocationVelocities[0] = Vector3d(0.0, 0.0, 0.0);
+
+       // The other defect is a slip plane extremity
+       // This dislocation will not move any more
+       this->dislocations[0].setPinned();
      }
 
    for (i=1; i<(nDisl-1); i++)
@@ -464,22 +472,27 @@ void SlipPlane::calculateRotationMatrix ()
    // For the last dislocation, the time increment has to be calculated
    // for approach to both a dislocation and the slip plane extremity.
    // Time for slip plane extremity
-   t1 = this->dislocations[nDisl-1].idealTimeIncrement(this->dislocationVelocities[0],
-						       minDistance,
-						       this->extremity[1],
-						       Vector3d(0.0, 0.0, 0.0));
-   t2 = this->dislocations[nDisl-1].idealTimeIncrement(this->dislocationVelocities[0],
-						       minDistance,
-						       this->dislocations[nDisl-2],
-						       this->dislocationVelocities[nDisl-2]);
+   i=nDisl-1;
+   t1 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
+						 minDistance,
+						 this->extremity[1],
+						 Vector3d(0.0, 0.0, 0.0));
+   t2 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
+						 minDistance,
+						 this->dislocations[i-1],
+						 this->dislocationVelocities[i-1]);
    // Choose the smaller of the two
-   timeIncrement[nDisl-1] = t1 < t2 ? t1:t2;
+   timeIncrement[i] = t1 < t2 ? t1:t2;
 
-   if (timeIncrement[nDisl-1] < minDt)
+   if (timeIncrement[i] < minDt)
      {
        // This dislocation should not move in this iteration because it might collide with the next defect
-       timeIncrement[nDisl-1] = minDt;
-       this->dislocationVelocities[nDisl-1] = Vector3d(0.0, 0.0, 0.0);
+       timeIncrement[i] = minDt;
+       this->dislocationVelocities[i] = Vector3d(0.0, 0.0, 0.0);
+
+       // The other defect is a slip plane extremity
+       // This dislocation will not move any more
+       this->dislocations[i].setPinned();
      }
    
    dtMin = 1000;
@@ -493,3 +506,76 @@ void SlipPlane::calculateRotationMatrix ()
 
    this->dt = dtMin;
  }
+
+/**
+ * @brief Displaces the dislocations according to their velocities and the time increment.
+ */
+void SlipPlane::moveDislocations ()
+{
+  std::vector<Dislocation>::iterator d;
+  std::vector<Vector3d>::iterator v;
+  Vector3d p;
+
+  d = this->dislocations.begin();
+  v = this->dislocationVelocities.begin();
+
+  while (d != this->dislocations.end())
+    {
+      p = d->getPosition();
+      p += (*v) * (this->dt);
+      d->setPosition(p);
+
+      d++;
+      v++;
+    }
+}
+
+/**
+ * @brief The distance of the point pos from the n^th extremity is returned.
+ * @param pos Position vector of the point whose distance is to be calculated.
+ * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
+ * @return Distance of the point pos from the n^th extremity of the slip plane.
+ */
+double SlipPlane::distanceFromExtremity(Vector3d pos, int n)
+{
+  if (n!=0 && n!=1)
+    {
+      return (0.0);
+    }
+
+  Vector3d r = this->extremities[n].getPosition();
+  return ( (r-pos).magnitude() );
+}
+  
+/**
+ * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
+ * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
+ */
+void SlipPlane::sortDislocations ()
+{
+  int nDisl = this->dislocations.size();
+  int i, j;
+  double di, dj;
+  Vector pi, pj;
+  Dislocation temp;
+
+  for (i=0; i<nDisl-1; i++)
+    {
+      for (j=i+1; j<nDisl; j++)
+	{
+	  pi = this->dislocations[i].getPosition();
+	  di = this->distanceFromExtremity(pi, 0);
+	  
+	  pj = this->dislocations[j].getPosition();
+	  dj = this->distanceFromExtremity(pj, 0);
+	  
+	  if (dj < di)
+	    {
+	      // Swap the two
+	      temp = this->dislocations[i];
+	      this->dislocations[i] = this->dislocations[j];
+	      this->dislocations[j] = temp;
+	    }
+	}
+    }
+}

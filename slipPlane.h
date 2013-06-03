@@ -258,6 +258,25 @@ public:
    * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
    */
   void calculateTimeIncrement (double minDistance, double minDt);
+
+  /**
+   * @brief Displaces the dislocations according to their velocities and the time increment.
+   */
+  void moveDislocations ();
+
+  /**
+   * @brief The distance of the point pos from the n^th extremity is returned.
+   * @param pos Position vector of the point whose distance is to be calculated.
+   * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
+   * @return Distance of the point pos from the n^th extremity of the slip plane.
+   */
+  double distanceFromExtremity(Vector3d pos, int n);
+  
+  /**
+   * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
+   * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
+   */
+  void sortDislocations ();
 };
 
 #endif
