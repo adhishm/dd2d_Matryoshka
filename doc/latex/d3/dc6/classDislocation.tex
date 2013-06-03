@@ -57,6 +57,8 @@ void \hyperlink{classDislocation_aa249f1f46486fd183757ed5049586e73}{calculate\-R
 \begin{DoxyCompactList}\small\item\em Calculates the stress field due to the dislocation in the local co-\/ordinate system. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocation_a13df53ead0e78bc33594c6afabc41dcb}{force\-Peach\-Koehler} (\hyperlink{classStress}{Stress} sigma, double tau\-\_\-crss)
 \begin{DoxyCompactList}\small\item\em Calculate the Peach-\/\-Koehler force acting on the dislocation due the stress. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocation_ab79ff28442fea06055020a2bba087f78}{ideal\-Time\-Increment} (\hyperlink{classVector3d}{Vector3d} v0, double min\-Distance, \hyperlink{classDefect}{Defect} d, \hyperlink{classVector3d}{Vector3d} v1)
+\begin{DoxyCompactList}\small\item\em Returns the ideal time increment for the dislocation. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_ad1a6acd8399d2ecabb7ce2b77623bbec}{set\-Position} (double x, double y, double z)
@@ -449,6 +451,82 @@ Definition at line 165 of file defect.\-cpp.
 166 \{
 167   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (2));
 168 \}
+\end{DoxyCode}
+\hypertarget{classDislocation_ab79ff28442fea06055020a2bba087f78}{\index{Dislocation@{Dislocation}!ideal\-Time\-Increment@{ideal\-Time\-Increment}}
+\index{ideal\-Time\-Increment@{ideal\-Time\-Increment}!Dislocation@{Dislocation}}
+\subsubsection[{ideal\-Time\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}double Dislocation\-::ideal\-Time\-Increment (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3d}}]{v0, }
+\item[{double}]{min\-Distance, }
+\item[{{\bf Defect}}]{d, }
+\item[{{\bf Vector3d}}]{v1}
+\end{DoxyParamCaption}
+)}}\label{d3/dc6/classDislocation_ab79ff28442fea06055020a2bba087f78}
+
+
+Returns the ideal time increment for the dislocation. 
+
+A dislocation is not allowed to approach another dislocation of equal sign beyond a certain distance, specified by the argument min\-Distance. This function calculates the ideal time increment for this dislocation to not collide with another dislocation. 
+\begin{DoxyParams}{Parameters}
+{\em v0} & Velocity of the dislocation. \\
+\hline
+{\em min\-Distance} & Minimum distance of approach to the dislocation. \\
+\hline
+{\em d} & The defect for which the present dislocation's time increment is to be calculated. \\
+\hline
+{\em v1} & Velocity of the other defect. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The ideal time increment for this dislocation. 
+\end{DoxyReturn}
+
+
+Definition at line 225 of file dislocation.\-cpp.
+
+
+\begin{DoxyCode}
+226 \{
+227   \textcolor{keywordtype}{double} norm\_v0 = v0.\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude}();
+228   \textcolor{keywordflow}{if} (norm\_v0 == 0.0)
+229     \{
+230       \textcolor{comment}{// This dislocation is not moving}
+231       \textcolor{keywordflow}{return} (1000.0);
+232     \}
+233 
+234   \textcolor{comment}{// Positions}
+235   \hyperlink{classVector3d}{Vector3d} p0 = this->\hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{getPosition}();
+236   \hyperlink{classVector3d}{Vector3d} p1 = d.\hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{getPosition}();
+237   \hyperlink{classVector3d}{Vector3d} p01 = p1 - p0;
+238   \textcolor{keywordtype}{double} norm\_p01 = p01.\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude}();
+239 
+240   \textcolor{keywordflow}{if} (norm\_p01 == 0.0)
+241     \{
+242       \textcolor{comment}{// The dislocation is lying on top of the obstacle - so it should not move}
+243       \textcolor{keywordflow}{return} (0.0);
+244     \}
+245   \textcolor{keywordflow}{else}
+246     \{
+247       \textcolor{comment}{// Find out if the dislocation is approaching the defect or not}
+248 
+249       \textcolor{comment}{// Velocities}
+250       \hyperlink{classVector3d}{Vector3d} v01 = v1 - v0;
+251       \textcolor{keywordtype}{double} norm\_v01 = v01.\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude}();
+252       \textcolor{keywordtype}{double} dotProduct = v01 * p01;
+253       \textcolor{keywordtype}{double} cosine = dotProduct/(norm\_v01 * norm\_p01);
+254       \textcolor{keywordflow}{if} (cosine < 0.0)
+255         \{
+256           \textcolor{comment}{// The dislocation is approaching the other defect}
+257           \textcolor{keywordflow}{return} ( (norm\_p01 - minDistance)/norm\_v01 );
+258         \}
+259       \textcolor{keywordflow}{else}
+260         \{
+261           \textcolor{comment}{// They are diverging}
+262           \textcolor{comment}{// So any time increment will do}
+263           \textcolor{keywordflow}{return} (1000.0);
+264         \}
+265     \}
+266 \}
 \end{DoxyCode}
 \hypertarget{classDislocation_a6f9fa6b294f26af8f7e337988090bb80}{\index{Dislocation@{Dislocation}!is\-Mobile@{is\-Mobile}}
 \index{is\-Mobile@{is\-Mobile}!Dislocation@{Dislocation}}

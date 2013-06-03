@@ -148,7 +148,6 @@ public:
    * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
    */
   Vector3d forcePeachKoehler (Stress sigma, double tau_crss);
-};
 
 /**
  * @brief Returns the ideal time increment for the dislocation.
@@ -160,5 +159,6 @@ public:
  * @return The ideal time increment for this dislocation.
  */
 double idealTimeIncrement (Vector3d v0, double minDistance, Defect d, Vector3d v1);
+};
 
 #endif
