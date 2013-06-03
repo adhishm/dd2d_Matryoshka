@@ -105,6 +105,11 @@ public:
    * @return Line vector in a variable of type Vector3d.
    */
   Vector3d getLineVector ();
+  /**
+   * @brief Returns whether the dislocation is mobile or pinned.
+   * @return Returns true if the dislocation is mobile, false if pinned.
+   */
+  bool isMobile ();
   
   // Rotation matrix
   /**

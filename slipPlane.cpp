@@ -359,9 +359,27 @@ void SlipPlane::calculateRotationMatrix ()
 
  /**
   * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
-  * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient as the constant of proportionality.
+  * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+  * param B The drag coefficient.
   */
- void SlipPlane::calculateVelocities ()
+ void SlipPlane::calculateVelocities (double B)
  {
-   //
+   std::vector<Dislocation>::iterator d;  // Iterator for dislocations
+   std::vector<Vector3d>::iterator f;     // Iterator for forces
+   std::vector<Vector3d>::iterator v;     // Iterator for velocities
+
+   d = this->dislocations.begin();
+   f = this->dislocationForces.begin();
+   v = this->dislocationVelocities.begin();
+
+   while (v != this->dislocationVelocities.end())
+     {
+       if (d->isMobile())
+	 {
+	   *v = (*f)/B;
+	 }
+       d++;
+       f++;
+       v++;
+     }
  }

@@ -240,9 +240,10 @@ public:
 
   /**
    * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
-   * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient as the constant of proportionality.
+   * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+   * param B The drag coefficient.
    */
-  void calculateVelocities ();
+  void calculateVelocities (double B);
 };
 
 #endif

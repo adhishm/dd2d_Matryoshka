@@ -66,7 +66,7 @@ void \hyperlink{classSlipPlane_a2d4d2d031502d4a6f0aebbad0990b882}{calculate\-Dis
 \begin{DoxyCompactList}\small\item\em Calculates the total stress field experienced by each dislocation and stored it in the S\-T\-L vector container dislocation\-Stresses. \end{DoxyCompactList}\item 
 void \hyperlink{classSlipPlane_ac16d1abbbc3b938b6f1f29a33a70212d}{calculate\-Dislocation\-Forces} (double tau\-\_\-crss)
 \begin{DoxyCompactList}\small\item\em This function populates the S\-T\-L vector container dislocation\-Forces with the Peach-\/\-Koehler force experienced by each dislocation. \end{DoxyCompactList}\item 
-void \hyperlink{classSlipPlane_aa954f3ded4b3cc9fa8fd1f70ac9f8516}{calculate\-Velocities} ()
+void \hyperlink{classSlipPlane_aff7af69ba5235da6c8b142193509683c}{calculate\-Velocities} (double B)
 \begin{DoxyCompactList}\small\item\em Calculates the velocities of dislocations and stores them in the std\-::vector container velocities. \end{DoxyCompactList}\end{DoxyCompactItemize}
 \subsection*{Protected Attributes}
 \begin{DoxyCompactItemize}
@@ -326,26 +326,43 @@ Definition at line 278 of file slip\-Plane.\-cpp.
 301   \textcolor{keyword}{delete}(primed);       primed = NULL;
 302 \}
 \end{DoxyCode}
-\hypertarget{classSlipPlane_aa954f3ded4b3cc9fa8fd1f70ac9f8516}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Velocities@{calculate\-Velocities}}
+\hypertarget{classSlipPlane_aff7af69ba5235da6c8b142193509683c}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Velocities@{calculate\-Velocities}}
 \index{calculate\-Velocities@{calculate\-Velocities}!SlipPlane@{Slip\-Plane}}
 \subsubsection[{calculate\-Velocities}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::calculate\-Velocities (
 \begin{DoxyParamCaption}
-{}
+\item[{double}]{B}
 \end{DoxyParamCaption}
-)}}\label{db/d25/classSlipPlane_aa954f3ded4b3cc9fa8fd1f70ac9f8516}
+)}}\label{db/d25/classSlipPlane_aff7af69ba5235da6c8b142193509683c}
 
 
 Calculates the velocities of dislocations and stores them in the std\-::vector container velocities. 
 
-The velocities of the dislocations are calculated and stored in the std\-::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-\/\-Koehler force, using the drag coefficient as the constant of proportionality. 
+The velocities of the dislocations are calculated and stored in the std\-::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-\/\-Koehler force, using the drag coefficient B as the constant of proportionality. param B The drag coefficient. 
 
-Definition at line 364 of file slip\-Plane.\-cpp.
+Definition at line 365 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-365  \{
-366    \textcolor{comment}{//}
-367  \}
+366  \{
+367    std::vector<Dislocation>::iterator d;  \textcolor{comment}{// Iterator for dislocations}
+368    std::vector<Vector3d>::iterator f;     \textcolor{comment}{// Iterator for forces}
+369    std::vector<Vector3d>::iterator v;     \textcolor{comment}{// Iterator for velocities}
+370 
+371    d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
+372    f = this->\hyperlink{classSlipPlane_a2a74ae1f66a59e53a3ca0c9b81b28f7d}{dislocationForces}.begin();
+373    v = this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}.begin();
+374 
+375    \textcolor{keywordflow}{while} (v != this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}.end())
+376      \{
+377        \textcolor{keywordflow}{if} (d->isMobile())
+378          \{
+379            *v = (*f)/B;
+380          \}
+381        d++;
+382        f++;
+383        v++;
+384      \}
+385  \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{\index{Slip\-Plane@{Slip\-Plane}!get\-Axis@{get\-Axis}}
 \index{get\-Axis@{get\-Axis}!SlipPlane@{Slip\-Plane}}

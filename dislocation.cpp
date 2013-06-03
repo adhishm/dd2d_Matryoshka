@@ -101,6 +101,15 @@ Vector3d Dislocation::getLineVector ()
   return ( this->lvec );
 }
 
+/**
+ * @brief Returns whether the dislocation is mobile or pinned.
+ * @return Returns true if the dislocation is mobile, false if pinned.
+ */
+bool Dislocation::isMobile ()
+{
+  return (this->mobile);
+}
+
 // Rotation matrix
 /**
  * @brief Calculate the roation matrix.

@@ -171,9 +171,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac16d1abbbc3b938b6f1f29a33a70212d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#ac16d1abbbc3b938b6f1f29a33a70212d">calculateDislocationForces</a> (double tau_crss)</td></tr>
 <tr class="memdesc:ac16d1abbbc3b938b6f1f29a33a70212d"><td class="mdescLeft">&#160;</td><td class="mdescRight">This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.  <a href="#ac16d1abbbc3b938b6f1f29a33a70212d">More...</a><br/></td></tr>
 <tr class="separator:ac16d1abbbc3b938b6f1f29a33a70212d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa954f3ded4b3cc9fa8fd1f70ac9f8516"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#aa954f3ded4b3cc9fa8fd1f70ac9f8516">calculateVelocities</a> ()</td></tr>
-<tr class="memdesc:aa954f3ded4b3cc9fa8fd1f70ac9f8516"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the velocities of dislocations and stores them in the std::vector container velocities.  <a href="#aa954f3ded4b3cc9fa8fd1f70ac9f8516">More...</a><br/></td></tr>
-<tr class="separator:aa954f3ded4b3cc9fa8fd1f70ac9f8516"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff7af69ba5235da6c8b142193509683c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#aff7af69ba5235da6c8b142193509683c">calculateVelocities</a> (double B)</td></tr>
+<tr class="memdesc:aff7af69ba5235da6c8b142193509683c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the velocities of dislocations and stores them in the std::vector container velocities.  <a href="#aff7af69ba5235da6c8b142193509683c">More...</a><br/></td></tr>
+<tr class="separator:aff7af69ba5235da6c8b142193509683c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -482,26 +482,44 @@ Protected Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="aa954f3ded4b3cc9fa8fd1f70ac9f8516"></a>
+<a class="anchor" id="aff7af69ba5235da6c8b142193509683c"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void SlipPlane::calculateVelocities </td>
           <td>(</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>B</em></td><td>)</td>
           <td></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Calculates the velocities of dislocations and stores them in the std::vector container velocities. </p>
-<p>The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient as the constant of proportionality. </p>
+<p>The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality. param B The drag coefficient. </p>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00364">364</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; {</div>
-<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;   <span class="comment">//</span></div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; }</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00365">365</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; {</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span></div>
+<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;   std::vector&lt;Vector3d&gt;::iterator f;     <span class="comment">// Iterator for forces</span></div>
+<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;   std::vector&lt;Vector3d&gt;::iterator v;     <span class="comment">// Iterator for velocities</span></div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;   d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin();</div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;   f = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.begin();</div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;   v = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.begin();</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;   <span class="keywordflow">while</span> (v != this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.end())</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;     {</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;       <span class="keywordflow">if</span> (d-&gt;isMobile())</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;         {</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;           *v = (*f)/B;</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;         }</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;       d++;</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;       f++;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;       v++;</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;     }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1256,7 +1274,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 10:42:39 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 10:57:11 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
