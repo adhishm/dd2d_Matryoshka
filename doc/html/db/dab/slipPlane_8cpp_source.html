@@ -313,14 +313,31 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;     }</div>
 <div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; }</div>
 <div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;</div>
-<div class="line"><a name="l00342"></a><span class="lineno"><a class="code" href="../../db/d25/classSlipPlane.html#aa954f3ded4b3cc9fa8fd1f70ac9f8516">  342</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#aa954f3ded4b3cc9fa8fd1f70ac9f8516" title="Calculates the velocities of dislocations and stores them in the std::vector container velocities...">SlipPlane::calculateVelocities</a> ()</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160; {</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;   <span class="comment">//</span></div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160; }</div>
+<div class="line"><a name="l00343"></a><span class="lineno"><a class="code" href="../../db/d25/classSlipPlane.html#ac16d1abbbc3b938b6f1f29a33a70212d">  343</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#ac16d1abbbc3b938b6f1f29a33a70212d" title="This function populates the STL vector container dislocationForces with the Peach-Koehler force exper...">SlipPlane::calculateDislocationForces</a> (<span class="keywordtype">double</span> tau_crss)</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; {</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span></div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;   std::vector&lt;Vector3d&gt;::iterator f;     <span class="comment">// Iterator for forces</span></div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   std::vector&lt;Stress&gt;::iterator s;       <span class="comment">// Iterator for stresses</span></div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   s = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd" title="STL vector container with the stress fields of dislocations.">dislocationStresses</a>.begin();</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   f = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.begin();</div>
+<div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   <span class="keywordflow">for</span> (d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d!=this-&gt;dislcoations.end(); d++)</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;     {</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;       f = d-&gt;forcePeachKoehler (*s, tau_crss);</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;       s++;</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;       f++;</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;     }</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; }</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;</div>
+<div class="line"><a name="l00364"></a><span class="lineno"><a class="code" href="../../db/d25/classSlipPlane.html#aa954f3ded4b3cc9fa8fd1f70ac9f8516">  364</a></span>&#160; <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#aa954f3ded4b3cc9fa8fd1f70ac9f8516" title="Calculates the velocities of dislocations and stores them in the std::vector container velocities...">SlipPlane::calculateVelocities</a> ()</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160; {</div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;   <span class="comment">//</span></div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160; }</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 10:34:01 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 10:42:38 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

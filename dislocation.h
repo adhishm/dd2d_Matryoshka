@@ -2,7 +2,7 @@
  * @file dislocation.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 29/04/2013
+ * @date 03/06/2013
  * @brief Definition of the Dislocation class.
  * @details This file defines the Dislocation class representing a dislocation in the simulation. This class inherits from the Defect class.
  */

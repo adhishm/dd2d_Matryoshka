@@ -2,7 +2,7 @@
  * @file slipPlane.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 28/05/2013
+ * @date 03/06/2013
  * @brief Definition of the SlipPlane class.
  * @details This file defines the SlipPlane class representing a slip plane in the simulation.
  */

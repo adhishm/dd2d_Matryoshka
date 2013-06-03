@@ -12,8 +12,7 @@
 
 
 
-Collaboration diagram for Slip\-Plane\-:
-\nopagebreak
+Collaboration diagram for Slip\-Plane\-:\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -209,6 +208,28 @@ This function calculates the Peach-\/\-Koehler force experienced by each disloca
 {\em tau\-\_\-crss} & Critical Resolved Shear \hyperlink{classStress}{Stress} in Pa. \\
 \hline
 \end{DoxyParams}
+
+
+Definition at line 343 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+344  \{
+345    std::vector<Dislocation>::iterator d;  \textcolor{comment}{// Iterator for dislocations}
+346    std::vector<Vector3d>::iterator f;     \textcolor{comment}{// Iterator for forces}
+347    std::vector<Stress>::iterator s;       \textcolor{comment}{// Iterator for stresses}
+348 
+349    s = this->\hyperlink{classSlipPlane_adaa1bb736c2912f5e06e7aa4553c1ebd}{dislocationStresses}.begin();
+350    f = this->\hyperlink{classSlipPlane_a2a74ae1f66a59e53a3ca0c9b81b28f7d}{dislocationForces}.begin();
+351 
+352    \textcolor{keywordflow}{for} (d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d!=this->dislcoations.end(); d++)
+353      \{
+354        f = d->forcePeachKoehler (*s, tau\_crss);
+355        s++;
+356        f++;
+357      \}
+358  \}
+\end{DoxyCode}
 \hypertarget{classSlipPlane_a2d4d2d031502d4a6f0aebbad0990b882}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Dislocation\-Stresses@{calculate\-Dislocation\-Stresses}}
 \index{calculate\-Dislocation\-Stresses@{calculate\-Dislocation\-Stresses}!SlipPlane@{Slip\-Plane}}
 \subsubsection[{calculate\-Dislocation\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::calculate\-Dislocation\-Stresses (
@@ -318,13 +339,13 @@ Calculates the velocities of dislocations and stores them in the std\-::vector c
 
 The velocities of the dislocations are calculated and stored in the std\-::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-\/\-Koehler force, using the drag coefficient as the constant of proportionality. 
 
-Definition at line 342 of file slip\-Plane.\-cpp.
+Definition at line 364 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-343  \{
-344    \textcolor{comment}{//}
-345  \}
+365  \{
+366    \textcolor{comment}{//}
+367  \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a2e0139563665d1765f04582bfeebabc9}{\index{Slip\-Plane@{Slip\-Plane}!get\-Axis@{get\-Axis}}
 \index{get\-Axis@{get\-Axis}!SlipPlane@{Slip\-Plane}}

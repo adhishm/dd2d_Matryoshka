@@ -2,7 +2,7 @@
  * @file slipPlane.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 28/05/2013
+ * @date 03/06/2013
  * @brief Definition of the member functions of the SlipPlane class.
  * @details This file defines the member functions of the SlipPlane class.
  */
@@ -332,6 +332,28 @@ void SlipPlane::calculateRotationMatrix ()
 	       *s = *s + d2->stressField(p, mu, nu);
 	     }
 	 }
+     }
+ }
+
+ /**
+  * @brief This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.
+  * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the STL vector SlipPlane::dislocationStresses. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
+  * @param tau_crss Critical Resolved Shear Stress in Pa.
+  */
+ void SlipPlane::calculateDislocationForces (double tau_crss)
+ {
+   std::vector<Dislocation>::iterator d;  // Iterator for dislocations
+   std::vector<Vector3d>::iterator f;     // Iterator for forces
+   std::vector<Stress>::iterator s;       // Iterator for stresses
+
+   s = this->dislocationStresses.begin();
+   f = this->dislocationForces.begin();
+
+   for (d = this->dislocations.begin(); d!=this->dislcoations.end(); d++)
+     {
+       f = d->forcePeachKoehler (*s, tau_crss);
+       s++;
+       f++;
      }
  }
 
