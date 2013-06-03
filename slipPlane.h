@@ -54,6 +54,12 @@ protected:
   std::vector<Dislocation> dislocations;
 
   /**
+   * @brief STL vector container with the stress fields of dislocations.
+   * @details The stress fields experienced by the dislocations, expressed in the global co-ordinate system,  are stored in this vector with positions corresponding to the positions of dislocations in the vector dislocations.
+   */
+  std::vector<Stress> dislocationStresses;
+
+  /**
    * @brief STL vector container with dislocation velocities.
    * @details The dislocations on this slip plane will have a velocity associated with them. These velocity vectors are stored in this container. The order is the same as the order of the dislocations.
    */
@@ -188,7 +194,7 @@ public:
    * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
    * @return The vector of dislocation sources lying on this slip plane.
    */
-  std::vector<DislocationSource> getDislocationSourceList ();  
+  std::vector<DislocationSource> getDislocationSourceList ();
   
   /**
    * @brief Get the rotation matrix for this slip plane.
@@ -209,6 +215,21 @@ public:
    * @details The slip plane has a local co-ordinate system whose axes are the following: z-axis||normal vector and x-axis||slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-ordinate systems.
    */
   void calculateRotationMatrix ();
+
+  /**
+   * @brief Calculates the total stress field experienced by each dislocation and stored it in the STL vector container dislocationStresses.
+   * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
+   * @param appliedStress The stress applied externally.
+   * @param mu Shear modulus of the material.
+   * @param nu Poisson's ratio.
+   */
+  void calculateDislocationStresses (Stress appliedStress, double mu, double nu);
+
+  /**
+   * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
+   * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient as the constant of proportionality.
+   */
+  void calculateVelocities ();
 };
 
 #endif

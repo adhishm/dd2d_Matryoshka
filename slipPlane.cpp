@@ -54,8 +54,10 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
   this->setDislocationSourceList (dislocationSourceList);
 
   // Fill the velocity vector with zero vectors
-  this->velocities.resize(this->getNumDislocations (), Vector3d());
-  
+  int nDisl = this->getNumDislocations ();
+  this->dislocationStresses(nDisl, Stress ());
+  this->velocities.resize(nDisl, Vector3d());
+    
   this->calculateRotationMatrix ();
 }
 
@@ -297,3 +299,46 @@ void SlipPlane::calculateRotationMatrix ()
   delete(unPrimed);	unPrimed = NULL;
   delete(primed);	primed = NULL;
 }
+
+/**
+ * @brief Calculates the total stress field experienced by each dislocation and stored it in the STL vector container dislocationStresses.
+ * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
+ * @param appliedStress The stress applied externally.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ */
+ void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, double nu)
+ {
+   std::vector<Dislocation>::iterator d1;  // Iterator for each dislocation
+   std::vector<Dislocation>::iterator d2;  // Nested iterator
+   std::vector<Stress>::iterator s;        // Iterator for the Stress
+
+   Vector3d p;                             // Position vector
+
+   s = this->dislocationStresses.begin();
+   for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
+     {
+       *s = appliedStress;
+       p = d1->getPosition();
+       for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
+	 {
+	   if (d1==d2)
+	     {
+	       continue;
+	     }
+	   else
+	     {
+	       *s = *s + d2->stressField(p, mu, nu);
+	     }
+	 }
+     }
+ }
+
+ /**
+  * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
+  * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient as the constant of proportionality.
+  */
+ void SlipPlane::calculateVelocities ()
+ {
+   //
+ }
