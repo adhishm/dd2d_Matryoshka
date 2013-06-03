@@ -184,12 +184,22 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
 // Force
 /**
  * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
- * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system.
+ * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system. This function checks if the xy component of the stress tensorm expressed in the dislocation's local co-ordinate system, is greater than tau_crss. If it is, the force is calculated using the Peach-Koehler equation, otherwise, the force on the dislocation is zero.
  * @param sigma The stress tensor, expressed in the global co-ordinate system.
+ * @param tau_crss Critical Resolved Shear Stress in Pa.
  * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
  */
-Vector3d Dislocation::forcePeachKoehler (Stress sigma)
+Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss)
 {
-  Vector3d force = sigma * ((this->bvec)^(this->lvec));
+  // Stress in the local co-ordinate system
+  Stress sigmaLocal = (this->rotationMatrix) * (sigma) * (this->rotationMatrix)^;
+  Vector3d force;
+
+  // Check for CRSS condition
+  if (sigmaLocal.getValue(0,1) >= tau_crss)
+    { 
+      Vector3d force = sigma * ((this->bvec)^(this->lvec));
+    }
+
   return (force);
 }

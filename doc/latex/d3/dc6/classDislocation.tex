@@ -53,7 +53,7 @@ void \hyperlink{classDislocation_aa249f1f46486fd183757ed5049586e73}{calculate\-R
 \begin{DoxyCompactList}\small\item\em Calculates the stress field due to this dislocation at the position given as argument. \end{DoxyCompactList}\item 
 \hyperlink{classStress}{Stress} \hyperlink{classDislocation_a163d6c52c2281a1b7fa9aab058c8fb84}{stress\-Field\-Local} (\hyperlink{classVector3d}{Vector3d} p, double mu, double nu)
 \begin{DoxyCompactList}\small\item\em Calculates the stress field due to the dislocation in the local co-\/ordinate system. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocation_ae0d8ef2fca67102648ce56cd95f5f7fc}{force\-Peach\-Koehler} (\hyperlink{classStress}{Stress} sigma)
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocation_a13df53ead0e78bc33594c6afabc41dcb}{force\-Peach\-Koehler} (\hyperlink{classStress}{Stress} sigma, double tau\-\_\-crss)
 \begin{DoxyCompactList}\small\item\em Calculate the Peach-\/\-Koehler force acting on the dislocation due the stress. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
@@ -67,10 +67,12 @@ void \hyperlink{classDefect_a268606391a4eaee3de029d2005648b6f}{set\-Y} (double y
 \begin{DoxyCompactList}\small\item\em Sets the Y-\/coordinate of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_abb0b16c44a1b04d782f5c5f598b49d5b}{set\-Z} (double z)
 \begin{DoxyCompactList}\small\item\em Sets the Z-\/coordinate of the defect. \end{DoxyCompactList}\item 
-double $\ast$ \hyperlink{classDefect_a6842fba3ad14032766ccf0437afcbced}{get\-Position} ()
+double $\ast$ \hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{get\-Position} ()
 \begin{DoxyCompactList}\small\item\em Returns in an array the position. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_aace5c752b85c368631746abc3d5bd714}{get\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Returns the array position in a pre-\/allocated array. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{get\-Position} ()
+\begin{DoxyCompactList}\small\item\em Returns the position vector of the defect. \end{DoxyCompactList}\item 
 double \hyperlink{classDefect_a01b96c453c13db82b5835682e1849dc0}{get\-X} ()
 \begin{DoxyCompactList}\small\item\em Returns the X-\/coordinate of the defect. \end{DoxyCompactList}\item 
 double \hyperlink{classDefect_a9ea8df3b4c621762a327813056e63911}{get\-Y} ()
@@ -215,20 +217,23 @@ Definition at line 109 of file dislocation.\-cpp.
 125   this->\hyperlink{classDislocation_a5699d2984949af836396c8b7e5f21a5e}{rotationMatrix} = \hyperlink{classRotationMatrix}{RotationMatrix} (globalSystem, localSystem);
 126 \}
 \end{DoxyCode}
-\hypertarget{classDislocation_ae0d8ef2fca67102648ce56cd95f5f7fc}{\index{Dislocation@{Dislocation}!force\-Peach\-Koehler@{force\-Peach\-Koehler}}
+\hypertarget{classDislocation_a13df53ead0e78bc33594c6afabc41dcb}{\index{Dislocation@{Dislocation}!force\-Peach\-Koehler@{force\-Peach\-Koehler}}
 \index{force\-Peach\-Koehler@{force\-Peach\-Koehler}!Dislocation@{Dislocation}}
 \subsubsection[{force\-Peach\-Koehler}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Dislocation\-::force\-Peach\-Koehler (
 \begin{DoxyParamCaption}
-\item[{{\bf Stress}}]{sigma}
+\item[{{\bf Stress}}]{sigma, }
+\item[{double}]{tau\-\_\-crss}
 \end{DoxyParamCaption}
-)}}\label{d3/dc6/classDislocation_ae0d8ef2fca67102648ce56cd95f5f7fc}
+)}}\label{d3/dc6/classDislocation_a13df53ead0e78bc33594c6afabc41dcb}
 
 
 Calculate the Peach-\/\-Koehler force acting on the dislocation due the stress. 
 
-This function calculates the Peach-\/\-Koehler force in the dislocation due to the stress (expressed in the global co-\/ordinate system) provided as argument. The force returned is also in the global co-\/ordinate system. 
+This function calculates the Peach-\/\-Koehler force in the dislocation due to the stress (expressed in the global co-\/ordinate system) provided as argument. The force returned is also in the global co-\/ordinate system. This function checks if the xy component of the stress tensorm expressed in the dislocation's local co-\/ordinate system, is greater than tau\-\_\-crss. If it is, the force is calculated using the Peach-\/\-Koehler equation, otherwise, the force on the dislocation is zero. 
 \begin{DoxyParams}{Parameters}
 {\em sigma} & The stress tensor, expressed in the global co-\/ordinate system. \\
+\hline
+{\em tau\-\_\-crss} & Critical Resolved Shear \hyperlink{classStress}{Stress} in Pa. \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
@@ -236,14 +241,24 @@ The Peach-\/\-Koehler force on the dislocation, expressed in the global co-\/ord
 \end{DoxyReturn}
 
 
-Definition at line 191 of file dislocation.\-cpp.
+Definition at line 192 of file dislocation.\-cpp.
 
 
 \begin{DoxyCode}
-192 \{
-193   \hyperlink{classVector3d}{Vector3d} force = sigma * ((this->\hyperlink{classDislocation_aad45c2eaade195f374707afb648ed17e}{bvec})^(this->\hyperlink{classDislocation_a69d16092777d9ead2d4eedf7c3d47877}{lvec}));
-194   \textcolor{keywordflow}{return} (force);
-195 \}
+193 \{
+194   \textcolor{comment}{// Stress in the local co-ordinate system}
+195   \hyperlink{classStress}{Stress} sigmaLocal = (this->\hyperlink{classDislocation_a5699d2984949af836396c8b7e5f21a5e}{rotationMatrix}) * (sigma) * (this->
+      \hyperlink{classDislocation_a5699d2984949af836396c8b7e5f21a5e}{rotationMatrix})^;
+196   \hyperlink{classVector3d}{Vector3d} force;
+197 
+198   \textcolor{comment}{// Check for CRSS condition}
+199   \textcolor{keywordflow}{if} (sigmaLocal.\hyperlink{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{getValue}(0,1) >= tau\_crss)
+200     \{ 
+201       \hyperlink{classVector3d}{Vector3d} force = sigma * ((this->\hyperlink{classDislocation_aad45c2eaade195f374707afb648ed17e}{bvec})^(this->\hyperlink{classDislocation_a69d16092777d9ead2d4eedf7c3d47877}{lvec}));
+202     \}
+203 
+204   \textcolor{keywordflow}{return} (force);
+205 \}
 \end{DoxyCode}
 \hypertarget{classDislocation_a8b9d5bfd379a6933b2dfd5d0962c9bc2}{\index{Dislocation@{Dislocation}!get\-Burgers@{get\-Burgers}}
 \index{get\-Burgers@{get\-Burgers}!Dislocation@{Dislocation}}
@@ -293,19 +308,23 @@ Definition at line 99 of file dislocation.\-cpp.
 101   \textcolor{keywordflow}{return} ( this->\hyperlink{classDislocation_a69d16092777d9ead2d4eedf7c3d47877}{lvec} );
 102 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a6842fba3ad14032766ccf0437afcbced}{\index{Dislocation@{Dislocation}!get\-Position@{get\-Position}}
+\hypertarget{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{\index{Dislocation@{Dislocation}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!Dislocation@{Dislocation}}
-\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Defect\-::get\-Position (
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Defect\-::get\-Position (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a6842fba3ad14032766ccf0437afcbced}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a270caed3561fa5fa284af6427b6ca2e4}
 
 
 Returns in an array the position. 
 
+Returns the position vector of the defect.
+
 The position of the defect is saved in an array and a pointer to its first term is returned. \begin{DoxyReturn}{Returns}
-Pointer to the first term of the array containing the position of the defect. 
+Pointer to the first term of the array containing the position of the defect.
+
+The position vector of the defect, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
 \end{DoxyReturn}
 
 
@@ -343,6 +362,20 @@ Definition at line 129 of file defect.\-cpp.
 131   a = this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ();
 132 \}
 \end{DoxyCode}
+\hypertarget{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{\index{Dislocation@{Dislocation}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!Dislocation@{Dislocation}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Defect\-::get\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a270caed3561fa5fa284af6427b6ca2e4}
+
+
+Returns the position vector of the defect. 
+
+\begin{DoxyReturn}{Returns}
+The position vector of the defect, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
+\end{DoxyReturn}
 \hypertarget{classDefect_a01b96c453c13db82b5835682e1849dc0}{\index{Dislocation@{Dislocation}!get\-X@{get\-X}}
 \index{get\-X@{get\-X}!Dislocation@{Dislocation}}
 \subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}double Defect\-::get\-X (
@@ -359,13 +392,13 @@ X-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 138 of file defect.\-cpp.
+Definition at line 147 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-139 \{
-140   \textcolor{keywordflow}{return} (this->getValue (0));
-141 \}
+148 \{
+149   \textcolor{keywordflow}{return} (this->getValue (0));
+150 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a9ea8df3b4c621762a327813056e63911}{\index{Dislocation@{Dislocation}!get\-Y@{get\-Y}}
 \index{get\-Y@{get\-Y}!Dislocation@{Dislocation}}
@@ -383,13 +416,13 @@ Y-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 147 of file defect.\-cpp.
+Definition at line 156 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-148 \{
-149   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (1));
-150 \}
+157 \{
+158   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (1));
+159 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}{\index{Dislocation@{Dislocation}!get\-Z@{get\-Z}}
 \index{get\-Z@{get\-Z}!Dislocation@{Dislocation}}
@@ -407,13 +440,13 @@ Z-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 156 of file defect.\-cpp.
+Definition at line 165 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-157 \{
-158   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (2));
-159 \}
+166 \{
+167   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (2));
+168 \}
 \end{DoxyCode}
 \hypertarget{classDislocation_ab827fcf321729c1238caaa3bceff323a}{\index{Dislocation@{Dislocation}!set\-Burgers@{set\-Burgers}}
 \index{set\-Burgers@{set\-Burgers}!Dislocation@{Dislocation}}

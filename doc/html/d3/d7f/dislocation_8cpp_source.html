@@ -201,15 +201,24 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;}</div>
 <div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;</div>
 <div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="comment">// Force</span></div>
-<div class="line"><a name="l00191"></a><span class="lineno"><a class="code" href="../../d3/dc6/classDislocation.html#ae0d8ef2fca67102648ce56cd95f5f7fc">  191</a></span>&#160;<span class="comment"></span><a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../d3/dc6/classDislocation.html#ae0d8ef2fca67102648ce56cd95f5f7fc" title="Calculate the Peach-Koehler force acting on the dislocation due the stress.">Dislocation::forcePeachKoehler</a> (<a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sigma)</div>
-<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;{</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> force = sigma * ((this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#aad45c2eaade195f374707afb648ed17e" title="Burgers vector of the dislocation.">bvec</a>)^(this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a69d16092777d9ead2d4eedf7c3d47877" title="Line vector if the dislocation.">lvec</a>));</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="keywordflow">return</span> (force);</div>
-<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;}</div>
+<div class="line"><a name="l00192"></a><span class="lineno"><a class="code" href="../../d3/dc6/classDislocation.html#a13df53ead0e78bc33594c6afabc41dcb">  192</a></span>&#160;<span class="comment"></span><a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../d3/dc6/classDislocation.html#a13df53ead0e78bc33594c6afabc41dcb" title="Calculate the Peach-Koehler force acting on the dislocation due the stress.">Dislocation::forcePeachKoehler</a> (<a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sigma, <span class="keywordtype">double</span> tau_crss)</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;{</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;  <span class="comment">// Stress in the local co-ordinate system</span></div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;  <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> sigmaLocal = (this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a>) * (sigma) * (this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a5699d2984949af836396c8b7e5f21a5e" title="The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa...">rotationMatrix</a>)^;</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> force;</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  <span class="comment">// Check for CRSS condition</span></div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">if</span> (sigmaLocal.<a class="code" href="../../de/d82/classMatrix33.html#a849bbdf7b456ddacf7185b087fca4015" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,1) &gt;= tau_crss)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    { </div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> force = sigma * ((this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#aad45c2eaade195f374707afb648ed17e" title="Burgers vector of the dislocation.">bvec</a>)^(this-&gt;<a class="code" href="../../d3/dc6/classDislocation.html#a69d16092777d9ead2d4eedf7c3d47877" title="Line vector if the dislocation.">lvec</a>));</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    }</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;  <span class="keywordflow">return</span> (force);</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Fri May 31 2013 16:54:16 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 10:34:01 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

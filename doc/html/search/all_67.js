@@ -15,7 +15,7 @@ var searchData=
   ['getnumdislocations',['getNumDislocations',['../db/d25/classSlipPlane.html#a0034812f46524ee8b685d0564e2e4e38',1,'SlipPlane']]],
   ['getnumdislocationsources',['getNumDislocationSources',['../db/d25/classSlipPlane.html#aa2fc300c7d06a883be6f35c75dc169c7',1,'SlipPlane']]],
   ['getnumiterations',['getNumIterations',['../de/de3/classDislocationSource.html#a0df8fa36aa46044808227044113f14fe',1,'DislocationSource']]],
-  ['getposition',['getPosition',['../d5/d4f/classDefect.html#a6842fba3ad14032766ccf0437afcbced',1,'Defect::getPosition()'],['../d5/d4f/classDefect.html#aace5c752b85c368631746abc3d5bd714',1,'Defect::getPosition(double *a)'],['../db/d25/classSlipPlane.html#a151558f8f223ac316f4208246d16afca',1,'SlipPlane::getPosition()']]],
+  ['getposition',['getPosition',['../d5/d4f/classDefect.html#a270caed3561fa5fa284af6427b6ca2e4',1,'Defect::getPosition()'],['../d5/d4f/classDefect.html#aace5c752b85c368631746abc3d5bd714',1,'Defect::getPosition(double *a)'],['../d5/d4f/classDefect.html#a270caed3561fa5fa284af6427b6ca2e4',1,'Defect::getPosition()'],['../db/d25/classSlipPlane.html#a151558f8f223ac316f4208246d16afca',1,'SlipPlane::getPosition()']]],
   ['getprincipalstrains',['getPrincipalStrains',['../d1/d3c/classStrain.html#ad76c72271c32b27122c7fa86376edea3',1,'Strain']]],
   ['getprincipalstresses',['getPrincipalStresses',['../d1/d1c/classStress.html#aca57d2719f43701dd2ebf2ab00afa539',1,'Stress']]],
   ['getrotationmatrix',['getRotationMatrix',['../db/d25/classSlipPlane.html#af61e666e8704b1442eb8b5c1699e9071',1,'SlipPlane']]],

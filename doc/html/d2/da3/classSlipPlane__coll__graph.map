@@ -1,8 +1,9 @@
 <map id="SlipPlane" name="SlipPlane">
 <area shape="rect" id="node2" href="$df/dd0/classVector3d.html" title="Vector3d class representing a single 3&#45;dimensional vector in the simulation." alt="" coords="5,165,80,195"/>
-<area shape="rect" id="node13" href="$de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation." alt="" coords="501,199,629,228"/>
+<area shape="rect" id="node13" href="$de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation." alt="" coords="501,228,629,257"/>
 <area shape="rect" id="node15" href="$d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material." alt="" coords="209,228,271,257"/>
-<area shape="rect" id="node22" href="$d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation." alt="" coords="523,300,608,329"/>
-<area shape="rect" id="node7" href="$d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix." alt="" coords="187,376,293,405"/>
-<area shape="rect" id="node9" href="$de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix." alt="" coords="7,376,79,405"/>
+<area shape="rect" id="node22" href="$d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation." alt="" coords="523,295,608,324"/>
+<area shape="rect" id="node7" href="$d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix." alt="" coords="187,401,293,431"/>
+<area shape="rect" id="node9" href="$de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix." alt="" coords="7,436,79,465"/>
+<area shape="rect" id="node29" href="$d1/d1c/classStress.html" title="Stress class to represent the stress tensor." alt="" coords="211,465,269,495"/>
 </map>

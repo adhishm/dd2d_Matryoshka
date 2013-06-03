@@ -60,10 +60,16 @@ protected:
   std::vector<Stress> dislocationStresses;
 
   /**
+   * @brief The Peach-Koehler force experienced by each dislocation.
+   * @details This vector container stores the Peah-Koehler force experienced by each dislocation. They are calculated in each iteration by thefunction calculateDislocationForces(tau_crss).
+   */
+  std::vector<Vector3d> dislocationForces;
+
+  /**
    * @brief STL vector container with dislocation velocities.
    * @details The dislocations on this slip plane will have a velocity associated with them. These velocity vectors are stored in this container. The order is the same as the order of the dislocations.
    */
-  std::vector<Vector3d> velocities;
+  std::vector<Vector3d> dislocationVelocities;
   
   /**
    * @brief STL vector container with dislocation sources.
@@ -224,6 +230,13 @@ public:
    * @param nu Poisson's ratio.
    */
   void calculateDislocationStresses (Stress appliedStress, double mu, double nu);
+
+  /**
+   * @brief This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.
+   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the STL vector SlipPlane::dislocationStresses. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
+   * @param tau_crss Critical Resolved Shear Stress in Pa.
+   */
+  void calculateDislocationForces (double tau_crss);
 
   /**
    * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.

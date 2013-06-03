@@ -55,8 +55,9 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
 
   // Fill the velocity vector with zero vectors
   int nDisl = this->getNumDislocations ();
-  this->dislocationStresses(nDisl, Stress ());
-  this->velocities.resize(nDisl, Vector3d());
+  this->dislocationStresses.resize(nDisl, Stress ());
+  this->dislocationVelocities.resize(nDisl, Vector3d());
+  this->dislocationForces.resize(nDisl, Vector3d());
     
   this->calculateRotationMatrix ();
 }
