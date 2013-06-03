@@ -380,7 +380,7 @@ void SlipPlane::calculateRotationMatrix ()
    std::vector<Vector3d>::iterator v;     // Iterator for velocities
 
    Vector3d p0, p1, p01;
-   double cosine;
+   double norm_v, norm_p01, cosine;
 
    d = this->dislocations.begin();
    f = this->dislocationForces.begin();
@@ -392,15 +392,19 @@ void SlipPlane::calculateRotationMatrix ()
 	 {
 	   // Velocity directly proportional to Peach-Koehler force
 	   *v = (*f)/B;
+	   norm_v = v->magnitude();
 
-	   // Project the velocity on to the slip plane line
-	   p0 = this->extremity[0].getPosition();
-	   p1 = this->extremity[1].getPosition();
-	   p01 = p1 - p0;
+	   if (norm_v > 0.0)
+	     {
+	       // Project the velocity on to the slip plane line
+	       p0 = this->extremity[0].getPosition();
+	       p1 = this->extremity[1].getPosition();
+	       p01 = p1 - p0;
+	       norm_p01 = p01.magnitude();
 	   
-	   cosine = ((*v) * p01)/(v->magnitude() * p01.magnitude());
-
-	   *v = (*v) * cosine;
+	       cosine = ((*v) * p01)/(norm_v * norm_p01);
+	       *v = (*v) * cosine;
+	     }
 	 }
        else
 	 {
@@ -591,4 +595,90 @@ void SlipPlane::sortDislocations ()
 	    }
 	}
     }
+}
+
+/**
+ * @brief Returns a vector containing the stress values at different points along a slip plane.
+ * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
+ * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
+ * @param appliedStress The externally applied stress (in the global co-ordinate system).
+ * @param mu Shear modulus of the material in Pa.
+ * @param nu Poisson's ratio.
+ * @return STL vector container with the full stress tensor expressing the stress field (in the global co-ordinate system) at the points provided as input.
+ */
+std::vector<Stress> SlipPlane::getSlipPlaneStress_global (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu)
+{
+  // Initialize the vector for holding Stress values
+  std::vector<Stress> stressVector(points.size(), Stress());
+
+  // Iterator for the points
+  std::vector<Vector3d>::iterator p = points.begin();
+
+  // Iterator for the stress
+  std::vector<Stress>::iterator s = stressVector.begin();
+
+  // Temporary variable for stress
+  Stress sTemp;
+
+  while (p != points.end())
+    {
+      sTemp = appliedStress;
+      // Iterator for the dislocations
+      std::vector<Dislocation>::iterator d = this->dislocations.begin();
+      while (d != this->dislocations.end())
+	{
+	  sTemp += d->stressField (*p, mu, nu);
+	  d++;
+	}
+      *s = sTemp;
+
+      s++;
+      p++;
+    }
+
+  return (stressVector);
+}
+
+/**
+ * @brief Returns a vector containing the stress values at different points along a slip plane.
+ * @details The stress field (expressed in the local co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
+ * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
+ * @param appliedStress The externally applied stress (in the global co-ordinate system).
+ * @param mu Shear modulus of the material in Pa.
+ * @param nu Poisson's ratio.
+ * @return STL vector container with the full stress tensor expressing the stress field (in the local co-ordinate system) at the points provided as input.
+ */
+  std::vector<Stress> SlipPlane::getSlipPlaneStress_local (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu)
+{
+  // Initialize the vector for holding Stress values
+  std::vector<Stress> stressVector(points.size(), Stress());
+
+  // Iterator for the points
+  std::vector<Vector3d>::iterator p = points.begin();
+
+  // Iterator for the stress
+  std::vector<Stress>::iterator s = stressVector.begin();
+
+  // Temporary variable for stress
+  Stress sTemp;
+
+  while (p != points.end())
+    {
+      sTemp = appliedStress;
+      // Iterator for the dislocations
+      std::vector<Dislocation>::iterator d = this->dislocations.begin();
+      while (d != this->dislocations.end())
+	{
+	  sTemp += d->stressField (*p, mu, nu);
+	  d++;
+	}
+
+      // Convert to local co-ordinate system
+      *s = (this->rotationMatrix) * sTemp * (this->rotationMatrix)^;
+
+      s++;
+      p++;
+    }
+
+  return (stressVector);
 }

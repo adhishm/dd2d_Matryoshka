@@ -182,13 +182,17 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordtype">double</span> <a class="code" href="../../db/d25/classSlipPlane.html#a3523030cccb520b5253a811d062f3ddf" title="The distance of the point pos from the n^th extremity is returned.">distanceFromExtremity</a>(<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> pos, <span class="keywordtype">int</span> n);</div>
 <div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  </div>
 <div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;  <span class="keywordtype">void</span> <a class="code" href="../../db/d25/classSlipPlane.html#a7fc607c17e5532aed5e93339dc03b18d" title="Sorts the dislocations present on the slip plane in the ascending order of distance from the first ex...">sortDislocations</a> ();</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;};</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  std::vector&lt;Stress&gt; <a class="code" href="../../db/d25/classSlipPlane.html#a1cc47e2092a588ff04fd14e9ce9e5906" title="Returns a vector containing the stress values at different points along a slip plane.">getSlipPlaneStress_global</a> (std::vector&lt;Vector3d&gt; points, <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> appliedStress, <span class="keywordtype">double</span> mu, <span class="keywordtype">double</span> nu);</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  std::vector&lt;Stress&gt; <a class="code" href="../../db/d25/classSlipPlane.html#ad86337ca356d72f558468a35024e30bc" title="Returns a vector containing the stress values at different points along a slip plane.">getSlipPlaneStress_local</a> (std::vector&lt;Vector3d&gt; points, <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> appliedStress, <span class="keywordtype">double</span> mu, <span class="keywordtype">double</span> nu);</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;};</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 15:34:38 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 16:12:04 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

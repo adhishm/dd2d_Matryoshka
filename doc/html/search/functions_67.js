@@ -21,6 +21,8 @@ var searchData=
   ['getrotationmatrix',['getRotationMatrix',['../db/d25/classSlipPlane.html#af61e666e8704b1442eb8b5c1699e9071',1,'SlipPlane']]],
   ['getshearstrains',['getShearStrains',['../d1/d3c/classStrain.html#acaeb9039234c4adf356668490098db56',1,'Strain']]],
   ['getshearstresses',['getShearStresses',['../d1/d1c/classStress.html#afe8214b8e9061930e6598e1970fd61f5',1,'Stress']]],
+  ['getslipplanestress_5fglobal',['getSlipPlaneStress_global',['../db/d25/classSlipPlane.html#a1cc47e2092a588ff04fd14e9ce9e5906',1,'SlipPlane']]],
+  ['getslipplanestress_5flocal',['getSlipPlaneStress_local',['../db/d25/classSlipPlane.html#ad86337ca356d72f558468a35024e30bc',1,'SlipPlane']]],
   ['gettaucritical',['getTauCritical',['../de/de3/classDislocationSource.html#aede21b6b4e323423ec1f6cb9261cb311',1,'DislocationSource']]],
   ['getvalue',['getValue',['../de/d82/classMatrix33.html#a849bbdf7b456ddacf7185b087fca4015',1,'Matrix33::getValue()'],['../df/dd0/classVector3d.html#a37055dde72eed6770cf3b2b11b56f0f8',1,'Vector3d::getValue()']]],
   ['getvector',['getVector',['../df/dd0/classVector3d.html#a12ca89ab46c79eb78fa6b75cad1a3616',1,'Vector3d']]],

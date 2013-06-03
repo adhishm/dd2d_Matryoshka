@@ -277,6 +277,28 @@ public:
    * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
    */
   void sortDislocations ();
+
+  /**
+   * @brief Returns a vector containing the stress values at different points along a slip plane.
+   * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
+   * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
+   * @param appliedStress The externally applied stress (in the global co-ordinate system).
+   * @param mu Shear modulus of the material in Pa.
+   * @param nu Poisson's ratio.
+   * @return STL vector container with the full stress tensor expressing the stress field (in the global co-ordinate system) at the points provided as input.
+   */
+  std::vector<Stress> getSlipPlaneStress_global (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
+
+  /**
+   * @brief Returns a vector containing the stress values at different points along a slip plane.
+   * @details The stress field (expressed in the local co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
+   * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
+   * @param appliedStress The externally applied stress (in the global co-ordinate system).
+   * @param mu Shear modulus of the material in Pa.
+   * @param nu Poisson's ratio.
+   * @return STL vector container with the full stress tensor expressing the stress field (in the local co-ordinate system) at the points provided as input.
+   */
+  std::vector<Stress> getSlipPlaneStress_local (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
 };
 
 #endif
