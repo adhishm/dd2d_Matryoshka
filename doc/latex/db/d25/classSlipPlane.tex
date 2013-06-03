@@ -374,45 +374,89 @@ Definition at line 404 of file slip\-Plane.\-cpp.
 418    \textcolor{keywordtype}{double} norm\_v01;
 419 
 420    \textcolor{keywordtype}{int} i;         \textcolor{comment}{// Counter for the loop}
-421    \textcolor{keywordtype}{double} dtMin;  \textcolor{comment}{// Minimum time increment}
-422 
-423    \textcolor{keywordflow}{for} (i=0; i<(nDisl-1); i++)
-424      \{
-425        p0 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].getPosition();
-426        v0 = this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[i];
-427 
-428        p1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i+1].getPosition();
-429        v1 = this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[i+1];
-430 
-431        \textcolor{keywordflow}{if} (v1.\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude}() < v0.\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude}())
-432          \{
-433            \textcolor{comment}{// The dislocations will approach each other}
-434            \textcolor{comment}{// So a time increment needs to be calculated}
-435            norm\_p01 = (p1-p0).magnitude();
-436            norm\_v01 = (v1-v0).magnitude();
-437 
-438            timeIncrement[i] = (norm\_p01 - minDistance)/norm\_v01;
-439 
-440            \textcolor{keywordflow}{if} (timeIncrement[i] < minDt)
-441              \{
-442                \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next}
-443                timeIncrement[i] = minDt;
-444                this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[i] = \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0);
-445              \}
-446          \}
-447      \}
-448 
-449    dtMin = 1000;
-450    \textcolor{keywordflow}{for} (i=0; i<nDisl; i++)
-451      \{
-452        \textcolor{keywordflow}{if} (timeIncrement[i] < dtMin)
-453          \{
-454            dtMin = timeIncrement[i];
-455          \}
-456      \}
-457 
-458    this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt} = dtMin;
-459  \}
+421    \textcolor{keywordtype}{double} t1, t2;
+422    \textcolor{keywordtype}{double} dtMin;  \textcolor{comment}{// Minimum time increment}
+423 
+424    \textcolor{comment}{// For the first dislocation, the time increment has to be calculated}
+425    \textcolor{comment}{// for approach to both a dislocation and the slip plane extremity.}
+426    \textcolor{comment}{// Time for slip plane extremity}
+427    t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].idealTimeIncrement(this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[0],
+428                                                  minDistance,
+429                                                  this->extremity[0],
+430                                                  \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0));
+431    t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].idealTimeIncrement(this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[0],
+432                                                  minDistance,
+433                                                  this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[1],
+434                                                  this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[1]);
+435    \textcolor{comment}{// Choose the smaller of the two}
+436    timeIncrement[0] = t1 < t2 ? t1:t2;
+437    \textcolor{keywordflow}{if} (timeIncrement[0] < minDt)
+438      \{
+439        \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next defect}
+440        timeIncrement[0] = minDt;
+441        this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[0] = \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0);
+442      \}
+443 
+444    \textcolor{keywordflow}{for} (i=1; i<(nDisl-1); i++)
+445      \{
+446        t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[i],
+447                                                      minDistance,
+448                                                      this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1],
+449                                                      this->dislcoationVelocities[i-1]);
+450        t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[i],
+451                                                      minDistance,
+452                                                      this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i+1],
+453                                                      this->dislcoationVelocities[i+1]);
+454        timeIncrement[i] = t1 < t2 ? t1:t2;
+455 
+456        \textcolor{keywordflow}{if} (timeIncrement[i] < minDt)
+457          \{
+458            \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next
+       defect}
+459            timeIncrement[i] = minDt;
+460            this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[i] = \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0);
+461          \}
+462      \}
+463 
+464    \textcolor{comment}{// For the last dislocation, the time increment has to be calculated}
+465    \textcolor{comment}{// for approach to both a dislocation and the slip plane extremity.}
+466    \textcolor{comment}{// Time for slip plane extremity}
+467    t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[nDisl-1].idealTimeIncrement(this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[0],
+468                                                        minDistance,
+469                                                        this->extremity[1],
+470                                                        \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0));
+471    t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[nDisl-1].idealTimeIncrement(this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[0],
+472                                                        minDistance,
+473                                                        this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[nDisl-2],
+474                                                        this->
+      \hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[nDisl-2]);
+475    \textcolor{comment}{// Choose the smaller of the two}
+476    timeIncrement[nDisl-1] = t1 < t2 ? t1:t2;
+477 
+478    \textcolor{keywordflow}{if} (timeIncrement[nDisl-1] < minDt)
+479      \{
+480        \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next defect}
+481        timeIncrement[nDisl-1] = minDt;
+482        this->\hyperlink{classSlipPlane_a107a3883169bf918664cb4e4fd4bd72c}{dislocationVelocities}[nDisl-1] = \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0);
+483      \}
+484    
+485    dtMin = 1000;
+486    \textcolor{keywordflow}{for} (i=0; i<nDisl; i++)
+487      \{
+488        \textcolor{keywordflow}{if} (timeIncrement[i] < dtMin)
+489          \{
+490            dtMin = timeIncrement[i];
+491          \}
+492      \}
+493 
+494    this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt} = dtMin;
+495  \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_aff7af69ba5235da6c8b142193509683c}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Velocities@{calculate\-Velocities}}
 \index{calculate\-Velocities@{calculate\-Velocities}!SlipPlane@{Slip\-Plane}}

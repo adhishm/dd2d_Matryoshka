@@ -418,34 +418,70 @@ void SlipPlane::calculateRotationMatrix ()
    double norm_v01;
 
    int i;         // Counter for the loop
+   double t1, t2;
    double dtMin;  // Minimum time increment
 
-   for (i=0; i<(nDisl-1); i++)
+   // For the first dislocation, the time increment has to be calculated
+   // for approach to both a dislocation and the slip plane extremity.
+   // Time for slip plane extremity
+   t1 = this->dislocations[0].idealTimeIncrement(this->dislocationVelocities[0],
+						 minDistance,
+						 this->extremity[0],
+						 Vector3d(0.0, 0.0, 0.0));
+   t2 = this->dislocations[0].idealTimeIncrement(this->dislocationVelocities[0],
+						 minDistance,
+						 this->dislocations[1],
+						 this->dislocationVelocities[1]);
+   // Choose the smaller of the two
+   timeIncrement[0] = t1 < t2 ? t1:t2;
+   if (timeIncrement[0] < minDt)
      {
-       p0 = this->dislocations[i].getPosition();
-       v0 = this->dislocationVelocities[i];
+       // This dislocation should not move in this iteration because it might collide with the next defect
+       timeIncrement[0] = minDt;
+       this->dislocationVelocities[0] = Vector3d(0.0, 0.0, 0.0);
+     }
 
-       p1 = this->dislocations[i+1].getPosition();
-       v1 = this->dislocationVelocities[i+1];
+   for (i=1; i<(nDisl-1); i++)
+     {
+       t1 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
+						     minDistance,
+						     this->dislocations[i-1],
+						     this->dislcoationVelocities[i-1]);
+       t2 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
+						     minDistance,
+						     this->dislocations[i+1],
+						     this->dislcoationVelocities[i+1]);
+       timeIncrement[i] = t1 < t2 ? t1:t2;
 
-       if (v1.magnitude() < v0.magnitude())
+       if (timeIncrement[i] < minDt)
 	 {
-	   // The dislocations will approach each other
-	   // So a time increment needs to be calculated
-	   norm_p01 = (p1-p0).magnitude();
-	   norm_v01 = (v1-v0).magnitude();
-
-	   timeIncrement[i] = (norm_p01 - minDistance)/norm_v01;
-
-	   if (timeIncrement[i] < minDt)
-	     {
-	       // This dislocation should not move in this iteration because it might collide with the next
-	       timeIncrement[i] = minDt;
-	       this->dislocationVelocities[i] = Vector3d(0.0, 0.0, 0.0);
-	     }
+	   // This dislocation should not move in this iteration because it might collide with the next defect
+	   timeIncrement[i] = minDt;
+	   this->dislocationVelocities[i] = Vector3d(0.0, 0.0, 0.0);
 	 }
      }
 
+   // For the last dislocation, the time increment has to be calculated
+   // for approach to both a dislocation and the slip plane extremity.
+   // Time for slip plane extremity
+   t1 = this->dislocations[nDisl-1].idealTimeIncrement(this->dislocationVelocities[0],
+						       minDistance,
+						       this->extremity[1],
+						       Vector3d(0.0, 0.0, 0.0));
+   t2 = this->dislocations[nDisl-1].idealTimeIncrement(this->dislocationVelocities[0],
+						       minDistance,
+						       this->dislocations[nDisl-2],
+						       this->dislocationVelocities[nDisl-2]);
+   // Choose the smaller of the two
+   timeIncrement[nDisl-1] = t1 < t2 ? t1:t2;
+
+   if (timeIncrement[nDisl-1] < minDt)
+     {
+       // This dislocation should not move in this iteration because it might collide with the next defect
+       timeIncrement[nDisl-1] = minDt;
+       this->dislocationVelocities[nDisl-1] = Vector3d(0.0, 0.0, 0.0);
+     }
+   
    dtMin = 1000;
    for (i=0; i<nDisl; i++)
      {
