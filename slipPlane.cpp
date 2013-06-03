@@ -379,6 +379,9 @@ void SlipPlane::calculateRotationMatrix ()
    std::vector<Vector3d>::iterator f;     // Iterator for forces
    std::vector<Vector3d>::iterator v;     // Iterator for velocities
 
+   Vector3d p0, p1, p01;
+   double cosine;
+
    d = this->dislocations.begin();
    f = this->dislocationForces.begin();
    v = this->dislocationVelocities.begin();
@@ -387,7 +390,17 @@ void SlipPlane::calculateRotationMatrix ()
      {
        if (d->isMobile())
 	 {
+	   // Velocity directly proportional to Peach-Koehler force
 	   *v = (*f)/B;
+
+	   // Project the velocity on to the slip plane line
+	   p0 = this->extremity[0].getPosition();
+	   p1 = this->extremity[1].getPosition();
+	   p01 = p1 - p0;
+	   
+	   cosine = ((*v) * p01)/(v->magnitude() * p01.magnitude());
+
+	   *v = (*v) * cosine;
 	 }
        else
 	 {
