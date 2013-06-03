@@ -76,6 +76,12 @@ protected:
    * @details A slip plane may contain several dislocation sources. These are stored in this vector container dislocationSources.
    */
   std::vector<DislocationSource> dislocationSources;
+
+  /**
+   * @brief Time increment for the slip plane.
+   * @details A time increment is calculated for each slip plane based on the distances traveled by the dislocations.
+   */
+  double dt;
   
   /**
    * @brief Rotation matrix for co-ordinate system transformations.
@@ -244,6 +250,14 @@ public:
    * param B The drag coefficient.
    */
   void calculateVelocities (double B);
+
+  /**
+   * @brief Calculate the time increment based on the velocities of the dislocations.
+   * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+   * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+   * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+   */
+  void calculateTimeIncrement (double minDistance, double minDt);
 };
 
 #endif

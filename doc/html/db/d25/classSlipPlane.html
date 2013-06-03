@@ -174,6 +174,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:aff7af69ba5235da6c8b142193509683c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#aff7af69ba5235da6c8b142193509683c">calculateVelocities</a> (double B)</td></tr>
 <tr class="memdesc:aff7af69ba5235da6c8b142193509683c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculates the velocities of dislocations and stores them in the std::vector container velocities.  <a href="#aff7af69ba5235da6c8b142193509683c">More...</a><br/></td></tr>
 <tr class="separator:aff7af69ba5235da6c8b142193509683c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5418245f8c716d4a35405d68db53bc66"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a5418245f8c716d4a35405d68db53bc66">calculateTimeIncrement</a> (double minDistance, double minDt)</td></tr>
+<tr class="memdesc:a5418245f8c716d4a35405d68db53bc66"><td class="mdescLeft">&#160;</td><td class="mdescRight">Calculate the time increment based on the velocities of the dislocations.  <a href="#a5418245f8c716d4a35405d68db53bc66">More...</a><br/></td></tr>
+<tr class="separator:a5418245f8c716d4a35405d68db53bc66"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -201,6 +204,9 @@ Protected Attributes</h2></td></tr>
 <tr class="memitem:a8e31e904fc6e68cc7ba70b0b57a278cc"><td class="memItemLeft" align="right" valign="top">std::vector&lt; <a class="el" href="../../de/de3/classDislocationSource.html">DislocationSource</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc">dislocationSources</a></td></tr>
 <tr class="memdesc:a8e31e904fc6e68cc7ba70b0b57a278cc"><td class="mdescLeft">&#160;</td><td class="mdescRight">STL vector container with dislocation sources.  <a href="#a8e31e904fc6e68cc7ba70b0b57a278cc">More...</a><br/></td></tr>
 <tr class="separator:a8e31e904fc6e68cc7ba70b0b57a278cc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad786135547799363ad2931e43522c2be"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#ad786135547799363ad2931e43522c2be">dt</a></td></tr>
+<tr class="memdesc:ad786135547799363ad2931e43522c2be"><td class="mdescLeft">&#160;</td><td class="mdescRight">Time increment for the slip plane.  <a href="#ad786135547799363ad2931e43522c2be">More...</a><br/></td></tr>
+<tr class="separator:ad786135547799363ad2931e43522c2be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1aa5aacccb6bb03d163a95251aa10d6c"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d4a/classRotationMatrix.html">RotationMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a1aa5aacccb6bb03d163a95251aa10d6c">rotationMatrix</a></td></tr>
 <tr class="memdesc:a1aa5aacccb6bb03d163a95251aa10d6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotation matrix for co-ordinate system transformations.  <a href="#a1aa5aacccb6bb03d163a95251aa10d6c">More...</a><br/></td></tr>
 <tr class="separator:a1aa5aacccb6bb03d163a95251aa10d6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -314,14 +320,17 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a3efa3644ca3200d1c84801b3f9eb8ecf" title="Set the list of dislocations of the slip plane.">setDislocationList</a> (dislocationList);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a6f520005b3c7e8c93df0b893201cea29" title="Set the list of dislocation sources on the slip plane.">setDislocationSourceList</a> (dislocationSourceList);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// Fill the velocity vector with zero vectors</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="comment">// Fill the vectors and stresses with zero vectors and stresses</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;  <span class="keywordtype">int</span> nDisl = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a0034812f46524ee8b685d0564e2e4e38" title="Get the number of dislocations.">getNumDislocations</a> ();</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd" title="STL vector container with the stress fields of dislocations.">dislocationStresses</a>.resize(nDisl, <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a> ());</div>
 <div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.resize(nDisl, <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>());</div>
 <div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.resize(nDisl, <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>());</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a5d9054f21be225f50860ad1351e3a86f" title="Calculates the rotation matrix for this slip plane.">calculateRotationMatrix</a> ();</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;}</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;  <span class="comment">// Time increment</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad786135547799363ad2931e43522c2be" title="Time increment for the slip plane.">dt</a> = 0;</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a5d9054f21be225f50860ad1351e3a86f" title="Calculates the rotation matrix for this slip plane.">calculateRotationMatrix</a> ();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -349,22 +358,22 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00343">343</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160; {</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span></div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;   std::vector&lt;Vector3d&gt;::iterator f;     <span class="comment">// Iterator for forces</span></div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;   std::vector&lt;Stress&gt;::iterator s;       <span class="comment">// Iterator for stresses</span></div>
-<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;</div>
-<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   s = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd" title="STL vector container with the stress fields of dislocations.">dislocationStresses</a>.begin();</div>
-<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   f = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.begin();</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00346">346</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160; {</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span></div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;   std::vector&lt;Vector3d&gt;::iterator f;     <span class="comment">// Iterator for forces</span></div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;   std::vector&lt;Stress&gt;::iterator s;       <span class="comment">// Iterator for stresses</span></div>
 <div class="line"><a name="l00351"></a><span class="lineno">  351</span>&#160;</div>
-<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   <span class="keywordflow">for</span> (d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d!=this-&gt;dislcoations.end(); d++)</div>
-<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;     {</div>
-<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;       f = d-&gt;forcePeachKoehler (*s, tau_crss);</div>
-<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;       s++;</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;       f++;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;     }</div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160; }</div>
+<div class="line"><a name="l00352"></a><span class="lineno">  352</span>&#160;   s = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd" title="STL vector container with the stress fields of dislocations.">dislocationStresses</a>.begin();</div>
+<div class="line"><a name="l00353"></a><span class="lineno">  353</span>&#160;   f = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.begin();</div>
+<div class="line"><a name="l00354"></a><span class="lineno">  354</span>&#160;</div>
+<div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;   <span class="keywordflow">for</span> (d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d!=this-&gt;dislcoations.end(); d++)</div>
+<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;     {</div>
+<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;       f = d-&gt;forcePeachKoehler (*s, tau_crss);</div>
+<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;       s++;</div>
+<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;       f++;</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;     }</div>
+<div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -409,32 +418,32 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00311">311</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160; {</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d1;  <span class="comment">// Iterator for each dislocation</span></div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d2;  <span class="comment">// Nested iterator</span></div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;   std::vector&lt;Stress&gt;::iterator s;        <span class="comment">// Iterator for the Stress</span></div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p;                             <span class="comment">// Position vector</span></div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;   s = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd" title="STL vector container with the stress fields of dislocations.">dislocationStresses</a>.begin();</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;   <span class="keywordflow">for</span> (d1=this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d1!=this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.end(); d1++)</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;     {</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;       *s = appliedStress;</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;       p = d1-&gt;getPosition();</div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;       <span class="keywordflow">for</span> (d2 = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d2!=this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.end(); d2++)</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;         {</div>
-<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;           <span class="keywordflow">if</span> (d1==d2)</div>
-<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;             {</div>
-<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;               <span class="keywordflow">continue</span>;</div>
-<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;             }</div>
-<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;           <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;             {</div>
-<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;               *s = *s + d2-&gt;stressField(p, mu, nu);</div>
-<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;             }</div>
-<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;         }</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;     }</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160; }</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00314">314</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160; {</div>
+<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d1;  <span class="comment">// Iterator for each dislocation</span></div>
+<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d2;  <span class="comment">// Nested iterator</span></div>
+<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;   std::vector&lt;Stress&gt;::iterator s;        <span class="comment">// Iterator for the Stress</span></div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p;                             <span class="comment">// Position vector</span></div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;   s = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#adaa1bb736c2912f5e06e7aa4553c1ebd" title="STL vector container with the stress fields of dislocations.">dislocationStresses</a>.begin();</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;   <span class="keywordflow">for</span> (d1=this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d1!=this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.end(); d1++)</div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;     {</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;       *s = appliedStress;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;       p = d1-&gt;getPosition();</div>
+<div class="line"><a name="l00327"></a><span class="lineno">  327</span>&#160;       <span class="keywordflow">for</span> (d2 = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin(); d2!=this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.end(); d2++)</div>
+<div class="line"><a name="l00328"></a><span class="lineno">  328</span>&#160;         {</div>
+<div class="line"><a name="l00329"></a><span class="lineno">  329</span>&#160;           <span class="keywordflow">if</span> (d1==d2)</div>
+<div class="line"><a name="l00330"></a><span class="lineno">  330</span>&#160;             {</div>
+<div class="line"><a name="l00331"></a><span class="lineno">  331</span>&#160;               <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00332"></a><span class="lineno">  332</span>&#160;             }</div>
+<div class="line"><a name="l00333"></a><span class="lineno">  333</span>&#160;           <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;             {</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;               *s = *s + d2-&gt;stressField(p, mu, nu);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;             }</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;         }</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;     }</div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -454,31 +463,124 @@ Protected Attributes</h2></td></tr>
 <p>Calculates the rotation matrix for this slip plane. </p>
 <p>The slip plane has a local co-ordinate system whose axes are the following: z-axis||normal vector and x-axis||slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-ordinate systems. </p>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00278">278</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;{</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> *unPrimed = <span class="keyword">new</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>[3]; <span class="comment">// Old system (global)</span></div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> *primed   = <span class="keyword">new</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>[3]; <span class="comment">// New system (local)</span></div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;    </div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  </div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;  <span class="comment">// Prepare the global and local systems</span></div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  {</div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;    <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;    {</div>
-<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;      unPrimed[i].<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a>(j, (<span class="keywordtype">double</span>)(i==j));</div>
-<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    }</div>
-<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    </div>
-<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;    primed[i] = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2e0139563665d1765f04582bfeebabc9" title="Get the axis (expressed in the global co-ordinate system) of the slip plane&#39;s local co-ordinate syste...">getAxis</a>(i);</div>
-<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  }</div>
-<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  </div>
-<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  <span class="comment">// Calculate the rotationMatrix</span></div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a1aa5aacccb6bb03d163a95251aa10d6c" title="Rotation matrix for co-ordinate system transformations.">rotationMatrix</a> = <a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a>(unPrimed, primed);</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00281">281</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;{</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> *unPrimed = <span class="keyword">new</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>[3]; <span class="comment">// Old system (global)</span></div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> *primed   = <span class="keyword">new</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>[3]; <span class="comment">// New system (local)</span></div>
+<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;    </div>
+<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  </div>
+<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="comment">// Prepare the global and local systems</span></div>
+<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00290"></a><span class="lineno">  290</span>&#160;  {</div>
+<div class="line"><a name="l00291"></a><span class="lineno">  291</span>&#160;    <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;    {</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;      unPrimed[i].<a class="code" href="../../df/dd0/classVector3d.html#ac20e0cda09c96f83cc41e23300c303ca" title="Function to set the value of an element of the vector.">setValue</a>(j, (<span class="keywordtype">double</span>)(i==j));</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;    }</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;    </div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;    primed[i] = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2e0139563665d1765f04582bfeebabc9" title="Get the axis (expressed in the global co-ordinate system) of the slip plane&#39;s local co-ordinate syste...">getAxis</a>(i);</div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  }</div>
 <div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="comment">// Free memory</span></div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  <span class="keyword">delete</span>(unPrimed);     unPrimed = NULL;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  <span class="keyword">delete</span>(primed);       primed = NULL;</div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;}</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  <span class="comment">// Calculate the rotationMatrix</span></div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a1aa5aacccb6bb03d163a95251aa10d6c" title="Rotation matrix for co-ordinate system transformations.">rotationMatrix</a> = <a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a>(unPrimed, primed);</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  </div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="comment">// Free memory</span></div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  <span class="keyword">delete</span>(unPrimed);     unPrimed = NULL;</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;  <span class="keyword">delete</span>(primed);       primed = NULL;</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a5418245f8c716d4a35405d68db53bc66"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void SlipPlane::calculateTimeIncrement </td>
+          <td>(</td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>minDistance</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>minDt</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Calculate the time increment based on the velocities of the dislocations. </p>
+<p>In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">minDistance</td><td>Minimum distance of approach between dislocations having Burgers vectors of the same sign. </td></tr>
+    <tr><td class="paramname">minDt</td><td>The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00396">396</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160; {</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;   <span class="comment">// Get the number of dislocations</span></div>
+<div class="line"><a name="l00399"></a><span class="lineno">  399</span>&#160;   <span class="keywordtype">int</span> nDisl = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size();</div>
+<div class="line"><a name="l00400"></a><span class="lineno">  400</span>&#160;</div>
+<div class="line"><a name="l00401"></a><span class="lineno">  401</span>&#160;   <span class="comment">// Vector of time increments</span></div>
+<div class="line"><a name="l00402"></a><span class="lineno">  402</span>&#160;   std::vector&lt;double&gt; timeIncrement(nDisl, 1000.0);</div>
+<div class="line"><a name="l00403"></a><span class="lineno">  403</span>&#160;</div>
+<div class="line"><a name="l00404"></a><span class="lineno">  404</span>&#160;   <span class="comment">// Position vectors</span></div>
+<div class="line"><a name="l00405"></a><span class="lineno">  405</span>&#160;   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> p0, p1;</div>
+<div class="line"><a name="l00406"></a><span class="lineno">  406</span>&#160;   <span class="keywordtype">double</span> norm_p01;</div>
+<div class="line"><a name="l00407"></a><span class="lineno">  407</span>&#160;</div>
+<div class="line"><a name="l00408"></a><span class="lineno">  408</span>&#160;   <span class="comment">// Velocity vectors</span></div>
+<div class="line"><a name="l00409"></a><span class="lineno">  409</span>&#160;   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> v0, v1;</div>
+<div class="line"><a name="l00410"></a><span class="lineno">  410</span>&#160;   <span class="keywordtype">double</span> norm_v01;</div>
+<div class="line"><a name="l00411"></a><span class="lineno">  411</span>&#160;</div>
+<div class="line"><a name="l00412"></a><span class="lineno">  412</span>&#160;   <span class="keywordtype">int</span> i;         <span class="comment">// Counter for the loop</span></div>
+<div class="line"><a name="l00413"></a><span class="lineno">  413</span>&#160;   <span class="keywordtype">double</span> dtMin;  <span class="comment">// Minimum time increment</span></div>
+<div class="line"><a name="l00414"></a><span class="lineno">  414</span>&#160;</div>
+<div class="line"><a name="l00415"></a><span class="lineno">  415</span>&#160;   <span class="keywordflow">for</span> (i=0; i&lt;(nDisl-1); i++)</div>
+<div class="line"><a name="l00416"></a><span class="lineno">  416</span>&#160;     {</div>
+<div class="line"><a name="l00417"></a><span class="lineno">  417</span>&#160;       p0 = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>[i].getPosition();</div>
+<div class="line"><a name="l00418"></a><span class="lineno">  418</span>&#160;       v0 = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>[i];</div>
+<div class="line"><a name="l00419"></a><span class="lineno">  419</span>&#160;</div>
+<div class="line"><a name="l00420"></a><span class="lineno">  420</span>&#160;       p1 = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>[i+1].getPosition();</div>
+<div class="line"><a name="l00421"></a><span class="lineno">  421</span>&#160;       v1 = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>[i+1];</div>
+<div class="line"><a name="l00422"></a><span class="lineno">  422</span>&#160;</div>
+<div class="line"><a name="l00423"></a><span class="lineno">  423</span>&#160;       <span class="keywordflow">if</span> (v1.<a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a>() &lt; v0.<a class="code" href="../../df/dd0/classVector3d.html#a9fd3cba8bbdf983db6c2a2eae00c4b29" title="Computes the magnitude of the vector.">magnitude</a>())</div>
+<div class="line"><a name="l00424"></a><span class="lineno">  424</span>&#160;         {</div>
+<div class="line"><a name="l00425"></a><span class="lineno">  425</span>&#160;           <span class="comment">// The dislocations will approach each other</span></div>
+<div class="line"><a name="l00426"></a><span class="lineno">  426</span>&#160;           <span class="comment">// So a time increment needs to be calculated</span></div>
+<div class="line"><a name="l00427"></a><span class="lineno">  427</span>&#160;           norm_p01 = (p1-p0).magnitude();</div>
+<div class="line"><a name="l00428"></a><span class="lineno">  428</span>&#160;           norm_v01 = (v1-v0).magnitude();</div>
+<div class="line"><a name="l00429"></a><span class="lineno">  429</span>&#160;</div>
+<div class="line"><a name="l00430"></a><span class="lineno">  430</span>&#160;           timeIncrement[i] = (norm_p01 - minDistance)/norm_v01;</div>
+<div class="line"><a name="l00431"></a><span class="lineno">  431</span>&#160;</div>
+<div class="line"><a name="l00432"></a><span class="lineno">  432</span>&#160;           <span class="keywordflow">if</span> (timeIncrement[i] &lt; minDt)</div>
+<div class="line"><a name="l00433"></a><span class="lineno">  433</span>&#160;             {</div>
+<div class="line"><a name="l00434"></a><span class="lineno">  434</span>&#160;               <span class="comment">// This dislocation should not move in this iteration because it might collide with the next</span></div>
+<div class="line"><a name="l00435"></a><span class="lineno">  435</span>&#160;               timeIncrement[i] = minDt;</div>
+<div class="line"><a name="l00436"></a><span class="lineno">  436</span>&#160;               this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>[i] = <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00437"></a><span class="lineno">  437</span>&#160;             }</div>
+<div class="line"><a name="l00438"></a><span class="lineno">  438</span>&#160;         }</div>
+<div class="line"><a name="l00439"></a><span class="lineno">  439</span>&#160;     }</div>
+<div class="line"><a name="l00440"></a><span class="lineno">  440</span>&#160;</div>
+<div class="line"><a name="l00441"></a><span class="lineno">  441</span>&#160;   dtMin = 1000;</div>
+<div class="line"><a name="l00442"></a><span class="lineno">  442</span>&#160;   <span class="keywordflow">for</span> (i=0; i&lt;nDisl; i++)</div>
+<div class="line"><a name="l00443"></a><span class="lineno">  443</span>&#160;     {</div>
+<div class="line"><a name="l00444"></a><span class="lineno">  444</span>&#160;       <span class="keywordflow">if</span> (timeIncrement[i] &lt; dtMin)</div>
+<div class="line"><a name="l00445"></a><span class="lineno">  445</span>&#160;         {</div>
+<div class="line"><a name="l00446"></a><span class="lineno">  446</span>&#160;           dtMin = timeIncrement[i];</div>
+<div class="line"><a name="l00447"></a><span class="lineno">  447</span>&#160;         }</div>
+<div class="line"><a name="l00448"></a><span class="lineno">  448</span>&#160;     }</div>
+<div class="line"><a name="l00449"></a><span class="lineno">  449</span>&#160;</div>
+<div class="line"><a name="l00450"></a><span class="lineno">  450</span>&#160;   this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad786135547799363ad2931e43522c2be" title="Time increment for the slip plane.">dt</a> = dtMin;</div>
+<div class="line"><a name="l00451"></a><span class="lineno">  451</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -499,27 +601,27 @@ Protected Attributes</h2></td></tr>
 <p>Calculates the velocities of dislocations and stores them in the std::vector container velocities. </p>
 <p>The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality. param B The drag coefficient. </p>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00365">365</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160; {</div>
-<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span></div>
-<div class="line"><a name="l00368"></a><span class="lineno">  368</span>&#160;   std::vector&lt;Vector3d&gt;::iterator f;     <span class="comment">// Iterator for forces</span></div>
-<div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160;   std::vector&lt;Vector3d&gt;::iterator v;     <span class="comment">// Iterator for velocities</span></div>
-<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;</div>
-<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;   d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin();</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;   f = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.begin();</div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;   v = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.begin();</div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;   <span class="keywordflow">while</span> (v != this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.end())</div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;     {</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;       <span class="keywordflow">if</span> (d-&gt;isMobile())</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;         {</div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;           *v = (*f)/B;</div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;         }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;       d++;</div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;       f++;</div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;       v++;</div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;     }</div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160; }</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00368">368</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00369"></a><span class="lineno">  369</span>&#160; {</div>
+<div class="line"><a name="l00370"></a><span class="lineno">  370</span>&#160;   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span></div>
+<div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;   std::vector&lt;Vector3d&gt;::iterator f;     <span class="comment">// Iterator for forces</span></div>
+<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;   std::vector&lt;Vector3d&gt;::iterator v;     <span class="comment">// Iterator for velocities</span></div>
+<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;</div>
+<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;   d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.begin();</div>
+<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;   f = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2a74ae1f66a59e53a3ca0c9b81b28f7d" title="The Peach-Koehler force experienced by each dislocation.">dislocationForces</a>.begin();</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;   v = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.begin();</div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;</div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;   <span class="keywordflow">while</span> (v != this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a107a3883169bf918664cb4e4fd4bd72c" title="STL vector container with dislocation velocities.">dislocationVelocities</a>.end())</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;     {</div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;       <span class="keywordflow">if</span> (d-&gt;isMobile())</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;         {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;           *v = (*f)/B;</div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;         }</div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;       d++;</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;       f++;</div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;       v++;</div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;     }</div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -546,30 +648,30 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00248">248</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00249"></a><span class="lineno">  249</span>&#160;{</div>
-<div class="line"><a name="l00250"></a><span class="lineno">  250</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> = axis;</div>
-<div class="line"><a name="l00251"></a><span class="lineno">  251</span>&#160;  </div>
-<div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;  <span class="keywordflow">if</span> (i==2)</div>
-<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  {</div>
-<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;    <span class="comment">// Z-axis</span></div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;    axis = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2" title="The normal vector to the slip plane.">normalVector</a>;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  }</div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  </div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="keywordflow">if</span> (i==0)</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  {</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;    <span class="comment">// X-axis</span></div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;    axis = (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[1] - this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[0]);</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;  </div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;  <span class="keywordflow">if</span> (i==1)</div>
-<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  {</div>
-<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;    <span class="comment">// Y-axis = Z x X</span></div>
-<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;    axis = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2e0139563665d1765f04582bfeebabc9" title="Get the axis (expressed in the global co-ordinate system) of the slip plane&#39;s local co-ordinate syste...">getAxis</a>(2) ^ this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2e0139563665d1765f04582bfeebabc9" title="Get the axis (expressed in the global co-ordinate system) of the slip plane&#39;s local co-ordinate syste...">getAxis</a>(0);</div>
-<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  }</div>
-<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;  </div>
-<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;  <span class="keywordflow">return</span> ( axis.normalize() );</div>
-<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;}     </div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00251">251</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00252"></a><span class="lineno">  252</span>&#160;{</div>
+<div class="line"><a name="l00253"></a><span class="lineno">  253</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> = axis;</div>
+<div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;  </div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="keywordflow">if</span> (i==2)</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  {</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;    <span class="comment">// Z-axis</span></div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    axis = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2" title="The normal vector to the slip plane.">normalVector</a>;</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;  }</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;  </div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;  <span class="keywordflow">if</span> (i==0)</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;  {</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    <span class="comment">// X-axis</span></div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    axis = (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[1] - this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[0]);</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  }</div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  </div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;  <span class="keywordflow">if</span> (i==1)</div>
+<div class="line"><a name="l00268"></a><span class="lineno">  268</span>&#160;  {</div>
+<div class="line"><a name="l00269"></a><span class="lineno">  269</span>&#160;    <span class="comment">// Y-axis = Z x X</span></div>
+<div class="line"><a name="l00270"></a><span class="lineno">  270</span>&#160;    axis = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2e0139563665d1765f04582bfeebabc9" title="Get the axis (expressed in the global co-ordinate system) of the slip plane&#39;s local co-ordinate syste...">getAxis</a>(2) ^ this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a2e0139563665d1765f04582bfeebabc9" title="Get the axis (expressed in the global co-ordinate system) of the slip plane&#39;s local co-ordinate syste...">getAxis</a>(0);</div>
+<div class="line"><a name="l00271"></a><span class="lineno">  271</span>&#160;  }</div>
+<div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;  </div>
+<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordflow">return</span> ( axis.normalize() );</div>
+<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;}     </div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -608,18 +710,18 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the <a class="el" href="../../d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation.">Dislocation</a> data). Otherwise, the return value is false. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00165">165</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;{</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  <span class="keywordflow">if</span> (i&gt;=0 &amp;&amp; i&lt;this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size ())</div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  {</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;    *d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>[i];</div>
-<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  }</div>
-<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;  {</div>
-<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  }</div>
-<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00168">168</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;{</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;  <span class="keywordflow">if</span> (i&gt;=0 &amp;&amp; i&lt;this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size ())</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;  {</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    *d = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>[i];</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;  }</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;  {</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  }</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -639,10 +741,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the entire vector container which holds the dislocations lying on this slip plane. </p>
 <dl class="section return"><dt>Returns</dt><dd>The vector of dislocations lying on this slip plane. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00182">182</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;{</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>);</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00185">185</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;{</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>);</div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -681,18 +783,18 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the <a class="el" href="../../de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation.">DislocationSource</a> data). Otherwise, the return value is false. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00203">203</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;{</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;  <span class="keywordflow">if</span> (i&gt;=0 &amp;&amp; i&lt;this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>.size ())</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  {</div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;    *dSource = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>[i];</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">true</span>);</div>
-<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  }</div>
-<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;  {</div>
-<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">false</span>);</div>
-<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  }</div>
-<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00206">206</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;{</div>
+<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;  <span class="keywordflow">if</span> (i&gt;=0 &amp;&amp; i&lt;this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>.size ())</div>
+<div class="line"><a name="l00209"></a><span class="lineno">  209</span>&#160;  {</div>
+<div class="line"><a name="l00210"></a><span class="lineno">  210</span>&#160;    *dSource = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>[i];</div>
+<div class="line"><a name="l00211"></a><span class="lineno">  211</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">true</span>);</div>
+<div class="line"><a name="l00212"></a><span class="lineno">  212</span>&#160;  }</div>
+<div class="line"><a name="l00213"></a><span class="lineno">  213</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00214"></a><span class="lineno">  214</span>&#160;  {</div>
+<div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;    <span class="keywordflow">return</span> (<span class="keyword">false</span>);</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  }</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -712,10 +814,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the entire vector container which holds the dislocation sources lying on this slip plane. </p>
 <dl class="section return"><dt>Returns</dt><dd>The vector of dislocation sources lying on this slip plane. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00220">220</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;{</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>);</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00223">223</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;{</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>);</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -735,10 +837,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the position vectors of the extremities of the slip plane. </p>
 <dl class="section return"><dt>Returns</dt><dd>Pointer to an array containing the position vectors of the two extremities of the slip plane, variables of type <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00134">134</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;{</div>
-<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>);</div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00137">137</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;{</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>);</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -765,17 +867,17 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Position vector of the extremity indicated by the argument, returned as a variable of type <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00118">118</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;{</div>
-<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;  <span class="keywordflow">if</span> (i==0 || i==1)</div>
-<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;  {</div>
-<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;    <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[i];</div>
-<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  }</div>
-<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;  {</div>
-<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>());</div>
-<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  }</div>
-<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00121">121</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;{</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;  <span class="keywordflow">if</span> (i==0 || i==1)</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;  {</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;    <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[i];</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;  }</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;  {</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;    <span class="keywordflow">return</span> (<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>());</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -795,10 +897,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the normal vector of the slip plane. </p>
 <dl class="section return"><dt>Returns</dt><dd>The normal vector of the slip plane, in a variable of type <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00143">143</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;{</div>
-<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2" title="The normal vector to the slip plane.">normalVector</a>);</div>
-<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00146">146</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;{</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2" title="The normal vector to the slip plane.">normalVector</a>);</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -818,10 +920,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the number of dislocations. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of dislocations on the slip plane. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00191">191</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160; {</div>
-<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;   <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size ());</div>
-<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160; }</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00194">194</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160; {</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;   <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size ());</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -841,10 +943,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the number of dislocation sources. </p>
 <dl class="section return"><dt>Returns</dt><dd>The number of dislocation sources on the slip plane. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00229">229</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00230"></a><span class="lineno">  230</span>&#160; {</div>
-<div class="line"><a name="l00231"></a><span class="lineno">  231</span>&#160;   <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>.size ());</div>
-<div class="line"><a name="l00232"></a><span class="lineno">  232</span>&#160; }</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00232">232</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00233"></a><span class="lineno">  233</span>&#160; {</div>
+<div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;   <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a>.size ());</div>
+<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160; }</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -865,10 +967,10 @@ Protected Attributes</h2></td></tr>
 <p>This function returns the position vector of the slip plane. The position vector is redundant because the slip plane is completely defined by its extremities and the normal vector. Nevertheless, this value can be useful to locate the slip plane within a slip system. </p>
 <dl class="section return"><dt>Returns</dt><dd>Position vector of the slip plane, in a variable of type <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00153">153</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
-<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ac2ac59e22e9638a990c9e45aaa096d9a" title="The position vector of the slip plane.">position</a>);</div>
-<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00156">156</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;{</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ac2ac59e22e9638a990c9e45aaa096d9a" title="The position vector of the slip plane.">position</a>);</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -888,10 +990,10 @@ Protected Attributes</h2></td></tr>
 <p>Get the rotation matrix for this slip plane. </p>
 <dl class="section return"><dt>Returns</dt><dd>The rotation matrix of this slip plane, in a variable of type <a class="el" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a>. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00238">238</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;{</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a1aa5aacccb6bb03d163a95251aa10d6c" title="Rotation matrix for co-ordinate system transformations.">rotationMatrix</a>);</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00241">241</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;{</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;  <span class="keywordflow">return</span> (this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a1aa5aacccb6bb03d163a95251aa10d6c" title="Rotation matrix for co-ordinate system transformations.">rotationMatrix</a>);</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -917,10 +1019,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00098">98</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;{</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a> = dislocationList;</div>
-<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00101">101</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;{</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a> = dislocationList;</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -946,10 +1048,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00107">107</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;{</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a> = dislocationSourceList;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00110">110</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;{</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a8e31e904fc6e68cc7ba70b0b57a278cc" title="STL vector container with dislocation sources.">dislocationSources</a> = dislocationSourceList;</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -975,11 +1077,11 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00070">70</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;{</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[0] = *(ends);</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[1] = *(ends+1);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00073">73</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;{</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[0] = *(ends);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#a52df6a08ab40ffd0dfb4a467e45d2835" title="The extremities of the slip plane.">extremities</a>[1] = *(ends+1);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1005,10 +1107,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00080">80</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;{</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2" title="The normal vector to the slip plane.">normalVector</a> = normal;</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00083">83</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;{</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2" title="The normal vector to the slip plane.">normalVector</a> = normal;</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1034,10 +1136,10 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00089">89</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;{</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ac2ac59e22e9638a990c9e45aaa096d9a" title="The position vector of the slip plane.">position</a> = pos;</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00092">92</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;{</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;  this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ac2ac59e22e9638a990c9e45aaa096d9a" title="The position vector of the slip plane.">position</a> = pos;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1167,6 +1269,31 @@ Protected Attributes</h2></td></tr>
 
 </div>
 </div>
+<a class="anchor" id="ad786135547799363ad2931e43522c2be"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double SlipPlane::dt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Time increment for the slip plane. </p>
+<p>A time increment is calculated for each slip plane based on the distances traveled by the dislocations. </p>
+
+<p>Definition at line <a class="el" href="../../d5/d03/slipPlane_8h_source.html#l00084">84</a> of file <a class="el" href="../../d5/d03/slipPlane_8h_source.html">slipPlane.h</a>.</p>
+
+</div>
+</div>
 <a class="anchor" id="a52df6a08ab40ffd0dfb4a467e45d2835"></a>
 <div class="memitem">
 <div class="memproto">
@@ -1263,7 +1390,7 @@ Protected Attributes</h2></td></tr>
 <p>Rotation matrix for co-ordinate system transformations. </p>
 <p>The slip plane's local co-ordinate system is defined as follows: z-axis||NormalVector; x-axis||slipPlane line. The rotation matrix is created using this convention. </p>
 
-<p>Definition at line <a class="el" href="../../d5/d03/slipPlane_8h_source.html#l00084">84</a> of file <a class="el" href="../../d5/d03/slipPlane_8h_source.html">slipPlane.h</a>.</p>
+<p>Definition at line <a class="el" href="../../d5/d03/slipPlane_8h_source.html#l00090">90</a> of file <a class="el" href="../../d5/d03/slipPlane_8h_source.html">slipPlane.h</a>.</p>
 
 </div>
 </div>
@@ -1274,7 +1401,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 10:57:11 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 3 2013 11:59:03 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

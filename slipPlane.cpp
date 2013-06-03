@@ -53,11 +53,14 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
   this->setDislocationList (dislocationList);
   this->setDislocationSourceList (dislocationSourceList);
 
-  // Fill the velocity vector with zero vectors
+  // Fill the vectors and stresses with zero vectors and stresses
   int nDisl = this->getNumDislocations ();
   this->dislocationStresses.resize(nDisl, Stress ());
   this->dislocationVelocities.resize(nDisl, Vector3d());
   this->dislocationForces.resize(nDisl, Vector3d());
+
+  // Time increment
+  this->dt = 0;
     
   this->calculateRotationMatrix ();
 }
@@ -382,4 +385,67 @@ void SlipPlane::calculateRotationMatrix ()
        f++;
        v++;
      }
+ }
+
+ /**
+  * @brief Calculate the time increment based on the velocities of the dislocations.
+  * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+  * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+  * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+  */
+ void SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
+ {
+   // Get the number of dislocations
+   int nDisl = this->dislocations.size();
+
+   // Vector of time increments
+   std::vector<double> timeIncrement(nDisl, 1000.0);
+
+   // Position vectors
+   Vector3d p0, p1;
+   double norm_p01;
+
+   // Velocity vectors
+   Vector3d v0, v1;
+   double norm_v01;
+
+   int i;         // Counter for the loop
+   double dtMin;  // Minimum time increment
+
+   for (i=0; i<(nDisl-1); i++)
+     {
+       p0 = this->dislocations[i].getPosition();
+       v0 = this->dislocationVelocities[i];
+
+       p1 = this->dislocations[i+1].getPosition();
+       v1 = this->dislocationVelocities[i+1];
+
+       if (v1.magnitude() < v0.magnitude())
+	 {
+	   // The dislocations will approach each other
+	   // So a time increment needs to be calculated
+	   norm_p01 = (p1-p0).magnitude();
+	   norm_v01 = (v1-v0).magnitude();
+
+	   timeIncrement[i] = (norm_p01 - minDistance)/norm_v01;
+
+	   if (timeIncrement[i] < minDt)
+	     {
+	       // This dislocation should not move in this iteration because it might collide with the next
+	       timeIncrement[i] = minDt;
+	       this->dislocationVelocities[i] = Vector3d(0.0, 0.0, 0.0);
+	     }
+	 }
+     }
+
+   dtMin = 1000;
+   for (i=0; i<nDisl; i++)
+     {
+       if (timeIncrement[i] < dtMin)
+	 {
+	   dtMin = timeIncrement[i];
+	 }
+     }
+
+   this->dt = dtMin;
  }
