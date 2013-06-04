@@ -2,7 +2,7 @@
  * @file defect.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 22/04/2013
+ * @date 03/06/2013
  * @brief Definition of member functions of the Defect class.
  * @details This file defines the member functions of the Defect class representing a single defect in the simulation.
  */
@@ -129,6 +129,15 @@ double* Defect::getPosition ()
 void Defect::getPosition (double* a)
 {
   a = this->pos.getVector ();
+}
+
+/**
+ * @brief Returns the position vector of the defect.
+ * @return The position vector of the defect, in a variable of type Vector3d.
+ */
+Vector3d Defect::getPosition ()
+{
+  return (this->pos);
 }
 
 /**

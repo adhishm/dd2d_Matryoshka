@@ -2,7 +2,7 @@
  * @file slipPlane.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 28/05/2013
+ * @date 03/06/2013
  * @brief Definition of the SlipPlane class.
  * @details This file defines the SlipPlane class representing a slip plane in the simulation.
  */
@@ -12,6 +12,9 @@
 
 // STL containers
 #include <vector>
+
+// Default values
+#include "slipPlaneDefaults.h"
 
 // Defects
 #include "defect.h"
@@ -30,7 +33,7 @@ protected:
    * @brief The extremities of the slip plane.
    * @details The slip plane is represented as a straight line in these two dimensional simulations. The position vectors of the two ends are given here.
    */
-  Vector3d extremities[2];
+  Defect extremities[2];
   
   /**
    * @brief The normal vector to the slip plane.
@@ -49,12 +52,36 @@ protected:
    * @details A slip plane may contain several dislocations. These are stored in this vector container dislocations.
    */
   std::vector<Dislocation> dislocations;
+
+  /**
+   * @brief STL vector container with the stress fields of dislocations.
+   * @details The stress fields experienced by the dislocations, expressed in the global co-ordinate system,  are stored in this vector with positions corresponding to the positions of dislocations in the vector dislocations.
+   */
+  std::vector<Stress> dislocationStresses;
+
+  /**
+   * @brief The Peach-Koehler force experienced by each dislocation.
+   * @details This vector container stores the Peah-Koehler force experienced by each dislocation. They are calculated in each iteration by thefunction calculateDislocationForces(tau_crss).
+   */
+  std::vector<Vector3d> dislocationForces;
+
+  /**
+   * @brief STL vector container with dislocation velocities.
+   * @details The dislocations on this slip plane will have a velocity associated with them. These velocity vectors are stored in this container. The order is the same as the order of the dislocations.
+   */
+  std::vector<Vector3d> dislocationVelocities;
   
   /**
    * @brief STL vector container with dislocation sources.
    * @details A slip plane may contain several dislocation sources. These are stored in this vector container dislocationSources.
    */
   std::vector<DislocationSource> dislocationSources;
+
+  /**
+   * @brief Time increment for the slip plane.
+   * @details A time increment is calculated for each slip plane based on the distances traveled by the dislocations.
+   */
+  double dt;
   
   /**
    * @brief Rotation matrix for co-ordinate system transformations.
@@ -66,7 +93,7 @@ public:
   // Constructors
   /**
    * @brief Default constructor.
-   * @details The slip plane is initialized with default parameters.
+   * @details The slip plane is initialized with default parameters specified in the file slipPlaneDefaults.h.
    */
   SlipPlane ();
   
@@ -122,9 +149,9 @@ public:
   
   /**
    * @brief Get the position vectors of the extremities of the slip plane.
-   * @return Pointer to an array containing the position vectors of the two extremities of the slip plane, variables of type Vector3d.
+   * @return Pointer to an array containing the two extremities of the slip plane, variables of type Defect.
    */
-  Vector3d* getExtremities ();
+  Defect* getExtremities ();
   
   /**
    * @brief Get the normal vector of the slip plane.
@@ -153,6 +180,12 @@ public:
    * @return The vector of dislocations lying on this slip plane.
    */
   std::vector<Dislocation> getDislocationList ();
+
+  /**
+   * @brief Get the number of dislocations.
+   * @return The number of dislocations on the slip plane.
+   */
+  int getNumDislocations ();
   
   /**
    * @brief Get the dislocation source on the slip plane indicated by the index provided as argument.
@@ -162,12 +195,18 @@ public:
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the DislocationSource data). Otherwise, the return value is false.
    */
   bool getDislocationSource (int i, DislocationSource* dSource);
+
+  /**
+   * @brief Get the number of dislocation sources.
+   * @return The number of dislocation sources on the slip plane.
+   */
+  int getNumDislocationSources ();
   
   /**
    * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
    * @return The vector of dislocation sources lying on this slip plane.
    */
-  std::vector<DislocationSource> getDislocationSourceList ();  
+  std::vector<DislocationSource> getDislocationSourceList ();
   
   /**
    * @brief Get the rotation matrix for this slip plane.
@@ -188,6 +227,78 @@ public:
    * @details The slip plane has a local co-ordinate system whose axes are the following: z-axis||normal vector and x-axis||slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-ordinate systems.
    */
   void calculateRotationMatrix ();
+
+  /**
+   * @brief Calculates the total stress field experienced by each dislocation and stored it in the STL vector container dislocationStresses.
+   * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
+   * @param appliedStress The stress applied externally.
+   * @param mu Shear modulus of the material.
+   * @param nu Poisson's ratio.
+   */
+  void calculateDislocationStresses (Stress appliedStress, double mu, double nu);
+
+  /**
+   * @brief This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.
+   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the STL vector SlipPlane::dislocationStresses. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
+   * @param tau_crss Critical Resolved Shear Stress in Pa.
+   */
+  void calculateDislocationForces (double tau_crss);
+
+  /**
+   * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
+   * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+   * param B The drag coefficient.
+   */
+  void calculateVelocities (double B);
+
+  /**
+   * @brief Calculate the time increment based on the velocities of the dislocations.
+   * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+   * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+   * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+   */
+  void calculateTimeIncrement (double minDistance, double minDt);
+
+  /**
+   * @brief Displaces the dislocations according to their velocities and the time increment.
+   */
+  void moveDislocations ();
+
+  /**
+   * @brief The distance of the point pos from the n^th extremity is returned.
+   * @param pos Position vector of the point whose distance is to be calculated.
+   * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
+   * @return Distance of the point pos from the n^th extremity of the slip plane.
+   */
+  double distanceFromExtremity(Vector3d pos, int n);
+  
+  /**
+   * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
+   * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
+   */
+  void sortDislocations ();
+
+  /**
+   * @brief Returns a vector containing the stress values at different points along a slip plane.
+   * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
+   * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
+   * @param appliedStress The externally applied stress (in the global co-ordinate system).
+   * @param mu Shear modulus of the material in Pa.
+   * @param nu Poisson's ratio.
+   * @return STL vector container with the full stress tensor expressing the stress field (in the global co-ordinate system) at the points provided as input.
+   */
+  std::vector<Stress> getSlipPlaneStress_global (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
+
+  /**
+   * @brief Returns a vector containing the stress values at different points along a slip plane.
+   * @details The stress field (expressed in the local co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
+   * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
+   * @param appliedStress The externally applied stress (in the global co-ordinate system).
+   * @param mu Shear modulus of the material in Pa.
+   * @param nu Poisson's ratio.
+   * @return STL vector container with the full stress tensor expressing the stress field (in the local co-ordinate system) at the points provided as input.
+   */
+  std::vector<Stress> getSlipPlaneStress_local (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
 };
 
 #endif

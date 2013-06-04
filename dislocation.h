@@ -2,7 +2,7 @@
  * @file dislocation.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 29/04/2013
+ * @date 03/06/2013
  * @brief Definition of the Dislocation class.
  * @details This file defines the Dislocation class representing a dislocation in the simulation. This class inherits from the Defect class.
  */
@@ -105,6 +105,11 @@ public:
    * @return Line vector in a variable of type Vector3d.
    */
   Vector3d getLineVector ();
+  /**
+   * @brief Returns whether the dislocation is mobile or pinned.
+   * @return Returns true if the dislocation is mobile, false if pinned.
+   */
+  bool isMobile ();
   
   // Rotation matrix
   /**
@@ -134,6 +139,26 @@ public:
    */
   Stress stressFieldLocal (Vector3d p, double mu, double nu);
   
+  // Force
+  /**
+   * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
+   * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system. This function checks if the xy component of the stress tensorm expressed in the dislocation's local co-ordinate system, is greater than tau_crss. If it is, the force is calculated using the Peach-Koehler equation, otherwise, the force on the dislocation is zero.
+   * @param sigma The stress tensor, expressed in the global co-ordinate system.
+   * @param tau_crss Critical Resolved Shear Stress in Pa.
+   * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
+   */
+  Vector3d forcePeachKoehler (Stress sigma, double tau_crss);
+
+/**
+ * @brief Returns the ideal time increment for the dislocation.
+ * @details A dislocation is not allowed to approach another defect beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with the defect.
+ * @param v0 Velocity of the dislocation.
+ * @param minDistance Minimum distance of approach to the defect.
+ * @param d The defect for which the present dislocation's time increment is to be calculated.
+ * @param v1 Velocity of the other defect.
+ * @return The ideal time increment for this dislocation.
+ */
+double idealTimeIncrement (Vector3d v0, double minDistance, Defect d, Vector3d v1);
 };
 
 #endif

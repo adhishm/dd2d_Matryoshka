@@ -2,7 +2,7 @@
  * @file defect.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 27/05/2013
+ * @date 03/06/2013
  * @brief Definition of the Defect class.
  * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
@@ -105,6 +105,12 @@ class Defect
    * @param a Pointer to the location where the defect coordinates are to be populated.
    */
   void getPosition (double* a);
+
+  /**
+   * @brief Returns the position vector of the defect.
+   * @return The position vector of the defect, in a variable of type Vector3d.
+   */
+  Vector3d getPosition ();
   
   /**
    * @brief Returns the X-coordinate of the defect.
