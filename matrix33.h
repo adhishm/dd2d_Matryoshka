@@ -1,8 +1,8 @@
 /**
  * @file matrix33.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 22/04/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of the Matrix33 class.
  * @details This file defines the Matrix33 class representing a 3x3 matrix in the simulation.
  */
@@ -67,13 +67,19 @@ class Matrix33
    * @param column Column index of the element.
    * @return Value of the element located at the given position.
    */
-  double getValue (int row, int column);
+  double getValue (int row, int column) const;
   /**
    * @brief Returns the adjugate matrix of the present matrix.
    * @details The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix.
    * @return The adjugate matrix of the present matrix.
    */
-  Matrix33 adjugate ();
+  Matrix33 adjugate () const;
+  /**
+   * @brief Returns the transpose of the present matrix.
+   * @details The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-versa.
+   * @return The transpose of the present matrix.
+   */
+  Matrix33 transpose () const;
    
   // Operators
   // Addition
@@ -131,12 +137,6 @@ class Matrix33
   Vector3d operator* (const Vector3d&) const;
   
   // Matrix operations
-  /**
-   * @brief Transpose
-   * @details Performs the transpose of the current matrix.
-   * @return A new matrix with the transpose of the current matrix.
-   */
-  Matrix33 operator^ () const;
   /**
    * @brief Determinant.
    * @details Calculates the determinant of the current matrix.
