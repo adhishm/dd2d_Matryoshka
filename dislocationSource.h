@@ -12,6 +12,7 @@
 
 #include "dislocation.h"
 #include "constants.h"
+#include "dislocationSourceDefaults.h"
 
 /**
  * @brief DislocationSource class representing a source of dislocations in the simulation.
@@ -58,7 +59,7 @@ protected:
    * @brief Number of iterations before a dipole is emitted.
    * @details A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. The amount of time is represented instead by a number of iterations nIterations.
    */
-  double nIterations;
+  int nIterations;
   
 public:
   // Constructors
@@ -73,6 +74,32 @@ public:
    * nIterations: Default value set in the defaults file.
    */
   DislocationSource ();
+  
+  /**
+   * @brief Constructor that explicitly specifies all parameters.
+   * @details All parameters: Burgers vector, line vector, position, are specified.
+   * @param burgers Burgers vector.
+   * @param line Line vector.
+   * @param position Position of the dislocation.
+   * @param bm Magnitude of the Burgers vector in metres.
+   * @param tau Critical shear stress value.
+   * @param nIter Number of iterations of experiencing critical stress before a dipole is emitted.
+   */
+  DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, int nIter);
+  
+  // Assignment functions
+  /**
+   * @brief Sets the Burgers vector of the dislocation.
+   * @param burgers Bergers vector of the dislocation.
+   */
+  void setBurgers (Vector3d burgers);
+  
+  /**
+   * @brief Sets the line vector of the dislocation.
+   * @param line Line vector of the dislocation.
+   */
+  void setLineVector (Vector3d line);
+  
 };
 
 #endif

@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['setburgers',['setBurgers',['../d3/dc6/classDislocation.html#ab827fcf321729c1238caaa3bceff323a',1,'Dislocation']]],
-  ['setlinevector',['setLineVector',['../d3/dc6/classDislocation.html#a6e814df21c8dfbd1e2e8f492673a79b2',1,'Dislocation']]],
+  ['setburgers',['setBurgers',['../d3/dc6/classDislocation.html#ab827fcf321729c1238caaa3bceff323a',1,'Dislocation::setBurgers()'],['../de/de3/classDislocationSource.html#ae1a26d9f8149206b884436f44e92f4c3',1,'DislocationSource::setBurgers()']]],
+  ['setlinevector',['setLineVector',['../d3/dc6/classDislocation.html#a6e814df21c8dfbd1e2e8f492673a79b2',1,'Dislocation::setLineVector()'],['../de/de3/classDislocationSource.html#adf7d0b496f5935909daf071a0d733b17',1,'DislocationSource::setLineVector()']]],
   ['setmobile',['setMobile',['../d3/dc6/classDislocation.html#a59d404cb0d3dbaaa3380e4fd4018c4d3',1,'Dislocation']]],
   ['setpinned',['setPinned',['../d3/dc6/classDislocation.html#a769db83b0546e7785b5890a5979a8d82',1,'Dislocation']]],
   ['setposition',['setPosition',['../d5/d4f/classDefect.html#a2d233d13a8a93f6fba463a1fbc1c6c9f',1,'Defect::setPosition(double *a)'],['../d5/d4f/classDefect.html#ad1a6acd8399d2ecabb7ce2b77623bbec',1,'Defect::setPosition(double x, double y, double z)']]],
