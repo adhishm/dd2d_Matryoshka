@@ -41,16 +41,20 @@ void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (d
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_ad1a6acd8399d2ecabb7ce2b77623bbec}{set\-Position} (double x, double y, double z)
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
+void \hyperlink{classDefect_a36ffa9b4b01d38ed8a95ca2c78973cc4}{set\-Position} (\hyperlink{classVector3d}{Vector3d} a)
+\begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a5a65f73da6a572d9e7109b31239e441d}{set\-X} (double x)
 \begin{DoxyCompactList}\small\item\em Sets the X-\/coordinate of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a268606391a4eaee3de029d2005648b6f}{set\-Y} (double y)
 \begin{DoxyCompactList}\small\item\em Sets the Y-\/coordinate of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_abb0b16c44a1b04d782f5c5f598b49d5b}{set\-Z} (double z)
 \begin{DoxyCompactList}\small\item\em Sets the Z-\/coordinate of the defect. \end{DoxyCompactList}\item 
-double $\ast$ \hyperlink{classDefect_a6842fba3ad14032766ccf0437afcbced}{get\-Position} ()
+double $\ast$ \hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{get\-Position} ()
 \begin{DoxyCompactList}\small\item\em Returns in an array the position. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_aace5c752b85c368631746abc3d5bd714}{get\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Returns the array position in a pre-\/allocated array. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{get\-Position} ()
+\begin{DoxyCompactList}\small\item\em Returns the position vector of the defect. \end{DoxyCompactList}\item 
 double \hyperlink{classDefect_a01b96c453c13db82b5835682e1849dc0}{get\-X} ()
 \begin{DoxyCompactList}\small\item\em Returns the X-\/coordinate of the defect. \end{DoxyCompactList}\item 
 double \hyperlink{classDefect_a9ea8df3b4c621762a327813056e63911}{get\-Y} ()
@@ -71,7 +75,7 @@ Class \hyperlink{classDefect}{Defect} representing a generic defect in a materia
 
 Defines the \hyperlink{classDefect}{Defect} class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class. 
 
-Definition at line 21 of file defect.\-h.
+Definition at line 20 of file defect.\-h.
 
 
 
@@ -93,12 +97,12 @@ Definition at line 17 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<3; i++)
-    \{
-      this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue}(i, 0.0);
-    \}
-\}
+18 \{
+19   \textcolor{keywordflow}{for} (\textcolor{keywordtype}{int} i=0; i<3; i++)
+20     \{
+21       this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue}(i, 0.0);
+22     \}
+23 \}
 \end{DoxyCode}
 \hypertarget{classDefect_aaddcb1db4b47037adf2e495665f41bab}{\index{Defect@{Defect}!Defect@{Defect}}
 \index{Defect@{Defect}!Defect@{Defect}}
@@ -128,11 +132,11 @@ Definition at line 32 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
-\}
+33 \{
+34   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
+35   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
+36   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
+37 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a5bd123214102a5115c46b0a15653d29b}{\index{Defect@{Defect}!Defect@{Defect}}
 \index{Defect@{Defect}!Defect@{Defect}}
@@ -156,36 +160,40 @@ Definition at line 44 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (p);
-\}
+45 \{
+46   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (p);
+47 \}
 \end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classDefect_a6842fba3ad14032766ccf0437afcbced}{\index{Defect@{Defect}!get\-Position@{get\-Position}}
+\hypertarget{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{\index{Defect@{Defect}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!Defect@{Defect}}
-\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Defect\-::get\-Position (
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Defect\-::get\-Position (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{d5/d4f/classDefect_a6842fba3ad14032766ccf0437afcbced}
+)}}\label{d5/d4f/classDefect_a270caed3561fa5fa284af6427b6ca2e4}
 
 
 Returns in an array the position. 
 
+Returns the position vector of the defect.
+
 The position of the defect is saved in an array and a pointer to its first term is returned. \begin{DoxyReturn}{Returns}
-Pointer to the first term of the array containing the position of the defect. 
+Pointer to the first term of the array containing the position of the defect.
+
+The position vector of the defect, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
 \end{DoxyReturn}
 
 
-Definition at line 109 of file defect.\-cpp.
+Definition at line 119 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ());
-\}
+120 \{
+121   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ());
+122 \}
 \end{DoxyCode}
 \hypertarget{classDefect_aace5c752b85c368631746abc3d5bd714}{\index{Defect@{Defect}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!Defect@{Defect}}
@@ -205,14 +213,28 @@ Returns in the array provided in the argument the position of the defect. The ar
 \end{DoxyParams}
 
 
-Definition at line 119 of file defect.\-cpp.
+Definition at line 129 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  a = this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ();
-\}
+130 \{
+131   a = this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ();
+132 \}
 \end{DoxyCode}
+\hypertarget{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{\index{Defect@{Defect}!get\-Position@{get\-Position}}
+\index{get\-Position@{get\-Position}!Defect@{Defect}}
+\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Defect\-::get\-Position (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d5/d4f/classDefect_a270caed3561fa5fa284af6427b6ca2e4}
+
+
+Returns the position vector of the defect. 
+
+\begin{DoxyReturn}{Returns}
+The position vector of the defect, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
+\end{DoxyReturn}
 \hypertarget{classDefect_a01b96c453c13db82b5835682e1849dc0}{\index{Defect@{Defect}!get\-X@{get\-X}}
 \index{get\-X@{get\-X}!Defect@{Defect}}
 \subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}double Defect\-::get\-X (
@@ -229,13 +251,13 @@ X-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 128 of file defect.\-cpp.
+Definition at line 147 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{return} (this->getValue (0));
-\}
+148 \{
+149   \textcolor{keywordflow}{return} (this->getValue (0));
+150 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a9ea8df3b4c621762a327813056e63911}{\index{Defect@{Defect}!get\-Y@{get\-Y}}
 \index{get\-Y@{get\-Y}!Defect@{Defect}}
@@ -253,13 +275,13 @@ Y-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 137 of file defect.\-cpp.
+Definition at line 156 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (1));
-\}
+157 \{
+158   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (1));
+159 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}{\index{Defect@{Defect}!get\-Z@{get\-Z}}
 \index{get\-Z@{get\-Z}!Defect@{Defect}}
@@ -277,13 +299,13 @@ Z-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 146 of file defect.\-cpp.
+Definition at line 165 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (2));
-\}
+166 \{
+167   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (2));
+168 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{\index{Defect@{Defect}!set\-Position@{set\-Position}}
 \index{set\-Position@{set\-Position}!Defect@{Defect}}
@@ -307,9 +329,9 @@ Definition at line 56 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (a);
-\}
+57 \{
+58   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a82c251f7203e08ec50ea55222f40525f}{setVector} (a);
+59 \}
 \end{DoxyCode}
 \hypertarget{classDefect_ad1a6acd8399d2ecabb7ce2b77623bbec}{\index{Defect@{Defect}!set\-Position@{set\-Position}}
 \index{set\-Position@{set\-Position}!Defect@{Defect}}
@@ -339,11 +361,37 @@ Definition at line 69 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
-\}
+70 \{
+71   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
+72   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
+73   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
+74 \}
+\end{DoxyCode}
+\hypertarget{classDefect_a36ffa9b4b01d38ed8a95ca2c78973cc4}{\index{Defect@{Defect}!set\-Position@{set\-Position}}
+\index{set\-Position@{set\-Position}!Defect@{Defect}}
+\subsubsection[{set\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Defect\-::set\-Position (
+\begin{DoxyParamCaption}
+\item[{{\bf Vector3d}}]{a}
+\end{DoxyParamCaption}
+)}}\label{d5/d4f/classDefect_a36ffa9b4b01d38ed8a95ca2c78973cc4}
+
+
+Sets the position of the defect. 
+
+The position of the defect is set to the position vector fiven by the argument a. 
+\begin{DoxyParams}{Parameters}
+{\em a} & Position vector of the defect. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 81 of file defect.\-cpp.
+
+
+\begin{DoxyCode}
+82 \{
+83   this->position = a;
+84 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a5a65f73da6a572d9e7109b31239e441d}{\index{Defect@{Defect}!set\-X@{set\-X}}
 \index{set\-X@{set\-X}!Defect@{Defect}}
@@ -363,13 +411,13 @@ Sets the X-\/coordinate of the defect.
 \end{DoxyParams}
 
 
-Definition at line 80 of file defect.\-cpp.
+Definition at line 90 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
-\}
+91 \{
+92   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
+93 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a268606391a4eaee3de029d2005648b6f}{\index{Defect@{Defect}!set\-Y@{set\-Y}}
 \index{set\-Y@{set\-Y}!Defect@{Defect}}
@@ -389,13 +437,13 @@ Sets the Y-\/coordinate of the defect.
 \end{DoxyParams}
 
 
-Definition at line 89 of file defect.\-cpp.
+Definition at line 99 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
-\}
+100 \{
+101   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
+102 \}
 \end{DoxyCode}
 \hypertarget{classDefect_abb0b16c44a1b04d782f5c5f598b49d5b}{\index{Defect@{Defect}!set\-Z@{set\-Z}}
 \index{set\-Z@{set\-Z}!Defect@{Defect}}
@@ -415,13 +463,13 @@ Sets the Z-\/coordinate of the defect.
 \end{DoxyParams}
 
 
-Definition at line 98 of file defect.\-cpp.
+Definition at line 108 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
-\}
+109 \{
+110   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
+111 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a5730a89ce804d75090c9fa35ffdfefa2}{\index{Defect@{Defect}!stress\-Field@{stress\-Field}}
 \index{stress\-Field@{stress\-Field}!Defect@{Defect}}
@@ -454,18 +502,17 @@ Reimplemented in \hyperlink{classDislocation_af61cedf5305080ce0f55eb7177efe529}{
 
 
 
-Definition at line 122 of file defect.\-h.
+Definition at line 142 of file defect.\-h.
 
 
 \begin{DoxyCode}
-  \{
-    \textcolor{comment}{// This virtual function returns a zero matrix.}
-    \textcolor{comment}{// Inheriting classes will have functions implementing this in their own
-       way}
-    \textcolor{comment}{// They will override this behaviour.}
-    \hyperlink{classStress}{Stress} s;
-    \textcolor{keywordflow}{return} (s);
-  \}
+143   \{
+144     \textcolor{comment}{// This virtual function returns a zero matrix.}
+145     \textcolor{comment}{// Inheriting classes will have functions implementing this in their own way}
+146     \textcolor{comment}{// They will override this behaviour.}
+147     \hyperlink{classStress}{Stress} s;
+148     \textcolor{keywordflow}{return} (s);
+149   \}
 \end{DoxyCode}
 
 
@@ -479,7 +526,7 @@ Position vector of the defect in 2\-D space.
 
 
 
-Definition at line 27 of file defect.\-h.
+Definition at line 26 of file defect.\-h.
 
 
 

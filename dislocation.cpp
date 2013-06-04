@@ -2,7 +2,7 @@
  * @file dislocation.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 29/04/2013
+ * @date 03/06/2013
  * @brief Definition of constructors and member functions of the Dislocation class.
  * @details This file defines the constructors and member functions of the Dislocation class. This class inherits from the Defect class.
  */
@@ -101,6 +101,15 @@ Vector3d Dislocation::getLineVector ()
   return ( this->lvec );
 }
 
+/**
+ * @brief Returns whether the dislocation is mobile or pinned.
+ * @return Returns true if the dislocation is mobile, false if pinned.
+ */
+bool Dislocation::isMobile ()
+{
+  return (this->mobile);
+}
+
 // Rotation matrix
 /**
  * @brief Calculate the roation matrix.
@@ -153,7 +162,7 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 }
 
 /**
- * @brief Calculates the stress field doe to the dislocation in the local co-ordinate system.
+ * @brief Calculates the stress field due to the dislocation in the local co-ordinate system.
  * @details The stress field due to the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
  * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
  * @param mu Shear modulus in Pascals.
@@ -179,4 +188,79 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
   shearStresses[2] = 0.0;
   
   return (Stress(principalStresses, shearStresses));
+}
+
+// Force
+/**
+ * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
+ * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system. This function checks if the xy component of the stress tensorm expressed in the dislocation's local co-ordinate system, is greater than tau_crss. If it is, the force is calculated using the Peach-Koehler equation, otherwise, the force on the dislocation is zero.
+ * @param sigma The stress tensor, expressed in the global co-ordinate system.
+ * @param tau_crss Critical Resolved Shear Stress in Pa.
+ * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
+ */
+Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss)
+{
+  // Stress in the local co-ordinate system
+  Stress sigmaLocal = (this->rotationMatrix) * (sigma) * (this->rotationMatrix)^;
+  Vector3d force;
+
+  // Check for CRSS condition
+  if (sigmaLocal.getValue(0,1) >= tau_crss)
+    { 
+      Vector3d force = sigma * ((this->bvec)^(this->lvec));
+    }
+
+  return (force);
+}
+
+/**
+ * @brief Returns the ideal time increment for the dislocation.
+ * @details A dislocation is not allowed to approach another defect beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with the defect.
+ * @param v0 Velocity of the dislocation.
+ * @param minDistance Minimum distance of approach to the defect.
+ * @param d The defect for which the present dislocation's time increment is to be calculated.
+ * @param v1 Velocity of the other defect.
+ * @return The ideal time increment for this dislocation.
+ */
+double Dislocation::idealTimeIncrement (Vector3d v0, double minDistance, Defect d, Vector3d v1)
+{
+  double norm_v0 = v0.magnitude();
+  if (norm_v0 == 0.0)
+    {
+      // This dislocation is not moving
+      return (1000.0);
+    }
+
+  // Positions
+  Vector3d p0 = this->getPosition();
+  Vector3d p1 = d.getPosition();
+  Vector3d p01 = p1 - p0;
+  double norm_p01 = p01.magnitude();
+
+  if (norm_p01 == 0.0)
+    {
+      // The dislocation is lying on top of the obstacle - so it should not move
+      return (0.0);
+    }
+  else
+    {
+      // Find out if the dislocation is approaching the defect or not
+
+      // Velocities
+      Vector3d v01 = v1 - v0;
+      double norm_v01 = v01.magnitude();
+      double dotProduct = v01 * p01;
+      double cosine = dotProduct/(norm_v01 * norm_p01);
+      if (cosine < 0.0)
+	{
+	  // The dislocation is approaching the other defect
+	  return ( (norm_p01 - minDistance)/norm_v01 );
+	}
+      else
+	{
+	  // They are diverging
+	  // So any time increment will do
+	  return (1000.0);
+	}
+    }
 }
