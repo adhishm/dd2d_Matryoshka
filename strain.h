@@ -1,8 +1,8 @@
 /**
  * @file strain.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 25/04/2013
+ * @version 1.0
+ * @date 05/06/2013
  * @brief Definition of the Strain class.
  * @details This file defines the Strain class for the strain tensor.
  */
@@ -43,6 +43,12 @@ class Strain : public Matrix33
    * @param shear Pointer to the array containing shear strains.
    */
   Strain (double *principal, double *shear);
+  /**
+   * @brief Constructor specifying the full matrix
+   * @details This constructor accepts the full strain matrix as input and extracts the principal and shear strain components.
+   * @param m Matrix33 variable containing the full strain tensor.
+   */
+  Strain (Matrix33 m);
 
   // Assignment functions
   /**
@@ -51,19 +57,19 @@ class Strain : public Matrix33
    */
   void populateMatrix ();
 
-  // Retrieval functions
+  // Access functions
   /**
    * @brief Get the principal strains.
-   * @details Returns a 3-member array with the principal strains: s11 s22 s33.
-   * @return 3-member array with the principal strains.
+   * @details Returns a vector of type Vector3d with the principal strains: s11 s22 s33.
+   * @return Vector3d variable with the principal strains.
    */
-  double* getPrincipalStrains ();
+  Vector3d getPrincipalStrains () const;
   /**
    * @brief Get the shear strains.
-   * @details Returns a 3-member array with the shear strains: s12 s13 s23.
-   * @return 3-member array with the shear strains.
+   * @details Returns a vector of type Vector3d with the shear strains: s12 s13 s23.
+   * @return Vector3d variable with the shear strains.
    */
-  double* getShearStrains ();
+  Vector3d getShearStrains () const;
   
   // Operations
   /**

@@ -1,8 +1,8 @@
 /**
  * @file strain.cpp
  * @author Adhish Majumdar
- * @version 0.0
- * @date 22/04/2013
+ * @version 1.0
+ * @date 05/06/2013
  * @brief Definition of the member functions if the Strain class.
  * @details This file defines the member functions of the Strain class for the strain tensor.
  */
@@ -46,6 +46,54 @@ Strain::Strain (double *principal, double *shear)
 }
 
 /**
+ * @brief Constructor specifying the full matrix
+ * @details This constructor accepts the full strain matrix as input and extracts the principal and shear strain components.
+ * @param m Matrix33 variable containing the full strain tensor.
+ */
+Strain::Strain (Matrix33 m)
+{
+  int i, j;
+  bool symmetry = true;
+
+  // Verify symmetry
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+	{
+	  if (m.getValue(i,j) != m.getValue(j,i))
+	    {
+	      symmetry = false;
+	      break;
+	    }
+	}
+    }
+
+  if (symmetry)
+    {
+      // The matrix is symmetrical
+      this->principalStrains [0] = m.getValue(0,0);
+      this->principalStrains [1] = m.getValue(1,1);
+      this->principalStrains [2] = m.getValue(2,2);
+
+      this->shearStrains [0] = m.getValue(0,1);
+      this->shearStrains [1] = m.getValue(0,2);
+      this->shearStrains [2] = m.getValue(1,2);
+    }
+  else
+    {
+      // The matrix is asymmetrical
+      // A zero matrix will be returned
+      for (i=0; i<3; i++)
+	{
+	  this->principalStrains[i] = 0.0;
+	  this->shearStrains[i] = 0.0;
+	}
+    }
+
+  this->populateMatrix ();
+}
+
+/**
  * @brief Construct the strain tensor from the principal and shear strains.
  * @details Takes the values in principalStrains and shearStrains and constructs the symmetrical strain matrix.
  */
@@ -62,38 +110,26 @@ void Strain::populateMatrix ()
 
 /**
  * @brief Get the principal strains.
- * @details Returns a 3-member array with the principal strains: s11 s22 s33.
- * @return 3-member array with the principal strains.
+ * @details Returns a vector of type Vector3d with the principal strains: s11 s22 s33.
+ * @return Vector3d variable with the principal strains.
  */
-double* Strain::getPrincipalStrains ()
+Vector3d Strain::getPrincipalStrains () const
 {
-  double p[3];
-  int i;
-
-  for (i=0; i<3; i++)
-    {
-      p[i] = this->principalStrains[i];
-    }
-
-  return (p);
+  return ( Vector3d (this->principalStrains [0],
+		     this->principalStrains [1],
+		     this->principalStrains [2] ) );
 }
 
 /**
  * @brief Get the shear strains.
- * @details Returns a 3-member array with the shear strains: s12 s13 s23.
- * @return 3-member array with the shear strains.
+ * @details Returns a vector of type Vector3d with the shear strains: s12 s13 s23.
+ * @return Vector3d variable with the shear strains.
  */
-double* Strain::getShearStrains ()
+Vector3d Strain::getShearStrains () const
 {
-  double s[3];
-  int i;
-
-  for (i=0; i<3; i++)
-    {
-      s[i] = this->shearStrains[i];
-    }
-
-  return (s);
+  return ( Vector3d (this->shearStrains [0],
+		     this->shearStrains [1],
+		     this->shearStrains [2] ) );
 }
 
 /**
@@ -104,10 +140,11 @@ double* Strain::getShearStrains ()
  */
 Strain Strain::rotate (RotationMatrix alpha)
 {
-  Matrix33 alphaT = ^alpha;  // Transpose
-  Strain sNew;
+  // Transpose
+  RotationMatrix alphaT (alpha.transpose());
 
-  sNew = alpha * (*this) * alphaT;  // Rotate the strain matrix
+  // Rotate the strain matrix
+  Strain sNew = Strain (alpha * (*this) * alphaT);
 
   return (sNew);
 }
