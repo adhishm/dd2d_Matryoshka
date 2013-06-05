@@ -145,26 +145,20 @@ public:
    * @param i Index of the extremity. Possible values: 0, 1
    * @return Position vector of the extremity indicated by the argument, returned as a variable of type Vector3d.
    */
-  Vector3d getExtremity (int i);
-  
-  /**
-   * @brief Get the position vectors of the extremities of the slip plane.
-   * @return Pointer to an array containing the two extremities of the slip plane, variables of type Defect.
-   */
-  Defect* getExtremities ();
+  Vector3d getExtremity (int i) const;
   
   /**
    * @brief Get the normal vector of the slip plane.
    * @return The normal vector of the slip plane, in a variable of type Vector3d.
    */
-  Vector3d getNormal ();
+  Vector3d getNormal () const;
   
   /**
    * @brief Get the position vector of the slip plane.
    * @details This function returns the position vector of the slip plane. The position vector is redundant because the slip plane is completely defined by its extremities and the normal vector. Nevertheless, this value can be useful to locate the slip plane within a slip system.
    * @return Position vector of the slip plane, in a variable of type Vector3d.
    */
-  Vector3d getPosition ();
+  Vector3d getPosition () const;
   
   /**
    * @brief Get the dislocation on the slip plane indicated by the index provided as argument.
@@ -173,19 +167,19 @@ public:
    * @param d Pointer to the memory location where the required dislocation is to be stored. Space in memory must be pre-allocated.
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the Dislocation data). Otherwise, the return value is false.
    */
-  bool getDislocation (int i, Dislocation* d);
+  bool getDislocation (int i, Dislocation* d) const;
   
   /**
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
    * @return The vector of dislocations lying on this slip plane.
    */
-  std::vector<Dislocation> getDislocationList ();
+  std::vector<Dislocation> getDislocationList () const;
 
   /**
    * @brief Get the number of dislocations.
    * @return The number of dislocations on the slip plane.
    */
-  int getNumDislocations ();
+  int getNumDislocations () const;
   
   /**
    * @brief Get the dislocation source on the slip plane indicated by the index provided as argument.
@@ -194,32 +188,32 @@ public:
    * @param dSource Pointer to the memory location where the required dislocation source is to be stored. Space in memory must be pre-allocated.
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the DislocationSource data). Otherwise, the return value is false.
    */
-  bool getDislocationSource (int i, DislocationSource* dSource);
+  bool getDislocationSource (int i, DislocationSource* dSource) const;
 
   /**
    * @brief Get the number of dislocation sources.
    * @return The number of dislocation sources on the slip plane.
    */
-  int getNumDislocationSources ();
+  int getNumDislocationSources () const;
   
   /**
    * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
    * @return The vector of dislocation sources lying on this slip plane.
    */
-  std::vector<DislocationSource> getDislocationSourceList ();
+  std::vector<DislocationSource> getDislocationSourceList () const;
   
   /**
    * @brief Get the rotation matrix for this slip plane.
    * @return The rotation matrix of this slip plane, in a variable of type RotationMatrix.
    */
-  RotationMatrix getRotationMatrix ();
+  RotationMatrix getRotationMatrix () const;
   
   /**
    * @brief Get the axis (expressed in the global co-ordinate system) of the slip plane's local co-ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z).
    * @param i Index of the axis that is to be returned. (0, 1, 2)=(x, y, z).
    * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.
    */
-  Vector3d getAxis (int i);
+  Vector3d getAxis (int i) const;
   
   // Operations
   /**
