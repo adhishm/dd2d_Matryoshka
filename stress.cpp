@@ -62,38 +62,26 @@ void Stress::populateMatrix ()
 
 /**
  * @brief Get the principal stresses.
- * @details Returns a 3-member array with the principal stresses: s11 s22 s33.
- * @return 3-member array with the principal stresses.
+ * @details Returns a vector of type Vector3d with the principal stresses: s11 s22 s33.
+ * @return Vector3d variable with the principal stresses.
  */
-double* Stress::getPrincipalStresses ()
+Vector3d Stress::getPrincipalStresses () const
 {
-  double p[3];
-  int i;
-
-  for (i=0; i<3; i++)
-    {
-      p[i] = this->principalStresses[i];
-    }
-
-  return (p);
+  return ( Vector3d (this->principalStresses [0],
+		     this->principalStresses [1],
+		     this->principalStresses [2] ) );
 }
-
+  
 /**
  * @brief Get the shear stresses.
- * @details Returns a 3-member array with the shear stresses: s12 s13 s23.
- * @return 3-member array with the shear stresses.
+ * @details Returns a vector of type Vector3d with the shear stresses: s12 s13 s23.
+ * @return Vector3d variable with the shear stresses.
  */
-double* Stress::getShearStresses ()
+Vector3d Stress::getShearStresses () const
 {
-  double s[3];
-  int i;
-
-  for (i=0; i<3; i++)
-    {
-      s[i] = this->shearStresses[i];
-    }
-
-  return (s);
+  return ( Vector3d (this->shearStresses [0],
+		     this->shearStresses [1],
+		     this->shearStresses [2] ) );
 }
 
 /**
@@ -104,10 +92,11 @@ double* Stress::getShearStresses ()
  */
 Stress Stress::rotate (RotationMatrix alpha)
 {
-  Matrix33 alphaT = ^alpha;  // Transpose
-  Stress sNew;
+  // Transpose
+  RotationMatrix alphaT = alpha.transpose();
 
-  sNew = alpha * (*this) * alphaT;  // Rotate the stress matrix
+  // Rotate the stress matrix
+  Stress sNew = alpha * (*this) * alphaT;
 
   return (sNew);
 }

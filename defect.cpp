@@ -43,7 +43,10 @@ Defect::Defect (double x, double y, double z)
  */
 Defect::Defect (double* p)
 {
-  this->pos.setValue (p);
+  for (int i=0; i<3; i++)
+    {
+      this->pos.setValue (i, p[i]);
+    }
 }
     
 // Assignment functions
@@ -80,7 +83,7 @@ void Defect::setPosition (double x, double y, double z)
  */
 void Defect::setPosition (Vector3d a)
 {
-  this->position = a;
+  this->pos = a;
 }
 
 /**
@@ -111,16 +114,6 @@ void Defect::setZ (double z)
 }
 
 // Access Functions
-/**
- * @brief Returns in an array the position.
- * @details The position of the defect is saved in an array and a pointer to its first term is returned.
- * @return Pointer to the first term of the array containing the position of the defect.
- */
-double* Defect::getPosition () const
-{
-  return (this->pos.getVector ());
-}
-
 /**
  * @brief Returns the array position in a pre-allocated array.
  * @details Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.

@@ -1,8 +1,8 @@
 /**
  * @file dislocation.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 03/06/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of the Dislocation class.
  * @details This file defines the Dislocation class representing a dislocation in the simulation. This class inherits from the Defect class.
  */
@@ -99,17 +99,17 @@ public:
    * @brief Gets the Burgers vector of the dislocation.
    * @return Burgers vector in a variable of type Vector3d.
    */
-  Vector3d getBurgers ();
+  Vector3d getBurgers () const;
   /**
    * @brief Gets the line vector of the dislocation.
    * @return Line vector in a variable of type Vector3d.
    */
-  Vector3d getLineVector ();
+  Vector3d getLineVector () const;
   /**
    * @brief Returns whether the dislocation is mobile or pinned.
    * @return Returns true if the dislocation is mobile, false if pinned.
    */
-  bool isMobile ();
+  bool isMobile () const;
   
   // Rotation matrix
   /**
@@ -137,7 +137,7 @@ public:
    * @param nu Poisson's ratio.
    * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
    */
-  Stress stressFieldLocal (Vector3d p, double mu, double nu);
+  Stress stressFieldLocal (Vector3d p, double mu, double nu) const;
   
   // Force
   /**
@@ -147,7 +147,7 @@ public:
    * @param tau_crss Critical Resolved Shear Stress in Pa.
    * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
    */
-  Vector3d forcePeachKoehler (Stress sigma, double tau_crss);
+  Vector3d forcePeachKoehler (Stress sigma, double tau_crss) const;
 
 /**
  * @brief Returns the ideal time increment for the dislocation.

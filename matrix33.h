@@ -24,6 +24,7 @@ class Matrix33
    * @brief Array containing the elements of the matrix.
    */
   double x[3][3];
+
  public:
   // Constructors
   /**

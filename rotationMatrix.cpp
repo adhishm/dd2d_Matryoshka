@@ -7,6 +7,8 @@
  * @details This file defines member functions of the RotationMatrix class for carrying out 3D rotations and axes transformations.
  */
 
+#include "rotationMatrix.h"
+
 /**
  * @brief Default constructor
  * @details Initializes the rotation matrix with a unit matrix.
