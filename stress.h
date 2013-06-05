@@ -43,6 +43,12 @@ class Stress : public Matrix33
    * @param shear Pointer to the array containing shear stresses.
    */
   Stress (double *principal, double *shear);
+  /**
+   * @brief Constructor specifying the full matrix
+   * @details This constructor accepts the full stress matrix as input and extracts the principal and shear stress components.
+   * @param m Matrix33 variable containing the full stress tensor.
+   */
+  Stress (Matrix33 m);
 
   // Assignment functions
   /**

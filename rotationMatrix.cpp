@@ -30,6 +30,24 @@ RotationMatrix::RotationMatrix ()
 }
 
 /**
+ * @brief Constructor specifying the matrix.
+ * @details The rotation matrix is provided as the matrix m.
+ * @param m The matrix m which is equal to the rotation matrix.
+ */
+RotationMatrix::RotationMatrix (Matrix33 m)
+{
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+	{
+	  this->setValue (i, j, (m.getValue(i,j)));
+	}
+    }
+}
+
+/**
  * @brief Defines the rotation matrix based on two co-ordinate systems.
  * @details The rotation matrix is created using the axes of the two co-ordinate systems provided as arguments. The vectors must be normalized to be unit vectors.
  * @param unPrimed Pointer to the array containing the three axes vectors of the unprimed (old) system.
