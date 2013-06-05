@@ -1,8 +1,8 @@
 /**
  * @file dislocation.cpp
  * @author Adhish Majumdar
- * @version 0.0
- * @date 03/06/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of constructors and member functions of the Dislocation class.
  * @details This file defines the constructors and member functions of the Dislocation class. This class inherits from the Defect class.
  */
@@ -87,7 +87,7 @@ void Dislocation::setPinned ()
  * @brief Gets the Burgers vector of the dislocation.
  * @return Burgers vector in a variable of type Vector3d.
  */
-Vector3d Dislocation::getBurgers ()
+Vector3d Dislocation::getBurgers () const
 {
   return ( this->bvec );
 }
@@ -96,7 +96,7 @@ Vector3d Dislocation::getBurgers ()
  * @brief Gets the line vector of the dislocation.
  * @return Line vector in a variable of type Vector3d.
  */
-Vector3d Dislocation::getLineVector ()
+Vector3d Dislocation::getLineVector () const
 {
   return ( this->lvec );
 }
@@ -105,7 +105,7 @@ Vector3d Dislocation::getLineVector ()
  * @brief Returns whether the dislocation is mobile or pinned.
  * @return Returns true if the dislocation is mobile, false if pinned.
  */
-bool Dislocation::isMobile ()
+bool Dislocation::isMobile () const
 {
   return (this->mobile);
 }
@@ -117,8 +117,8 @@ bool Dislocation::isMobile ()
  */
 void Dislocation::calculateRotationMatrix ()
 {
-  Vector3d globalSystem[3];	// Global co-ordinate systems
-  Vector3d localSystem[3];	// Dislocation co-ordinate system
+  Vector3d *globalSystem = new Vector3d[3];	// Global co-ordinate systems
+  Vector3d *localSystem  = new Vector3d[3];	// Dislocation co-ordinate system
   
   // Vectors of the global co-ordinate system
   globalSystem[0] = Vector3d (1.0, 0.0, 0.0);
@@ -132,6 +132,10 @@ void Dislocation::calculateRotationMatrix ()
   
   // Calculate rotation matrix
   this->rotationMatrix = RotationMatrix (globalSystem, localSystem);
+
+  // Release memory
+  delete (globalSystem);  globalSystem = NULL;
+  delete (localSystem);   localSystem  = NULL;
 }
   
 // Stress field
@@ -156,7 +160,8 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
   Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
   
   // Calculate the stress field in the global co-ordinate system
-  Stress sGlobal = (this->rotationMatrix) * sLocal * (^(this->rotationMatrix));
+  //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
+  Stress sGlobal = sLocal.rotate (this->rotationMatrix);
   
   return (sGlobal);
 }
@@ -169,15 +174,17 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  * @param nu Poisson's ratio.
  * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
  */
-Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
+Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 {
-  double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+  double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
   
   double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
   
   x = p.getValue (0);
   y = p.getValue (1);
   denominator = pow ( ((x*x) + (y*y)), 2);
+
+  double principalStresses[3], shearStresses[3];
   
   principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
   principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
@@ -198,10 +205,10 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
  * @param tau_crss Critical Resolved Shear Stress in Pa.
  * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
  */
-Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss)
+Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
 {
   // Stress in the local co-ordinate system
-  Stress sigmaLocal = (this->rotationMatrix) * (sigma) * (this->rotationMatrix)^;
+  Stress sigmaLocal = sigma.rotate(this->rotationMatrix);
   Vector3d force;
 
   // Check for CRSS condition

@@ -1,8 +1,8 @@
 /**
  * @file defect.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 03/06/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of the Defect class.
  * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
@@ -93,42 +93,35 @@ class Defect
     
   // Access Functions
   /**
-   * @brief Returns in an array the position.
-   * @details The position of the defect is saved in an array and a pointer to its first term is returned.
-   * @return Pointer to the first term of the array containing the position of the defect.
-   */
-  double* getPosition ();
-  
-  /**
    * @brief Returns the array position in a pre-allocated array.
    * @details Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.
    * @param a Pointer to the location where the defect coordinates are to be populated.
    */
-  void getPosition (double* a);
+  void getPosition (double* a) const;
 
   /**
    * @brief Returns the position vector of the defect.
    * @return The position vector of the defect, in a variable of type Vector3d.
    */
-  Vector3d getPosition ();
+  Vector3d getPosition () const;
   
   /**
    * @brief Returns the X-coordinate of the defect.
    * @return X-coordinate of the defect.
    */
-  double getX ();
+  double getX () const;
   
   /**
    * @brief Returns the Y-coordinate of the defect.
    * @return Y-coordinate of the defect.
    */
-  double getY ();
+  double getY () const;
   
   /**
    * @brief Returns the Z-coordinate of the defect.
    * @return Z-coordinate of the defect.
    */
-  double getZ ();
+  double getZ () const;
     
   // Virtual functions
   /**

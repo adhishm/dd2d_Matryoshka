@@ -1,8 +1,8 @@
 /**
  * @file vector3d.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 29/04/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of the Vector3d class.
  * @details This file defines the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
@@ -10,6 +10,7 @@
 #ifndef VECTOR3D_H
 #define VECTOR3D_H
 
+#include <stdlib.h>
 #include <math.h>
 
 /**
@@ -68,25 +69,25 @@ class Vector3d
    * @param index Index of the element whose value is to be got.
    * @return The value of the element of the vector at the position
    */
-  double getValue (int index);
+  double getValue (int index) const;
   /**
    * @brief Function to get the values of the elements of the vector in an array.
    * @details The vector is returned in an array.
    * @return Pointer to the first term of an array containing the elements of the vector.
    */
-  double* getVector ();
+  double* getVector () const;
   /**
    * @brief Computes the sum of the elements of the vector.
    * @details Sums the elements of the vector and returns the result.
    * @return The sum of the elements of the vector.
    */
-  double sum ();
+  double sum () const;
   /**
    * @brief Computes the magnitude of the vector.
    * @details Computes the magnitude of the vector. Basically the square root of the sum of the squares of the vector elements.
    * @return The magnitude of the vector.
    */
-  double magnitude ();
+  double magnitude () const;
   /**
    * @brief Returns the vector normalized to be a unit vector.
    * @details This function normalizes a vector by dividing its elements by the magnitude. In case the magnitude is zero, a zero vector is returned.
