@@ -161,7 +161,7 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
   
   // Calculate the stress field in the global co-ordinate system
   //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
-  Stress sGlobal = Stress::rotate (this->rotationMatrix);
+  Stress sGlobal = sLocal.rotate (this->rotationMatrix);
   
   return (sGlobal);
 }
@@ -176,13 +176,15 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  */
 Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 {
-  double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+  double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
   
   double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
   
   x = p.getValue (0);
   y = p.getValue (1);
   denominator = pow ( ((x*x) + (y*y)), 2);
+
+  double principalStresses[3], shearStresses[3];
   
   principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
   principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
@@ -206,7 +208,7 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
 {
   // Stress in the local co-ordinate system
-  Stress sigmaLocal = (this->rotationMatrix) * (sigma) * (this->rotationMatrix.transpose());
+  Stress sigmaLocal = sigma.rotate(this->rotationMatrix);
   Vector3d force;
 
   // Check for CRSS condition
