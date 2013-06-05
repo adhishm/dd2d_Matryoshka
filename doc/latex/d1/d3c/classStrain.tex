@@ -35,20 +35,24 @@ Collaboration diagram for Strain\-:\nopagebreak
 \begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
 \hyperlink{classStrain_a808b5a0e273cc87e19138f3be221fe53}{Strain} (double $\ast$principal, double $\ast$shear)
 \begin{DoxyCompactList}\small\item\em Constructor specifying the principal and shear strains. \end{DoxyCompactList}\item 
+\hyperlink{classStrain_a411164cde64f3c51520440f928fb8fd8}{Strain} (\hyperlink{classMatrix33}{Matrix33} m)
+\begin{DoxyCompactList}\small\item\em Constructor specifying the full matrix. \end{DoxyCompactList}\item 
 void \hyperlink{classStrain_a53d0c01b18a8c70da97ad4aaeb924f14}{populate\-Matrix} ()
 \begin{DoxyCompactList}\small\item\em Construct the strain tensor from the principal and shear strains. \end{DoxyCompactList}\item 
-double $\ast$ \hyperlink{classStrain_ad76c72271c32b27122c7fa86376edea3}{get\-Principal\-Strains} ()
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classStrain_a441936c89c087ec4ca9927e914a2cece}{get\-Principal\-Strains} () const 
 \begin{DoxyCompactList}\small\item\em Get the principal strains. \end{DoxyCompactList}\item 
-double $\ast$ \hyperlink{classStrain_acaeb9039234c4adf356668490098db56}{get\-Shear\-Strains} ()
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classStrain_a12320d54bd51c0e31159da2d30a8f380}{get\-Shear\-Strains} () const 
 \begin{DoxyCompactList}\small\item\em Get the shear strains. \end{DoxyCompactList}\item 
 \hyperlink{classStrain}{Strain} \hyperlink{classStrain_a39acbb854eea7868d2b88c6106e80d18}{rotate} (\hyperlink{classRotationMatrix}{Rotation\-Matrix} alpha)
 \begin{DoxyCompactList}\small\item\em Rotate the strain tensor from one coordinate system to another. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
 \begin{DoxyCompactList}\small\item\em Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
-double \hyperlink{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{get\-Value} (int row, int column)
+double \hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{get\-Value} (int row, int column) const 
 \begin{DoxyCompactList}\small\item\em Returns the value of the element located by the row and column indices provided. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate} ()
+\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate} () const 
 \begin{DoxyCompactList}\small\item\em Returns the adjugate matrix of the present matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose} () const 
+\begin{DoxyCompactList}\small\item\em Returns the transpose of the present matrix. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
 \begin{DoxyCompactList}\small\item\em Operator for addition of two matrices. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{Matrix33} \&)
@@ -67,8 +71,6 @@ void \hyperlink{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{operator$\ast$=
 \begin{DoxyCompactList}\small\item\em Operator for reflexive scaling of the matrix by a scalar. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{Matrix33} \&)
 \begin{DoxyCompactList}\small\item\em Operator for reflexive multiplication of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_ad4ab7b9674a44a297502282e1993ef54}{operator$^\wedge$} () const 
-\begin{DoxyCompactList}\small\item\em Transpose. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{operator$\sim$} () const 
 \begin{DoxyCompactList}\small\item\em Determinant. \end{DoxyCompactList}\item 
 \hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
@@ -160,16 +162,80 @@ Definition at line 35 of file strain.\-cpp.
 45   this->\hyperlink{classStrain_a53d0c01b18a8c70da97ad4aaeb924f14}{populateMatrix} ();
 46 \}
 \end{DoxyCode}
+\hypertarget{classStrain_a411164cde64f3c51520440f928fb8fd8}{\index{Strain@{Strain}!Strain@{Strain}}
+\index{Strain@{Strain}!Strain@{Strain}}
+\subsubsection[{Strain}]{\setlength{\rightskip}{0pt plus 5cm}Strain\-::\-Strain (
+\begin{DoxyParamCaption}
+\item[{{\bf Matrix33}}]{m}
+\end{DoxyParamCaption}
+)}}\label{d1/d3c/classStrain_a411164cde64f3c51520440f928fb8fd8}
+
+
+Constructor specifying the full matrix. 
+
+This constructor accepts the full strain matrix as input and extracts the principal and shear strain components. 
+\begin{DoxyParams}{Parameters}
+{\em m} & \hyperlink{classMatrix33}{Matrix33} variable containing the full strain tensor. \\
+\hline
+\end{DoxyParams}
+
+
+Definition at line 53 of file strain.\-cpp.
+
+
+\begin{DoxyCode}
+54 \{
+55   \textcolor{keywordtype}{int} i, j;
+56   \textcolor{keywordtype}{bool} symmetry = \textcolor{keyword}{true};
+57 
+58   \textcolor{comment}{// Verify symmetry}
+59   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+60     \{
+61       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+62         \{
+63           \textcolor{keywordflow}{if} (m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i,j) != m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(j,i))
+64             \{
+65               symmetry = \textcolor{keyword}{false};
+66               \textcolor{keywordflow}{break};
+67             \}
+68         \}
+69     \}
+70 
+71   \textcolor{keywordflow}{if} (symmetry)
+72     \{
+73       \textcolor{comment}{// The matrix is symmetrical}
+74       this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [0] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(0,0);
+75       this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [1] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(1,1);
+76       this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [2] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(2,2);
+77 
+78       this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [0] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(0,1);
+79       this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [1] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(0,2);
+80       this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [2] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(1,2);
+81     \}
+82   \textcolor{keywordflow}{else}
+83     \{
+84       \textcolor{comment}{// The matrix is asymmetrical}
+85       \textcolor{comment}{// A zero matrix will be returned}
+86       \textcolor{keywordflow}{for} (i=0; i<3; i++)
+87         \{
+88           this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains}[i] = 0.0;
+89           this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains}[i] = 0.0;
+90         \}
+91     \}
+92 
+93   this->\hyperlink{classStrain_a53d0c01b18a8c70da97ad4aaeb924f14}{populateMatrix} ();
+94 \}
+\end{DoxyCode}
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{\index{Strain@{Strain}!adjugate@{adjugate}}
+\hypertarget{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{\index{Strain@{Strain}!adjugate@{adjugate}}
 \index{adjugate@{adjugate}!Strain@{Strain}}
 \subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::adjugate (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}
 
 
 Returns the adjugate matrix of the present matrix. 
@@ -186,93 +252,81 @@ Definition at line 129 of file matrix33.\-cpp.
 130 \{
 131   \hyperlink{classMatrix33}{Matrix33} adj;
 132   
-133   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]);
-134   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
-135   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+133   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 0, ((this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->x[1][2]*this->x[2][1])));
+134   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 1, ((this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2])));
+135   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 2, ((this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0])));
 136   
-137   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
-138   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
-139   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+137   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 0, ((this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2])));
+138   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 1, ((this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2])));
+139   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 2, ((this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0])));
 140   
-141   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
-142   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
-143   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+141   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 0, ((this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1])));
+142   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 1, ((this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2])));
+143   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 2, ((this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1])));
 144 
 145   \textcolor{keywordflow}{return} (adj);
 146 \}
 \end{DoxyCode}
-\hypertarget{classStrain_ad76c72271c32b27122c7fa86376edea3}{\index{Strain@{Strain}!get\-Principal\-Strains@{get\-Principal\-Strains}}
+\hypertarget{classStrain_a441936c89c087ec4ca9927e914a2cece}{\index{Strain@{Strain}!get\-Principal\-Strains@{get\-Principal\-Strains}}
 \index{get\-Principal\-Strains@{get\-Principal\-Strains}!Strain@{Strain}}
-\subsubsection[{get\-Principal\-Strains}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Strain\-::get\-Principal\-Strains (
+\subsubsection[{get\-Principal\-Strains}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Strain\-::get\-Principal\-Strains (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{d1/d3c/classStrain_ad76c72271c32b27122c7fa86376edea3}
+) const}}\label{d1/d3c/classStrain_a441936c89c087ec4ca9927e914a2cece}
 
 
 Get the principal strains. 
 
-Returns a 3-\/member array with the principal strains\-: s11 s22 s33. \begin{DoxyReturn}{Returns}
-3-\/member array with the principal strains. 
+Returns a vector of type \hyperlink{classVector3d}{Vector3d} with the principal strains\-: s11 s22 s33. \begin{DoxyReturn}{Returns}
+\hyperlink{classVector3d}{Vector3d} variable with the principal strains. 
 \end{DoxyReturn}
 
 
-Definition at line 68 of file strain.\-cpp.
+Definition at line 116 of file strain.\-cpp.
 
 
 \begin{DoxyCode}
-69 \{
-70   \textcolor{keywordtype}{double} p[3];
-71   \textcolor{keywordtype}{int} i;
-72 
-73   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-74     \{
-75       p[i] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains}[i];
-76     \}
-77 
-78   \textcolor{keywordflow}{return} (p);
-79 \}
+117 \{
+118   \textcolor{keywordflow}{return} ( \hyperlink{classVector3d}{Vector3d} (this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [0],
+119                      this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [1],
+120                      this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [2] ) );
+121 \}
 \end{DoxyCode}
-\hypertarget{classStrain_acaeb9039234c4adf356668490098db56}{\index{Strain@{Strain}!get\-Shear\-Strains@{get\-Shear\-Strains}}
+\hypertarget{classStrain_a12320d54bd51c0e31159da2d30a8f380}{\index{Strain@{Strain}!get\-Shear\-Strains@{get\-Shear\-Strains}}
 \index{get\-Shear\-Strains@{get\-Shear\-Strains}!Strain@{Strain}}
-\subsubsection[{get\-Shear\-Strains}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Strain\-::get\-Shear\-Strains (
+\subsubsection[{get\-Shear\-Strains}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Strain\-::get\-Shear\-Strains (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{d1/d3c/classStrain_acaeb9039234c4adf356668490098db56}
+) const}}\label{d1/d3c/classStrain_a12320d54bd51c0e31159da2d30a8f380}
 
 
 Get the shear strains. 
 
-Returns a 3-\/member array with the shear strains\-: s12 s13 s23. \begin{DoxyReturn}{Returns}
-3-\/member array with the shear strains. 
+Returns a vector of type \hyperlink{classVector3d}{Vector3d} with the shear strains\-: s12 s13 s23. \begin{DoxyReturn}{Returns}
+\hyperlink{classVector3d}{Vector3d} variable with the shear strains. 
 \end{DoxyReturn}
 
 
-Definition at line 86 of file strain.\-cpp.
+Definition at line 128 of file strain.\-cpp.
 
 
 \begin{DoxyCode}
-87 \{
-88   \textcolor{keywordtype}{double} s[3];
-89   \textcolor{keywordtype}{int} i;
-90 
-91   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-92     \{
-93       s[i] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains}[i];
-94     \}
-95 
-96   \textcolor{keywordflow}{return} (s);
-97 \}
+129 \{
+130   \textcolor{keywordflow}{return} ( \hyperlink{classVector3d}{Vector3d} (this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [0],
+131                      this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [1],
+132                      this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [2] ) );
+133 \}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{\index{Strain@{Strain}!get\-Value@{get\-Value}}
+\hypertarget{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{\index{Strain@{Strain}!get\-Value@{get\-Value}}
 \index{get\-Value@{get\-Value}!Strain@{Strain}}
 \subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::get\-Value (
 \begin{DoxyParamCaption}
 \item[{int}]{row, }
 \item[{int}]{column}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a849bbdf7b456ddacf7185b087fca4015}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ab53b3e37ad830a87a804cf26311ba088}
 
 
 Returns the value of the element located by the row and column indices provided. 
@@ -321,34 +375,34 @@ Matrix with the inverse of the current matrix. If the current matrix is non-\/in
 \end{DoxyReturn}
 
 
-Definition at line 370 of file matrix33.\-cpp.
+Definition at line 374 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-371 \{
-372   \hyperlink{classMatrix33}{Matrix33} r;   \textcolor{comment}{// Result matrix}
-373   
-374   \textcolor{keywordtype}{double} determinant = ~(*this);
-375   
-376   \textcolor{keywordflow}{if} (determinant == 0.0)
-377     \{
-378       \textcolor{comment}{// The matrix is non-invertible}
-379       \textcolor{keywordflow}{return} (r);       \textcolor{comment}{// Zero matrix}
-380     \}
-381   
-382   \textcolor{comment}{// If we are still here, the matrix is invertible}
-383   
-384   \textcolor{comment}{//  Transpose}
-385   \hyperlink{classMatrix33}{Matrix33} tr = ^(*this);
-386   
-387   \textcolor{comment}{// Find Adjugate matrix}
-388   \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate}();
-389   
-390   \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
-391   r = adj * (1.0/determinant);
-392   
-393   \textcolor{keywordflow}{return} (r);
-394 \}
+375 \{
+376   \hyperlink{classMatrix33}{Matrix33} r;   \textcolor{comment}{// Result matrix}
+377   
+378   \textcolor{keywordtype}{double} determinant = ~(*this);
+379   
+380   \textcolor{keywordflow}{if} (determinant == 0.0)
+381     \{
+382       \textcolor{comment}{// The matrix is non-invertible}
+383       \textcolor{keywordflow}{return} (r);       \textcolor{comment}{// Zero matrix}
+384     \}
+385   
+386   \textcolor{comment}{// If we are still here, the matrix is invertible}
+387   
+388   \textcolor{comment}{//  Transpose}
+389   \hyperlink{classMatrix33}{Matrix33} tr = this->\hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose}();
+390   
+391   \textcolor{comment}{// Find Adjugate matrix}
+392   \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate}();
+393   
+394   \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
+395   r = adj * (1.0/determinant);
+396   
+397   \textcolor{keywordflow}{return} (r);
+398 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{Strain@{Strain}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Strain@{Strain}}
@@ -366,24 +420,24 @@ Matrix containing the result of scaling the current matrix by the scalar provide
 \end{DoxyReturn}
 
 
-Definition at line 233 of file matrix33.\-cpp.
+Definition at line 253 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-234 \{
-235   \textcolor{keywordtype}{int} i, j;
-236   \hyperlink{classMatrix33}{Matrix33} r;
-237   
-238   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-239     \{
-240       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-241         \{
-242           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * p;
-243         \}
-244     \}
-245   
-246   \textcolor{keywordflow}{return} (r);
-247 \}
+254 \{
+255   \textcolor{keywordtype}{int} i, j;
+256   \hyperlink{classMatrix33}{Matrix33} r;
+257   
+258   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+259     \{
+260       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+261         \{
+262           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * p));
+263         \}
+264     \}
+265   
+266   \textcolor{keywordflow}{return} (r);
+267 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{Strain@{Strain}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Strain@{Strain}}
@@ -401,28 +455,30 @@ The result of the multiplication of the current matrix with the one provided as 
 \end{DoxyReturn}
 
 
-Definition at line 271 of file matrix33.\-cpp.
+Definition at line 291 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-272 \{
-273   \textcolor{keywordtype}{int} i, j, k;
-274   \hyperlink{classMatrix33}{Matrix33} r;
-275   
-276   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-277     \{
-278       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-279         \{
-280           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = 0.0;
-281           \textcolor{keywordflow}{for} (k=0; k<3; k++)
-282             \{
-283               r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][k] * p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[k][j];
-284             \}
-285         \}
-286     \}
-287   
-288   \textcolor{keywordflow}{return} (r);
-289 \}
+292 \{
+293   \textcolor{keywordtype}{int} i, j, k;
+294   \hyperlink{classMatrix33}{Matrix33} r;
+295   \textcolor{keywordtype}{double} s;
+296   
+297   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+298     \{
+299       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+300         \{
+301           s = 0.0;
+302           \textcolor{keywordflow}{for} (k=0; k<3; k++)
+303             \{
+304               s += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][k] * p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(k,j);
+305             \}
+306           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, s);
+307         \}
+308     \}
+309   
+310   \textcolor{keywordflow}{return} (r);
+311 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{Strain@{Strain}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Strain@{Strain}}
@@ -440,24 +496,27 @@ The vector resulting from the multiplication of the current matrix with a vector
 \end{DoxyReturn}
 
 
-Definition at line 311 of file matrix33.\-cpp.
+Definition at line 333 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-312 \{
-313   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-314   \textcolor{keywordtype}{int} i, j;
-315   
-316   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-317     \{
-318       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-319         \{
-320           r[i] += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * v.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
-321         \}
-322     \}
-323   
-324   \textcolor{keywordflow}{return} (r);
-325 \}
+334 \{
+335   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
+336   \textcolor{keywordtype}{double} s;
+337   \textcolor{keywordtype}{int} i, j;
+338   
+339   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+340     \{
+341       s = 0.0;
+342       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+343         \{
+344           s += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * v.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(j);
+345         \}
+346       r.setValue (i, s);
+347     \}
+348   
+349   \textcolor{keywordflow}{return} (r);
+350 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{Strain@{Strain}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!Strain@{Strain}}
@@ -472,21 +531,21 @@ Operator for reflexive scaling of the matrix by a scalar.
 
 Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
 
-Definition at line 253 of file matrix33.\-cpp.
+Definition at line 273 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-254 \{
-255   \textcolor{keywordtype}{int} i, j;
-256   
-257   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-258     \{
-259       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-260         \{
-261           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] *= p;
-262         \}
-263     \}
-264 \}
+274 \{
+275   \textcolor{keywordtype}{int} i, j;
+276   
+277   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+278     \{
+279       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+280         \{
+281           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] *= p;
+282         \}
+283     \}
+284 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{Strain@{Strain}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!Strain@{Strain}}
@@ -501,19 +560,19 @@ Operator for reflexive multiplication of two matrices.
 
 Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
 
-Definition at line 295 of file matrix33.\-cpp.
+Definition at line 317 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-296 \{
-297   \hyperlink{classMatrix33}{Matrix33}* r = \textcolor{keyword}{new} \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33};
-298   
-299   *r = (*this) * p;
-300   *\textcolor{keyword}{this} = *r;
-301   
-302   \textcolor{keyword}{delete}(r);
-303   r = NULL;
-304 \}
+318 \{
+319   \hyperlink{classMatrix33}{Matrix33}* r = \textcolor{keyword}{new} \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33};
+320   
+321   *r = (*this) * p;
+322   *\textcolor{keyword}{this} = *r;
+323   
+324   \textcolor{keyword}{delete}(r);
+325   r = NULL;
+326 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{Strain@{Strain}!operator+@{operator+}}
 \index{operator+@{operator+}!Strain@{Strain}}
@@ -531,24 +590,24 @@ Matrix containing the sum of the present matrix and the one provided.
 \end{DoxyReturn}
 
 
-Definition at line 155 of file matrix33.\-cpp.
+Definition at line 175 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-156 \{
-157   \textcolor{keywordtype}{int} i, j;
-158   \hyperlink{classMatrix33}{Matrix33} r;
-159   
-160   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-161     \{
-162       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-163         \{
-164           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] + p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-165         \}
-166     \}
-167   
-168   \textcolor{keywordflow}{return} (r);
-169 \}
+176 \{
+177   \textcolor{keywordtype}{int} i, j;
+178   \hyperlink{classMatrix33}{Matrix33} r;
+179   
+180   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+181     \{
+182       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+183         \{
+184           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] + p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j)));
+185         \}
+186     \}
+187   
+188   \textcolor{keywordflow}{return} (r);
+189 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{Strain@{Strain}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!Strain@{Strain}}
@@ -563,21 +622,21 @@ Operator for reflexive addition of two matrices.
 
 Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
 
-Definition at line 175 of file matrix33.\-cpp.
+Definition at line 195 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-176 \{
-177   \textcolor{keywordtype}{int} i, j;
-178   
-179   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-180     \{
-181       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-182         \{
-183           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-184         \}
-185     \}
-186 \}
+196 \{
+197   \textcolor{keywordtype}{int} i, j;
+198   
+199   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+200     \{
+201       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+202         \{
+203           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j);
+204         \}
+205     \}
+206 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{Strain@{Strain}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!Strain@{Strain}}
@@ -595,24 +654,24 @@ Matrix containing the result of subtracting the provided matrix from the current
 \end{DoxyReturn}
 
 
-Definition at line 194 of file matrix33.\-cpp.
+Definition at line 214 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-195 \{
-196   \textcolor{keywordtype}{int} i, j;
-197   \hyperlink{classMatrix33}{Matrix33} r;
-198   
-199   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-200     \{
-201       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-202         \{
-203           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] - p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-204         \}
-205     \}
-206   
-207   \textcolor{keywordflow}{return} (r);
-208 \}
+215 \{
+216   \textcolor{keywordtype}{int} i, j;
+217   \hyperlink{classMatrix33}{Matrix33} r;
+218   
+219   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+220     \{
+221       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+222         \{
+223           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] - p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j)));
+224         \}
+225     \}
+226   
+227   \textcolor{keywordflow}{return} (r);
+228 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{Strain@{Strain}!operator-\/=@{operator-\/=}}
 \index{operator-\/=@{operator-\/=}!Strain@{Strain}}
@@ -627,56 +686,21 @@ Operator for reflexive subtraction of two matrices.
 
 Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
 
-Definition at line 214 of file matrix33.\-cpp.
+Definition at line 234 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-215 \{
-216   \textcolor{keywordtype}{int} i, j;
-217   
-218   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-219     \{
-220       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-221         \{
-222           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] -= p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-223         \}
-224     \}
-225 \}
-\end{DoxyCode}
-\hypertarget{classMatrix33_ad4ab7b9674a44a297502282e1993ef54}{\index{Strain@{Strain}!operator$^\wedge$@{operator$^\wedge$}}
-\index{operator$^\wedge$@{operator$^\wedge$}!Strain@{Strain}}
-\subsubsection[{operator$^\wedge$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator$^\wedge$ (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ad4ab7b9674a44a297502282e1993ef54}
-
-
-Transpose. 
-
-Performs the transpose of the current matrix. \begin{DoxyReturn}{Returns}
-A new matrix with the transpose of the current matrix. 
-\end{DoxyReturn}
-
-
-Definition at line 333 of file matrix33.\-cpp.
-
-
-\begin{DoxyCode}
-334 \{
-335   \hyperlink{classMatrix33}{Matrix33} r;
-336   \textcolor{keywordtype}{int} i, j;
-337   
-338   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-339     \{
-340       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-341         \{
-342           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[j][i];
-343         \}
-344     \}
-345   
-346   \textcolor{keywordflow}{return} (r);
-347 \}
+235 \{
+236   \textcolor{keywordtype}{int} i, j;
+237   
+238   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+239     \{
+240       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+241         \{
+242           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] -= p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j);
+243         \}
+244     \}
+245 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{Strain@{Strain}!operator$\sim$@{operator$\sim$}}
 \index{operator$\sim$@{operator$\sim$}!Strain@{Strain}}
@@ -694,22 +718,22 @@ Returns the determinant of the current matrix.
 \end{DoxyReturn}
 
 
-Definition at line 354 of file matrix33.\-cpp.
+Definition at line 358 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-355 \{
-356   \textcolor{keywordtype}{double} d = 0.0;
-357   
-358   d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) );
-359   d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) );
-360   d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) );
+359 \{
+360   \textcolor{keywordtype}{double} d = 0.0;
 361   
-362   \textcolor{keywordflow}{return} (d);
-363 \}
+362   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*this->
+      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) );
+363   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->
+      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) );
+364   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*this->
+      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) );
+365   
+366   \textcolor{keywordflow}{return} (d);
+367 \}
 \end{DoxyCode}
 \hypertarget{classStrain_a53d0c01b18a8c70da97ad4aaeb924f14}{\index{Strain@{Strain}!populate\-Matrix@{populate\-Matrix}}
 \index{populate\-Matrix@{populate\-Matrix}!Strain@{Strain}}
@@ -724,19 +748,19 @@ Construct the strain tensor from the principal and shear strains.
 
 Takes the values in principal\-Strains and shear\-Strains and constructs the symmetrical strain matrix. 
 
-Definition at line 52 of file strain.\-cpp.
+Definition at line 100 of file strain.\-cpp.
 
 
 \begin{DoxyCode}
-53 \{
-54   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [0];
-55   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [1];
-56   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [2];
-57 
-58   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [0];
-59   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [1];
-60   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [2];
-61 \}
+101 \{
+102   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [0];
+103   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [1];
+104   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = this->\hyperlink{classStrain_a172c6ef4593e35bc9280a2dafde61475}{principalStrains} [2];
+105 
+106   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [0];
+107   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [1];
+108   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = this->\hyperlink{classStrain_afbc4d1b573860bda614a43f767b8b272}{shearStrains} [2];
+109 \}
 \end{DoxyCode}
 \hypertarget{classStrain_a39acbb854eea7868d2b88c6106e80d18}{\index{Strain@{Strain}!rotate@{rotate}}
 \index{rotate@{rotate}!Strain@{Strain}}
@@ -759,18 +783,19 @@ Rotated strain tensor.
 \end{DoxyReturn}
 
 
-Definition at line 105 of file strain.\-cpp.
+Definition at line 141 of file strain.\-cpp.
 
 
 \begin{DoxyCode}
-106 \{
-107   \hyperlink{classMatrix33}{Matrix33} alphaT = ^alpha;  \textcolor{comment}{// Transpose}
-108   \hyperlink{classStrain}{Strain} sNew;
-109 
-110   sNew = alpha * (*this) * alphaT;  \textcolor{comment}{// Rotate the strain matrix}
-111 
-112   \textcolor{keywordflow}{return} (sNew);
-113 \}
+142 \{
+143   \textcolor{comment}{// Transpose}
+144   \hyperlink{classRotationMatrix}{RotationMatrix} alphaT (alpha.\hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose}());
+145 
+146   \textcolor{comment}{// Rotate the strain matrix}
+147   \hyperlink{classStrain}{Strain} sNew = \hyperlink{classStrain_ad7580e057dd173ba4a4609f4edfe6e38}{Strain} (alpha * (*\textcolor{keyword}{this}) * alphaT);
+148 
+149   \textcolor{keywordflow}{return} (sNew);
+150 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{Strain@{Strain}!set\-Value@{set\-Value}}
 \index{set\-Value@{set\-Value}!Strain@{Strain}}
@@ -809,6 +834,40 @@ Definition at line 93 of file matrix33.\-cpp.
 100         \}
 101     \}
 102 \}
+\end{DoxyCode}
+\hypertarget{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{\index{Strain@{Strain}!transpose@{transpose}}
+\index{transpose@{transpose}!Strain@{Strain}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::transpose (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}
+
+
+Returns the transpose of the present matrix. 
+
+The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-\/versa. \begin{DoxyReturn}{Returns}
+The transpose of the present matrix. 
+\end{DoxyReturn}
+
+
+Definition at line 153 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+154 \{
+155   \hyperlink{classMatrix33}{Matrix33} tr;
+156   \textcolor{keywordtype}{int} i, j;
+157 
+158   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+159     \{
+160       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+161         \{
+162           tr.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[j][i]);
+163         \}
+164     \}
+165   \textcolor{keywordflow}{return} (tr);
+166 \}
 \end{DoxyCode}
 
 

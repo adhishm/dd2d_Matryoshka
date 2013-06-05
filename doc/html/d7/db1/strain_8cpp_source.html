@@ -114,56 +114,88 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;  this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14" title="Construct the strain tensor from the principal and shear strains.">populateMatrix</a> ();</div>
 <div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 <div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;</div>
-<div class="line"><a name="l00052"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14">   52</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14" title="Construct the strain tensor from the principal and shear strains.">Strain::populateMatrix</a> ()</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0];</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2];</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a411164cde64f3c51520440f928fb8fd8">   53</a></span>&#160;<a class="code" href="../../d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38" title="Default constructor.">Strain::Strain</a> (<a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> m)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">bool</span> symmetry = <span class="keyword">true</span>;</div>
 <div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0];</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1];</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2];</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;</div>
-<div class="line"><a name="l00068"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#ad76c72271c32b27122c7fa86376edea3">   68</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="../../d1/d3c/classStrain.html#ad76c72271c32b27122c7fa86376edea3" title="Get the principal strains.">Strain::getPrincipalStrains</a> ()</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">double</span> p[3];</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      p[i] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a>[i];</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Verify symmetry</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;          <span class="keywordflow">if</span> (m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(i,j) != m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(j,i))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              symmetry = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;              <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (symmetry)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="comment">// The matrix is symmetrical</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,0);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(1,1);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(2,2);</div>
 <div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">return</span> (p);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;</div>
-<div class="line"><a name="l00086"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#acaeb9039234c4adf356668490098db56">   86</a></span>&#160;<span class="keywordtype">double</span>* <a class="code" href="../../d1/d3c/classStrain.html#acaeb9039234c4adf356668490098db56" title="Get the shear strains.">Strain::getShearStrains</a> ()</div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">double</span> s[3];</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      s[i] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a>[i];</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,1);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,2);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(1,2);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="comment">// The matrix is asymmetrical</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="comment">// A zero matrix will be returned</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a>[i] = 0.0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a>[i] = 0.0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14" title="Construct the strain tensor from the principal and shear strains.">populateMatrix</a> ();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
 <div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> (s);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
-<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;</div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a39acbb854eea7868d2b88c6106e80d18">  105</a></span>&#160;<a class="code" href="../../d1/d3c/classStrain.html" title="Strain class to represent the strain tensor.">Strain</a> <a class="code" href="../../d1/d3c/classStrain.html#a39acbb854eea7868d2b88c6106e80d18" title="Rotate the strain tensor from one coordinate system to another.">Strain::rotate</a> (<a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a> alpha)</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="../../d1/d3c/classStrain.html" title="Strain class to represent the strain tensor.">Strain</a> sNew;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  sNew = alpha * (*this) * alphaT;  <span class="comment">// Rotate the strain matrix</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> (sNew);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14">  100</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14" title="Construct the strain tensor from the principal and shear strains.">Strain::populateMatrix</a> ()</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0];</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1];</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2];</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0];</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2];</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;</div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a441936c89c087ec4ca9927e914a2cece">  116</a></span>&#160;<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../d1/d3c/classStrain.html#a441936c89c087ec4ca9927e914a2cece" title="Get the principal strains.">Strain::getPrincipalStrains</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">return</span> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> (this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0],</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1],</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2] ) );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;</div>
+<div class="line"><a name="l00128"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a12320d54bd51c0e31159da2d30a8f380">  128</a></span>&#160;<a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="code" href="../../d1/d3c/classStrain.html#a12320d54bd51c0e31159da2d30a8f380" title="Get the shear strains.">Strain::getShearStrains</a> ()<span class="keyword"> const</span></div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">return</span> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> (this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0],</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1],</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2] ) );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;</div>
+<div class="line"><a name="l00141"></a><span class="lineno"><a class="code" href="../../d1/d3c/classStrain.html#a39acbb854eea7868d2b88c6106e80d18">  141</a></span>&#160;<a class="code" href="../../d1/d3c/classStrain.html" title="Strain class to represent the strain tensor.">Strain</a> <a class="code" href="../../d1/d3c/classStrain.html#a39acbb854eea7868d2b88c6106e80d18" title="Rotate the strain tensor from one coordinate system to another.">Strain::rotate</a> (<a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a> alpha)</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="comment">// Transpose</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a> alphaT (alpha.<a class="code" href="../../de/d82/classMatrix33.html#a64418c1a8836b38526fdfd7ffcc79cfd" title="Returns the transpose of the present matrix.">transpose</a>());</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment">// Rotate the strain matrix</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../d1/d3c/classStrain.html" title="Strain class to represent the strain tensor.">Strain</a> sNew = <a class="code" href="../../d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38" title="Default constructor.">Strain</a> (alpha * (*<span class="keyword">this</span>) * alphaT);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordflow">return</span> (sNew);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Tue Jun 4 2013 21:33:06 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Wed Jun 5 2013 17:20:42 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

@@ -27,13 +27,13 @@ var searchData=
   ['sqrt2',['SQRT2',['../d2/d6f/constants_8h.html#a514396dd60fa0621c83072091fb2a0cd',1,'constants.h']]],
   ['sqrt3',['SQRT3',['../d2/d6f/constants_8h.html#ae42978afd835c3a1f70d409a1b5f5a39',1,'constants.h']]],
   ['sqrt5',['SQRT5',['../d2/d6f/constants_8h.html#a9096473cd4539c628de1fa47d919ef78',1,'constants.h']]],
-  ['strain',['Strain',['../d1/d3c/classStrain.html',1,'Strain'],['../d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38',1,'Strain::Strain()'],['../d1/d3c/classStrain.html#a808b5a0e273cc87e19138f3be221fe53',1,'Strain::Strain(double *principal, double *shear)']]],
+  ['strain',['Strain',['../d1/d3c/classStrain.html',1,'Strain'],['../d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38',1,'Strain::Strain()'],['../d1/d3c/classStrain.html#a808b5a0e273cc87e19138f3be221fe53',1,'Strain::Strain(double *principal, double *shear)'],['../d1/d3c/classStrain.html#a411164cde64f3c51520440f928fb8fd8',1,'Strain::Strain(Matrix33 m)']]],
   ['strain_2ecpp',['strain.cpp',['../d7/db1/strain_8cpp.html',1,'']]],
   ['strain_2eh',['strain.h',['../df/dc2/strain_8h.html',1,'']]],
-  ['stress',['Stress',['../d1/d1c/classStress.html',1,'Stress'],['../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e',1,'Stress::Stress()'],['../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab',1,'Stress::Stress(double *principal, double *shear)']]],
+  ['stress',['Stress',['../d1/d1c/classStress.html',1,'Stress'],['../d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e',1,'Stress::Stress()'],['../d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab',1,'Stress::Stress(double *principal, double *shear)'],['../d1/d1c/classStress.html#a267d09256246063f83de6e747d1bfe00',1,'Stress::Stress(Matrix33 m)']]],
   ['stress_2ecpp',['stress.cpp',['../d4/d58/stress_8cpp.html',1,'']]],
   ['stress_2eh',['stress.h',['../d2/d50/stress_8h.html',1,'']]],
   ['stressfield',['stressField',['../d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2',1,'Defect::stressField()'],['../d3/dc6/classDislocation.html#af61cedf5305080ce0f55eb7177efe529',1,'Dislocation::stressField()']]],
-  ['stressfieldlocal',['stressFieldLocal',['../d3/dc6/classDislocation.html#a163d6c52c2281a1b7fa9aab058c8fb84',1,'Dislocation']]],
-  ['sum',['sum',['../df/dd0/classVector3d.html#a76fa7fc5a86ba77a6764eb0d9072e90a',1,'Vector3d']]]
+  ['stressfieldlocal',['stressFieldLocal',['../d3/dc6/classDislocation.html#a26f938bfb630c3ba1b13522d7a422b8c',1,'Dislocation']]],
+  ['sum',['sum',['../df/dd0/classVector3d.html#ae27b1ede7f5be29d80d95099f2ef3e23',1,'Vector3d']]]
 ];

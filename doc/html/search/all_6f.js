@@ -7,7 +7,7 @@ var searchData=
   ['operator_2b_3d',['operator+=',['../de/d82/classMatrix33.html#acb59e59d3937e075521f478ba83b7165',1,'Matrix33::operator+=()'],['../df/dd0/classVector3d.html#a034e9f847d613c9cba1cb47202b8143a',1,'Vector3d::operator+=()']]],
   ['operator_2d',['operator-',['../de/d82/classMatrix33.html#a372f71ec208bb6d3045acd4324b7cb06',1,'Matrix33::operator-()'],['../df/dd0/classVector3d.html#a727932bfb1f230c8f256e10a0d45a8c7',1,'Vector3d::operator-()']]],
   ['operator_2d_3d',['operator-=',['../de/d82/classMatrix33.html#abc889e10a9c7c532195c7031c1344a74',1,'Matrix33::operator-=()'],['../df/dd0/classVector3d.html#a14d45e123683a1f1a2ba32d43083fcd7',1,'Vector3d::operator-=()']]],
-  ['operator_5e',['operator^',['../de/d82/classMatrix33.html#ad4ab7b9674a44a297502282e1993ef54',1,'Matrix33::operator^()'],['../df/dd0/classVector3d.html#a3a8254737a895334fc887d98e8446298',1,'Vector3d::operator^()']]],
+  ['operator_5e',['operator^',['../df/dd0/classVector3d.html#a3a8254737a895334fc887d98e8446298',1,'Vector3d']]],
   ['operator_5e_3d',['operator^=',['../df/dd0/classVector3d.html#a868e89192951f4a25f63b958ec419f6f',1,'Vector3d']]],
   ['operator_7e',['operator~',['../de/d82/classMatrix33.html#a15b37caa6ab0d9f4a9f0d95846abd675',1,'Matrix33']]]
 ];
