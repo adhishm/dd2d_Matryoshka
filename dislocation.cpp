@@ -140,6 +140,33 @@ bool Dislocation::isMobile () const
   return (this->mobile);
 }
 
+/**
+ * @brief Gets the total stress in the current iteration.
+ * @return Total stress in the current iteration.
+ */
+Stress Dislocation::getTotalStress () const
+{
+  return (this->totalStress);
+}
+
+/**
+ * @brief Gets the total force on the dislocation in the current iteration.
+ * @return Total force on the dislocation in the current iteration.
+ */
+Vector3d Dislocation::getTotalForce () const
+{
+  return (this->force);
+}
+
+/**
+ * @brief The velocity of the dislocation in the current iteration.
+ * @return Velocity of the dislocation in the current iteration.
+ */
+Vector3d Dislocation::getVelocity () const
+{
+  return (this->velocity);
+}
+
 // Rotation matrix
 /**
  * @brief Calculate the roation matrix.

@@ -166,6 +166,24 @@ public:
    * @return Returns true if the dislocation is mobile, false if pinned.
    */
   bool isMobile () const;
+
+  /**
+   * @brief Gets the total stress in the current iteration.
+   * @return Total stress in the current iteration.
+   */
+  Stress getTotalStress () const;
+
+  /**
+   * @brief Gets the total force on the dislocation in the current iteration.
+   * @return Total force on the dislocation in the current iteration.
+   */
+  Vector3d getTotalForce () const;
+
+  /**
+   * @brief The velocity of the dislocation in the current iteration.
+   * @return Velocity of the dislocation in the current iteration.
+   */
+  Vector3d getVelocity () const;
   
   // Rotation matrix
   /**

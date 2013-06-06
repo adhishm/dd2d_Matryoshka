@@ -314,14 +314,13 @@ void SlipPlane::calculateRotationMatrix ()
  {
    std::vector<Dislocation>::iterator d1;  // Iterator for each dislocation
    std::vector<Dislocation>::iterator d2;  // Nested iterator
-   std::vector<Stress>::iterator s;        // Iterator for the Stress
+   Stress s;                               // Variable for stress
 
    Vector3d p;                             // Position vector
 
-   s = this->dislocationStresses.begin();
    for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
      {
-       *s = appliedStress;
+       s = appliedStress;
        p = d1->getPosition();
        for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
 	 {
@@ -331,9 +330,11 @@ void SlipPlane::calculateRotationMatrix ()
 	     }
 	   else
 	     {
-	       *s = *s + d2->stressField(p, mu, nu);
+	       // Superpose the stress fields of all other dislocations
+	       s += d2->stressField(p, mu, nu);
 	     }
 	 }
+       d1->setTotalStress (s);
      }
  }
 
@@ -345,17 +346,10 @@ void SlipPlane::calculateRotationMatrix ()
  void SlipPlane::calculateDislocationForces (double tau_crss)
  {
    std::vector<Dislocation>::iterator d;  // Iterator for dislocations
-   std::vector<Vector3d>::iterator f;     // Iterator for forces
-   std::vector<Stress>::iterator s;       // Iterator for stresses
-
-   s = this->dislocationStresses.begin();
-   f = this->dislocationForces.begin();
-
+   
    for (d = this->dislocations.begin(); d!=this->dislocations.end(); d++)
      {
-       *f = d->forcePeachKoehler (*s, tau_crss);
-       s++;
-       f++;
+       d->setTotalForce ( d->forcePeachKoehler(d->getTotalStress(), tau_crss) );
      }
  }
 
