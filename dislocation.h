@@ -10,6 +10,8 @@
 #ifndef DISLOCATION_H
 #define DISLOCATION_H
 
+#include <vector>
+
 #include "defect.h"
 #include "dislocationDefaults.h"
 #include "constants.h"
@@ -48,6 +50,42 @@ protected:
    * @details This is the rotation matrix that represents the relationship between the global and local co-ordinate systems. It is used to convert tensors and vectors between the two systems. The rotation matrix needs to be calculated once and may be refreshed periodically if lattice rotation is implemented. In the absence of lattice rotation, the matrix will remain invariant.
    */
   RotationMatrix rotationMatrix;
+
+  /**
+   * @brief The total stress experienced by the dislocation.
+   * @details The dislocation experiences a stress that is the superposition of the externally applied stress and the stress fields of all the dislocations and other entities present in the simulation.
+   */
+  Stress totalStress;
+
+  /**
+   * @brief Keeps a trace of the total stress from every iteration.
+   * @details The total stress experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this variable may be useful for calculating average stresses over a given time period.
+   */
+  std::vector<Stress> totalStresses;
+
+  /**
+   * @brief The Peach-Koehler force experienced by the dislocation.
+   * @details The Peach-Koehler force is the force experienced by the dislocation due to the total stress on it. The CRSS condition must be checked for: if the total resolved stress is lower than the CRSS value, the force should be zero.
+   */
+  Vector3d force;
+
+  /**
+   * @brief Keeps a trace of the force on the dislocation from every iteration.
+   * @details The total force experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this vector may be useful for calculating average forces over a given time period.
+   */
+  std::vector<Vector3d> forces;
+
+  /**
+   * @brief The dislocation's velocity due to the force on it.
+   * @details The dislocation velocity if calculated to be directly proportional to the Peach-Koehler force on it.
+   */
+  Vector3d velocity;
+
+  /**
+   * @brief Keeps a trace of the velocity of the dislocation from every iteration.
+   * @details The velocity of the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this vector may be useful for calculating average velocities over a given time period.
+   */
+  std::vector<Vector3d> velocities;
   
 public:
   // Constructors
@@ -93,6 +131,24 @@ public:
    * @details Sets the flag mobile to false.
    */
   void setPinned ();
+
+  /**
+   * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+   * @param s Stress.
+   */
+  void setTotalStress (Stress s);
+
+  /**
+   * @brief Sets the total force in the class and the vector keeping track of forces in each iteration.
+   * @param f Force.
+   */
+  void setTotalForce (Vector3d f);
+
+  /**
+   * @brief Sets the total velocity in the class and the vector keeping track of velocities in each iteration.
+   * @param v Velocity.
+   */
+  void setVelocity (Vector3d v);
   
   // Access functions
   /**

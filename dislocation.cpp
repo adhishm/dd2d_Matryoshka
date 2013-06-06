@@ -82,6 +82,36 @@ void Dislocation::setPinned ()
   this->mobile = false;
 }
 
+/**
+ * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+ * @param s Stress.
+ */
+void Dislocation::setTotalStress (Stress s)
+{
+  this->totalStress = s;
+  this->totalStresses.push_back (s);
+}
+
+/**
+ * @brief Sets the total force in the class and the vector keeping track of forces in each iteration.
+ * @param f Force.
+ */
+void Dislocation::setTotalForce (Vector3d f)
+{
+  this->force = f;
+  this->forces.push_back (f);
+}
+
+/**
+ * @brief Sets the total velocity in the class and the vector keeping track of velocities in each iteration.
+ * @param v Velocity.
+ */
+void Dislocation::setVelocity (Vector3d v)
+{
+  this->velocity = v;
+  this->velocities.push_back (v);
+}
+
 // Access functions
 /**
  * @brief Gets the Burgers vector of the dislocation.
