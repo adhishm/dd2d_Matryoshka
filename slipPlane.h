@@ -54,24 +54,6 @@ protected:
   std::vector<Dislocation> dislocations;
 
   /**
-   * @brief STL vector container with the stress fields of dislocations.
-   * @details The stress fields experienced by the dislocations, expressed in the global co-ordinate system,  are stored in this vector with positions corresponding to the positions of dislocations in the vector dislocations.
-   */
-  std::vector<Stress> dislocationStresses;
-
-  /**
-   * @brief The Peach-Koehler force experienced by each dislocation.
-   * @details This vector container stores the Peah-Koehler force experienced by each dislocation. They are calculated in each iteration by thefunction calculateDislocationForces(tau_crss).
-   */
-  std::vector<Vector3d> dislocationForces;
-
-  /**
-   * @brief STL vector container with dislocation velocities.
-   * @details The dislocations on this slip plane will have a velocity associated with them. These velocity vectors are stored in this container. The order is the same as the order of the dislocations.
-   */
-  std::vector<Vector3d> dislocationVelocities;
-  
-  /**
    * @brief STL vector container with dislocation sources.
    * @details A slip plane may contain several dislocation sources. These are stored in this vector container dislocationSources.
    */
@@ -223,7 +205,7 @@ public:
   void calculateRotationMatrix ();
 
   /**
-   * @brief Calculates the total stress field experienced by each dislocation and stored it in the STL vector container dislocationStresses.
+   * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
    * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
    * @param appliedStress The stress applied externally.
    * @param mu Shear modulus of the material.
@@ -232,15 +214,15 @@ public:
   void calculateDislocationStresses (Stress appliedStress, double mu, double nu);
 
   /**
-   * @brief This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.
-   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the STL vector SlipPlane::dislocationStresses. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
+   * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
+   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
    * @param tau_crss Critical Resolved Shear Stress in Pa.
    */
   void calculateDislocationForces (double tau_crss);
 
   /**
-   * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
-   * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+   * @brief Calculates the velocities of dislocations and stores them in the variable Vector3d Dislocation::velocity and also puts it at the end of std::vector<Vector3d> Dislocation::velocities.
+   * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
    * param B The drag coefficient.
    */
   void calculateVelocities (double B);
