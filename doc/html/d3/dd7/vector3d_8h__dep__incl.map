@@ -1,6 +1,7 @@
 <map id="vector3d.h" name="vector3d.h">
-<area shape="rect" id="node3" href="$db/d46/matrix33_8h.html" title="Definition of the Matrix33 class." alt="" coords="488,83,571,112"/>
-<area shape="rect" id="node41" href="$d7/d35/vector3d_8cpp.html" title="Definition of member functions and operators of the Vector3d class." alt="" coords="595,83,691,112"/>
+<area shape="rect" id="node3" href="$db/d46/matrix33_8h.html" title="Definition of the Matrix33 class." alt="" coords="573,83,656,112"/>
+<area shape="rect" id="node40" href="$d0/ddd/standardSlipSystem_8h.html" title="Definition of the StandardSlipSystem class." alt="" coords="733,160,883,189"/>
+<area shape="rect" id="node46" href="$d7/d35/vector3d_8cpp.html" title="Definition of member functions and operators of the Vector3d class." alt="" coords="807,83,903,112"/>
 <area shape="rect" id="node5" href="$d2/d50/stress_8h.html" title="Definition of the Stress class." alt="" coords="327,237,396,267"/>
 <area shape="rect" id="node29" href="$da/d76/rotationMatrix_8h.html" title="Definition of the RotationMatrix class." alt="" coords="427,160,539,189"/>
 <area shape="rect" id="node34" href="$df/dc2/strain_8h.html" title="Definition of the Strain class." alt="" coords="569,237,633,267"/>
@@ -17,4 +18,5 @@
 <area shape="rect" id="node21" href="$db/dab/slipPlane_8cpp.html" title="Definition of the member functions of the SlipPlane class." alt="" coords="280,624,379,653"/>
 <area shape="rect" id="node32" href="$d9/d5c/rotationMatrix_8cpp.html" title="Definition of the RotationMatrix class member functions." alt="" coords="420,237,545,267"/>
 <area shape="rect" id="node36" href="$d7/db1/strain_8cpp.html" title="Definition of the member functions if the Strain class." alt="" coords="563,315,640,344"/>
+<area shape="rect" id="node42" href="$d8/d92/standardSlipSystem_8cpp.html" title="Definition of the member functions of the StandardSlipSystem class." alt="" coords="727,237,889,267"/>
 </map>
