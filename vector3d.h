@@ -12,6 +12,8 @@
 
 #include <stdlib.h>
 #include <math.h>
+#include <vector>
+#include <iterator>
 
 /**
  * @brief Vector3d class representing a single 3-dimensional vector in the simulation.

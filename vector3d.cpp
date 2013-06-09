@@ -162,7 +162,7 @@ Vector3d Vector3d::normalize ()
     return ((*this) * (1.0/m));
   }
 }
-  
+
 // Operators
 // Addition
 /**
