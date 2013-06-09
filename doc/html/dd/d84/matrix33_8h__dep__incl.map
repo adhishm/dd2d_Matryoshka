@@ -3,6 +3,7 @@
 <area shape="rect" id="node27" href="$da/d76/rotationMatrix_8h.html" title="Definition of the RotationMatrix class." alt="" coords="427,83,539,112"/>
 <area shape="rect" id="node32" href="$df/dc2/strain_8h.html" title="Definition of the Strain class." alt="" coords="569,160,633,189"/>
 <area shape="rect" id="node36" href="$d8/d8e/matrix33_8cpp.html" title="Definition of the member functions and operators of the Matrix33 class." alt="" coords="613,83,709,112"/>
+<area shape="rect" id="node38" href="$d0/ddd/standardSlipSystem_8h.html" title="Definition of the StandardSlipSystem class." alt="" coords="733,83,883,112"/>
 <area shape="rect" id="node5" href="$df/d55/defect_8h.html" title="Definition of the Defect class." alt="" coords="277,237,347,267"/>
 <area shape="rect" id="node25" href="$d4/d58/stress_8cpp.html" title="Definition of the member functions if the Stress class." alt="" coords="371,237,453,267"/>
 <area shape="rect" id="node7" href="$dd/def/defect_8cpp.html" title="Definition of member functions of the Defect class." alt="" coords="159,315,241,344"/>
@@ -15,4 +16,5 @@
 <area shape="rect" id="node19" href="$db/dab/slipPlane_8cpp.html" title="Definition of the member functions of the SlipPlane class." alt="" coords="280,547,379,576"/>
 <area shape="rect" id="node30" href="$d9/d5c/rotationMatrix_8cpp.html" title="Definition of the RotationMatrix class member functions." alt="" coords="420,160,545,189"/>
 <area shape="rect" id="node34" href="$d7/db1/strain_8cpp.html" title="Definition of the member functions if the Strain class." alt="" coords="563,237,640,267"/>
+<area shape="rect" id="node40" href="$d8/d92/standardSlipSystem_8cpp.html" title="Definition of the member functions of the StandardSlipSystem class." alt="" coords="727,160,889,189"/>
 </map>

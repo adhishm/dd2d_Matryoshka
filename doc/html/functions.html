@@ -102,7 +102,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -152,6 +152,15 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </li>
 <li>countIterations
 : <a class="el" href="de/de3/classDislocationSource.html#ac566b877a7c43922077af29bba597a93">DislocationSource</a>
+</li>
+<li>createBCCSlipSystems()
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#a0e16ffd0edb356391c897dc2d9d081b5">StandardSlipSystem</a>
+</li>
+<li>createFCCSlipSystems()
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#a858593f0b75144a98b878623d9fa5ba6">StandardSlipSystem</a>
+</li>
+<li>createSlipSystems()
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#a64a1d61c4f43a2cec6aa9000bd8c2231">StandardSlipSystem</a>
 </li>
 </ul>
 
@@ -365,6 +374,9 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>normalVector
 : <a class="el" href="db/d25/classSlipPlane.html#aad33ce7b595e5fc55aefe51c7b0957f2">SlipPlane</a>
 </li>
+<li>nSlipSystems
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#a893e6d9f9192061d9d3c83a9b8d0d61d">StandardSlipSystem</a>
+</li>
 </ul>
 
 
@@ -524,21 +536,30 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 <li>shearStresses
 : <a class="el" href="d1/d1c/classStress.html#a77e8705e56c2fb56826a638edf3f78bf">Stress</a>
 </li>
+<li>slipDirection
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#af374545c3095d91935eb1a7fc5cc55c2">StandardSlipSystem</a>
+</li>
 <li>SlipPlane()
 : <a class="el" href="db/d25/classSlipPlane.html#aa1cfea0af8f0a0179490ff8cae715990">SlipPlane</a>
 </li>
+<li>slipPlaneNormalVector
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#ad26f5235cfada6bec941410a2a002e6b">StandardSlipSystem</a>
+</li>
 <li>sortDislocations()
 : <a class="el" href="db/d25/classSlipPlane.html#a7fc607c17e5532aed5e93339dc03b18d">SlipPlane</a>
+</li>
+<li>StandardSlipSystem()
+: <a class="el" href="d1/dd4/classStandardSlipSystem.html#aae11c41e2c75974b053460fd31a800a3">StandardSlipSystem</a>
 </li>
 <li>Strain()
 : <a class="el" href="d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38">Strain</a>
 </li>
 <li>Stress()
-: <a class="el" href="d1/d1c/classStress.html#ae4e2f6250e3bdd4d3d78a9c6bdde7bab">Stress</a>
+: <a class="el" href="d1/d1c/classStress.html#aa01e83a3f6791cbadc5a368e3a40515e">Stress</a>
 </li>
 <li>stressField()
-: <a class="el" href="d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2">Defect</a>
-, <a class="el" href="d3/dc6/classDislocation.html#af61cedf5305080ce0f55eb7177efe529">Dislocation</a>
+: <a class="el" href="d3/dc6/classDislocation.html#af61cedf5305080ce0f55eb7177efe529">Dislocation</a>
+, <a class="el" href="d5/d4f/classDefect.html#a5730a89ce804d75090c9fa35ffdfefa2">Defect</a>
 </li>
 <li>stressFieldLocal()
 : <a class="el" href="d3/dc6/classDislocation.html#a26f938bfb630c3ba1b13522d7a422b8c">Dislocation</a>
@@ -587,7 +608,7 @@ var searchBox = new SearchBox("searchBox", "search",false,'Search');
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 6 2013 17:12:07 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 7 2013 17:06:18 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>
