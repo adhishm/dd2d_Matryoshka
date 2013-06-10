@@ -63,8 +63,8 @@ void StandardSlipSystem::createBCCSlipSystems ()
  */
 void StandardSlipSystem::createSlipSystems (Vector3d n, Vector3d d)
 {
-  std::vector<Vector3d> normals    = n.permute ();
-  std::vector<Vector3d> directions = d.permute ();
+  std::vector<Vector3d> normals    = permuteVector (n);
+  std::vector<Vector3d> directions = permuteVector (d);
 
   std::vector<Vector3d>::iterator ni; // Iterator for normals
   std::vector<Vector3d>::iterator di; // Iterator for directions
