@@ -14,6 +14,7 @@
 
 #include "vector3d.h"
 #include "matrix33.h"
+#include "tools.h"
 
 // Defaults
 /**
