@@ -232,13 +232,16 @@ public:
    * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
    * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
    * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+   * @return STL vector container with the ideal time increments for all the dislocations.
    */
-  void calculateTimeIncrement (double minDistance, double minDt);
+  std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
 
   /**
    * @brief Displaces the dislocations according to their velocities and the time increment.
+   * @details This function displaces the dislocations according to the velocities and time increment. If the time increment is smaller than the global time increment, the dislocation moves with this smaller value, effectively moving up to the limiting distance to the next defect and stopping there.
+   * @param timeIncrement STL vector containing the timeIncrements of all the dislocations.
    */
-  void moveDislocations ();
+  void moveDislocations (std::vector<double> timeIncrement);
 
   /**
    * @brief The distance of the point pos from the n^th extremity is returned.

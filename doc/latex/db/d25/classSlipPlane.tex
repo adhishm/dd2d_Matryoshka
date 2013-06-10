@@ -66,9 +66,9 @@ void \hyperlink{classSlipPlane_ac16d1abbbc3b938b6f1f29a33a70212d}{calculate\-Dis
 \begin{DoxyCompactList}\small\item\em This function calculates the Peach-\/\-Koehler force experienced by each dislocation and stores it in \hyperlink{classDislocation_a9c19c7493d896bd845c489e1ec3cbbb6}{Dislocation\-::force} and puts it at the end of std\-::vector$<$\-Vector3d$>$ \hyperlink{classDislocation_aa8f4567bbfc6a58aaad01d5c423658c1}{Dislocation\-::forces}. \end{DoxyCompactList}\item 
 void \hyperlink{classSlipPlane_aff7af69ba5235da6c8b142193509683c}{calculate\-Velocities} (double B)
 \begin{DoxyCompactList}\small\item\em Calculates the velocities of dislocations and stores them in the variable \hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocation_ad6f4e8e94b2525c2e58a77b9d2916c0e}{Dislocation\-::velocity} and also puts it at the end of std\-::vector$<$\-Vector3d$>$ \hyperlink{classDislocation_a9ccdef63384a8b965e70f13920a852f8}{Dislocation\-::velocities}. \end{DoxyCompactList}\item 
-void \hyperlink{classSlipPlane_a5418245f8c716d4a35405d68db53bc66}{calculate\-Time\-Increment} (double min\-Distance, double min\-Dt)
+std\-::vector$<$ double $>$ \hyperlink{classSlipPlane_a255d67230132cf1c7bf18f61098a8b4f}{calculate\-Time\-Increment} (double min\-Distance, double min\-Dt)
 \begin{DoxyCompactList}\small\item\em Calculate the time increment based on the velocities of the dislocations. \end{DoxyCompactList}\item 
-void \hyperlink{classSlipPlane_a02482abbb9b9db28a9bb19e6a1c181b5}{move\-Dislocations} ()
+void \hyperlink{classSlipPlane_a88bc78651af7a440ab41c3d28baea5c0}{move\-Dislocations} (std\-::vector$<$ double $>$ time\-Increment)
 \begin{DoxyCompactList}\small\item\em Displaces the dislocations according to their velocities and the time increment. \end{DoxyCompactList}\item 
 double \hyperlink{classSlipPlane_a3523030cccb520b5253a811d062f3ddf}{distance\-From\-Extremity} (\hyperlink{classVector3d}{Vector3d} pos, int n)
 \begin{DoxyCompactList}\small\item\em The distance of the point pos from the n$^\wedge$th extremity is returned. \end{DoxyCompactList}\item 
@@ -220,14 +220,14 @@ Definition at line 343 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-344  \{
-345    std::vector<Dislocation>::iterator d;  \textcolor{comment}{// Iterator for dislocations}
+344 \{
+345   std::vector<Dislocation>::iterator d;  \textcolor{comment}{// Iterator for dislocations}
 346    
-347    \textcolor{keywordflow}{for} (d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d!=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d++)
-348      \{
-349        d->setTotalForce ( d->forcePeachKoehler(d->getTotalStress(), tau\_crss) );
-350      \}
-351  \}
+347   \textcolor{keywordflow}{for} (d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d!=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d++)
+348     \{
+349       d->setTotalForce ( d->forcePeachKoehler(d->getTotalStress(), tau\_crss) );
+350     \}
+351 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a2d4d2d031502d4a6f0aebbad0990b882}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Dislocation\-Stresses@{calculate\-Dislocation\-Stresses}}
 \index{calculate\-Dislocation\-Stresses@{calculate\-Dislocation\-Stresses}!SlipPlane@{Slip\-Plane}}
@@ -257,32 +257,32 @@ Definition at line 310 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-311  \{
-312    std::vector<Dislocation>::iterator d1;  \textcolor{comment}{// Iterator for each dislocation}
-313    std::vector<Dislocation>::iterator d2;  \textcolor{comment}{// Nested iterator}
-314    \hyperlink{classStress}{Stress} s;                               \textcolor{comment}{// Variable for stress}
+311 \{
+312   std::vector<Dislocation>::iterator d1;  \textcolor{comment}{// Iterator for each dislocation}
+313   std::vector<Dislocation>::iterator d2;  \textcolor{comment}{// Nested iterator}
+314   \hyperlink{classStress}{Stress} s;                               \textcolor{comment}{// Variable for stress}
 315 
-316    \hyperlink{classVector3d}{Vector3d} p;                             \textcolor{comment}{// Position vector}
+316   \hyperlink{classVector3d}{Vector3d} p;                             \textcolor{comment}{// Position vector}
 317 
-318    \textcolor{keywordflow}{for} (d1=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d1!=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d1++)
-319      \{
-320        s = appliedStress;
-321        p = d1->getPosition();
-322        \textcolor{keywordflow}{for} (d2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d2!=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d2++)
-323          \{
-324            \textcolor{keywordflow}{if} (d1==d2)
-325              \{
-326                \textcolor{keywordflow}{continue};
-327              \}
-328            \textcolor{keywordflow}{else}
-329              \{
-330                \textcolor{comment}{// Superpose the stress fields of all other dislocations}
-331                s += d2->stressField(p, mu, nu);
-332              \}
-333          \}
-334        d1->setTotalStress (s);
-335      \}
-336  \}
+318   \textcolor{keywordflow}{for} (d1=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d1!=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d1++)
+319     \{
+320       s = appliedStress;
+321       p = d1->getPosition();
+322       \textcolor{keywordflow}{for} (d2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d2!=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d2++)
+323         \{
+324           \textcolor{keywordflow}{if} (d1==d2)
+325             \{
+326               \textcolor{keywordflow}{continue};
+327             \}
+328           \textcolor{keywordflow}{else}
+329             \{
+330               \textcolor{comment}{// Superpose the stress fields of all other dislocations}
+331               s += d2->stressField(p, mu, nu);
+332             \}
+333         \}
+334       d1->setTotalStress (s);
+335     \}
+336 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a5d9054f21be225f50860ad1351e3a86f}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Rotation\-Matrix@{calculate\-Rotation\-Matrix}}
 \index{calculate\-Rotation\-Matrix@{calculate\-Rotation\-Matrix}!SlipPlane@{Slip\-Plane}}
@@ -309,14 +309,14 @@ Definition at line 277 of file slip\-Plane.\-cpp.
 283   
 284   \textcolor{comment}{// Prepare the global and local systems}
 285   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-286   \{
-287     \textcolor{keywordflow}{for} (j=0; j<3; j++)
-288     \{
-289       unPrimed[i].\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue}(j, (\textcolor{keywordtype}{double})(i==j));
-290     \}
+286     \{
+287       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+288         \{
+289           unPrimed[i].\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue}(j, (\textcolor{keywordtype}{double})(i==j));
+290         \}
 291     
-292     primed[i] = this->\hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{getAxis}(i);
-293   \}
+292       primed[i] = this->\hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{getAxis}(i);
+293     \}
 294   
 295   \textcolor{comment}{// Calculate the rotationMatrix}
 296   this->\hyperlink{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{rotationMatrix} = \hyperlink{classRotationMatrix}{RotationMatrix}(unPrimed, primed);
@@ -326,14 +326,14 @@ Definition at line 277 of file slip\-Plane.\-cpp.
 300   \textcolor{keyword}{delete}(primed);       primed = NULL;
 301 \}
 \end{DoxyCode}
-\hypertarget{classSlipPlane_a5418245f8c716d4a35405d68db53bc66}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Time\-Increment@{calculate\-Time\-Increment}}
+\hypertarget{classSlipPlane_a255d67230132cf1c7bf18f61098a8b4f}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Time\-Increment@{calculate\-Time\-Increment}}
 \index{calculate\-Time\-Increment@{calculate\-Time\-Increment}!SlipPlane@{Slip\-Plane}}
-\subsubsection[{calculate\-Time\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::calculate\-Time\-Increment (
+\subsubsection[{calculate\-Time\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}std\-::vector$<$ double $>$ Slip\-Plane\-::calculate\-Time\-Increment (
 \begin{DoxyParamCaption}
 \item[{double}]{min\-Distance, }
 \item[{double}]{min\-Dt}
 \end{DoxyParamCaption}
-)}}\label{db/d25/classSlipPlane_a5418245f8c716d4a35405d68db53bc66}
+)}}\label{db/d25/classSlipPlane_a255d67230132cf1c7bf18f61098a8b4f}
 
 
 Calculate the time increment based on the velocities of the dislocations. 
@@ -345,107 +345,113 @@ In order to avoid the collision of dislocations with similar sign of Burgers vec
 {\em min\-Dt} & The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration. \\
 \hline
 \end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+S\-T\-L vector container with the ideal time increments for all the dislocations. 
+\end{DoxyReturn}
 
 
-Definition at line 402 of file slip\-Plane.\-cpp.
+Definition at line 403 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-403  \{
-404    \textcolor{comment}{// Get the number of dislocations}
-405    \textcolor{keywordtype}{int} nDisl = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size();
-406 
-407    \textcolor{comment}{// Vector of time increments}
-408    std::vector<double> timeIncrement(nDisl, 1000.0);
-409 
-410    \textcolor{comment}{// Position vectors}
-411    \hyperlink{classVector3d}{Vector3d} p0, p1;
-412    \textcolor{keywordtype}{double} norm\_p01;
-413 
-414    \textcolor{comment}{// Velocity vectors}
-415    \hyperlink{classVector3d}{Vector3d} v0, v1;
-416    \textcolor{keywordtype}{double} norm\_v01;
-417 
-418    \textcolor{keywordtype}{int} i;         \textcolor{comment}{// Counter for the loop}
-419    \textcolor{keywordtype}{double} t1, t2;
-420    \textcolor{keywordtype}{double} dtMin;  \textcolor{comment}{// Minimum time increment}
-421 
-422    \textcolor{comment}{// For the first dislocation, the time increment has to be calculated}
-423    \textcolor{comment}{// for approach to both a dislocation and the slip plane extremity.}
-424    \textcolor{comment}{// Time for slip plane extremity}
-425    t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].idealTimeIncrement(minDistance,
-426                                                  this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[0],
-427                                                  \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0));
-428    t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].idealTimeIncrement(minDistance,
-429                                                  this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[1],
-430                                                  this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[1].getVelocity());
-431    \textcolor{comment}{// Choose the smaller of the two}
-432    timeIncrement[0] = t1 < t2 ? t1:t2;
-433    \textcolor{keywordflow}{if} (timeIncrement[0] < minDt)
-434      \{
-435        \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next defect}
-436        timeIncrement[0] = minDt;
-437        this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].setVelocity ( \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0) );
-438 
-439        \textcolor{comment}{// The other defect is a slip plane extremity}
-440        \textcolor{comment}{// This dislocation will not move any more}
-441        this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].setPinned();
-442      \}
-443 
-444    \textcolor{keywordflow}{for} (i=1; i<(nDisl-1); i++)
-445      \{
-446        t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
-447                                                      this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1],
-448                                                      this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1].getVelocity());
-449        t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
-450                                                      this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i+1],
-451                                                      this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i+1].getVelocity());
-452        timeIncrement[i] = t1 < t2 ? t1:t2;
-453 
-454        \textcolor{keywordflow}{if} (timeIncrement[i] < minDt)
-455          \{
-456            \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next
-       defect}
-457            timeIncrement[i] = minDt;
-458            this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].setVelocity ( \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0) );
-459          \}
-460      \}
-461 
-462    \textcolor{comment}{// For the last dislocation, the time increment has to be calculated}
-463    \textcolor{comment}{// for approach to both a dislocation and the slip plane extremity.}
-464    \textcolor{comment}{// Time for slip plane extremity}
-465    i=nDisl-1;
-466    t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
-467                                                  this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[1],
-468                                                  \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0));
-469    t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
-470                                                  this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1],
-471                                                  this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1].getVelocity());
-472    \textcolor{comment}{// Choose the smaller of the two}
-473    timeIncrement[i] = t1 < t2 ? t1:t2;
-474 
-475    \textcolor{keywordflow}{if} (timeIncrement[i] < minDt)
-476      \{
-477        \textcolor{comment}{// This dislocation should not move in this iteration because it might collide with the next defect}
-478        timeIncrement[i] = minDt;
-479        this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].setVelocity ( \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0) );
-480 
-481        \textcolor{comment}{// The other defect is a slip plane extremity}
-482        \textcolor{comment}{// This dislocation will not move any more}
-483        this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].setPinned();
-484      \}
-485    
-486    dtMin = 1000;
-487    \textcolor{keywordflow}{for} (i=0; i<nDisl; i++)
-488      \{
-489        \textcolor{keywordflow}{if} (timeIncrement[i] < dtMin)
-490          \{
-491            dtMin = timeIncrement[i];
-492          \}
-493      \}
-494 
-495    this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt} = dtMin;
-496  \}
+404 \{
+405   \textcolor{comment}{// Get the number of dislocations}
+406   \textcolor{keywordtype}{int} nDisl = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size();
+407   
+408   \textcolor{comment}{// Vector of time increments}
+409   std::vector<double> timeIncrement(nDisl, 1000.0);
+410    
+411   \textcolor{comment}{// Position vectors}
+412   \hyperlink{classVector3d}{Vector3d} p0, p1;
+413   \textcolor{keywordtype}{double} norm\_p01;
+414 
+415   \textcolor{comment}{// Velocity vectors}
+416   \hyperlink{classVector3d}{Vector3d} v0, v1;
+417   \textcolor{keywordtype}{double} norm\_v01;
+418 
+419   \textcolor{keywordtype}{int} i;         \textcolor{comment}{// Counter for the loop}
+420   \textcolor{keywordtype}{double} t1, t2;
+421   \textcolor{keywordtype}{double} dtMin;  \textcolor{comment}{// Minimum time increment}
+422 
+423   \textcolor{comment}{// For the first dislocation, the time increment has to be calculated}
+424   \textcolor{comment}{// for approach to both a dislocation and the slip plane extremity.}
+425   \textcolor{comment}{// Time for slip plane extremity}
+426   t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].idealTimeIncrement(minDistance,
+427                                                 this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[0],
+428                                                 \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0));
+429   t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[0].idealTimeIncrement(minDistance,
+430                                                 this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[1],
+431                                                 this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[1].getVelocity());
+432   \textcolor{comment}{// Choose the smaller of the two}
+433   timeIncrement[0] = t1 < t2 ? t1:t2;
+434   \textcolor{comment}{/*}
+435 \textcolor{comment}{    if (timeIncrement[0] < minDt)}
+436 \textcolor{comment}{    \{}
+437 \textcolor{comment}{    // This dislocation should not move in this iteration because it might collide with the next defect}
+438 \textcolor{comment}{    timeIncrement[0] = minDt;}
+439 \textcolor{comment}{    this->dislocations[0].setVelocity ( Vector3d(0.0, 0.0, 0.0) );}
+440 \textcolor{comment}{}
+441 \textcolor{comment}{    // The other defect is a slip plane extremity}
+442 \textcolor{comment}{    // This dislocation will not move any more}
+443 \textcolor{comment}{    this->dislocations[0].setPinned();}
+444 \textcolor{comment}{    \}}
+445 \textcolor{comment}{  */}
+446 
+447   \textcolor{keywordflow}{for} (i=1; i<(nDisl-1); i++)
+448     \{
+449       t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
+450                                                     this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1],
+451                                                     this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1].getVelocity());
+452       t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
+453                                                     this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i+1],
+454                                                     this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i+1].getVelocity());
+455       timeIncrement[i] = t1 < t2 ? t1:t2;
+456       \textcolor{comment}{/*}
+457 \textcolor{comment}{        if (timeIncrement[i] < minDt)}
+458 \textcolor{comment}{        \{}
+459 \textcolor{comment}{        // This dislocation should not move in this iteration because it might collide with the next defect}
+460 \textcolor{comment}{        timeIncrement[i] = minDt;}
+461 \textcolor{comment}{        this->dislocations[i].setVelocity ( Vector3d(0.0, 0.0, 0.0) );}
+462 \textcolor{comment}{        \}}
+463 \textcolor{comment}{      */}
+464     \}
+465 
+466   \textcolor{comment}{// For the last dislocation, the time increment has to be calculated}
+467   \textcolor{comment}{// for approach to both a dislocation and the slip plane extremity.}
+468   \textcolor{comment}{// Time for slip plane extremity}
+469   i=nDisl-1;
+470   t1 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
+471                                                 this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[1],
+472                                                 \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0));
+473   t2 = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].idealTimeIncrement(minDistance,
+474                                                 this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1],
+475                                                 this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i-1].getVelocity());
+476   \textcolor{comment}{// Choose the smaller of the two}
+477   timeIncrement[i] = t1 < t2 ? t1:t2;
+478   \textcolor{comment}{/*}
+479 \textcolor{comment}{    if (timeIncrement[i] < minDt)}
+480 \textcolor{comment}{    \{}
+481 \textcolor{comment}{    // This dislocation should not move in this iteration because it might collide with the next defect}
+482 \textcolor{comment}{    timeIncrement[i] = minDt;}
+483 \textcolor{comment}{    this->dislocations[i].setVelocity ( Vector3d(0.0, 0.0, 0.0) );}
+484 \textcolor{comment}{}
+485 \textcolor{comment}{    // The other defect is a slip plane extremity}
+486 \textcolor{comment}{    // This dislocation will not move any more}
+487 \textcolor{comment}{    this->dislocations[i].setPinned();}
+488 \textcolor{comment}{    \}}
+489 \textcolor{comment}{  */}
+490   dtMin = 1000;
+491   \textcolor{keywordflow}{for} (i=0; i<nDisl; i++)
+492     \{
+493       \textcolor{keywordflow}{if} (timeIncrement[i] < dtMin)
+494         \{
+495           dtMin = timeIncrement[i];
+496         \}
+497     \}
+498 
+499   this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt} = dtMin<minDt ? minDt:dtMin;  \textcolor{comment}{// Choose dtMin greater than minDt.}
+500   \textcolor{keywordflow}{return} (timeIncrement);
+501 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_aff7af69ba5235da6c8b142193509683c}{\index{Slip\-Plane@{Slip\-Plane}!calculate\-Velocities@{calculate\-Velocities}}
 \index{calculate\-Velocities@{calculate\-Velocities}!SlipPlane@{Slip\-Plane}}
@@ -464,42 +470,42 @@ Definition at line 358 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-359  \{
-360    std::vector<Dislocation>::iterator d;  \textcolor{comment}{// Iterator for dislocations}
+359 \{
+360   std::vector<Dislocation>::iterator d;  \textcolor{comment}{// Iterator for dislocations}
 361    
-362    \hyperlink{classVector3d}{Vector3d} p0, p1, p01;
-363    \textcolor{keywordtype}{double} norm\_v, norm\_p01, cosine;
+362   \hyperlink{classVector3d}{Vector3d} p0, p1, p01;
+363   \textcolor{keywordtype}{double} norm\_v, norm\_p01, cosine;
 364 
-365    \hyperlink{classVector3d}{Vector3d} v;
+365   \hyperlink{classVector3d}{Vector3d} v;
 366 
-367    \textcolor{keywordflow}{for} ( d=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d++)
-368      \{
-369        \textcolor{keywordflow}{if} (d->isMobile())
-370          \{
-371            \textcolor{comment}{// Velocity directly proportional to Peach-Koehler force}
-372            v =  (d->getTotalForce()) * (1.0/B);
-373            norm\_v = v.\hyperlink{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{magnitude}();
+367   \textcolor{keywordflow}{for} ( d=this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin(); d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end(); d++)
+368     \{
+369       \textcolor{keywordflow}{if} (d->isMobile())
+370         \{
+371           \textcolor{comment}{// Velocity directly proportional to Peach-Koehler force}
+372           v =  (d->getTotalForce()) * (1.0/B);
+373           norm\_v = v.\hyperlink{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{magnitude}();
 374 
-375            \textcolor{keywordflow}{if} (norm\_v > 0.0)
-376              \{
-377                \textcolor{comment}{// Project the velocity on to the slip plane line}
-378                p0 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[0].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
-379                p1 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[1].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
-380                p01 = p1 - p0;
-381                norm\_p01 = p01.\hyperlink{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{magnitude}();
+375           \textcolor{keywordflow}{if} (norm\_v > 0.0)
+376             \{
+377               \textcolor{comment}{// Project the velocity on to the slip plane line}
+378               p0 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[0].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
+379               p1 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[1].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
+380               p01 = p1 - p0;
+381               norm\_p01 = p01.\hyperlink{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{magnitude}();
 382            
-383                cosine = (v * p01)/(norm\_v * norm\_p01);
-384                v *= cosine;
-385              \}
-386          \}
-387        \textcolor{keywordflow}{else}
-388          \{
-389            v = \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0);
-390          \}
+383               cosine = (v * p01)/(norm\_v * norm\_p01);
+384               v *= cosine;
+385             \}
+386         \}
+387       \textcolor{keywordflow}{else}
+388         \{
+389           v = \hyperlink{classVector3d}{Vector3d}(0.0, 0.0, 0.0);
+390         \}
 391 
-392        d->setVelocity (v);
-393      \}
-394  \}
+392       d->setVelocity (v);
+393     \}
+394 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a3523030cccb520b5253a811d062f3ddf}{\index{Slip\-Plane@{Slip\-Plane}!distance\-From\-Extremity@{distance\-From\-Extremity}}
 \index{distance\-From\-Extremity@{distance\-From\-Extremity}!SlipPlane@{Slip\-Plane}}
@@ -525,19 +531,19 @@ Distance of the point pos from the n$^\wedge$th extremity of the slip plane.
 \end{DoxyReturn}
 
 
-Definition at line 524 of file slip\-Plane.\-cpp.
+Definition at line 542 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-525 \{
-526   \textcolor{keywordflow}{if} (n!=0 && n!=1)
-527     \{
-528       \textcolor{keywordflow}{return} (0.0);
-529     \}
-530 
-531   \hyperlink{classVector3d}{Vector3d} r = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[n].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
-532   \textcolor{keywordflow}{return} ( (r-pos).magnitude() );
-533 \}
+543 \{
+544   \textcolor{keywordflow}{if} (n!=0 && n!=1)
+545     \{
+546       \textcolor{keywordflow}{return} (0.0);
+547     \}
+548 
+549   \hyperlink{classVector3d}{Vector3d} r = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[n].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
+550   \textcolor{keywordflow}{return} ( (r-pos).magnitude() );
+551 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a83806b1e34cf044005d34920903e7074}{\index{Slip\-Plane@{Slip\-Plane}!get\-Axis@{get\-Axis}}
 \index{get\-Axis@{get\-Axis}!SlipPlane@{Slip\-Plane}}
@@ -568,30 +574,30 @@ Definition at line 239 of file slip\-Plane.\-cpp.
 241   \hyperlink{classVector3d}{Vector3d} axis;
 242   
 243   \textcolor{keywordflow}{if} (i==2)
-244   \{
-245     \textcolor{comment}{// Z-axis}
-246     axis = this->\hyperlink{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{normalVector};
-247   \}
+244     \{
+245       \textcolor{comment}{// Z-axis}
+246       axis = this->\hyperlink{classSlipPlane_aad33ce7b595e5fc55aefe51c7b0957f2}{normalVector};
+247     \}
 248   
 249   \textcolor{keywordflow}{if} (i==0)
-250   \{
-251     \textcolor{comment}{// X-axis}
-252     \hyperlink{classVector3d}{Vector3d} *e1 = \textcolor{keyword}{new} \hyperlink{classVector3d}{Vector3d};
-253     \hyperlink{classVector3d}{Vector3d} *e2 = \textcolor{keyword}{new} \hyperlink{classVector3d}{Vector3d};
+250     \{
+251       \textcolor{comment}{// X-axis}
+252       \hyperlink{classVector3d}{Vector3d} *e1 = \textcolor{keyword}{new} \hyperlink{classVector3d}{Vector3d};
+253       \hyperlink{classVector3d}{Vector3d} *e2 = \textcolor{keyword}{new} \hyperlink{classVector3d}{Vector3d};
 254 
-255     *e1 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[0].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
-256     *e2 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[1].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
-257     axis = ((*e2) - (*e1));
+255       *e1 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[0].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
+256       *e2 = this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[1].\hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{getPosition}();
+257       axis = ((*e2) - (*e1));
 258 
-259     \textcolor{keyword}{delete}(e1);  e1 = NULL;
-260     \textcolor{keyword}{delete}(e2);  e2 = NULL;
-261   \}
+259       \textcolor{keyword}{delete}(e1);  e1 = NULL;
+260       \textcolor{keyword}{delete}(e2);  e2 = NULL;
+261     \}
 262   
 263   \textcolor{keywordflow}{if} (i==1)
-264   \{
-265     \textcolor{comment}{// Y-axis = Z x X}
-266     axis = this->\hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{getAxis}(2) ^ this->\hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{getAxis}(0);
-267   \}
+264     \{
+265       \textcolor{comment}{// Y-axis = Z x X}
+266       axis = this->\hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{getAxis}(2) ^ this->\hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{getAxis}(0);
+267     \}
 268   
 269   \textcolor{keywordflow}{return} ( axis.\hyperlink{classVector3d_a24acba00068d9d1612404243f2a01078}{normalize}() );
 270 \}     
@@ -626,14 +632,14 @@ Definition at line 156 of file slip\-Plane.\-cpp.
 \begin{DoxyCode}
 157 \{
 158   \textcolor{keywordflow}{if} (i>=0 && i<this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size ())
-159   \{
-160     *d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i];
-161     \textcolor{keywordflow}{return} (\textcolor{keyword}{true});
-162   \}
+159     \{
+160       *d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i];
+161       \textcolor{keywordflow}{return} (\textcolor{keyword}{true});
+162     \}
 163   \textcolor{keywordflow}{else}
-164   \{
-165     \textcolor{keywordflow}{return} (\textcolor{keyword}{false});
-166   \}
+164     \{
+165       \textcolor{keywordflow}{return} (\textcolor{keyword}{false});
+166     \}
 167 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a16b894e5cecbd0e11f050c287de22b8d}{\index{Slip\-Plane@{Slip\-Plane}!get\-Dislocation\-List@{get\-Dislocation\-List}}
@@ -690,14 +696,14 @@ Definition at line 194 of file slip\-Plane.\-cpp.
 \begin{DoxyCode}
 195 \{
 196   \textcolor{keywordflow}{if} (i>=0 && i<this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}.size ())
-197   \{
-198     *dSource = this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}[i];
-199     \textcolor{keywordflow}{return} (\textcolor{keyword}{true});
-200   \}
+197     \{
+198       *dSource = this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}[i];
+199       \textcolor{keywordflow}{return} (\textcolor{keyword}{true});
+200     \}
 201   \textcolor{keywordflow}{else}
-202   \{
-203     \textcolor{keywordflow}{return} (\textcolor{keyword}{false});
-204   \}
+202     \{
+203       \textcolor{keywordflow}{return} (\textcolor{keyword}{false});
+204     \}
 205 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_abd591180a3381b89d09ccd4b7aec1688}{\index{Slip\-Plane@{Slip\-Plane}!get\-Dislocation\-Source\-List@{get\-Dislocation\-Source\-List}}
@@ -751,13 +757,13 @@ Definition at line 118 of file slip\-Plane.\-cpp.
 \begin{DoxyCode}
 119 \{
 120   \textcolor{keywordflow}{if} (i==0 || i==1)
-121   \{
-122     \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[i].\hyperlink{classSlipPlane_a7ff7aec8b12e5711b3e01448a558200c}{getPosition}());
-123   \}
+121     \{
+122       \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_abbdbe6ed805faf3777b54ff55a9c089c}{extremities}[i].\hyperlink{classSlipPlane_a7ff7aec8b12e5711b3e01448a558200c}{getPosition}());
+123     \}
 124   \textcolor{keywordflow}{else}
-125   \{
-126     \textcolor{keywordflow}{return} (\hyperlink{classVector3d}{Vector3d}());
-127   \}
+125     \{
+126       \textcolor{keywordflow}{return} (\hyperlink{classVector3d}{Vector3d}());
+127     \}
 128 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a2b8043348d0b48318c0f3b6b9a43b5bc}{\index{Slip\-Plane@{Slip\-Plane}!get\-Normal@{get\-Normal}}
@@ -804,9 +810,9 @@ Definition at line 182 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-183  \{
-184    \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size ());
-185  \}
+183 \{
+184   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size ());
+185 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_ad4f5bd8181c49601396d0b897501d544}{\index{Slip\-Plane@{Slip\-Plane}!get\-Num\-Dislocation\-Sources@{get\-Num\-Dislocation\-Sources}}
 \index{get\-Num\-Dislocation\-Sources@{get\-Num\-Dislocation\-Sources}!SlipPlane@{Slip\-Plane}}
@@ -828,9 +834,9 @@ Definition at line 220 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-221  \{
-222    \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}.size ());
-223  \}
+221 \{
+222   \textcolor{keywordflow}{return} (this->\hyperlink{classSlipPlane_a8e31e904fc6e68cc7ba70b0b57a278cc}{dislocationSources}.size ());
+223 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a7ff7aec8b12e5711b3e01448a558200c}{\index{Slip\-Plane@{Slip\-Plane}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!SlipPlane@{Slip\-Plane}}
@@ -910,41 +916,41 @@ S\-T\-L vector container with the full stress tensor expressing the stress field
 \end{DoxyReturn}
 
 
-Definition at line 577 of file slip\-Plane.\-cpp.
+Definition at line 595 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-578 \{
-579   \textcolor{comment}{// Initialize the vector for holding Stress values}
-580   std::vector<Stress> stressVector(points.size(), \hyperlink{classStress}{Stress}());
-581 
-582   \textcolor{comment}{// Iterator for the points}
-583   std::vector<Vector3d>::iterator p = points.begin();
-584 
-585   \textcolor{comment}{// Iterator for the stress}
-586   std::vector<Stress>::iterator s = stressVector.begin();
-587 
-588   \textcolor{comment}{// Temporary variable for stress}
-589   \hyperlink{classStress}{Stress} sTemp;
-590 
-591   \textcolor{keywordflow}{while} (p != points.end())
-592     \{
-593       sTemp = appliedStress;
-594       \textcolor{comment}{// Iterator for the dislocations}
-595       std::vector<Dislocation>::iterator d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
-596       \textcolor{keywordflow}{while} (d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end())
-597         \{
-598           sTemp += d->stressField (*p, mu, nu);
-599           d++;
-600         \}
-601       *s = sTemp;
+596 \{
+597   \textcolor{comment}{// Initialize the vector for holding Stress values}
+598   std::vector<Stress> stressVector(points.size(), \hyperlink{classStress}{Stress}());
+599 
+600   \textcolor{comment}{// Iterator for the points}
+601   std::vector<Vector3d>::iterator p = points.begin();
 602 
-603       s++;
-604       p++;
-605     \}
-606 
-607   \textcolor{keywordflow}{return} (stressVector);
-608 \}
+603   \textcolor{comment}{// Iterator for the stress}
+604   std::vector<Stress>::iterator s = stressVector.begin();
+605 
+606   \textcolor{comment}{// Temporary variable for stress}
+607   \hyperlink{classStress}{Stress} sTemp;
+608 
+609   \textcolor{keywordflow}{while} (p != points.end())
+610     \{
+611       sTemp = appliedStress;
+612       \textcolor{comment}{// Iterator for the dislocations}
+613       std::vector<Dislocation>::iterator d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
+614       \textcolor{keywordflow}{while} (d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end())
+615         \{
+616           sTemp += d->stressField (*p, mu, nu);
+617           d++;
+618         \}
+619       *s = sTemp;
+620 
+621       s++;
+622       p++;
+623     \}
+624 
+625   \textcolor{keywordflow}{return} (stressVector);
+626 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_ad86337ca356d72f558468a35024e30bc}{\index{Slip\-Plane@{Slip\-Plane}!get\-Slip\-Plane\-Stress\-\_\-local@{get\-Slip\-Plane\-Stress\-\_\-local}}
 \index{get\-Slip\-Plane\-Stress\-\_\-local@{get\-Slip\-Plane\-Stress\-\_\-local}!SlipPlane@{Slip\-Plane}}
@@ -976,76 +982,92 @@ S\-T\-L vector container with the full stress tensor expressing the stress field
 \end{DoxyReturn}
 
 
-Definition at line 619 of file slip\-Plane.\-cpp.
+Definition at line 637 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-620 \{
-621   \textcolor{comment}{// Initialize the vector for holding Stress values}
-622   std::vector<Stress> stressVector(points.size(), \hyperlink{classStress}{Stress}());
-623 
-624   \textcolor{comment}{// Iterator for the points}
-625   std::vector<Vector3d>::iterator p = points.begin();
-626 
-627   \textcolor{comment}{// Iterator for the stress}
-628   std::vector<Stress>::iterator s = stressVector.begin();
-629 
-630   \textcolor{comment}{// Temporary variable for stress}
-631   \hyperlink{classStress}{Stress} sTemp;
-632 
-633   \textcolor{keywordflow}{while} (p != points.end())
-634     \{
-635       sTemp = appliedStress;
-636       \textcolor{comment}{// Iterator for the dislocations}
-637       std::vector<Dislocation>::iterator d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
-638       \textcolor{keywordflow}{while} (d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end())
-639         \{
-640           sTemp += d->stressField (*p, mu, nu);
-641           d++;
-642         \}
-643 
-644       \textcolor{comment}{// Convert to local co-ordinate system}
-645       *s = sTemp.\hyperlink{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{rotate}(this->\hyperlink{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{rotationMatrix});
-646 
-647       s++;
-648       p++;
-649     \}
+638 \{
+639   \textcolor{comment}{// Initialize the vector for holding Stress values}
+640   std::vector<Stress> stressVector(points.size(), \hyperlink{classStress}{Stress}());
+641 
+642   \textcolor{comment}{// Iterator for the points}
+643   std::vector<Vector3d>::iterator p = points.begin();
+644 
+645   \textcolor{comment}{// Iterator for the stress}
+646   std::vector<Stress>::iterator s = stressVector.begin();
+647 
+648   \textcolor{comment}{// Temporary variable for stress}
+649   \hyperlink{classStress}{Stress} sTemp;
 650 
-651   \textcolor{keywordflow}{return} (stressVector);
-652 \}
+651   \textcolor{keywordflow}{while} (p != points.end())
+652     \{
+653       sTemp = appliedStress;
+654       \textcolor{comment}{// Iterator for the dislocations}
+655       std::vector<Dislocation>::iterator d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
+656       \textcolor{keywordflow}{while} (d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end())
+657         \{
+658           sTemp += d->stressField (*p, mu, nu);
+659           d++;
+660         \}
+661 
+662       \textcolor{comment}{// Convert to local co-ordinate system}
+663       *s = sTemp.\hyperlink{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{rotate}(this->\hyperlink{classSlipPlane_a1aa5aacccb6bb03d163a95251aa10d6c}{rotationMatrix});
+664 
+665       s++;
+666       p++;
+667     \}
+668 
+669   \textcolor{keywordflow}{return} (stressVector);
+670 \}
 \end{DoxyCode}
-\hypertarget{classSlipPlane_a02482abbb9b9db28a9bb19e6a1c181b5}{\index{Slip\-Plane@{Slip\-Plane}!move\-Dislocations@{move\-Dislocations}}
+\hypertarget{classSlipPlane_a88bc78651af7a440ab41c3d28baea5c0}{\index{Slip\-Plane@{Slip\-Plane}!move\-Dislocations@{move\-Dislocations}}
 \index{move\-Dislocations@{move\-Dislocations}!SlipPlane@{Slip\-Plane}}
 \subsubsection[{move\-Dislocations}]{\setlength{\rightskip}{0pt plus 5cm}void Slip\-Plane\-::move\-Dislocations (
 \begin{DoxyParamCaption}
-{}
+\item[{std\-::vector$<$ double $>$}]{time\-Increment}
 \end{DoxyParamCaption}
-)}}\label{db/d25/classSlipPlane_a02482abbb9b9db28a9bb19e6a1c181b5}
+)}}\label{db/d25/classSlipPlane_a88bc78651af7a440ab41c3d28baea5c0}
 
 
 Displaces the dislocations according to their velocities and the time increment. 
 
+This function displaces the dislocations according to the velocities and time increment. If the time increment is smaller than the global time increment, the dislocation moves with this smaller value, effectively moving up to the limiting distance to the next defect and stopping there. 
+\begin{DoxyParams}{Parameters}
+{\em time\-Increment} & S\-T\-L vector containing the time\-Increments of all the dislocations. \\
+\hline
+\end{DoxyParams}
 
 
-Definition at line 501 of file slip\-Plane.\-cpp.
+Definition at line 508 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-502 \{
-503   std::vector<Dislocation>::iterator d;
-504   \hyperlink{classVector3d}{Vector3d} p;
-505 
-506   d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
-507 
-508   \textcolor{keywordflow}{while} (d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end())
-509     \{
-510       p = d->getPosition();
-511       p += d->getVelocity() * (this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt});
-512       d->setPosition(p);
+509 \{
+510   std::vector<Dislocation>::iterator d;
+511   std::vector<double>::iterator t;
+512   \hyperlink{classVector3d}{Vector3d} p;
 513 
-514       d++;
-515     \}
-516 \}
+514   d = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.begin();
+515   t = timeIncrement.begin();
+516 
+517   \textcolor{keywordflow}{while} (d != this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.end())
+518     \{
+519       p = d->getPosition();
+520       \textcolor{keywordflow}{if} (*t <= this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt})
+521         \{
+522           \textcolor{comment}{// Move the dislocation up to the defect and stop it there}
+523           p += d->getVelocity() * (*t);
+524         \}
+525       \textcolor{keywordflow}{else}
+526         \{
+527           p += d->getVelocity() * (this->\hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt});
+528         \}
+529       d->setPosition(p);
+530 
+531       d++;
+532       t++;
+533     \}
+534 \}
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a3efa3644ca3200d1c84801b3f9eb8ecf}{\index{Slip\-Plane@{Slip\-Plane}!set\-Dislocation\-List@{set\-Dislocation\-List}}
 \index{set\-Dislocation\-List@{set\-Dislocation\-List}!SlipPlane@{Slip\-Plane}}
@@ -1191,37 +1213,37 @@ Sorts the dislocations present on the slip plane in the ascending order of dista
 
 The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane. 
 
-Definition at line 539 of file slip\-Plane.\-cpp.
+Definition at line 557 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
-540 \{
-541   \textcolor{keywordtype}{int} nDisl = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size();
-542   \textcolor{keywordtype}{int} i, j;
-543   \textcolor{keywordtype}{double} di, dj;
-544   \hyperlink{classVector3d}{Vector3d} pi, pj;
-545   \hyperlink{classDislocation}{Dislocation} temp;
-546 
-547   \textcolor{keywordflow}{for} (i=0; i<nDisl-1; i++)
-548     \{
-549       \textcolor{keywordflow}{for} (j=i+1; j<nDisl; j++)
-550         \{
-551           pi = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].getPosition();
-552           di = this->\hyperlink{classSlipPlane_a3523030cccb520b5253a811d062f3ddf}{distanceFromExtremity}(pi, 0);
-553           
-554           pj = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[j].getPosition();
-555           dj = this->\hyperlink{classSlipPlane_a3523030cccb520b5253a811d062f3ddf}{distanceFromExtremity}(pj, 0);
-556           
-557           \textcolor{keywordflow}{if} (dj < di)
-558             \{
-559               \textcolor{comment}{// Swap the two}
-560               temp = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i];
-561               this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i] = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[j];
-562               this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[j] = temp;
-563             \}
-564         \}
-565     \}
-566 \}
+558 \{
+559   \textcolor{keywordtype}{int} nDisl = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}.size();
+560   \textcolor{keywordtype}{int} i, j;
+561   \textcolor{keywordtype}{double} di, dj;
+562   \hyperlink{classVector3d}{Vector3d} pi, pj;
+563   \hyperlink{classDislocation}{Dislocation} temp;
+564 
+565   \textcolor{keywordflow}{for} (i=0; i<nDisl-1; i++)
+566     \{
+567       \textcolor{keywordflow}{for} (j=i+1; j<nDisl; j++)
+568         \{
+569           pi = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i].getPosition();
+570           di = this->\hyperlink{classSlipPlane_a3523030cccb520b5253a811d062f3ddf}{distanceFromExtremity}(pi, 0);
+571           
+572           pj = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[j].getPosition();
+573           dj = this->\hyperlink{classSlipPlane_a3523030cccb520b5253a811d062f3ddf}{distanceFromExtremity}(pj, 0);
+574           
+575           \textcolor{keywordflow}{if} (dj < di)
+576             \{
+577               \textcolor{comment}{// Swap the two}
+578               temp = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i];
+579               this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[i] = this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[j];
+580               this->\hyperlink{classSlipPlane_ad92c7c409f7e161db449528389180910}{dislocations}[j] = temp;
+581             \}
+582         \}
+583     \}
+584 \}
 \end{DoxyCode}
 
 
