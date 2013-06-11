@@ -1,8 +1,8 @@
 /**
  * @file stress.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 22/04/2013
+ * @version 1.0
+ * @date 05/06/2013
  * @brief Definition of the Stress class.
  * @details This file defines the Stress class for the stress tensor.
  */
@@ -43,6 +43,12 @@ class Stress : public Matrix33
    * @param shear Pointer to the array containing shear stresses.
    */
   Stress (double *principal, double *shear);
+  /**
+   * @brief Constructor specifying the full matrix
+   * @details This constructor accepts the full stress matrix as input and extracts the principal and shear stress components.
+   * @param m Matrix33 variable containing the full stress tensor.
+   */
+  Stress (Matrix33 m);
 
   // Assignment functions
   /**
@@ -51,19 +57,19 @@ class Stress : public Matrix33
    */
   void populateMatrix ();
 
-  // Retrieval functions
+  // Access functions
   /**
    * @brief Get the principal stresses.
-   * @details Returns a 3-member array with the principal stresses: s11 s22 s33.
-   * @return 3-member array with the principal stresses.
+   * @details Returns a vector of type Vector3d with the principal stresses: s11 s22 s33.
+   * @return Vector3d variable with the principal stresses.
    */
-  double* getPrincipalStresses ();
+  Vector3d getPrincipalStresses () const;
   /**
    * @brief Get the shear stresses.
-   * @details Returns a 3-member array with the shear stresses: s12 s13 s23.
-   * @return 3-member array with the shear stresses.
+   * @details Returns a vector of type Vector3d with the shear stresses: s12 s13 s23.
+   * @return Vector3d variable with the shear stresses.
    */
-  double* getShearStresses ();
+  Vector3d getShearStresses () const;
   
   // Operations
   /**
@@ -72,7 +78,7 @@ class Stress : public Matrix33
    * @param alpha Rotation matrix.
    * @result Rotated stress tensor.
    */
-  Stress rotate (RotationMatrix alpha);  
+  Stress rotate (RotationMatrix alpha);
 };
 
 #endif

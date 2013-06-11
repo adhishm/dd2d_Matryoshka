@@ -72,7 +72,7 @@ var searchBox = new SearchBox("searchBox", "../../search",false,'Search');
      onmouseover="return searchBox.OnSearchSelectShow()"
      onmouseout="return searchBox.OnSearchSelectHide()"
      onkeydown="return searchBox.OnSearchSelectKey(event)">
-<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Macros</a></div>
+<a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(0)"><span class="SelectionMark">&#160;</span>All</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(1)"><span class="SelectionMark">&#160;</span>Data Structures</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(2)"><span class="SelectionMark">&#160;</span>Files</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(3)"><span class="SelectionMark">&#160;</span>Functions</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(4)"><span class="SelectionMark">&#160;</span>Variables</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(5)"><span class="SelectionMark">&#160;</span>Enumerations</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(6)"><span class="SelectionMark">&#160;</span>Enumerator</a><a class="SelectItem" href="javascript:void(0)" onclick="searchBox.OnSelectItem(7)"><span class="SelectionMark">&#160;</span>Macros</a></div>
 
 <!-- iframe showing the search results (closed by default) -->
 <div id="MSearchResultsWindow">
@@ -118,27 +118,33 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a808b5a0e273cc87e19138f3be221fe53"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#a808b5a0e273cc87e19138f3be221fe53">Strain</a> (double *principal, double *shear)</td></tr>
 <tr class="memdesc:a808b5a0e273cc87e19138f3be221fe53"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor specifying the principal and shear strains.  <a href="#a808b5a0e273cc87e19138f3be221fe53">More...</a><br/></td></tr>
 <tr class="separator:a808b5a0e273cc87e19138f3be221fe53"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a411164cde64f3c51520440f928fb8fd8"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#a411164cde64f3c51520440f928fb8fd8">Strain</a> (<a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> m)</td></tr>
+<tr class="memdesc:a411164cde64f3c51520440f928fb8fd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Constructor specifying the full matrix.  <a href="#a411164cde64f3c51520440f928fb8fd8">More...</a><br/></td></tr>
+<tr class="separator:a411164cde64f3c51520440f928fb8fd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a53d0c01b18a8c70da97ad4aaeb924f14"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14">populateMatrix</a> ()</td></tr>
 <tr class="memdesc:a53d0c01b18a8c70da97ad4aaeb924f14"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct the strain tensor from the principal and shear strains.  <a href="#a53d0c01b18a8c70da97ad4aaeb924f14">More...</a><br/></td></tr>
 <tr class="separator:a53d0c01b18a8c70da97ad4aaeb924f14"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad76c72271c32b27122c7fa86376edea3"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#ad76c72271c32b27122c7fa86376edea3">getPrincipalStrains</a> ()</td></tr>
-<tr class="memdesc:ad76c72271c32b27122c7fa86376edea3"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the principal strains.  <a href="#ad76c72271c32b27122c7fa86376edea3">More...</a><br/></td></tr>
-<tr class="separator:ad76c72271c32b27122c7fa86376edea3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acaeb9039234c4adf356668490098db56"><td class="memItemLeft" align="right" valign="top">double *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#acaeb9039234c4adf356668490098db56">getShearStrains</a> ()</td></tr>
-<tr class="memdesc:acaeb9039234c4adf356668490098db56"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the shear strains.  <a href="#acaeb9039234c4adf356668490098db56">More...</a><br/></td></tr>
-<tr class="separator:acaeb9039234c4adf356668490098db56"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a441936c89c087ec4ca9927e914a2cece"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#a441936c89c087ec4ca9927e914a2cece">getPrincipalStrains</a> () const </td></tr>
+<tr class="memdesc:a441936c89c087ec4ca9927e914a2cece"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the principal strains.  <a href="#a441936c89c087ec4ca9927e914a2cece">More...</a><br/></td></tr>
+<tr class="separator:a441936c89c087ec4ca9927e914a2cece"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a12320d54bd51c0e31159da2d30a8f380"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#a12320d54bd51c0e31159da2d30a8f380">getShearStrains</a> () const </td></tr>
+<tr class="memdesc:a12320d54bd51c0e31159da2d30a8f380"><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the shear strains.  <a href="#a12320d54bd51c0e31159da2d30a8f380">More...</a><br/></td></tr>
+<tr class="separator:a12320d54bd51c0e31159da2d30a8f380"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a39acbb854eea7868d2b88c6106e80d18"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d1/d3c/classStrain.html">Strain</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../d1/d3c/classStrain.html#a39acbb854eea7868d2b88c6106e80d18">rotate</a> (<a class="el" href="../../d2/d4a/classRotationMatrix.html">RotationMatrix</a> alpha)</td></tr>
 <tr class="memdesc:a39acbb854eea7868d2b88c6106e80d18"><td class="mdescLeft">&#160;</td><td class="mdescRight">Rotate the strain tensor from one coordinate system to another.  <a href="#a39acbb854eea7868d2b88c6106e80d18">More...</a><br/></td></tr>
 <tr class="separator:a39acbb854eea7868d2b88c6106e80d18"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a6cdcec77fd089b2e73ad7ae85ecff30b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b">setValue</a> (int row, int column, double value)</td></tr>
 <tr class="memdesc:a6cdcec77fd089b2e73ad7ae85ecff30b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Function to set the value of an element indicated by its position.  <a href="#a6cdcec77fd089b2e73ad7ae85ecff30b">More...</a><br/></td></tr>
 <tr class="separator:a6cdcec77fd089b2e73ad7ae85ecff30b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a849bbdf7b456ddacf7185b087fca4015"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a849bbdf7b456ddacf7185b087fca4015">getValue</a> (int row, int column)</td></tr>
-<tr class="memdesc:a849bbdf7b456ddacf7185b087fca4015"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the element located by the row and column indices provided.  <a href="#a849bbdf7b456ddacf7185b087fca4015">More...</a><br/></td></tr>
-<tr class="separator:a849bbdf7b456ddacf7185b087fca4015"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4e64ab5af4921c24b8270a0c9050f4ba"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a4e64ab5af4921c24b8270a0c9050f4ba">adjugate</a> ()</td></tr>
-<tr class="memdesc:a4e64ab5af4921c24b8270a0c9050f4ba"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the adjugate matrix of the present matrix.  <a href="#a4e64ab5af4921c24b8270a0c9050f4ba">More...</a><br/></td></tr>
-<tr class="separator:a4e64ab5af4921c24b8270a0c9050f4ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab53b3e37ad830a87a804cf26311ba088"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088">getValue</a> (int row, int column) const </td></tr>
+<tr class="memdesc:ab53b3e37ad830a87a804cf26311ba088"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the value of the element located by the row and column indices provided.  <a href="#ab53b3e37ad830a87a804cf26311ba088">More...</a><br/></td></tr>
+<tr class="separator:ab53b3e37ad830a87a804cf26311ba088"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a07b999a7b1c905f3c98ba3792e6fa33f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a07b999a7b1c905f3c98ba3792e6fa33f">adjugate</a> () const </td></tr>
+<tr class="memdesc:a07b999a7b1c905f3c98ba3792e6fa33f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the adjugate matrix of the present matrix.  <a href="#a07b999a7b1c905f3c98ba3792e6fa33f">More...</a><br/></td></tr>
+<tr class="separator:a07b999a7b1c905f3c98ba3792e6fa33f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64418c1a8836b38526fdfd7ffcc79cfd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a64418c1a8836b38526fdfd7ffcc79cfd">transpose</a> () const </td></tr>
+<tr class="memdesc:a64418c1a8836b38526fdfd7ffcc79cfd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Returns the transpose of the present matrix.  <a href="#a64418c1a8836b38526fdfd7ffcc79cfd">More...</a><br/></td></tr>
+<tr class="separator:a64418c1a8836b38526fdfd7ffcc79cfd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc58ec5739c9250ff1150c725d0e868e"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#adc58ec5739c9250ff1150c725d0e868e">operator+</a> (const <a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> &amp;) const </td></tr>
 <tr class="memdesc:adc58ec5739c9250ff1150c725d0e868e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator for addition of two matrices.  <a href="#adc58ec5739c9250ff1150c725d0e868e">More...</a><br/></td></tr>
 <tr class="separator:adc58ec5739c9250ff1150c725d0e868e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -166,9 +172,6 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:ac3937bdeb034cc83b4adcad16cd58a26"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#ac3937bdeb034cc83b4adcad16cd58a26">operator*=</a> (const <a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> &amp;)</td></tr>
 <tr class="memdesc:ac3937bdeb034cc83b4adcad16cd58a26"><td class="mdescLeft">&#160;</td><td class="mdescRight">Operator for reflexive multiplication of two matrices.  <a href="#ac3937bdeb034cc83b4adcad16cd58a26">More...</a><br/></td></tr>
 <tr class="separator:ac3937bdeb034cc83b4adcad16cd58a26"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad4ab7b9674a44a297502282e1993ef54"><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#ad4ab7b9674a44a297502282e1993ef54">operator^</a> () const </td></tr>
-<tr class="memdesc:ad4ab7b9674a44a297502282e1993ef54"><td class="mdescLeft">&#160;</td><td class="mdescRight">Transpose.  <a href="#ad4ab7b9674a44a297502282e1993ef54">More...</a><br/></td></tr>
-<tr class="separator:ad4ab7b9674a44a297502282e1993ef54"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a15b37caa6ab0d9f4a9f0d95846abd675"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../de/d82/classMatrix33.html#a15b37caa6ab0d9f4a9f0d95846abd675">operator~</a> () const </td></tr>
 <tr class="memdesc:a15b37caa6ab0d9f4a9f0d95846abd675"><td class="mdescLeft">&#160;</td><td class="mdescRight">Determinant.  <a href="#a15b37caa6ab0d9f4a9f0d95846abd675">More...</a><br/></td></tr>
 <tr class="separator:a15b37caa6ab0d9f4a9f0d95846abd675"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -272,8 +275,76 @@ Protected Attributes</h2></td></tr>
 </div><!-- fragment -->
 </div>
 </div>
+<a class="anchor" id="a411164cde64f3c51520440f928fb8fd8"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">Strain::Strain </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a>&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Constructor specifying the full matrix. </p>
+<p>This constructor accepts the full strain matrix as input and extracts the principal and shear strain components. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td><a class="el" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> variable containing the full strain tensor. </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00053">53</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;{</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  <span class="keywordtype">bool</span> symmetry = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  <span class="comment">// Verify symmetry</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    {</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;          <span class="keywordflow">if</span> (m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(i,j) != m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(j,i))</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;              symmetry = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;              <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordflow">if</span> (symmetry)</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;    {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;      <span class="comment">// The matrix is symmetrical</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,0);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(1,1);</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(2,2);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,1);</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(0,2);</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;      this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2] = m.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(1,2);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    }</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;  <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;      <span class="comment">// The matrix is asymmetrical</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;      <span class="comment">// A zero matrix will be returned</span></div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;      <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;          this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a>[i] = 0.0;</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;          this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a>[i] = 0.0;</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    }</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;  this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a53d0c01b18a8c70da97ad4aaeb924f14" title="Construct the strain tensor from the principal and shear strains.">populateMatrix</a> ();</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
-<a class="anchor" id="a4e64ab5af4921c24b8270a0c9050f4ba"></a>
+<a class="anchor" id="a07b999a7b1c905f3c98ba3792e6fa33f"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -284,7 +355,7 @@ Protected Attributes</h2></td></tr>
           <td class="memname"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> Matrix33::adjugate </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
   </td>
@@ -302,88 +373,76 @@ Protected Attributes</h2></td></tr>
 <div class="fragment"><div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;{</div>
 <div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> adj;</div>
 <div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;  </div>
-<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1]);</div>
-<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = (this-&gt;x[1][2]*this-&gt;x[2][0]) - (this-&gt;x[1][0]*this-&gt;x[2][2]);</div>
-<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = (this-&gt;x[1][0]*this-&gt;x[2][1]) - (this-&gt;x[1][1]*this-&gt;x[2][0]);</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(0, 0, ((this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2]) - (this-&gt;x[1][2]*this-&gt;x[2][1])));</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(0, 1, ((this-&gt;x[1][2]*this-&gt;x[2][0]) - (this-&gt;x[1][0]*this-&gt;x[2][2])));</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(0, 2, ((this-&gt;x[1][0]*this-&gt;x[2][1]) - (this-&gt;x[1][1]*this-&gt;x[2][0])));</div>
 <div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;  </div>
-<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = (this-&gt;x[2][1]*this-&gt;x[0][2]) - (this-&gt;x[0][1]*this-&gt;x[2][2]);</div>
-<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = (this-&gt;x[2][2]*this-&gt;x[0][0]) - (this-&gt;x[2][0]*this-&gt;x[0][2]);</div>
-<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = (this-&gt;x[2][0]*this-&gt;x[0][1]) - (this-&gt;x[2][1]*this-&gt;x[0][0]);</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(1, 0, ((this-&gt;x[2][1]*this-&gt;x[0][2]) - (this-&gt;x[0][1]*this-&gt;x[2][2])));</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(1, 1, ((this-&gt;x[2][2]*this-&gt;x[0][0]) - (this-&gt;x[2][0]*this-&gt;x[0][2])));</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(1, 2, ((this-&gt;x[2][0]*this-&gt;x[0][1]) - (this-&gt;x[2][1]*this-&gt;x[0][0])));</div>
 <div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;  </div>
-<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = (this-&gt;x[0][1]*this-&gt;x[1][2]) - (this-&gt;x[0][2]*this-&gt;x[1][1]);</div>
-<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = (this-&gt;x[0][2]*this-&gt;x[1][0]) - (this-&gt;x[0][0]*this-&gt;x[1][2]);</div>
-<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = (this-&gt;x[0][0]*this-&gt;x[1][1]) - (this-&gt;x[1][0]*this-&gt;x[0][1]);</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(2, 0, ((this-&gt;x[0][1]*this-&gt;x[1][2]) - (this-&gt;x[0][2]*this-&gt;x[1][1])));</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(2, 1, ((this-&gt;x[0][2]*this-&gt;x[1][0]) - (this-&gt;x[0][0]*this-&gt;x[1][2])));</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  adj.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(2, 2, ((this-&gt;x[0][0]*this-&gt;x[1][1]) - (this-&gt;x[1][0]*this-&gt;x[0][1])));</div>
 <div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;</div>
 <div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;  <span class="keywordflow">return</span> (adj);</div>
 <div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="ad76c72271c32b27122c7fa86376edea3"></a>
+<a class="anchor" id="a441936c89c087ec4ca9927e914a2cece"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double * Strain::getPrincipalStrains </td>
+          <td class="memname"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> Strain::getPrincipalStrains </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Get the principal strains. </p>
-<p>Returns a 3-member array with the principal strains: s11 s22 s33. </p>
-<dl class="section return"><dt>Returns</dt><dd>3-member array with the principal strains. </dd></dl>
+<p>Returns a vector of type <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> with the principal strains: s11 s22 s33. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> variable with the principal strains. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00068">68</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;{</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;  <span class="keywordtype">double</span> p[3];</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;    {</div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;      p[i] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a>[i];</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    }</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;  <span class="keywordflow">return</span> (p);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00116">116</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;{</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;  <span class="keywordflow">return</span> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> (this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0],</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1],</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2] ) );</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="acaeb9039234c4adf356668490098db56"></a>
+<a class="anchor" id="a12320d54bd51c0e31159da2d30a8f380"></a>
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double * Strain::getShearStrains </td>
+          <td class="memname"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a> Strain::getShearStrains </td>
           <td>(</td>
           <td class="paramname"></td><td>)</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>Get the shear strains. </p>
-<p>Returns a 3-member array with the shear strains: s12 s13 s23. </p>
-<dl class="section return"><dt>Returns</dt><dd>3-member array with the shear strains. </dd></dl>
+<p>Returns a vector of type <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> with the shear strains: s12 s13 s23. </p>
+<dl class="section return"><dt>Returns</dt><dd><a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> variable with the shear strains. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00086">86</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;  <span class="keywordtype">double</span> s[3];</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;  <span class="keywordtype">int</span> i;</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;</div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    {</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;      s[i] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a>[i];</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    }</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;  <span class="keywordflow">return</span> (s);</div>
-<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00128">128</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;{</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;  <span class="keywordflow">return</span> ( <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> (this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0],</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1],</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;                     this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2] ) );</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
-<a class="anchor" id="a849bbdf7b456ddacf7185b087fca4015"></a>
+<a class="anchor" id="ab53b3e37ad830a87a804cf26311ba088"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -405,7 +464,7 @@ Protected Attributes</h2></td></tr>
         <tr>
           <td></td>
           <td>)</td>
-          <td></td><td></td>
+          <td></td><td> const</td>
         </tr>
       </table>
   </td>
@@ -466,31 +525,31 @@ Protected Attributes</h2></td></tr>
 <p>Returns in a new matrix the inverse of the current matrix. If the current matrix is non-invertible, a zero matrix is returned. </p>
 <dl class="section return"><dt>Returns</dt><dd>Matrix with the inverse of the current matrix. If the current matrix is non-invertible, a zero matrix is returned. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00370">370</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00371"></a><span class="lineno">  371</span>&#160;{</div>
-<div class="line"><a name="l00372"></a><span class="lineno">  372</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;   <span class="comment">// Result matrix</span></div>
-<div class="line"><a name="l00373"></a><span class="lineno">  373</span>&#160;  </div>
-<div class="line"><a name="l00374"></a><span class="lineno">  374</span>&#160;  <span class="keywordtype">double</span> determinant = ~(*this);</div>
-<div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;  </div>
-<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <span class="keywordflow">if</span> (determinant == 0.0)</div>
-<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;    {</div>
-<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;      <span class="comment">// The matrix is non-invertible</span></div>
-<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;      <span class="keywordflow">return</span> (r);       <span class="comment">// Zero matrix</span></div>
-<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;    }</div>
-<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;  </div>
-<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;  <span class="comment">// If we are still here, the matrix is invertible</span></div>
-<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;  </div>
-<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;  <span class="comment">//  Transpose</span></div>
-<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> tr = ^(*this);</div>
-<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  </div>
-<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  <span class="comment">// Find Adjugate matrix</span></div>
-<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> adj = tr.<a class="code" href="../../de/d82/classMatrix33.html#a4e64ab5af4921c24b8270a0c9050f4ba" title="Returns the adjugate matrix of the present matrix.">adjugate</a>();</div>
-<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  </div>
-<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  <span class="comment">// Calculate the inverse by dividing the adjugate matrix by the determinant</span></div>
-<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  r = adj * (1.0/determinant);</div>
-<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  </div>
-<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00374">374</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00375"></a><span class="lineno">  375</span>&#160;{</div>
+<div class="line"><a name="l00376"></a><span class="lineno">  376</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;   <span class="comment">// Result matrix</span></div>
+<div class="line"><a name="l00377"></a><span class="lineno">  377</span>&#160;  </div>
+<div class="line"><a name="l00378"></a><span class="lineno">  378</span>&#160;  <span class="keywordtype">double</span> determinant = ~(*this);</div>
+<div class="line"><a name="l00379"></a><span class="lineno">  379</span>&#160;  </div>
+<div class="line"><a name="l00380"></a><span class="lineno">  380</span>&#160;  <span class="keywordflow">if</span> (determinant == 0.0)</div>
+<div class="line"><a name="l00381"></a><span class="lineno">  381</span>&#160;    {</div>
+<div class="line"><a name="l00382"></a><span class="lineno">  382</span>&#160;      <span class="comment">// The matrix is non-invertible</span></div>
+<div class="line"><a name="l00383"></a><span class="lineno">  383</span>&#160;      <span class="keywordflow">return</span> (r);       <span class="comment">// Zero matrix</span></div>
+<div class="line"><a name="l00384"></a><span class="lineno">  384</span>&#160;    }</div>
+<div class="line"><a name="l00385"></a><span class="lineno">  385</span>&#160;  </div>
+<div class="line"><a name="l00386"></a><span class="lineno">  386</span>&#160;  <span class="comment">// If we are still here, the matrix is invertible</span></div>
+<div class="line"><a name="l00387"></a><span class="lineno">  387</span>&#160;  </div>
+<div class="line"><a name="l00388"></a><span class="lineno">  388</span>&#160;  <span class="comment">//  Transpose</span></div>
+<div class="line"><a name="l00389"></a><span class="lineno">  389</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> tr = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#a64418c1a8836b38526fdfd7ffcc79cfd" title="Returns the transpose of the present matrix.">transpose</a>();</div>
+<div class="line"><a name="l00390"></a><span class="lineno">  390</span>&#160;  </div>
+<div class="line"><a name="l00391"></a><span class="lineno">  391</span>&#160;  <span class="comment">// Find Adjugate matrix</span></div>
+<div class="line"><a name="l00392"></a><span class="lineno">  392</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> adj = tr.<a class="code" href="../../de/d82/classMatrix33.html#a07b999a7b1c905f3c98ba3792e6fa33f" title="Returns the adjugate matrix of the present matrix.">adjugate</a>();</div>
+<div class="line"><a name="l00393"></a><span class="lineno">  393</span>&#160;  </div>
+<div class="line"><a name="l00394"></a><span class="lineno">  394</span>&#160;  <span class="comment">// Calculate the inverse by dividing the adjugate matrix by the determinant</span></div>
+<div class="line"><a name="l00395"></a><span class="lineno">  395</span>&#160;  r = adj * (1.0/determinant);</div>
+<div class="line"><a name="l00396"></a><span class="lineno">  396</span>&#160;  </div>
+<div class="line"><a name="l00397"></a><span class="lineno">  397</span>&#160;  <span class="keywordflow">return</span> (r);</div>
+<div class="line"><a name="l00398"></a><span class="lineno">  398</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -520,21 +579,21 @@ Protected Attributes</h2></td></tr>
 <p>Scales the current matrix by the scalar provided and returns the result in a third matrix. </p>
 <dl class="section return"><dt>Returns</dt><dd>Matrix containing the result of scaling the current matrix by the scalar provided as argument. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00233">233</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00234"></a><span class="lineno">  234</span>&#160;{</div>
-<div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
-<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  </div>
-<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    {</div>
-<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        {</div>
-<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] * p;</div>
-<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
-<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
-<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;  </div>
-<div class="line"><a name="l00246"></a><span class="lineno">  246</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00247"></a><span class="lineno">  247</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00253">253</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;{</div>
+<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
+<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  </div>
+<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;    {</div>
+<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;        {</div>
+<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(i, j, (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] * p));</div>
+<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;        }</div>
+<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;    }</div>
+<div class="line"><a name="l00265"></a><span class="lineno">  265</span>&#160;  </div>
+<div class="line"><a name="l00266"></a><span class="lineno">  266</span>&#160;  <span class="keywordflow">return</span> (r);</div>
+<div class="line"><a name="l00267"></a><span class="lineno">  267</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -564,25 +623,27 @@ Protected Attributes</h2></td></tr>
 <p>Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. </p>
 <dl class="section return"><dt>Returns</dt><dd>The result of the multiplication of the current matrix with the one provided as argument. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00271">271</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00272"></a><span class="lineno">  272</span>&#160;{</div>
-<div class="line"><a name="l00273"></a><span class="lineno">  273</span>&#160;  <span class="keywordtype">int</span> i, j, k;</div>
-<div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
-<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  </div>
-<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;    {</div>
-<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;        {</div>
-<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] = 0.0;</div>
-<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          <span class="keywordflow">for</span> (k=0; k&lt;3; k++)</div>
-<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;            {</div>
-<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;              r.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][k] * p.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[k][j];</div>
-<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;            }</div>
-<div class="line"><a name="l00285"></a><span class="lineno">  285</span>&#160;        }</div>
-<div class="line"><a name="l00286"></a><span class="lineno">  286</span>&#160;    }</div>
-<div class="line"><a name="l00287"></a><span class="lineno">  287</span>&#160;  </div>
-<div class="line"><a name="l00288"></a><span class="lineno">  288</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00289"></a><span class="lineno">  289</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00291">291</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00292"></a><span class="lineno">  292</span>&#160;{</div>
+<div class="line"><a name="l00293"></a><span class="lineno">  293</span>&#160;  <span class="keywordtype">int</span> i, j, k;</div>
+<div class="line"><a name="l00294"></a><span class="lineno">  294</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
+<div class="line"><a name="l00295"></a><span class="lineno">  295</span>&#160;  <span class="keywordtype">double</span> s;</div>
+<div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;  </div>
+<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;    {</div>
+<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;        {</div>
+<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;          s = 0.0;</div>
+<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;          <span class="keywordflow">for</span> (k=0; k&lt;3; k++)</div>
+<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;            {</div>
+<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;              s += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][k] * p.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(k,j);</div>
+<div class="line"><a name="l00305"></a><span class="lineno">  305</span>&#160;            }</div>
+<div class="line"><a name="l00306"></a><span class="lineno">  306</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a> (i, j, s);</div>
+<div class="line"><a name="l00307"></a><span class="lineno">  307</span>&#160;        }</div>
+<div class="line"><a name="l00308"></a><span class="lineno">  308</span>&#160;    }</div>
+<div class="line"><a name="l00309"></a><span class="lineno">  309</span>&#160;  </div>
+<div class="line"><a name="l00310"></a><span class="lineno">  310</span>&#160;  <span class="keywordflow">return</span> (r);</div>
+<div class="line"><a name="l00311"></a><span class="lineno">  311</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -612,21 +673,24 @@ Protected Attributes</h2></td></tr>
 <p>Returns in a vector the result of the multiplication of the current matrix with the provided vector. </p>
 <dl class="section return"><dt>Returns</dt><dd>The vector resulting from the multiplication of the current matrix with a vector. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00311">311</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00312"></a><span class="lineno">  312</span>&#160;{</div>
-<div class="line"><a name="l00313"></a><span class="lineno">  313</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r(0.0, 0.0, 0.0);</div>
-<div class="line"><a name="l00314"></a><span class="lineno">  314</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00315"></a><span class="lineno">  315</span>&#160;  </div>
-<div class="line"><a name="l00316"></a><span class="lineno">  316</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00317"></a><span class="lineno">  317</span>&#160;    {</div>
-<div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;        {</div>
-<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;          r[i] += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] * v.<a class="code" href="../../df/dd0/classVector3d.html#ae5e82a2be7cc2e195e56875a5befe509" title="The elements of the vector.">x</a>[j];</div>
-<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;        }</div>
-<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;    }</div>
-<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  </div>
-<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00333">333</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;{</div>
+<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> r(0.0, 0.0, 0.0);</div>
+<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordtype">double</span> s;</div>
+<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  </div>
+<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;    {</div>
+<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;      s = 0.0;</div>
+<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        {</div>
+<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;          s += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] * v.<a class="code" href="../../df/dd0/classVector3d.html#a114fda84a6723e54678d9dde244725a4" title="Function to get the value of an element of the vector.">getValue</a>(j);</div>
+<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;        }</div>
+<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;      r.setValue (i, s);</div>
+<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;    }</div>
+<div class="line"><a name="l00348"></a><span class="lineno">  348</span>&#160;  </div>
+<div class="line"><a name="l00349"></a><span class="lineno">  349</span>&#160;  <span class="keywordflow">return</span> (r);</div>
+<div class="line"><a name="l00350"></a><span class="lineno">  350</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -655,18 +719,18 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive scaling of the matrix by a scalar. </p>
 <p>Scales the current matrix by the scalar provided and populates the current matrix elements with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00253">253</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00254"></a><span class="lineno">  254</span>&#160;{</div>
-<div class="line"><a name="l00255"></a><span class="lineno">  255</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00256"></a><span class="lineno">  256</span>&#160;  </div>
-<div class="line"><a name="l00257"></a><span class="lineno">  257</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00258"></a><span class="lineno">  258</span>&#160;    {</div>
-<div class="line"><a name="l00259"></a><span class="lineno">  259</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00260"></a><span class="lineno">  260</span>&#160;        {</div>
-<div class="line"><a name="l00261"></a><span class="lineno">  261</span>&#160;          this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] *= p;</div>
-<div class="line"><a name="l00262"></a><span class="lineno">  262</span>&#160;        }</div>
-<div class="line"><a name="l00263"></a><span class="lineno">  263</span>&#160;    }</div>
-<div class="line"><a name="l00264"></a><span class="lineno">  264</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00273">273</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00274"></a><span class="lineno">  274</span>&#160;{</div>
+<div class="line"><a name="l00275"></a><span class="lineno">  275</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00276"></a><span class="lineno">  276</span>&#160;  </div>
+<div class="line"><a name="l00277"></a><span class="lineno">  277</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00278"></a><span class="lineno">  278</span>&#160;    {</div>
+<div class="line"><a name="l00279"></a><span class="lineno">  279</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00280"></a><span class="lineno">  280</span>&#160;        {</div>
+<div class="line"><a name="l00281"></a><span class="lineno">  281</span>&#160;          this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] *= p;</div>
+<div class="line"><a name="l00282"></a><span class="lineno">  282</span>&#160;        }</div>
+<div class="line"><a name="l00283"></a><span class="lineno">  283</span>&#160;    }</div>
+<div class="line"><a name="l00284"></a><span class="lineno">  284</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -695,16 +759,16 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive multiplication of two matrices. </p>
 <p>Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00295">295</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00296"></a><span class="lineno">  296</span>&#160;{</div>
-<div class="line"><a name="l00297"></a><span class="lineno">  297</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a>* r = <span class="keyword">new</span> <a class="code" href="../../de/d82/classMatrix33.html#a70acb6647b172d017cc4265a29a7d263" title="Default constructor.">Matrix33</a>;</div>
-<div class="line"><a name="l00298"></a><span class="lineno">  298</span>&#160;  </div>
-<div class="line"><a name="l00299"></a><span class="lineno">  299</span>&#160;  *r = (*this) * p;</div>
-<div class="line"><a name="l00300"></a><span class="lineno">  300</span>&#160;  *<span class="keyword">this</span> = *r;</div>
-<div class="line"><a name="l00301"></a><span class="lineno">  301</span>&#160;  </div>
-<div class="line"><a name="l00302"></a><span class="lineno">  302</span>&#160;  <span class="keyword">delete</span>(r);</div>
-<div class="line"><a name="l00303"></a><span class="lineno">  303</span>&#160;  r = NULL;</div>
-<div class="line"><a name="l00304"></a><span class="lineno">  304</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00317">317</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00318"></a><span class="lineno">  318</span>&#160;{</div>
+<div class="line"><a name="l00319"></a><span class="lineno">  319</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a>* r = <span class="keyword">new</span> <a class="code" href="../../de/d82/classMatrix33.html#a70acb6647b172d017cc4265a29a7d263" title="Default constructor.">Matrix33</a>;</div>
+<div class="line"><a name="l00320"></a><span class="lineno">  320</span>&#160;  </div>
+<div class="line"><a name="l00321"></a><span class="lineno">  321</span>&#160;  *r = (*this) * p;</div>
+<div class="line"><a name="l00322"></a><span class="lineno">  322</span>&#160;  *<span class="keyword">this</span> = *r;</div>
+<div class="line"><a name="l00323"></a><span class="lineno">  323</span>&#160;  </div>
+<div class="line"><a name="l00324"></a><span class="lineno">  324</span>&#160;  <span class="keyword">delete</span>(r);</div>
+<div class="line"><a name="l00325"></a><span class="lineno">  325</span>&#160;  r = NULL;</div>
+<div class="line"><a name="l00326"></a><span class="lineno">  326</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -734,21 +798,21 @@ Protected Attributes</h2></td></tr>
 <p>Adds the current matrix to the provided matrix and returns a third matrix with the result. </p>
 <dl class="section return"><dt>Returns</dt><dd>Matrix containing the sum of the present matrix and the one provided. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00155">155</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;{</div>
-<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
-<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;  </div>
-<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;    {</div>
-<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        {</div>
-<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] + p.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j];</div>
-<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;        }</div>
-<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;    }</div>
-<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;  </div>
-<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00175">175</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  </div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;    {</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;        {</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(i, j, (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] + p.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(i, j)));</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;        }</div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;    }</div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160;  </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;  <span class="keywordflow">return</span> (r);</div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -777,18 +841,18 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive addition of two matrices. </p>
 <p>Adds the current matrix to the provided matrix and populates the current matrix elements with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00175">175</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;{</div>
-<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;  </div>
-<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    {</div>
-<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160;        {</div>
-<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;          this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] += p.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j];</div>
-<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;        }</div>
-<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160;    }</div>
-<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00195">195</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;{</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  </div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;          this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] += p.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(i, j);</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
+<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
+<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -818,21 +882,21 @@ Protected Attributes</h2></td></tr>
 <p>Subtracts the given matrix from the current matrix and returns the result in a new matrix. </p>
 <dl class="section return"><dt>Returns</dt><dd>Matrix containing the result of subtracting the provided matrix from the current matrix. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00194">194</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;{</div>
-<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
-<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;  </div>
-<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    {</div>
-<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;        {</div>
-<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] - p.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j];</div>
-<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;        }</div>
-<div class="line"><a name="l00205"></a><span class="lineno">  205</span>&#160;    }</div>
-<div class="line"><a name="l00206"></a><span class="lineno">  206</span>&#160;  </div>
-<div class="line"><a name="l00207"></a><span class="lineno">  207</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00208"></a><span class="lineno">  208</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00214">214</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;{</div>
+<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
+<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  </div>
+<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;    {</div>
+<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;        {</div>
+<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a>(i, j, (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] - p.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(i, j)));</div>
+<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;        }</div>
+<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;    }</div>
+<div class="line"><a name="l00226"></a><span class="lineno">  226</span>&#160;  </div>
+<div class="line"><a name="l00227"></a><span class="lineno">  227</span>&#160;  <span class="keywordflow">return</span> (r);</div>
+<div class="line"><a name="l00228"></a><span class="lineno">  228</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -861,61 +925,18 @@ Protected Attributes</h2></td></tr>
 <p>Operator for reflexive subtraction of two matrices. </p>
 <p>Subtracts the given matrix from the current matrix and populates the current matrix with the result. </p>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00214">214</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00215"></a><span class="lineno">  215</span>&#160;{</div>
-<div class="line"><a name="l00216"></a><span class="lineno">  216</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00217"></a><span class="lineno">  217</span>&#160;  </div>
-<div class="line"><a name="l00218"></a><span class="lineno">  218</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00219"></a><span class="lineno">  219</span>&#160;    {</div>
-<div class="line"><a name="l00220"></a><span class="lineno">  220</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00221"></a><span class="lineno">  221</span>&#160;        {</div>
-<div class="line"><a name="l00222"></a><span class="lineno">  222</span>&#160;          this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] -= p.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j];</div>
-<div class="line"><a name="l00223"></a><span class="lineno">  223</span>&#160;        }</div>
-<div class="line"><a name="l00224"></a><span class="lineno">  224</span>&#160;    }</div>
-<div class="line"><a name="l00225"></a><span class="lineno">  225</span>&#160;}</div>
-</div><!-- fragment -->
-</div>
-</div>
-<a class="anchor" id="ad4ab7b9674a44a297502282e1993ef54"></a>
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> Matrix33::operator^ </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td> const</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>Transpose. </p>
-<p>Performs the transpose of the current matrix. </p>
-<dl class="section return"><dt>Returns</dt><dd>A new matrix with the transpose of the current matrix. </dd></dl>
-
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00333">333</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00334"></a><span class="lineno">  334</span>&#160;{</div>
-<div class="line"><a name="l00335"></a><span class="lineno">  335</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> r;</div>
-<div class="line"><a name="l00336"></a><span class="lineno">  336</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
-<div class="line"><a name="l00337"></a><span class="lineno">  337</span>&#160;  </div>
-<div class="line"><a name="l00338"></a><span class="lineno">  338</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
-<div class="line"><a name="l00339"></a><span class="lineno">  339</span>&#160;    {</div>
-<div class="line"><a name="l00340"></a><span class="lineno">  340</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
-<div class="line"><a name="l00341"></a><span class="lineno">  341</span>&#160;        {</div>
-<div class="line"><a name="l00342"></a><span class="lineno">  342</span>&#160;          r.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[j][i];</div>
-<div class="line"><a name="l00343"></a><span class="lineno">  343</span>&#160;        }</div>
-<div class="line"><a name="l00344"></a><span class="lineno">  344</span>&#160;    }</div>
-<div class="line"><a name="l00345"></a><span class="lineno">  345</span>&#160;  </div>
-<div class="line"><a name="l00346"></a><span class="lineno">  346</span>&#160;  <span class="keywordflow">return</span> (r);</div>
-<div class="line"><a name="l00347"></a><span class="lineno">  347</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00234">234</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00235"></a><span class="lineno">  235</span>&#160;{</div>
+<div class="line"><a name="l00236"></a><span class="lineno">  236</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00237"></a><span class="lineno">  237</span>&#160;  </div>
+<div class="line"><a name="l00238"></a><span class="lineno">  238</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00239"></a><span class="lineno">  239</span>&#160;    {</div>
+<div class="line"><a name="l00240"></a><span class="lineno">  240</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00241"></a><span class="lineno">  241</span>&#160;        {</div>
+<div class="line"><a name="l00242"></a><span class="lineno">  242</span>&#160;          this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[i][j] -= p.<a class="code" href="../../de/d82/classMatrix33.html#ab53b3e37ad830a87a804cf26311ba088" title="Returns the value of the element located by the row and column indices provided.">getValue</a>(i, j);</div>
+<div class="line"><a name="l00243"></a><span class="lineno">  243</span>&#160;        }</div>
+<div class="line"><a name="l00244"></a><span class="lineno">  244</span>&#160;    }</div>
+<div class="line"><a name="l00245"></a><span class="lineno">  245</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -944,16 +965,16 @@ Protected Attributes</h2></td></tr>
 <p>Calculates the determinant of the current matrix. </p>
 <dl class="section return"><dt>Returns</dt><dd>Returns the determinant of the current matrix. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00354">354</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00355"></a><span class="lineno">  355</span>&#160;{</div>
-<div class="line"><a name="l00356"></a><span class="lineno">  356</span>&#160;  <span class="keywordtype">double</span> d = 0.0;</div>
-<div class="line"><a name="l00357"></a><span class="lineno">  357</span>&#160;  </div>
-<div class="line"><a name="l00358"></a><span class="lineno">  358</span>&#160;  d += this.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] * ( (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2]) );</div>
-<div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;  d += this.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] * ( (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2]) );</div>
-<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  d += this.<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] * ( (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1]) );</div>
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00358">358</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00359"></a><span class="lineno">  359</span>&#160;{</div>
+<div class="line"><a name="l00360"></a><span class="lineno">  360</span>&#160;  <span class="keywordtype">double</span> d = 0.0;</div>
 <div class="line"><a name="l00361"></a><span class="lineno">  361</span>&#160;  </div>
-<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  <span class="keywordflow">return</span> (d);</div>
-<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;}</div>
+<div class="line"><a name="l00362"></a><span class="lineno">  362</span>&#160;  d += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] * ( (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2]) );</div>
+<div class="line"><a name="l00363"></a><span class="lineno">  363</span>&#160;  d += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] * ( (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2]) );</div>
+<div class="line"><a name="l00364"></a><span class="lineno">  364</span>&#160;  d += this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] * ( (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1]) - (this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0]*this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1]) );</div>
+<div class="line"><a name="l00365"></a><span class="lineno">  365</span>&#160;  </div>
+<div class="line"><a name="l00366"></a><span class="lineno">  366</span>&#160;  <span class="keywordflow">return</span> (d);</div>
+<div class="line"><a name="l00367"></a><span class="lineno">  367</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -973,16 +994,16 @@ Protected Attributes</h2></td></tr>
 <p>Construct the strain tensor from the principal and shear strains. </p>
 <p>Takes the values in principalStrains and shearStrains and constructs the symmetrical strain matrix. </p>
 
-<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00052">52</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0];</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1];</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2];</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0];</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1];</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2];</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00100">100</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;{</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [0];</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [1];</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][2] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#a172c6ef4593e35bc9280a2dafde61475">principalStrains</a> [2];</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][1] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [0];</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[0][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][0] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [1];</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[1][2] = this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[2][1] = this-&gt;<a class="code" href="../../d1/d3c/classStrain.html#afbc4d1b573860bda614a43f767b8b272">shearStrains</a> [2];</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1010,15 +1031,16 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>Rotated strain tensor. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00105">105</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
-<div class="fragment"><div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;{</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> alphaT = ^alpha;  <span class="comment">// Transpose</span></div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;  <a class="code" href="../../d1/d3c/classStrain.html" title="Strain class to represent the strain tensor.">Strain</a> sNew;</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;  sNew = alpha * (*this) * alphaT;  <span class="comment">// Rotate the strain matrix</span></div>
-<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;  <span class="keywordflow">return</span> (sNew);</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;}</div>
+<p>Definition at line <a class="el" href="../../d7/db1/strain_8cpp_source.html#l00141">141</a> of file <a class="el" href="../../d7/db1/strain_8cpp_source.html">strain.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;{</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;  <span class="comment">// Transpose</span></div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;  <a class="code" href="../../d2/d4a/classRotationMatrix.html" title="RotationMatrix class to represent a rotation matrix.">RotationMatrix</a> alphaT (alpha.<a class="code" href="../../de/d82/classMatrix33.html#a64418c1a8836b38526fdfd7ffcc79cfd" title="Returns the transpose of the present matrix.">transpose</a>());</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;  <span class="comment">// Rotate the strain matrix</span></div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;  <a class="code" href="../../d1/d3c/classStrain.html" title="Strain class to represent the strain tensor.">Strain</a> sNew = <a class="code" href="../../d1/d3c/classStrain.html#ad7580e057dd173ba4a4609f4edfe6e38" title="Default constructor.">Strain</a> (alpha * (*<span class="keyword">this</span>) * alphaT);</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;  <span class="keywordflow">return</span> (sNew);</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1081,6 +1103,48 @@ Protected Attributes</h2></td></tr>
 <div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;}</div>
+</div><!-- fragment -->
+</div>
+</div>
+<a class="anchor" id="a64418c1a8836b38526fdfd7ffcc79cfd"></a>
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="../../de/d82/classMatrix33.html">Matrix33</a> Matrix33::transpose </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inherited</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Returns the transpose of the present matrix. </p>
+<p>The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-versa. </p>
+<dl class="section return"><dt>Returns</dt><dd>The transpose of the present matrix. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html#l00153">153</a> of file <a class="el" href="../../d8/d8e/matrix33_8cpp_source.html">matrix33.cpp</a>.</p>
+<div class="fragment"><div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;{</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;  <a class="code" href="../../de/d82/classMatrix33.html" title="Matrix33 class representing a 3x3 square matrix.">Matrix33</a> tr;</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;  <span class="keywordtype">int</span> i, j;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160;  <span class="keywordflow">for</span> (i=0; i&lt;3; i++)</div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;    {</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;      <span class="keywordflow">for</span> (j=0; j&lt;3; j++)</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;          tr.<a class="code" href="../../de/d82/classMatrix33.html#a6cdcec77fd089b2e73ad7ae85ecff30b" title="Function to set the value of an element indicated by its position.">setValue</a> (i, j, this-&gt;<a class="code" href="../../de/d82/classMatrix33.html#af7f01fa466616eb7c8eda2e4d9f85cdd" title="Array containing the elements of the matrix.">x</a>[j][i]);</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;        }</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;    }</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;  <span class="keywordflow">return</span> (tr);</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;}</div>
 </div><!-- fragment -->
 </div>
 </div>
@@ -1162,7 +1226,7 @@ Protected Attributes</h2></td></tr>
 </div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
-Generated on Mon Jun 3 2013 16:12:05 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Mon Jun 10 2013 10:23:53 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.8.3.1
 </small></address>

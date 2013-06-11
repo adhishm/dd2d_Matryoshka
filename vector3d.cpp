@@ -1,8 +1,8 @@
 /**
  * @file vector3d.cpp
  * @author Adhish Majumdar
- * @version 0.0
- * @date 29/04/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of member functions and operators of the Vector3d class.
  * @details This file defines the member functions and operators of the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
@@ -80,7 +80,7 @@ void Vector3d::setVector (double* a)
  * @param index Index of the element whose value is to be got.
  * @return The value of the element of the vector at the position
  */
-double Vector3d::getValue (int index)
+double Vector3d::getValue (int index) const
 {
   if (index>=0 && index<3)
     {
@@ -97,7 +97,7 @@ double Vector3d::getValue (int index)
  * @details The vector is returned in an array.
  * @return Pointer to the first term of an array containing the elements of the vector.
  */
-double* Vector3d::getVector ()
+double* Vector3d::getVector () const
 {
   double* a = new double[3];
   
@@ -113,7 +113,7 @@ double* Vector3d::getVector ()
  * @details Sums the elements of the vector and returns the result.
  * @return The sum of the elements of the vector.
  */
-double Vector3d::sum ()
+double Vector3d::sum () const
 {
   double s = 0.0;
   int i;
@@ -131,7 +131,7 @@ double Vector3d::sum ()
  * @details Computes the magnitude of the vector. Basically the square root of the sum of the squares of the vector elements.
  * @return The magnitude of the vector.
  */
-double Vector3d::magnitude ()
+double Vector3d::magnitude () const
 {
   double s = 0.0;
   int i;
@@ -162,7 +162,7 @@ Vector3d Vector3d::normalize ()
     return ((*this) * (1.0/m));
   }
 }
-  
+
 // Operators
 // Addition
 /**
@@ -177,7 +177,7 @@ Vector3d Vector3d::operator+ (const Vector3d& p) const
   
   for (i=0; i<3; i++)
     {
-      r.x[i] = this->x[i] + p.x[i];
+      r.setValue(i, (this->x[i] + p.getValue(i)));
     }
   
   return (r);
@@ -210,7 +210,7 @@ Vector3d Vector3d::operator- (const Vector3d& p) const
   
   for (i=0; i<3; i++)
     {
-      r.x[i] = this->x[i] - p.x[i];
+      r.setValue(i, (this->x[i] - p.getValue(i)));
     }
   
   return (r);
@@ -226,7 +226,7 @@ void Vector3d::operator-= (const Vector3d& p)
   
   for (i=0; i<3; i++)
     {
-      this->x[i] -= p.x[i];
+      this->x[i] -= p.getValue(i);
     }
 }
 
@@ -243,7 +243,7 @@ Vector3d Vector3d::operator* (const double& p) const
   
   for (i=0; i<3; i++)
     {
-      r.x[i] = this->x[i] * p;
+      r.setValue(i, (this->x[i] * p));
     }
   
   return (r);
@@ -275,7 +275,7 @@ double Vector3d::operator* (const Vector3d& p) const
   
   for (i=0; i<3; i++)
     {
-      s += this->x[i] * p.x[i];
+      s += this->x[i] * p.getValue(i);
     }
   
   return (s);
@@ -290,9 +290,9 @@ Vector3d Vector3d::operator^ (const Vector3d& p) const
 {
   Vector3d r(0.0, 0.0, 0.0);
   
-  r.x[0] = (this->x[1] * p.x[2]) - (this->x[2] * p.x[1]);
-  r.x[1] = (this->x[2] * p.x[0]) - (this->x[0] * p.x[2]);
-  r.x[2] = (this->x[0] * p.x[1]) - (this->x[1] * p.x[0]);
+  r.setValue(0, ((this->x[1] * p.getValue(2)) - (this->x[2] * p.getValue(1))));
+  r.setValue(1, ((this->x[2] * p.getValue(0)) - (this->x[0] * p.getValue(2))));
+  r.setValue(2, ((this->x[0] * p.getValue(1)) - (this->x[1] * p.getValue(0))));
   
   return (r);
 }
@@ -303,14 +303,10 @@ Vector3d Vector3d::operator^ (const Vector3d& p) const
  */
 void Vector3d::operator^= (const Vector3d& p)
 {
-  Vector3d* r = Vector3d(0.0, 0.0, 0.0);
-  
-  r->x[0] = (this->x[1] * p.x[2]) - (this->x[2] * p.x[1]);
-  r->x[1] = (this->x[2] * p.x[0]) - (this->x[0] * p.x[2]);
-  r->x[2] = (this->x[0] * p.x[1]) - (this->x[1] * p.x[0]);
-  
+  Vector3d* r = new Vector3d(0.0, 0.0, 0.0);
+
+  *r = (*this)^p;
   *this = *r;
-  
   delete (r);
   r = NULL;
 }

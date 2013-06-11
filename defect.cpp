@@ -1,8 +1,8 @@
 /**
  * @file defect.cpp
  * @author Adhish Majumdar
- * @version 0.0
- * @date 03/06/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of member functions of the Defect class.
  * @details This file defines the member functions of the Defect class representing a single defect in the simulation.
  */
@@ -43,7 +43,10 @@ Defect::Defect (double x, double y, double z)
  */
 Defect::Defect (double* p)
 {
-  this->pos.setValue (p);
+  for (int i=0; i<3; i++)
+    {
+      this->pos.setValue (i, p[i]);
+    }
 }
     
 // Assignment functions
@@ -80,7 +83,7 @@ void Defect::setPosition (double x, double y, double z)
  */
 void Defect::setPosition (Vector3d a)
 {
-  this->position = a;
+  this->pos = a;
 }
 
 /**
@@ -112,21 +115,11 @@ void Defect::setZ (double z)
 
 // Access Functions
 /**
- * @brief Returns in an array the position.
- * @details The position of the defect is saved in an array and a pointer to its first term is returned.
- * @return Pointer to the first term of the array containing the position of the defect.
- */
-double* Defect::getPosition ()
-{
-  return (this->pos.getVector ());
-}
-
-/**
  * @brief Returns the array position in a pre-allocated array.
  * @details Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.
  * @param a Pointer to the location where the defect coordinates are to be populated.
  */
-void Defect::getPosition (double* a)
+void Defect::getPosition (double* a) const
 {
   a = this->pos.getVector ();
 }
@@ -135,7 +128,7 @@ void Defect::getPosition (double* a)
  * @brief Returns the position vector of the defect.
  * @return The position vector of the defect, in a variable of type Vector3d.
  */
-Vector3d Defect::getPosition ()
+Vector3d Defect::getPosition () const
 {
   return (this->pos);
 }
@@ -144,16 +137,16 @@ Vector3d Defect::getPosition ()
  * @brief Returns the X-coordinate of the defect.
  * @return X-coordinate of the defect.
  */
-double Defect::getX ()
+double Defect::getX () const
 {
-  return (this->getValue (0));
+  return (this->pos.getValue (0));
 }
 
 /**
  * @brief Returns the Y-coordinate of the defect.
  * @return Y-coordinate of the defect.
  */
-double Defect::getY ()
+double Defect::getY () const
 {
   return (this->pos.getValue (1));
 }
@@ -162,7 +155,7 @@ double Defect::getY ()
  * @brief Returns the Z-coordinate of the defect.
  * @return Z-coordinate of the defect.
  */
-double Defect::getZ ()
+double Defect::getZ () const
 {
   return (this->pos.getValue (2));
 }

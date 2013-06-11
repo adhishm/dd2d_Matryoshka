@@ -55,9 +55,6 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
 
   // Fill the vectors and stresses with zero vectors and stresses
   int nDisl = this->getNumDislocations ();
-  this->dislocationStresses.resize(nDisl, Stress ());
-  this->dislocationVelocities.resize(nDisl, Vector3d());
-  this->dislocationForces.resize(nDisl, Vector3d());
 
   // Time increment
   this->dt = 0;
@@ -72,8 +69,8 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, std::vector
  */
 void SlipPlane::setExtremities (Vector3d *ends)
 {
-  this->extremities[0] = Defect(ends);
-  this->extremities[1] = Defect(ends+1);
+  this->extremities[0].setPosition(ends[0]);
+  this->extremities[1].setPosition(ends[1]);
 }
 
 /**
@@ -118,32 +115,23 @@ void SlipPlane::setDislocationSourceList (std::vector<DislocationSource> disloca
  * @param i Index of the extremity. Possible values: 0, 1
  * @return Position vector of the extremity indicated by the argument, returned as a variable of type Vector3d.
  */
-Vector3d SlipPlane::getExtremity (int i)
+Vector3d SlipPlane::getExtremity (int i) const
 {
   if (i==0 || i==1)
-  {
-    return (this->extremities[i].getPosition());
-  }
+    {
+      return (this->extremities[i].getPosition());
+    }
   else
-  {
-    return (Vector3d());
-  }
-}
-
-/**
- * @brief Get the position vectors of the extremities of the slip plane.
- * @return Pointer to an array containing the position vectors of the two extremities of the slip plane, variables of type Vector3d.
- */
-Defect* SlipPlane::getExtremities ()
-{
-  return (this->extremities);
+    {
+      return (Vector3d());
+    }
 }
 
 /**
  * @brief Get the normal vector of the slip plane.
  * @return The normal vector of the slip plane, in a variable of type Vector3d.
  */
-Vector3d SlipPlane::getNormal ()
+Vector3d SlipPlane::getNormal () const
 {
   return (this->normalVector);
 }
@@ -153,7 +141,7 @@ Vector3d SlipPlane::getNormal ()
  * @details This function returns the position vector of the slip plane. The position vector is redundant because the slip plane is completely defined by its extremities and the normal vector. Nevertheless, this value can be useful to locate the slip plane within a slip system.
  * @return Position vector of the slip plane, in a variable of type Vector3d.
  */
-Vector3d SlipPlane::getPosition ()
+Vector3d SlipPlane::getPosition () const
 {
   return (this->position);
 }
@@ -165,24 +153,24 @@ Vector3d SlipPlane::getPosition ()
  * @param d Pointer to the memory location where the required dislocation is to be stored. Space in memory must be pre-allocated.
  * @return True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the Dislocation data). Otherwise, the return value is false.
  */
-bool SlipPlane::getDislocation (int i, Dislocation* d)
+bool SlipPlane::getDislocation (int i, Dislocation* d) const
 {
   if (i>=0 && i<this->dislocations.size ())
-  {
-    *d = this->dislocations[i];
-    return (true);
-  }
+    {
+      *d = this->dislocations[i];
+      return (true);
+    }
   else
-  {
-    return (false);
-  }
+    {
+      return (false);
+    }
 }
 
 /**
  * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
  * @return The vector of dislocations lying on this slip plane.
  */
-std::vector<Dislocation> SlipPlane::getDislocationList ()
+std::vector<Dislocation> SlipPlane::getDislocationList () const
 {
   return (this->dislocations);
 }
@@ -191,10 +179,10 @@ std::vector<Dislocation> SlipPlane::getDislocationList ()
  * @brief Get the number of dislocations.
  * @return The number of dislocations on the slip plane.
  */
- int SlipPlane::getNumDislocations ()
- {
-   return (this->dislocations.size ());
- }
+int SlipPlane::getNumDislocations () const
+{
+  return (this->dislocations.size ());
+}
 
 /**
  * @brief Get the dislocation source on the slip plane indicated by the index provided as argument.
@@ -203,24 +191,24 @@ std::vector<Dislocation> SlipPlane::getDislocationList ()
  * @param dSource Pointer to the memory location where the required dislocation source is to be stored. Space in memory must be pre-allocated.
  * @return True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the DislocationSource data). Otherwise, the return value is false.
  */
-bool SlipPlane::getDislocationSource (int i, DislocationSource* dSource)
+bool SlipPlane::getDislocationSource (int i, DislocationSource* dSource) const
 {
   if (i>=0 && i<this->dislocationSources.size ())
-  {
-    *dSource = this->dislocationSources[i];
-    return (true);
-  }
+    {
+      *dSource = this->dislocationSources[i];
+      return (true);
+    }
   else
-  {
-    return (false);
-  }
+    {
+      return (false);
+    }
 }
 
 /**
  * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
  * @return The vector of dislocation sources lying on this slip plane.
  */
-std::vector<DislocationSource> SlipPlane::getDislocationSourceList ()
+std::vector<DislocationSource> SlipPlane::getDislocationSourceList () const
 {
   return (this->dislocationSources);
 }
@@ -229,16 +217,16 @@ std::vector<DislocationSource> SlipPlane::getDislocationSourceList ()
  * @brief Get the number of dislocation sources.
  * @return The number of dislocation sources on the slip plane.
  */
- int SlipPlane::getNumDislocationSources ()
- {
-   return (this->dislocationSources.size ());
- }
+int SlipPlane::getNumDislocationSources () const
+{
+  return (this->dislocationSources.size ());
+}
 
 /**
  * @brief Get the rotation matrix for this slip plane.
  * @return The rotation matrix of this slip plane, in a variable of type RotationMatrix.
  */
-RotationMatrix SlipPlane::getRotationMatrix ()
+RotationMatrix SlipPlane::getRotationMatrix () const
 {
   return (this->rotationMatrix);
 }
@@ -248,35 +236,35 @@ RotationMatrix SlipPlane::getRotationMatrix ()
  * @param i Index of the axis that is to be returned. (0, 1, 2)=(x, y, z).
  * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.
  */
-Vector3d SlipPlane::getAxis (int i)
+Vector3d SlipPlane::getAxis (int i) const
 {
-  Vector3d = axis;
+  Vector3d axis;
   
   if (i==2)
-  {
-    // Z-axis
-    axis = this->normalVector;
-  }
+    {
+      // Z-axis
+      axis = this->normalVector;
+    }
   
   if (i==0)
-  {
-    // X-axis
-    Vector3d *e1 = new Vector3d;
-    Vector3d *e2 = new Vector3d;
+    {
+      // X-axis
+      Vector3d *e1 = new Vector3d;
+      Vector3d *e2 = new Vector3d;
 
-    *e1 = this->extremities[0].getPosition();
-    *e2 = this->extremities[1].getPosition();
-    axis = ((*e2) - (*e1));
+      *e1 = this->extremities[0].getPosition();
+      *e2 = this->extremities[1].getPosition();
+      axis = ((*e2) - (*e1));
 
-    delete(e1);  e1 = NULL;
-    delete(e2);  e2 = NULL;
-  }
+      delete(e1);  e1 = NULL;
+      delete(e2);  e2 = NULL;
+    }
   
   if (i==1)
-  {
-    // Y-axis = Z x X
-    axis = this->getAxis(2) ^ this->getAxis(0);
-  }
+    {
+      // Y-axis = Z x X
+      axis = this->getAxis(2) ^ this->getAxis(0);
+    }
   
   return ( axis.normalize() );
 }     
@@ -295,14 +283,14 @@ void SlipPlane::calculateRotationMatrix ()
   
   // Prepare the global and local systems
   for (i=0; i<3; i++)
-  {
-    for (j=0; j<3; j++)
     {
-      unPrimed[i].setValue(j, (double)(i==j));
-    }
+      for (j=0; j<3; j++)
+	{
+	  unPrimed[i].setValue(j, (double)(i==j));
+	}
     
-    primed[i] = this->getAxis(i);
-  }
+      primed[i] = this->getAxis(i);
+    }
   
   // Calculate the rotationMatrix
   this->rotationMatrix = RotationMatrix(unPrimed, primed);
@@ -313,237 +301,235 @@ void SlipPlane::calculateRotationMatrix ()
 }
 
 /**
- * @brief Calculates the total stress field experienced by each dislocation and stored it in the STL vector container dislocationStresses.
+ * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
  * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
  * @param appliedStress The stress applied externally.
  * @param mu Shear modulus of the material.
  * @param nu Poisson's ratio.
  */
- void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, double nu)
- {
-   std::vector<Dislocation>::iterator d1;  // Iterator for each dislocation
-   std::vector<Dislocation>::iterator d2;  // Nested iterator
-   std::vector<Stress>::iterator s;        // Iterator for the Stress
+void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, double nu)
+{
+  std::vector<Dislocation>::iterator d1;  // Iterator for each dislocation
+  std::vector<Dislocation>::iterator d2;  // Nested iterator
+  Stress s;                               // Variable for stress
 
-   Vector3d p;                             // Position vector
+  Vector3d p;                             // Position vector
 
-   s = this->dislocationStresses.begin();
-   for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
-     {
-       *s = appliedStress;
-       p = d1->getPosition();
-       for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
-	 {
-	   if (d1==d2)
-	     {
-	       continue;
-	     }
-	   else
-	     {
-	       *s = *s + d2->stressField(p, mu, nu);
-	     }
-	 }
-     }
- }
+  for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
+    {
+      s = appliedStress;
+      p = d1->getPosition();
+      for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
+	{
+	  if (d1==d2)
+	    {
+	      continue;
+	    }
+	  else
+	    {
+	      // Superpose the stress fields of all other dislocations
+	      s += d2->stressField(p, mu, nu);
+	    }
+	}
+      d1->setTotalStress (s);
+    }
+}
 
- /**
-  * @brief This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.
-  * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the STL vector SlipPlane::dislocationStresses. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
-  * @param tau_crss Critical Resolved Shear Stress in Pa.
-  */
- void SlipPlane::calculateDislocationForces (double tau_crss)
- {
-   std::vector<Dislocation>::iterator d;  // Iterator for dislocations
-   std::vector<Vector3d>::iterator f;     // Iterator for forces
-   std::vector<Stress>::iterator s;       // Iterator for stresses
-
-   s = this->dislocationStresses.begin();
-   f = this->dislocationForces.begin();
-
-   for (d = this->dislocations.begin(); d!=this->dislcoations.end(); d++)
-     {
-       f = d->forcePeachKoehler (*s, tau_crss);
-       s++;
-       f++;
-     }
- }
-
- /**
-  * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
-  * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
-  * param B The drag coefficient.
-  */
- void SlipPlane::calculateVelocities (double B)
- {
-   std::vector<Dislocation>::iterator d;  // Iterator for dislocations
-   std::vector<Vector3d>::iterator f;     // Iterator for forces
-   std::vector<Vector3d>::iterator v;     // Iterator for velocities
-
-   Vector3d p0, p1, p01;
-   double norm_v, norm_p01, cosine;
-
-   d = this->dislocations.begin();
-   f = this->dislocationForces.begin();
-   v = this->dislocationVelocities.begin();
-
-   while (v != this->dislocationVelocities.end())
-     {
-       if (d->isMobile())
-	 {
-	   // Velocity directly proportional to Peach-Koehler force
-	   *v = (*f)/B;
-	   norm_v = v->magnitude();
-
-	   if (norm_v > 0.0)
-	     {
-	       // Project the velocity on to the slip plane line
-	       p0 = this->extremity[0].getPosition();
-	       p1 = this->extremity[1].getPosition();
-	       p01 = p1 - p0;
-	       norm_p01 = p01.magnitude();
-	   
-	       cosine = ((*v) * p01)/(norm_v * norm_p01);
-	       *v = (*v) * cosine;
-	     }
-	 }
-       else
-	 {
-	   *v = Vector3d(0.0, 0.0, 0.0);
-	 }
-       d++;
-       f++;
-       v++;
-     }
- }
-
- /**
-  * @brief Calculate the time increment based on the velocities of the dislocations.
-  * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
-  * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
-  * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
-  */
- void SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
- {
-   // Get the number of dislocations
-   int nDisl = this->dislocations.size();
-
-   // Vector of time increments
-   std::vector<double> timeIncrement(nDisl, 1000.0);
-
-   // Position vectors
-   Vector3d p0, p1;
-   double norm_p01;
-
-   // Velocity vectors
-   Vector3d v0, v1;
-   double norm_v01;
-
-   int i;         // Counter for the loop
-   double t1, t2;
-   double dtMin;  // Minimum time increment
-
-   // For the first dislocation, the time increment has to be calculated
-   // for approach to both a dislocation and the slip plane extremity.
-   // Time for slip plane extremity
-   t1 = this->dislocations[0].idealTimeIncrement(this->dislocationVelocities[0],
-						 minDistance,
-						 this->extremity[0],
-						 Vector3d(0.0, 0.0, 0.0));
-   t2 = this->dislocations[0].idealTimeIncrement(this->dislocationVelocities[0],
-						 minDistance,
-						 this->dislocations[1],
-						 this->dislocationVelocities[1]);
-   // Choose the smaller of the two
-   timeIncrement[0] = t1 < t2 ? t1:t2;
-   if (timeIncrement[0] < minDt)
-     {
-       // This dislocation should not move in this iteration because it might collide with the next defect
-       timeIncrement[0] = minDt;
-       this->dislocationVelocities[0] = Vector3d(0.0, 0.0, 0.0);
-
-       // The other defect is a slip plane extremity
-       // This dislocation will not move any more
-       this->dislocations[0].setPinned();
-     }
-
-   for (i=1; i<(nDisl-1); i++)
-     {
-       t1 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
-						     minDistance,
-						     this->dislocations[i-1],
-						     this->dislcoationVelocities[i-1]);
-       t2 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
-						     minDistance,
-						     this->dislocations[i+1],
-						     this->dislcoationVelocities[i+1]);
-       timeIncrement[i] = t1 < t2 ? t1:t2;
-
-       if (timeIncrement[i] < minDt)
-	 {
-	   // This dislocation should not move in this iteration because it might collide with the next defect
-	   timeIncrement[i] = minDt;
-	   this->dislocationVelocities[i] = Vector3d(0.0, 0.0, 0.0);
-	 }
-     }
-
-   // For the last dislocation, the time increment has to be calculated
-   // for approach to both a dislocation and the slip plane extremity.
-   // Time for slip plane extremity
-   i=nDisl-1;
-   t1 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
-						 minDistance,
-						 this->extremity[1],
-						 Vector3d(0.0, 0.0, 0.0));
-   t2 = this->dislocations[i].idealTimeIncrement(this->dislocationVelocities[i],
-						 minDistance,
-						 this->dislocations[i-1],
-						 this->dislocationVelocities[i-1]);
-   // Choose the smaller of the two
-   timeIncrement[i] = t1 < t2 ? t1:t2;
-
-   if (timeIncrement[i] < minDt)
-     {
-       // This dislocation should not move in this iteration because it might collide with the next defect
-       timeIncrement[i] = minDt;
-       this->dislocationVelocities[i] = Vector3d(0.0, 0.0, 0.0);
-
-       // The other defect is a slip plane extremity
-       // This dislocation will not move any more
-       this->dislocations[i].setPinned();
-     }
+/**
+ * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
+ * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
+ * @param tau_crss Critical Resolved Shear Stress in Pa.
+ */
+void SlipPlane::calculateDislocationForces (double tau_crss)
+{
+  std::vector<Dislocation>::iterator d;  // Iterator for dislocations
    
-   dtMin = 1000;
-   for (i=0; i<nDisl; i++)
-     {
-       if (timeIncrement[i] < dtMin)
-	 {
-	   dtMin = timeIncrement[i];
-	 }
-     }
+  for (d = this->dislocations.begin(); d!=this->dislocations.end(); d++)
+    {
+      d->setTotalForce ( d->forcePeachKoehler(d->getTotalStress(), tau_crss) );
+    }
+}
 
-   this->dt = dtMin;
- }
+/**
+ * @brief Calculates the velocities of dislocations and stores them in the variable Vector3d Dislocation::velocity and also puts it at the end of std::vector<Vector3d> Dislocation::velocities.
+ * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+ * param B The drag coefficient.
+ */
+void SlipPlane::calculateVelocities (double B)
+{
+  std::vector<Dislocation>::iterator d;  // Iterator for dislocations
+   
+  Vector3d p0, p1, p01;
+  double norm_v, norm_p01, cosine;
+
+  Vector3d v;
+
+  for ( d=this->dislocations.begin(); d != this->dislocations.end(); d++)
+    {
+      if (d->isMobile())
+	{
+	  // Velocity directly proportional to Peach-Koehler force
+	  v =  (d->getTotalForce()) * (1.0/B);
+	  norm_v = v.magnitude();
+
+	  if (norm_v > 0.0)
+	    {
+	      // Project the velocity on to the slip plane line
+	      p0 = this->extremities[0].getPosition();
+	      p1 = this->extremities[1].getPosition();
+	      p01 = p1 - p0;
+	      norm_p01 = p01.magnitude();
+	   
+	      cosine = (v * p01)/(norm_v * norm_p01);
+	      v *= cosine;
+	    }
+	}
+      else
+	{
+	  v = Vector3d(0.0, 0.0, 0.0);
+	}
+
+      d->setVelocity (v);
+    }
+}
+
+/**
+ * @brief Calculate the time increment based on the velocities of the dislocations.
+ * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+ * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+ * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+ * @return STL vector container with the ideal time increments for all the dislocations.
+ */
+std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
+{
+  // Get the number of dislocations
+  int nDisl = this->dislocations.size();
+  
+  // Vector of time increments
+  std::vector<double> timeIncrement(nDisl, 1000.0);
+   
+  // Position vectors
+  Vector3d p0, p1;
+  double norm_p01;
+
+  // Velocity vectors
+  Vector3d v0, v1;
+  double norm_v01;
+
+  int i;         // Counter for the loop
+  double t1, t2;
+  double dtMin;  // Minimum time increment
+
+  // For the first dislocation, the time increment has to be calculated
+  // for approach to both a dislocation and the slip plane extremity.
+  // Time for slip plane extremity
+  t1 = this->dislocations[0].idealTimeIncrement(minDistance,
+						this->extremities[0],
+						Vector3d(0.0, 0.0, 0.0));
+  t2 = this->dislocations[0].idealTimeIncrement(minDistance,
+						this->dislocations[1],
+						this->dislocations[1].getVelocity());
+  // Choose the smaller of the two
+  timeIncrement[0] = t1 < t2 ? t1:t2;
+  /*
+    if (timeIncrement[0] < minDt)
+    {
+    // This dislocation should not move in this iteration because it might collide with the next defect
+    timeIncrement[0] = minDt;
+    this->dislocations[0].setVelocity ( Vector3d(0.0, 0.0, 0.0) );
+
+    // The other defect is a slip plane extremity
+    // This dislocation will not move any more
+    this->dislocations[0].setPinned();
+    }
+  */
+
+  for (i=1; i<(nDisl-1); i++)
+    {
+      t1 = this->dislocations[i].idealTimeIncrement(minDistance,
+						    this->dislocations[i-1],
+						    this->dislocations[i-1].getVelocity());
+      t2 = this->dislocations[i].idealTimeIncrement(minDistance,
+						    this->dislocations[i+1],
+						    this->dislocations[i+1].getVelocity());
+      timeIncrement[i] = t1 < t2 ? t1:t2;
+      /*
+	if (timeIncrement[i] < minDt)
+	{
+	// This dislocation should not move in this iteration because it might collide with the next defect
+	timeIncrement[i] = minDt;
+	this->dislocations[i].setVelocity ( Vector3d(0.0, 0.0, 0.0) );
+	}
+      */
+    }
+
+  // For the last dislocation, the time increment has to be calculated
+  // for approach to both a dislocation and the slip plane extremity.
+  // Time for slip plane extremity
+  i=nDisl-1;
+  t1 = this->dislocations[i].idealTimeIncrement(minDistance,
+						this->extremities[1],
+						Vector3d(0.0, 0.0, 0.0));
+  t2 = this->dislocations[i].idealTimeIncrement(minDistance,
+						this->dislocations[i-1],
+						this->dislocations[i-1].getVelocity());
+  // Choose the smaller of the two
+  timeIncrement[i] = t1 < t2 ? t1:t2;
+  /*
+    if (timeIncrement[i] < minDt)
+    {
+    // This dislocation should not move in this iteration because it might collide with the next defect
+    timeIncrement[i] = minDt;
+    this->dislocations[i].setVelocity ( Vector3d(0.0, 0.0, 0.0) );
+
+    // The other defect is a slip plane extremity
+    // This dislocation will not move any more
+    this->dislocations[i].setPinned();
+    }
+  */
+  dtMin = 1000;
+  for (i=0; i<nDisl; i++)
+    {
+      if (timeIncrement[i] < dtMin)
+	{
+	  dtMin = timeIncrement[i];
+	}
+    }
+
+  this->dt = dtMin<minDt ? minDt:dtMin;  // Choose dtMin greater than minDt.
+  return (timeIncrement);
+}
 
 /**
  * @brief Displaces the dislocations according to their velocities and the time increment.
+ * @details This function displaces the dislocations according to the velocities and time increment. If the time increment is smaller than the global time increment, the dislocation moves with this smaller value, effectively moving up to the limiting distance to the next defect and stopping there.
+ * @param timeIncrement STL vector containing the timeIncrements of all the dislocations.
  */
-void SlipPlane::moveDislocations ()
+void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 {
   std::vector<Dislocation>::iterator d;
-  std::vector<Vector3d>::iterator v;
+  std::vector<double>::iterator t;
   Vector3d p;
 
   d = this->dislocations.begin();
-  v = this->dislocationVelocities.begin();
+  t = timeIncrement.begin();
 
   while (d != this->dislocations.end())
     {
       p = d->getPosition();
-      p += (*v) * (this->dt);
+      if (*t <= this->dt)
+	{
+	  // Move the dislocation up to the defect and stop it there
+	  p += d->getVelocity() * (*t);
+	}
+      else
+	{
+	  p += d->getVelocity() * (this->dt);
+	}
       d->setPosition(p);
 
       d++;
-      v++;
+      t++;
     }
 }
 
@@ -573,7 +559,7 @@ void SlipPlane::sortDislocations ()
   int nDisl = this->dislocations.size();
   int i, j;
   double di, dj;
-  Vector pi, pj;
+  Vector3d pi, pj;
   Dislocation temp;
 
   for (i=0; i<nDisl-1; i++)
@@ -648,7 +634,7 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_global (std::vector<Vector3d> 
  * @param nu Poisson's ratio.
  * @return STL vector container with the full stress tensor expressing the stress field (in the local co-ordinate system) at the points provided as input.
  */
-  std::vector<Stress> SlipPlane::getSlipPlaneStress_local (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu)
+std::vector<Stress> SlipPlane::getSlipPlaneStress_local (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu)
 {
   // Initialize the vector for holding Stress values
   std::vector<Stress> stressVector(points.size(), Stress());
@@ -674,7 +660,7 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_global (std::vector<Vector3d> 
 	}
 
       // Convert to local co-ordinate system
-      *s = (this->rotationMatrix) * sTemp * (this->rotationMatrix)^;
+      *s = sTemp.rotate(this->rotationMatrix);
 
       s++;
       p++;

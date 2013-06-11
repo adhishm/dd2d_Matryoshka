@@ -7,6 +7,8 @@
  * @details This file defines member functions of the RotationMatrix class for carrying out 3D rotations and axes transformations.
  */
 
+#include "rotationMatrix.h"
+
 /**
  * @brief Default constructor
  * @details Initializes the rotation matrix with a unit matrix.
@@ -24,6 +26,24 @@ RotationMatrix::RotationMatrix ()
                 this->setValue ( i, j, 0.0 );
             }
         }
+    }
+}
+
+/**
+ * @brief Constructor specifying the matrix.
+ * @details The rotation matrix is provided as the matrix m.
+ * @param m The matrix m which is equal to the rotation matrix.
+ */
+RotationMatrix::RotationMatrix (Matrix33 m)
+{
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+	{
+	  this->setValue (i, j, (m.getValue(i,j)));
+	}
     }
 }
 

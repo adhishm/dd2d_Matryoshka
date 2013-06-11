@@ -1,8 +1,8 @@
 /**
  * @file dislocation.cpp
  * @author Adhish Majumdar
- * @version 0.0
- * @date 03/06/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of constructors and member functions of the Dislocation class.
  * @details This file defines the constructors and member functions of the Dislocation class. This class inherits from the Defect class.
  */
@@ -82,12 +82,42 @@ void Dislocation::setPinned ()
   this->mobile = false;
 }
 
+/**
+ * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+ * @param s Stress.
+ */
+void Dislocation::setTotalStress (Stress s)
+{
+  this->totalStress = s;
+  this->totalStresses.push_back (s);
+}
+
+/**
+ * @brief Sets the total force in the class and the vector keeping track of forces in each iteration.
+ * @param f Force.
+ */
+void Dislocation::setTotalForce (Vector3d f)
+{
+  this->force = f;
+  this->forces.push_back (f);
+}
+
+/**
+ * @brief Sets the total velocity in the class and the vector keeping track of velocities in each iteration.
+ * @param v Velocity.
+ */
+void Dislocation::setVelocity (Vector3d v)
+{
+  this->velocity = v;
+  this->velocities.push_back (v);
+}
+
 // Access functions
 /**
  * @brief Gets the Burgers vector of the dislocation.
  * @return Burgers vector in a variable of type Vector3d.
  */
-Vector3d Dislocation::getBurgers ()
+Vector3d Dislocation::getBurgers () const
 {
   return ( this->bvec );
 }
@@ -96,7 +126,7 @@ Vector3d Dislocation::getBurgers ()
  * @brief Gets the line vector of the dislocation.
  * @return Line vector in a variable of type Vector3d.
  */
-Vector3d Dislocation::getLineVector ()
+Vector3d Dislocation::getLineVector () const
 {
   return ( this->lvec );
 }
@@ -105,9 +135,96 @@ Vector3d Dislocation::getLineVector ()
  * @brief Returns whether the dislocation is mobile or pinned.
  * @return Returns true if the dislocation is mobile, false if pinned.
  */
-bool Dislocation::isMobile ()
+bool Dislocation::isMobile () const
 {
   return (this->mobile);
+}
+
+/**
+ * @brief Gets the total stress in the current iteration.
+ * @return Total stress in the current iteration.
+ */
+Stress Dislocation::getTotalStress () const
+{
+  return (this->totalStress);
+}
+
+/**
+ * @brief Gets the total force on the dislocation in the current iteration.
+ * @return Total force on the dislocation in the current iteration.
+ */
+Vector3d Dislocation::getTotalForce () const
+{
+  return (this->force);
+}
+
+/**
+ * @brief The velocity of the dislocation in the current iteration.
+ * @return Velocity of the dislocation in the current iteration.
+ */
+Vector3d Dislocation::getVelocity () const
+{
+  return (this->velocity);
+}
+
+/**
+ * @brief Returns the total stress at the iteration i.
+ * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
+ * @param i Iteration number for which the total stress is to be returned.
+ * @return Total stress at iteration i.
+ */
+Stress Dislocation::getTotalStressAtIteration (int i) const
+{
+  if (i < this->totalStresses.size())
+    {
+      // If the iteration number provided is valid
+      return (this->totalStresses[i]);
+    }
+  else
+    {
+      // Invalid iteration number - return zeros
+      return (Stress());
+    }
+}
+
+/**
+ * @brief Returns the total force at the iteration i.
+ * @details The total force at the iteration i is returned. If an invalid value of i is provided, a zero force vector is returned.
+ * @param i Iteration number for which the total force is to be returned.
+ * @return Total force at iteration i.
+ */
+Vector3d Dislocation::getTotalForceAtIteration (int i) const
+{
+  if (i < this->forces.size())
+    {
+      // If the iteration number provided is valid
+      return (this->forces[i]);
+    }
+  else
+    {
+      // Invalid iteration number - return zeros
+      return (Vector3d());
+    }
+}
+
+/**
+ * @brief Returns the total velocity at the iteration i.
+ * @details The total velocity at the iteration i is returned. If an invalid value of i is provided, a zero velocity vector is returned.
+ * @param i Iteration number for which the total velocity is to be returned.
+ * @return Total velocity at iteration i.
+ */
+Vector3d Dislocation::getVelocityAtIteration (int i) const
+{
+  if (i < this->velocities.size())
+    {
+      // If the iteration number provided is valid
+      return (this->velocities[i]);
+    }
+  else
+    {
+      // Invalid iteration number - return zeros
+      return (Vector3d());
+    }
 }
 
 // Rotation matrix
@@ -117,8 +234,8 @@ bool Dislocation::isMobile ()
  */
 void Dislocation::calculateRotationMatrix ()
 {
-  Vector3d globalSystem[3];	// Global co-ordinate systems
-  Vector3d localSystem[3];	// Dislocation co-ordinate system
+  Vector3d *globalSystem = new Vector3d[3];	// Global co-ordinate systems
+  Vector3d *localSystem  = new Vector3d[3];	// Dislocation co-ordinate system
   
   // Vectors of the global co-ordinate system
   globalSystem[0] = Vector3d (1.0, 0.0, 0.0);
@@ -132,6 +249,10 @@ void Dislocation::calculateRotationMatrix ()
   
   // Calculate rotation matrix
   this->rotationMatrix = RotationMatrix (globalSystem, localSystem);
+
+  // Release memory
+  delete (globalSystem);  globalSystem = NULL;
+  delete (localSystem);   localSystem  = NULL;
 }
   
 // Stress field
@@ -156,7 +277,8 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
   Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
   
   // Calculate the stress field in the global co-ordinate system
-  Stress sGlobal = (this->rotationMatrix) * sLocal * (^(this->rotationMatrix));
+  //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
+  Stress sGlobal = sLocal.rotate (this->rotationMatrix);
   
   return (sGlobal);
 }
@@ -169,15 +291,17 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  * @param nu Poisson's ratio.
  * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
  */
-Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
+Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 {
-  double D = ( mu * this->bm ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+  double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
   
   double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
   
   x = p.getValue (0);
   y = p.getValue (1);
   denominator = pow ( ((x*x) + (y*y)), 2);
+
+  double principalStresses[3], shearStresses[3];
   
   principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
   principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
@@ -198,10 +322,10 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu)
  * @param tau_crss Critical Resolved Shear Stress in Pa.
  * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
  */
-Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss)
+Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
 {
   // Stress in the local co-ordinate system
-  Stress sigmaLocal = (this->rotationMatrix) * (sigma) * (this->rotationMatrix)^;
+  Stress sigmaLocal = sigma.rotate(this->rotationMatrix);
   Vector3d force;
 
   // Check for CRSS condition
@@ -216,14 +340,14 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss)
 /**
  * @brief Returns the ideal time increment for the dislocation.
  * @details A dislocation is not allowed to approach another defect beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with the defect.
- * @param v0 Velocity of the dislocation.
  * @param minDistance Minimum distance of approach to the defect.
  * @param d The defect for which the present dislocation's time increment is to be calculated.
  * @param v1 Velocity of the other defect.
  * @return The ideal time increment for this dislocation.
  */
-double Dislocation::idealTimeIncrement (Vector3d v0, double minDistance, Defect d, Vector3d v1)
+double Dislocation::idealTimeIncrement (double minDistance, Defect d, Vector3d v1)
 {
+  Vector3d v0 = this->velocity;
   double norm_v0 = v0.magnitude();
   if (norm_v0 == 0.0)
     {

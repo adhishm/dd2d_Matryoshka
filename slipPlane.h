@@ -54,24 +54,6 @@ protected:
   std::vector<Dislocation> dislocations;
 
   /**
-   * @brief STL vector container with the stress fields of dislocations.
-   * @details The stress fields experienced by the dislocations, expressed in the global co-ordinate system,  are stored in this vector with positions corresponding to the positions of dislocations in the vector dislocations.
-   */
-  std::vector<Stress> dislocationStresses;
-
-  /**
-   * @brief The Peach-Koehler force experienced by each dislocation.
-   * @details This vector container stores the Peah-Koehler force experienced by each dislocation. They are calculated in each iteration by thefunction calculateDislocationForces(tau_crss).
-   */
-  std::vector<Vector3d> dislocationForces;
-
-  /**
-   * @brief STL vector container with dislocation velocities.
-   * @details The dislocations on this slip plane will have a velocity associated with them. These velocity vectors are stored in this container. The order is the same as the order of the dislocations.
-   */
-  std::vector<Vector3d> dislocationVelocities;
-  
-  /**
    * @brief STL vector container with dislocation sources.
    * @details A slip plane may contain several dislocation sources. These are stored in this vector container dislocationSources.
    */
@@ -145,26 +127,20 @@ public:
    * @param i Index of the extremity. Possible values: 0, 1
    * @return Position vector of the extremity indicated by the argument, returned as a variable of type Vector3d.
    */
-  Vector3d getExtremity (int i);
-  
-  /**
-   * @brief Get the position vectors of the extremities of the slip plane.
-   * @return Pointer to an array containing the two extremities of the slip plane, variables of type Defect.
-   */
-  Defect* getExtremities ();
+  Vector3d getExtremity (int i) const;
   
   /**
    * @brief Get the normal vector of the slip plane.
    * @return The normal vector of the slip plane, in a variable of type Vector3d.
    */
-  Vector3d getNormal ();
+  Vector3d getNormal () const;
   
   /**
    * @brief Get the position vector of the slip plane.
    * @details This function returns the position vector of the slip plane. The position vector is redundant because the slip plane is completely defined by its extremities and the normal vector. Nevertheless, this value can be useful to locate the slip plane within a slip system.
    * @return Position vector of the slip plane, in a variable of type Vector3d.
    */
-  Vector3d getPosition ();
+  Vector3d getPosition () const;
   
   /**
    * @brief Get the dislocation on the slip plane indicated by the index provided as argument.
@@ -173,19 +149,19 @@ public:
    * @param d Pointer to the memory location where the required dislocation is to be stored. Space in memory must be pre-allocated.
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the Dislocation data). Otherwise, the return value is false.
    */
-  bool getDislocation (int i, Dislocation* d);
+  bool getDislocation (int i, Dislocation* d) const;
   
   /**
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
    * @return The vector of dislocations lying on this slip plane.
    */
-  std::vector<Dislocation> getDislocationList ();
+  std::vector<Dislocation> getDislocationList () const;
 
   /**
    * @brief Get the number of dislocations.
    * @return The number of dislocations on the slip plane.
    */
-  int getNumDislocations ();
+  int getNumDislocations () const;
   
   /**
    * @brief Get the dislocation source on the slip plane indicated by the index provided as argument.
@@ -194,32 +170,32 @@ public:
    * @param dSource Pointer to the memory location where the required dislocation source is to be stored. Space in memory must be pre-allocated.
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocation sources on the slip plane (the memory location pointed to by d is populated with the DislocationSource data). Otherwise, the return value is false.
    */
-  bool getDislocationSource (int i, DislocationSource* dSource);
+  bool getDislocationSource (int i, DislocationSource* dSource) const;
 
   /**
    * @brief Get the number of dislocation sources.
    * @return The number of dislocation sources on the slip plane.
    */
-  int getNumDislocationSources ();
+  int getNumDislocationSources () const;
   
   /**
    * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
    * @return The vector of dislocation sources lying on this slip plane.
    */
-  std::vector<DislocationSource> getDislocationSourceList ();
+  std::vector<DislocationSource> getDislocationSourceList () const;
   
   /**
    * @brief Get the rotation matrix for this slip plane.
    * @return The rotation matrix of this slip plane, in a variable of type RotationMatrix.
    */
-  RotationMatrix getRotationMatrix ();
+  RotationMatrix getRotationMatrix () const;
   
   /**
    * @brief Get the axis (expressed in the global co-ordinate system) of the slip plane's local co-ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z).
    * @param i Index of the axis that is to be returned. (0, 1, 2)=(x, y, z).
    * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.
    */
-  Vector3d getAxis (int i);
+  Vector3d getAxis (int i) const;
   
   // Operations
   /**
@@ -229,7 +205,7 @@ public:
   void calculateRotationMatrix ();
 
   /**
-   * @brief Calculates the total stress field experienced by each dislocation and stored it in the STL vector container dislocationStresses.
+   * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
    * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
    * @param appliedStress The stress applied externally.
    * @param mu Shear modulus of the material.
@@ -238,15 +214,15 @@ public:
   void calculateDislocationStresses (Stress appliedStress, double mu, double nu);
 
   /**
-   * @brief This function populates the STL vector container dislocationForces with the Peach-Koehler force experienced by each dislocation.
-   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the STL vector SlipPlane::dislocationStresses. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
+   * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
+   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
    * @param tau_crss Critical Resolved Shear Stress in Pa.
    */
   void calculateDislocationForces (double tau_crss);
 
   /**
-   * @brief Calculates the velocities of dislocations and stores them in the std::vector container velocities.
-   * @details The velocities of the dislocations are calculated and stored in the std::vector container called velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+   * @brief Calculates the velocities of dislocations and stores them in the variable Vector3d Dislocation::velocity and also puts it at the end of std::vector<Vector3d> Dislocation::velocities.
+   * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
    * param B The drag coefficient.
    */
   void calculateVelocities (double B);
@@ -256,13 +232,16 @@ public:
    * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
    * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
    * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+   * @return STL vector container with the ideal time increments for all the dislocations.
    */
-  void calculateTimeIncrement (double minDistance, double minDt);
+  std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
 
   /**
    * @brief Displaces the dislocations according to their velocities and the time increment.
+   * @details This function displaces the dislocations according to the velocities and time increment. If the time increment is smaller than the global time increment, the dislocation moves with this smaller value, effectively moving up to the limiting distance to the next defect and stopping there.
+   * @param timeIncrement STL vector containing the timeIncrements of all the dislocations.
    */
-  void moveDislocations ();
+  void moveDislocations (std::vector<double> timeIncrement);
 
   /**
    * @brief The distance of the point pos from the n^th extremity is returned.

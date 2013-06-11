@@ -1,14 +1,16 @@
 /**
  * @file dislocation.h
  * @author Adhish Majumdar
- * @version 0.0
- * @date 03/06/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of the Dislocation class.
  * @details This file defines the Dislocation class representing a dislocation in the simulation. This class inherits from the Defect class.
  */
 
 #ifndef DISLOCATION_H
 #define DISLOCATION_H
+
+#include <vector>
 
 #include "defect.h"
 #include "dislocationDefaults.h"
@@ -48,6 +50,42 @@ protected:
    * @details This is the rotation matrix that represents the relationship between the global and local co-ordinate systems. It is used to convert tensors and vectors between the two systems. The rotation matrix needs to be calculated once and may be refreshed periodically if lattice rotation is implemented. In the absence of lattice rotation, the matrix will remain invariant.
    */
   RotationMatrix rotationMatrix;
+
+  /**
+   * @brief The total stress experienced by the dislocation.
+   * @details The dislocation experiences a stress that is the superposition of the externally applied stress and the stress fields of all the dislocations and other entities present in the simulation.
+   */
+  Stress totalStress;
+
+  /**
+   * @brief Keeps a trace of the total stress from every iteration.
+   * @details The total stress experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this variable may be useful for calculating average stresses over a given time period.
+   */
+  std::vector<Stress> totalStresses;
+
+  /**
+   * @brief The Peach-Koehler force experienced by the dislocation.
+   * @details The Peach-Koehler force is the force experienced by the dislocation due to the total stress on it. The CRSS condition must be checked for: if the total resolved stress is lower than the CRSS value, the force should be zero.
+   */
+  Vector3d force;
+
+  /**
+   * @brief Keeps a trace of the force on the dislocation from every iteration.
+   * @details The total force experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this vector may be useful for calculating average forces over a given time period.
+   */
+  std::vector<Vector3d> forces;
+
+  /**
+   * @brief The dislocation's velocity due to the force on it.
+   * @details The dislocation velocity if calculated to be directly proportional to the Peach-Koehler force on it.
+   */
+  Vector3d velocity;
+
+  /**
+   * @brief Keeps a trace of the velocity of the dislocation from every iteration.
+   * @details The velocity of the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this vector may be useful for calculating average velocities over a given time period.
+   */
+  std::vector<Vector3d> velocities;
   
 public:
   // Constructors
@@ -93,23 +131,83 @@ public:
    * @details Sets the flag mobile to false.
    */
   void setPinned ();
+
+  /**
+   * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+   * @param s Stress.
+   */
+  void setTotalStress (Stress s);
+
+  /**
+   * @brief Sets the total force in the class and the vector keeping track of forces in each iteration.
+   * @param f Force.
+   */
+  void setTotalForce (Vector3d f);
+
+  /**
+   * @brief Sets the total velocity in the class and the vector keeping track of velocities in each iteration.
+   * @param v Velocity.
+   */
+  void setVelocity (Vector3d v);
   
   // Access functions
   /**
    * @brief Gets the Burgers vector of the dislocation.
    * @return Burgers vector in a variable of type Vector3d.
    */
-  Vector3d getBurgers ();
+  Vector3d getBurgers () const;
   /**
    * @brief Gets the line vector of the dislocation.
    * @return Line vector in a variable of type Vector3d.
    */
-  Vector3d getLineVector ();
+  Vector3d getLineVector () const;
   /**
    * @brief Returns whether the dislocation is mobile or pinned.
    * @return Returns true if the dislocation is mobile, false if pinned.
    */
-  bool isMobile ();
+  bool isMobile () const;
+
+  /**
+   * @brief Gets the total stress in the current iteration.
+   * @return Total stress in the current iteration.
+   */
+  Stress getTotalStress () const;
+
+  /**
+   * @brief Gets the total force on the dislocation in the current iteration.
+   * @return Total force on the dislocation in the current iteration.
+   */
+  Vector3d getTotalForce () const;
+
+  /**
+   * @brief The velocity of the dislocation in the current iteration.
+   * @return Velocity of the dislocation in the current iteration.
+   */
+  Vector3d getVelocity () const;
+
+  /**
+   * @brief Returns the total stress at the iteration i.
+   * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
+   * @param i Iteration number for which the total stress is to be returned.
+   * @return Total stress at iteration i.
+   */
+  Stress getTotalStressAtIteration (int i) const;
+
+  /**
+   * @brief Returns the total force at the iteration i.
+   * @details The total force at the iteration i is returned. If an invalid value of i is provided, a zero force vector is returned.
+   * @param i Iteration number for which the total force is to be returned.
+   * @return Total force at iteration i.
+   */
+  Vector3d getTotalForceAtIteration (int i) const;
+
+  /**
+   * @brief Returns the total velocity at the iteration i.
+   * @details The total velocity at the iteration i is returned. If an invalid value of i is provided, a zero velocity vector is returned.
+   * @param i Iteration number for which the total velocity is to be returned.
+   * @return Total velocity at iteration i.
+   */
+  Vector3d getVelocityAtIteration (int i) const;
   
   // Rotation matrix
   /**
@@ -137,7 +235,7 @@ public:
    * @param nu Poisson's ratio.
    * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
    */
-  Stress stressFieldLocal (Vector3d p, double mu, double nu);
+  Stress stressFieldLocal (Vector3d p, double mu, double nu) const;
   
   // Force
   /**
@@ -147,18 +245,17 @@ public:
    * @param tau_crss Critical Resolved Shear Stress in Pa.
    * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
    */
-  Vector3d forcePeachKoehler (Stress sigma, double tau_crss);
+  Vector3d forcePeachKoehler (Stress sigma, double tau_crss) const;
 
-/**
- * @brief Returns the ideal time increment for the dislocation.
- * @details A dislocation is not allowed to approach another defect beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with the defect.
- * @param v0 Velocity of the dislocation.
- * @param minDistance Minimum distance of approach to the defect.
- * @param d The defect for which the present dislocation's time increment is to be calculated.
- * @param v1 Velocity of the other defect.
- * @return The ideal time increment for this dislocation.
- */
-double idealTimeIncrement (Vector3d v0, double minDistance, Defect d, Vector3d v1);
+  /**
+   * @brief Returns the ideal time increment for the dislocation.
+   * @details A dislocation is not allowed to approach another defect beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with the defect.
+   * @param minDistance Minimum distance of approach to the defect.
+   * @param d The defect for which the present dislocation's time increment is to be calculated.
+   * @param v1 Velocity of the other defect.
+   * @return The ideal time increment for this dislocation.
+   */
+  double idealTimeIncrement (double minDistance, Defect d, Vector3d v1);
 };
 
 #endif

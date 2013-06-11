@@ -2,7 +2,7 @@
  * @file dislocationSource.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 27/05/2013
+ * @date 05/06/2013
  * @brief Definition of the member functions of the DislocationSource class.
  * @details This file defines the member functions of the DislocationSource class representing a source of dislocations in the simulation. This class inherits from the Defect class. This object is basically the representation of a Frank-Read source emitting dislocation dipoles. When the dislocation source experiences a shear stress greater than a critical value for a certain amount of time (or number of iterations), it emits a dislocation dipole with a length that is a function of the applied stress.
  */
@@ -105,7 +105,7 @@ void DislocationSource::resetIterationCounter ()
  * @brief Returns the Burgers vector of the dislocations in the dipole.
  * @return The Burgers vector of the dislocations in the dipole.
  */
-Vector3d DislocationSource::getBurgers ()
+Vector3d DislocationSource::getBurgers () const
 {
   return (this->bvec);
 }
@@ -114,7 +114,7 @@ Vector3d DislocationSource::getBurgers ()
  * @brief Returns the line vector of the dislocations in the dipole.
  * @return The line vector of the dislocations in the dipole.
  */
-Vector3d DislocationSource::getLineVector ()
+Vector3d DislocationSource::getLineVector () const
 {
   return (this->lvec);
 }
@@ -123,7 +123,7 @@ Vector3d DislocationSource::getLineVector ()
  * @brief Returns the magnitude of the Burgers vector.
  * @return The magnitude of the Burgers vector.
  */
-double DislocationSource::getBurgersMag ()
+double DislocationSource::getBurgersMag () const
 {
   return (this->bmag);
 }
@@ -132,7 +132,7 @@ double DislocationSource::getBurgersMag ()
  * @brief Returns the critical shear stress value for dipole emission.
  * @return The critical shear stress value for dipole emission.
  */
-double DislocationSource::getTauCritical ()
+double DislocationSource::getTauCritical () const
 {
   return (this->tauCritical);
 }
@@ -141,7 +141,7 @@ double DislocationSource::getTauCritical ()
  * @brief Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
  * @return The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
  */
-int DislocationSource::getNumIterations ()
+int DislocationSource::getNumIterations () const
 {
   return (this->nIterations);
 }
@@ -150,7 +150,7 @@ int DislocationSource::getNumIterations ()
  * @brief Get the count of the iterations spent at higher than critical shear stress.
  * @return Number of iterations spent at higher than critical shear stress.
  */
-int DislocationSource::getIterationCount ()
+int DislocationSource::getIterationCount () const
 {
   return (this->countIterations);
 }
@@ -164,7 +164,7 @@ int DislocationSource::getIterationCount ()
  * @param nu Poisson's ratio.
  * @return The length of the dislocation dipole.
  */
-double DislocationSource::dipoleNucleationLength (double tau, double mu, double nu)
+double DislocationSource::dipoleNucleationLength (double tau, double mu, double nu) const
 {
   double L = 0.0;
   
@@ -189,7 +189,7 @@ void DislocationSource::incrementIterationCount ()
  * @details The number of iterations for which the dislocation source must experience a shear stress higher than the critical value is given in the member nIterations. When the counter variable countIterations reaches this value, the source is ready to emit a dipole, so a true value is returned. In other cases, false is returned.
  * @return The boolean result of whether the count of iterations is greater than the limiting number of iterations provided at input.
  */
-bool DislocationSource::ifEmitDipole ()
+bool DislocationSource::ifEmitDipole () const
 {
   return ( this->countIterations >= this->nIterations );
 }

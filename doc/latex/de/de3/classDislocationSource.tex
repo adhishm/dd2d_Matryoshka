@@ -47,23 +47,23 @@ void \hyperlink{classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}{set\-N
 \begin{DoxyCompactList}\small\item\em Set the number of iterations before a dipole is emitted. \end{DoxyCompactList}\item 
 void \hyperlink{classDislocationSource_a6dd6ad9fe448ce37152dfae4f3981ff0}{reset\-Iteration\-Counter} ()
 \begin{DoxyCompactList}\small\item\em Sets the iteration counter to zero. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocationSource_a4c07b688946410963dd41ce3bfc3a022}{get\-Burgers} ()
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocationSource_a47e3d707ffdecb9ecd7dd6dff47930c2}{get\-Burgers} () const 
 \begin{DoxyCompactList}\small\item\em Returns the Burgers vector of the dislocations in the dipole. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocationSource_a896f35e3c84654958d75b1cc964c42a1}{get\-Line\-Vector} ()
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDislocationSource_ad47bab97726e7ec0591932d3f9f50271}{get\-Line\-Vector} () const 
 \begin{DoxyCompactList}\small\item\em Returns the line vector of the dislocations in the dipole. \end{DoxyCompactList}\item 
-double \hyperlink{classDislocationSource_a20360b318adfa4457786d6bbd28fd99d}{get\-Burgers\-Mag} ()
+double \hyperlink{classDislocationSource_ab272383ee903fa84f4f36104d13dfcb8}{get\-Burgers\-Mag} () const 
 \begin{DoxyCompactList}\small\item\em Returns the magnitude of the Burgers vector. \end{DoxyCompactList}\item 
-double \hyperlink{classDislocationSource_aede21b6b4e323423ec1f6cb9261cb311}{get\-Tau\-Critical} ()
+double \hyperlink{classDislocationSource_a570b0ddb54028fd59c6cdcc460b32a9b}{get\-Tau\-Critical} () const 
 \begin{DoxyCompactList}\small\item\em Returns the critical shear stress value for dipole emission. \end{DoxyCompactList}\item 
-int \hyperlink{classDislocationSource_a0df8fa36aa46044808227044113f14fe}{get\-Num\-Iterations} ()
+int \hyperlink{classDislocationSource_a2e5651d778ff7d02f5db1529066542cc}{get\-Num\-Iterations} () const 
 \begin{DoxyCompactList}\small\item\em Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. \end{DoxyCompactList}\item 
-int \hyperlink{classDislocationSource_aed222f6992a63a66952d9d9e8d2fe6ac}{get\-Iteration\-Count} ()
+int \hyperlink{classDislocationSource_a445cd1bf2354e388e66c588736ed6876}{get\-Iteration\-Count} () const 
 \begin{DoxyCompactList}\small\item\em Get the count of the iterations spent at higher than critical shear stress. \end{DoxyCompactList}\item 
-double \hyperlink{classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}{dipole\-Nucleation\-Length} (double tau, double mu, double nu)
+double \hyperlink{classDislocationSource_aeaea81924e840cc99ec1844dd72ab807}{dipole\-Nucleation\-Length} (double tau, double mu, double nu) const 
 \begin{DoxyCompactList}\small\item\em The nucleation length of the dipole. \end{DoxyCompactList}\item 
 void \hyperlink{classDislocationSource_a7934f1747dbde5dfe0ca7c2a6bac39ce}{increment\-Iteration\-Count} ()
 \begin{DoxyCompactList}\small\item\em Increments the variable count\-Iterations by 1. \end{DoxyCompactList}\item 
-bool \hyperlink{classDislocationSource_a8aed9e2ef7057df85b5dc2a24c16c8eb}{if\-Emit\-Dipole} ()
+bool \hyperlink{classDislocationSource_afcc06ad0c0152f15cea25317bebd13cb}{if\-Emit\-Dipole} () const 
 \begin{DoxyCompactList}\small\item\em Checks if the dislocation source has experienced higher than critical shear stress for long enough to emit a dipole. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Sets the position of the defect. \end{DoxyCompactList}\item 
@@ -77,17 +77,15 @@ void \hyperlink{classDefect_a268606391a4eaee3de029d2005648b6f}{set\-Y} (double y
 \begin{DoxyCompactList}\small\item\em Sets the Y-\/coordinate of the defect. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_abb0b16c44a1b04d782f5c5f598b49d5b}{set\-Z} (double z)
 \begin{DoxyCompactList}\small\item\em Sets the Z-\/coordinate of the defect. \end{DoxyCompactList}\item 
-double $\ast$ \hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{get\-Position} ()
-\begin{DoxyCompactList}\small\item\em Returns in an array the position. \end{DoxyCompactList}\item 
-void \hyperlink{classDefect_aace5c752b85c368631746abc3d5bd714}{get\-Position} (double $\ast$a)
+void \hyperlink{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{get\-Position} (double $\ast$a) const 
 \begin{DoxyCompactList}\small\item\em Returns the array position in a pre-\/allocated array. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{get\-Position} ()
+\hyperlink{classVector3d}{Vector3d} \hyperlink{classDefect_ad175c3f2b1fad6be48806dab69dfb32e}{get\-Position} () const 
 \begin{DoxyCompactList}\small\item\em Returns the position vector of the defect. \end{DoxyCompactList}\item 
-double \hyperlink{classDefect_a01b96c453c13db82b5835682e1849dc0}{get\-X} ()
+double \hyperlink{classDefect_a6e331ddeabd92e2edc124e6697d3bf7d}{get\-X} () const 
 \begin{DoxyCompactList}\small\item\em Returns the X-\/coordinate of the defect. \end{DoxyCompactList}\item 
-double \hyperlink{classDefect_a9ea8df3b4c621762a327813056e63911}{get\-Y} ()
+double \hyperlink{classDefect_ae307725c160984f44832fce5af896789}{get\-Y} () const 
 \begin{DoxyCompactList}\small\item\em Returns the Y-\/coordinate of the defect. \end{DoxyCompactList}\item 
-double \hyperlink{classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}{get\-Z} ()
+double \hyperlink{classDefect_a56e4a61e93d01dd765a921e3828af6c4}{get\-Z} () const 
 \begin{DoxyCompactList}\small\item\em Returns the Z-\/coordinate of the defect. \end{DoxyCompactList}\item 
 virtual \hyperlink{classStress}{Stress} \hyperlink{classDefect_a5730a89ce804d75090c9fa35ffdfefa2}{stress\-Field} (\hyperlink{classVector3d}{Vector3d} p, double mu, double nu)
 \begin{DoxyCompactList}\small\item\em Virtual function for calculating the stress field. \end{DoxyCompactList}\end{DoxyCompactItemize}
@@ -219,7 +217,7 @@ Definition at line 38 of file dislocation\-Source.\-cpp.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}{\index{Dislocation\-Source@{Dislocation\-Source}!dipole\-Nucleation\-Length@{dipole\-Nucleation\-Length}}
+\hypertarget{classDislocationSource_aeaea81924e840cc99ec1844dd72ab807}{\index{Dislocation\-Source@{Dislocation\-Source}!dipole\-Nucleation\-Length@{dipole\-Nucleation\-Length}}
 \index{dipole\-Nucleation\-Length@{dipole\-Nucleation\-Length}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{dipole\-Nucleation\-Length}]{\setlength{\rightskip}{0pt plus 5cm}double Dislocation\-Source\-::dipole\-Nucleation\-Length (
 \begin{DoxyParamCaption}
@@ -227,7 +225,7 @@ Definition at line 38 of file dislocation\-Source.\-cpp.
 \item[{double}]{mu, }
 \item[{double}]{nu}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_ab1a6ecda50cd9bcd70882b75ec6552ac}
+) const}}\label{de/de3/classDislocationSource_aeaea81924e840cc99ec1844dd72ab807}
 
 
 The nucleation length of the dipole. 
@@ -261,13 +259,13 @@ Definition at line 167 of file dislocation\-Source.\-cpp.
 176   \textcolor{keywordflow}{return} (L);
 177 \}
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a4c07b688946410963dd41ce3bfc3a022}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Burgers@{get\-Burgers}}
+\hypertarget{classDislocationSource_a47e3d707ffdecb9ecd7dd6dff47930c2}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Burgers@{get\-Burgers}}
 \index{get\-Burgers@{get\-Burgers}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Burgers}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Dislocation\-Source\-::get\-Burgers (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a4c07b688946410963dd41ce3bfc3a022}
+) const}}\label{de/de3/classDislocationSource_a47e3d707ffdecb9ecd7dd6dff47930c2}
 
 
 Returns the Burgers vector of the dislocations in the dipole. 
@@ -285,13 +283,13 @@ Definition at line 108 of file dislocation\-Source.\-cpp.
 110   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_ade4753ac6106317c693c2bba4f83a568}{bvec});
 111 \}
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a20360b318adfa4457786d6bbd28fd99d}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Burgers\-Mag@{get\-Burgers\-Mag}}
+\hypertarget{classDislocationSource_ab272383ee903fa84f4f36104d13dfcb8}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Burgers\-Mag@{get\-Burgers\-Mag}}
 \index{get\-Burgers\-Mag@{get\-Burgers\-Mag}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Burgers\-Mag}]{\setlength{\rightskip}{0pt plus 5cm}double Dislocation\-Source\-::get\-Burgers\-Mag (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a20360b318adfa4457786d6bbd28fd99d}
+) const}}\label{de/de3/classDislocationSource_ab272383ee903fa84f4f36104d13dfcb8}
 
 
 Returns the magnitude of the Burgers vector. 
@@ -309,13 +307,13 @@ Definition at line 126 of file dislocation\-Source.\-cpp.
 128   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag});
 129 \}
 \end{DoxyCode}
-\hypertarget{classDislocationSource_aed222f6992a63a66952d9d9e8d2fe6ac}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Iteration\-Count@{get\-Iteration\-Count}}
+\hypertarget{classDislocationSource_a445cd1bf2354e388e66c588736ed6876}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Iteration\-Count@{get\-Iteration\-Count}}
 \index{get\-Iteration\-Count@{get\-Iteration\-Count}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Iteration\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int Dislocation\-Source\-::get\-Iteration\-Count (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_aed222f6992a63a66952d9d9e8d2fe6ac}
+) const}}\label{de/de3/classDislocationSource_a445cd1bf2354e388e66c588736ed6876}
 
 
 Get the count of the iterations spent at higher than critical shear stress. 
@@ -333,13 +331,13 @@ Definition at line 153 of file dislocation\-Source.\-cpp.
 155   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{countIterations});
 156 \}
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a896f35e3c84654958d75b1cc964c42a1}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Line\-Vector@{get\-Line\-Vector}}
+\hypertarget{classDislocationSource_ad47bab97726e7ec0591932d3f9f50271}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Line\-Vector@{get\-Line\-Vector}}
 \index{get\-Line\-Vector@{get\-Line\-Vector}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Line\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Dislocation\-Source\-::get\-Line\-Vector (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a896f35e3c84654958d75b1cc964c42a1}
+) const}}\label{de/de3/classDislocationSource_ad47bab97726e7ec0591932d3f9f50271}
 
 
 Returns the line vector of the dislocations in the dipole. 
@@ -357,13 +355,13 @@ Definition at line 117 of file dislocation\-Source.\-cpp.
 119   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_a6a1ab6dc549236d2335a200e601781ea}{lvec});
 120 \}
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a0df8fa36aa46044808227044113f14fe}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Num\-Iterations@{get\-Num\-Iterations}}
+\hypertarget{classDislocationSource_a2e5651d778ff7d02f5db1529066542cc}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Num\-Iterations@{get\-Num\-Iterations}}
 \index{get\-Num\-Iterations@{get\-Num\-Iterations}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Num\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}int Dislocation\-Source\-::get\-Num\-Iterations (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a0df8fa36aa46044808227044113f14fe}
+) const}}\label{de/de3/classDislocationSource_a2e5651d778ff7d02f5db1529066542cc}
 
 
 Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
@@ -381,41 +379,13 @@ Definition at line 144 of file dislocation\-Source.\-cpp.
 146   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{nIterations});
 147 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
-\index{get\-Position@{get\-Position}!DislocationSource@{Dislocation\-Source}}
-\subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Defect\-::get\-Position (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a270caed3561fa5fa284af6427b6ca2e4}
-
-
-Returns in an array the position. 
-
-Returns the position vector of the defect.
-
-The position of the defect is saved in an array and a pointer to its first term is returned. \begin{DoxyReturn}{Returns}
-Pointer to the first term of the array containing the position of the defect.
-
-The position vector of the defect, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
-\end{DoxyReturn}
-
-
-Definition at line 119 of file defect.\-cpp.
-
-
-\begin{DoxyCode}
-120 \{
-121   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ());
-122 \}
-\end{DoxyCode}
-\hypertarget{classDefect_aace5c752b85c368631746abc3d5bd714}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
+\hypertarget{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}void Defect\-::get\-Position (
 \begin{DoxyParamCaption}
 \item[{double $\ast$}]{a}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_aace5c752b85c368631746abc3d5bd714}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}
 
 
 Returns the array position in a pre-\/allocated array. 
@@ -427,21 +397,21 @@ Returns in the array provided in the argument the position of the defect. The ar
 \end{DoxyParams}
 
 
-Definition at line 129 of file defect.\-cpp.
+Definition at line 122 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-130 \{
-131   a = this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{getVector} ();
-132 \}
+123 \{
+124   a = this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_aae41ae56c3c37a6a7ecb4762abf8cbf4}{getVector} ();
+125 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a270caed3561fa5fa284af6427b6ca2e4}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
+\hypertarget{classDefect_ad175c3f2b1fad6be48806dab69dfb32e}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Position@{get\-Position}}
 \index{get\-Position@{get\-Position}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Position}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Defect\-::get\-Position (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a270caed3561fa5fa284af6427b6ca2e4}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_ad175c3f2b1fad6be48806dab69dfb32e}
 
 
 Returns the position vector of the defect. 
@@ -449,13 +419,23 @@ Returns the position vector of the defect.
 \begin{DoxyReturn}{Returns}
 The position vector of the defect, in a variable of type \hyperlink{classVector3d}{Vector3d}. 
 \end{DoxyReturn}
-\hypertarget{classDislocationSource_aede21b6b4e323423ec1f6cb9261cb311}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Tau\-Critical@{get\-Tau\-Critical}}
+
+
+Definition at line 131 of file defect.\-cpp.
+
+
+\begin{DoxyCode}
+132 \{
+133   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos});
+134 \}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_a570b0ddb54028fd59c6cdcc460b32a9b}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Tau\-Critical@{get\-Tau\-Critical}}
 \index{get\-Tau\-Critical@{get\-Tau\-Critical}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Tau\-Critical}]{\setlength{\rightskip}{0pt plus 5cm}double Dislocation\-Source\-::get\-Tau\-Critical (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_aede21b6b4e323423ec1f6cb9261cb311}
+) const}}\label{de/de3/classDislocationSource_a570b0ddb54028fd59c6cdcc460b32a9b}
 
 
 Returns the critical shear stress value for dipole emission. 
@@ -473,13 +453,13 @@ Definition at line 135 of file dislocation\-Source.\-cpp.
 137   \textcolor{keywordflow}{return} (this->\hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tauCritical});
 138 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a01b96c453c13db82b5835682e1849dc0}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-X@{get\-X}}
+\hypertarget{classDefect_a6e331ddeabd92e2edc124e6697d3bf7d}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-X@{get\-X}}
 \index{get\-X@{get\-X}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-X}]{\setlength{\rightskip}{0pt plus 5cm}double Defect\-::get\-X (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a01b96c453c13db82b5835682e1849dc0}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a6e331ddeabd92e2edc124e6697d3bf7d}
 
 
 Returns the X-\/coordinate of the defect. 
@@ -489,21 +469,21 @@ X-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 147 of file defect.\-cpp.
+Definition at line 140 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-148 \{
-149   \textcolor{keywordflow}{return} (this->getValue (0));
-150 \}
+141 \{
+142   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue} (0));
+143 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a9ea8df3b4c621762a327813056e63911}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Y@{get\-Y}}
+\hypertarget{classDefect_ae307725c160984f44832fce5af896789}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Y@{get\-Y}}
 \index{get\-Y@{get\-Y}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Y}]{\setlength{\rightskip}{0pt plus 5cm}double Defect\-::get\-Y (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a9ea8df3b4c621762a327813056e63911}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_ae307725c160984f44832fce5af896789}
 
 
 Returns the Y-\/coordinate of the defect. 
@@ -513,21 +493,21 @@ Y-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 156 of file defect.\-cpp.
+Definition at line 149 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-157 \{
-158   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (1));
-159 \}
+150 \{
+151   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue} (1));
+152 \}
 \end{DoxyCode}
-\hypertarget{classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Z@{get\-Z}}
+\hypertarget{classDefect_a56e4a61e93d01dd765a921e3828af6c4}{\index{Dislocation\-Source@{Dislocation\-Source}!get\-Z@{get\-Z}}
 \index{get\-Z@{get\-Z}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{get\-Z}]{\setlength{\rightskip}{0pt plus 5cm}double Defect\-::get\-Z (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a6f59edeca7ca8bfa01c54fd6b1a62374}
+) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{d5/d4f/classDefect_a56e4a61e93d01dd765a921e3828af6c4}
 
 
 Returns the Z-\/coordinate of the defect. 
@@ -537,21 +517,21 @@ Z-\/coordinate of the defect.
 \end{DoxyReturn}
 
 
-Definition at line 165 of file defect.\-cpp.
+Definition at line 158 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-166 \{
-167   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{getValue} (2));
-168 \}
+159 \{
+160   \textcolor{keywordflow}{return} (this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue} (2));
+161 \}
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a8aed9e2ef7057df85b5dc2a24c16c8eb}{\index{Dislocation\-Source@{Dislocation\-Source}!if\-Emit\-Dipole@{if\-Emit\-Dipole}}
+\hypertarget{classDislocationSource_afcc06ad0c0152f15cea25317bebd13cb}{\index{Dislocation\-Source@{Dislocation\-Source}!if\-Emit\-Dipole@{if\-Emit\-Dipole}}
 \index{if\-Emit\-Dipole@{if\-Emit\-Dipole}!DislocationSource@{Dislocation\-Source}}
 \subsubsection[{if\-Emit\-Dipole}]{\setlength{\rightskip}{0pt plus 5cm}bool Dislocation\-Source\-::if\-Emit\-Dipole (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a8aed9e2ef7057df85b5dc2a24c16c8eb}
+) const}}\label{de/de3/classDislocationSource_afcc06ad0c0152f15cea25317bebd13cb}
 
 
 Checks if the dislocation source has experienced higher than critical shear stress for long enough to emit a dipole. 
@@ -733,13 +713,13 @@ The position of the defect is set to the co-\/ordinates present in the array poi
 \end{DoxyParams}
 
 
-Definition at line 56 of file defect.\-cpp.
+Definition at line 59 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-57 \{
-58   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a82c251f7203e08ec50ea55222f40525f}{setVector} (a);
-59 \}
+60 \{
+61   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_a82c251f7203e08ec50ea55222f40525f}{setVector} (a);
+62 \}
 \end{DoxyCode}
 \hypertarget{classDefect_ad1a6acd8399d2ecabb7ce2b77623bbec}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Position@{set\-Position}}
 \index{set\-Position@{set\-Position}!DislocationSource@{Dislocation\-Source}}
@@ -765,15 +745,15 @@ The position of the defect is set to the co-\/ordinates specified by the argumen
 \end{DoxyParams}
 
 
-Definition at line 69 of file defect.\-cpp.
+Definition at line 72 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-70 \{
-71   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
-72   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
-73   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
-74 \}
+73 \{
+74   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
+75   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
+76   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
+77 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a36ffa9b4b01d38ed8a95ca2c78973cc4}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Position@{set\-Position}}
 \index{set\-Position@{set\-Position}!DislocationSource@{Dislocation\-Source}}
@@ -793,13 +773,13 @@ The position of the defect is set to the position vector fiven by the argument a
 \end{DoxyParams}
 
 
-Definition at line 81 of file defect.\-cpp.
+Definition at line 84 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-82 \{
-83   this->position = a;
-84 \}
+85 \{
+86   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos} = a;
+87 \}
 \end{DoxyCode}
 \hypertarget{classDislocationSource_a3294cb807ec8dd0e1fa6ab6e51eeafa2}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Tau\-Critical@{set\-Tau\-Critical}}
 \index{set\-Tau\-Critical@{set\-Tau\-Critical}!DislocationSource@{Dislocation\-Source}}
@@ -845,13 +825,13 @@ Sets the X-\/coordinate of the defect.
 \end{DoxyParams}
 
 
-Definition at line 90 of file defect.\-cpp.
+Definition at line 93 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-91 \{
-92   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
-93 \}
+94 \{
+95   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (0, x);
+96 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a268606391a4eaee3de029d2005648b6f}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Y@{set\-Y}}
 \index{set\-Y@{set\-Y}!DislocationSource@{Dislocation\-Source}}
@@ -871,13 +851,13 @@ Sets the Y-\/coordinate of the defect.
 \end{DoxyParams}
 
 
-Definition at line 99 of file defect.\-cpp.
+Definition at line 102 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-100 \{
-101   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
-102 \}
+103 \{
+104   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (1, y);
+105 \}
 \end{DoxyCode}
 \hypertarget{classDefect_abb0b16c44a1b04d782f5c5f598b49d5b}{\index{Dislocation\-Source@{Dislocation\-Source}!set\-Z@{set\-Z}}
 \index{set\-Z@{set\-Z}!DislocationSource@{Dislocation\-Source}}
@@ -897,13 +877,13 @@ Sets the Z-\/coordinate of the defect.
 \end{DoxyParams}
 
 
-Definition at line 108 of file defect.\-cpp.
+Definition at line 111 of file defect.\-cpp.
 
 
 \begin{DoxyCode}
-109 \{
-110   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
-111 \}
+112 \{
+113   this->\hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}.\hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{setValue} (2, z);
+114 \}
 \end{DoxyCode}
 \hypertarget{classDefect_a5730a89ce804d75090c9fa35ffdfefa2}{\index{Dislocation\-Source@{Dislocation\-Source}!stress\-Field@{stress\-Field}}
 \index{stress\-Field@{stress\-Field}!DislocationSource@{Dislocation\-Source}}
@@ -936,17 +916,17 @@ Reimplemented in \hyperlink{classDislocation_af61cedf5305080ce0f55eb7177efe529}{
 
 
 
-Definition at line 142 of file defect.\-h.
+Definition at line 135 of file defect.\-h.
 
 
 \begin{DoxyCode}
-143   \{
-144     \textcolor{comment}{// This virtual function returns a zero matrix.}
-145     \textcolor{comment}{// Inheriting classes will have functions implementing this in their own way}
-146     \textcolor{comment}{// They will override this behaviour.}
-147     \hyperlink{classStress}{Stress} s;
-148     \textcolor{keywordflow}{return} (s);
-149   \}
+136   \{
+137     \textcolor{comment}{// This virtual function returns a zero matrix.}
+138     \textcolor{comment}{// Inheriting classes will have functions implementing this in their own way}
+139     \textcolor{comment}{// They will override this behaviour.}
+140     \hyperlink{classStress}{Stress} s;
+141     \textcolor{keywordflow}{return} (s);
+142   \}
 \end{DoxyCode}
 
 

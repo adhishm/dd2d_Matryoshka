@@ -23,13 +23,13 @@ void \hyperlink{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{set\-Value} (in
 \begin{DoxyCompactList}\small\item\em Function to set the value of an element of the vector. \end{DoxyCompactList}\item 
 void \hyperlink{classVector3d_a82c251f7203e08ec50ea55222f40525f}{set\-Vector} (double $\ast$a)
 \begin{DoxyCompactList}\small\item\em Function to set the value of the entire vector using an array. \end{DoxyCompactList}\item 
-double \hyperlink{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{get\-Value} (int index)
+double \hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{get\-Value} (int index) const 
 \begin{DoxyCompactList}\small\item\em Function to get the value of an element of the vector. \end{DoxyCompactList}\item 
-double $\ast$ \hyperlink{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{get\-Vector} ()
+double $\ast$ \hyperlink{classVector3d_aae41ae56c3c37a6a7ecb4762abf8cbf4}{get\-Vector} () const 
 \begin{DoxyCompactList}\small\item\em Function to get the values of the elements of the vector in an array. \end{DoxyCompactList}\item 
-double \hyperlink{classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}{sum} ()
+double \hyperlink{classVector3d_ae27b1ede7f5be29d80d95099f2ef3e23}{sum} () const 
 \begin{DoxyCompactList}\small\item\em Computes the sum of the elements of the vector. \end{DoxyCompactList}\item 
-double \hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude} ()
+double \hyperlink{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{magnitude} () const 
 \begin{DoxyCompactList}\small\item\em Computes the magnitude of the vector. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{Vector3d} \hyperlink{classVector3d_a24acba00068d9d1612404243f2a01078}{normalize} ()
 \begin{DoxyCompactList}\small\item\em Returns the vector normalized to be a unit vector. \end{DoxyCompactList}\item 
@@ -63,7 +63,7 @@ double \hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x} \mbox{[}3\
 
 This class represents a vector in 3\-D space. The member functions and operators define various operations on the vector and its interactions with other data types. 
 
-Definition at line 20 of file vector3d.\-h.
+Definition at line 23 of file vector3d.\-h.
 
 
 
@@ -156,13 +156,13 @@ Definition at line 42 of file vector3d.\-cpp.
 
 
 \subsection{Member Function Documentation}
-\hypertarget{classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}{\index{Vector3d@{Vector3d}!get\-Value@{get\-Value}}
+\hypertarget{classVector3d_a114fda84a6723e54678d9dde244725a4}{\index{Vector3d@{Vector3d}!get\-Value@{get\-Value}}
 \index{get\-Value@{get\-Value}!Vector3d@{Vector3d}}
 \subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double Vector3d\-::get\-Value (
 \begin{DoxyParamCaption}
 \item[{int}]{index}
 \end{DoxyParamCaption}
-)}}\label{df/dd0/classVector3d_a37055dde72eed6770cf3b2b11b56f0f8}
+) const}}\label{df/dd0/classVector3d_a114fda84a6723e54678d9dde244725a4}
 
 
 Function to get the value of an element of the vector. 
@@ -192,13 +192,13 @@ Definition at line 83 of file vector3d.\-cpp.
 92     \}
 93 \}
 \end{DoxyCode}
-\hypertarget{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{\index{Vector3d@{Vector3d}!get\-Vector@{get\-Vector}}
+\hypertarget{classVector3d_aae41ae56c3c37a6a7ecb4762abf8cbf4}{\index{Vector3d@{Vector3d}!get\-Vector@{get\-Vector}}
 \index{get\-Vector@{get\-Vector}!Vector3d@{Vector3d}}
 \subsubsection[{get\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}double $\ast$ Vector3d\-::get\-Vector (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{df/dd0/classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}
+) const}}\label{df/dd0/classVector3d_aae41ae56c3c37a6a7ecb4762abf8cbf4}
 
 
 Function to get the values of the elements of the vector in an array. 
@@ -222,13 +222,13 @@ Definition at line 100 of file vector3d.\-cpp.
 108   \textcolor{keywordflow}{return} (a);
 109 \}
 \end{DoxyCode}
-\hypertarget{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{\index{Vector3d@{Vector3d}!magnitude@{magnitude}}
+\hypertarget{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{\index{Vector3d@{Vector3d}!magnitude@{magnitude}}
 \index{magnitude@{magnitude}!Vector3d@{Vector3d}}
 \subsubsection[{magnitude}]{\setlength{\rightskip}{0pt plus 5cm}double Vector3d\-::magnitude (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{df/dd0/classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}
+) const}}\label{df/dd0/classVector3d_adeda019b2d7ee805dece85650bdf6ed6}
 
 
 Computes the magnitude of the vector. 
@@ -275,7 +275,7 @@ Definition at line 152 of file vector3d.\-cpp.
 
 \begin{DoxyCode}
 153 \{
-154   \textcolor{keywordtype}{double} m = this->\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude} ();
+154   \textcolor{keywordtype}{double} m = this->\hyperlink{classVector3d_adeda019b2d7ee805dece85650bdf6ed6}{magnitude} ();
 155   
 156   \textcolor{keywordflow}{if} (m==0.0)
 157   \{
@@ -313,7 +313,7 @@ Definition at line 239 of file vector3d.\-cpp.
 243   
 244   \textcolor{keywordflow}{for} (i=0; i<3; i++)
 245     \{
-246       r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p;
+246       r.setValue(i, (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p));
 247     \}
 248   
 249   \textcolor{keywordflow}{return} (r);
@@ -345,7 +345,7 @@ Definition at line 271 of file vector3d.\-cpp.
 275   
 276   \textcolor{keywordflow}{for} (i=0; i<3; i++)
 277     \{
-278       s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+278       s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(i);
 279     \}
 280   
 281   \textcolor{keywordflow}{return} (s);
@@ -403,7 +403,7 @@ Definition at line 173 of file vector3d.\-cpp.
 177   
 178   \textcolor{keywordflow}{for} (i=0; i<3; i++)
 179     \{
-180       r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] + p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+180       r.setValue(i, (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] + p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(i)));
 181     \}
 182   
 183   \textcolor{keywordflow}{return} (r);
@@ -461,7 +461,7 @@ Definition at line 206 of file vector3d.\-cpp.
 210   
 211   \textcolor{keywordflow}{for} (i=0; i<3; i++)
 212     \{
-213       r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] - p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+213       r.setValue(i, (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] - p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(i)));
 214     \}
 215   
 216   \textcolor{keywordflow}{return} (r);
@@ -489,7 +489,7 @@ Definition at line 223 of file vector3d.\-cpp.
 226   
 227   \textcolor{keywordflow}{for} (i=0; i<3; i++)
 228     \{
-229       this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] -= p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+229       this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] -= p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(i);
 230     \}
 231 \}
 \end{DoxyCode}
@@ -516,9 +516,12 @@ Definition at line 289 of file vector3d.\-cpp.
 290 \{
 291   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
 292   
-293   r.x[0] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]);
-294   r.x[1] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]);
-295   r.x[2] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]);
+293   r.setValue(0, ((this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(2)) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.
+      \hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(1))));
+294   r.setValue(1, ((this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(0)) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.
+      \hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(2))));
+295   r.setValue(2, ((this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(1)) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.
+      \hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(0))));
 296   
 297   \textcolor{keywordflow}{return} (r);
 298 \}
@@ -541,17 +544,13 @@ Definition at line 304 of file vector3d.\-cpp.
 
 \begin{DoxyCode}
 305 \{
-306   \hyperlink{classVector3d}{Vector3d}* r = \hyperlink{classVector3d_aac098d8695c4288e4844835e62945244}{Vector3d}(0.0, 0.0, 0.0);
-307   
-308   r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]);
-309   r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]);
-310   r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]);
-311   
-312   *\textcolor{keyword}{this} = *r;
-313   
-314   \textcolor{keyword}{delete} (r);
-315   r = NULL;
-316 \}
+306   \hyperlink{classVector3d}{Vector3d}* r = \textcolor{keyword}{new} \hyperlink{classVector3d_aac098d8695c4288e4844835e62945244}{Vector3d}(0.0, 0.0, 0.0);
+307 
+308   *r = (*this)^p;
+309   *\textcolor{keyword}{this} = *r;
+310   \textcolor{keyword}{delete} (r);
+311   r = NULL;
+312 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{\index{Vector3d@{Vector3d}!set\-Value@{set\-Value}}
 \index{set\-Value@{set\-Value}!Vector3d@{Vector3d}}
@@ -613,13 +612,13 @@ Definition at line 69 of file vector3d.\-cpp.
 73   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a[2];
 74 \}
 \end{DoxyCode}
-\hypertarget{classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}{\index{Vector3d@{Vector3d}!sum@{sum}}
+\hypertarget{classVector3d_ae27b1ede7f5be29d80d95099f2ef3e23}{\index{Vector3d@{Vector3d}!sum@{sum}}
 \index{sum@{sum}!Vector3d@{Vector3d}}
 \subsubsection[{sum}]{\setlength{\rightskip}{0pt plus 5cm}double Vector3d\-::sum (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{df/dd0/classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}
+) const}}\label{df/dd0/classVector3d_ae27b1ede7f5be29d80d95099f2ef3e23}
 
 
 Computes the sum of the elements of the vector. 
@@ -657,7 +656,7 @@ The elements of the vector.
 
 
 
-Definition at line 26 of file vector3d.\-h.
+Definition at line 29 of file vector3d.\-h.
 
 
 

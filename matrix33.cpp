@@ -1,8 +1,8 @@
 /**
  * @file matrix33.cpp
  * @author Adhish Majumdar
- * @version 0.0
- * @date 22/04/2013
+ * @version 1.0
+ * @date 04/06/2013
  * @brief Definition of the member functions and operators of the Matrix33 class.
  * @details This file defines the member functions and operators of the Matrix33 class representing a 3x3 matrix in the simulation.
  */
@@ -58,7 +58,7 @@ Matrix33::Matrix33 (Vector3d a)
     {
       for (j=0; j<3; j++)
 	{
-	  this->x[i][j] = a.x[i] * a.x[j];
+	  this->x[i][j] = a.getValue(i) * a.getValue(j);
 	}
     }
 }
@@ -77,7 +77,7 @@ Matrix33::Matrix33 (Vector3d a, Vector3d b)
     {
       for (j=0; j<3; j++)
 	{
-	  this->x[i][j] = a.x[i] * b.x[j];
+	  this->x[i][j] = a.getValue(i) * b.getValue(j);
 	}
     }
 }
@@ -108,7 +108,7 @@ void Matrix33::setValue (int row, int column, double value)
  * @param column Column index of the element.
  * @return Value of the element located at the given position.
  */
-double Matrix33::getValue (int row, int column)
+double Matrix33::getValue (int row, int column) const
 {
   if (row>=0 && row<3)
     {
@@ -126,23 +126,43 @@ double Matrix33::getValue (int row, int column)
  * @details The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix.
  * @return The adjugate matrix of the present matrix.
  */
-Matrix33 Matrix33::adjugate ()
+Matrix33 Matrix33::adjugate () const
 {
   Matrix33 adj;
   
-  adj.x[0][0] = (this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2][1]);
-  adj.x[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
-  adj.x[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+  adj.setValue(0, 0, ((this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2][1])));
+  adj.setValue(0, 1, ((this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2])));
+  adj.setValue(0, 2, ((this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0])));
   
-  adj.x[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
-  adj.x[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
-  adj.x[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+  adj.setValue(1, 0, ((this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2])));
+  adj.setValue(1, 1, ((this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2])));
+  adj.setValue(1, 2, ((this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0])));
   
-  adj.x[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
-  adj.x[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
-  adj.x[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+  adj.setValue(2, 0, ((this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1])));
+  adj.setValue(2, 1, ((this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2])));
+  adj.setValue(2, 2, ((this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1])));
 
   return (adj);
+}
+
+/**
+ * @brief Returns the transpose of the present matrix.
+ * @details The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-versa.
+ * @return The transpose of the present matrix.
+   */
+Matrix33 Matrix33::transpose () const
+{
+  Matrix33 tr;
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+	{
+	  tr.setValue (i, j, this->x[j][i]);
+	}
+    }
+  return (tr);
 }
    
 // Operators
@@ -161,7 +181,7 @@ Matrix33 Matrix33::operator+ (const Matrix33& p) const
     {
       for (j=0; j<3; j++)
 	{
-	  r.x[i][j] = this->x[i][j] + p.x[i][j];
+	  r.setValue(i, j, (this->x[i][j] + p.getValue(i, j)));
 	}
     }
   
@@ -180,7 +200,7 @@ void Matrix33::operator+= (const Matrix33& p)
     {
       for (j=0; j<3; j++)
 	{
-	  this->x[i][j] += p.x[i][j];
+	  this->x[i][j] += p.getValue(i, j);
 	}
     }
 }
@@ -200,7 +220,7 @@ Matrix33 Matrix33::operator- (const Matrix33& p) const
     {
       for (j=0; j<3; j++)
 	{
-	  r.x[i][j] = this->x[i][j] - p.x[i][j];
+	  r.setValue(i, j, (this->x[i][j] - p.getValue(i, j)));
 	}
     }
   
@@ -219,7 +239,7 @@ void Matrix33::operator-= (const Matrix33& p)
     {
       for (j=0; j<3; j++)
 	{
-	  this->x[i][j] -= p.x[i][j];
+	  this->x[i][j] -= p.getValue(i, j);
 	}
     }
 }
@@ -239,7 +259,7 @@ Matrix33 Matrix33::operator* (const double& p) const
     {
       for (j=0; j<3; j++)
 	{
-	  r.x[i][j] = this->x[i][j] * p;
+	  r.setValue(i, j, (this->x[i][j] * p));
 	}
     }
   
@@ -272,16 +292,18 @@ Matrix33 Matrix33::operator* (const Matrix33& p) const
 {
   int i, j, k;
   Matrix33 r;
+  double s;
   
   for (i=0; i<3; i++)
     {
       for (j=0; j<3; j++)
    	{
-   	  r.x[i][j] = 0.0;
+	  s = 0.0;
    	  for (k=0; k<3; k++)
    	    {
-   	      r.x[i][j] += this->x[i][k] * p.x[k][j];
+   	      s += this->x[i][k] * p.getValue(k,j);
    	    }
+	  r.setValue (i, j, s);
    	}
     }
   
@@ -311,41 +333,23 @@ void Matrix33::operator*= (const Matrix33& p)
 Vector3d Matrix33::operator* (const Vector3d& v) const
 {
   Vector3d r(0.0, 0.0, 0.0);
+  double s;
   int i, j;
   
   for (i=0; i<3; i++)
     {
+      s = 0.0;
       for (j=0; j<3; j++)
 	{
-	  r[i] += this->x[i][j] * v.x[j];
+	  s += this->x[i][j] * v.getValue(j);
 	}
+      r.setValue (i, s);
     }
   
   return (r);
 }
 
 // Matrix operations
-/**
- * @brief Transpose
- * @details Performs the transpose of the current matrix.
- * @return A new matrix with the transpose of the current matrix.
- */
-Matrix33 Matrix33::operator^ () const
-{
-  Matrix33 r;
-  int i, j;
-  
-  for (i=0; i<3; i++)
-    {
-      for (j=0; j<3; j++)
-	{
-	  r.x[i][j] = this->x[j][i];
-	}
-    }
-  
-  return (r);
-}
-  
 /**
  * @brief Determinant.
  * @details Calculates the determinant of the current matrix.
@@ -355,9 +359,9 @@ double Matrix33::operator~ () const
 {
   double d = 0.0;
   
-  d += this.x[0][0] * ( (this->x[1][1]*this->x[2][2]) - (this->x[2][1]*this->x[1][2]) );
-  d += this.x[0][1] * ( (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]) );
-  d += this.x[0][2] * ( (this->x[1][0]*this->x[2][1]) - (this->x[2][0]*this->x[1][1]) );
+  d += this->x[0][0] * ( (this->x[1][1]*this->x[2][2]) - (this->x[2][1]*this->x[1][2]) );
+  d += this->x[0][1] * ( (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]) );
+  d += this->x[0][2] * ( (this->x[1][0]*this->x[2][1]) - (this->x[2][0]*this->x[1][1]) );
   
   return (d);
 }
@@ -382,7 +386,7 @@ Matrix33 Matrix33::operator! () const
   // If we are still here, the matrix is invertible
   
   //  Transpose
-  Matrix33 tr = ^(*this);
+  Matrix33 tr = this->transpose();
   
   // Find Adjugate matrix
   Matrix33 adj = tr.adjugate();
