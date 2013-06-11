@@ -94,17 +94,17 @@ Definition at line 17 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = 0.0;
-        \}
-    \}
-\}
+18 \{
+19   \textcolor{keywordtype}{int} i, j;
+20   
+21   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+22     \{
+23       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+24         \{
+25           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = 0.0;
+26         \}
+27     \}
+28 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a4399c6da8f1ac31ce514550282c823cf}{\index{Matrix33@{Matrix33}!Matrix33@{Matrix33}}
 \index{Matrix33@{Matrix33}!Matrix33@{Matrix33}}
@@ -128,17 +128,17 @@ Definition at line 35 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = a[i][j];
-        \}
-    \}
-\}
+36 \{
+37   \textcolor{keywordtype}{int} i, j;
+38   
+39   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+40     \{
+41       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+42         \{
+43           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = a[i][j];
+44         \}
+45     \}
+46 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a1f070a29a710043c38b56cee8214e6f7}{\index{Matrix33@{Matrix33}!Matrix33@{Matrix33}}
 \index{Matrix33@{Matrix33}!Matrix33@{Matrix33}}
@@ -162,17 +162,17 @@ Definition at line 53 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = a.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * a.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
-        \}
-    \}
-\}
+54 \{
+55   \textcolor{keywordtype}{int} i, j;
+56   
+57   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+58     \{
+59       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+60         \{
+61           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = a.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * a.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
+62         \}
+63     \}
+64 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a7f1deae895c26e47c39c76bfaa31d3d2}{\index{Matrix33@{Matrix33}!Matrix33@{Matrix33}}
 \index{Matrix33@{Matrix33}!Matrix33@{Matrix33}}
@@ -199,17 +199,17 @@ Definition at line 72 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = a.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * b.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
-        \}
-    \}
-\}
+73 \{
+74   \textcolor{keywordtype}{int} i, j;
+75   
+76   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+77     \{
+78       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+79         \{
+80           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = a.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * b.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
+81         \}
+82     \}
+83 \}
 \end{DoxyCode}
 
 
@@ -234,24 +234,23 @@ Definition at line 129 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classMatrix33}{Matrix33} adj;
-  
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][
-      1]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
-  
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
-  
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
-  adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
-
-  \textcolor{keywordflow}{return} (adj);
-\}
+130 \{
+131   \hyperlink{classMatrix33}{Matrix33} adj;
+132   
+133   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]);
+134   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2]);
+135   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = (this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0]);
+136   
+137   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = (this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2]);
+138   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = (this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2]);
+139   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = (this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0]);
+140   
+141   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = (this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1]);
+142   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = (this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2]);
+143   adj.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = (this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1]);
+144 
+145   \textcolor{keywordflow}{return} (adj);
+146 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a849bbdf7b456ddacf7185b087fca4015}{\index{Matrix33@{Matrix33}!get\-Value@{get\-Value}}
 \index{get\-Value@{get\-Value}!Matrix33@{Matrix33}}
@@ -281,17 +280,17 @@ Definition at line 111 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{if} (row>=0 && row<3)
-    \{
-      \textcolor{keywordflow}{if} (column>=0 && column<3)
-        \{
-          \textcolor{keywordflow}{return} (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column]);
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (0.0);
-\}
+112 \{
+113   \textcolor{keywordflow}{if} (row>=0 && row<3)
+114     \{
+115       \textcolor{keywordflow}{if} (column>=0 && column<3)
+116         \{
+117           \textcolor{keywordflow}{return} (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column]);
+118         \}
+119     \}
+120   
+121   \textcolor{keywordflow}{return} (0.0);
+122 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{\index{Matrix33@{Matrix33}!operator!@{operator!}}
 \index{operator!@{operator!}!Matrix33@{Matrix33}}
@@ -313,30 +312,30 @@ Definition at line 370 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classMatrix33}{Matrix33} r;   \textcolor{comment}{// Result matrix}
-  
-  \textcolor{keywordtype}{double} determinant = ~(*this);
-  
-  \textcolor{keywordflow}{if} (determinant == 0.0)
-    \{
-      \textcolor{comment}{// The matrix is non-invertible}
-      \textcolor{keywordflow}{return} (r);       \textcolor{comment}{// Zero matrix}
-    \}
-  
-  \textcolor{comment}{// If we are still here, the matrix is invertible}
-  
-  \textcolor{comment}{//  Transpose}
-  \hyperlink{classMatrix33}{Matrix33} tr = ^(*this);
-  
-  \textcolor{comment}{// Find Adjugate matrix}
-  \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate}();
-  
-  \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
-  r = adj * (1.0/determinant);
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+371 \{
+372   \hyperlink{classMatrix33}{Matrix33} r;   \textcolor{comment}{// Result matrix}
+373   
+374   \textcolor{keywordtype}{double} determinant = ~(*this);
+375   
+376   \textcolor{keywordflow}{if} (determinant == 0.0)
+377     \{
+378       \textcolor{comment}{// The matrix is non-invertible}
+379       \textcolor{keywordflow}{return} (r);       \textcolor{comment}{// Zero matrix}
+380     \}
+381   
+382   \textcolor{comment}{// If we are still here, the matrix is invertible}
+383   
+384   \textcolor{comment}{//  Transpose}
+385   \hyperlink{classMatrix33}{Matrix33} tr = ^(*this);
+386   
+387   \textcolor{comment}{// Find Adjugate matrix}
+388   \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a4e64ab5af4921c24b8270a0c9050f4ba}{adjugate}();
+389   
+390   \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
+391   r = adj * (1.0/determinant);
+392   
+393   \textcolor{keywordflow}{return} (r);
+394 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{Matrix33@{Matrix33}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Matrix33@{Matrix33}}
@@ -358,20 +357,20 @@ Definition at line 233 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  \hyperlink{classMatrix33}{Matrix33} r;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * p;
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+234 \{
+235   \textcolor{keywordtype}{int} i, j;
+236   \hyperlink{classMatrix33}{Matrix33} r;
+237   
+238   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+239     \{
+240       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+241         \{
+242           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * p;
+243         \}
+244     \}
+245   
+246   \textcolor{keywordflow}{return} (r);
+247 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{Matrix33@{Matrix33}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Matrix33@{Matrix33}}
@@ -393,24 +392,24 @@ Definition at line 271 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j, k;
-  \hyperlink{classMatrix33}{Matrix33} r;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = 0.0;
-          \textcolor{keywordflow}{for} (k=0; k<3; k++)
-            \{
-              r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][k] * p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[k][j];
-            \}
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+272 \{
+273   \textcolor{keywordtype}{int} i, j, k;
+274   \hyperlink{classMatrix33}{Matrix33} r;
+275   
+276   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+277     \{
+278       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+279         \{
+280           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = 0.0;
+281           \textcolor{keywordflow}{for} (k=0; k<3; k++)
+282             \{
+283               r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][k] * p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[k][j];
+284             \}
+285         \}
+286     \}
+287   
+288   \textcolor{keywordflow}{return} (r);
+289 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{Matrix33@{Matrix33}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Matrix33@{Matrix33}}
@@ -432,20 +431,20 @@ Definition at line 311 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          r[i] += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * v.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+312 \{
+313   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
+314   \textcolor{keywordtype}{int} i, j;
+315   
+316   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+317     \{
+318       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+319         \{
+320           r[i] += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * v.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[j];
+321         \}
+322     \}
+323   
+324   \textcolor{keywordflow}{return} (r);
+325 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{Matrix33@{Matrix33}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!Matrix33@{Matrix33}}
@@ -464,17 +463,17 @@ Definition at line 253 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] *= p;
-        \}
-    \}
-\}
+254 \{
+255   \textcolor{keywordtype}{int} i, j;
+256   
+257   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+258     \{
+259       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+260         \{
+261           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] *= p;
+262         \}
+263     \}
+264 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{Matrix33@{Matrix33}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!Matrix33@{Matrix33}}
@@ -493,15 +492,15 @@ Definition at line 295 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classMatrix33}{Matrix33}* r = \textcolor{keyword}{new} \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33};
-  
-  *r = (*this) * p;
-  *\textcolor{keyword}{this} = *r;
-  
-  \textcolor{keyword}{delete}(r);
-  r = NULL;
-\}
+296 \{
+297   \hyperlink{classMatrix33}{Matrix33}* r = \textcolor{keyword}{new} \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33};
+298   
+299   *r = (*this) * p;
+300   *\textcolor{keyword}{this} = *r;
+301   
+302   \textcolor{keyword}{delete}(r);
+303   r = NULL;
+304 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{Matrix33@{Matrix33}!operator+@{operator+}}
 \index{operator+@{operator+}!Matrix33@{Matrix33}}
@@ -523,20 +522,20 @@ Definition at line 155 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  \hyperlink{classMatrix33}{Matrix33} r;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] + p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+156 \{
+157   \textcolor{keywordtype}{int} i, j;
+158   \hyperlink{classMatrix33}{Matrix33} r;
+159   
+160   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+161     \{
+162       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+163         \{
+164           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] + p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
+165         \}
+166     \}
+167   
+168   \textcolor{keywordflow}{return} (r);
+169 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{Matrix33@{Matrix33}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!Matrix33@{Matrix33}}
@@ -555,17 +554,17 @@ Definition at line 175 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-        \}
-    \}
-\}
+176 \{
+177   \textcolor{keywordtype}{int} i, j;
+178   
+179   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+180     \{
+181       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+182         \{
+183           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
+184         \}
+185     \}
+186 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{Matrix33@{Matrix33}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!Matrix33@{Matrix33}}
@@ -587,20 +586,20 @@ Definition at line 194 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  \hyperlink{classMatrix33}{Matrix33} r;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] - p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+195 \{
+196   \textcolor{keywordtype}{int} i, j;
+197   \hyperlink{classMatrix33}{Matrix33} r;
+198   
+199   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+200     \{
+201       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+202         \{
+203           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] - p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
+204         \}
+205     \}
+206   
+207   \textcolor{keywordflow}{return} (r);
+208 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{Matrix33@{Matrix33}!operator-\/=@{operator-\/=}}
 \index{operator-\/=@{operator-\/=}!Matrix33@{Matrix33}}
@@ -619,17 +618,17 @@ Definition at line 214 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] -= p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
-        \}
-    \}
-\}
+215 \{
+216   \textcolor{keywordtype}{int} i, j;
+217   
+218   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+219     \{
+220       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+221         \{
+222           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] -= p.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j];
+223         \}
+224     \}
+225 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_ad4ab7b9674a44a297502282e1993ef54}{\index{Matrix33@{Matrix33}!operator$^\wedge$@{operator$^\wedge$}}
 \index{operator$^\wedge$@{operator$^\wedge$}!Matrix33@{Matrix33}}
@@ -651,20 +650,20 @@ Definition at line 333 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classMatrix33}{Matrix33} r;
-  \textcolor{keywordtype}{int} i, j;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      \textcolor{keywordflow}{for} (j=0; j<3; j++)
-        \{
-          r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[j][i];
-        \}
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+334 \{
+335   \hyperlink{classMatrix33}{Matrix33} r;
+336   \textcolor{keywordtype}{int} i, j;
+337   
+338   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+339     \{
+340       \textcolor{keywordflow}{for} (j=0; j<3; j++)
+341         \{
+342           r.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[j][i];
+343         \}
+344     \}
+345   
+346   \textcolor{keywordflow}{return} (r);
+347 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{Matrix33@{Matrix33}!operator$\sim$@{operator$\sim$}}
 \index{operator$\sim$@{operator$\sim$}!Matrix33@{Matrix33}}
@@ -686,18 +685,18 @@ Definition at line 354 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{double} d = 0.0;
-  
-  d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*
-      this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) );
-  d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*
-      this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) );
-  d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*
-      this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) );
-  
-  \textcolor{keywordflow}{return} (d);
-\}
+355 \{
+356   \textcolor{keywordtype}{double} d = 0.0;
+357   
+358   d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*this->
+      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) );
+359   d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->
+      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) );
+360   d += this.\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*this->
+      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) );
+361   
+362   \textcolor{keywordflow}{return} (d);
+363 \}
 \end{DoxyCode}
 \hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{Matrix33@{Matrix33}!set\-Value@{set\-Value}}
 \index{set\-Value@{set\-Value}!Matrix33@{Matrix33}}
@@ -727,15 +726,15 @@ Definition at line 93 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{if} (row>=0 && row<3)
-    \{
-      \textcolor{keywordflow}{if} (column>=0 && column<3)
-        \{
-          this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column] = value;
-        \}
-    \}
-\}
+94 \{
+95   \textcolor{keywordflow}{if} (row>=0 && row<3)
+96     \{
+97       \textcolor{keywordflow}{if} (column>=0 && column<3)
+98         \{
+99           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column] = value;
+100         \}
+101     \}
+102 \}
 \end{DoxyCode}
 
 

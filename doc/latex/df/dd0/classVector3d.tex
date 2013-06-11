@@ -85,11 +85,11 @@ Definition at line 16 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = 0.0;
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = 0.0;
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = 0.0;
-\}
+17 \{
+18   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = 0.0;
+19   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = 0.0;
+20   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = 0.0;
+21 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a9e5a8c606f27fe366d2075f6bc4759a6}{\index{Vector3d@{Vector3d}!Vector3d@{Vector3d}}
 \index{Vector3d@{Vector3d}!Vector3d@{Vector3d}}
@@ -113,11 +113,11 @@ Definition at line 28 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = a[0];
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = a[1];
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a[2];
-\}
+29 \{
+30   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = a[0];
+31   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = a[1];
+32   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a[2];
+33 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_af61756bf2e679ccf2a5c0fd742ae3e6c}{\index{Vector3d@{Vector3d}!Vector3d@{Vector3d}}
 \index{Vector3d@{Vector3d}!Vector3d@{Vector3d}}
@@ -147,11 +147,11 @@ Definition at line 42 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = a1;
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = a2;
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a3;
-\}
+43 \{
+44   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = a1;
+45   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = a2;
+46   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a3;
+47 \}
 \end{DoxyCode}
 
 
@@ -181,16 +181,16 @@ Definition at line 83 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{if} (index>=0 && index<3)
-    \{
-      \textcolor{keywordflow}{return} (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[index]);
-    \}
-  \textcolor{keywordflow}{else}
-    \{
-      \textcolor{keywordflow}{return} (0);
-    \}
-\}
+84 \{
+85   \textcolor{keywordflow}{if} (index>=0 && index<3)
+86     \{
+87       \textcolor{keywordflow}{return} (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[index]);
+88     \}
+89   \textcolor{keywordflow}{else}
+90     \{
+91       \textcolor{keywordflow}{return} (0);
+92     \}
+93 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a12ca89ab46c79eb78fa6b75cad1a3616}{\index{Vector3d@{Vector3d}!get\-Vector@{get\-Vector}}
 \index{get\-Vector@{get\-Vector}!Vector3d@{Vector3d}}
@@ -212,15 +212,15 @@ Definition at line 100 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{double}* a = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[3];
-  
-  a[0] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0];
-  a[1] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1];
-  a[2] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2];
-  
-  \textcolor{keywordflow}{return} (a);
-\}
+101 \{
+102   \textcolor{keywordtype}{double}* a = \textcolor{keyword}{new} \textcolor{keywordtype}{double}[3];
+103   
+104   a[0] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0];
+105   a[1] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1];
+106   a[2] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2];
+107   
+108   \textcolor{keywordflow}{return} (a);
+109 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{\index{Vector3d@{Vector3d}!magnitude@{magnitude}}
 \index{magnitude@{magnitude}!Vector3d@{Vector3d}}
@@ -242,17 +242,17 @@ Definition at line 134 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{double} s = 0.0;
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-  \{
-    s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-  \}
-  
-  \textcolor{keywordflow}{return} ( sqrt (s) );
-\}  
+135 \{
+136   \textcolor{keywordtype}{double} s = 0.0;
+137   \textcolor{keywordtype}{int} i;
+138   
+139   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+140   \{
+141     s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+142   \}
+143   
+144   \textcolor{keywordflow}{return} ( sqrt (s) );
+145 \}  
 \end{DoxyCode}
 \hypertarget{classVector3d_a24acba00068d9d1612404243f2a01078}{\index{Vector3d@{Vector3d}!normalize@{normalize}}
 \index{normalize@{normalize}!Vector3d@{Vector3d}}
@@ -274,18 +274,18 @@ Definition at line 152 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{double} m = this->\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude} ();
-  
-  \textcolor{keywordflow}{if} (m==0.0)
-  \{
-    \textcolor{keywordflow}{return} (\hyperlink{classVector3d}{Vector3d} ());
-  \}
-  \textcolor{keywordflow}{else}
-  \{
-    \textcolor{keywordflow}{return} ((*\textcolor{keyword}{this}) * (1.0/m));
-  \}
-\}
+153 \{
+154   \textcolor{keywordtype}{double} m = this->\hyperlink{classVector3d_a9fd3cba8bbdf983db6c2a2eae00c4b29}{magnitude} ();
+155   
+156   \textcolor{keywordflow}{if} (m==0.0)
+157   \{
+158     \textcolor{keywordflow}{return} (\hyperlink{classVector3d}{Vector3d} ());
+159   \}
+160   \textcolor{keywordflow}{else}
+161   \{
+162     \textcolor{keywordflow}{return} ((*\textcolor{keyword}{this}) * (1.0/m));
+163   \}
+164 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a656a4a90ae5619c4deb7851da2aaa2e8}{\index{Vector3d@{Vector3d}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Vector3d@{Vector3d}}
@@ -307,17 +307,17 @@ Definition at line 239 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p;
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+240 \{
+241   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
+242   \textcolor{keywordtype}{int} i;
+243   
+244   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+245     \{
+246       r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p;
+247     \}
+248   
+249   \textcolor{keywordflow}{return} (r);
+250 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a43b3a3d87cedd5a88539d030a8853590}{\index{Vector3d@{Vector3d}!operator$\ast$@{operator$\ast$}}
 \index{operator$\ast$@{operator$\ast$}!Vector3d@{Vector3d}}
@@ -339,17 +339,17 @@ Definition at line 271 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{double} s = 0.0;
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-    \}
-  
-  \textcolor{keywordflow}{return} (s);
-\}
+272 \{
+273   \textcolor{keywordtype}{double} s = 0.0;
+274   \textcolor{keywordtype}{int} i;
+275   
+276   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+277     \{
+278       s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+279     \}
+280   
+281   \textcolor{keywordflow}{return} (s);
+282 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a3014b4a7a5feded758421dfb7df4daa2}{\index{Vector3d@{Vector3d}!operator$\ast$=@{operator$\ast$=}}
 \index{operator$\ast$=@{operator$\ast$=}!Vector3d@{Vector3d}}
@@ -368,14 +368,14 @@ Definition at line 256 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] *= p;
-    \}
-\}
+257 \{
+258   \textcolor{keywordtype}{int} i;
+259   
+260   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+261     \{
+262       this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] *= p;
+263     \}
+264 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_ad714ad56910f370335c18262dc5cc13a}{\index{Vector3d@{Vector3d}!operator+@{operator+}}
 \index{operator+@{operator+}!Vector3d@{Vector3d}}
@@ -397,17 +397,17 @@ Definition at line 173 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classVector3d}{Vector3d} r (0.0, 0.0, 0.0);
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] + p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+174 \{
+175   \hyperlink{classVector3d}{Vector3d} r (0.0, 0.0, 0.0);
+176   \textcolor{keywordtype}{int} i;
+177   
+178   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+179     \{
+180       r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] + p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+181     \}
+182   
+183   \textcolor{keywordflow}{return} (r);
+184 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a034e9f847d613c9cba1cb47202b8143a}{\index{Vector3d@{Vector3d}!operator+=@{operator+=}}
 \index{operator+=@{operator+=}!Vector3d@{Vector3d}}
@@ -426,14 +426,14 @@ Definition at line 190 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] += p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-    \}
-\}
+191 \{
+192   \textcolor{keywordtype}{int} i;
+193   
+194   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+195     \{
+196       this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] += p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+197     \}
+198 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a727932bfb1f230c8f256e10a0d45a8c7}{\index{Vector3d@{Vector3d}!operator-\/@{operator-\/}}
 \index{operator-\/@{operator-\/}!Vector3d@{Vector3d}}
@@ -455,17 +455,17 @@ Definition at line 206 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] - p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-    \}
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+207 \{
+208   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
+209   \textcolor{keywordtype}{int} i;
+210   
+211   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+212     \{
+213       r.x[i] = this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] - p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+214     \}
+215   
+216   \textcolor{keywordflow}{return} (r);
+217 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a14d45e123683a1f1a2ba32d43083fcd7}{\index{Vector3d@{Vector3d}!operator-\/=@{operator-\/=}}
 \index{operator-\/=@{operator-\/=}!Vector3d@{Vector3d}}
@@ -484,14 +484,14 @@ Definition at line 223 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] -= p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-    \}
-\}
+224 \{
+225   \textcolor{keywordtype}{int} i;
+226   
+227   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+228     \{
+229       this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i] -= p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+230     \}
+231 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a3a8254737a895334fc887d98e8446298}{\index{Vector3d@{Vector3d}!operator$^\wedge$@{operator$^\wedge$}}
 \index{operator$^\wedge$@{operator$^\wedge$}!Vector3d@{Vector3d}}
@@ -513,15 +513,15 @@ Definition at line 289 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-  
-  r.x[0] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]);
-  r.x[1] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]);
-  r.x[2] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]);
-  
-  \textcolor{keywordflow}{return} (r);
-\}
+290 \{
+291   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
+292   
+293   r.x[0] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]);
+294   r.x[1] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]);
+295   r.x[2] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]);
+296   
+297   \textcolor{keywordflow}{return} (r);
+298 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a868e89192951f4a25f63b958ec419f6f}{\index{Vector3d@{Vector3d}!operator$^\wedge$=@{operator$^\wedge$=}}
 \index{operator$^\wedge$=@{operator$^\wedge$=}!Vector3d@{Vector3d}}
@@ -540,18 +540,18 @@ Definition at line 304 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \hyperlink{classVector3d}{Vector3d}* r = \hyperlink{classVector3d_aac098d8695c4288e4844835e62945244}{Vector3d}(0.0, 0.0, 0.0);
-  
-  r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]);
-  r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]);
-  r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]);
-  
-  *\textcolor{keyword}{this} = *r;
-  
-  \textcolor{keyword}{delete} (r);
-  r = NULL;
-\}
+305 \{
+306   \hyperlink{classVector3d}{Vector3d}* r = \hyperlink{classVector3d_aac098d8695c4288e4844835e62945244}{Vector3d}(0.0, 0.0, 0.0);
+307   
+308   r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]);
+309   r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2]);
+310   r->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1]) - (this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] * p.\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0]);
+311   
+312   *\textcolor{keyword}{this} = *r;
+313   
+314   \textcolor{keyword}{delete} (r);
+315   r = NULL;
+316 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_ac20e0cda09c96f83cc41e23300c303ca}{\index{Vector3d@{Vector3d}!set\-Value@{set\-Value}}
 \index{set\-Value@{set\-Value}!Vector3d@{Vector3d}}
@@ -578,12 +578,12 @@ Definition at line 56 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordflow}{if} (index>=0 && index <3)
-    \{
-      this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[index] = value;
-    \}
-\}
+57 \{
+58   \textcolor{keywordflow}{if} (index>=0 && index <3)
+59     \{
+60       this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[index] = value;
+61     \}
+62 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a82c251f7203e08ec50ea55222f40525f}{\index{Vector3d@{Vector3d}!set\-Vector@{set\-Vector}}
 \index{set\-Vector@{set\-Vector}!Vector3d@{Vector3d}}
@@ -607,11 +607,11 @@ Definition at line 69 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = a[0];
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = a[1];
-  this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a[2];
-\}
+70 \{
+71   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[0] = a[0];
+72   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[1] = a[1];
+73   this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[2] = a[2];
+74 \}
 \end{DoxyCode}
 \hypertarget{classVector3d_a76fa7fc5a86ba77a6764eb0d9072e90a}{\index{Vector3d@{Vector3d}!sum@{sum}}
 \index{sum@{sum}!Vector3d@{Vector3d}}
@@ -633,17 +633,17 @@ Definition at line 116 of file vector3d.\-cpp.
 
 
 \begin{DoxyCode}
-\{
-  \textcolor{keywordtype}{double} s = 0.0;
-  \textcolor{keywordtype}{int} i;
-  
-  \textcolor{keywordflow}{for} (i=0; i<3; i++)
-    \{
-      s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
-    \}
-  
-  \textcolor{keywordflow}{return} (s);
-\}
+117 \{
+118   \textcolor{keywordtype}{double} s = 0.0;
+119   \textcolor{keywordtype}{int} i;
+120   
+121   \textcolor{keywordflow}{for} (i=0; i<3; i++)
+122     \{
+123       s += this->\hyperlink{classVector3d_ae5e82a2be7cc2e195e56875a5befe509}{x}[i];
+124     \}
+125   
+126   \textcolor{keywordflow}{return} (s);
+127 \}
 \end{DoxyCode}
 
 

@@ -11,6 +11,19 @@
 #define DISLOCATIONDEFAULTS_H
 
 /**
+ * @brief Default value of the position vector x-coordinate.
+ */
+#define DEFAULT_POSITION_0 0.0
+/**
+ * @brief Default value of the position vector y-coordinate.
+ */
+#define DEFAULT_POSITION_1 0.0
+/**
+ * @brief Default value of the position vector z-coordinate.
+ */
+#define DEFAULT_POSITION_2 0.0
+
+/**
  * @brief Default value of the magnitude of the Burgers vector.
  */
 #define DEFAULT_BURGERS_MAGNITUDE 5.0e-09
