@@ -1,9 +1,9 @@
-\hypertarget{classRotationMatrix}{\section{Rotation\-Matrix Class Reference}
-\label{d2/d4a/classRotationMatrix}\index{Rotation\-Matrix@{Rotation\-Matrix}}
+\hypertarget{classRotationMatrix}{\section{\-Rotation\-Matrix \-Class \-Reference}
+\label{d2/d4a/classRotationMatrix}\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}}
 }
 
 
-\hyperlink{classRotationMatrix}{Rotation\-Matrix} class to represent a rotation matrix.  
+\hyperlink{classRotationMatrix}{\-Rotation\-Matrix} class to represent a rotation matrix.  
 
 
 
@@ -12,7 +12,8 @@
 
 
 
-Inheritance diagram for Rotation\-Matrix\-:\nopagebreak
+\-Inheritance diagram for \-Rotation\-Matrix\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,716 +22,726 @@ Inheritance diagram for Rotation\-Matrix\-:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Rotation\-Matrix\-:\nopagebreak
+\-Collaboration diagram for \-Rotation\-Matrix\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=160pt]{d5/dc0/classRotationMatrix__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classRotationMatrix_a4678658c45a6b89f2d06c48b318e2769}{Rotation\-Matrix} ()
-\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
-\hyperlink{classRotationMatrix_a234bf349cf56fc8561a41f5a3669675b}{Rotation\-Matrix} (\hyperlink{classMatrix33}{Matrix33} m)
-\begin{DoxyCompactList}\small\item\em Constructor specifying the matrix. \end{DoxyCompactList}\item 
-\hyperlink{classRotationMatrix_aa5506a5341c05e42d258a93137635a9b}{Rotation\-Matrix} (\hyperlink{classVector3d}{Vector3d} $\ast$un\-Primed, \hyperlink{classVector3d}{Vector3d} $\ast$primed)
-\begin{DoxyCompactList}\small\item\em Defines the rotation matrix based on two co-\/ordinate systems. \end{DoxyCompactList}\item 
+\hyperlink{classRotationMatrix_a4678658c45a6b89f2d06c48b318e2769}{\-Rotation\-Matrix} ()
+\begin{DoxyCompactList}\small\item\em \-Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classRotationMatrix_a234bf349cf56fc8561a41f5a3669675b}{\-Rotation\-Matrix} (\hyperlink{classMatrix33}{\-Matrix33} m)
+\begin{DoxyCompactList}\small\item\em \-Constructor specifying the matrix. \end{DoxyCompactList}\item 
+\hyperlink{classRotationMatrix_aa5506a5341c05e42d258a93137635a9b}{\-Rotation\-Matrix} (\hyperlink{classVector3d}{\-Vector3d} $\ast$un\-Primed, \hyperlink{classVector3d}{\-Vector3d} $\ast$primed)
+\begin{DoxyCompactList}\small\item\em \-Defines the rotation matrix based on two co-\/ordinate systems. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
-\begin{DoxyCompactList}\small\item\em Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{get\-Value} (int row, int column) const 
-\begin{DoxyCompactList}\small\item\em Returns the value of the element located by the row and column indices provided. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate} () const 
-\begin{DoxyCompactList}\small\item\em Returns the adjugate matrix of the present matrix. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose} () const 
-\begin{DoxyCompactList}\small\item\em Returns the transpose of the present matrix. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for addition of two matrices. \end{DoxyCompactList}\item 
-void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive addition of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{operator-\/} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for the subtraction of two matrices. \end{DoxyCompactList}\item 
-void \hyperlink{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{operator-\/=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive subtraction of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{operator$\ast$} (const double \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for scaling the matrix by a scalar. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{operator$\ast$} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for the multiplication of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{operator$\ast$} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for the multiplication of a matrix with a vector. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Returns the value of the element located by the row and column indices provided. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate} () const 
+\begin{DoxyCompactList}\small\item\em \-Returns the adjugate matrix of the present matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose} () const 
+\begin{DoxyCompactList}\small\item\em \-Returns the transpose of the present matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for addition of two matrices. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive addition of two matrices. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{operator-\/} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for the subtraction of two matrices. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{operator-\/=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive subtraction of two matrices. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{operator$\ast$} (const double \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for scaling the matrix by a scalar. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{operator$\ast$} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for the multiplication of two matrices. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{operator$\ast$} (const \hyperlink{classVector3d}{\-Vector3d} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for the multiplication of a matrix with a vector. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{operator$\ast$=} (const double \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive scaling of the matrix by a scalar. \end{DoxyCompactList}\item 
-void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive multiplication of two matrices. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive scaling of the matrix by a scalar. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive multiplication of two matrices. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{operator$\sim$} () const 
-\begin{DoxyCompactList}\small\item\em Determinant. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
-\begin{DoxyCompactList}\small\item\em Inverse. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\begin{DoxyCompactList}\small\item\em \-Determinant. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
+\begin{DoxyCompactList}\small\item\em \-Inverse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
 double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
-\begin{DoxyCompactList}\small\item\em Array containing the elements of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Array containing the elements of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\hyperlink{classRotationMatrix}{Rotation\-Matrix} class to represent a rotation matrix. 
+\subsection{\-Detailed \-Description}
+\hyperlink{classRotationMatrix}{\-Rotation\-Matrix} class to represent a rotation matrix. 
 
-The member functions of this class create a rotation matrix for carrying out rotations in 3\-D and transformation of axes. 
+\-The member functions of this class create a rotation matrix for carrying out rotations in 3\-D and transformation of axes. 
 
-Definition at line 19 of file rotation\-Matrix.\-h.
+\-Definition at line 19 of file rotation\-Matrix.\-h.
 
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{classRotationMatrix_a4678658c45a6b89f2d06c48b318e2769}{\index{Rotation\-Matrix@{Rotation\-Matrix}!Rotation\-Matrix@{Rotation\-Matrix}}
-\index{Rotation\-Matrix@{Rotation\-Matrix}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Rotation\-Matrix\-::\-Rotation\-Matrix (
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classRotationMatrix_a4678658c45a6b89f2d06c48b318e2769}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!\-Rotation\-Matrix@{\-Rotation\-Matrix}}
+\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{\-Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Rotation\-Matrix\-::\-Rotation\-Matrix} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{d2/d4a/classRotationMatrix_a4678658c45a6b89f2d06c48b318e2769}
 
 
-Default constructor. 
+\-Default constructor. 
 
-Initializes the rotation matrix with a unit matrix. 
+\-Initializes the rotation matrix with a unit matrix. 
 
-Definition at line 16 of file rotation\-Matrix.\-cpp.
+\-Definition at line 16 of file rotation\-Matrix.\-cpp.
 
 
 \begin{DoxyCode}
-17 \{
-18     \textcolor{keywordtype}{int} i,  j;
-19 
-20     \textcolor{keywordflow}{for} ( i=0; i<3; i++ ) \{
-21         \textcolor{keywordflow}{for} ( j=0; i<3; j++ ) \{
-22             \textcolor{keywordflow}{if} ( i==j ) \{
-23                 this->\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} ( i, j, 1.0 );
-24             \}
-25             \textcolor{keywordflow}{else} \{
-26                 this->\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} ( i, j, 0.0 );
-27             \}
-28         \}
-29     \}
-30 \}
+{
+    int i,  j;
+
+    for ( i=0; i<3; i++ ) {
+        for ( j=0; i<3; j++ ) {
+            if ( i==j ) {
+                this->setValue ( i, j, 1.0 );
+            }
+            else {
+                this->setValue ( i, j, 0.0 );
+            }
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classRotationMatrix_a234bf349cf56fc8561a41f5a3669675b}{\index{Rotation\-Matrix@{Rotation\-Matrix}!Rotation\-Matrix@{Rotation\-Matrix}}
-\index{Rotation\-Matrix@{Rotation\-Matrix}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Rotation\-Matrix\-::\-Rotation\-Matrix (
+\hypertarget{classRotationMatrix_a234bf349cf56fc8561a41f5a3669675b}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!\-Rotation\-Matrix@{\-Rotation\-Matrix}}
+\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{\-Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Rotation\-Matrix\-::\-Rotation\-Matrix} (
 \begin{DoxyParamCaption}
-\item[{{\bf Matrix33}}]{m}
+\item[{{\bf \-Matrix33}}]{m}
 \end{DoxyParamCaption}
 )}}\label{d2/d4a/classRotationMatrix_a234bf349cf56fc8561a41f5a3669675b}
 
 
-Constructor specifying the matrix. 
+\-Constructor specifying the matrix. 
 
-The rotation matrix is provided as the matrix m. 
-\begin{DoxyParams}{Parameters}
-{\em m} & The matrix m which is equal to the rotation matrix. \\
+\-The rotation matrix is provided as the matrix m. 
+\begin{DoxyParams}{\-Parameters}
+{\em m} & \-The matrix m which is equal to the rotation matrix. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 37 of file rotation\-Matrix.\-cpp.
+\-Definition at line 37 of file rotation\-Matrix.\-cpp.
 
 
 \begin{DoxyCode}
-38 \{
-39   \textcolor{keywordtype}{int} i, j;
-40 
-41   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-42     \{
-43       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-44         \{
-45           this->\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, (m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i,j)));
-46         \}
-47     \}
-48 \}
+{
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->setValue (i, j, (m.getValue(i,j)));
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classRotationMatrix_aa5506a5341c05e42d258a93137635a9b}{\index{Rotation\-Matrix@{Rotation\-Matrix}!Rotation\-Matrix@{Rotation\-Matrix}}
-\index{Rotation\-Matrix@{Rotation\-Matrix}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}Rotation\-Matrix\-::\-Rotation\-Matrix (
+\hypertarget{classRotationMatrix_aa5506a5341c05e42d258a93137635a9b}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!\-Rotation\-Matrix@{\-Rotation\-Matrix}}
+\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{\-Rotation\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Rotation\-Matrix\-::\-Rotation\-Matrix} (
 \begin{DoxyParamCaption}
-\item[{{\bf Vector3d} $\ast$}]{un\-Primed, }
-\item[{{\bf Vector3d} $\ast$}]{primed}
+\item[{{\bf \-Vector3d} $\ast$}]{un\-Primed, }
+\item[{{\bf \-Vector3d} $\ast$}]{primed}
 \end{DoxyParamCaption}
 )}}\label{d2/d4a/classRotationMatrix_aa5506a5341c05e42d258a93137635a9b}
 
 
-Defines the rotation matrix based on two co-\/ordinate systems. 
+\-Defines the rotation matrix based on two co-\/ordinate systems. 
 
-The rotation matrix is created using the axes of the two co-\/ordinate systems provided as arguments. The vectors must be normalized to be unit vectors. 
-\begin{DoxyParams}{Parameters}
-{\em un\-Primed} & Pointer to the array containing the three axes vectors of the unprimed (old) system. \\
+\-The rotation matrix is created using the axes of the two co-\/ordinate systems provided as arguments. \-The vectors must be normalized to be unit vectors. 
+\begin{DoxyParams}{\-Parameters}
+{\em un\-Primed} & \-Pointer to the array containing the three axes vectors of the unprimed (old) system. \\
 \hline
-{\em primed} & Pointer to the array containing the three axes vectors of the primed (new) system. \\
+{\em primed} & \-Pointer to the array containing the three axes vectors of the primed (new) system. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 56 of file rotation\-Matrix.\-cpp.
+\-Definition at line 56 of file rotation\-Matrix.\-cpp.
 
 
 \begin{DoxyCode}
-57 \{
-58     \textcolor{keywordtype}{int} i, j;
-59 
-60     \textcolor{keywordflow}{for} ( i=0; i<3; i++ ) \{
-61         \textcolor{keywordflow}{for} ( j=0; j<3; j++ ) \{
-62             this->\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} ( i, j, primed[i]*unPrimed[j] );
-63         \}
-64     \}
-65 \}
+{
+    int i, j;
+
+    for ( i=0; i<3; i++ ) {
+        for ( j=0; j<3; j++ ) {
+            this->setValue ( i, j, primed[i]*unPrimed[j] );
+        }
+    }
+}
 \end{DoxyCode}
 
 
-\subsection{Member Function Documentation}
-\hypertarget{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{\index{Rotation\-Matrix@{Rotation\-Matrix}!adjugate@{adjugate}}
-\index{adjugate@{adjugate}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::adjugate (
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!adjugate@{adjugate}}
+\index{adjugate@{adjugate}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::adjugate} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}
 
 
-Returns the adjugate matrix of the present matrix. 
+\-Returns the adjugate matrix of the present matrix. 
 
-The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix. \begin{DoxyReturn}{Returns}
-The adjugate matrix of the present matrix. 
+\-The adjugate matrix of the present matrix is returned. \-The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. \-This operation is useful in calculating the inverse of a matrix. \begin{DoxyReturn}{\-Returns}
+\-The adjugate matrix of the present matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 129 of file matrix33.\-cpp.
+\-Definition at line 129 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-130 \{
-131   \hyperlink{classMatrix33}{Matrix33} adj;
-132   
-133   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 0, ((this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->x[1][2]*this->x[2][1])));
-134   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 1, ((this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2])));
-135   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 2, ((this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0])));
-136   
-137   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 0, ((this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2])));
-138   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 1, ((this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2])));
-139   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 2, ((this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0])));
-140   
-141   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 0, ((this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1])));
-142   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 1, ((this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2])));
-143   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 2, ((this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1])));
-144 
-145   \textcolor{keywordflow}{return} (adj);
-146 \}
+{
+  Matrix33 adj;
+  
+  adj.setValue(0, 0, ((this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2]
+      [1])));
+  adj.setValue(0, 1, ((this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2]
+      [2])));
+  adj.setValue(0, 2, ((this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2]
+      [0])));
+  
+  adj.setValue(1, 0, ((this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2]
+      [2])));
+  adj.setValue(1, 1, ((this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0]
+      [2])));
+  adj.setValue(1, 2, ((this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0]
+      [0])));
+  
+  adj.setValue(2, 0, ((this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1]
+      [1])));
+  adj.setValue(2, 1, ((this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1]
+      [2])));
+  adj.setValue(2, 2, ((this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0]
+      [1])));
+
+  return (adj);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{\index{Rotation\-Matrix@{Rotation\-Matrix}!get\-Value@{get\-Value}}
-\index{get\-Value@{get\-Value}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::get\-Value (
+\hypertarget{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::get\-Value} (
 \begin{DoxyParamCaption}
 \item[{int}]{row, }
 \item[{int}]{column}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ab53b3e37ad830a87a804cf26311ba088}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_ab53b3e37ad830a87a804cf26311ba088}
 
 
-Returns the value of the element located by the row and column indices provided. 
+\-Returns the value of the element located by the row and column indices provided. 
 
-The value of the element indicated by the arguments row and column is returned. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.\-0 is returned. 
-\begin{DoxyParams}{Parameters}
-{\em row} & Row index of the element. \\
+\-The value of the element indicated by the arguments row and column is returned. \-The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. \-In any other case 0.\-0 is returned. 
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-Row index of the element. \\
 \hline
-{\em column} & Column index of the element. \\
+{\em column} & \-Column index of the element. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Value of the element located at the given position. 
+\begin{DoxyReturn}{\-Returns}
+\-Value of the element located at the given position. 
 \end{DoxyReturn}
 
 
-Definition at line 111 of file matrix33.\-cpp.
+\-Definition at line 111 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-112 \{
-113   \textcolor{keywordflow}{if} (row>=0 && row<3)
-114     \{
-115       \textcolor{keywordflow}{if} (column>=0 && column<3)
-116         \{
-117           \textcolor{keywordflow}{return} (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column]);
-118         \}
-119     \}
-120   
-121   \textcolor{keywordflow}{return} (0.0);
-122 \}
+{
+  if (row>=0 && row<3)
+    {
+      if (column>=0 && column<3)
+        {
+          return (this->x[row][column]);
+        }
+    }
+  
+  return (0.0);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator!@{operator!}}
-\index{operator!@{operator!}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator!}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator! (
+\hypertarget{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator!@{operator!}}
+\index{operator!@{operator!}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator!}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::operator!} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
 
 
-Inverse. 
+\-Inverse. 
 
-Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. \begin{DoxyReturn}{Returns}
-Matrix with the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. 
+\-Returns in a new matrix the inverse of the current matrix. \-If the current matrix is non-\/invertible, a zero matrix is returned. \begin{DoxyReturn}{\-Returns}
+\-Matrix with the inverse of the current matrix. \-If the current matrix is non-\/invertible, a zero matrix is returned. 
 \end{DoxyReturn}
 
 
-Definition at line 374 of file matrix33.\-cpp.
+\-Definition at line 374 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-375 \{
-376   \hyperlink{classMatrix33}{Matrix33} r;   \textcolor{comment}{// Result matrix}
-377   
-378   \textcolor{keywordtype}{double} determinant = ~(*this);
-379   
-380   \textcolor{keywordflow}{if} (determinant == 0.0)
-381     \{
-382       \textcolor{comment}{// The matrix is non-invertible}
-383       \textcolor{keywordflow}{return} (r);       \textcolor{comment}{// Zero matrix}
-384     \}
-385   
-386   \textcolor{comment}{// If we are still here, the matrix is invertible}
-387   
-388   \textcolor{comment}{//  Transpose}
-389   \hyperlink{classMatrix33}{Matrix33} tr = this->\hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose}();
-390   
-391   \textcolor{comment}{// Find Adjugate matrix}
-392   \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate}();
-393   
-394   \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
-395   r = adj * (1.0/determinant);
-396   
-397   \textcolor{keywordflow}{return} (r);
-398 \}
+{
+  Matrix33 r;   // Result matrix
+  
+  double determinant = ~(*this);
+  
+  if (determinant == 0.0)
+    {
+      // The matrix is non-invertible
+      return (r);       // Zero matrix
+    }
+  
+  // If we are still here, the matrix is invertible
+  
+  //  Transpose
+  Matrix33 tr = this->transpose();
+  
+  // Find Adjugate matrix
+  Matrix33 adj = tr.adjugate();
+  
+  // Calculate the inverse by dividing the adjugate matrix by the determinant
+  r = adj * (1.0/determinant);
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator$\ast$ (
+\hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$\ast$ (
 \begin{DoxyParamCaption}
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
 
 
-Operator for scaling the matrix by a scalar. 
+\-Operator for scaling the matrix by a scalar. 
 
-Scales the current matrix by the scalar provided and returns the result in a third matrix. \begin{DoxyReturn}{Returns}
-Matrix containing the result of scaling the current matrix by the scalar provided as argument. 
+\-Scales the current matrix by the scalar provided and returns the result in a third matrix. \begin{DoxyReturn}{\-Returns}
+\-Matrix containing the result of scaling the current matrix by the scalar provided as argument. 
 \end{DoxyReturn}
 
 
-Definition at line 253 of file matrix33.\-cpp.
+\-Definition at line 253 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-254 \{
-255   \textcolor{keywordtype}{int} i, j;
-256   \hyperlink{classMatrix33}{Matrix33} r;
-257   
-258   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-259     \{
-260       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-261         \{
-262           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * p));
-263         \}
-264     \}
-265   
-266   \textcolor{keywordflow}{return} (r);
-267 \}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.setValue(i, j, (this->x[i][j] * p));
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator$\ast$ (
+\hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$\ast$ (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
 
 
-Operator for the multiplication of two matrices. 
+\-Operator for the multiplication of two matrices. 
 
-Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
-The result of the multiplication of the current matrix with the one provided as argument. 
+\-Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. \begin{DoxyReturn}{\-Returns}
+\-The result of the multiplication of the current matrix with the one provided as argument. 
 \end{DoxyReturn}
 
 
-Definition at line 291 of file matrix33.\-cpp.
+\-Definition at line 291 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-292 \{
-293   \textcolor{keywordtype}{int} i, j, k;
-294   \hyperlink{classMatrix33}{Matrix33} r;
-295   \textcolor{keywordtype}{double} s;
-296   
-297   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-298     \{
-299       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-300         \{
-301           s = 0.0;
-302           \textcolor{keywordflow}{for} (k=0; k<3; k++)
-303             \{
-304               s += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][k] * p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(k,j);
-305             \}
-306           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, s);
-307         \}
-308     \}
-309   
-310   \textcolor{keywordflow}{return} (r);
-311 \}
+{
+  int i, j, k;
+  Matrix33 r;
+  double s;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          s = 0.0;
+          for (k=0; k<3; k++)
+            {
+              s += this->x[i][k] * p.getValue(k,j);
+            }
+          r.setValue (i, j, s);
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Matrix33\-::operator$\ast$ (
+\hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} \-Matrix33\-::operator$\ast$ (
 \begin{DoxyParamCaption}
-\item[{const {\bf Vector3d} \&}]{v}
+\item[{const {\bf \-Vector3d} \&}]{v}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
 
 
-Operator for the multiplication of a matrix with a vector. 
+\-Operator for the multiplication of a matrix with a vector. 
 
-Returns in a vector the result of the multiplication of the current matrix with the provided vector. \begin{DoxyReturn}{Returns}
-The vector resulting from the multiplication of the current matrix with a vector. 
+\-Returns in a vector the result of the multiplication of the current matrix with the provided vector. \begin{DoxyReturn}{\-Returns}
+\-The vector resulting from the multiplication of the current matrix with a vector. 
 \end{DoxyReturn}
 
 
-Definition at line 333 of file matrix33.\-cpp.
+\-Definition at line 333 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-334 \{
-335   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-336   \textcolor{keywordtype}{double} s;
-337   \textcolor{keywordtype}{int} i, j;
-338   
-339   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-340     \{
-341       s = 0.0;
-342       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-343         \{
-344           s += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * v.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(j);
-345         \}
-346       r.setValue (i, s);
-347     \}
-348   
-349   \textcolor{keywordflow}{return} (r);
-350 \}
+{
+  Vector3d r(0.0, 0.0, 0.0);
+  double s;
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      s = 0.0;
+      for (j=0; j<3; j++)
+        {
+          s += this->x[i][j] * v.getValue(j);
+        }
+      r.setValue (i, s);
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator$\ast$=@{operator$\ast$=}}
-\index{operator$\ast$=@{operator$\ast$=}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator$\ast$= (
+\hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator$\ast$= (
 \begin{DoxyParamCaption}
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
 
 
-Operator for reflexive scaling of the matrix by a scalar. 
+\-Operator for reflexive scaling of the matrix by a scalar. 
 
-Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
+\-Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
 
-Definition at line 273 of file matrix33.\-cpp.
-
-
-\begin{DoxyCode}
-274 \{
-275   \textcolor{keywordtype}{int} i, j;
-276   
-277   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-278     \{
-279       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-280         \{
-281           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] *= p;
-282         \}
-283     \}
-284 \}
-\end{DoxyCode}
-\hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator$\ast$=@{operator$\ast$=}}
-\index{operator$\ast$=@{operator$\ast$=}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator$\ast$= (
-\begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
-
-
-Operator for reflexive multiplication of two matrices. 
-
-Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
-
-Definition at line 317 of file matrix33.\-cpp.
+\-Definition at line 273 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-318 \{
-319   \hyperlink{classMatrix33}{Matrix33}* r = \textcolor{keyword}{new} \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33};
-320   
-321   *r = (*this) * p;
-322   *\textcolor{keyword}{this} = *r;
-323   
-324   \textcolor{keyword}{delete}(r);
-325   r = NULL;
-326 \}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] *= p;
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator+@{operator+}}
-\index{operator+@{operator+}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator+ (
+\hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator$\ast$= (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
 
 
-Operator for addition of two matrices. 
+\-Operator for reflexive multiplication of two matrices. 
 
-Adds the current matrix to the provided matrix and returns a third matrix with the result. \begin{DoxyReturn}{Returns}
-Matrix containing the sum of the present matrix and the one provided. 
+\-Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
+
+\-Definition at line 317 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33* r = new Matrix33;
+  
+  *r = (*this) * p;
+  *this = *r;
+  
+  delete(r);
+  r = NULL;
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator+@{operator+}}
+\index{operator+@{operator+}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
+
+
+\-Operator for addition of two matrices. 
+
+\-Adds the current matrix to the provided matrix and returns a third matrix with the result. \begin{DoxyReturn}{\-Returns}
+\-Matrix containing the sum of the present matrix and the one provided. 
 \end{DoxyReturn}
 
 
-Definition at line 175 of file matrix33.\-cpp.
+\-Definition at line 175 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-176 \{
-177   \textcolor{keywordtype}{int} i, j;
-178   \hyperlink{classMatrix33}{Matrix33} r;
-179   
-180   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-181     \{
-182       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-183         \{
-184           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] + p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j)));
-185         \}
-186     \}
-187   
-188   \textcolor{keywordflow}{return} (r);
-189 \}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.setValue(i, j, (this->x[i][j] + p.getValue(i, j)));
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator+=@{operator+=}}
-\index{operator+=@{operator+=}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator+= (
+\hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator+= (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
 
 
-Operator for reflexive addition of two matrices. 
+\-Operator for reflexive addition of two matrices. 
 
-Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
+\-Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
 
-Definition at line 195 of file matrix33.\-cpp.
+\-Definition at line 195 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-196 \{
-197   \textcolor{keywordtype}{int} i, j;
-198   
-199   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-200     \{
-201       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-202         \{
-203           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j);
-204         \}
-205     \}
-206 \}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] += p.getValue(i, j);
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator-\/@{operator-\/}}
-\index{operator-\/@{operator-\/}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator-\/ (
+\hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator-\/ (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
 
 
-Operator for the subtraction of two matrices. 
+\-Operator for the subtraction of two matrices. 
 
-Subtracts the given matrix from the current matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
-Matrix containing the result of subtracting the provided matrix from the current matrix. 
+\-Subtracts the given matrix from the current matrix and returns the result in a new matrix. \begin{DoxyReturn}{\-Returns}
+\-Matrix containing the result of subtracting the provided matrix from the current matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 214 of file matrix33.\-cpp.
+\-Definition at line 214 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-215 \{
-216   \textcolor{keywordtype}{int} i, j;
-217   \hyperlink{classMatrix33}{Matrix33} r;
-218   
-219   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-220     \{
-221       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-222         \{
-223           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] - p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j)));
-224         \}
-225     \}
-226   
-227   \textcolor{keywordflow}{return} (r);
-228 \}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.setValue(i, j, (this->x[i][j] - p.getValue(i, j)));
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator-\/=@{operator-\/=}}
-\index{operator-\/=@{operator-\/=}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator-\/= (
+\hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator-\/= (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
 
 
-Operator for reflexive subtraction of two matrices. 
+\-Operator for reflexive subtraction of two matrices. 
 
-Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
+\-Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
 
-Definition at line 234 of file matrix33.\-cpp.
+\-Definition at line 234 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-235 \{
-236   \textcolor{keywordtype}{int} i, j;
-237   
-238   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-239     \{
-240       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-241         \{
-242           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] -= p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j);
-243         \}
-244     \}
-245 \}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] -= p.getValue(i, j);
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{Rotation\-Matrix@{Rotation\-Matrix}!operator$\sim$@{operator$\sim$}}
-\index{operator$\sim$@{operator$\sim$}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{operator$\sim$}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::operator$\sim$ (
+\hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!operator$\sim$@{operator$\sim$}}
+\index{operator$\sim$@{operator$\sim$}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{operator$\sim$}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::operator$\sim$} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
 
 
-Determinant. 
+\-Determinant. 
 
-Calculates the determinant of the current matrix. \begin{DoxyReturn}{Returns}
-Returns the determinant of the current matrix. 
+\-Calculates the determinant of the current matrix. \begin{DoxyReturn}{\-Returns}
+\-Returns the determinant of the current matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 358 of file matrix33.\-cpp.
+\-Definition at line 358 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-359 \{
-360   \textcolor{keywordtype}{double} d = 0.0;
-361   
-362   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) );
-363   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) );
-364   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) );
-365   
-366   \textcolor{keywordflow}{return} (d);
-367 \}
+{
+  double d = 0.0;
+  
+  d += this->x[0][0] * ( (this->x[1][1]*this->x[2][2]) - (this->x[2][1]*this->x
+      [1][2]) );
+  d += this->x[0][1] * ( (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x
+      [2][2]) );
+  d += this->x[0][2] * ( (this->x[1][0]*this->x[2][1]) - (this->x[2][0]*this->x
+      [1][1]) );
+  
+  return (d);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{Rotation\-Matrix@{Rotation\-Matrix}!set\-Value@{set\-Value}}
-\index{set\-Value@{set\-Value}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::set\-Value (
+\hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!set\-Value@{set\-Value}}
+\index{set\-Value@{set\-Value}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Matrix33\-::set\-Value} (
 \begin{DoxyParamCaption}
 \item[{int}]{row, }
 \item[{int}]{column, }
 \item[{double}]{value}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}
 
 
-Function to set the value of an element indicated by its position. 
+\-Function to set the value of an element indicated by its position. 
 
-The element indicated by the arguments row and column is set to the value provided. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.\-0 is returned. 
-\begin{DoxyParams}{Parameters}
-{\em row} & Row index of the element. \\
+\-The element indicated by the arguments row and column is set to the value provided. \-The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. \-In any other case 0.\-0 is returned. 
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-Row index of the element. \\
 \hline
-{\em column} & Column index of the element. \\
+{\em column} & \-Column index of the element. \\
 \hline
-{\em value} & Value that the element is to be set to. \\
+{\em value} & \-Value that the element is to be set to. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 93 of file matrix33.\-cpp.
+\-Definition at line 93 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-94 \{
-95   \textcolor{keywordflow}{if} (row>=0 && row<3)
-96     \{
-97       \textcolor{keywordflow}{if} (column>=0 && column<3)
-98         \{
-99           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column] = value;
-100         \}
-101     \}
-102 \}
+{
+  if (row>=0 && row<3)
+    {
+      if (column>=0 && column<3)
+        {
+          this->x[row][column] = value;
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{\index{Rotation\-Matrix@{Rotation\-Matrix}!transpose@{transpose}}
-\index{transpose@{transpose}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::transpose (
+\hypertarget{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!transpose@{transpose}}
+\index{transpose@{transpose}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::transpose} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}
 
 
-Returns the transpose of the present matrix. 
+\-Returns the transpose of the present matrix. 
 
-The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-\/versa. \begin{DoxyReturn}{Returns}
-The transpose of the present matrix. 
+\-The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-\/versa. \begin{DoxyReturn}{\-Returns}
+\-The transpose of the present matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 153 of file matrix33.\-cpp.
+\-Definition at line 153 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-154 \{
-155   \hyperlink{classMatrix33}{Matrix33} tr;
-156   \textcolor{keywordtype}{int} i, j;
-157 
-158   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-159     \{
-160       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-161         \{
-162           tr.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[j][i]);
-163         \}
-164     \}
-165   \textcolor{keywordflow}{return} (tr);
-166 \}
+{
+  Matrix33 tr;
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          tr.setValue (i, j, this->x[j][i]);
+        }
+    }
+  return (tr);
+}
 \end{DoxyCode}
 
 
-\subsection{Field Documentation}
-\hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{Rotation\-Matrix@{Rotation\-Matrix}!x@{x}}
-\index{x@{x}!RotationMatrix@{Rotation\-Matrix}}
-\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::x\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}}\label{de/d82/classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}
+\subsection{\-Field \-Documentation}
+\hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{\-Rotation\-Matrix@{\-Rotation\-Matrix}!x@{x}}
+\index{x@{x}!RotationMatrix@{\-Rotation\-Matrix}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::x}\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}}\label{de/d82/classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}
 
 
-Array containing the elements of the matrix. 
-
-
-
-Definition at line 26 of file matrix33.\-h.
+\-Array containing the elements of the matrix. 
 
 
 
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\-Definition at line 26 of file matrix33.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 \hyperlink{rotationMatrix_8h}{rotation\-Matrix.\-h}\item 
 \hyperlink{rotationMatrix_8cpp}{rotation\-Matrix.\-cpp}\end{DoxyCompactItemize}

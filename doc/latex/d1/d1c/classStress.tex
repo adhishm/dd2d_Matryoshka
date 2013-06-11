@@ -1,9 +1,9 @@
-\hypertarget{classStress}{\section{Stress Class Reference}
-\label{d1/d1c/classStress}\index{Stress@{Stress}}
+\hypertarget{classStress}{\section{\-Stress \-Class \-Reference}
+\label{d1/d1c/classStress}\index{\-Stress@{\-Stress}}
 }
 
 
-\hyperlink{classStress}{Stress} class to represent the stress tensor.  
+\hyperlink{classStress}{\-Stress} class to represent the stress tensor.  
 
 
 
@@ -12,7 +12,8 @@
 
 
 
-Inheritance diagram for Stress\-:\nopagebreak
+\-Inheritance diagram for \-Stress\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
@@ -21,61 +22,62 @@ Inheritance diagram for Stress\-:\nopagebreak
 \end{figure}
 
 
-Collaboration diagram for Stress\-:\nopagebreak
+\-Collaboration diagram for \-Stress\-:
+\nopagebreak
 \begin{figure}[H]
 \begin{center}
 \leavevmode
 \includegraphics[width=134pt]{d7/dfa/classStress__coll__graph}
 \end{center}
 \end{figure}
-\subsection*{Public Member Functions}
+\subsection*{\-Public \-Member \-Functions}
 \begin{DoxyCompactItemize}
 \item 
-\hyperlink{classStress_aa01e83a3f6791cbadc5a368e3a40515e}{Stress} ()
-\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\item 
-\hyperlink{classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}{Stress} (double $\ast$principal, double $\ast$shear)
-\begin{DoxyCompactList}\small\item\em Constructor specifying the principal and shear stresses. \end{DoxyCompactList}\item 
-\hyperlink{classStress_a267d09256246063f83de6e747d1bfe00}{Stress} (\hyperlink{classMatrix33}{Matrix33} m)
-\begin{DoxyCompactList}\small\item\em Constructor specifying the full matrix. \end{DoxyCompactList}\item 
+\hyperlink{classStress_aa01e83a3f6791cbadc5a368e3a40515e}{\-Stress} ()
+\begin{DoxyCompactList}\small\item\em \-Default constructor. \end{DoxyCompactList}\item 
+\hyperlink{classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}{\-Stress} (double $\ast$principal, double $\ast$shear)
+\begin{DoxyCompactList}\small\item\em \-Constructor specifying the principal and shear stresses. \end{DoxyCompactList}\item 
+\hyperlink{classStress_a267d09256246063f83de6e747d1bfe00}{\-Stress} (\hyperlink{classMatrix33}{\-Matrix33} m)
+\begin{DoxyCompactList}\small\item\em \-Constructor specifying the full matrix. \end{DoxyCompactList}\item 
 void \hyperlink{classStress_aa395d5763df8feb4689e0c5524c9e562}{populate\-Matrix} ()
-\begin{DoxyCompactList}\small\item\em Construct the stress tensor from the principal and shear stresses. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classStress_a8e611f68135ec71c1c4bdad7a16c4ac7}{get\-Principal\-Stresses} () const 
-\begin{DoxyCompactList}\small\item\em Get the principal stresses. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classStress_a9c25c029485d2e3acb7989ce9a05462a}{get\-Shear\-Stresses} () const 
-\begin{DoxyCompactList}\small\item\em Get the shear stresses. \end{DoxyCompactList}\item 
-\hyperlink{classStress}{Stress} \hyperlink{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{rotate} (\hyperlink{classRotationMatrix}{Rotation\-Matrix} alpha)
-\begin{DoxyCompactList}\small\item\em Rotate the stress tensor from one coordinate system to another. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Construct the stress tensor from the principal and shear stresses. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{classStress_a8e611f68135ec71c1c4bdad7a16c4ac7}{get\-Principal\-Stresses} () const 
+\begin{DoxyCompactList}\small\item\em \-Get the principal stresses. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{classStress_a9c25c029485d2e3acb7989ce9a05462a}{get\-Shear\-Stresses} () const 
+\begin{DoxyCompactList}\small\item\em \-Get the shear stresses. \end{DoxyCompactList}\item 
+\hyperlink{classStress}{\-Stress} \hyperlink{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{rotate} (\hyperlink{classRotationMatrix}{\-Rotation\-Matrix} alpha)
+\begin{DoxyCompactList}\small\item\em \-Rotate the stress tensor from one coordinate system to another. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{set\-Value} (int row, int column, double value)
-\begin{DoxyCompactList}\small\item\em Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Function to set the value of an element indicated by its position. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{get\-Value} (int row, int column) const 
-\begin{DoxyCompactList}\small\item\em Returns the value of the element located by the row and column indices provided. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate} () const 
-\begin{DoxyCompactList}\small\item\em Returns the adjugate matrix of the present matrix. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose} () const 
-\begin{DoxyCompactList}\small\item\em Returns the transpose of the present matrix. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for addition of two matrices. \end{DoxyCompactList}\item 
-void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive addition of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{operator-\/} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for the subtraction of two matrices. \end{DoxyCompactList}\item 
-void \hyperlink{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{operator-\/=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive subtraction of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{operator$\ast$} (const double \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for scaling the matrix by a scalar. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{operator$\ast$} (const \hyperlink{classMatrix33}{Matrix33} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for the multiplication of two matrices. \end{DoxyCompactList}\item 
-\hyperlink{classVector3d}{Vector3d} \hyperlink{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{operator$\ast$} (const \hyperlink{classVector3d}{Vector3d} \&) const 
-\begin{DoxyCompactList}\small\item\em Operator for the multiplication of a matrix with a vector. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Returns the value of the element located by the row and column indices provided. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate} () const 
+\begin{DoxyCompactList}\small\item\em \-Returns the adjugate matrix of the present matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose} () const 
+\begin{DoxyCompactList}\small\item\em \-Returns the transpose of the present matrix. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{operator+} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for addition of two matrices. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrix33_acb59e59d3937e075521f478ba83b7165}{operator+=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive addition of two matrices. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{operator-\/} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for the subtraction of two matrices. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{operator-\/=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive subtraction of two matrices. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{operator$\ast$} (const double \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for scaling the matrix by a scalar. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{operator$\ast$} (const \hyperlink{classMatrix33}{\-Matrix33} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for the multiplication of two matrices. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{operator$\ast$} (const \hyperlink{classVector3d}{\-Vector3d} \&) const 
+\begin{DoxyCompactList}\small\item\em \-Operator for the multiplication of a matrix with a vector. \end{DoxyCompactList}\item 
 void \hyperlink{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{operator$\ast$=} (const double \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive scaling of the matrix by a scalar. \end{DoxyCompactList}\item 
-void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{Matrix33} \&)
-\begin{DoxyCompactList}\small\item\em Operator for reflexive multiplication of two matrices. \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive scaling of the matrix by a scalar. \end{DoxyCompactList}\item 
+void \hyperlink{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{operator$\ast$=} (const \hyperlink{classMatrix33}{\-Matrix33} \&)
+\begin{DoxyCompactList}\small\item\em \-Operator for reflexive multiplication of two matrices. \end{DoxyCompactList}\item 
 double \hyperlink{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{operator$\sim$} () const 
-\begin{DoxyCompactList}\small\item\em Determinant. \end{DoxyCompactList}\item 
-\hyperlink{classMatrix33}{Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
-\begin{DoxyCompactList}\small\item\em Inverse. \end{DoxyCompactList}\end{DoxyCompactItemize}
-\subsection*{Protected Attributes}
+\begin{DoxyCompactList}\small\item\em \-Determinant. \end{DoxyCompactList}\item 
+\hyperlink{classMatrix33}{\-Matrix33} \hyperlink{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{operator!} () const 
+\begin{DoxyCompactList}\small\item\em \-Inverse. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Protected \-Attributes}
 \begin{DoxyCompactItemize}
 \item 
 double \hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principal\-Stresses} \mbox{[}3\mbox{]}
@@ -83,51 +85,51 @@ double \hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principal\-Stre
 double \hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shear\-Stresses} \mbox{[}3\mbox{]}
 \item 
 double \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x} \mbox{[}3\mbox{]}\mbox{[}3\mbox{]}
-\begin{DoxyCompactList}\small\item\em Array containing the elements of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\begin{DoxyCompactList}\small\item\em \-Array containing the elements of the matrix. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
 
-\subsection{Detailed Description}
-\hyperlink{classStress}{Stress} class to represent the stress tensor. 
+\subsection{\-Detailed \-Description}
+\hyperlink{classStress}{\-Stress} class to represent the stress tensor. 
 
-The member functions of this class construct the symmetric stress tensor and operate on it. 
+\-The member functions of this class construct the symmetric stress tensor and operate on it. 
 
-Definition at line 21 of file stress.\-h.
+\-Definition at line 21 of file stress.\-h.
 
 
 
-\subsection{Constructor \& Destructor Documentation}
-\hypertarget{classStress_aa01e83a3f6791cbadc5a368e3a40515e}{\index{Stress@{Stress}!Stress@{Stress}}
-\index{Stress@{Stress}!Stress@{Stress}}
-\subsubsection[{Stress}]{\setlength{\rightskip}{0pt plus 5cm}Stress\-::\-Stress (
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classStress_aa01e83a3f6791cbadc5a368e3a40515e}{\index{\-Stress@{\-Stress}!\-Stress@{\-Stress}}
+\index{\-Stress@{\-Stress}!Stress@{\-Stress}}
+\subsubsection[{\-Stress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Stress\-::\-Stress} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_aa01e83a3f6791cbadc5a368e3a40515e}
 
 
-Default constructor. 
+\-Default constructor. 
 
-Initializes the stress tensor with zeros. 
+\-Initializes the stress tensor with zeros. 
 
-Definition at line 16 of file stress.\-cpp.
+\-Definition at line 16 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-17 \{
-18   \textcolor{keywordtype}{int} i, j;
-19 
-20   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-21     \{
-22       \hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [i] = 0.0;
-23       \hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [i] = 0.0;
-24     \}
-25 
-26   this->\hyperlink{classStress_aa395d5763df8feb4689e0c5524c9e562}{populateMatrix} ();
-27 \}
+{
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      principalStresses [i] = 0.0;
+      shearStresses [i] = 0.0;
+    }
+
+  this->populateMatrix ();
+}
 \end{DoxyCode}
-\hypertarget{classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}{\index{Stress@{Stress}!Stress@{Stress}}
-\index{Stress@{Stress}!Stress@{Stress}}
-\subsubsection[{Stress}]{\setlength{\rightskip}{0pt plus 5cm}Stress\-::\-Stress (
+\hypertarget{classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}{\index{\-Stress@{\-Stress}!\-Stress@{\-Stress}}
+\index{\-Stress@{\-Stress}!Stress@{\-Stress}}
+\subsubsection[{\-Stress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Stress\-::\-Stress} (
 \begin{DoxyParamCaption}
 \item[{double $\ast$}]{principal, }
 \item[{double $\ast$}]{shear}
@@ -135,771 +137,780 @@ Definition at line 16 of file stress.\-cpp.
 )}}\label{d1/d1c/classStress_ae4e2f6250e3bdd4d3d78a9c6bdde7bab}
 
 
-Constructor specifying the principal and shear stresses. 
+\-Constructor specifying the principal and shear stresses. 
 
-The principal and shear stresses are provided in the arguments and the symmetrical stress tensor is contstructed using them. 
-\begin{DoxyParams}{Parameters}
-{\em principal} & Pointer to the array containing principal stresses. \\
+\-The principal and shear stresses are provided in the arguments and the symmetrical stress tensor is contstructed using them. 
+\begin{DoxyParams}{\-Parameters}
+{\em principal} & \-Pointer to the array containing principal stresses. \\
 \hline
-{\em shear} & Pointer to the array containing shear stresses. \\
+{\em shear} & \-Pointer to the array containing shear stresses. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 35 of file stress.\-cpp.
+\-Definition at line 35 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-36 \{
-37   \textcolor{keywordtype}{int} i;
-38 
-39   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-40     \{
-41       this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [i] = principal [i];
-42       this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [i] = shear [i];
-43     \}
-44 
-45   this->\hyperlink{classStress_aa395d5763df8feb4689e0c5524c9e562}{populateMatrix} ();
-46 \}
+{
+  int i;
+
+  for (i=0; i<3; i++)
+    {
+      this->principalStresses [i] = principal [i];
+      this->shearStresses [i] = shear [i];
+    }
+
+  this->populateMatrix ();
+}
 \end{DoxyCode}
-\hypertarget{classStress_a267d09256246063f83de6e747d1bfe00}{\index{Stress@{Stress}!Stress@{Stress}}
-\index{Stress@{Stress}!Stress@{Stress}}
-\subsubsection[{Stress}]{\setlength{\rightskip}{0pt plus 5cm}Stress\-::\-Stress (
+\hypertarget{classStress_a267d09256246063f83de6e747d1bfe00}{\index{\-Stress@{\-Stress}!\-Stress@{\-Stress}}
+\index{\-Stress@{\-Stress}!Stress@{\-Stress}}
+\subsubsection[{\-Stress}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Stress\-::\-Stress} (
 \begin{DoxyParamCaption}
-\item[{{\bf Matrix33}}]{m}
+\item[{{\bf \-Matrix33}}]{m}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_a267d09256246063f83de6e747d1bfe00}
 
 
-Constructor specifying the full matrix. 
+\-Constructor specifying the full matrix. 
 
-This constructor accepts the full stress matrix as input and extracts the principal and shear stress components. 
-\begin{DoxyParams}{Parameters}
-{\em m} & \hyperlink{classMatrix33}{Matrix33} variable containing the full stress tensor. \\
+\-This constructor accepts the full stress matrix as input and extracts the principal and shear stress components. 
+\begin{DoxyParams}{\-Parameters}
+{\em m} & \hyperlink{classMatrix33}{\-Matrix33} variable containing the full stress tensor. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 53 of file stress.\-cpp.
+\-Definition at line 53 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-54 \{
-55   \textcolor{keywordtype}{int} i, j;
-56   \textcolor{keywordtype}{bool} symmetry = \textcolor{keyword}{true};
-57 
-58   \textcolor{comment}{// Verify symmetry}
-59   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-60     \{
-61       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-62         \{
-63           \textcolor{keywordflow}{if} (m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i,j) != m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(j,i))
-64             \{
-65               symmetry = \textcolor{keyword}{false};
-66               \textcolor{keywordflow}{break};
-67             \}
-68         \}
-69     \}
-70 
-71   \textcolor{keywordflow}{if} (symmetry)
-72     \{
-73       \textcolor{comment}{// The matrix is symmetrical}
-74       this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [0] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(0,0);
-75       this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [1] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(1,1);
-76       this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [2] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(2,2);
-77 
-78       this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [0] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(0,1);
-79       this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [1] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(0,2);
-80       this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [2] = m.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(1,2);
-81     \}
-82   \textcolor{keywordflow}{else}
-83     \{
-84       \textcolor{comment}{// The matrix is asymmetrical}
-85       \textcolor{comment}{// A zero matrix will be returned}
-86       \textcolor{keywordflow}{for} (i=0; i<3; i++)
-87         \{
-88           this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses}[i] = 0.0;
-89           this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses}[i] = 0.0;
-90         \}
-91     \}
-92 
-93   this->\hyperlink{classStress_aa395d5763df8feb4689e0c5524c9e562}{populateMatrix} ();
-94 \}
+{
+  int i, j;
+  bool symmetry = true;
+
+  // Verify symmetry
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          if (m.getValue(i,j) != m.getValue(j,i))
+            {
+              symmetry = false;
+              break;
+            }
+        }
+    }
+
+  if (symmetry)
+    {
+      // The matrix is symmetrical
+      this->principalStresses [0] = m.getValue(0,0);
+      this->principalStresses [1] = m.getValue(1,1);
+      this->principalStresses [2] = m.getValue(2,2);
+
+      this->shearStresses [0] = m.getValue(0,1);
+      this->shearStresses [1] = m.getValue(0,2);
+      this->shearStresses [2] = m.getValue(1,2);
+    }
+  else
+    {
+      // The matrix is asymmetrical
+      // A zero matrix will be returned
+      for (i=0; i<3; i++)
+        {
+          this->principalStresses[i] = 0.0;
+          this->shearStresses[i] = 0.0;
+        }
+    }
+
+  this->populateMatrix ();
+}
 \end{DoxyCode}
 
 
-\subsection{Member Function Documentation}
-\hypertarget{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{\index{Stress@{Stress}!adjugate@{adjugate}}
-\index{adjugate@{adjugate}!Stress@{Stress}}
-\subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::adjugate (
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{\index{\-Stress@{\-Stress}!adjugate@{adjugate}}
+\index{adjugate@{adjugate}!Stress@{\-Stress}}
+\subsubsection[{adjugate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::adjugate} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}
 
 
-Returns the adjugate matrix of the present matrix. 
+\-Returns the adjugate matrix of the present matrix. 
 
-The adjugate matrix of the present matrix is returned. The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. This operation is useful in calculating the inverse of a matrix. \begin{DoxyReturn}{Returns}
-The adjugate matrix of the present matrix. 
+\-The adjugate matrix of the present matrix is returned. \-The adjugate matrix is calculated by evaluating the determinant of the cofactor matrix of each element, and then replacing the corresponding element position by the value of the determinant. \-This operation is useful in calculating the inverse of a matrix. \begin{DoxyReturn}{\-Returns}
+\-The adjugate matrix of the present matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 129 of file matrix33.\-cpp.
+\-Definition at line 129 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-130 \{
-131   \hyperlink{classMatrix33}{Matrix33} adj;
-132   
-133   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 0, ((this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->x[1][2]*this->x[2][1])));
-134   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 1, ((this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2][2])));
-135   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(0, 2, ((this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2][0])));
-136   
-137   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 0, ((this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2][2])));
-138   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 1, ((this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0][2])));
-139   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(1, 2, ((this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0][0])));
-140   
-141   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 0, ((this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1][1])));
-142   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 1, ((this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1][2])));
-143   adj.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(2, 2, ((this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0][1])));
-144 
-145   \textcolor{keywordflow}{return} (adj);
-146 \}
+{
+  Matrix33 adj;
+  
+  adj.setValue(0, 0, ((this->x[1][1]*this->x[2][2]) - (this->x[1][2]*this->x[2]
+      [1])));
+  adj.setValue(0, 1, ((this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x[2]
+      [2])));
+  adj.setValue(0, 2, ((this->x[1][0]*this->x[2][1]) - (this->x[1][1]*this->x[2]
+      [0])));
+  
+  adj.setValue(1, 0, ((this->x[2][1]*this->x[0][2]) - (this->x[0][1]*this->x[2]
+      [2])));
+  adj.setValue(1, 1, ((this->x[2][2]*this->x[0][0]) - (this->x[2][0]*this->x[0]
+      [2])));
+  adj.setValue(1, 2, ((this->x[2][0]*this->x[0][1]) - (this->x[2][1]*this->x[0]
+      [0])));
+  
+  adj.setValue(2, 0, ((this->x[0][1]*this->x[1][2]) - (this->x[0][2]*this->x[1]
+      [1])));
+  adj.setValue(2, 1, ((this->x[0][2]*this->x[1][0]) - (this->x[0][0]*this->x[1]
+      [2])));
+  adj.setValue(2, 2, ((this->x[0][0]*this->x[1][1]) - (this->x[1][0]*this->x[0]
+      [1])));
+
+  return (adj);
+}
 \end{DoxyCode}
-\hypertarget{classStress_a8e611f68135ec71c1c4bdad7a16c4ac7}{\index{Stress@{Stress}!get\-Principal\-Stresses@{get\-Principal\-Stresses}}
-\index{get\-Principal\-Stresses@{get\-Principal\-Stresses}!Stress@{Stress}}
-\subsubsection[{get\-Principal\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Stress\-::get\-Principal\-Stresses (
+\hypertarget{classStress_a8e611f68135ec71c1c4bdad7a16c4ac7}{\index{\-Stress@{\-Stress}!get\-Principal\-Stresses@{get\-Principal\-Stresses}}
+\index{get\-Principal\-Stresses@{get\-Principal\-Stresses}!Stress@{\-Stress}}
+\subsubsection[{get\-Principal\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf \-Stress\-::get\-Principal\-Stresses} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 ) const}}\label{d1/d1c/classStress_a8e611f68135ec71c1c4bdad7a16c4ac7}
 
 
-Get the principal stresses. 
+\-Get the principal stresses. 
 
-Returns a vector of type \hyperlink{classVector3d}{Vector3d} with the principal stresses\-: s11 s22 s33. \begin{DoxyReturn}{Returns}
-\hyperlink{classVector3d}{Vector3d} variable with the principal stresses. 
+\-Returns a vector of type \hyperlink{classVector3d}{\-Vector3d} with the principal stresses\-: s11 s22 s33. \begin{DoxyReturn}{\-Returns}
+\hyperlink{classVector3d}{\-Vector3d} variable with the principal stresses. 
 \end{DoxyReturn}
 
 
-Definition at line 117 of file stress.\-cpp.
+\-Definition at line 117 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-118 \{
-119   \textcolor{keywordflow}{return} ( \hyperlink{classVector3d}{Vector3d} (this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [0],
-120                      this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [1],
-121                      this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [2] ) );
-122 \}
+{
+  return ( Vector3d (this->principalStresses [0],
+                     this->principalStresses [1],
+                     this->principalStresses [2] ) );
+}
 \end{DoxyCode}
-\hypertarget{classStress_a9c25c029485d2e3acb7989ce9a05462a}{\index{Stress@{Stress}!get\-Shear\-Stresses@{get\-Shear\-Stresses}}
-\index{get\-Shear\-Stresses@{get\-Shear\-Stresses}!Stress@{Stress}}
-\subsubsection[{get\-Shear\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Stress\-::get\-Shear\-Stresses (
+\hypertarget{classStress_a9c25c029485d2e3acb7989ce9a05462a}{\index{\-Stress@{\-Stress}!get\-Shear\-Stresses@{get\-Shear\-Stresses}}
+\index{get\-Shear\-Stresses@{get\-Shear\-Stresses}!Stress@{\-Stress}}
+\subsubsection[{get\-Shear\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf \-Stress\-::get\-Shear\-Stresses} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 ) const}}\label{d1/d1c/classStress_a9c25c029485d2e3acb7989ce9a05462a}
 
 
-Get the shear stresses. 
+\-Get the shear stresses. 
 
-Returns a vector of type \hyperlink{classVector3d}{Vector3d} with the shear stresses\-: s12 s13 s23. \begin{DoxyReturn}{Returns}
-\hyperlink{classVector3d}{Vector3d} variable with the shear stresses. 
+\-Returns a vector of type \hyperlink{classVector3d}{\-Vector3d} with the shear stresses\-: s12 s13 s23. \begin{DoxyReturn}{\-Returns}
+\hyperlink{classVector3d}{\-Vector3d} variable with the shear stresses. 
 \end{DoxyReturn}
 
 
-Definition at line 129 of file stress.\-cpp.
+\-Definition at line 129 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-130 \{
-131   \textcolor{keywordflow}{return} ( \hyperlink{classVector3d}{Vector3d} (this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [0],
-132                      this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [1],
-133                      this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [2] ) );
-134 \}
+{
+  return ( Vector3d (this->shearStresses [0],
+                     this->shearStresses [1],
+                     this->shearStresses [2] ) );
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{\index{Stress@{Stress}!get\-Value@{get\-Value}}
-\index{get\-Value@{get\-Value}!Stress@{Stress}}
-\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::get\-Value (
+\hypertarget{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{\index{\-Stress@{\-Stress}!get\-Value@{get\-Value}}
+\index{get\-Value@{get\-Value}!Stress@{\-Stress}}
+\subsubsection[{get\-Value}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::get\-Value} (
 \begin{DoxyParamCaption}
 \item[{int}]{row, }
 \item[{int}]{column}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ab53b3e37ad830a87a804cf26311ba088}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_ab53b3e37ad830a87a804cf26311ba088}
 
 
-Returns the value of the element located by the row and column indices provided. 
+\-Returns the value of the element located by the row and column indices provided. 
 
-The value of the element indicated by the arguments row and column is returned. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.\-0 is returned. 
-\begin{DoxyParams}{Parameters}
-{\em row} & Row index of the element. \\
+\-The value of the element indicated by the arguments row and column is returned. \-The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. \-In any other case 0.\-0 is returned. 
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-Row index of the element. \\
 \hline
-{\em column} & Column index of the element. \\
+{\em column} & \-Column index of the element. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Value of the element located at the given position. 
+\begin{DoxyReturn}{\-Returns}
+\-Value of the element located at the given position. 
 \end{DoxyReturn}
 
 
-Definition at line 111 of file matrix33.\-cpp.
+\-Definition at line 111 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-112 \{
-113   \textcolor{keywordflow}{if} (row>=0 && row<3)
-114     \{
-115       \textcolor{keywordflow}{if} (column>=0 && column<3)
-116         \{
-117           \textcolor{keywordflow}{return} (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column]);
-118         \}
-119     \}
-120   
-121   \textcolor{keywordflow}{return} (0.0);
-122 \}
+{
+  if (row>=0 && row<3)
+    {
+      if (column>=0 && column<3)
+        {
+          return (this->x[row][column]);
+        }
+    }
+  
+  return (0.0);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{\index{Stress@{Stress}!operator!@{operator!}}
-\index{operator!@{operator!}!Stress@{Stress}}
-\subsubsection[{operator!}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator! (
+\hypertarget{classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}{\index{\-Stress@{\-Stress}!operator!@{operator!}}
+\index{operator!@{operator!}!Stress@{\-Stress}}
+\subsubsection[{operator!}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::operator!} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a1b822a20343a26b3c9bb7fd5c1247f37}
 
 
-Inverse. 
+\-Inverse. 
 
-Returns in a new matrix the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. \begin{DoxyReturn}{Returns}
-Matrix with the inverse of the current matrix. If the current matrix is non-\/invertible, a zero matrix is returned. 
+\-Returns in a new matrix the inverse of the current matrix. \-If the current matrix is non-\/invertible, a zero matrix is returned. \begin{DoxyReturn}{\-Returns}
+\-Matrix with the inverse of the current matrix. \-If the current matrix is non-\/invertible, a zero matrix is returned. 
 \end{DoxyReturn}
 
 
-Definition at line 374 of file matrix33.\-cpp.
+\-Definition at line 374 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-375 \{
-376   \hyperlink{classMatrix33}{Matrix33} r;   \textcolor{comment}{// Result matrix}
-377   
-378   \textcolor{keywordtype}{double} determinant = ~(*this);
-379   
-380   \textcolor{keywordflow}{if} (determinant == 0.0)
-381     \{
-382       \textcolor{comment}{// The matrix is non-invertible}
-383       \textcolor{keywordflow}{return} (r);       \textcolor{comment}{// Zero matrix}
-384     \}
-385   
-386   \textcolor{comment}{// If we are still here, the matrix is invertible}
-387   
-388   \textcolor{comment}{//  Transpose}
-389   \hyperlink{classMatrix33}{Matrix33} tr = this->\hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose}();
-390   
-391   \textcolor{comment}{// Find Adjugate matrix}
-392   \hyperlink{classMatrix33}{Matrix33} adj = tr.\hyperlink{classMatrix33_a07b999a7b1c905f3c98ba3792e6fa33f}{adjugate}();
-393   
-394   \textcolor{comment}{// Calculate the inverse by dividing the adjugate matrix by the determinant}
-395   r = adj * (1.0/determinant);
-396   
-397   \textcolor{keywordflow}{return} (r);
-398 \}
+{
+  Matrix33 r;   // Result matrix
+  
+  double determinant = ~(*this);
+  
+  if (determinant == 0.0)
+    {
+      // The matrix is non-invertible
+      return (r);       // Zero matrix
+    }
+  
+  // If we are still here, the matrix is invertible
+  
+  //  Transpose
+  Matrix33 tr = this->transpose();
+  
+  // Find Adjugate matrix
+  Matrix33 adj = tr.adjugate();
+  
+  // Calculate the inverse by dividing the adjugate matrix by the determinant
+  r = adj * (1.0/determinant);
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{Stress@{Stress}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!Stress@{Stress}}
-\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator$\ast$ (
+\hypertarget{classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}{\index{\-Stress@{\-Stress}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Stress@{\-Stress}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$\ast$ (
 \begin{DoxyParamCaption}
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a6992fd2bb0b6e9ad71b5d3481c4e3e1a}
 
 
-Operator for scaling the matrix by a scalar. 
+\-Operator for scaling the matrix by a scalar. 
 
-Scales the current matrix by the scalar provided and returns the result in a third matrix. \begin{DoxyReturn}{Returns}
-Matrix containing the result of scaling the current matrix by the scalar provided as argument. 
+\-Scales the current matrix by the scalar provided and returns the result in a third matrix. \begin{DoxyReturn}{\-Returns}
+\-Matrix containing the result of scaling the current matrix by the scalar provided as argument. 
 \end{DoxyReturn}
 
 
-Definition at line 253 of file matrix33.\-cpp.
+\-Definition at line 253 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-254 \{
-255   \textcolor{keywordtype}{int} i, j;
-256   \hyperlink{classMatrix33}{Matrix33} r;
-257   
-258   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-259     \{
-260       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-261         \{
-262           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * p));
-263         \}
-264     \}
-265   
-266   \textcolor{keywordflow}{return} (r);
-267 \}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.setValue(i, j, (this->x[i][j] * p));
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{Stress@{Stress}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!Stress@{Stress}}
-\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator$\ast$ (
+\hypertarget{classMatrix33_a525f14614255ff81c0cbab8060e8e065}{\index{\-Stress@{\-Stress}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Stress@{\-Stress}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator$\ast$ (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a525f14614255ff81c0cbab8060e8e065}
 
 
-Operator for the multiplication of two matrices. 
+\-Operator for the multiplication of two matrices. 
 
-Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
-The result of the multiplication of the current matrix with the one provided as argument. 
+\-Multiplies the current matrix with another 3x3 matrix and returns the result in a new matrix. \begin{DoxyReturn}{\-Returns}
+\-The result of the multiplication of the current matrix with the one provided as argument. 
 \end{DoxyReturn}
 
 
-Definition at line 291 of file matrix33.\-cpp.
+\-Definition at line 291 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-292 \{
-293   \textcolor{keywordtype}{int} i, j, k;
-294   \hyperlink{classMatrix33}{Matrix33} r;
-295   \textcolor{keywordtype}{double} s;
-296   
-297   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-298     \{
-299       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-300         \{
-301           s = 0.0;
-302           \textcolor{keywordflow}{for} (k=0; k<3; k++)
-303             \{
-304               s += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][k] * p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(k,j);
-305             \}
-306           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, s);
-307         \}
-308     \}
-309   
-310   \textcolor{keywordflow}{return} (r);
-311 \}
+{
+  int i, j, k;
+  Matrix33 r;
+  double s;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          s = 0.0;
+          for (k=0; k<3; k++)
+            {
+              s += this->x[i][k] * p.getValue(k,j);
+            }
+          r.setValue (i, j, s);
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{Stress@{Stress}!operator$\ast$@{operator$\ast$}}
-\index{operator$\ast$@{operator$\ast$}!Stress@{Stress}}
-\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Vector3d} Matrix33\-::operator$\ast$ (
+\hypertarget{classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}{\index{\-Stress@{\-Stress}!operator$\ast$@{operator$\ast$}}
+\index{operator$\ast$@{operator$\ast$}!Stress@{\-Stress}}
+\subsubsection[{operator$\ast$}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} \-Matrix33\-::operator$\ast$ (
 \begin{DoxyParamCaption}
-\item[{const {\bf Vector3d} \&}]{v}
+\item[{const {\bf \-Vector3d} \&}]{v}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a601584a1edbaae7c6a2a2874605d6f61}
 
 
-Operator for the multiplication of a matrix with a vector. 
+\-Operator for the multiplication of a matrix with a vector. 
 
-Returns in a vector the result of the multiplication of the current matrix with the provided vector. \begin{DoxyReturn}{Returns}
-The vector resulting from the multiplication of the current matrix with a vector. 
+\-Returns in a vector the result of the multiplication of the current matrix with the provided vector. \begin{DoxyReturn}{\-Returns}
+\-The vector resulting from the multiplication of the current matrix with a vector. 
 \end{DoxyReturn}
 
 
-Definition at line 333 of file matrix33.\-cpp.
+\-Definition at line 333 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-334 \{
-335   \hyperlink{classVector3d}{Vector3d} r(0.0, 0.0, 0.0);
-336   \textcolor{keywordtype}{double} s;
-337   \textcolor{keywordtype}{int} i, j;
-338   
-339   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-340     \{
-341       s = 0.0;
-342       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-343         \{
-344           s += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] * v.\hyperlink{classVector3d_a114fda84a6723e54678d9dde244725a4}{getValue}(j);
-345         \}
-346       r.setValue (i, s);
-347     \}
-348   
-349   \textcolor{keywordflow}{return} (r);
-350 \}
+{
+  Vector3d r(0.0, 0.0, 0.0);
+  double s;
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      s = 0.0;
+      for (j=0; j<3; j++)
+        {
+          s += this->x[i][j] * v.getValue(j);
+        }
+      r.setValue (i, s);
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{Stress@{Stress}!operator$\ast$=@{operator$\ast$=}}
-\index{operator$\ast$=@{operator$\ast$=}!Stress@{Stress}}
-\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator$\ast$= (
+\hypertarget{classMatrix33_a83162791813bef030b1ceb5df3c5cae3}{\index{\-Stress@{\-Stress}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Stress@{\-Stress}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator$\ast$= (
 \begin{DoxyParamCaption}
 \item[{const double \&}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a83162791813bef030b1ceb5df3c5cae3}
 
 
-Operator for reflexive scaling of the matrix by a scalar. 
+\-Operator for reflexive scaling of the matrix by a scalar. 
 
-Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
+\-Scales the current matrix by the scalar provided and populates the current matrix elements with the result. 
 
-Definition at line 273 of file matrix33.\-cpp.
-
-
-\begin{DoxyCode}
-274 \{
-275   \textcolor{keywordtype}{int} i, j;
-276   
-277   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-278     \{
-279       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-280         \{
-281           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] *= p;
-282         \}
-283     \}
-284 \}
-\end{DoxyCode}
-\hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{Stress@{Stress}!operator$\ast$=@{operator$\ast$=}}
-\index{operator$\ast$=@{operator$\ast$=}!Stress@{Stress}}
-\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator$\ast$= (
-\begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
-\end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
-
-
-Operator for reflexive multiplication of two matrices. 
-
-Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
-
-Definition at line 317 of file matrix33.\-cpp.
+\-Definition at line 273 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-318 \{
-319   \hyperlink{classMatrix33}{Matrix33}* r = \textcolor{keyword}{new} \hyperlink{classMatrix33_a70acb6647b172d017cc4265a29a7d263}{Matrix33};
-320   
-321   *r = (*this) * p;
-322   *\textcolor{keyword}{this} = *r;
-323   
-324   \textcolor{keyword}{delete}(r);
-325   r = NULL;
-326 \}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] *= p;
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{Stress@{Stress}!operator+@{operator+}}
-\index{operator+@{operator+}!Stress@{Stress}}
-\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator+ (
+\hypertarget{classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}{\index{\-Stress@{\-Stress}!operator$\ast$=@{operator$\ast$=}}
+\index{operator$\ast$=@{operator$\ast$=}!Stress@{\-Stress}}
+\subsubsection[{operator$\ast$=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator$\ast$= (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_ac3937bdeb034cc83b4adcad16cd58a26}
 
 
-Operator for addition of two matrices. 
+\-Operator for reflexive multiplication of two matrices. 
 
-Adds the current matrix to the provided matrix and returns a third matrix with the result. \begin{DoxyReturn}{Returns}
-Matrix containing the sum of the present matrix and the one provided. 
+\-Multiplies the current matrix with another 3x3 matrix and populates the elements of the current matrix with the result. 
+
+\-Definition at line 317 of file matrix33.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  Matrix33* r = new Matrix33;
+  
+  *r = (*this) * p;
+  *this = *r;
+  
+  delete(r);
+  r = NULL;
+}
+\end{DoxyCode}
+\hypertarget{classMatrix33_adc58ec5739c9250ff1150c725d0e868e}{\index{\-Stress@{\-Stress}!operator+@{operator+}}
+\index{operator+@{operator+}!Stress@{\-Stress}}
+\subsubsection[{operator+}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator+ (
+\begin{DoxyParamCaption}
+\item[{const {\bf \-Matrix33} \&}]{p}
+\end{DoxyParamCaption}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_adc58ec5739c9250ff1150c725d0e868e}
+
+
+\-Operator for addition of two matrices. 
+
+\-Adds the current matrix to the provided matrix and returns a third matrix with the result. \begin{DoxyReturn}{\-Returns}
+\-Matrix containing the sum of the present matrix and the one provided. 
 \end{DoxyReturn}
 
 
-Definition at line 175 of file matrix33.\-cpp.
+\-Definition at line 175 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-176 \{
-177   \textcolor{keywordtype}{int} i, j;
-178   \hyperlink{classMatrix33}{Matrix33} r;
-179   
-180   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-181     \{
-182       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-183         \{
-184           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] + p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j)));
-185         \}
-186     \}
-187   
-188   \textcolor{keywordflow}{return} (r);
-189 \}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.setValue(i, j, (this->x[i][j] + p.getValue(i, j)));
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{Stress@{Stress}!operator+=@{operator+=}}
-\index{operator+=@{operator+=}!Stress@{Stress}}
-\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator+= (
+\hypertarget{classMatrix33_acb59e59d3937e075521f478ba83b7165}{\index{\-Stress@{\-Stress}!operator+=@{operator+=}}
+\index{operator+=@{operator+=}!Stress@{\-Stress}}
+\subsubsection[{operator+=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator+= (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_acb59e59d3937e075521f478ba83b7165}
 
 
-Operator for reflexive addition of two matrices. 
+\-Operator for reflexive addition of two matrices. 
 
-Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
+\-Adds the current matrix to the provided matrix and populates the current matrix elements with the result. 
 
-Definition at line 195 of file matrix33.\-cpp.
+\-Definition at line 195 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-196 \{
-197   \textcolor{keywordtype}{int} i, j;
-198   
-199   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-200     \{
-201       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-202         \{
-203           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] += p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j);
-204         \}
-205     \}
-206 \}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] += p.getValue(i, j);
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{Stress@{Stress}!operator-\/@{operator-\/}}
-\index{operator-\/@{operator-\/}!Stress@{Stress}}
-\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::operator-\/ (
+\hypertarget{classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}{\index{\-Stress@{\-Stress}!operator-\/@{operator-\/}}
+\index{operator-\/@{operator-\/}!Stress@{\-Stress}}
+\subsubsection[{operator-\/}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} \-Matrix33\-::operator-\/ (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a372f71ec208bb6d3045acd4324b7cb06}
 
 
-Operator for the subtraction of two matrices. 
+\-Operator for the subtraction of two matrices. 
 
-Subtracts the given matrix from the current matrix and returns the result in a new matrix. \begin{DoxyReturn}{Returns}
-Matrix containing the result of subtracting the provided matrix from the current matrix. 
+\-Subtracts the given matrix from the current matrix and returns the result in a new matrix. \begin{DoxyReturn}{\-Returns}
+\-Matrix containing the result of subtracting the provided matrix from the current matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 214 of file matrix33.\-cpp.
+\-Definition at line 214 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-215 \{
-216   \textcolor{keywordtype}{int} i, j;
-217   \hyperlink{classMatrix33}{Matrix33} r;
-218   
-219   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-220     \{
-221       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-222         \{
-223           r.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue}(i, j, (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] - p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j)));
-224         \}
-225     \}
-226   
-227   \textcolor{keywordflow}{return} (r);
-228 \}
+{
+  int i, j;
+  Matrix33 r;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          r.setValue(i, j, (this->x[i][j] - p.getValue(i, j)));
+        }
+    }
+  
+  return (r);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{Stress@{Stress}!operator-\/=@{operator-\/=}}
-\index{operator-\/=@{operator-\/=}!Stress@{Stress}}
-\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::operator-\/= (
+\hypertarget{classMatrix33_abc889e10a9c7c532195c7031c1344a74}{\index{\-Stress@{\-Stress}!operator-\/=@{operator-\/=}}
+\index{operator-\/=@{operator-\/=}!Stress@{\-Stress}}
+\subsubsection[{operator-\/=}]{\setlength{\rightskip}{0pt plus 5cm}void \-Matrix33\-::operator-\/= (
 \begin{DoxyParamCaption}
-\item[{const {\bf Matrix33} \&}]{p}
+\item[{const {\bf \-Matrix33} \&}]{p}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_abc889e10a9c7c532195c7031c1344a74}
 
 
-Operator for reflexive subtraction of two matrices. 
+\-Operator for reflexive subtraction of two matrices. 
 
-Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
+\-Subtracts the given matrix from the current matrix and populates the current matrix with the result. 
 
-Definition at line 234 of file matrix33.\-cpp.
+\-Definition at line 234 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-235 \{
-236   \textcolor{keywordtype}{int} i, j;
-237   
-238   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-239     \{
-240       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-241         \{
-242           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[i][j] -= p.\hyperlink{classMatrix33_ab53b3e37ad830a87a804cf26311ba088}{getValue}(i, j);
-243         \}
-244     \}
-245 \}
+{
+  int i, j;
+  
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          this->x[i][j] -= p.getValue(i, j);
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{Stress@{Stress}!operator$\sim$@{operator$\sim$}}
-\index{operator$\sim$@{operator$\sim$}!Stress@{Stress}}
-\subsubsection[{operator$\sim$}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::operator$\sim$ (
+\hypertarget{classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}{\index{\-Stress@{\-Stress}!operator$\sim$@{operator$\sim$}}
+\index{operator$\sim$@{operator$\sim$}!Stress@{\-Stress}}
+\subsubsection[{operator$\sim$}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::operator$\sim$} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a15b37caa6ab0d9f4a9f0d95846abd675}
 
 
-Determinant. 
+\-Determinant. 
 
-Calculates the determinant of the current matrix. \begin{DoxyReturn}{Returns}
-Returns the determinant of the current matrix. 
+\-Calculates the determinant of the current matrix. \begin{DoxyReturn}{\-Returns}
+\-Returns the determinant of the current matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 358 of file matrix33.\-cpp.
+\-Definition at line 358 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-359 \{
-360   \textcolor{keywordtype}{double} d = 0.0;
-361   
-362   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]) );
-363   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2]) );
-364   d += this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] * ( (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0]*this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1]) - (this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0]*this->
-      \hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1]) );
-365   
-366   \textcolor{keywordflow}{return} (d);
-367 \}
+{
+  double d = 0.0;
+  
+  d += this->x[0][0] * ( (this->x[1][1]*this->x[2][2]) - (this->x[2][1]*this->x
+      [1][2]) );
+  d += this->x[0][1] * ( (this->x[1][2]*this->x[2][0]) - (this->x[1][0]*this->x
+      [2][2]) );
+  d += this->x[0][2] * ( (this->x[1][0]*this->x[2][1]) - (this->x[2][0]*this->x
+      [1][1]) );
+  
+  return (d);
+}
 \end{DoxyCode}
-\hypertarget{classStress_aa395d5763df8feb4689e0c5524c9e562}{\index{Stress@{Stress}!populate\-Matrix@{populate\-Matrix}}
-\index{populate\-Matrix@{populate\-Matrix}!Stress@{Stress}}
-\subsubsection[{populate\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void Stress\-::populate\-Matrix (
+\hypertarget{classStress_aa395d5763df8feb4689e0c5524c9e562}{\index{\-Stress@{\-Stress}!populate\-Matrix@{populate\-Matrix}}
+\index{populate\-Matrix@{populate\-Matrix}!Stress@{\-Stress}}
+\subsubsection[{populate\-Matrix}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Stress\-::populate\-Matrix} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_aa395d5763df8feb4689e0c5524c9e562}
 
 
-Construct the stress tensor from the principal and shear stresses. 
+\-Construct the stress tensor from the principal and shear stresses. 
 
-Takes the values in principal\-Stresses and shear\-Stresses and constructs the symmetrical stress matrix. 
+\-Takes the values in principal\-Stresses and shear\-Stresses and constructs the symmetrical stress matrix. 
 
-Definition at line 101 of file stress.\-cpp.
+\-Definition at line 101 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-102 \{
-103   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][0] = this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [0];
-104   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][1] = this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [1];
-105   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][2] = this->\hyperlink{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{principalStresses} [2];
-106 
-107   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][1] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][0] = this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [0];
-108   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[0][2] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][0] = this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [1];
-109   this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[1][2] = this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[2][1] = this->\hyperlink{classStress_a77e8705e56c2fb56826a638edf3f78bf}{shearStresses} [2];
-110 \}
+{
+  this->x[0][0] = this->principalStresses [0];
+  this->x[1][1] = this->principalStresses [1];
+  this->x[2][2] = this->principalStresses [2];
+
+  this->x[0][1] = this->x[1][0] = this->shearStresses [0];
+  this->x[0][2] = this->x[2][0] = this->shearStresses [1];
+  this->x[1][2] = this->x[2][1] = this->shearStresses [2];
+}
 \end{DoxyCode}
-\hypertarget{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{\index{Stress@{Stress}!rotate@{rotate}}
-\index{rotate@{rotate}!Stress@{Stress}}
-\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Stress} Stress\-::rotate (
+\hypertarget{classStress_a8bbcd34d10748bf6febd32213ac5bf8e}{\index{\-Stress@{\-Stress}!rotate@{rotate}}
+\index{rotate@{rotate}!Stress@{\-Stress}}
+\subsubsection[{rotate}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Stress} {\bf \-Stress\-::rotate} (
 \begin{DoxyParamCaption}
-\item[{{\bf Rotation\-Matrix}}]{alpha}
+\item[{{\bf \-Rotation\-Matrix}}]{alpha}
 \end{DoxyParamCaption}
 )}}\label{d1/d1c/classStress_a8bbcd34d10748bf6febd32213ac5bf8e}
 
 
-Rotate the stress tensor from one coordinate system to another. 
+\-Rotate the stress tensor from one coordinate system to another. 
 
-Rotates the present stress matrix from one coordinate system to another using the rotation matrix supplied. The result is returned in a new \hyperlink{classStress}{Stress} matrix. 
-\begin{DoxyParams}{Parameters}
-{\em alpha} & Rotation matrix. \\
+\-Rotates the present stress matrix from one coordinate system to another using the rotation matrix supplied. \-The result is returned in a new \hyperlink{classStress}{\-Stress} matrix. 
+\begin{DoxyParams}{\-Parameters}
+{\em alpha} & \-Rotation matrix. \\
 \hline
 \end{DoxyParams}
-\begin{DoxyReturn}{Returns}
-Rotated stress tensor. 
+\begin{DoxyReturn}{\-Returns}
+\-Rotated stress tensor. 
 \end{DoxyReturn}
 
 
-Definition at line 142 of file stress.\-cpp.
+\-Definition at line 142 of file stress.\-cpp.
 
 
 \begin{DoxyCode}
-143 \{
-144   \textcolor{comment}{// Transpose}
-145   \hyperlink{classRotationMatrix}{RotationMatrix} alphaT (alpha.\hyperlink{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{transpose}());
-146 
-147   \textcolor{comment}{// Rotate the stress matrix}
-148   \hyperlink{classStress}{Stress} sNew = \hyperlink{classStress_aa01e83a3f6791cbadc5a368e3a40515e}{Stress} (alpha * (*\textcolor{keyword}{this}) * alphaT);
-149 
-150   \textcolor{keywordflow}{return} (sNew);
-151 \}
+{
+  // Transpose
+  RotationMatrix alphaT (alpha.transpose());
+
+  // Rotate the stress matrix
+  Stress sNew = Stress (alpha * (*this) * alphaT);
+
+  return (sNew);
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{Stress@{Stress}!set\-Value@{set\-Value}}
-\index{set\-Value@{set\-Value}!Stress@{Stress}}
-\subsubsection[{set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void Matrix33\-::set\-Value (
+\hypertarget{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{\index{\-Stress@{\-Stress}!set\-Value@{set\-Value}}
+\index{set\-Value@{set\-Value}!Stress@{\-Stress}}
+\subsubsection[{set\-Value}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Matrix33\-::set\-Value} (
 \begin{DoxyParamCaption}
 \item[{int}]{row, }
 \item[{int}]{column, }
 \item[{double}]{value}
 \end{DoxyParamCaption}
-)\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}
+)\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}
 
 
-Function to set the value of an element indicated by its position. 
+\-Function to set the value of an element indicated by its position. 
 
-The element indicated by the arguments row and column is set to the value provided. The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. In any other case 0.\-0 is returned. 
-\begin{DoxyParams}{Parameters}
-{\em row} & Row index of the element. \\
+\-The element indicated by the arguments row and column is set to the value provided. \-The values of row and column must correspond to array indices, and thus can be one of 0, 1 and 2. \-In any other case 0.\-0 is returned. 
+\begin{DoxyParams}{\-Parameters}
+{\em row} & \-Row index of the element. \\
 \hline
-{\em column} & Column index of the element. \\
+{\em column} & \-Column index of the element. \\
 \hline
-{\em value} & Value that the element is to be set to. \\
+{\em value} & \-Value that the element is to be set to. \\
 \hline
 \end{DoxyParams}
 
 
-Definition at line 93 of file matrix33.\-cpp.
+\-Definition at line 93 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-94 \{
-95   \textcolor{keywordflow}{if} (row>=0 && row<3)
-96     \{
-97       \textcolor{keywordflow}{if} (column>=0 && column<3)
-98         \{
-99           this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[row][column] = value;
-100         \}
-101     \}
-102 \}
+{
+  if (row>=0 && row<3)
+    {
+      if (column>=0 && column<3)
+        {
+          this->x[row][column] = value;
+        }
+    }
+}
 \end{DoxyCode}
-\hypertarget{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{\index{Stress@{Stress}!transpose@{transpose}}
-\index{transpose@{transpose}!Stress@{Stress}}
-\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf Matrix33} Matrix33\-::transpose (
+\hypertarget{classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}{\index{\-Stress@{\-Stress}!transpose@{transpose}}
+\index{transpose@{transpose}!Stress@{\-Stress}}
+\subsubsection[{transpose}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Matrix33} {\bf \-Matrix33\-::transpose} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-) const\hspace{0.3cm}{\ttfamily [inherited]}}}\label{de/d82/classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}
+) const\hspace{0.3cm}{\ttfamily  \mbox{[}inherited\mbox{]}}}}\label{de/d82/classMatrix33_a64418c1a8836b38526fdfd7ffcc79cfd}
 
 
-Returns the transpose of the present matrix. 
+\-Returns the transpose of the present matrix. 
 
-The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-\/versa. \begin{DoxyReturn}{Returns}
-The transpose of the present matrix. 
+\-The transpose of a matrix is another matrix having rows identical to the columns of the present matrix, and vice-\/versa. \begin{DoxyReturn}{\-Returns}
+\-The transpose of the present matrix. 
 \end{DoxyReturn}
 
 
-Definition at line 153 of file matrix33.\-cpp.
+\-Definition at line 153 of file matrix33.\-cpp.
 
 
 \begin{DoxyCode}
-154 \{
-155   \hyperlink{classMatrix33}{Matrix33} tr;
-156   \textcolor{keywordtype}{int} i, j;
-157 
-158   \textcolor{keywordflow}{for} (i=0; i<3; i++)
-159     \{
-160       \textcolor{keywordflow}{for} (j=0; j<3; j++)
-161         \{
-162           tr.\hyperlink{classMatrix33_a6cdcec77fd089b2e73ad7ae85ecff30b}{setValue} (i, j, this->\hyperlink{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{x}[j][i]);
-163         \}
-164     \}
-165   \textcolor{keywordflow}{return} (tr);
-166 \}
+{
+  Matrix33 tr;
+  int i, j;
+
+  for (i=0; i<3; i++)
+    {
+      for (j=0; j<3; j++)
+        {
+          tr.setValue (i, j, this->x[j][i]);
+        }
+    }
+  return (tr);
+}
 \end{DoxyCode}
 
 
-\subsection{Field Documentation}
-\hypertarget{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{\index{Stress@{Stress}!principal\-Stresses@{principal\-Stresses}}
-\index{principal\-Stresses@{principal\-Stresses}!Stress@{Stress}}
-\subsubsection[{principal\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double Stress\-::principal\-Stresses\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{d1/d1c/classStress_aea8c3e40aa59a89d7ba79d2c916050a6}
-The three principal stresses\-: s11, s22, s33. 
+\subsection{\-Field \-Documentation}
+\hypertarget{classStress_aea8c3e40aa59a89d7ba79d2c916050a6}{\index{\-Stress@{\-Stress}!principal\-Stresses@{principal\-Stresses}}
+\index{principal\-Stresses@{principal\-Stresses}!Stress@{\-Stress}}
+\subsubsection[{principal\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Stress\-::principal\-Stresses}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{d1/d1c/classStress_aea8c3e40aa59a89d7ba79d2c916050a6}
+\-The three principal stresses\-: s11, s22, s33. 
 
-Definition at line 27 of file stress.\-h.
+\-Definition at line 27 of file stress.\-h.
 
-\hypertarget{classStress_a77e8705e56c2fb56826a638edf3f78bf}{\index{Stress@{Stress}!shear\-Stresses@{shear\-Stresses}}
-\index{shear\-Stresses@{shear\-Stresses}!Stress@{Stress}}
-\subsubsection[{shear\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double Stress\-::shear\-Stresses\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}}}\label{d1/d1c/classStress_a77e8705e56c2fb56826a638edf3f78bf}
-The three shear stresses\-: s12, s13, s23, 
+\hypertarget{classStress_a77e8705e56c2fb56826a638edf3f78bf}{\index{\-Stress@{\-Stress}!shear\-Stresses@{shear\-Stresses}}
+\index{shear\-Stresses@{shear\-Stresses}!Stress@{\-Stress}}
+\subsubsection[{shear\-Stresses}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Stress\-::shear\-Stresses}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{d1/d1c/classStress_a77e8705e56c2fb56826a638edf3f78bf}
+\-The three shear stresses\-: s12, s13, s23, 
 
-Definition at line 31 of file stress.\-h.
+\-Definition at line 31 of file stress.\-h.
 
-\hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{Stress@{Stress}!x@{x}}
-\index{x@{x}!Stress@{Stress}}
-\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double Matrix33\-::x\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily [protected]}, {\ttfamily [inherited]}}}\label{de/d82/classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}
-
-
-Array containing the elements of the matrix. 
+\hypertarget{classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}{\index{\-Stress@{\-Stress}!x@{x}}
+\index{x@{x}!Stress@{\-Stress}}
+\subsubsection[{x}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Matrix33\-::x}\mbox{[}3\mbox{]}\mbox{[}3\mbox{]}\hspace{0.3cm}{\ttfamily  \mbox{[}protected, inherited\mbox{]}}}}\label{de/d82/classMatrix33_af7f01fa466616eb7c8eda2e4d9f85cdd}
 
 
-
-Definition at line 26 of file matrix33.\-h.
+\-Array containing the elements of the matrix. 
 
 
 
-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\-Definition at line 26 of file matrix33.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
 \item 
 \hyperlink{stress_8h}{stress.\-h}\item 
 \hyperlink{stress_8cpp}{stress.\-cpp}\end{DoxyCompactItemize}
