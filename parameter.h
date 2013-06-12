@@ -11,6 +11,9 @@
 #define PARAMETER_H
 
 #include <string>
+#include <fstream>
+#include <sstream>
+#include <stdlib.h>
 
 #include "stress.h"
 #include "statistics.h"
@@ -84,14 +87,29 @@ public:
     
     // Satistics
     /**
-     * 
+     * @brief Indicator about writing dislocation positions to file and its frequency.
      */
-    Statistics dislocatioPositions;
+    Statistics dislocationPositions;
     
     /**
-     * 
+     * @brief Indicator about writing the slip plane stress distribution to file and its frequency.
      */
     Statistics slipPlaneStressDistributions;
+
+    // Functions
+    /**
+     * @brief Read parameters from file whose name is provided.
+     * @param fileName Name of the file containing the parameters.
+     * @return True/false indicating success/failure of parameter reading.
+     */
+    bool getParameters (std::string fileName);
+    
+    /**
+     * @brief Reads the data from the line and stores it into the appropriate variable.
+     * @details The first word of the line indicates what kind of data it contains. This function then reads this data and stores it accordingly. If the first character of the line is #, the line is considered to be a comment and is ignored.
+     * @param line String with the text present in the line.
+     */
+    void parseLineData (std::string line);
 };
 
 #endif
