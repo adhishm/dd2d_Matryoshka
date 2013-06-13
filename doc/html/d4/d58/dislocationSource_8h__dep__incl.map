@@ -1,5 +1,7 @@
 <map id="G" name="G">
 <area shape="rect" id="node3" href="$d8/d5c/dislocationSource_8cpp.html" title="Definition of the member functions of the DislocationSource class." alt="" coords="5,83,155,112"/>
 <area shape="rect" id="node5" href="$d5/d03/slipPlane_8h.html" title="Definition of the SlipPlane class." alt="" coords="179,83,264,112"/>
-<area shape="rect" id="node7" href="$db/dab/slipPlane_8cpp.html" title="Definition of the member functions of the SlipPlane class." alt="" coords="172,160,271,189"/>
+<area shape="rect" id="node7" href="$d2/d56/simulateSingleSlipPlane_8h.html" title="Declaration various functions to simulate dislocation motion on a single slip plane." alt="" coords="55,160,228,189"/>
+<area shape="rect" id="node11" href="$db/dab/slipPlane_8cpp.html" title="Definition of the member functions of the SlipPlane class." alt="" coords="252,160,351,189"/>
+<area shape="rect" id="node9" href="$d5/d1f/simulateSingleSlipPlane_8cpp.html" title="Defintion various functions to simulate dislocation motion on a single slip plane." alt="" coords="48,237,235,267"/>
 </map>

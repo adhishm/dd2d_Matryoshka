@@ -20,6 +20,7 @@ var searchData=
   ['setx',['setX',['../d5/d4f/classDefect.html#a5a65f73da6a572d9e7109b31239e441d',1,'Defect']]],
   ['sety',['setY',['../d5/d4f/classDefect.html#a268606391a4eaee3de029d2005648b6f',1,'Defect']]],
   ['setz',['setZ',['../d5/d4f/classDefect.html#abb0b16c44a1b04d782f5c5f598b49d5b',1,'Defect']]],
+  ['simulatesingleslipplane',['simulateSingleSlipPlane',['../d5/d1f/simulateSingleSlipPlane_8cpp.html#a77a1e716fa8365894afc713ba37e97c1',1,'simulateSingleSlipPlane():&#160;simulateSingleSlipPlane.cpp'],['../d2/d56/simulateSingleSlipPlane_8h.html#a77a1e716fa8365894afc713ba37e97c1',1,'simulateSingleSlipPlane():&#160;simulateSingleSlipPlane.cpp']]],
   ['slipplane',['SlipPlane',['../db/d25/classSlipPlane.html#a0d73579f211b7059ee2af1a2816f4eb2',1,'SlipPlane::SlipPlane()'],['../db/d25/classSlipPlane.html#aa1cfea0af8f0a0179490ff8cae715990',1,'SlipPlane::SlipPlane(Vector3d *ends, Vector3d normal, Vector3d pos, std::vector&lt; Dislocation &gt; dislocationList, std::vector&lt; DislocationSource &gt; dislocationSourceList)']]],
   ['sortdislocations',['sortDislocations',['../db/d25/classSlipPlane.html#a7fc607c17e5532aed5e93339dc03b18d',1,'SlipPlane']]],
   ['standardslipsystem',['StandardSlipSystem',['../d1/dd4/classStandardSlipSystem.html#aae11c41e2c75974b053460fd31a800a3',1,'StandardSlipSystem']]],

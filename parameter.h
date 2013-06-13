@@ -49,6 +49,7 @@ public:
     Stress appliedStress;
 
     // Dislocation structure data / source file names
+    std::string dislocationStructureFile;
     
     // Simulation parameters
     /**
