@@ -17,9 +17,9 @@
 #define DEFAULT_TAU_CRITICAL 1.0e09
 
 /**
- * @brief Default value of the number of iterations required for a dislocation source to emit a dipole.
- * @details The dislocation source must experience a shear stress greater than the critical value in order to emit a dipole. This time is expressed in terms of the number of iterations here.
+ * @brief Default value of the amount of time required for a dislocation source to emit a dipole.
+ * @details The dislocation source must experience a shear stress greater than the critical value in order to emit a dipole. This time is expressed here.
  */
-#define DEFAULT_NITERATIONS 10
+#define DEFAULT_DIPOLEEMISSIONTIMELIMIT 1.0e-08
 
 #endif

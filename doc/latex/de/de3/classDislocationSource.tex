@@ -33,7 +33,7 @@
 \item 
 \hyperlink{classDislocationSource_afc9b7984d9486354b6f3d82033707577}{\-Dislocation\-Source} ()
 \begin{DoxyCompactList}\small\item\em \-Default constructor. \end{DoxyCompactList}\item 
-\hyperlink{classDislocationSource_aa5adcc1a0862d8cfa6d8d1a632c3855f}{\-Dislocation\-Source} (\hyperlink{classVector3d}{\-Vector3d} burgers, \hyperlink{classVector3d}{\-Vector3d} line, \hyperlink{classVector3d}{\-Vector3d} position, double bm, double tau, int n\-Iter)
+\hyperlink{classDislocationSource_a036a902d5e19a3f70371fa54f874d92e}{\-Dislocation\-Source} (\hyperlink{classVector3d}{\-Vector3d} burgers, \hyperlink{classVector3d}{\-Vector3d} line, \hyperlink{classVector3d}{\-Vector3d} position, double bm, double tau, double time\-Till\-Emit)
 \begin{DoxyCompactList}\small\item\em \-Constructor that explicitly specifies all parameters. \end{DoxyCompactList}\item 
 void \hyperlink{classDislocationSource_ae1a26d9f8149206b884436f44e92f4c3}{set\-Burgers} (\hyperlink{classVector3d}{\-Vector3d} burgers)
 \begin{DoxyCompactList}\small\item\em \-Sets the \-Burgers vector of the dislocation. \end{DoxyCompactList}\item 
@@ -43,10 +43,10 @@ void \hyperlink{classDislocationSource_a41c1f953f9ad57a2b1a9b8d412980d91}{set\-B
 \begin{DoxyCompactList}\small\item\em \-Set the magnitude of the \-Burgers vector. \end{DoxyCompactList}\item 
 void \hyperlink{classDislocationSource_a3294cb807ec8dd0e1fa6ab6e51eeafa2}{set\-Tau\-Critical} (double tau\-C)
 \begin{DoxyCompactList}\small\item\em \-Set the critical shear stres for dipole emission. \end{DoxyCompactList}\item 
-void \hyperlink{classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}{set\-Num\-Iterations} (int n\-Iter)
-\begin{DoxyCompactList}\small\item\em \-Set the number of iterations before a dipole is emitted. \end{DoxyCompactList}\item 
-void \hyperlink{classDislocationSource_a6dd6ad9fe448ce37152dfae4f3981ff0}{reset\-Iteration\-Counter} ()
-\begin{DoxyCompactList}\small\item\em \-Sets the iteration counter to zero. \end{DoxyCompactList}\item 
+void \hyperlink{classDislocationSource_ad45ae38ad94748f50d1018010e69ae90}{set\-Time\-Till\-Dipole\-Emission} (double time\-Till\-Emit)
+\begin{DoxyCompactList}\small\item\em \-Set the critical time before a dipole is emitted. \end{DoxyCompactList}\item 
+void \hyperlink{classDislocationSource_a621c704f4cfe28b24d84bd095de50fcf}{reset\-Time\-Counter} ()
+\begin{DoxyCompactList}\small\item\em \-Sets the time counter to zero. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{\-Vector3d} \hyperlink{classDislocationSource_a47e3d707ffdecb9ecd7dd6dff47930c2}{get\-Burgers} () const 
 \begin{DoxyCompactList}\small\item\em \-Returns the \-Burgers vector of the dislocations in the dipole. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{\-Vector3d} \hyperlink{classDislocationSource_ad47bab97726e7ec0591932d3f9f50271}{get\-Line\-Vector} () const 
@@ -55,14 +55,14 @@ double \hyperlink{classDislocationSource_ab272383ee903fa84f4f36104d13dfcb8}{get\
 \begin{DoxyCompactList}\small\item\em \-Returns the magnitude of the \-Burgers vector. \end{DoxyCompactList}\item 
 double \hyperlink{classDislocationSource_a570b0ddb54028fd59c6cdcc460b32a9b}{get\-Tau\-Critical} () const 
 \begin{DoxyCompactList}\small\item\em \-Returns the critical shear stress value for dipole emission. \end{DoxyCompactList}\item 
-int \hyperlink{classDislocationSource_a2e5651d778ff7d02f5db1529066542cc}{get\-Num\-Iterations} () const 
-\begin{DoxyCompactList}\small\item\em \-Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. \end{DoxyCompactList}\item 
-int \hyperlink{classDislocationSource_a445cd1bf2354e388e66c588736ed6876}{get\-Iteration\-Count} () const 
-\begin{DoxyCompactList}\small\item\em \-Get the count of the iterations spent at higher than critical shear stress. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocationSource_ae058521ab8bd703a0cad033d4f6ec2f5}{get\-Time\-Till\-Emit} () const 
+\begin{DoxyCompactList}\small\item\em \-Returns the amount of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocationSource_a29889d75659cbf9312e30efd43ea2d7a}{get\-Time\-Count} () const 
+\begin{DoxyCompactList}\small\item\em \-Get the amount of time spent at higher than critical shear stress. \end{DoxyCompactList}\item 
 double \hyperlink{classDislocationSource_aeaea81924e840cc99ec1844dd72ab807}{dipole\-Nucleation\-Length} (double tau, double mu, double nu) const 
 \begin{DoxyCompactList}\small\item\em \-The nucleation length of the dipole. \end{DoxyCompactList}\item 
-void \hyperlink{classDislocationSource_a7934f1747dbde5dfe0ca7c2a6bac39ce}{increment\-Iteration\-Count} ()
-\begin{DoxyCompactList}\small\item\em \-Increments the variable count\-Iterations by 1. \end{DoxyCompactList}\item 
+void \hyperlink{classDislocationSource_a080785e856c308c144d38a8eb0a0e13b}{increment\-Time\-Count} (double dt)
+\begin{DoxyCompactList}\small\item\em \-Increments the time counter. \end{DoxyCompactList}\item 
 bool \hyperlink{classDislocationSource_afcc06ad0c0152f15cea25317bebd13cb}{if\-Emit\-Dipole} () const 
 \begin{DoxyCompactList}\small\item\em \-Checks if the dislocation source has experienced higher than critical shear stress for long enough to emit a dipole. \end{DoxyCompactList}\item 
 void \hyperlink{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{set\-Position} (double $\ast$a)
@@ -104,10 +104,10 @@ double \hyperlink{classDislocationSource_a59c95f3cb5af5180d2c42792413f7816}{bmag
 \begin{DoxyCompactList}\small\item\em \-The rotation matrix for rotating from the global to the local co-\/ordinate system and vice-\/versa. \end{DoxyCompactList}\item 
 double \hyperlink{classDislocationSource_ad91294a3ab5b6f6156a2ad67b9df954e}{tau\-Critical}
 \begin{DoxyCompactList}\small\item\em \-Critical stress for the emission of a dislocation dipole. \end{DoxyCompactList}\item 
-int \hyperlink{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{n\-Iterations}
-\begin{DoxyCompactList}\small\item\em \-Number of iterations before a dipole is emitted. \end{DoxyCompactList}\item 
-int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-Iterations}
-\begin{DoxyCompactList}\small\item\em \-Counter variable for the number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocationSource_a973edf3f8545a4082393ce54b7b1216d}{time\-Before\-Dipole\-Emission}
+\begin{DoxyCompactList}\small\item\em \-Amount of time before a dipole is emitted. \end{DoxyCompactList}\item 
+double \hyperlink{classDislocationSource_ac7dc0775009d826a114482fdf7d3db34}{count\-Time\-Till\-Dipole\-Emission}
+\begin{DoxyCompactList}\small\item\em \-Counter variable for the time in number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{\-Vector3d} \hyperlink{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{pos}
 \begin{DoxyCompactList}\small\item\em \-Position vector of the defect in 2\-D space. \end{DoxyCompactList}\end{DoxyCompactItemize}
 
@@ -148,11 +148,11 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
       DEFAULT_LINEVECTOR_2) );
   this->bmag = DEFAULT_BURGERS_MAGNITUDE;
   this->tauCritical = DEFAULT_TAU_CRITICAL;
-  this->nIterations = DEFAULT_NITERATIONS;
-  this->countIterations = 0;
+  this->timeBeforeDipoleEmission = DEFAULT_DIPOLEEMISSIONTIMELIMIT;
+  this->countTimeTillDipoleEmission = 0.0;
 }
 \end{DoxyCode}
-\hypertarget{classDislocationSource_aa5adcc1a0862d8cfa6d8d1a632c3855f}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!\-Dislocation\-Source@{\-Dislocation\-Source}}
+\hypertarget{classDislocationSource_a036a902d5e19a3f70371fa54f874d92e}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!\-Dislocation\-Source@{\-Dislocation\-Source}}
 \index{\-Dislocation\-Source@{\-Dislocation\-Source}!DislocationSource@{\-Dislocation\-Source}}
 \subsubsection[{\-Dislocation\-Source}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Dislocation\-Source\-::\-Dislocation\-Source} (
 \begin{DoxyParamCaption}
@@ -161,9 +161,9 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \item[{{\bf \-Vector3d}}]{position, }
 \item[{double}]{bm, }
 \item[{double}]{tau, }
-\item[{int}]{n\-Iter}
+\item[{double}]{time\-Till\-Emit}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_aa5adcc1a0862d8cfa6d8d1a632c3855f}
+)}}\label{de/de3/classDislocationSource_a036a902d5e19a3f70371fa54f874d92e}
 
 
 \-Constructor that explicitly specifies all parameters. 
@@ -180,7 +180,7 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \hline
 {\em tau} & \-Critical shear stress value. \\
 \hline
-{\em n\-Iter} & \-Number of iterations of experiencing critical stress before a dipole is emitted.\\
+{\em time\-Till\-Emit} & \-Amount of time of experiencing critical stress before a dipole is emitted.\\
 \hline
 \end{DoxyParams}
 \-All parameters\-: \-Burgers vector, line vector, position, are specified. 
@@ -195,7 +195,7 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \hline
 {\em tau} & \-Critical shear stress value. \\
 \hline
-{\em n\-Iter} & \-Number of iterations of experiencing critical stress before a dipole is emitted. \\
+{\em time\-Till\-Emit} & \-Amount of time of experiencing critical stress before a dipole is emitted. \\
 \hline
 \end{DoxyParams}
 
@@ -210,8 +210,8 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
   this->pos    = position;
   this->bmag   = bm;
   this->tauCritical = tau;
-  this->nIterations = nIter;
-  this->countIterations = 0;
+  this->timeBeforeDipoleEmission = timeTillEmit;
+  this->countTimeTillDipoleEmission = 0;
 }
 \end{DoxyCode}
 
@@ -250,12 +250,12 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \begin{DoxyCode}
 {
   double L = 0.0;
-  
+
   if (tau >= tauCritical)
   {
     L = (mu * this->bmag) / ( 2.0 * PI * (1.0 - nu) * this->tauCritical );
   }
-  
+
   return (L);
 }
 \end{DoxyCode}
@@ -307,30 +307,6 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
   return (this->bmag);
 }
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a445cd1bf2354e388e66c588736ed6876}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-Iteration\-Count@{get\-Iteration\-Count}}
-\index{get\-Iteration\-Count@{get\-Iteration\-Count}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{get\-Iteration\-Count}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Dislocation\-Source\-::get\-Iteration\-Count} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const}}\label{de/de3/classDislocationSource_a445cd1bf2354e388e66c588736ed6876}
-
-
-\-Get the count of the iterations spent at higher than critical shear stress. 
-
-\begin{DoxyReturn}{\-Returns}
-\-Number of iterations spent at higher than critical shear stress. 
-\end{DoxyReturn}
-
-
-\-Definition at line 153 of file dislocation\-Source.\-cpp.
-
-
-\begin{DoxyCode}
-{
-  return (this->countIterations);
-}
-\end{DoxyCode}
 \hypertarget{classDislocationSource_ad47bab97726e7ec0591932d3f9f50271}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-Line\-Vector@{get\-Line\-Vector}}
 \index{get\-Line\-Vector@{get\-Line\-Vector}!DislocationSource@{\-Dislocation\-Source}}
 \subsubsection[{get\-Line\-Vector}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf \-Dislocation\-Source\-::get\-Line\-Vector} (
@@ -353,30 +329,6 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \begin{DoxyCode}
 {
   return (this->lvec);
-}
-\end{DoxyCode}
-\hypertarget{classDislocationSource_a2e5651d778ff7d02f5db1529066542cc}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-Num\-Iterations@{get\-Num\-Iterations}}
-\index{get\-Num\-Iterations@{get\-Num\-Iterations}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{get\-Num\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Dislocation\-Source\-::get\-Num\-Iterations} (
-\begin{DoxyParamCaption}
-{}
-\end{DoxyParamCaption}
-) const}}\label{de/de3/classDislocationSource_a2e5651d778ff7d02f5db1529066542cc}
-
-
-\-Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
-
-\begin{DoxyReturn}{\-Returns}
-\-The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
-\end{DoxyReturn}
-
-
-\-Definition at line 144 of file dislocation\-Source.\-cpp.
-
-
-\begin{DoxyCode}
-{
-  return (this->nIterations);
 }
 \end{DoxyCode}
 \hypertarget{classDefect_a2bfcc6736a19eb9c4c8803ea0ea1e3f7}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-Position@{get\-Position}}
@@ -451,6 +403,54 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \begin{DoxyCode}
 {
   return (this->tauCritical);
+}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_a29889d75659cbf9312e30efd43ea2d7a}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-Time\-Count@{get\-Time\-Count}}
+\index{get\-Time\-Count@{get\-Time\-Count}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{get\-Time\-Count}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Dislocation\-Source\-::get\-Time\-Count} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{de/de3/classDislocationSource_a29889d75659cbf9312e30efd43ea2d7a}
+
+
+\-Get the amount of time spent at higher than critical shear stress. 
+
+\begin{DoxyReturn}{\-Returns}
+\-Amount of time spent at higher than critical shear stress. 
+\end{DoxyReturn}
+
+
+\-Definition at line 153 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    return ( this->countTimeTillDipoleEmission );
+}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_ae058521ab8bd703a0cad033d4f6ec2f5}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-Time\-Till\-Emit@{get\-Time\-Till\-Emit}}
+\index{get\-Time\-Till\-Emit@{get\-Time\-Till\-Emit}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{get\-Time\-Till\-Emit}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Dislocation\-Source\-::get\-Time\-Till\-Emit} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{de/de3/classDislocationSource_ae058521ab8bd703a0cad033d4f6ec2f5}
+
+
+\-Returns the amount of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
+
+\begin{DoxyReturn}{\-Returns}
+\-The amout of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole. 
+\end{DoxyReturn}
+
+
+\-Definition at line 144 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    return ( this->timeBeforeDipoleEmission );
 }
 \end{DoxyCode}
 \hypertarget{classDefect_a6e331ddeabd92e2edc124e6697d3bf7d}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!get\-X@{get\-X}}
@@ -541,45 +541,51 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \end{DoxyReturn}
 
 
-\-Definition at line 192 of file dislocation\-Source.\-cpp.
+\-Definition at line 193 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
 {
-  return ( this->countIterations >= this->nIterations );
+  return ( this->countTimeTillDipoleEmission >= this->timeBeforeDipoleEmission 
+      );
 }
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a7934f1747dbde5dfe0ca7c2a6bac39ce}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!increment\-Iteration\-Count@{increment\-Iteration\-Count}}
-\index{increment\-Iteration\-Count@{increment\-Iteration\-Count}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{increment\-Iteration\-Count}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Dislocation\-Source\-::increment\-Iteration\-Count} (
+\hypertarget{classDislocationSource_a080785e856c308c144d38a8eb0a0e13b}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!increment\-Time\-Count@{increment\-Time\-Count}}
+\index{increment\-Time\-Count@{increment\-Time\-Count}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{increment\-Time\-Count}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Dislocation\-Source\-::increment\-Time\-Count} (
 \begin{DoxyParamCaption}
-{}
+\item[{double}]{dt}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a7934f1747dbde5dfe0ca7c2a6bac39ce}
+)}}\label{de/de3/classDislocationSource_a080785e856c308c144d38a8eb0a0e13b}
 
 
-\-Increments the variable count\-Iterations by 1. 
+\-Increments the time counter. 
 
 
+\begin{DoxyParams}{\-Parameters}
+{\em dt} & \-The time increment that is to be used to increase the counter. \\
+\hline
+\end{DoxyParams}
 
-\-Definition at line 182 of file dislocation\-Source.\-cpp.
+
+\-Definition at line 183 of file dislocation\-Source.\-cpp.
 
 
 \begin{DoxyCode}
 {
-  this->countIterations++;
+    this->countTimeTillDipoleEmission += dt;
 }
 \end{DoxyCode}
-\hypertarget{classDislocationSource_a6dd6ad9fe448ce37152dfae4f3981ff0}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!reset\-Iteration\-Counter@{reset\-Iteration\-Counter}}
-\index{reset\-Iteration\-Counter@{reset\-Iteration\-Counter}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{reset\-Iteration\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Dislocation\-Source\-::reset\-Iteration\-Counter} (
+\hypertarget{classDislocationSource_a621c704f4cfe28b24d84bd095de50fcf}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!reset\-Time\-Counter@{reset\-Time\-Counter}}
+\index{reset\-Time\-Counter@{reset\-Time\-Counter}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{reset\-Time\-Counter}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Dislocation\-Source\-::reset\-Time\-Counter} (
 \begin{DoxyParamCaption}
 {}
 \end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a6dd6ad9fe448ce37152dfae4f3981ff0}
+)}}\label{de/de3/classDislocationSource_a621c704f4cfe28b24d84bd095de50fcf}
 
 
-\-Sets the iteration counter to zero. 
+\-Sets the time counter to zero. 
 
 
 
@@ -588,7 +594,7 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 
 \begin{DoxyCode}
 {
-  this->countIterations = 0;
+  this->countTimeTillDipoleEmission = 0.0;
 }
 \end{DoxyCode}
 \hypertarget{classDislocationSource_ae1a26d9f8149206b884436f44e92f4c3}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!set\-Burgers@{set\-Burgers}}
@@ -667,32 +673,6 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \begin{DoxyCode}
 {
   this->lvec = line;
-}
-\end{DoxyCode}
-\hypertarget{classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!set\-Num\-Iterations@{set\-Num\-Iterations}}
-\index{set\-Num\-Iterations@{set\-Num\-Iterations}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{set\-Num\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Dislocation\-Source\-::set\-Num\-Iterations} (
-\begin{DoxyParamCaption}
-\item[{int}]{n\-Iter}
-\end{DoxyParamCaption}
-)}}\label{de/de3/classDislocationSource_a3042d73ee7ee346d825ab810dc5a6e83}
-
-
-\-Set the number of iterations before a dipole is emitted. 
-
-
-\begin{DoxyParams}{\-Parameters}
-{\em n\-Iter} & \-Number of iterations spent at a high shear stress value before a dislocation dipole is emitted. \\
-\hline
-\end{DoxyParams}
-
-
-\-Definition at line 90 of file dislocation\-Source.\-cpp.
-
-
-\begin{DoxyCode}
-{
-  this->nIterations = nIter;
 }
 \end{DoxyCode}
 \hypertarget{classDefect_a2d233d13a8a93f6fba463a1fbc1c6c9f}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!set\-Position@{set\-Position}}
@@ -805,6 +785,32 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \begin{DoxyCode}
 {
   this->tauCritical = tauC;
+}
+\end{DoxyCode}
+\hypertarget{classDislocationSource_ad45ae38ad94748f50d1018010e69ae90}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!set\-Time\-Till\-Dipole\-Emission@{set\-Time\-Till\-Dipole\-Emission}}
+\index{set\-Time\-Till\-Dipole\-Emission@{set\-Time\-Till\-Dipole\-Emission}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{set\-Time\-Till\-Dipole\-Emission}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf \-Dislocation\-Source\-::set\-Time\-Till\-Dipole\-Emission} (
+\begin{DoxyParamCaption}
+\item[{double}]{time\-Till\-Emit}
+\end{DoxyParamCaption}
+)}}\label{de/de3/classDislocationSource_ad45ae38ad94748f50d1018010e69ae90}
+
+
+\-Set the critical time before a dipole is emitted. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em time\-Till\-Emit} & \-Amount of time spent at a high shear stress value before a dislocation dipole is emitted. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 90 of file dislocation\-Source.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    this->timeBeforeDipoleEmission = timeTillEmit;
 }
 \end{DoxyCode}
 \hypertarget{classDefect_a5a65f73da6a572d9e7109b31239e441d}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!set\-X@{set\-X}}
@@ -954,14 +960,14 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 
 \-Definition at line 28 of file dislocation\-Source.\-h.
 
-\hypertarget{classDislocationSource_ac566b877a7c43922077af29bba597a93}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!count\-Iterations@{count\-Iterations}}
-\index{count\-Iterations@{count\-Iterations}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{count\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Dislocation\-Source\-::count\-Iterations}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{de/de3/classDislocationSource_ac566b877a7c43922077af29bba597a93}
+\hypertarget{classDislocationSource_ac7dc0775009d826a114482fdf7d3db34}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!count\-Time\-Till\-Dipole\-Emission@{count\-Time\-Till\-Dipole\-Emission}}
+\index{count\-Time\-Till\-Dipole\-Emission@{count\-Time\-Till\-Dipole\-Emission}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{count\-Time\-Till\-Dipole\-Emission}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Dislocation\-Source\-::count\-Time\-Till\-Dipole\-Emission}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{de/de3/classDislocationSource_ac7dc0775009d826a114482fdf7d3db34}
 
 
-\-Counter variable for the number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value. 
+\-Counter variable for the time in number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value. 
 
-\-A dislocation source needs to experience a shear stress higher than a critical value, given by tau\-Critical, for a certain amount of time before it is triggered and it emits a dislocation dipole. \-This limiting number of iterations is given by the variable n\-Iterations, and this variable count\-Iterations is a counter variable. \-Once this limit is reached, a dipole is emitted and this counter variable is set to zero. 
+\-A dislocation source needs to experience a shear stress higher than a critical value, given by tau\-Critical, for a certain amount of time before it is triggered and it emits a dislocation dipole. \-This limiting time is given by the variable time\-Before\-Dipole\-Emission, and this variable count\-Time\-Till\-Dipole\-Emission is a counter variable. \-Once this limit is reached, a dipole is emitted and this counter variable is set to zero. 
 
 \-Definition at line 69 of file dislocation\-Source.\-h.
 
@@ -986,17 +992,6 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \-For mobile dislocations this term is true and for pinned dislocations it is false. 
 
 \-Definition at line 39 of file dislocation\-Source.\-h.
-
-\hypertarget{classDislocationSource_aacf42c7505f28b50280b23b435024e17}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!n\-Iterations@{n\-Iterations}}
-\index{n\-Iterations@{n\-Iterations}!DislocationSource@{\-Dislocation\-Source}}
-\subsubsection[{n\-Iterations}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Dislocation\-Source\-::n\-Iterations}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{de/de3/classDislocationSource_aacf42c7505f28b50280b23b435024e17}
-
-
-\-Number of iterations before a dipole is emitted. 
-
-\-A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. \-The amount of time is represented instead by a number of iterations n\-Iterations. 
-
-\-Definition at line 63 of file dislocation\-Source.\-h.
 
 \hypertarget{classDefect_aed2731c1beefc22e3db6ad5b18194cdd}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!pos@{pos}}
 \index{pos@{pos}!DislocationSource@{\-Dislocation\-Source}}
@@ -1030,6 +1025,17 @@ int \hyperlink{classDislocationSource_ac566b877a7c43922077af29bba597a93}{count\-
 \-A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. \-This critical stress is given by tau\-Critical. 
 
 \-Definition at line 57 of file dislocation\-Source.\-h.
+
+\hypertarget{classDislocationSource_a973edf3f8545a4082393ce54b7b1216d}{\index{\-Dislocation\-Source@{\-Dislocation\-Source}!time\-Before\-Dipole\-Emission@{time\-Before\-Dipole\-Emission}}
+\index{time\-Before\-Dipole\-Emission@{time\-Before\-Dipole\-Emission}!DislocationSource@{\-Dislocation\-Source}}
+\subsubsection[{time\-Before\-Dipole\-Emission}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Dislocation\-Source\-::time\-Before\-Dipole\-Emission}\hspace{0.3cm}{\ttfamily  \mbox{[}protected\mbox{]}}}}\label{de/de3/classDislocationSource_a973edf3f8545a4082393ce54b7b1216d}
+
+
+\-Amount of time before a dipole is emitted. 
+
+\-A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. \-The amount of time is represented this variable. 
+
+\-Definition at line 63 of file dislocation\-Source.\-h.
 
 
 

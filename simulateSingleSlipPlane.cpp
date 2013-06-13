@@ -104,6 +104,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         }
 
         fp.close();
+	return (true);
     }
     else
     {
@@ -188,7 +189,7 @@ DislocationSource readDislocationSourceFromLine (std::string s)
     Vector3d pos, bvec, lvec;
     double bmag;
     double tau;
-    in nIter;
+    double timeLimit;
 
     int i;
 
@@ -218,9 +219,9 @@ DislocationSource readDislocationSourceFromLine (std::string s)
     ss >> a;
     tau = atof ( a.c_str() );
 
-    // Read number of iterations
+    // Read time limit for dipole emission
     ss >> a;
-    nIter = atoi ( a.c_str() );
+    timeLimit = atof ( a.c_str() );
 
-    return ( Dislocation ( bvec, lvec, pos, bmag, tau, nIter ) );
+    return ( Dislocation ( bvec, lvec, pos, bmag, tau, timeLimit ) );
 }

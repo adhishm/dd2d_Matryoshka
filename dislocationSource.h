@@ -57,16 +57,16 @@ protected:
   double tauCritical;
   
   /**
-   * @brief Number of iterations before a dipole is emitted.
-   * @details A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. The amount of time is represented instead by a number of iterations nIterations.
+   * @brief Amount of time before a dipole is emitted.
+   * @details A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. The amount of time is represented this variable.
    */
-  int nIterations;
+  double timeBeforeDipoleEmission;
   
   /**
-   * @brief Counter variable for the number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value.
-   * @details A dislocation source needs to experience a shear stress higher than a critical value, given by tauCritical, for a certain amount of time before it is triggered and it emits a dislocation dipole. This limiting number of iterations is given by the variable nIterations, and this variable countIterations is a counter variable. Once this limit is reached, a dipole is emitted and this counter variable is set to zero.
+   * @brief Counter variable for the time in number of consecutive iterations the dislocation source has experienced a shear stress greater than its critical value.
+   * @details A dislocation source needs to experience a shear stress higher than a critical value, given by tauCritical, for a certain amount of time before it is triggered and it emits a dislocation dipole. This limiting time is given by the variable timeBeforeDipoleEmission, and this variable countTimeTillDipoleEmission is a counter variable. Once this limit is reached, a dipole is emitted and this counter variable is set to zero.
    */
-  int countIterations;
+  double countTimeTillDipoleEmission;
   
 public:
   // Constructors
@@ -84,9 +84,9 @@ public:
    * @param position Position of the dislocation source.
    * @param bm Magnitude of the Burgers vector in metres.
    * @param tau Critical shear stress value.
-   * @param nIter Number of iterations of experiencing critical stress before a dipole is emitted.
+   * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
    */
-  DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, int nIter);
+  DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit);
   
   // Assignment functions
   /**
@@ -114,15 +114,15 @@ public:
   void setTauCritical (double tauC);
   
   /**
-   * @brief Set the number of iterations before a dipole is emitted.
-   * @param nIter Number of iterations spent at a high shear stress value before a dislocation dipole is emitted.
+   * @brief Set the critical time before a dipole is emitted.
+   * @param timeTillEmit Amount of time spent at a high shear stress value before a dislocation dipole is emitted.
    */
-  void setNumIterations (int nIter);
+  void setTimeTillDipoleEmission (double timeTillEmit);
   
   /**
-   * @brief Sets the iteration counter to zero.
+   * @brief Sets the time counter to zero.
    */
-  void resetIterationCounter ();
+  void resetTimeCounter ();
   
   // Access functions
   /**
@@ -150,16 +150,16 @@ public:
   double getTauCritical () const;
   
   /**
-   * @brief Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
-   * @return The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+   * @brief Returns the amount of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+   * @return The amout of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
    */
-  int getNumIterations () const;
+  double getTimeTillEmit () const;
   
   /**
-   * @brief Get the count of the iterations spent at higher than critical shear stress.
-   * @return Number of iterations spent at higher than critical shear stress.
+   * @brief Get the amount of time spent at higher than critical shear stress.
+   * @return Amount of time spent at higher than critical shear stress.
    */
-  int getIterationCount () const;
+  double getTimeCount () const;
   
   // Operations specific to the class
   /**
@@ -173,9 +173,10 @@ public:
   double dipoleNucleationLength (double tau, double mu, double nu) const;
   
   /**
-   * @brief Increments the variable countIterations by 1.
+   * @brief Increments the time counter.
+   * @param dt The time increment that is to be used to increase the counter.
    */
-  void incrementIterationCount ();
+  void incrementTimeCount (double dt);
   
   /**
    * @brief Checks if the dislocation source has experienced higher than critical shear stress for long enough to emit a dipole.

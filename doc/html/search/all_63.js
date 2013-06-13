@@ -7,7 +7,7 @@ var searchData=
   ['calculatevelocities',['calculateVelocities',['../db/d25/classSlipPlane.html#aff7af69ba5235da6c8b142193509683c',1,'SlipPlane']]],
   ['concatenatevectors',['concatenateVectors',['../d3/d62/tools_8cpp.html#a1c49ad50ebcccccf6969c680eec9add6',1,'concatenateVectors(std::vector&lt; Vector3d &gt; v1, std::vector&lt; Vector3d &gt; v2):&#160;tools.cpp'],['../d5/da5/tools_8h.html#a1c49ad50ebcccccf6969c680eec9add6',1,'concatenateVectors(std::vector&lt; Vector3d &gt; v1, std::vector&lt; Vector3d &gt; v2):&#160;tools.cpp']]],
   ['constants_2eh',['constants.h',['../d2/d6f/constants_8h.html',1,'']]],
-  ['countiterations',['countIterations',['../de/de3/classDislocationSource.html#ac566b877a7c43922077af29bba597a93',1,'DislocationSource']]],
+  ['counttimetilldipoleemission',['countTimeTillDipoleEmission',['../de/de3/classDislocationSource.html#ac7dc0775009d826a114482fdf7d3db34',1,'DislocationSource']]],
   ['createbccslipsystems',['createBCCSlipSystems',['../d1/dd4/classStandardSlipSystem.html#a0e16ffd0edb356391c897dc2d9d081b5',1,'StandardSlipSystem']]],
   ['createfccslipsystems',['createFCCSlipSystems',['../d1/dd4/classStandardSlipSystem.html#a858593f0b75144a98b878623d9fa5ba6',1,'StandardSlipSystem']]],
   ['createslipsystems',['createSlipSystems',['../d1/dd4/classStandardSlipSystem.html#a64a1d61c4f43a2cec6aa9000bd8c2231',1,'StandardSlipSystem']]],
