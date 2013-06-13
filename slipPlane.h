@@ -114,12 +114,25 @@ public:
    * @param dislocationList A vector container of type Dislocation containing the dislocations lying on this slip plane.
    */
   void setDislocationList (std::vector<Dislocation> dislocationList);
-  
+
+  /**
+   * @brief Inserted the provided dislocation into the slip plane's dislocation list.
+   * @param d The dislocation that is to be inserted into the silp plane's dislocation list.
+   */
+  void insertDislocation (Dislocation d);
+    
   /**
    * @brief Set the list of dislocation sources on the slip plane.
    * @param dislocationSourceList A vector container of type DislocationSource containing the dislocation sources lying on this slip plane.
    */
   void setDislocationSourceList (std::vector<DislocationSource> dislocationSourceList);
+
+  /**
+   * @brief Inserted the provided dislocation source into the slip plane's dislocation source list.
+   * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
+   */
+  void insertDislocationSource (DislocationSource d);
+
   
   // Access functions
   /**

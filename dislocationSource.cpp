@@ -21,8 +21,8 @@ DislocationSource::DislocationSource ()
   this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
   this->bmag = DEFAULT_BURGERS_MAGNITUDE;
   this->tauCritical = DEFAULT_TAU_CRITICAL;
-  this->nIterations = DEFAULT_NITERATIONS;
-  this->countIterations = 0;
+  this->timeBeforeDipoleEmission = DEFAULT_DIPOLEEMISSIONTIMELIMIT;
+  this->countTimeTillDipoleEmission = 0.0;
 }
 
 /**
@@ -33,17 +33,17 @@ DislocationSource::DislocationSource ()
  * @param position Position of the dislocation.
  * @param bm Magnitude of the Burgers vector in metres.
  * @param tau Critical shear stress value.
- * @param nIter Number of iterations of experiencing critical stress before a dipole is emitted.
+ * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
  */
-DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, int nIter)
+DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit)
 {
   this->bvec   = burgers;
   this->lvec   = line;
   this->pos    = position;
   this->bmag   = bm;
   this->tauCritical = tau;
-  this->nIterations = nIter;
-  this->countIterations = 0;
+  this->timeBeforeDipoleEmission = timeTillEmit;
+  this->countTimeTillDipoleEmission = 0;
 }
 
 // Assignment functions
@@ -84,20 +84,20 @@ void DislocationSource::setTauCritical (double tauC)
 }
 
 /**
- * @brief Set the number of iterations before a dipole is emitted.
- * @param nIter Number of iterations spent at a high shear stress value before a dislocation dipole is emitted.
+ * @brief Set the critical time before a dipole is emitted.
+ * @param timeTillEmit Amount of time spent at a high shear stress value before a dislocation dipole is emitted.
  */
-void DislocationSource::setNumIterations (int nIter)
+void DislocationSource::setTimeTillDipoleEmission (double timeTillEmit)
 {
-  this->nIterations = nIter;
+    this->timeBeforeDipoleEmission = timeTillEmit;
 }
 
 /**
- * @brief Sets the iteration counter to zero.
+ * @brief Sets the time counter to zero.
  */
-void DislocationSource::resetIterationCounter ()
+void DislocationSource::resetTimeCounter ()
 {
-  this->countIterations = 0;
+  this->countTimeTillDipoleEmission = 0.0;
 }
 
 // Access functions
@@ -138,21 +138,21 @@ double DislocationSource::getTauCritical () const
 }
 
 /**
- * @brief Returns the number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
- * @return The number if iterations that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+ * @brief Returns the amount of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
+ * @return The amout of time that the dislocation source must spend experiencing a shear stress greater than the critical value before it can emit a dislocation dipole.
  */
-int DislocationSource::getNumIterations () const
+double DislocationSource::getTimeTillEmit () const
 {
-  return (this->nIterations);
+    return ( this->timeBeforeDipoleEmission );
 }
 
 /**
- * @brief Get the count of the iterations spent at higher than critical shear stress.
- * @return Number of iterations spent at higher than critical shear stress.
+ * @brief Get the amount of time spent at higher than critical shear stress.
+ * @return Amount of time spent at higher than critical shear stress.
  */
-int DislocationSource::getIterationCount () const
+double DislocationSource::getTimeCount () const
 {
-  return (this->countIterations);
+    return ( this->countTimeTillDipoleEmission );
 }
 
 // Operations specific to the class
@@ -167,21 +167,22 @@ int DislocationSource::getIterationCount () const
 double DislocationSource::dipoleNucleationLength (double tau, double mu, double nu) const
 {
   double L = 0.0;
-  
+
   if (tau >= tauCritical)
   {
     L = (mu * this->bmag) / ( 2.0 * PI * (1.0 - nu) * this->tauCritical );
   }
-  
+
   return (L);
 }
 
 /**
- * @brief Increments the variable countIterations by 1.
+ * @brief Increments the time counter.
+ * @param dt The time increment that is to be used to increase the counter.
  */
-void DislocationSource::incrementIterationCount ()
+void DislocationSource::incrementTimeCount (double dt)
 {
-  this->countIterations++;
+    this->countTimeTillDipoleEmission += dt;
 }
 
 /**
@@ -191,5 +192,5 @@ void DislocationSource::incrementIterationCount ()
  */
 bool DislocationSource::ifEmitDipole () const
 {
-  return ( this->countIterations >= this->nIterations );
+  return ( this->countTimeTillDipoleEmission >= this->timeBeforeDipoleEmission );
 }

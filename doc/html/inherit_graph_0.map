@@ -1,5 +1,0 @@
-<map id="G" name="G">
-<area shape="rect" id="node1" href="$d5/d4f/classDefect.html" title="Class Defect representing a generic defect in a material." alt="" coords="5,32,67,61"/>
-<area shape="rect" id="node3" href="$d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation." alt="" coords="136,5,221,35"/>
-<area shape="rect" id="node5" href="$de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation." alt="" coords="115,59,243,88"/>
-</map>
