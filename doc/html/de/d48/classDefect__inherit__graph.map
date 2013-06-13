@@ -1,4 +1,4 @@
-<map id="Defect" name="Defect">
-<area shape="rect" id="node3" href="$d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation." alt="" coords="5,80,93,107"/>
-<area shape="rect" id="node5" href="$de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation." alt="" coords="118,80,249,107"/>
+<map id="G" name="G">
+<area shape="rect" id="node3" href="$d3/dc6/classDislocation.html" title="Dislocation class representing a dislocation in the simulation." alt="" coords="5,83,91,112"/>
+<area shape="rect" id="node5" href="$de/de3/classDislocationSource.html" title="DislocationSource class representing a source of dislocations in the simulation." alt="" coords="115,83,243,112"/>
 </map>
