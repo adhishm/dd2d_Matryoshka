@@ -1,4 +1,4 @@
-<map id="strain.cpp" name="strain.cpp">
+<map id="G" name="G">
 <area shape="rect" id="node3" href="$df/dc2/strain_8h.html" title="Definition of the Strain class." alt="" coords="133,83,197,112"/>
 <area shape="rect" id="node5" href="$db/d46/matrix33_8h.html" title="Definition of the Matrix33 class." alt="" coords="124,237,207,267"/>
 <area shape="rect" id="node17" href="$da/d76/rotationMatrix_8h.html" title="Definition of the RotationMatrix class." alt="" coords="156,160,268,189"/>

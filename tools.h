@@ -30,7 +30,7 @@ std::vector<Vector3d> permuteVector (Vector3d v);
  * @param index The index of the element of the vector v that must remain in position.
  * @return An STL vector container with the list of the permuted vectors keeping the indicated element in its original position.
  */
-std::vector<Vector3d> permuteVector_abc (Vector3d v, int index);
+std::vector<Vector3d> permuteVector_byIndex (Vector3d v, int index);
 
 /**
  * @brief Permutations of the given vector by only changing signs of the elements.
@@ -38,7 +38,7 @@ std::vector<Vector3d> permuteVector_abc (Vector3d v, int index);
  * @param v The vector that has to be permuted.
  * @return An STL vector container with the permuted vectors.
  */
-std::vector<Vector3d> permuteVector_signs (Vector3d v);
+std::vector<Vector3d> permuteVector_bySign (Vector3d v);
 
 /**
  * @brief Concatenates two STL vectors containing elements of type Vector3d.

@@ -21,7 +21,7 @@ std::vector<Vector3d> permuteVector (Vector3d v)
 
   for (int i=0; i<3; i++)
     {
-      vTemp = permuteVector_abc (v, i);
+      vTemp = permuteVector_byIndex (v, i);
       vList = concatenateVectors (vList, vTemp);
     }
 
@@ -35,7 +35,7 @@ std::vector<Vector3d> permuteVector (Vector3d v)
  * @param index The index of the element of the vector v that must remain in position.
  * @return An STL vector container with the list of the permuted vectors keeping the indicated element in its original position.
  */
-std::vector<Vector3d> permuteVector_abc (Vector3d v, int index)
+std::vector<Vector3d> permuteVector_byIndex (Vector3d v, int index)
 {
   // The final vector that will be returned
   std::vector<Vector3d> vList;
@@ -52,8 +52,8 @@ std::vector<Vector3d> permuteVector_abc (Vector3d v, int index)
 			  v.getValue((index+1)%3));
 
 // Create the permutations with the signs
- vList1 = permuteVector_signs (v1);
- vList2 = permuteVector_signs (v2);
+ vList1 = permuteVector_bySign (v1);
+ vList2 = permuteVector_bySign (v2);
 
  // Concatenate the two vectors
  vList = concatenateVectors (vList1, vList2);
@@ -67,7 +67,7 @@ std::vector<Vector3d> permuteVector_abc (Vector3d v, int index)
  * @param v The vector that has to be permuted.
  * @return An STL vector container with the permuted vectors.
  */
-std::vector<Vector3d> permuteVector_signs (Vector3d v)
+std::vector<Vector3d> permuteVector_bySign (Vector3d v)
 {
   // The list that will contain the permuted vectors.
   std::vector<Vector3d> vList (1, v);
