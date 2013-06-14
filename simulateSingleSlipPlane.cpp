@@ -29,7 +29,7 @@ void simulateSingleSlipPlane ()
       slipPlane = new SlipPlane;
       if ( readSlipPlane ( param->dislocationStructureFile,  slipPlane ) )
       {
-          iterate ( param, slipPlane );
+          singleSlipPlane_iterate ( param, slipPlane );
       }
 
       delete ( slipPlane );
