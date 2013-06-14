@@ -40,6 +40,16 @@ public:
      * @brief Magnitude of the Burgers vector, in m.
      */
     double bmag;
+
+    /**
+     * @brief Drag coefficient (kg/s).
+     */
+    double B;
+
+    /**
+     * @brief Critical resolved shear stress (Pa).
+     */
+    double tau_crss;
     
     // Load
     /**

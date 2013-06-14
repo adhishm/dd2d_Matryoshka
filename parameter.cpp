@@ -83,6 +83,22 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Drag coefficient
+    if ( first=="drag" || first=="Drag" )
+    {
+        ss >> v;
+        this->B = atof( v.c_str() );
+        return;
+    }
+
+    // Critical resolved shear stress
+    if ( first=="crss" || first=="CRSS" )
+    {
+        ss >> v;
+        this-tau_crss = atof ( v.c_str() );
+        return;
+    }
+
     // Applied stress
     if (first=="appliedStress")
     {
