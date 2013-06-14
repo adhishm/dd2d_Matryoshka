@@ -23,6 +23,7 @@ var searchData=
   ['getslipplanestress_5flocal',['getSlipPlaneStress_local',['../db/d25/classSlipPlane.html#ad86337ca356d72f558468a35024e30bc',1,'SlipPlane']]],
   ['gettaucritical',['getTauCritical',['../de/de3/classDislocationSource.html#a570b0ddb54028fd59c6cdcc460b32a9b',1,'DislocationSource']]],
   ['gettimecount',['getTimeCount',['../de/de3/classDislocationSource.html#a29889d75659cbf9312e30efd43ea2d7a',1,'DislocationSource']]],
+  ['gettimeincrement',['getTimeIncrement',['../db/d25/classSlipPlane.html#a3033ebd3409bd18cd18a797c4ee7e340',1,'SlipPlane']]],
   ['gettimetillemit',['getTimeTillEmit',['../de/de3/classDislocationSource.html#ae058521ab8bd703a0cad033d4f6ec2f5',1,'DislocationSource']]],
   ['gettotalforce',['getTotalForce',['../d3/dc6/classDislocation.html#a826a6aae1035b454cfc42db4bb863a4d',1,'Dislocation']]],
   ['gettotalforceatiteration',['getTotalForceAtIteration',['../d3/dc6/classDislocation.html#a2a693d6e986cf0d8bed2a55e6ce721bd',1,'Dislocation']]],

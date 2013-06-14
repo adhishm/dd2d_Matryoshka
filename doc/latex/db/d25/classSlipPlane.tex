@@ -60,6 +60,8 @@ std\-::vector$<$ \hyperlink{classDislocationSource}{\-Dislocation\-Source} $>$ \
 \begin{DoxyCompactList}\small\item\em \-Get the entire vector container which holds the dislocation sources lying on this slip plane. \end{DoxyCompactList}\item 
 \hyperlink{classRotationMatrix}{\-Rotation\-Matrix} \hyperlink{classSlipPlane_a774507778626c6a0fd72722c6781b652}{get\-Rotation\-Matrix} () const 
 \begin{DoxyCompactList}\small\item\em \-Get the rotation matrix for this slip plane. \end{DoxyCompactList}\item 
+double \hyperlink{classSlipPlane_a3033ebd3409bd18cd18a797c4ee7e340}{get\-Time\-Increment} () const 
+\begin{DoxyCompactList}\small\item\em \-Get the time increment for this slip plane in the current iteration. \end{DoxyCompactList}\item 
 \hyperlink{classVector3d}{\-Vector3d} \hyperlink{classSlipPlane_a83806b1e34cf044005d34920903e7074}{get\-Axis} (int i) const 
 \begin{DoxyCompactList}\small\item\em \-Get the axis (expressed in the global co-\/ordinate system) of the slip plane's local co-\/ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z). \end{DoxyCompactList}\item 
 void \hyperlink{classSlipPlane_a5d9054f21be225f50860ad1351e3a86f}{calculate\-Rotation\-Matrix} ()
@@ -220,7 +222,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyParams}
 
 
-\-Definition at line 361 of file slip\-Plane.\-cpp.
+\-Definition at line 370 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -257,7 +259,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyParams}
 
 
-\-Definition at line 328 of file slip\-Plane.\-cpp.
+\-Definition at line 337 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -301,7 +303,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 
 \-The slip plane has a local co-\/ordinate system whose axes are the following\-: z-\/axis$|$$|$normal vector and x-\/axis$|$$|$slip plane vector (vector joining the extremities). \-The rotation matrix is calculated in order to carry out transformations between the global and local co-\/ordinate systems. 
 
-\-Definition at line 295 of file slip\-Plane.\-cpp.
+\-Definition at line 304 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -354,7 +356,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyReturn}
 
 
-\-Definition at line 421 of file slip\-Plane.\-cpp.
+\-Definition at line 430 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -477,7 +479,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 
 \-The velocities of the dislocations are calculated and stored in the variable \hyperlink{classVector3d}{\-Vector3d} \hyperlink{classDislocation_ad6f4e8e94b2525c2e58a77b9d2916c0e}{\-Dislocation\-::velocity} and also put at the end of std\-::vector$<$\-Vector3d$>$ \hyperlink{classDislocation_a9ccdef63384a8b965e70f13920a852f8}{\-Dislocation\-::velocities}. \-The velocities are calculated using the proportionality law between them and the \-Peach-\/\-Koehler force, using the drag coefficient \-B as the constant of proportionality. param \-B \-The drag coefficient. 
 
-\-Definition at line 376 of file slip\-Plane.\-cpp.
+\-Definition at line 385 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -542,7 +544,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyReturn}
 
 
-\-Definition at line 560 of file slip\-Plane.\-cpp.
+\-Definition at line 569 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -577,7 +579,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyReturn}
 
 
-\-Definition at line 257 of file slip\-Plane.\-cpp.
+\-Definition at line 266 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -927,7 +929,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyReturn}
 
 
-\-Definition at line 613 of file slip\-Plane.\-cpp.
+\-Definition at line 622 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -993,7 +995,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyReturn}
 
 
-\-Definition at line 655 of file slip\-Plane.\-cpp.
+\-Definition at line 664 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -1029,6 +1031,30 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
     }
 
   return (stressVector);
+}
+\end{DoxyCode}
+\hypertarget{classSlipPlane_a3033ebd3409bd18cd18a797c4ee7e340}{\index{\-Slip\-Plane@{\-Slip\-Plane}!get\-Time\-Increment@{get\-Time\-Increment}}
+\index{get\-Time\-Increment@{get\-Time\-Increment}!SlipPlane@{\-Slip\-Plane}}
+\subsubsection[{get\-Time\-Increment}]{\setlength{\rightskip}{0pt plus 5cm}double {\bf \-Slip\-Plane\-::get\-Time\-Increment} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+) const}}\label{db/d25/classSlipPlane_a3033ebd3409bd18cd18a797c4ee7e340}
+
+
+\-Get the time increment for this slip plane in the current iteration. 
+
+\begin{DoxyReturn}{\-Returns}
+\-The time increment for the slip plane in the current iteration. 
+\end{DoxyReturn}
+
+
+\-Definition at line 256 of file slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    return ( this->dt );
 }
 \end{DoxyCode}
 \hypertarget{classSlipPlane_a9b32c4274862b8386d0f62c8ef1bb4fc}{\index{\-Slip\-Plane@{\-Slip\-Plane}!insert\-Dislocation@{insert\-Dislocation}}
@@ -1101,7 +1127,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 \end{DoxyParams}
 
 
-\-Definition at line 526 of file slip\-Plane.\-cpp.
+\-Definition at line 535 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}
@@ -1276,7 +1302,7 @@ double \hyperlink{classSlipPlane_ad786135547799363ad2931e43522c2be}{dt}
 
 \-The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane. 
 
-\-Definition at line 575 of file slip\-Plane.\-cpp.
+\-Definition at line 584 of file slip\-Plane.\-cpp.
 
 
 \begin{DoxyCode}

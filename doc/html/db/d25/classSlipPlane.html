@@ -137,6 +137,8 @@ Public Member Functions</h2></td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the entire vector container which holds the dislocation sources lying on this slip plane.  <a href="#abd591180a3381b89d09ccd4b7aec1688"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../d2/d4a/classRotationMatrix.html">RotationMatrix</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a774507778626c6a0fd72722c6781b652">getRotationMatrix</a> () const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the rotation matrix for this slip plane.  <a href="#a774507778626c6a0fd72722c6781b652"></a><br/></td></tr>
+<tr><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a3033ebd3409bd18cd18a797c4ee7e340">getTimeIncrement</a> () const </td></tr>
+<tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the time increment for this slip plane in the current iteration.  <a href="#a3033ebd3409bd18cd18a797c4ee7e340"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top"><a class="el" href="../../df/dd0/classVector3d.html">Vector3d</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a83806b1e34cf044005d34920903e7074">getAxis</a> (int i) const </td></tr>
 <tr><td class="mdescLeft">&#160;</td><td class="mdescRight">Get the axis (expressed in the global co-ordinate system) of the slip plane's local co-ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z).  <a href="#a83806b1e34cf044005d34920903e7074"></a><br/></td></tr>
 <tr><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="../../db/d25/classSlipPlane.html#a5d9054f21be225f50860ad1351e3a86f">calculateRotationMatrix</a> ()</td></tr>
@@ -323,7 +325,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00361">361</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00370">370</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span>
 
@@ -377,7 +379,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00328">328</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00337">337</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   std::vector&lt;Dislocation&gt;::iterator d1;  <span class="comment">// Iterator for each dislocation</span>
   std::vector&lt;Dislocation&gt;::iterator d2;  <span class="comment">// Nested iterator</span>
@@ -424,7 +426,7 @@ Protected Attributes</h2></td></tr>
 <p>Calculates the rotation matrix for this slip plane. </p>
 <p>The slip plane has a local co-ordinate system whose axes are the following: z-axis||normal vector and x-axis||slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-ordinate systems. </p>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00295">295</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00304">304</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> *unPrimed = <span class="keyword">new</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>[3]; <span class="comment">// Old system (global)</span>
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> *primed   = <span class="keyword">new</span> <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a>[3]; <span class="comment">// New system (local)</span>
@@ -488,7 +490,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>STL vector container with the ideal time increments for all the dislocations. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00421">421</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00430">430</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">// Get the number of dislocations</span>
   <span class="keywordtype">int</span> nDisl = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size();
@@ -608,7 +610,7 @@ Protected Attributes</h2></td></tr>
 <p>Calculates the velocities of dislocations and stores them in the variable <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="el" href="../../d3/dc6/classDislocation.html#ad6f4e8e94b2525c2e58a77b9d2916c0e" title="The dislocation&#39;s velocity due to the force on it.">Dislocation::velocity</a> and also puts it at the end of std::vector&lt;Vector3d&gt; <a class="el" href="../../d3/dc6/classDislocation.html#a9ccdef63384a8b965e70f13920a852f8" title="Keeps a trace of the velocity of the dislocation from every iteration.">Dislocation::velocities</a>. </p>
 <p>The velocities of the dislocations are calculated and stored in the variable <a class="el" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> <a class="el" href="../../d3/dc6/classDislocation.html#ad6f4e8e94b2525c2e58a77b9d2916c0e" title="The dislocation&#39;s velocity due to the force on it.">Dislocation::velocity</a> and also put at the end of std::vector&lt;Vector3d&gt; <a class="el" href="../../d3/dc6/classDislocation.html#a9ccdef63384a8b965e70f13920a852f8" title="Keeps a trace of the velocity of the dislocation from every iteration.">Dislocation::velocities</a>. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality. param B The drag coefficient. </p>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00376">376</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00385">385</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   std::vector&lt;Dislocation&gt;::iterator d;  <span class="comment">// Iterator for dislocations</span>
 
@@ -683,7 +685,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>Distance of the point pos from the n^th extremity of the slip plane. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00560">560</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00569">569</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordflow">if</span> (n!=0 &amp;&amp; n!=1)
     {
@@ -720,7 +722,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00257">257</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00266">266</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <a class="code" href="../../df/dd0/classVector3d.html" title="Vector3d class representing a single 3-dimensional vector in the simulation.">Vector3d</a> axis;
 
@@ -1114,7 +1116,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>STL vector container with the full stress tensor expressing the stress field (in the global co-ordinate system) at the points provided as input. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00613">613</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00622">622</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">// Initialize the vector for holding Stress values</span>
   std::vector&lt;Stress&gt; stressVector(points.size(), <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a>());
@@ -1199,7 +1201,7 @@ Protected Attributes</h2></td></tr>
 </dl>
 <dl class="return"><dt><b>Returns:</b></dt><dd>STL vector container with the full stress tensor expressing the stress field (in the local co-ordinate system) at the points provided as input. </dd></dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00655">655</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00664">664</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="comment">// Initialize the vector for holding Stress values</span>
   std::vector&lt;Stress&gt; stressVector(points.size(), <a class="code" href="../../d1/d1c/classStress.html" title="Stress class to represent the stress tensor.">Stress</a>());
@@ -1232,6 +1234,30 @@ Protected Attributes</h2></td></tr>
     }
 
   <span class="keywordflow">return</span> (stressVector);
+}
+</pre></div>
+</div>
+</div>
+<a class="anchor" id="a3033ebd3409bd18cd18a797c4ee7e340"></a><!-- doxytag: member="SlipPlane::getTimeIncrement" ref="a3033ebd3409bd18cd18a797c4ee7e340" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="../../db/d25/classSlipPlane.html#a3033ebd3409bd18cd18a797c4ee7e340">SlipPlane::getTimeIncrement</a> </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>Get the time increment for this slip plane in the current iteration. </p>
+<dl class="return"><dt><b>Returns:</b></dt><dd>The time increment for the slip plane in the current iteration. </dd></dl>
+
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00256">256</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<div class="fragment"><pre class="fragment">{
+    <span class="keywordflow">return</span> ( this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad786135547799363ad2931e43522c2be" title="Time increment for the slip plane.">dt</a> );
 }
 </pre></div>
 </div>
@@ -1320,7 +1346,7 @@ Protected Attributes</h2></td></tr>
   </dd>
 </dl>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00526">526</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00535">535</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   std::vector&lt;Dislocation&gt;::iterator d;
   std::vector&lt;double&gt;::iterator t;
@@ -1518,7 +1544,7 @@ Protected Attributes</h2></td></tr>
 <p>Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity. </p>
 <p>The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane. </p>
 
-<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00575">575</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
+<p>Definition at line <a class="el" href="../../db/dab/slipPlane_8cpp_source.html#l00584">584</a> of file <a class="el" href="../../db/dab/slipPlane_8cpp_source.html">slipPlane.cpp</a>.</p>
 <div class="fragment"><pre class="fragment">{
   <span class="keywordtype">int</span> nDisl = this-&gt;<a class="code" href="../../db/d25/classSlipPlane.html#ad92c7c409f7e161db449528389180910" title="STL vector container with dislocations.">dislocations</a>.size();
   <span class="keywordtype">int</span> i, j;
@@ -1698,7 +1724,7 @@ Protected Attributes</h2></td></tr>
 
 
 <hr class="footer"/><address class="footer"><small>
-Generated on Thu Jun 13 2013 18:04:46 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
+Generated on Fri Jun 14 2013 16:09:28 for DD2D - Matryoshka approach by &#160;<a href="http://www.doxygen.org/index.html">
 <img class="footer" src="../../doxygen.png" alt="doxygen"/>
 </a> 1.7.6.1
 </small></address>
