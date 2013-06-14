@@ -250,6 +250,15 @@ RotationMatrix SlipPlane::getRotationMatrix () const
 }
 
 /**
+ * @brief Get the time increment for this slip plane in the current iteration.
+ * @return The time increment for the slip plane in the current iteration.
+ */
+double SlipPlane::getTimeIncrement () const
+{
+    return ( this->dt );
+}
+
+/**
  * @brief Get the axis (expressed in the global co-ordinate system) of the slip plane's local co-ordinate system, as indicated by the argument. (0, 1, 2)=(x, y, z).
  * @param i Index of the axis that is to be returned. (0, 1, 2)=(x, y, z).
  * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.

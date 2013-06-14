@@ -29,26 +29,15 @@ void simulateSingleSlipPlane ()
       slipPlane = new SlipPlane;
       if ( readSlipPlane ( param->dislocationStructureFile,  slipPlane ) )
       {
-          //
+          iterate ( param, slipPlane );
       }
-      else
-      {
-          delete ( slipPlane );
-          slipPlane = NULL;
 
-          delete ( param );
-          param = NULL;
-
-          return;
-      }
+      delete ( slipPlane );
+      slipPlane = NULL;
   }
-  else
-  {
-      delete ( param );
-      param = NULL;
 
-      return;
-  }
+  delete ( param );
+  param = NULL;
 }
 
 /**
@@ -223,5 +212,63 @@ DislocationSource readDislocationSourceFromLine (std::string s)
     ss >> a;
     timeLimit = atof ( a.c_str() );
 
-    return ( Dislocation ( bvec, lvec, pos, bmag, tau, timeLimit ) );
+    return ( DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit ) );
+}
+
+/**
+ * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
+ * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
+ * @param slipPlane Pointer to the instance of the SlipPlane class containing the data for the dislocation structure.
+ */
+void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
+{
+    double totalTime = 0.0;
+    int nIterations = 0;
+
+    std::vector<double> simulationTime;
+    std::vector<double> timeIncrement;
+
+    bool continueSimulation = true;
+
+    while ( continueSimulation ) {
+        // Calculate stresses
+        s->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
+
+        // Calculate forces on dislocations
+        s->calculateDislocationForces ( param->tau_crss );
+
+        // Calculate dislocation velocities
+        s->calculateVelocities ( param->B );
+
+        // Calculate the time increment
+        timeIncrement = s->calculateTimeIncrement ( param->limitingDistance, param->limitingTimeStep );
+
+        // Displace the dislocations
+        s->moveDislocations ( timeIncrement );
+
+        // Increment counters
+        totalTime += s->getTimeIncrement ();
+        simulationTime.push_back ( totalTime );
+        nIterations++;
+
+        // Write statistics
+        if ( param->dislocationPositions.ifWrite() ) {
+            // Write dislocation positions
+        }
+
+        if ( param->slipPlaneStressDistributions.ifWrite() ) {
+            // Write slip plane stress
+        }
+
+        // Check for stopping criterion
+        if ( param->stopAfterTime ) {
+            // The stopping criterion is time
+            continueSimulation = ( totalTime <= param->stopTime );
+        }
+        else {
+            // The stopping criterion is iterations
+            continueSimulation = ( nIterations <= param->stopIterations );
+        }
+
+    }
 }
