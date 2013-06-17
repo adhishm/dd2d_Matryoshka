@@ -1,0 +1,439 @@
+\hypertarget{simulateSingleSlipPlane_8h}{\section{simulate\-Single\-Slip\-Plane.\-h \-File \-Reference}
+\label{d2/d56/simulateSingleSlipPlane_8h}\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}}
+}
+
+
+\-Declaration various functions to simulate dislocation motion on a single slip plane.  
+
+
+{\ttfamily \#include $<$iostream$>$}\*
+{\ttfamily \#include $<$fstream$>$}\*
+{\ttfamily \#include $<$sstream$>$}\*
+{\ttfamily \#include $<$vector$>$}\*
+{\ttfamily \#include $<$string$>$}\*
+{\ttfamily \#include \char`\"{}slip\-Plane.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}standard\-Slip\-Plane.\-h\char`\"{}}\*
+{\ttfamily \#include \char`\"{}parameter.\-h\char`\"{}}\*
+\-Include dependency graph for simulate\-Single\-Slip\-Plane.\-h\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=350pt]{d1/dde/simulateSingleSlipPlane_8h__incl}
+\end{center}
+\end{figure}
+\-This graph shows which files directly or indirectly include this file\-:\nopagebreak
+\begin{figure}[H]
+\begin{center}
+\leavevmode
+\includegraphics[width=220pt]{d3/d5c/simulateSingleSlipPlane_8h__dep__incl}
+\end{center}
+\end{figure}
+\subsection*{\-Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \hyperlink{simulateSingleSlipPlane_8h_a77a1e716fa8365894afc713ba37e97c1}{simulate\-Single\-Slip\-Plane} ()
+\begin{DoxyCompactList}\small\item\em \-This function manages the simulation for a single slip plane. \end{DoxyCompactList}\item 
+bool \hyperlink{simulateSingleSlipPlane_8h_a1eabae2944e62b591b79bb2cc2efa303}{read\-Slip\-Plane} (std\-::string file\-Name, \hyperlink{classSlipPlane}{\-Slip\-Plane} $\ast$s)
+\begin{DoxyCompactList}\small\item\em \-Reads the slip plane details from the file. \end{DoxyCompactList}\item 
+\hyperlink{classVector3d}{\-Vector3d} \hyperlink{simulateSingleSlipPlane_8h_a50bd230ba9522ede362183b04f049acc}{read\-Vector\-From\-Line} (std\-::string s)
+\begin{DoxyCompactList}\small\item\em \-Reads 3 values from a string and returns them in a \hyperlink{classVector3d}{\-Vector3d}. \end{DoxyCompactList}\item 
+\hyperlink{classDislocation}{\-Dislocation} \hyperlink{simulateSingleSlipPlane_8h_aef4e3ac68fafeb67c16b192ba677e953}{read\-Dislocation\-From\-Line} (std\-::string s)
+\begin{DoxyCompactList}\small\item\em \-Reads the data from a line and builds a dislocation from it. \end{DoxyCompactList}\item 
+\hyperlink{classDislocationSource}{\-Dislocation\-Source} \hyperlink{simulateSingleSlipPlane_8h_aaac49e255c9be85f810745e77e6e4081}{read\-Dislocation\-Source\-From\-Line} (std\-::string s)
+\begin{DoxyCompactList}\small\item\em \-Reads the data from a line and builds a dislocation source from it. \end{DoxyCompactList}\item 
+void \hyperlink{simulateSingleSlipPlane_8h_afc2a822c70f5c1a9cf9cc8e1357b798b}{single\-Slip\-Plane\-\_\-iterate} (\hyperlink{classParameter}{\-Parameter} $\ast$param, \hyperlink{classSlipPlane}{\-Slip\-Plane} $\ast$slip\-Plane)
+\begin{DoxyCompactList}\small\item\em \-Carry out the iterations for the simulation of dislocation motion on a single slip plane. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\-Declaration various functions to simulate dislocation motion on a single slip plane. \begin{DoxyAuthor}{\-Author}
+\-Adhish \-Majumdar 
+\end{DoxyAuthor}
+\begin{DoxyVersion}{\-Version}
+1.\-0 
+\end{DoxyVersion}
+\begin{DoxyDate}{\-Date}
+10/06/2013
+\end{DoxyDate}
+\-This file declares various functions to simulate dislocation motion on a single slip plane. \-It also writes statistics to files which will be treated separately. 
+
+\-Definition in file \hyperlink{simulateSingleSlipPlane_8h_source}{simulate\-Single\-Slip\-Plane.\-h}.
+
+
+
+\subsection{\-Function \-Documentation}
+\hypertarget{simulateSingleSlipPlane_8h_aef4e3ac68fafeb67c16b192ba677e953}{\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}!read\-Dislocation\-From\-Line@{read\-Dislocation\-From\-Line}}
+\index{read\-Dislocation\-From\-Line@{read\-Dislocation\-From\-Line}!simulateSingleSlipPlane.h@{simulate\-Single\-Slip\-Plane.\-h}}
+\subsubsection[{read\-Dislocation\-From\-Line}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Dislocation} {\bf read\-Dislocation\-From\-Line} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{s}
+\end{DoxyParamCaption}
+)}}\label{d2/d56/simulateSingleSlipPlane_8h_aef4e3ac68fafeb67c16b192ba677e953}
+
+
+\-Reads the data from a line and builds a dislocation from it. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em s} & \-The string that is to be read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The dislocation. 
+\end{DoxyReturn}
+
+
+\-Definition at line 130 of file simulate\-Single\-Slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    std::stringstresm ss ( s );
+    std::string a;
+    Vector3d pos, bvec, lvec;
+    double bmag;
+    bool mob;
+
+    int i;
+
+    // Read position
+    for ( i=0; i<3; i++ ) {
+        ss >> a;
+        pos.setValue ( i, atof ( a.c_str() ) );
+    }
+
+    // Read Burgers vector
+    for ( i=0; i<3; i++ ) {
+        ss >> a;
+        bvec.setValue ( i, atof ( a.c_str() ) );
+    }
+
+    // Read line vector
+    for ( i=0; i<3; i++ ) {
+        ss >> a;
+        lvec.setValue ( i, atof ( a.c_str() ) );
+    }
+
+    // Read Burgers vector magnitude
+    ss >> a;
+    bmag = atof ( a.c_str() );
+
+    // Read mobility
+    ss >> a;
+    mob = ( bool ) atoi ( a.c_str() );
+
+    return ( Dislocation ( bvec, lvec, pos, bmag, mon ) );
+}
+\end{DoxyCode}
+\hypertarget{simulateSingleSlipPlane_8h_aaac49e255c9be85f810745e77e6e4081}{\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}!read\-Dislocation\-Source\-From\-Line@{read\-Dislocation\-Source\-From\-Line}}
+\index{read\-Dislocation\-Source\-From\-Line@{read\-Dislocation\-Source\-From\-Line}!simulateSingleSlipPlane.h@{simulate\-Single\-Slip\-Plane.\-h}}
+\subsubsection[{read\-Dislocation\-Source\-From\-Line}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Dislocation\-Source} {\bf read\-Dislocation\-Source\-From\-Line} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{s}
+\end{DoxyParamCaption}
+)}}\label{d2/d56/simulateSingleSlipPlane_8h_aaac49e255c9be85f810745e77e6e4081}
+
+
+\-Reads the data from a line and builds a dislocation source from it. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em s} & \-The string that is to be read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-The dislocation source. 
+\end{DoxyReturn}
+
+
+\-Definition at line 174 of file simulate\-Single\-Slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    std::stringstresm ss ( s );
+    std::string a;
+    Vector3d pos, bvec, lvec;
+    double bmag;
+    double tau;
+    double timeLimit;
+
+    int i;
+
+    // Read position
+    for ( i=0; i<3; i++ ) {
+        ss >> a;
+        pos.setValue ( i, atof ( a.c_str() ) );
+    }
+
+    // Read Burgers vector
+    for ( i=0; i<3; i++ ) {
+        ss >> a;
+        bvec.setValue ( i, atof ( a.c_str() ) );
+    }
+
+    // Read line vector
+    for ( i=0; i<3; i++ ) {
+        ss >> a;
+        lvec.setValue ( i, atof ( a.c_str() ) );
+    }
+
+    // Read Burgers vector magnitude
+    ss >> a;
+    bmag = atof ( a.c_str() );
+
+    // Read critical stress
+    ss >> a;
+    tau = atof ( a.c_str() );
+
+    // Read time limit for dipole emission
+    ss >> a;
+    timeLimit = atof ( a.c_str() );
+
+    return ( DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit ) );
+}
+\end{DoxyCode}
+\hypertarget{simulateSingleSlipPlane_8h_a1eabae2944e62b591b79bb2cc2efa303}{\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}!read\-Slip\-Plane@{read\-Slip\-Plane}}
+\index{read\-Slip\-Plane@{read\-Slip\-Plane}!simulateSingleSlipPlane.h@{simulate\-Single\-Slip\-Plane.\-h}}
+\subsubsection[{read\-Slip\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf read\-Slip\-Plane} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{file\-Name, }
+\item[{{\bf \-Slip\-Plane} $\ast$}]{s}
+\end{DoxyParamCaption}
+)}}\label{d2/d56/simulateSingleSlipPlane_8h_a1eabae2944e62b591b79bb2cc2efa303}
+
+
+\-Reads the slip plane details from the file. 
+
+\-The details of the slip plane and its dislocations are stored in a file the name of which is provided. \-This file is read and the information is saved into the instance of the \hyperlink{classSlipPlane}{\-Slip\-Plane} class, the pointer to which is given. 
+\begin{DoxyParams}{\-Parameters}
+{\em file\-Name} & \-String containing the name of the file. \\
+\hline
+{\em s} & \-Pointer to the instance of \hyperlink{classSlipPlane}{\-Slip\-Plane} into which all data is to be stored. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\-Flag indicating the success or failure of the operation. 
+\end{DoxyReturn}
+
+
+\-Definition at line 50 of file simulate\-Single\-Slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    std::ifstream fp ( fileName );
+    std::string line;
+
+    Vector3d *e;
+    int i,  n;
+
+
+    if ( fp.is_open() )
+    {
+        // Read the extremities
+        e = new Vector3d[2];
+        getline ( fp, line );
+        e[0] = readVectorFromline ( line );
+        getline ( fp, line );
+        e[1] = readVectorFromLine ( line );
+        s->setExtremities( e );
+        delete ( e );
+        e = NULL;
+
+        // Read the normal vector
+        getline ( fp, line );
+        s->setNormal( readVectorFromLine ( line ) );
+
+        // Read the position
+        getline ( fp, line );
+        s->setPosition( readVectorFromLine ( line ) );
+
+        // Read number of dislocations
+        fp >> n;
+        // Read the dislocations
+        for ( i=0; i<n; i++ ) {
+            getline ( fp, line );
+            s->insertDislocation ( readDislocationFromLine ( line ) );
+        }
+
+        // Read number of dislocation sources
+        fp >> n;
+        // Read the dislocation sources
+        for ( i=0; i<n; i++ ) {
+            getline ( fp,  line );
+            s->insertDislocationSource ( readDislocationSourceFromLine ( line )
+       );
+        }
+
+        fp.close();
+        return (true);
+    }
+    else
+    {
+        return ( false );
+    }
+}
+\end{DoxyCode}
+\hypertarget{simulateSingleSlipPlane_8h_a50bd230ba9522ede362183b04f049acc}{\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}!read\-Vector\-From\-Line@{read\-Vector\-From\-Line}}
+\index{read\-Vector\-From\-Line@{read\-Vector\-From\-Line}!simulateSingleSlipPlane.h@{simulate\-Single\-Slip\-Plane.\-h}}
+\subsubsection[{read\-Vector\-From\-Line}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Vector3d} {\bf read\-Vector\-From\-Line} (
+\begin{DoxyParamCaption}
+\item[{std\-::string}]{s}
+\end{DoxyParamCaption}
+)}}\label{d2/d56/simulateSingleSlipPlane_8h_a50bd230ba9522ede362183b04f049acc}
+
+
+\-Reads 3 values from a string and returns them in a \hyperlink{classVector3d}{\-Vector3d}. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em s} & \-The string that is to be read from. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{\-Returns}
+\hyperlink{classVector3d}{\-Vector3d} object containing the 3 values read. 
+\end{DoxyReturn}
+
+
+\-Definition at line 109 of file simulate\-Single\-Slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    std::stringstream ss ( s );
+    std::string a;
+    int i;
+    Vector3d v;
+
+    for ( i=0; i<3; i++ )
+    {
+        ss >> a;
+        v.setValue( i, atof( a.c_str() ) );
+    }
+
+    return ( v );
+}
+\end{DoxyCode}
+\hypertarget{simulateSingleSlipPlane_8h_a77a1e716fa8365894afc713ba37e97c1}{\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}!simulate\-Single\-Slip\-Plane@{simulate\-Single\-Slip\-Plane}}
+\index{simulate\-Single\-Slip\-Plane@{simulate\-Single\-Slip\-Plane}!simulateSingleSlipPlane.h@{simulate\-Single\-Slip\-Plane.\-h}}
+\subsubsection[{simulate\-Single\-Slip\-Plane}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf simulate\-Single\-Slip\-Plane} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d2/d56/simulateSingleSlipPlane_8h_a77a1e716fa8365894afc713ba37e97c1}
+
+
+\-This function manages the simulation for a single slip plane. 
+
+\-This function is the point of entry into a simulation with a single slip plane. 
+
+\-Definition at line 16 of file simulate\-Single\-Slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  std::string fName;
+
+  std::cout << "Parameter file name: ";
+  std::cin >> fName;
+
+  SlipPlane *slipPlane;
+
+  Parameter *param = new Parameter;
+
+  if ( param->getParameters( fName ) )
+  {
+      slipPlane = new SlipPlane;
+      if ( readSlipPlane ( param->dislocationStructureFile,  slipPlane ) )
+      {
+          singleSlipPlane_iterate ( param, slipPlane );
+      }
+
+      delete ( slipPlane );
+      slipPlane = NULL;
+  }
+
+  delete ( param );
+  param = NULL;
+}
+\end{DoxyCode}
+\hypertarget{simulateSingleSlipPlane_8h_afc2a822c70f5c1a9cf9cc8e1357b798b}{\index{simulate\-Single\-Slip\-Plane.\-h@{simulate\-Single\-Slip\-Plane.\-h}!single\-Slip\-Plane\-\_\-iterate@{single\-Slip\-Plane\-\_\-iterate}}
+\index{single\-Slip\-Plane\-\_\-iterate@{single\-Slip\-Plane\-\_\-iterate}!simulateSingleSlipPlane.h@{simulate\-Single\-Slip\-Plane.\-h}}
+\subsubsection[{single\-Slip\-Plane\-\_\-iterate}]{\setlength{\rightskip}{0pt plus 5cm}void {\bf single\-Slip\-Plane\-\_\-iterate} (
+\begin{DoxyParamCaption}
+\item[{{\bf \-Parameter} $\ast$}]{param, }
+\item[{{\bf \-Slip\-Plane} $\ast$}]{slip\-Plane}
+\end{DoxyParamCaption}
+)}}\label{d2/d56/simulateSingleSlipPlane_8h_afc2a822c70f5c1a9cf9cc8e1357b798b}
+
+
+\-Carry out the iterations for the simulation of dislocation motion on a single slip plane. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em param} & \-Pointer to the instance of the \hyperlink{classParameter}{\-Parameter} class containing all simulation parameters. \\
+\hline
+{\em slip\-Plane} & \-Pointer to the instance of the \hyperlink{classSlipPlane}{\-Slip\-Plane} class containing the data for the dislocation structure. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 223 of file simulate\-Single\-Slip\-Plane.\-cpp.
+
+
+\begin{DoxyCode}
+{
+    double totalTime = 0.0;
+    int nIterations = 0;
+
+    std::vector<double> simulationTime;
+    std::vector<double> timeIncrement;
+
+    bool continueSimulation = true;
+
+    while ( continueSimulation ) {
+        // Calculate stresses
+        s->calculateDislocationStresses ( param->appliedStress, param->mu, 
+      param->nu );
+
+        // Calculate forces on dislocations
+        s->calculateDislocationForces ( param->tau_crss );
+
+        // Calculate dislocation velocities
+        s->calculateVelocities ( param->B );
+
+        // Calculate the time increment
+        timeIncrement = s->calculateTimeIncrement ( param->limitingDistance, 
+      param->limitingTimeStep );
+
+        // Displace the dislocations
+        s->moveDislocations ( timeIncrement );
+
+        // Increment counters
+        totalTime += s->getTimeIncrement ();
+        simulationTime.push_back ( totalTime );
+        nIterations++;
+
+        // Write statistics
+        if ( param->dislocationPositions.ifWrite() ) {
+            // Write dislocation positions
+        }
+
+        if ( param->slipPlaneStressDistributions.ifWrite() ) {
+            // Write slip plane stress
+        }
+
+        // Check for stopping criterion
+        if ( param->stopAfterTime ) {
+            // The stopping criterion is time
+            continueSimulation = ( totalTime <= param->stopTime );
+        }
+        else {
+            // The stopping criterion is iterations
+            continueSimulation = ( nIterations <= param->stopIterations );
+        }
+
+    }
+}
+\end{DoxyCode}

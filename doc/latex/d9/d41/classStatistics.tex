@@ -1,0 +1,154 @@
+\hypertarget{classStatistics}{\section{\-Statistics \-Class \-Reference}
+\label{d9/d41/classStatistics}\index{\-Statistics@{\-Statistics}}
+}
+
+
+\hyperlink{classStatistics}{\-Statistics} class indicating a flag and frequency for writing statistics.  
+
+
+
+
+{\ttfamily \#include $<$statistics.\-h$>$}
+
+\subsection*{\-Public \-Member \-Functions}
+\begin{DoxyCompactItemize}
+\item 
+\hyperlink{classStatistics_af7716c05bd897fd8d7064d3ec4168d3e}{\-Statistics} (bool w, int f)
+\begin{DoxyCompactList}\small\item\em \-Constructor for the \hyperlink{classStatistics}{\-Statistics} class. \end{DoxyCompactList}\item 
+bool \hyperlink{classStatistics_ad608fa9f3e7f4cfc0906f017b029c0e1}{if\-Write} ()
+\begin{DoxyCompactList}\small\item\em \-If the time to write the statistic has arrived. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\subsection*{\-Data \-Fields}
+\begin{DoxyCompactItemize}
+\item 
+bool \hyperlink{classStatistics_a0d4a9d7982000ebb46ed99e8976758e4}{write}
+\begin{DoxyCompactList}\small\item\em \-Flag indicating whether or not this statistic is to be written. \end{DoxyCompactList}\item 
+int \hyperlink{classStatistics_ae70baa09998294893b3110c61f96f4d6}{frequency}
+\begin{DoxyCompactList}\small\item\em \-Frequency (number of iterations) at which this statistic is to be written. \end{DoxyCompactList}\item 
+int \hyperlink{classStatistics_acb9e45f4bbb77e2232735968e7f723b3}{n\-Iterations\-Since\-Last\-Write}
+\begin{DoxyCompactList}\small\item\em \-Counter for the number of iterations since the last write. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\subsection{\-Detailed \-Description}
+\hyperlink{classStatistics}{\-Statistics} class indicating a flag and frequency for writing statistics. 
+
+\-Definition at line 16 of file statistics.\-h.
+
+
+
+\subsection{\-Constructor \& \-Destructor \-Documentation}
+\hypertarget{classStatistics_af7716c05bd897fd8d7064d3ec4168d3e}{\index{\-Statistics@{\-Statistics}!\-Statistics@{\-Statistics}}
+\index{\-Statistics@{\-Statistics}!Statistics@{\-Statistics}}
+\subsubsection[{\-Statistics}]{\setlength{\rightskip}{0pt plus 5cm}{\bf \-Statistics\-::\-Statistics} (
+\begin{DoxyParamCaption}
+\item[{bool}]{w, }
+\item[{int}]{f}
+\end{DoxyParamCaption}
+)}}\label{d9/d41/classStatistics_af7716c05bd897fd8d7064d3ec4168d3e}
+
+
+\-Constructor for the \hyperlink{classStatistics}{\-Statistics} class. 
+
+
+\begin{DoxyParams}{\-Parameters}
+{\em w} & \-Flag indicating if the statistic is to be written or not. \\
+\hline
+{\em f} & \-Frequency of writing. \\
+\hline
+\end{DoxyParams}
+
+
+\-Definition at line 17 of file statistics.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  this->write = w;
+  this->frequency = f;
+  this->nIterationsSinceLastWrite = 0;
+}
+\end{DoxyCode}
+
+
+\subsection{\-Member \-Function \-Documentation}
+\hypertarget{classStatistics_ad608fa9f3e7f4cfc0906f017b029c0e1}{\index{\-Statistics@{\-Statistics}!if\-Write@{if\-Write}}
+\index{if\-Write@{if\-Write}!Statistics@{\-Statistics}}
+\subsubsection[{if\-Write}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Statistics\-::if\-Write} (
+\begin{DoxyParamCaption}
+{}
+\end{DoxyParamCaption}
+)}}\label{d9/d41/classStatistics_ad608fa9f3e7f4cfc0906f017b029c0e1}
+
+
+\-If the time to write the statistic has arrived. 
+
+\begin{DoxyReturn}{\-Returns}
+\-True/false indicating if the statistic is to be written or not. 
+\end{DoxyReturn}
+
+
+\-Definition at line 28 of file statistics.\-cpp.
+
+
+\begin{DoxyCode}
+{
+  if (this->write)
+  {
+    if (this->nIterationsSinceLastWrite >= this->frequency)
+    {
+      this->nIterationsSinceLastWrite = 0;
+      return (true);
+    }
+    else
+    {
+      this->nIterationsSinceLastWrite++;
+      return (false);
+    }
+  }
+  else
+  {
+    return (false);
+  }
+}
+\end{DoxyCode}
+
+
+\subsection{\-Field \-Documentation}
+\hypertarget{classStatistics_ae70baa09998294893b3110c61f96f4d6}{\index{\-Statistics@{\-Statistics}!frequency@{frequency}}
+\index{frequency@{frequency}!Statistics@{\-Statistics}}
+\subsubsection[{frequency}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Statistics\-::frequency}}}\label{d9/d41/classStatistics_ae70baa09998294893b3110c61f96f4d6}
+
+
+\-Frequency (number of iterations) at which this statistic is to be written. 
+
+
+
+\-Definition at line 26 of file statistics.\-h.
+
+\hypertarget{classStatistics_acb9e45f4bbb77e2232735968e7f723b3}{\index{\-Statistics@{\-Statistics}!n\-Iterations\-Since\-Last\-Write@{n\-Iterations\-Since\-Last\-Write}}
+\index{n\-Iterations\-Since\-Last\-Write@{n\-Iterations\-Since\-Last\-Write}!Statistics@{\-Statistics}}
+\subsubsection[{n\-Iterations\-Since\-Last\-Write}]{\setlength{\rightskip}{0pt plus 5cm}int {\bf \-Statistics\-::n\-Iterations\-Since\-Last\-Write}}}\label{d9/d41/classStatistics_acb9e45f4bbb77e2232735968e7f723b3}
+
+
+\-Counter for the number of iterations since the last write. 
+
+
+
+\-Definition at line 30 of file statistics.\-h.
+
+\hypertarget{classStatistics_a0d4a9d7982000ebb46ed99e8976758e4}{\index{\-Statistics@{\-Statistics}!write@{write}}
+\index{write@{write}!Statistics@{\-Statistics}}
+\subsubsection[{write}]{\setlength{\rightskip}{0pt plus 5cm}bool {\bf \-Statistics\-::write}}}\label{d9/d41/classStatistics_a0d4a9d7982000ebb46ed99e8976758e4}
+
+
+\-Flag indicating whether or not this statistic is to be written. 
+
+
+
+\-Definition at line 22 of file statistics.\-h.
+
+
+
+\-The documentation for this class was generated from the following files\-:\begin{DoxyCompactItemize}
+\item 
+\hyperlink{statistics_8h}{statistics.\-h}\item 
+\hyperlink{statistics_8cpp}{statistics.\-cpp}\end{DoxyCompactItemize}
