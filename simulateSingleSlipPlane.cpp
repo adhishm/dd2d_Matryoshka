@@ -129,7 +129,7 @@ Vector3d readVectorFromLine (std::string s)
  */
 Dislocation readDislocationFromLine (std::string s)
 {
-    std::stringstresm ss ( s );
+    std::stringstream ss ( s );
     std::string a;
     Vector3d pos, bvec, lvec;
     double bmag;
@@ -173,7 +173,7 @@ Dislocation readDislocationFromLine (std::string s)
  */
 DislocationSource readDislocationSourceFromLine (std::string s)
 {
-    std::stringstresm ss ( s );
+    std::stringstream ss ( s );
     std::string a;
     Vector3d pos, bvec, lvec;
     double bmag;
