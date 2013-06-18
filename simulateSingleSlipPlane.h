@@ -19,6 +19,7 @@
 #include "slipPlane.h"
 #include "standardSlipPlane.h"
 #include "parameter.h"
+#include "tools.h"
 
 /**
  * @brief This function manages the simulation for a single slip plane.

@@ -2,7 +2,7 @@
  * @file slipPlane.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 03/06/2013
+ * @date 18/06/2013
  * @brief Definition of the SlipPlane class.
  * @details This file defines the SlipPlane class representing a slip plane in the simulation.
  */
@@ -12,6 +12,9 @@
 
 // STL containers
 #include <vector>
+
+#include <fstream>
+#include <string>
 
 // Default values
 #include "slipPlaneDefaults.h"
@@ -297,6 +300,22 @@ public:
    * @return STL vector container with the full stress tensor expressing the stress field (in the local co-ordinate system) at the points provided as input.
    */
   std::vector<Stress> getSlipPlaneStress_local (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
+
+  // Statistics
+  /**
+   * @brief Writes the attributes of the slip plane and all defects lying on it.
+   * @details This function writes to a file (the name of which is provided in the string filename) all the attributes of the slip plane and all defects lying on it. The file may be useful as statistics or to start the simulation off from an intermediate stage.
+   * @param filename The name of the file to which all the attributes are to be written.
+   */
+  void writeSlipPlane (std::string filename);
+  
+  /**
+   * @brief Writes the stress distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane with the given resolution.
+   * @details This function writes out the distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane, with the given resolution. The stress fields of all dislocations and the externally applied stress are all superposed points along the slip plane, and then the stress tensor at this point is transformed to the one in the slip plane's local co-ordinate system to obtain the final stress. The points where the stress is calculated are chosen according to the argument resolution, which provides the number of equally spaced points along the slip plane where the stress field is to be calculated. The output file contains the following information in each row: PointPosition(3) LocalStresses(s_xx s_yy s_zz s_xy s_xz s_yz) GlobalStresses(s_xx s_yy s_zz s_xy s_xz s_yz).
+   * @param filename The name of the file into which the data is to be written.
+   * @param resolution The number of points at which the stress field is to be calculated.
+   */
+  void writeSlipPlaneStressDistribution (std::string filename, int resolution);
 };
 
 #endif
