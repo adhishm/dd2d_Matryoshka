@@ -30,3 +30,4 @@
 # Number of dislocation sources
 0
 # Dislocation sources
+# Position(3) BurgersVector(3) LineVector(3) BurgersMagnitude(1) Tau_nuc(1) t_nuc(1)
