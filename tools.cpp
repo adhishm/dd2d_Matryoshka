@@ -2,7 +2,7 @@
  * @file tools.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 09/06/2013
+ * @date 18/06/2013
  * @brief Definition various tools.
  * @details This file defines various tools that may come in handy.
  */
@@ -156,8 +156,9 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
  */
 bool ignoreLine (std::string line, char comment)
 {
-    if ( line.empty () )
+    if ( line.empty () ) {
         return ( true );
+    }
 
     return ( line.at ( 0 ) == comment );
 }
