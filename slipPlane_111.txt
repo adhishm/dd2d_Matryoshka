@@ -1,8 +1,14 @@
+# Extremities
 0.0 0.0 0.0
 0.0 5.0e-06 5.0e-06
+# Normal vector
 1.0 1.0 1.0
+# Position
 0.0 0.0 0.0
+# Number of dislocations
 18
+# Dislocations
+# Position(3) BurgersVector(3) LineVector(3) BurgersMagnitude(1) Mobile(1)
 0 050e-09 050e-09 1 -1 0 1 1 -2 2.5e10 1
 0 075e-09 075e-09 1 -1 0 1 1 -2 2.5e10 1
 0 100e-09 100e-09 1 -1 0 1 1 -2 2.5e10 1
@@ -21,4 +27,6 @@
 0 425e-09 425e-09 1 -1 0 1 1 -2 2.5e10 1
 0 450e-09 450e-09 1 -1 0 1 1 -2 2.5e10 1
 0 475e-09 475e-09 1 -1 0 1 1 -2 2.5e10 1
+# Number of dislocation sources
 0
+# Dislocation sources

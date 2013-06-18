@@ -18,6 +18,8 @@
 #include "stress.h"
 #include "statistics.h"
 
+#include "tools.h"
+
 /**
  * @brief Parameter class to hold all simulation parameters.
  * @details The simulation needs several parameters - such as material properties, stopping criterion, time steps, etc. - in order to function. An instance of this class will hold all these values in one place for easy access throughout the simulation. All data in this class is made public to facilitate access throughout the simulation.
