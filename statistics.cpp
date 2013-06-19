@@ -45,4 +45,21 @@ bool Statistics::ifWrite ()
     return (false);
   }
 }
-      
+
+/**
+ * @brief Adds a parameter to the vector parameters.
+ * @param p The parameter to be added to the vector.
+ */
+void Statistics::addParameter (double p)
+{
+    this->parameters.push_back ( p );
+}
+
+/**
+ * @brief Sets the name for the statistic.
+ * @param n String containing the name.
+ */
+void Statistics::addName (std::string n)
+{
+    this->name = n;
+}

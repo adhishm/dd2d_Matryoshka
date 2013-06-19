@@ -303,11 +303,12 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            // Write dislocation positions
+            s->writeSlipPlane ( param->dislocationPositions.name );
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            // Write slip plane stress
+            s->writeSlipPlaneStressDistribution ( param->slipPlaneStressDistributions.name,
+                                                  param->slipPlaneStressDistributions.parameters ( 0 ) );
         }
 
         // Check for stopping criterion

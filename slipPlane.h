@@ -10,14 +10,19 @@
 #ifndef SLIPPLANE_H
 #define SLIPPLANE_H
 
-// STL containers
-#include <vector>
-
+// Standard library
 #include <fstream>
 #include <string>
 
+// STL containers
+#include <vector>
+#include <iterator>
+
 // Default values
 #include "slipPlaneDefaults.h"
+
+// Parameters
+#include "parameter.h"
 
 // Defects
 #include "defect.h"
@@ -314,8 +319,9 @@ public:
    * @details This function writes out the distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane, with the given resolution. The stress fields of all dislocations and the externally applied stress are all superposed points along the slip plane, and then the stress tensor at this point is transformed to the one in the slip plane's local co-ordinate system to obtain the final stress. The points where the stress is calculated are chosen according to the argument resolution, which provides the number of equally spaced points along the slip plane where the stress field is to be calculated. The output file contains the following information in each row: PointPosition(3) LocalStresses(s_xx s_yy s_zz s_xy s_xz s_yz) GlobalStresses(s_xx s_yy s_zz s_xy s_xz s_yz).
    * @param filename The name of the file into which the data is to be written.
    * @param resolution The number of points at which the stress field is to be calculated.
+   * @param param Pointer to the instance of the parameter class which contains all the simulation parameters.
    */
-  void writeSlipPlaneStressDistribution (std::string filename, int resolution);
+  void writeSlipPlaneStressDistribution (std::string filename, int resolution, Parameter *param);
 };
 
 #endif
