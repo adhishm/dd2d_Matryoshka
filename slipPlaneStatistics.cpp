@@ -16,7 +16,7 @@
  */
 void SlipPlane::writeSlipPlane (std::string filename)
 {
-    std::ofstream fp ( filename );
+    std::ofstream fp ( filename.c_str() );
     if ( !fp.is_open() ) {
         return;
     }
@@ -121,7 +121,7 @@ void SlipPlane::writeSlipPlane (std::string filename)
  */
 void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int resolution, Parameter *param)
 {
-    std::ofstream fp ( filename );
+    std::ofstream fp ( filename.c_str() );
     if ( !fp.is_open() ) {
         return;
     }

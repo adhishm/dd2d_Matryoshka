@@ -49,7 +49,7 @@ void simulateSingleSlipPlane ()
  */
 bool readSlipPlane (std::string fileName, SlipPlane *s)
 {
-    std::ifstream fp ( fileName );
+    std::ifstream fp ( fileName.c_str() );
     std::string line;
 
     Vector3d *e;
