@@ -10,6 +10,9 @@
 #ifndef STATISTICS_H
 #define STATISTICS_H
 
+#include <vector>
+#include <string>
+
 /**
  * @brief Statistics class indicating a flag and frequency for writing statistics.
  */
@@ -28,6 +31,14 @@ public:
    * @brief Counter for the number of iterations since the last write.
    */
   int nIterationsSinceLastWrite;
+  /**
+   * @brief STD::vector container for storing various parameters for the statistic to be written.
+   */
+  std::vector<double> parameters;
+  /**
+   * @brief String with the name of the statistic, also to be used as the the template for filenames.
+   */
+  std::string name;
   
   /**
    * @brief Constructor for the Statistics class.
@@ -35,12 +46,21 @@ public:
    * @param f Frequency of writing.
    */
   Statistics (bool w, int f);
-  
   /**
    * @brief If the time to write the statistic has arrived.
    * @return True/false indicating if the statistic is to be written or not.
    */
   bool ifWrite ();
+  /**
+   * @brief Adds a parameter to the vector parameters.
+   * @param p The parameter to be added to the vector.
+   */
+  void addParameter (double p);
+  /**
+   * @brief Sets the name for the statistic.
+   * @param n String containing the name.
+   */
+  void addName (std::string n);
 };
 
 #endif
