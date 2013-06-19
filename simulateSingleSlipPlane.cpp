@@ -68,8 +68,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                 return ( false );
             }
         } while ( ignoreLine ( line ) );
-
-        e[0] = readVectorFromline ( line );
+        e[0] = readVectorFromLine ( line );
 
         do {
             if ( fp.good() ) {
@@ -213,7 +212,7 @@ Dislocation readDislocationFromLine (std::string s)
     ss >> a;
     mob = ( bool ) atoi ( a.c_str() );
 
-    return ( Dislocation ( bvec, lvec, pos, bmag, mon ) );
+    return ( Dislocation ( bvec, lvec, pos, bmag, mob ) );
 }
 
 /**
@@ -282,33 +281,33 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
     while ( continueSimulation ) {
         // Calculate stresses
-        s->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
+        slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
 
         // Calculate forces on dislocations
-        s->calculateDislocationForces ( param->tau_crss );
+        slipPlane->calculateDislocationForces ( param->tau_crss );
 
         // Calculate dislocation velocities
-        s->calculateVelocities ( param->B );
+        slipPlane->calculateVelocities ( param->B );
 
         // Calculate the time increment
-        timeIncrement = s->calculateTimeIncrement ( param->limitingDistance, param->limitingTimeStep );
+        timeIncrement = slipPlane->calculateTimeIncrement ( param->limitingDistance, param->limitingTimeStep );
 
         // Displace the dislocations
-        s->moveDislocations ( timeIncrement );
+        slipPlane->moveDislocations ( timeIncrement );
 
         // Increment counters
-        totalTime += s->getTimeIncrement ();
+        totalTime += slipPlane->getTimeIncrement ();
         simulationTime.push_back ( totalTime );
         nIterations++;
 
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            s->writeSlipPlane ( param->dislocationPositions.name );
+            slipPlane->writeSlipPlane ( param->dislocationPositions.name );
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            s->writeSlipPlaneStressDistribution ( param->slipPlaneStressDistributions.name,
-                                                  param->slipPlaneStressDistributions.parameters ( 0 ) );
+            slipPlane->writeSlipPlaneStressDistribution ( param->slipPlaneStressDistributions.name,
+                                                          param->slipPlaneStressDistributions.parameters ( 0 ) );
         }
 
         // Check for stopping criterion
