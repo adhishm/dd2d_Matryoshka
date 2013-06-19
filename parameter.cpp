@@ -7,6 +7,8 @@
  * @details This file defines member functions of the Parameter class which will hold all simulation parameters.
  */
 
+#include "parameter.h"
+
 /**
  * @brief Read parameters from file whose name is provided.
  * @param fileName Name of the file containing the parameters.
@@ -15,7 +17,7 @@
 bool Parameter::getParameters (std::string fileName)
 {
   // Open file
-  std::ifstream fp (fileName);
+  std::ifstream fp (fileName.c_str());
   std::string line;
 
   if (fp.is_open())
@@ -84,7 +86,7 @@ void Parameter::parseLineData (std::string line)
     if ( first=="crss" || first=="CRSS" )
     {
         ss >> v;
-        this-tau_crss = atof ( v.c_str() );
+        this->tau_crss = atof ( v.c_str() );
         return;
     }
 
