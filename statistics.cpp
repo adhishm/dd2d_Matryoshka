@@ -10,6 +10,17 @@
 #include "statistics.h"
 
 /**
+ * @brief Default constructor.
+ * @details Initialises the instance of this class with a false value for write and a frequency of 0.
+ */
+Statistics::Statistics ()
+{
+    this->write = false;
+    this->frequency = 0;
+    this->nIterationsSinceLastWrite = 0;
+}
+
+/**
  * @brief Constructor for the Statistics class.
  * @param w Flag indicating if the statistic is to be written or not.
  * @param f Frequency of writing.
