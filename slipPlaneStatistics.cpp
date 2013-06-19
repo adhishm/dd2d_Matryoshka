@@ -149,11 +149,11 @@ void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int reso
             fp << points[i].getValue ( j ) << " ";
         }
         // Local stresses
-        fp << stressLocal[i].getValue[0][0] << " " << stressLocal[i].getValue[1][1] << " " << stressLocal[2][2] << " "
-           << stressLocal[i].getValue[0][1] << " " << stressLocal[i].getValue[0][2] << " " << stressLocal[1][2] << " ";
+        fp << stressLocal[i].getValue(0,0) << " " << stressLocal[i].getValue(1,1) << " " << stressLocal[i].getValue(2,2) << " "
+           << stressLocal[i].getValue(0,1) << " " << stressLocal[i].getValue(0,2) << " " << stressLocal[i].getValue(1,2) << " ";
         // Global stresses
-        fp << stressGlobal[i].getValue[0][0] << " " << stressGlobal[i].getValue[1][1] << " " << stressGlobal[2][2] << " "
-           << stressGlobal[i].getValue[0][1] << " " << stressGlobal[i].getValue[0][2] << " " << stressGlobal[1][2] << std::endl;
+        fp << stressGlobal[i].getValue(0,0) << " " << stressGlobal[i].getValue(1,1) << " " << stressGlobal[i].getValue(2,2) << " "
+           << stressGlobal[i].getValue(0,1) << " " << stressGlobal[i].getValue(0,2) << " " << stressGlobal[i].getValue(1,2) << std::endl;
     }
 
     fp.close ();
