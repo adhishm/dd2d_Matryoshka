@@ -307,7 +307,8 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
             slipPlane->writeSlipPlaneStressDistribution ( param->slipPlaneStressDistributions.name,
-                                                          param->slipPlaneStressDistributions.parameters[0] );
+                                                          param->slipPlaneStressDistributions.parameters[0],
+                                                          param);
         }
 
         // Check for stopping criterion

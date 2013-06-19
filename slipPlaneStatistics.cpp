@@ -23,7 +23,7 @@ void SlipPlane::writeSlipPlane (std::string filename)
 
     int i, j, nDisl, nDislSources;
     Vector3d v;
-    Dislocation *disl;
+    Dislocation *d;
     DislocationSource *dSource;
 
     // Extremities
@@ -74,7 +74,7 @@ void SlipPlane::writeSlipPlane (std::string filename)
             for ( j=0; j<3; j++ ) {
                 fp << v.getValue ( j ) << " ";
             }
-            fp << d->getBurgersMag () << " ";
+            fp << d->getBurgersMagnitude () << " ";
             fp << ( int ) d->isMobile () << std::endl;
         }
         delete ( d );
@@ -130,7 +130,7 @@ void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int reso
     std::vector<Vector3d> points;
     Vector3d p0 = this->getExtremity ( 0 );
     Vector3d p1 = this->getExtremity ( 1 );
-    Vector3d segment = ( p1 - p0 ) / ( resolution - 1 );
+    Vector3d segment = ( p1 - p0 ) * ( 1.0 / ( resolution - 1 ) );
     Vector3d p;
     int i, j;
 
@@ -140,8 +140,8 @@ void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int reso
         p += segment;
     }
 
-    std::vector<Stress> stressLocal  = s->getSlipPlaneStress_local ( points,  param->appliedStress, param->mu, param->nu );
-    std::vector<Stress> stressGlobal = s->getSlipPlaneStress_global ( points,  param->appliedStress, param->mu, param->nu );
+    std::vector<Stress> stressLocal  = this->getSlipPlaneStress_local  ( points,  param->appliedStress, param->mu, param->nu );
+    std::vector<Stress> stressGlobal = this->getSlipPlaneStress_global ( points,  param->appliedStress, param->mu, param->nu );
 
     for ( i=0; i<resolution; i++ ) {
         // Position
