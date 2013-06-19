@@ -2,7 +2,7 @@
  * @file simulateSingleSlipPlane.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 10/06/2013
+ * @date 18/06/2013
  * @brief Defintion various functions to simulate dislocation motion on a single slip plane.
  * @details This file defines various functions to simulate dislocation motion on a single slip plane. It also writes statistics to files which will be treated separately.
  */
@@ -55,32 +55,74 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
     Vector3d *e;
     int i,  n;
 
-
     if ( fp.is_open() )
     {
         // Read the extremities
         e = new Vector3d[2];
-        getline ( fp, line );
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
+
         e[0] = readVectorFromline ( line );
-        getline ( fp, line );
+
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
         e[1] = readVectorFromLine ( line );
+
         s->setExtremities( e );
         delete ( e );
         e = NULL;
 
         // Read the normal vector
-        getline ( fp, line );
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
         s->setNormal( readVectorFromLine ( line ) );
 
         // Read the position
-        getline ( fp, line );
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
         s->setPosition( readVectorFromLine ( line ) );
 
         // Read number of dislocations
         fp >> n;
         // Read the dislocations
         for ( i=0; i<n; i++ ) {
-            getline ( fp, line );
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
             s->insertDislocation ( readDislocationFromLine ( line ) );
         }
 
@@ -88,7 +130,15 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         fp >> n;
         // Read the dislocation sources
         for ( i=0; i<n; i++ ) {
-            getline ( fp,  line );
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
             s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
         }
 

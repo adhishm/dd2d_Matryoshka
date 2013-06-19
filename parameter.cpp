@@ -23,7 +23,8 @@ bool Parameter::getParameters (std::string fileName)
     while (fp.good())
     {
       getline (fp, line);
-      parseLineData (line);
+      if ( !ignoreLine ( line ) )
+          parseLineData (line);
     }
     fp.close();
     return (true);
@@ -41,18 +42,6 @@ bool Parameter::getParameters (std::string fileName)
  */
 void Parameter::parseLineData (std::string line)
 {
-    if ( line.empty() )
-    {
-        // The line is empty
-        return;
-    }
-
-    if (line.at(0) == '#')
-    {
-        // This line is a comment. Ignore
-        return;
-    }
-
     std::stringstream ss(line);
     std::string first;
     std::string v;

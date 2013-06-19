@@ -2,7 +2,7 @@
  * @file tools.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 09/06/2013
+ * @date 18/06/2013
  * @brief Definition various tools.
  * @details This file defines various tools that may come in handy.
  */
@@ -80,7 +80,7 @@ std::vector<Vector3d> permuteVector_bySign (Vector3d v)
       vTemp.setValue (i, (-1.0*vTemp.getValue(i)));
       vList.push_back (vTemp);
     }
-  
+
   return (vList);
 }
 
@@ -145,4 +145,20 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
     }
 
   return (vList);
+}
+
+/**
+ * @brief Checks if the input line is to be ignored or not.
+ * @details A line in an input file may be empty or may be a comment. In these cases it should be ignored. This function tests if the given line is empty or begins with the character that indicates that it is a comment (default is #).
+ * @param line The line that is to be tested.
+ * @param comment The character that indicates a comment, default value is #.
+ * @return A boolean flag saying if the line should be ignored or not.
+ */
+bool ignoreLine (std::string line, char comment)
+{
+    if ( line.empty () ) {
+        return ( true );
+    }
+
+    return ( line.at ( 0 ) == comment );
 }
