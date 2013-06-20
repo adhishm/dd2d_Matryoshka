@@ -7,6 +7,8 @@
  * @details This file defines member functions of the Parameter class which will hold all simulation parameters.
  */
 
+#include "parameter.h"
+
 /**
  * @brief Read parameters from file whose name is provided.
  * @param fileName Name of the file containing the parameters.
@@ -15,7 +17,7 @@
 bool Parameter::getParameters (std::string fileName)
 {
   // Open file
-  std::ifstream fp (fileName);
+  std::ifstream fp (fileName.c_str());
   std::string line;
 
   if (fp.is_open())
@@ -84,7 +86,7 @@ void Parameter::parseLineData (std::string line)
     if ( first=="crss" || first=="CRSS" )
     {
         ss >> v;
-        this-tau_crss = atof ( v.c_str() );
+        this->tau_crss = atof ( v.c_str() );
         return;
     }
 
@@ -148,7 +150,7 @@ void Parameter::parseLineData (std::string line)
     }
 
     // Limiting time step
-    if (first=="limitingTimeStep" || "LimitingTimeStep")
+    if (first=="limitingTimeStep" || first=="LimitingTimeStep")
     {
         ss >> v;
         this->limitingTimeStep = atof (v.c_str());
@@ -162,6 +164,12 @@ void Parameter::parseLineData (std::string line)
         int write = atoi(v.c_str());
         ss >> v;
         this->dislocationPositions = Statistics( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->dislocationPositions.addName ( v );
+        }
+
         return;
     }
 
@@ -172,6 +180,14 @@ void Parameter::parseLineData (std::string line)
         int write = atoi(v.c_str());
         ss >> v;
         this->slipPlaneStressDistributions = Statistics( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->slipPlaneStressDistributions.addName ( v );
+            // Read additional parameter: resolution
+            ss >> v;
+            this->slipPlaneStressDistributions.addParameter ( atof ( v.c_str() ) );
+        }
         return;
     }
 

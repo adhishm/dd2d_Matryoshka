@@ -16,15 +16,15 @@
  */
 void SlipPlane::writeSlipPlane (std::string filename)
 {
-    std::ofstream fp ( filename );
-    int i, j, nDisl, nDislSources;
-    Vector3d v;
-    Dislocation *disl;
-    DislocationSource *dSource;
-
+    std::ofstream fp ( filename.c_str() );
     if ( !fp.is_open() ) {
         return;
     }
+
+    int i, j, nDisl, nDislSources;
+    Vector3d v;
+    Dislocation *d;
+    DislocationSource *dSource;
 
     // Extremities
     fp << "# Extremities\n";
@@ -74,7 +74,7 @@ void SlipPlane::writeSlipPlane (std::string filename)
             for ( j=0; j<3; j++ ) {
                 fp << v.getValue ( j ) << " ";
             }
-            fp << d->getBurgersMag () << " ";
+            fp << d->getBurgersMagnitude () << " ";
             fp << ( int ) d->isMobile () << std::endl;
         }
         delete ( d );
@@ -108,6 +108,8 @@ void SlipPlane::writeSlipPlane (std::string filename)
         dSource = NULL;
     }
 
+    // Close the file
+    fp.close ();
 }
 
 /**
@@ -115,5 +117,44 @@ void SlipPlane::writeSlipPlane (std::string filename)
  * @details This function writes out the distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane, with the given resolution. The stress fields of all dislocations and the externally applied stress are all superposed points along the slip plane, and then the stress tensor at this point is transformed to the one in the slip plane's local co-ordinate system to obtain the final stress. The points where the stress is calculated are chosen according to the argument resolution, which provides the number of equally spaced points along the slip plane where the stress field is to be calculated. The output file contains the following information in each row: PointPosition(3) LocalStresses(s_xx s_yy s_zz s_xy s_xz s_yz) GlobalStresses(s_xx s_yy s_zz s_xy s_xz s_yz).
  * @param filename The name of the file into which the data is to be written.
  * @param resolution The number of points at which the stress field is to be calculated.
+ * @param param Pointer to the instance of the parameter class which contains all the simulation parameters.
  */
-void writeSlipPlaneStressDistribution (std::string filename, int resolution);
+void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int resolution, Parameter *param)
+{
+    std::ofstream fp ( filename.c_str() );
+    if ( !fp.is_open() ) {
+        return;
+    }
+
+    // Create the vector of points
+    std::vector<Vector3d> points;
+    Vector3d p0 = this->getExtremity ( 0 );
+    Vector3d p1 = this->getExtremity ( 1 );
+    Vector3d segment = ( p1 - p0 ) * ( 1.0 / ( resolution - 1 ) );
+    Vector3d p;
+    int i, j;
+
+    p = p0;
+    for ( i=1; i<=resolution; i++ ) {
+        points.push_back ( p );
+        p += segment;
+    }
+
+    std::vector<Stress> stressLocal  = this->getSlipPlaneStress_local  ( points,  param->appliedStress, param->mu, param->nu );
+    std::vector<Stress> stressGlobal = this->getSlipPlaneStress_global ( points,  param->appliedStress, param->mu, param->nu );
+
+    for ( i=0; i<resolution; i++ ) {
+        // Position
+        for ( j=0; j<3; j++ ) {
+            fp << points[i].getValue ( j ) << " ";
+        }
+        // Local stresses
+        fp << stressLocal[i].getValue(0,0) << " " << stressLocal[i].getValue(1,1) << " " << stressLocal[i].getValue(2,2) << " "
+           << stressLocal[i].getValue(0,1) << " " << stressLocal[i].getValue(0,2) << " " << stressLocal[i].getValue(1,2) << " ";
+        // Global stresses
+        fp << stressGlobal[i].getValue(0,0) << " " << stressGlobal[i].getValue(1,1) << " " << stressGlobal[i].getValue(2,2) << " "
+           << stressGlobal[i].getValue(0,1) << " " << stressGlobal[i].getValue(0,2) << " " << stressGlobal[i].getValue(1,2) << std::endl;
+    }
+
+    fp.close ();
+}

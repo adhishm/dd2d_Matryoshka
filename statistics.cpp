@@ -10,6 +10,17 @@
 #include "statistics.h"
 
 /**
+ * @brief Default constructor.
+ * @details Initialises the instance of this class with a false value for write and a frequency of 0.
+ */
+Statistics::Statistics ()
+{
+    this->write = false;
+    this->frequency = 0;
+    this->nIterationsSinceLastWrite = 0;
+}
+
+/**
  * @brief Constructor for the Statistics class.
  * @param w Flag indicating if the statistic is to be written or not.
  * @param f Frequency of writing.
@@ -45,4 +56,21 @@ bool Statistics::ifWrite ()
     return (false);
   }
 }
-      
+
+/**
+ * @brief Adds a parameter to the vector parameters.
+ * @param p The parameter to be added to the vector.
+ */
+void Statistics::addParameter (double p)
+{
+    this->parameters.push_back ( p );
+}
+
+/**
+ * @brief Sets the name for the statistic.
+ * @param n String containing the name.
+ */
+void Statistics::addName (std::string n)
+{
+    this->name = n;
+}

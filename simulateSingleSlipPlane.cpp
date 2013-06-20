@@ -49,7 +49,7 @@ void simulateSingleSlipPlane ()
  */
 bool readSlipPlane (std::string fileName, SlipPlane *s)
 {
-    std::ifstream fp ( fileName );
+    std::ifstream fp ( fileName.c_str() );
     std::string line;
 
     Vector3d *e;
@@ -68,8 +68,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                 return ( false );
             }
         } while ( ignoreLine ( line ) );
-
-        e[0] = readVectorFromline ( line );
+        e[0] = readVectorFromLine ( line );
 
         do {
             if ( fp.good() ) {
@@ -111,7 +110,16 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         s->setPosition( readVectorFromLine ( line ) );
 
         // Read number of dislocations
-        fp >> n;
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
+        n = atoi ( line.c_str() );
         // Read the dislocations
         for ( i=0; i<n; i++ ) {
             do {
@@ -127,7 +135,16 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         }
 
         // Read number of dislocation sources
-        fp >> n;
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
+        n = atoi ( line.c_str() );
         // Read the dislocation sources
         for ( i=0; i<n; i++ ) {
             do {
@@ -213,7 +230,7 @@ Dislocation readDislocationFromLine (std::string s)
     ss >> a;
     mob = ( bool ) atoi ( a.c_str() );
 
-    return ( Dislocation ( bvec, lvec, pos, bmag, mon ) );
+    return ( Dislocation ( bvec, lvec, pos, bmag, mob ) );
 }
 
 /**
@@ -280,34 +297,45 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
     bool continueSimulation = true;
 
+    std::string fileName;
+    std::ostringstream timeString;
+
     while ( continueSimulation ) {
         // Calculate stresses
-        s->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
+        slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
 
         // Calculate forces on dislocations
-        s->calculateDislocationForces ( param->tau_crss );
+        slipPlane->calculateDislocationForces ( param->tau_crss );
 
         // Calculate dislocation velocities
-        s->calculateVelocities ( param->B );
+        slipPlane->calculateVelocities ( param->B );
 
         // Calculate the time increment
-        timeIncrement = s->calculateTimeIncrement ( param->limitingDistance, param->limitingTimeStep );
+        timeIncrement = slipPlane->calculateTimeIncrement ( param->limitingDistance, param->limitingTimeStep );
 
         // Displace the dislocations
-        s->moveDislocations ( timeIncrement );
+        slipPlane->moveDislocations ( timeIncrement );
 
         // Increment counters
-        totalTime += s->getTimeIncrement ();
+        totalTime += slipPlane->getTimeIncrement ();
         simulationTime.push_back ( totalTime );
         nIterations++;
 
+        timeString << totalTime;
+
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            // Write dislocation positions
+            fileName = param->dislocationPositions.name + timeString.str() + ".txt";
+            slipPlane->writeSlipPlane ( fileName );
+            fileName.clear ();
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            // Write slip plane stress
+            fileName = param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
+            slipPlane->writeSlipPlaneStressDistribution ( fileName,
+                                                          param->slipPlaneStressDistributions.parameters[0],
+                                                          param);
+            fileName.clear ();
         }
 
         // Check for stopping criterion

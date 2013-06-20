@@ -113,12 +113,7 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
   int i;
 
   std::vector<Vector3d> vList;
-  Vector3d vMinus;
-
-  if (negatives)
-    {
-      Vector3d vPlus;
-    }
+  Vector3d vPlus, vMinus;
 
   for (vi=v.begin();vi!=v.end();vi++)
     {
