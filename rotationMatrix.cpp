@@ -18,7 +18,7 @@ RotationMatrix::RotationMatrix ()
     int i,  j;
 
     for ( i=0; i<3; i++ ) {
-        for ( j=0; i<3; j++ ) {
+        for ( j=0; j<3; j++ ) {
             if ( i==j ) {
                 this->setValue ( i, j, 1.0 );
             }
