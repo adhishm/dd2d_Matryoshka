@@ -297,6 +297,9 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
     bool continueSimulation = true;
 
+    std::string fileName;
+    std::ostringstream timeString;
+
     while ( continueSimulation ) {
         // Calculate stresses
         slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
@@ -318,15 +321,21 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         simulationTime.push_back ( totalTime );
         nIterations++;
 
+        timeString << totalTime;
+
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            slipPlane->writeSlipPlane ( param->dislocationPositions.name );
+            fileName = param->dislocationPositions.name + timeString.str() + ".txt";
+            slipPlane->writeSlipPlane ( fileName );
+            fileName.clear ();
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            slipPlane->writeSlipPlaneStressDistribution ( param->slipPlaneStressDistributions.name,
+            fileName = param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
+            slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[1],
                                                           param);
+            fileName.clear ();
         }
 
         // Check for stopping criterion

@@ -21,8 +21,8 @@ ReactionRadius 7.0
 LimitingTimeStep 1.0e-09
 
 ## Statistics
-statsDislocationPositions 1 0.0
-statsSlipPlaneStress 1 0.0 100
+statsDislocationPositions 1 0.0 dislocationPositions
+statsSlipPlaneStress 1 0.0 slipPlaneStress 100
 
 ## Filenames
 Structure slipPlane_111.txt
