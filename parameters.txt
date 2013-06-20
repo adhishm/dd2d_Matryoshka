@@ -22,7 +22,7 @@ LimitingTimeStep 1.0e-09
 
 ## Statistics
 statsDislocationPositions 1 0.0
-statsSlipPlaneStress 1 0.0
+statsSlipPlaneStress 1 0.0 100
 
 ## Filenames
 Structure slipPlane_111.txt

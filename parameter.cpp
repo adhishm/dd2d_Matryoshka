@@ -174,6 +174,11 @@ void Parameter::parseLineData (std::string line)
         int write = atoi(v.c_str());
         ss >> v;
         this->slipPlaneStressDistributions = Statistics( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read additional parameter
+            ss >> v;
+            this->slipPlaneStressDistributions.addParameter ( atoi ( v.c_str() ) );
+        }
         return;
     }
 
