@@ -110,7 +110,16 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         s->setPosition( readVectorFromLine ( line ) );
 
         // Read number of dislocations
-        fp >> n;
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
+        n = atoi ( line.c_str() );
         // Read the dislocations
         for ( i=0; i<n; i++ ) {
             do {
@@ -126,7 +135,16 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         }
 
         // Read number of dislocation sources
-        fp >> n;
+        do {
+            if ( fp.good() ) {
+                getline ( fp, line );
+            }
+            else {
+                fp.close ();
+                return ( false );
+            }
+        } while ( ignoreLine ( line ) );
+        n = atoi ( line.c_str() );
         // Read the dislocation sources
         for ( i=0; i<n; i++ ) {
             do {
