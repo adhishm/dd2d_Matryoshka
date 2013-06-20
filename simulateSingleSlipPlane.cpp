@@ -333,7 +333,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
             fileName = param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
-                                                          param->slipPlaneStressDistributions.parameters[1],
+                                                          param->slipPlaneStressDistributions.parameters[0],
                                                           param);
             fileName.clear ();
         }
