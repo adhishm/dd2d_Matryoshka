@@ -164,6 +164,12 @@ void Parameter::parseLineData (std::string line)
         int write = atoi(v.c_str());
         ss >> v;
         this->dislocationPositions = Statistics( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->dislocationPositions.addName ( v );
+        }
+
         return;
     }
 
@@ -175,9 +181,12 @@ void Parameter::parseLineData (std::string line)
         ss >> v;
         this->slipPlaneStressDistributions = Statistics( (write==1), atof(v.c_str()));
         if ( write ) {
-            // Read additional parameter
+            // Read name
             ss >> v;
-            this->slipPlaneStressDistributions.addParameter ( atoi ( v.c_str() ) );
+            this->slipPlaneStressDistributions.addName ( v );
+            // Read additional parameter: resolution
+            ss >> v;
+            this->slipPlaneStressDistributions.addParameter ( atof ( v.c_str() ) );
         }
         return;
     }
