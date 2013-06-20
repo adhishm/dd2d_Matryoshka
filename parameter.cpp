@@ -150,7 +150,7 @@ void Parameter::parseLineData (std::string line)
     }
 
     // Limiting time step
-    if (first=="limitingTimeStep" || "LimitingTimeStep")
+    if (first=="limitingTimeStep" || first=="LimitingTimeStep")
     {
         ss >> v;
         this->limitingTimeStep = atof (v.c_str());
