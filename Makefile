@@ -74,8 +74,8 @@ rebuild:
 clean:
 	rm -f O/*
 	rm -f O_GDB/*
-	rm -f dd2d
-	rm -f dd2d_gdb
+	rm -f ${EXECNAME}
+	rm -f ${DEBUGNAME}
 
 default:
 	rebuild
