@@ -14,6 +14,9 @@
 #include <fstream>
 #include <string>
 
+// Algorithms
+#include <algorithm>
+
 // STL containers
 #include <vector>
 #include <iterator>
