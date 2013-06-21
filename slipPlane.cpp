@@ -457,19 +457,7 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
 						this->dislocations[1],
 						this->dislocations[1].getVelocity());
   // Choose the smaller of the two
-  timeIncrement[0] = t1 < t2 ? t1:t2;
-  /*
-    if (timeIncrement[0] < minDt)
-    {
-    // This dislocation should not move in this iteration because it might collide with the next defect
-    timeIncrement[0] = minDt;
-    this->dislocations[0].setVelocity ( Vector3d(0.0, 0.0, 0.0) );
-
-    // The other defect is a slip plane extremity
-    // This dislocation will not move any more
-    this->dislocations[0].setPinned();
-    }
-  */
+  timeIncrement[0] = std::min ( t1, t2 );
 
   for (i=1; i<(nDisl-1); i++)
     {
@@ -479,15 +467,7 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
       t2 = this->dislocations[i].idealTimeIncrement(minDistance,
 						    this->dislocations[i+1],
 						    this->dislocations[i+1].getVelocity());
-      timeIncrement[i] = t1 < t2 ? t1:t2;
-      /*
-	if (timeIncrement[i] < minDt)
-	{
-	// This dislocation should not move in this iteration because it might collide with the next defect
-	timeIncrement[i] = minDt;
-	this->dislocations[i].setVelocity ( Vector3d(0.0, 0.0, 0.0) );
-	}
-      */
+      timeIncrement[i] = std::min ( t1, t2 );
     }
 
   // For the last dislocation, the time increment has to be calculated
@@ -501,29 +481,11 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
 						this->dislocations[i-1],
 						this->dislocations[i-1].getVelocity());
   // Choose the smaller of the two
-  timeIncrement[i] = t1 < t2 ? t1:t2;
-  /*
-    if (timeIncrement[i] < minDt)
-    {
-    // This dislocation should not move in this iteration because it might collide with the next defect
-    timeIncrement[i] = minDt;
-    this->dislocations[i].setVelocity ( Vector3d(0.0, 0.0, 0.0) );
+  timeIncrement[i] = std::min ( t1, t2 );
 
-    // The other defect is a slip plane extremity
-    // This dislocation will not move any more
-    this->dislocations[i].setPinned();
-    }
-  */
-  dtMin = 1000;
-  for (i=0; i<nDisl; i++)
-    {
-      if (timeIncrement[i] < dtMin)
-	{
-	  dtMin = timeIncrement[i];
-	}
-    }
+  dtMin = *std::min_element ( timeIncrement.begin(), timeIncrement.end() );
 
-  this->dt = dtMin<minDt ? minDt:dtMin;  // Choose dtMin greater than minDt.
+  this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
   return (timeIncrement);
 }
 

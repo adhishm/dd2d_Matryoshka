@@ -311,7 +311,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         slipPlane->calculateVelocities ( param->B );
 
         // Calculate the time increment
-        timeIncrement = slipPlane->calculateTimeIncrement ( param->limitingDistance, param->limitingTimeStep );
+        timeIncrement = slipPlane->calculateTimeIncrement ( ( param->limitingDistance * param->bmag ), param->limitingTimeStep );
 
         // Displace the dislocations
         slipPlane->moveDislocations ( timeIncrement );

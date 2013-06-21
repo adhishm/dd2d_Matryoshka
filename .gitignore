@@ -4,3 +4,9 @@ doc/
 main.cpp
 mainpage.dox
 Doxyfile
+O/*
+O_GDB/*
+dd2d
+dd2d_gdb
+*.txt
+dd2d_v*
