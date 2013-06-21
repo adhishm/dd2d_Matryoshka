@@ -11,6 +11,7 @@
 #define DISLOCATION_H
 
 #include <vector>
+#include <algorithm>
 
 #include "defect.h"
 #include "dislocationDefaults.h"
