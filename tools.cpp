@@ -2,7 +2,7 @@
  * @file tools.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 09/06/2013
+ * @date 18/06/2013
  * @brief Definition various tools.
  * @details This file defines various tools that may come in handy.
  */
@@ -21,7 +21,7 @@ std::vector<Vector3d> permuteVector (Vector3d v)
 
   for (int i=0; i<3; i++)
     {
-      vTemp = permuteVector_abc (v, i);
+      vTemp = permuteVector_byIndex (v, i);
       vList = concatenateVectors (vList, vTemp);
     }
 
@@ -35,7 +35,7 @@ std::vector<Vector3d> permuteVector (Vector3d v)
  * @param index The index of the element of the vector v that must remain in position.
  * @return An STL vector container with the list of the permuted vectors keeping the indicated element in its original position.
  */
-std::vector<Vector3d> permuteVector_abc (Vector3d v, int index)
+std::vector<Vector3d> permuteVector_byIndex (Vector3d v, int index)
 {
   // The final vector that will be returned
   std::vector<Vector3d> vList;
@@ -52,8 +52,8 @@ std::vector<Vector3d> permuteVector_abc (Vector3d v, int index)
 			  v.getValue((index+1)%3));
 
 // Create the permutations with the signs
- vList1 = permuteVector_signs (v1);
- vList2 = permuteVector_signs (v2);
+ vList1 = permuteVector_bySign (v1);
+ vList2 = permuteVector_bySign (v2);
 
  // Concatenate the two vectors
  vList = concatenateVectors (vList1, vList2);
@@ -67,7 +67,7 @@ std::vector<Vector3d> permuteVector_abc (Vector3d v, int index)
  * @param v The vector that has to be permuted.
  * @return An STL vector container with the permuted vectors.
  */
-std::vector<Vector3d> permuteVector_signs (Vector3d v)
+std::vector<Vector3d> permuteVector_bySign (Vector3d v)
 {
   // The list that will contain the permuted vectors.
   std::vector<Vector3d> vList (1, v);
@@ -80,7 +80,7 @@ std::vector<Vector3d> permuteVector_signs (Vector3d v)
       vTemp.setValue (i, (-1.0*vTemp.getValue(i)));
       vList.push_back (vTemp);
     }
-  
+
   return (vList);
 }
 
@@ -113,12 +113,7 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
   int i;
 
   std::vector<Vector3d> vList;
-  Vector3d vMinus;
-
-  if (negatives)
-    {
-      Vector3d vPlus;
-    }
+  Vector3d vPlus, vMinus;
 
   for (vi=v.begin();vi!=v.end();vi++)
     {
@@ -145,4 +140,20 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
     }
 
   return (vList);
+}
+
+/**
+ * @brief Checks if the input line is to be ignored or not.
+ * @details A line in an input file may be empty or may be a comment. In these cases it should be ignored. This function tests if the given line is empty or begins with the character that indicates that it is a comment (default is #).
+ * @param line The line that is to be tested.
+ * @param comment The character that indicates a comment, default value is #.
+ * @return A boolean flag saying if the line should be ignored or not.
+ */
+bool ignoreLine (std::string line, char comment)
+{
+    if ( line.empty () ) {
+        return ( true );
+    }
+
+    return ( line.at ( 0 ) == comment );
 }

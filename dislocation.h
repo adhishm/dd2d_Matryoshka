@@ -11,6 +11,7 @@
 #define DISLOCATION_H
 
 #include <vector>
+#include <algorithm>
 
 #include "defect.h"
 #include "dislocationDefaults.h"
@@ -113,9 +114,14 @@ public:
   // Assignment functions
   /**
    * @brief Sets the Burgers vector of the dislocation.
-   * @param burgers Bergers vector of the dislocation.
+   * @param burgers Burgers vector of the dislocation.
    */
   void setBurgers (Vector3d burgers);
+  /**
+   * @brief Sets the magnitude of the Burgers vector of the dislocation.
+   * @param b Magnitude of the Burgers vector of the dislocation.
+   */
+  void setBurgersMagnitude (double b);
   /**
    * @brief Sets the line vector of the dislocation.
    * @param line Line vector of the dislocation.
@@ -156,6 +162,11 @@ public:
    * @return Burgers vector in a variable of type Vector3d.
    */
   Vector3d getBurgers () const;
+  /**
+   * @brief Gets the magnitude of the Burgers vector of the dislocation.
+   * @return Magnitude of the Burgers vector.
+   */
+  double getBurgersMagnitude () const;
   /**
    * @brief Gets the line vector of the dislocation.
    * @return Line vector in a variable of type Vector3d.

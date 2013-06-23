@@ -57,6 +57,15 @@ void Dislocation::setBurgers (Vector3d burgers)
 }
 
 /**
+ * @brief Sets the magnitude of the Burgers vector of the dislocation.
+ * @param b Magnitude of the Burgers vector of the dislocation.
+ */
+void Dislocation::setBurgersMagnitude (double b)
+{
+    this->bmag = b;
+}
+
+/**
  * @brief Sets the line vector of the dislocation.
  */
 void Dislocation::setLineVector (Vector3d line)
@@ -120,6 +129,15 @@ void Dislocation::setVelocity (Vector3d v)
 Vector3d Dislocation::getBurgers () const
 {
   return ( this->bvec );
+}
+
+/**
+ * @brief Gets the magnitude of the Burgers vector of the dislocation.
+ * @return Magnitude of the Burgers vector.
+ */
+double Dislocation::getBurgersMagnitude () const
+{
+    return ( this->bmag );
 }
 
 /**
@@ -236,17 +254,17 @@ void Dislocation::calculateRotationMatrix ()
 {
   Vector3d *globalSystem = new Vector3d[3];	// Global co-ordinate systems
   Vector3d *localSystem  = new Vector3d[3];	// Dislocation co-ordinate system
-  
+
   // Vectors of the global co-ordinate system
   globalSystem[0] = Vector3d (1.0, 0.0, 0.0);
   globalSystem[1] = Vector3d (0.0, 1.0, 0.0);
   globalSystem[2] = Vector3d (0.0, 0.0, 1.0);
-  
+
   // Vectors of the dislocation co-ordinate system
   localSystem[0] = bvec.normalize ();
   localSystem[2] = lvec.normalize ();
   localSystem[1] = (lvec ^ bvec).normalize ();
-  
+
   // Calculate rotation matrix
   this->rotationMatrix = RotationMatrix (globalSystem, localSystem);
 
@@ -254,7 +272,7 @@ void Dislocation::calculateRotationMatrix ()
   delete (globalSystem);  globalSystem = NULL;
   delete (localSystem);   localSystem  = NULL;
 }
-  
+
 // Stress field
 /**
  * @brief Calculates the stress field due to this dislocation at the position given as argument.
@@ -269,17 +287,17 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
   double principalStresses[3];
   double shearStresses[3];
   Vector3d r;  // Vector joining the present dislocation to the point p
-  
+
   r = p - this->pos;	// Still in global coordinate system
   Vector3d rLocal = this->rotationMatrix * r;	// Rotated to local co-ordinate system
-  
+
   // Calculate the stress field in the local co-ordinate system
   Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
-  
+
   // Calculate the stress field in the global co-ordinate system
   //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
   Stress sGlobal = sLocal.rotate (this->rotationMatrix);
-  
+
   return (sGlobal);
 }
 
@@ -294,23 +312,23 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 {
   double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
-  
+
   double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
-  
+
   x = p.getValue (0);
   y = p.getValue (1);
   denominator = pow ( ((x*x) + (y*y)), 2);
 
   double principalStresses[3], shearStresses[3];
-  
+
   principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
   principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
   principalStresses[2] = nu * ( principalStresses[0] + principalStresses[1] );
-  
+
   shearStresses[0] = D * x * ( (x*x) - (y*y) ) / denominator;
   shearStresses[1] = 0.0;
   shearStresses[2] = 0.0;
-  
+
   return (Stress(principalStresses, shearStresses));
 }
 
@@ -330,7 +348,7 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
 
   // Check for CRSS condition
   if (sigmaLocal.getValue(0,1) >= tau_crss)
-    { 
+    {
       Vector3d force = sigma * ((this->bvec)^(this->lvec));
     }
 

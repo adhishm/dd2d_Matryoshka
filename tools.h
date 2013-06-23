@@ -2,7 +2,7 @@
  * @file tools.h
  * @author Adhish Majumdar
  * @version 1.0
- * @date 09/06/2013
+ * @date 18/06/2013
  * @brief Declaration various tools.
  * @details This file declares various tools that may come in handy.
  */
@@ -12,6 +12,7 @@
 
 #include <vector>
 #include <iterator>
+#include <string>
 
 #include "vector3d.h"
 
@@ -30,7 +31,7 @@ std::vector<Vector3d> permuteVector (Vector3d v);
  * @param index The index of the element of the vector v that must remain in position.
  * @return An STL vector container with the list of the permuted vectors keeping the indicated element in its original position.
  */
-std::vector<Vector3d> permuteVector_abc (Vector3d v, int index);
+std::vector<Vector3d> permuteVector_byIndex (Vector3d v, int index);
 
 /**
  * @brief Permutations of the given vector by only changing signs of the elements.
@@ -38,7 +39,7 @@ std::vector<Vector3d> permuteVector_abc (Vector3d v, int index);
  * @param v The vector that has to be permuted.
  * @return An STL vector container with the permuted vectors.
  */
-std::vector<Vector3d> permuteVector_signs (Vector3d v);
+std::vector<Vector3d> permuteVector_bySign (Vector3d v);
 
 /**
  * @brief Concatenates two STL vectors containing elements of type Vector3d.
@@ -56,5 +57,14 @@ std::vector<Vector3d> concatenateVectors (std::vector<Vector3d> v1, std::vector<
  * @return The vector without duplicates.
  */
 std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bool negatives);
+
+/**
+ * @brief Checks if the input line is to be ignored or not.
+ * @details A line in an input file may be empty or may be a comment. In these cases it should be ignored. This function tests if the given line is empty or begins with the character that indicates that it is a comment (default is #).
+ * @param line The line that is to be tested.
+ * @param comment The character that indicates a comment, default value is #.
+ * @return A boolean flag saying if the line should be ignored or not.
+ */
+bool ignoreLine (std::string line, char comment = '#');
 
 #endif

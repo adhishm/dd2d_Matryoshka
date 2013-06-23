@@ -22,11 +22,11 @@ StandardSlipSystem::StandardSlipSystem (CrystalStructure c)
     case CrystalStructure::CRYSTAL_STRUCTURE_FCC:
       this->createFCCSlipSystems ();
       break;
-      
+
     case CrystalStructure::CRYSTAL_STRUCTURE_BCC:
       this->createBCCSlipSystems ();
       break;
-      
+
     default:
       this->createFCCSlipSystems ();
       break;
@@ -36,7 +36,7 @@ StandardSlipSystem::StandardSlipSystem (CrystalStructure c)
 // Assignment functions
 /**
  * @brief Creates the 12 possible FCC slip systems.
- */  
+ */
 void StandardSlipSystem::createFCCSlipSystems ()
 {
   Vector3d n (1.0, 1.0, 1.0);  // Normal vector
@@ -51,7 +51,7 @@ void StandardSlipSystem::createFCCSlipSystems ()
 void StandardSlipSystem::createBCCSlipSystems ()
 {
   Vector3d n (1.0, 1.0, 0.0);  // Normal vector
-  Vector3d d (1.0. 1.0. 1.0);  // Slip direction
+  Vector3d d (1.0, 1.0, 1.0);  // Slip direction
 
   this->createSlipSystems (n, d);
 }

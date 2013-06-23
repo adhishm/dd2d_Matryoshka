@@ -20,7 +20,8 @@
 /**
  * @brief Enumerated data type to define indices for the crystal structure.
  */
-enum class CrystalStructure { CRYSTAL_STRUCTURE_FCC, CRYSTAL_STRUCTURE_BCC };
+enum class CrystalStructure { CRYSTAL_STRUCTURE_FCC = 1, 
+	CRYSTAL_STRUCTURE_BCC = 2 };
 
 /**
  * @brief Definition of the StandardSlipSystem class.
