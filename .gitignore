@@ -9,4 +9,6 @@ O_GDB/*
 dd2d
 dd2d_gdb
 *.txt
+*.bak
+*~
 dd2d_v*
