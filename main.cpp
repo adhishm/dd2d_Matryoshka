@@ -1,9 +1,13 @@
 #include <iostream>
 
-#include "dislocation.h"
+#include "parameter.h"
+#include "simulateSingleSlipPlane.h"
+
+using namespace std;
 
 int main ()
 {
-	return (0);
+    simulateSingleSlipPlane ();
+    return (0);
 }
 
