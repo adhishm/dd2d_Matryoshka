@@ -97,6 +97,17 @@ public:
      * @details In the simulations, the time increment is calculated in each iteration depending on the velocities of the defects. However, the time increment is not allowed to be smaller than the value provided in this variable.
      */
     double limitingTimeStep;
+
+    // Directories
+    /**
+     * @brief The name of the directory containing the input files.
+     */
+    std::string input_dir;
+
+    /**
+     * @brief The name of the directory containing the output files.
+     */
+    std::string output_dir;
     
     // Satistics
     /**

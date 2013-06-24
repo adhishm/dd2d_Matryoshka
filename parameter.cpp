@@ -157,6 +157,19 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Directories
+    if ( first=="input" || first=="Input" ) {
+        ss >> v;
+        this->input_dir = v;
+        return;
+    }
+
+    if ( first=="output" || first=="Output" ) {
+        ss >> v;
+        this->output_dir = v;
+        return;
+    }
+
     // Statistics dislocation positions
     if (first=="statsDislocationPositions")
     {

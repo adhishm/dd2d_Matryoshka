@@ -16,6 +16,7 @@
 void simulateSingleSlipPlane ()
 {
   std::string fName;
+  std::string message;
 
   std::cout << "Parameter file name: ";
   std::cin >> fName;
@@ -26,14 +27,36 @@ void simulateSingleSlipPlane ()
 
   if ( param->getParameters( fName ) )
   {
+      message = "Success: read file " + fName;
+      displayMessage ( message );
+      message.clear ();
+
       slipPlane = new SlipPlane;
-      if ( readSlipPlane ( param->dislocationStructureFile,  slipPlane ) )
+
+      fName.clear ();
+      fName = param->input_dir + "/" + param->dislocationStructureFile;
+      if ( readSlipPlane ( fName, slipPlane ) )
       {
+          message = "Success: read file " + fName;
+          displayMessage ( message );
+          message.clear ();
+
           singleSlipPlane_iterate ( param, slipPlane );
+      }
+      else {
+          message = "Error: Unable to read slip plane from file " + fName;
+          displayMessage ( message );
+          message.clear ();
       }
 
       delete ( slipPlane );
       slipPlane = NULL;
+      fName.clear ();
+  }
+  else {
+      message = "Error: Unable to read parameter file " + fName;
+      displayMessage ( message );
+      message.clear ();
   }
 
   delete ( param );
@@ -298,7 +321,9 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     bool continueSimulation = true;
 
     std::string fileName;
-    std::ostringstream timeString;
+    std::string message;
+
+    displayMessage ( "Starting simulation..." );
 
     while ( continueSimulation ) {
         // Calculate stresses
@@ -321,17 +346,19 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         simulationTime.push_back ( totalTime );
         nIterations++;
 
-        timeString << totalTime;
+        message = "Iteration " + intToString ( nIterations ) + "; Total time " + doubleToString ( totalTime );
+        displayMessage ( message );
+        message.clear ();
 
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            fileName = param->dislocationPositions.name + timeString.str() + ".txt";
+            fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlane ( fileName );
             fileName.clear ();
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            fileName = param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
+            fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
                                                           param);
