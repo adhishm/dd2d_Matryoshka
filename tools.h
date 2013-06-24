@@ -75,4 +75,20 @@ bool ignoreLine (std::string line, char comment = '#');
  */
 void displayMessage (std::string message);
 
+/**
+ * @brief Converts an integer to an std::string.
+ * @details This function uses ostringstream to convert an integer to a string.
+ * @param i The integer to be converted to a string.
+ * @return The integer converted to a string.
+ */
+std::string intToString (int i);
+
+/**
+ * @brief Converts an double to an std::string.
+ * @details This function uses ostringstream to convert an double to a string.
+ * @param i The double to be converted to a string.
+ * @return The double converted to a string.
+ */
+std::string doubleToString (double i);
+
 #endif

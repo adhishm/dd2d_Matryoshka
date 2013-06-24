@@ -321,8 +321,6 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     bool continueSimulation = true;
 
     std::string fileName;
-    std::ostringstream timeString;
-    std::ostringstream iterationString;
     std::string message;
 
     displayMessage ( "Starting simulation..." );
@@ -348,22 +346,19 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         simulationTime.push_back ( totalTime );
         nIterations++;
 
-        timeString << totalTime;
-        iterationString << nIterations;
-
-        message = "Iteration " + iterationString.str() + "; Total time " + timeString.str();
+        message = "Iteration " + intToString ( nIterations ) + "; Total time " + doubleToString ( totalTime );
         displayMessage ( message );
         message.clear ();
 
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            fileName = param->output_dir + "/" + param->dislocationPositions.name + timeString.str() + ".txt";
+            fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlane ( fileName );
             fileName.clear ();
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
+            fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
                                                           param);
