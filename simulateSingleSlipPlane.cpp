@@ -33,10 +33,16 @@ void simulateSingleSlipPlane ()
       {
           singleSlipPlane_iterate ( param, slipPlane );
       }
+      else {
+          std::cout << std::endl << "Unable to read slip plane from file " << fName << std::endl;
+      }
 
       delete ( slipPlane );
       slipPlane = NULL;
       fName.clear ();
+  }
+  else {
+      std::cout << std::endl << "Error: Unable to read parameter file " << fName << std::endl;
   }
 
   delete ( param );
