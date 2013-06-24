@@ -27,7 +27,7 @@ void simulateSingleSlipPlane ()
   if ( param->getParameters( fName ) )
   {
       slipPlane = new SlipPlane;
-      if ( readSlipPlane ( param->dislocationStructureFile,  slipPlane ) )
+      if ( readSlipPlane ( param->input_dir + param->dislocationStructureFile,  slipPlane ) )
       {
           singleSlipPlane_iterate ( param, slipPlane );
       }
@@ -325,13 +325,13 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
-            fileName = param->dislocationPositions.name + timeString.str() + ".txt";
+            fileName = param->output_dir + param->dislocationPositions.name + timeString.str() + ".txt";
             slipPlane->writeSlipPlane ( fileName );
             fileName.clear ();
         }
 
         if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            fileName = param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
+            fileName = param->output_dir + param->slipPlaneStressDistributions.name + timeString.str() + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
                                                           param);
