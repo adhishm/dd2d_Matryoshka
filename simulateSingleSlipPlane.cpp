@@ -27,13 +27,16 @@ void simulateSingleSlipPlane ()
   if ( param->getParameters( fName ) )
   {
       slipPlane = new SlipPlane;
-      if ( readSlipPlane ( param->input_dir + param->dislocationStructureFile,  slipPlane ) )
+      fName.clear ();
+      fName = param->input_dir + param->dislocationStructureFile;
+      if ( readSlipPlane ( fName, slipPlane ) )
       {
           singleSlipPlane_iterate ( param, slipPlane );
       }
 
       delete ( slipPlane );
       slipPlane = NULL;
+      fName.clear ();
   }
 
   delete ( param );
