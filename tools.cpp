@@ -157,3 +157,38 @@ bool ignoreLine (std::string line, char comment)
 
     return ( line.at ( 0 ) == comment );
 }
+
+/**
+ * @brief Displays the message on screen.
+ * @param message An std""string containing the message to be displayed.
+ */
+void displayMessage (std::string message)
+{
+    std::cout << std::endl << message << std::endl;
+}
+
+/**
+ * @brief Converts an integer to an std::string.
+ * @details This function uses ostringstream to convert an integer to a string.
+ * @param i The integer to be converted to a string.
+ * @return The integer converted to a string.
+ */
+std::string intToString (int i)
+{
+    std::ostringstream ss;
+    ss << i;
+    return ( ss.str() );
+}
+
+/**
+ * @brief Converts an double to an std::string.
+ * @details This function uses ostringstream to convert an double to a string.
+ * @param i The double to be converted to a string.
+ * @return The double converted to a string.
+ */
+std::string doubleToString (double i)
+{
+    std::ostringstream ss;
+    ss << i;
+    return ( ss.str() );
+}
