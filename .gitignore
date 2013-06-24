@@ -1,4 +1,6 @@
 doc/
+output/
+input/
 *~
 #*#
 main.cpp
