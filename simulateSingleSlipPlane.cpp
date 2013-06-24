@@ -16,6 +16,7 @@
 void simulateSingleSlipPlane ()
 {
   std::string fName;
+  std::string message;
 
   std::cout << "Parameter file name: ";
   std::cin >> fName;
@@ -26,15 +27,26 @@ void simulateSingleSlipPlane ()
 
   if ( param->getParameters( fName ) )
   {
+      message = "Success: read file " + fName;
+      displayMessage ( message );
+      message.clear ();
+
       slipPlane = new SlipPlane;
+
       fName.clear ();
       fName = param->input_dir + "/" + param->dislocationStructureFile;
       if ( readSlipPlane ( fName, slipPlane ) )
       {
+          message = "Success: read file " + fName;
+          displayMessage ( message );
+          message.clear ();
+
           singleSlipPlane_iterate ( param, slipPlane );
       }
       else {
-          std::cout << std::endl << "Unable to read slip plane from file " << fName << std::endl;
+          message = "Error: Unable to read slip plane from file " + fName;
+          displayMessage ( message );
+          message.clear ();
       }
 
       delete ( slipPlane );
@@ -42,7 +54,9 @@ void simulateSingleSlipPlane ()
       fName.clear ();
   }
   else {
-      std::cout << std::endl << "Error: Unable to read parameter file " << fName << std::endl;
+      message = "Error: Unable to read parameter file " + fName;
+      displayMessage ( message );
+      message.clear ();
   }
 
   delete ( param );

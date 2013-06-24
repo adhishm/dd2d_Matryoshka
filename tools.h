@@ -67,4 +67,10 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
  */
 bool ignoreLine (std::string line, char comment = '#');
 
+/**
+ * @brief Displays the message on screen.
+ * @param message An std""string containing the message to be displayed.
+ */
+void displayMessage (std::string message);
+
 #endif

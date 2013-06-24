@@ -157,3 +157,12 @@ bool ignoreLine (std::string line, char comment)
 
     return ( line.at ( 0 ) == comment );
 }
+
+/**
+ * @brief Displays the message on screen.
+ * @param message An std""string containing the message to be displayed.
+ */
+void displayMessage (std::string message)
+{
+    std::cout << std::endl << message << std::endl;
+}
