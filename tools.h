@@ -15,6 +15,7 @@
 #include <vector>
 #include <iterator>
 #include <string>
+#include <sstream>
 
 #include "vector3d.h"
 
