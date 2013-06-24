@@ -322,6 +322,10 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
     std::string fileName;
     std::ostringstream timeString;
+    std::ostringstream iterationString;
+    std::string message;
+
+    displayMessage ( "Starting simulation..." );
 
     while ( continueSimulation ) {
         // Calculate stresses
@@ -345,6 +349,11 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         nIterations++;
 
         timeString << totalTime;
+        iterationString << nIterations;
+
+        message = "Iteration " + iterationString.str() + "; Total time " + timeString.str();
+        displayMessage ( message );
+        message.clear ();
 
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
