@@ -1,8 +1,8 @@
 /**
  * @file strain.cpp
  * @author Adhish Majumdar
- * @version 1.0
- * @date 05/06/2013
+ * @version 1.1
+ * @date 25/06/2013
  * @brief Definition of the member functions if the Strain class.
  * @details This file defines the member functions of the Strain class for the strain tensor.
  */
@@ -94,6 +94,34 @@ Strain::Strain (Matrix33 m)
 }
 
 /**
+ * @brief Set the value of the principal strain indicated by the index.
+ * @details The principal strains s_xx, s_yy, or s_zz are set by this function by the indices 0, 1, and 2 respectively.
+ * @param i Index of the strain whose value is to be set.
+ * @param v The value that has to be put.
+   */
+void Strain::setPrincipalStrain (int i, double v)
+{
+  if (i>=0 && i<=2)
+    {
+      this->principalStrains[i] = v;
+    }
+}
+
+/**
+ * @brief Set the value of the shear strain indicated by the index.
+ * @details The principal strains s_xy, s_xz, or s_yz are set by this function by the indices 0, 1, and 2 respectively.
+ * @param i Index of the strain whose value is to be set.
+ * @param v The value that has to be put.
+ */
+void Strain::setShearStrain (int i, double v)
+{
+  if (i>=0 && i<=2)
+    {
+      this->shearStrains[i] = v;
+    }
+}
+
+/**
  * @brief Construct the strain tensor from the principal and shear strains.
  * @details Takes the values in principalStrains and shearStrains and constructs the symmetrical strain matrix.
  */
@@ -121,6 +149,24 @@ Vector3d Strain::getPrincipalStrains () const
 }
 
 /**
+ * @brief Get one component of the principal strain.
+ * @details Returns the value of the component of the principal strain indicated by the argument: 0=s11 1=s22 2=s33.
+ * @param i The index of the component required.
+   * @return The component of the principal strains.
+   */
+double Strain::getPrincipalStrain (int i) const
+{
+  if (i>=0 && i<=2)
+    {
+      return (this->principalStrains[i]);
+    }
+  else
+    {
+      return (0.0);
+    }
+}
+
+/**
  * @brief Get the shear strains.
  * @details Returns a vector of type Vector3d with the shear strains: s12 s13 s23.
  * @return Vector3d variable with the shear strains.
@@ -130,6 +176,60 @@ Vector3d Strain::getShearStrains () const
   return ( Vector3d (this->shearStrains [0],
 		     this->shearStrains [1],
 		     this->shearStrains [2] ) );
+}
+
+/**
+ * @brief Get one component of the shear strain.
+ * @details Returns the value of the component of the shear strain indicated by the argument: 0=s01 1=s12 2=s23.
+ * @param i The index of the component required.
+   * @return The component of the shear strains.
+   */
+double Strain::getShearStrain (int i) const
+{
+  if (i>=0 && i<=2)
+    {
+      return (this->shearStrains[i]);
+    }
+  else
+    {
+      return (0.0);
+    }
+}
+
+/**
+ * @brief Operator for addition of two strain tensors.
+ * @details Adds two strain tensors together and returns the result in a third tensor.
+ * @return The result of the addition of two strain tensors.
+ */
+Strain Strain::operator+ (const Strain& p) const
+{
+  Strain s;
+  int i;
+
+  for (i=0; i<3; i++)
+    {
+      s.setPrincipalStrain (i, this->getPrincipalStrain(i) + p.getPrincipalStrain(i));
+      s.setShearStrain (i, this->getShearStrain(i) + p.getShearStrain(i));
+    }
+
+  s.populateMatrix ();
+  return (s);
+}
+
+/**
+ * @brief Reflexive addition of two strain tensors.
+ */
+void Strain::operator+= (const Strain& p)
+{
+  int i;
+  
+  for (i=0; i<3; i++)
+    {
+      this->setPrincipalStrain (i, this->getPrincipalStrain(i) + p.getPrincipalStrain(i));
+      this->setShearStrain (i, this->getShearStrain(i) + p.getShearStrain(i));
+    }
+
+  this->populateMatrix ();
 }
 
 /**
@@ -144,7 +244,22 @@ Strain Strain::rotate (RotationMatrix alpha)
   RotationMatrix alphaT (alpha.transpose());
 
   // Rotate the strain matrix
-  Strain sNew = Strain (alpha * (*this) * alphaT);
+  Matrix33 m = alpha * ((*this) * alphaT);
+  double *principalStrain = new double[3];
+  double *shearStrain = new double[3];
+  int i;
+
+  for (i=0; i<3; i++)
+    {
+      principalStrain[i] = m.getValue(i,i);
+    }
+  shearStrain[0] = m.getValue(0,1);
+  shearStrain[1] = m.getValue(0,2);
+  shearStrain[2] = m.getValue(1,2);
+  Strain sNew = Strain (principalStrain, shearStrain);
+
+  delete (principalStrain); principalStrain = NULL;
+  delete (shearStrain);     shearStrain = NULL;
 
   return (sNew);
 }

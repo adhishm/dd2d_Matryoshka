@@ -149,7 +149,7 @@ Vector3d Stress::getPrincipalStresses () const
 }
 
 /**
- * @brief Get one component of the principal stress .
+ * @brief Get one component of the principal stress.
  * @details Returns the value of the component of the principal stress indicated by the argument: 0=s11 1=s22 2=s33.
  * @param i The index of the component required.
    * @return The component of the principal stresses.
@@ -179,7 +179,7 @@ Vector3d Stress::getShearStresses () const
 }
 
 /**
- * @brief Get one component of the shear stress .
+ * @brief Get one component of the shear stress.
  * @details Returns the value of the component of the shear stress indicated by the argument: 0=s01 1=s12 2=s23.
  * @param i The index of the component required.
    * @return The component of the shear stresses.
