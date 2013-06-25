@@ -244,7 +244,22 @@ Stress Stress::rotate (RotationMatrix alpha)
   RotationMatrix alphaT (alpha.transpose());
 
   // Rotate the stress matrix
-  Stress sNew = Stress (alpha * (*this) * alphaT);
+  Matrix33 m = alpha * ((*this) * alphaT);
+  double *principalStress = new double[3];
+  double *shearStress = new double[3];
+  int i;
+
+  for (i=0; i<3; i++)
+    {
+      principalStress[i] = m.getValue(i,i);
+    }
+  shearStress[0] = m.getValue(0,1);
+  shearStress[1] = m.getValue(0,2);
+  shearStress[2] = m.getValue(1,2);
+  Stress sNew = Stress (principalStress, shearStress);
+
+  delete (principalStress); principalStress = NULL;
+  delete (shearStress);     shearStress = NULL;
 
   return (sNew);
 }
