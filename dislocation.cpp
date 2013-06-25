@@ -347,9 +347,9 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
   Vector3d force;
 
   // Check for CRSS condition
-  if (sigmaLocal.getValue(0,1) >= tau_crss)
+  if (fabs(sigmaLocal.getValue(0,1)) >= tau_crss)
     {
-      Vector3d force = sigma * ((this->bvec)^(this->lvec));
+      force = sigma * ((this->bvec)^(this->lvec));
     }
 
   return (force);
@@ -379,7 +379,7 @@ double Dislocation::idealTimeIncrement (double minDistance, Defect d, Vector3d v
   Vector3d p01 = p1 - p0;
   double norm_p01 = p01.magnitude();
 
-  if (norm_p01 == 0.0)
+  if (norm_p01 <= minDistance)
     {
       // The dislocation is lying on top of the obstacle - so it should not move
       return (0.0);
