@@ -379,7 +379,7 @@ double Dislocation::idealTimeIncrement (double minDistance, Defect d, Vector3d v
   Vector3d p01 = p1 - p0;
   double norm_p01 = p01.magnitude();
 
-  if (norm_p01 <= minDistance)
+  if (norm_p01 <= 0.0)
     {
       // The dislocation is lying on top of the obstacle - so it should not move
       return (0.0);
@@ -395,8 +395,15 @@ double Dislocation::idealTimeIncrement (double minDistance, Defect d, Vector3d v
       double cosine = dotProduct/(norm_v01 * norm_p01);
       if (cosine < 0.0)
 	{
-	  // The dislocation is approaching the other defect
-	  return ( (norm_p01 - minDistance)/norm_v01 );
+	  if (norm_p01 <= minDistance)
+	    {
+	      return (0.0);
+	    }
+	  else
+	    {
+	      // The dislocation is approaching the other defect
+	      return ( (norm_p01 - minDistance)/norm_v01 );
+	    }
 	}
       else
 	{
