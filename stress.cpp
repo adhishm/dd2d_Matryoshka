@@ -93,6 +93,33 @@ Stress::Stress (Matrix33 m)
   this->populateMatrix ();
 }
 
+/**
+ * @brief Set the value of the principal stress indicated by the index.
+ * @details The principal stresses s_xx, s_yy, or s_zz are set by this function by the indices 0, 1, and 2 respectively.
+ * @param i Index of the stress whose value is to be set.
+ * @param v The value that has to be put.
+   */
+void Stress::setPrincipalStress (int i, double v)
+{
+  if (i>=0 && i<=2)
+    {
+      this->principalStresses[i] = v;
+    }
+}
+
+/**
+ * @brief Set the value of the shear stress indicated by the index.
+ * @details The principal stresses s_xy, s_xz, or s_yz are set by this function by the indices 0, 1, and 2 respectively.
+ * @param i Index of the stress whose value is to be set.
+ * @param v The value that has to be put.
+ */
+void Stress::setShearStress (int i, double v)
+{
+  if (i>=0 && i<=2)
+    {
+      this->shearStresses[i] = v;
+    }
+}
 
 /**
  * @brief Construct the stress tensor from the principal and shear stresses.
@@ -120,6 +147,24 @@ Vector3d Stress::getPrincipalStresses () const
 		     this->principalStresses [1],
 		     this->principalStresses [2] ) );
 }
+
+/**
+ * @brief Get one component of the principal stress .
+ * @details Returns the value of the component of the principal stress indicated by the argument: 0=s11 1=s22 2=s33.
+ * @param i The index of the component required.
+   * @return The component of the principal stresses.
+   */
+double Stress::getPrincipalStress (int i) const
+{
+  if (i>=0 && i<=2)
+    {
+      return (this->principalStresses[i]);
+    }
+  else
+    {
+      return (0.0);
+    }
+}
   
 /**
  * @brief Get the shear stresses.
@@ -131,6 +176,43 @@ Vector3d Stress::getShearStresses () const
   return ( Vector3d (this->shearStresses [0],
 		     this->shearStresses [1],
 		     this->shearStresses [2] ) );
+}
+
+/**
+ * @brief Get one component of the shear stress .
+ * @details Returns the value of the component of the shear stress indicated by the argument: 0=s01 1=s12 2=s23.
+ * @param i The index of the component required.
+   * @return The component of the shear stresses.
+   */
+double Stress::getShearStress (int i) const
+{
+  if (i>=0 && i<=2)
+    {
+      return (this->shearStresses[i]);
+    }
+  else
+    {
+      return (0.0);
+    }
+}
+
+/**
+ * @brief Operator for addition of two stress tensors.
+ * @details Adds two stress tensors together and returns the result in a third tensor.
+ * @return The result of the addition of two stress tensors.
+ */
+Stress Stress::operator+ (const Stress& p) const
+{
+  Stress s;
+  int i;
+
+  for (i=0; i<3; i++)
+    {
+      s.setPrincipalStress (i, this->getPrincipalStress(i) + p.getPrincipalStress(i));
+      s.setShearStress (i, this->getShearStress(i) + p.getShearStress(i));
+    }
+
+  s.populateMatrix ();
 }
 
 /**
