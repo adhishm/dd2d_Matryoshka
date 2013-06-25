@@ -355,7 +355,7 @@ void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, d
 	  else
 	    {
 	      // Superpose the stress fields of all other dislocations
-	      s += d2->stressField(p, mu, nu);
+	      s = s + d2->stressField(p, mu, nu);
 	    }
 	}
       d1->setTotalStress (s);
