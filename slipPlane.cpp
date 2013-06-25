@@ -483,7 +483,20 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
   // Choose the smaller of the two
   timeIncrement[i] = std::min ( t1, t2 );
 
-  dtMin = *std::min_element ( timeIncrement.begin(), timeIncrement.end() );
+  //dtMin = *std::min_element ( timeIncrement.begin(), timeIncrement.end() );
+
+  // Find smallest non-zero time increment
+  dtMin = 1000.0;
+  for (i=0; i<nDisl; i++)
+    {
+      if (timeIncrement[i] > 0.0)
+	{
+	  if (timeIncrement[i] < dtMin)
+	    {
+	      dtMin = timeIncrement[i];
+	    }
+	}
+    }
 
   this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
   return (timeIncrement);
