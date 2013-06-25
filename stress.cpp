@@ -213,6 +213,23 @@ Stress Stress::operator+ (const Stress& p) const
     }
 
   s.populateMatrix ();
+  return (s);
+}
+
+/**
+ * @brief Reflexive addition of two stress tensors.
+ */
+void Stress::operator+= (const Stress& p)
+{
+  int i;
+  
+  for (i=0; i<3; i++)
+    {
+      this->setPrincipalStress (i, this->getPrincipalStress(i) + p.getPrincipalStress(i));
+      this->setShearStress (i, this->getShearStress(i) + p.getShearStress(i));
+    }
+
+  this->populateMatrix ();
 }
 
 /**

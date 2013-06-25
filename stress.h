@@ -108,6 +108,10 @@ class Stress : public Matrix33
    * @return The result of the addition of two stress tensors.
    */
   Stress operator+ (const Stress&) const;
+  /**
+   * @brief Reflexive addition of two stress tensors.
+   */
+  void operator+= (const Stress&);
   
   // Operations
   /**
