@@ -25,27 +25,46 @@ class Defect
    */
   Vector3d pos;
     
- public:
-  // Constructors
+public:
+  /**
+   * @brief Enumerated class indicating the kind of defect that this is.
+   */
+  enum class DefectType {
+      VACANCY = 0,
+		INTERSTITIAL,
+		DISLOCATION,
+		FRANKREADSOURCE,
+		GRAINBOUNDARY,
+		FREESURFACE
+		};
+  
+  /**
+   * @brief Instance of the enumerated class DefectType to indicate the kind of defect that this is.
+   */
+  DefectType defectType;		
+  
+// Constructors
   /**
    * @brief Default constructor.
-   * @details Creates the object with position (0.0, 0.0, 0.0).
+   * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is the Dislocation.
    */
   Defect ();
   /**
-   * @brief Constructor specifying the position.
-   * @details The object is initialized with the position specified by the arguments (x, y, z).
+   * @brief Constructor specifying the position and type of defect.
+   * @details The object is initialized with the position specified by the arguments (x, y, z) and the type of defect.
+   * @param d The type of defect.
    * @param x X-coordinate of the defect.
    * @param y Y-coordinate of the defect
    * @param z Z-coordinate of the defect.
    */
-  Defect (double x, double y, double z);
+  Defect (DefectType d, double x, double y, double z, );
   /**
-   * @brief Constructor specifying the position.
-   * @details The object is initialized with the position specified in the array pointed to by the argument.
+   * @brief Constructor specifying the position and type of defect.
+   * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
+   * @param d The type of defect.
    * @param p Pointer to the array containing the coordinates of the defect.
    */
-  Defect (double* p);
+  Defect (DefectType d, double* p);
   
   // Assignment functions
   /**
