@@ -19,7 +19,7 @@
  * Mobile: true.
  */
 Dislocation::Dislocation ()
-    : Defect ( Defect::DefectType::DISLOCATION, 0.0, 0.0, 0.0 )
+    : Defect ( Defect::DefectType::DISLOCATION, Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) )
 {
   this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
   this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
