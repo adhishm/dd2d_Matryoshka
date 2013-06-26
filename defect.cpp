@@ -120,6 +120,15 @@ void Defect::setZ (double z)
   this->pos.setValue (2, z);
 }
 
+/**
+ * @brief Sets the defect type.
+ * @param d The defect type.
+ */
+void Defect::setDefectType (DefectType d)
+{
+    this->defectType = d;
+}
+
 // Access Functions
 /**
  * @brief Returns the array position in a pre-allocated array.
@@ -165,4 +174,13 @@ double Defect::getY () const
 double Defect::getZ () const
 {
   return (this->pos.getValue (2));
+}
+
+/**
+ * @brief Returns the the type of defect.
+ * @return The defect type in the form of a member of Defect::DefectType.
+ */
+Defect::DefectType Defect::getDefectType () const
+{
+    return ( this->defectType );
 }

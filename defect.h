@@ -74,7 +74,7 @@ public:
    * @param a Pointer to the array containing the coordinates of the defect.
    */
   void setPosition (double* a);
-  
+
   /**
    * @brief Sets the position of the defect.
    * @details The position of the defect is set to the co-ordinates specified by the arguments (x, y, z).
@@ -109,6 +109,12 @@ public:
    * @param z Z-coordinate of the defect.
    */
   void setZ (double z);
+
+  /**
+   * @brief Sets the defect type.
+   * @param d The defect type.
+   */
+  void setDefectType (DefectType d);
     
   // Access Functions
   /**
@@ -141,6 +147,12 @@ public:
    * @return Z-coordinate of the defect.
    */
   double getZ () const;
+
+  /**
+   * @brief Returns the the type of defect.
+   * @return The defect type in the form of a member of Defect::DefectType.
+   */
+  DefectType getDefectType () const;
     
   // Virtual functions
   /**
