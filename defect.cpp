@@ -56,6 +56,18 @@ Defect::Defect (DefectType d, double* p)
     }
 }
 
+/**
+ * @brief Constructor specifying the position and type of defect.
+ * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
+ * @param d The type of defect.
+   * @param p Vector3d prividing the position vector of the defect.
+   */
+Defect::Defect (DefectType d, Vector3d p)
+{
+    this->defectType = d;
+    this->setPosition ( p );
+}
+
 // Assignment functions
 /**
  * @brief Sets the position of the defect.
