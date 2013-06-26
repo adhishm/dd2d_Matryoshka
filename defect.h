@@ -152,7 +152,7 @@ public:
    * @brief Returns the the type of defect.
    * @return The defect type in the form of a member of Defect::DefectType.
    */
-  DefectType getDefectType () const;
+  Defect::DefectType getDefectType () const;
     
   // Virtual functions
   /**
