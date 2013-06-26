@@ -57,7 +57,7 @@ public:
    * @param y Y-coordinate of the defect
    * @param z Z-coordinate of the defect.
    */
-  Defect (DefectType d, double x, double y, double z, );
+  Defect (DefectType d, double x, double y, double z );
   /**
    * @brief Constructor specifying the position and type of defect.
    * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
