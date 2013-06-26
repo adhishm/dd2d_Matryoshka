@@ -1,4 +1,4 @@
-# DD2D - A Matryushka approach
+# DD2D - A Matryoshka approach
 
 ## Introduction
 
