@@ -9,7 +9,6 @@ SOURCES += main.cpp \
     stress.cpp \
     strain.cpp \
     statistics.cpp \
-    standardSlipSystem.cpp \
     slipPlaneStatistics.cpp \
     slipPlane.cpp \
     simulateSingleSlipPlane.cpp \
@@ -26,7 +25,6 @@ HEADERS += \
     stress.h \
     strain.h \
     statistics.h \
-    standardSlipSystem.h \
     slipPlaneDefaults.h \
     slipPlane.h \
     simulateSingleSlipPlane.h \

@@ -68,7 +68,7 @@ class StandardSlipSystem
    * @brief Enumerated data type to define indices for the crystal structure.
    */
   enum class CrystalStructure {
-      CRYSTAL_STRUCTURE_FCC = 0,
+      CRYSTAL_STRUCTURE_FCC,
       CRYSTAL_STRUCTURE_BCC
     };
   // Constructors
