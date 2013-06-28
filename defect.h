@@ -56,7 +56,7 @@ public:
 // Constructors
   /**
    * @brief Default constructor.
-   * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is the Dislocation.
+   * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is defined by the macro DEFAULT_DEFECT_TYPE in the file defectType.h.
    */
   Defect ();
   /**

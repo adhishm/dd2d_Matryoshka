@@ -17,7 +17,8 @@ SOURCES += main.cpp \
     matrix33.cpp \
     dislocationSource.cpp \
     dislocation.cpp \
-    defect.cpp
+    defect.cpp \
+    standardSlipSystem.cpp
 
 HEADERS += \
     vector3d.h \
@@ -36,5 +37,6 @@ HEADERS += \
     dislocationDefaults.h \
     dislocation.h \
     defect.h \
-    defectType.h
+    defectType.h \
+    standardSlipSystem.h
 

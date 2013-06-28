@@ -39,6 +39,21 @@
 #include "tools.h"
 
 /**
+ * @brief Enumerated data type to define indices for the crystal structure.
+ */
+enum CrystalStructure {
+    CRYSTAL_STRUCTURE_FCC,
+    CRYSTAL_STRUCTURE_BCC
+  };
+
+/**
+  * @brief The default crystal structure is defined by this macro.
+  **/
+#ifndef DEFAULT_CRYSTAL_STRUCTURE
+#define DEFAULT_CRYSTAL_STRUCTURE CRYSTAL_STRUCTURE_FCC
+#endif
+
+/**
  * @brief Definition of the StandardSlipSystem class.
  * @details This class contains the basic components of a slip system: the normal to the slip plane and the slip direction. Instances of this class will be the variables that will provide the slip planes and directions to other slip systems depending on the crystal structure.
  */
@@ -63,21 +78,18 @@ class StandardSlipSystem
   int nSlipSystems;
   
  public:
-  // Defaults
-  /**
-   * @brief Enumerated data type to define indices for the crystal structure.
-   */
-  enum class CrystalStructure {
-      CRYSTAL_STRUCTURE_FCC,
-      CRYSTAL_STRUCTURE_BCC
-    };
   // Constructors
+  /**
+   * @brief Constructor for creating the standard slip system with all the possible normals and directions, for the default crystal structure.
+   * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
+   */
+  StandardSlipSystem ();
   /**
    * @brief Constructor for creating the standard slip system with all the possible normals and directions, depending on the crystal structure provided.
    * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
    * @param c Enumerated type representing the crystal structure. 0=FCC. 1=BCC.
    */
-  StandardSlipSystem (StandardSlipSystem::CrystalStructure c);
+  StandardSlipSystem (CrystalStructure c);
 
   // Assignment functions
   /**

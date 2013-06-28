@@ -33,24 +33,29 @@
 
 // Constructors
 /**
+ * @brief Constructor for creating the standard slip system with all the possible normals and directions, for the default crystal structure.
+ * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
+ */
+StandardSlipSystem::StandardSlipSystem()
+{
+    this->StandardSlipSystem(DEFAULT_CRYSTAL_STRUCTURE);
+}
+
+/**
  * @brief Constructor for creating the standard slip system with all the possible normals and directions, depending on the crystal structure provided.
  * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
  * @param c Enumerated type representing the crystal structure. 0=FCC. 1=BCC.
  */
-StandardSlipSystem::StandardSlipSystem (StandardSlipSystem::CrystalStructure c)
+StandardSlipSystem::StandardSlipSystem (CrystalStructure c)
 {
   switch (c)
   {
-  case CrystalStructure::CRYSTAL_STRUCTURE_FCC:
+  case CRYSTAL_STRUCTURE_FCC:
       this->createFCCSlipSystems ();
       break;
 
-  case CrystalStructure::CRYSTAL_STRUCTURE_BCC:
+  case CRYSTAL_STRUCTURE_BCC:
       this->createBCCSlipSystems ();
-      break;
-
-  default:
-      this->createFCCSlipSystems ();
       break;
   }
 }
