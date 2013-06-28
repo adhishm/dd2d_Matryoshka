@@ -19,8 +19,8 @@
  * Mobile: true.
  */
 Dislocation::Dislocation ()
+    : Defect ( Defect::DefectType::DISLOCATION, Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) )
 {
-  this->setPosition ( 0.0, 0.0, 0.0 );
   this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
   this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
   this->bmag = DEFAULT_BURGERS_MAGNITUDE;
@@ -38,10 +38,10 @@ Dislocation::Dislocation ()
  * @param m Mobility (true/false).
  */
 Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  double bm, bool m)
+    : Defect ( Defect::DefectType::DISLOCATION, position )
 {
   this->bvec   = burgers;
   this->lvec   = line;
-  this->pos    = position;
   this->mobile = m;
   this->bmag   = bm;
   this->calculateRotationMatrix ();

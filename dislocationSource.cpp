@@ -15,8 +15,8 @@
  * @details Initializes the dislocation with the default parameters provided in the files dislocationDefaults.h and dislocationSourceDefaults.h.
  */
 DislocationSource::DislocationSource ()
+    : Defect ( Defect::DefectType::FRANKREADSOURCE, Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) )
 {
-  this->setPosition ( Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) );
   this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
   this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
   this->bmag = DEFAULT_BURGERS_MAGNITUDE;
@@ -36,10 +36,10 @@ DislocationSource::DislocationSource ()
  * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
  */
 DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit)
+    : Defect ( Defect::DefectType::FRANKREADSOURCE, position )
 {
   this->bvec   = burgers;
   this->lvec   = line;
-  this->pos    = position;
   this->bmag   = bm;
   this->tauCritical = tau;
   this->timeBeforeDipoleEmission = timeTillEmit;

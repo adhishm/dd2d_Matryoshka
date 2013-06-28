@@ -12,43 +12,62 @@
 // Constructors
 /**
  * @brief Default constructor.
- * @details Creates the object with position (0.0, 0.0, 0.0).
+ * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is the Dislocation.
  */
 Defect::Defect ()
 {
-  for (int i=0; i<3; i++)
+    this->defectType = DefectType::DISLOCATION;
+
+    for (int i=0; i<3; i++)
     {
-      this->pos.setValue(i, 0.0);
+        this->pos.setValue(i, 0.0);
     }
 }
 
 /**
- * @brief Constructor specifying the position.
- * @details The object is initialized with the position specified by the arguments (x, y, z).
+ * @brief Constructor specifying the position and type of defect.
+ * @details The object is initialized with the position specified by the arguments (x, y, z) and the type of defect.
+ * @param d The type of defect.h
  * @param x X-coordinate of the defect.
  * @param y Y-coordinate of the defect
  * @param z Z-coordinate of the defect.
  */
-Defect::Defect (double x, double y, double z)
+Defect::Defect (DefectType d, double x, double y, double z)
 {
-  this->pos.setValue (0, x);
-  this->pos.setValue (1, y);
-  this->pos.setValue (2, z);
+    this->defectType = d;
+
+    this->pos.setValue (0, x);
+    this->pos.setValue (1, y);
+    this->pos.setValue (2, z);
 }
 
 /**
- * @brief Constructor specifying the position.
- * @details The object is initialized with the position specified in the array pointed to by the argument.
+ * @brief Constructor specifying the position and type of defect.
+ * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
+ * @param d The type of defect.
  * @param p Pointer to the array containing the coordinates of the defect.
  */
-Defect::Defect (double* p)
+Defect::Defect (DefectType d, double* p)
 {
-  for (int i=0; i<3; i++)
+    this->defectType = d;
+    for (int i=0; i<3; i++)
     {
-      this->pos.setValue (i, p[i]);
+        this->pos.setValue (i, p[i]);
     }
 }
-    
+
+/**
+ * @brief Constructor specifying the position and type of defect.
+ * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
+ * @param d The type of defect.
+   * @param p Vector3d prividing the position vector of the defect.
+   */
+Defect::Defect (DefectType d, Vector3d p)
+{
+    this->defectType = d;
+    this->setPosition ( p );
+}
+
 // Assignment functions
 /**
  * @brief Sets the position of the defect.
@@ -113,6 +132,15 @@ void Defect::setZ (double z)
   this->pos.setValue (2, z);
 }
 
+/**
+ * @brief Sets the defect type.
+ * @param d The defect type.
+ */
+void Defect::setDefectType (DefectType d)
+{
+    this->defectType = d;
+}
+
 // Access Functions
 /**
  * @brief Returns the array position in a pre-allocated array.
@@ -158,4 +186,13 @@ double Defect::getY () const
 double Defect::getZ () const
 {
   return (this->pos.getValue (2));
+}
+
+/**
+ * @brief Returns the the type of defect.
+ * @return The defect type in the form of a member of Defect::DefectType.
+ */
+Defect::DefectType Defect::getDefectType () const
+{
+    return ( this->defectType );
 }
