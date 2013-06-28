@@ -7,6 +7,28 @@
  * @details This file defines the StandardSlipSystem class representing a slip system in the simulation. This class will basically be used to store the various possible slip systems corresponding different crystal structures.
  */
 
+/*
+    DD2D-Matryoshka approach.
+    A set of classes defining the behaviour of crystalline defects,
+    with the final goal of carrying out dislocation dynamics simulations
+    in two dimensions.
+    Copyright (C) 2013  Adhish Majumdar
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
 #ifndef STANDARDSLIPSYSTEM_H
 #define STANDARDSLIPSYSTEM_H
 
@@ -15,13 +37,6 @@
 #include "vector3d.h"
 #include "matrix33.h"
 #include "tools.h"
-
-// Defaults
-/**
- * @brief Enumerated data type to define indices for the crystal structure.
- */
-enum class CrystalStructure { CRYSTAL_STRUCTURE_FCC = 1, 
-	CRYSTAL_STRUCTURE_BCC = 2 };
 
 /**
  * @brief Definition of the StandardSlipSystem class.
@@ -48,6 +63,14 @@ class StandardSlipSystem
   int nSlipSystems;
   
  public:
+  // Defaults
+  /**
+   * @brief Enumerated data type to define indices for the crystal structure.
+   */
+  enum class CrystalStructure {
+      CRYSTAL_STRUCTURE_FCC = 0,
+      CRYSTAL_STRUCTURE_BCC
+    };
   // Constructors
   /**
    * @brief Constructor for creating the standard slip system with all the possible normals and directions, depending on the crystal structure provided.

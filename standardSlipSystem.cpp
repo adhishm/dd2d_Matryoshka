@@ -7,6 +7,28 @@
  * @details This file defines the member functions of the StandardSlipSystem class representing a slip system in the simulation. This class will basically be used to store the various possible slip systems corresponding different crystal structures.
  */
 
+/*
+    DD2D-Matryoshka approach.
+    A set of classes defining the behaviour of crystalline defects,
+    with the final goal of carrying out dislocation dynamics simulations
+    in two dimensions.
+    Copyright (C) 2013  Adhish Majumdar
+
+    This program is free software: you can redistribute it and/or modify
+    it under the terms of the GNU General Public License as published by
+    the Free Software Foundation, either version 3 of the License, or
+    (at your option) any later version.
+
+    This program is distributed in the hope that it will be useful,
+    but WITHOUT ANY WARRANTY; without even the implied warranty of
+    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+    GNU General Public License for more details.
+
+    You should have received a copy of the GNU General Public License
+    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
+
+
 #include "standardSlipSystem.h"
 
 // Constructors
@@ -15,15 +37,15 @@
  * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
  * @param c Enumerated type representing the crystal structure. 0=FCC. 1=BCC.
  */
-StandardSlipSystem::StandardSlipSystem (CrystalStructure c)
+StandardSlipSystem::StandardSlipSystem (StandardSlipSystem::CrystalStructure c)
 {
   switch (c)
     {
-    case CrystalStructure::CRYSTAL_STRUCTURE_FCC:
+    case StandardSlipSystem::CrystalStructure::CRYSTAL_STRUCTURE_FCC:
       this->createFCCSlipSystems ();
       break;
 
-    case CrystalStructure::CRYSTAL_STRUCTURE_BCC:
+    case StandardSlipSystem::CrystalStructure::CRYSTAL_STRUCTURE_BCC:
       this->createBCCSlipSystems ();
       break;
 
