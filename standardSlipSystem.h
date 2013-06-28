@@ -77,7 +77,7 @@ class StandardSlipSystem
    * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
    * @param c Enumerated type representing the crystal structure. 0=FCC. 1=BCC.
    */
-  StandardSlipSystem (CrystalStructure c);
+  StandardSlipSystem (StandardSlipSystem::CrystalStructure c);
 
   // Assignment functions
   /**
