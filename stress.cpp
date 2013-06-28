@@ -37,7 +37,7 @@
  */
 Stress::Stress ()
 {
-  int i, j;
+  int i;
 
   for (i=0; i<3; i++)
     {

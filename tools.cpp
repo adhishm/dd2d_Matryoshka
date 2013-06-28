@@ -132,7 +132,6 @@ std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bo
   std::vector<Vector3d>::iterator vj;
 
   bool found;
-  int i;
 
   std::vector<Vector3d> vList;
   Vector3d vPlus, vMinus;
