@@ -31,6 +31,7 @@
 #ifndef DEFECT_H
 #define DEFECT_H
 
+#include "defectType.h"
 #include "stress.h"
 
 /**
@@ -48,21 +49,9 @@ class Defect
     
 public:
   /**
-   * @brief Enumerated class indicating the kind of defect that this is.
-   */
-  enum class DefectType {
-      VACANCY = 0,
-      INTERSTITIAL,
-      DISLOCATION,
-      FRANKREADSOURCE,
-      GRAINBOUNDARY,
-      FREESURFACE
-		};
-  
-  /**
    * @brief Instance of the enumerated class DefectType to indicate the kind of defect that this is.
    */
-  DefectType defectType;		
+  DefectType defectType;
   
 // Constructors
   /**
@@ -180,7 +169,7 @@ public:
    * @brief Returns the the type of defect.
    * @return The defect type in the form of a member of Defect::DefectType.
    */
-  Defect::DefectType getDefectType () const;
+  DefectType getDefectType () const;
     
   // Virtual functions
   /**

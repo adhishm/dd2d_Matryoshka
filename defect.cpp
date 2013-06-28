@@ -34,11 +34,11 @@
 // Constructors
 /**
  * @brief Default constructor.
- * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is the Dislocation.
+ * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is defined by the macro DEFAULT_DEFECT_TYPE in the file defectType.h.
  */
 Defect::Defect ()
 {
-    this->defectType = DefectType::DISLOCATION;
+    this->defectType = DEFAULT_DEFECT_TYPE;
 
     for (int i=0; i<3; i++)
     {
@@ -214,7 +214,7 @@ double Defect::getZ () const
  * @brief Returns the the type of defect.
  * @return The defect type in the form of a member of Defect::DefectType.
  */
-Defect::DefectType Defect::getDefectType () const
+DefectType Defect::getDefectType () const
 {
     return ( this->defectType );
 }

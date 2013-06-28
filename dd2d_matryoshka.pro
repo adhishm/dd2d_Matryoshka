@@ -35,5 +35,6 @@ HEADERS += \
     dislocationSource.h \
     dislocationDefaults.h \
     dislocation.h \
-    defect.h
+    defect.h \
+    defectType.h
 
