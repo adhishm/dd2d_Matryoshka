@@ -40,19 +40,19 @@
 StandardSlipSystem::StandardSlipSystem (StandardSlipSystem::CrystalStructure c)
 {
   switch (c)
-    {
-    case StandardSlipSystem::CrystalStructure::CRYSTAL_STRUCTURE_FCC:
+  {
+  case StandardSlipSystem::CrystalStructure::CRYSTAL_STRUCTURE_FCC:
       this->createFCCSlipSystems ();
       break;
 
-    case StandardSlipSystem::CrystalStructure::CRYSTAL_STRUCTURE_BCC:
+  case StandardSlipSystem::CrystalStructure::CRYSTAL_STRUCTURE_BCC:
       this->createBCCSlipSystems ();
       break;
 
-    default:
+  default:
       this->createFCCSlipSystems ();
       break;
-    }
+  }
 }
 
 // Assignment functions
