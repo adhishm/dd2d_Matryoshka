@@ -14,3 +14,4 @@ dd2d_gdb
 *.bak
 *~
 dd2d_v*
+build-dd2d*
