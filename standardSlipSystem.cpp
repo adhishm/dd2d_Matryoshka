@@ -38,7 +38,7 @@
  */
 StandardSlipSystem::StandardSlipSystem()
 {
-    this->StandardSlipSystem(DEFAULT_CRYSTAL_STRUCTURE);
+    *this = StandardSlipSystem(DEFAULT_CRYSTAL_STRUCTURE);
 }
 
 /**
