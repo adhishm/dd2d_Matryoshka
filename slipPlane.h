@@ -150,6 +150,12 @@ public:
    * @param pos The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system)
    */
   void setPosition (Vector3d pos);
+
+  /**
+   * @brief Creates the co-ordinate system using information from the extremities, position, normal etc. The base co-ordinate system must be provided.
+   * @param base Pointer to the base co-ordinate system.
+   */
+  void createCoordinateSystem(CoordinateSystem* base);
   
   /**
    * @brief Set the list of dislocations of the slip plane.

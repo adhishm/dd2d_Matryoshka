@@ -76,18 +76,7 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateS
     this->setDislocationList (dislocationList);
     this->setDislocationSourceList (dislocationSourceList);
 
-    // Calculate the local co-ordinate system
-    this->coordinateSystem.setOrigin(this->position);
-    // Calculate axes
-    Vector3d axes[3];
-    axes[0] = this->extremities[1].getPosition() - this->extremities[0].getPosition();  // X-axis
-    axes[2] = this->getNormal();    // Z-axis
-    axes[1] = axes[2] ^ axes[0];    // Y-axis
-    this->coordinateSystem.setAxes(axes);
-    // Base co-ordinate system
-    this->coordinateSystem.setBase(base);
-    // Rotation matrix
-    this->coordinateSystem.calculateRotationMatrix();
+    this->createCoordinateSystem(base);
 
     // Time increment
     this->dt = 0;
@@ -122,6 +111,26 @@ void SlipPlane::setNormal (Vector3d normal)
 void SlipPlane::setPosition (Vector3d pos)
 {
     this->position = pos;
+}
+
+/**
+ * @brief Creates the co-ordinate system using information from the extremities, position, normal etc. The base co-ordinate system must be provided.
+ * @param base Pointer to the base co-ordinate system.
+ */
+void SlipPlane::createCoordinateSystem(CoordinateSystem* base)
+{
+    // Calculate the local co-ordinate system
+    this->coordinateSystem.setOrigin(this->position);
+    // Calculate axes
+    Vector3d axes[3];
+    axes[0] = this->extremities[1].getPosition() - this->extremities[0].getPosition();  // X-axis
+    axes[2] = this->getNormal();    // Z-axis
+    axes[1] = axes[2] ^ axes[0];    // Y-axis
+    this->coordinateSystem.setAxes(axes);
+    // Base co-ordinate system
+    this->coordinateSystem.setBase(base);
+    // Rotation matrix
+    this->coordinateSystem.calculateRotationMatrix();
 }
 
 /**
