@@ -2,7 +2,7 @@
  * @file strain.cpp
  * @author Adhish Majumdar
  * @version 1.1
- * @date 25/06/2013
+ * @date 01/07/2013
  * @brief Definition of the member functions if the Strain class.
  * @details This file defines the member functions of the Strain class for the strain tensor.
  */
