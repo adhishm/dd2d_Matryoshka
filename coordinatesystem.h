@@ -4,7 +4,7 @@
  * @version 0.0
  * @date 01/07/2013
  * @brief Definition of the class CoordinateSystem.
- * @details This file defines the the class CoordinateSystem to represent a given co-ordinate system and the base system in which it is expressed. This will be especially useful in the handling of various objects, each carrying its own frame of reference.
+ * @details This file defines the class CoordinateSystem to represent a given co-ordinate system and the base system in which it is expressed. This will be especially useful in the handling of various objects, each carrying its own frame of reference.
  */
 
 /*
@@ -31,14 +31,90 @@
 #ifndef COORDINATESYSTEM_H
 #define COORDINATESYSTEM_H
 
+#include "constants.h"
+#include "vector3d.h"
+#include "matrix33.h"
+#include "rotationMatrix.h"
+
 /**
  * @brief The CoordinateSystem class.
  * @details The CoordinateSystem class represents a co-ordinate system of an entity. It also includes a pointer to the instance of the same class representing the base on which it is expressed.
  */
 class CoordinateSystem
 {
+protected:
+    /**
+     * @brief The three vectors of the co-ordinate system.
+     * @details The three vectors if the co-ordinate system are expressed in this array. They should be mutually orthogonal and should also be unit vectors. If they are not mutually orthogonal, they will default to the default global vectors. However, if the vectors are orthogonal but not unit vectors, the constructors will take care of normalizing them.
+     */
+    Vector3d e[3];
+
+    /**
+     * @brief Origin of the local co-ordinate system expressed in the base system.
+     * @details The origin of the local system may not coincide with the base system in case of a translation.
+     */
+    Vector3d o;
+
+    /**
+     * @brief Pointer to the base co-ordinate system in which the present co-ordinate system is expressed.
+     * @details This pointer points to the base co-ordinate system in which the present co-ordinate system is expressed. This allows for encapsulating the local calculations without having to worry about any external co-ordinate system other than the one immediately above. The global co-ordinate system will have this pointer set to NULL to indicate the end of the line.
+     */
+    CoordinateSystem* base;
+
+    /**
+     * @brief An instance of the class RotationMatrix to express the system's rotation matrix for rotation from the base to the local system.
+     */
+    RotationMatrix rotationMatrix;
 public:
+    // Constructors
+    /**
+     * @brief CoordinateSystem Default constructor.
+     * @details Calling the constructor without any arguments creates an instance of the class corresponding to the global co-ordinate system.
+     */
     CoordinateSystem();
+    /**
+     * @brief CoordinateSystem Constructor specifying the axes.
+     * @details This constructor specifies the three axes of the co-ordinate system. The origin is assumed to be at zero (no translation) and the base pointer is set to NULL.
+     * @param axes Pointer to the array containing vectors representing the three axes.
+     */
+    CoordinateSystem(Vector3d* axes);
+    /**
+     * @brief CoordinateSystem Constructor specifying the axes as well as the origin of the co-ordinate system.
+     * @details This constructor specifies the axes and the origin. The base pointer is set to NULL.
+     * @param axes Pointer to the array containing the vectors representing the three axes.
+     * @param origin The origin of the co-ordinate system.
+     */
+    CoordinateSystem(Vector3d* axes, Vector3d origin);
+    /**
+     * @brief CoordinateSystem Constructor specifying all details: Axes, origin and base system.
+     * @param axes Pointer to the array containing the vectors representing the three axes.
+     * @param origin The origin of the co-ordinate system.
+     * @param b Pointer to the instance of this class representing the base co-ordinate system.
+     */
+    CoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* b);
+
+    // Assignment functions
+    /**
+     * @brief setAxes Set the values of the axes.
+     * @details The three axes are set according to the values provided. A check is performed to see if they are mutually orthogonal and unit vectors. If they are not, they are set to the three global vectors, and a false value is returned. If they are orthogonal, but not unit vectors, the function normalizes them.
+     * @param axes Pointer to the array containing the vectors representing the three axes.
+     * @return Boolean indicating success (true) or failure (false) of the operation.
+     */
+    bool setAxes(Vector3d* axes);
+    /**
+     * @brief setOrigin Sets the value of the origin.
+     * @param origin Vector3d object containing the origin.
+     */
+    void setOrigin(Vector3d origin);
+    /**
+     * @brief setBase Sets the pointer base to indicate the co-ordinate system in which the current system is expressed.
+     * @param b Pointer to the base co-ordinate system.
+     */
+    void setBase(CoordinateSystem* b);
+    /**
+     * @brief setDefaultVectors Sets the vectors to the default global vectors.
+     */
+    void setDefaultVectors();
 };
 
 #endif // COORDINATESYSTEM_H
