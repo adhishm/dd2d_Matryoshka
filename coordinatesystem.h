@@ -124,6 +124,11 @@ public:
      */
     Vector3d getAxis(int i) const;
     /**
+     * @brief getAxes Get all the three axes in an array.
+     * @return Pointer to the array containing the three axes.
+     */
+    Vector3d* getAxes() const;
+    /**
      * @brief getOrigin Returns the position vector of the origin.
      * @return The position vector of the origin.
      */
@@ -138,6 +143,24 @@ public:
      * @return The rotation matrix.
      */
     RotationMatrix getRotationMatrix() const;
+
+    // Operations
+    /**
+     * @brief calculateRotationMatrix Calculates the rotation matrix for rotation from the base to the local co-ordinate system.
+     */
+    void calculateRotationMatrix();
+    /**
+     * @brief vector_BaseToLocal Converts a vector expressed in the base co-ordinate system to the local system.
+     * @param vBase The vector expressed in the base co-ordinate system.
+     * @return The vector expressed in the local co-ordinate system.
+     */
+    Vector3d vector_BaseToLocal(Vector3d vBase);
+    /**
+     * @brief vector_LocalToBase Converts a vector expressed in the local co-ordinate system to the base system.
+     * @param vLocal The vector expressed in the local co-ordinate system.
+     * @return The vector expressed in the base co-ordinate system.
+     */
+    Vector3d vector_LocalToBase(Vector3d vLocal);
 };
 
 #endif // COORDINATESYSTEM_H

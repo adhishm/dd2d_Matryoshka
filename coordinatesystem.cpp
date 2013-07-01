@@ -179,6 +179,14 @@ Vector3d CoordinateSystem::getAxis(int i) const
     }
 }
 /**
+ * @brief getAxes Get all the three axes in an array.
+ * @return Pointer to the array containing the three axes.
+ */
+Vector3d* CoordinateSystem::getAxes() const
+{
+    return(this->e);
+}
+/**
  * @brief getOrigin Returns the position vector of the origin.
  * @return The position vector of the origin.
  */
@@ -201,4 +209,46 @@ CoordinateSystem* CoordinateSystem::getBase() const
 RotationMatrix CoordinateSystem::getRotationMatrix() const
 {
     return(this->rotationMatrix);
+}
+
+// Operations
+/**
+ * @brief calculateRotationMatrix Calculates the rotation matrix for rotation from the base to the local co-ordinate system.
+ */
+void CoordinateSystem::calculateRotationMatrix()
+{
+    if (this->base) {
+        // Only valid for non-NULL nase pointers
+        this->rotationMatrix = RotationMatrix(this->base->getAxes(), this->getAxes());
+    }
+}
+
+/**
+ * @brief vector_BaseToLocal Converts a vector expressed in the base co-ordinate system to the local system.
+ * @param vBase The vector expressed in the base co-ordinate system.
+ * @return The vector expressed in the local co-ordinate system.
+ */
+Vector3d CoordinateSystem::vector_BaseToLocal(Vector3d vBase)
+{
+    // Translation
+    Vector3d vTranslated = vBase + this->base->getOrigin() - this->o;
+    // Rotation
+    Vector3d vLocal = this->rotationMatrix * vTranslated;
+
+    return(vLocal);
+}
+
+/**
+ * @brief vector_LocalToBase Converts a vector expressed in the local co-ordinate system to the base system.
+ * @param vLocal The vector expressed in the local co-ordinate system.
+ * @return The vector expressed in the base co-ordinate system.
+ */
+Vector3d CoordinateSystem::vector_LocalToBase(Vector3d vLocal)
+{
+    // Rotation
+    Vector3d vRotated = this->rotationMatrix.transpose() * vLocal;
+    // Translation
+    Vector3d vBase = vRotated + this->o - this->base->getOrigin();
+
+    return(vBase);
 }
