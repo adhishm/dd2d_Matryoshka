@@ -38,5 +38,6 @@ HEADERS += \
     dislocation.h \
     defect.h \
     defectType.h \
-    standardSlipSystem.h
+    standardSlipSystem.h \
+    constants.h
 
