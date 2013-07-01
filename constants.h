@@ -51,4 +51,9 @@
  */
 #define SQRT5 2.236067978
 
+/**
+  * @brief Tolerance value for very small numbers.
+  **/
+#define SMALL_NUMBER 1.0e-06
+
 #endif

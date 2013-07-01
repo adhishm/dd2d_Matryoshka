@@ -18,7 +18,8 @@ SOURCES += main.cpp \
     dislocationSource.cpp \
     dislocation.cpp \
     defect.cpp \
-    standardSlipSystem.cpp
+    standardSlipSystem.cpp \
+    coordinatesystem.cpp
 
 HEADERS += \
     vector3d.h \
@@ -39,5 +40,6 @@ HEADERS += \
     defect.h \
     defectType.h \
     standardSlipSystem.h \
-    constants.h
+    constants.h \
+    coordinatesystem.h
 
