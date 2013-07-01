@@ -162,3 +162,43 @@ void CoordinateSystem::setDefaultVectors()
         this->e[i].setValue(i, 1.0);
     }
 }
+
+// Access functions
+/**
+ * @brief getAxis Gets the axes indicated by the argument 0, 1 or 2. In all other cases a zero vector is returned.
+ * @param i Index of the axis required: 0, 1, 2.
+ * @return The vector containing the axis if i={0,1,2} or a zero vector.
+ */
+Vector3d CoordinateSystem::getAxis(int i) const
+{
+    if (i>=0 && i<=2) {
+        return(this->e[i]);
+    }
+    else {
+        return(Vector3d());
+    }
+}
+/**
+ * @brief getOrigin Returns the position vector of the origin.
+ * @return The position vector of the origin.
+ */
+Vector3d CoordinateSystem::getOrigin() const
+{
+    return(this->o);
+}
+/**
+ * @brief getBase Pointer to the base co-ordinate system.
+ * @return Pointer to the base co-ordinate system.
+ */
+CoordinateSystem* CoordinateSystem::getBase() const
+{
+    return(this->base);
+}
+/**
+ * @brief getRotationMatrix Get the rotation matrix.
+ * @return The rotation matrix.
+ */
+RotationMatrix CoordinateSystem::getRotationMatrix() const
+{
+    return(this->rotationMatrix);
+}

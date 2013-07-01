@@ -115,6 +115,29 @@ public:
      * @brief setDefaultVectors Sets the vectors to the default global vectors.
      */
     void setDefaultVectors();
+
+    // Access functions
+    /**
+     * @brief getAxis Gets the axes indicated by the argument 0, 1 or 2. In all other cases a zero vector is returned.
+     * @param i Index of the axis required: 0, 1, 2.
+     * @return The vector containing the axis if i={0,1,2} or a zero vector.
+     */
+    Vector3d getAxis(int i) const;
+    /**
+     * @brief getOrigin Returns the position vector of the origin.
+     * @return The position vector of the origin.
+     */
+    Vector3d getOrigin() const;
+    /**
+     * @brief getBase Pointer to the base co-ordinate system.
+     * @return Pointer to the base co-ordinate system.
+     */
+    CoordinateSystem* getBase() const;
+    /**
+     * @brief getRotationMatrix Get the rotation matrix.
+     * @return The rotation matrix.
+     */
+    RotationMatrix getRotationMatrix() const;
 };
 
 #endif // COORDINATESYSTEM_H
