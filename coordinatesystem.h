@@ -35,6 +35,8 @@
 #include "vector3d.h"
 #include "matrix33.h"
 #include "rotationMatrix.h"
+#include "stress.h"
+#include "strain.h"
 
 /**
  * @brief The CoordinateSystem class.
@@ -68,25 +70,25 @@ protected:
 public:
     // Constructors
     /**
-     * @brief CoordinateSystem Default constructor.
+     * @brief Default constructor.
      * @details Calling the constructor without any arguments creates an instance of the class corresponding to the global co-ordinate system.
      */
     CoordinateSystem();
     /**
-     * @brief CoordinateSystem Constructor specifying the axes.
+     * @brief Constructor specifying the axes.
      * @details This constructor specifies the three axes of the co-ordinate system. The origin is assumed to be at zero (no translation) and the base pointer is set to NULL.
      * @param axes Pointer to the array containing vectors representing the three axes.
      */
     CoordinateSystem(Vector3d* axes);
     /**
-     * @brief CoordinateSystem Constructor specifying the axes as well as the origin of the co-ordinate system.
+     * @brief Constructor specifying the axes as well as the origin of the co-ordinate system.
      * @details This constructor specifies the axes and the origin. The base pointer is set to NULL.
      * @param axes Pointer to the array containing the vectors representing the three axes.
      * @param origin The origin of the co-ordinate system.
      */
     CoordinateSystem(Vector3d* axes, Vector3d origin);
     /**
-     * @brief CoordinateSystem Constructor specifying all details: Axes, origin and base system.
+     * @brief Constructor specifying all details: Axes, origin and base system.
      * @param axes Pointer to the array containing the vectors representing the three axes.
      * @param origin The origin of the co-ordinate system.
      * @param b Pointer to the instance of this class representing the base co-ordinate system.
@@ -95,72 +97,110 @@ public:
 
     // Assignment functions
     /**
-     * @brief setAxes Set the values of the axes.
+     * @brief Set the values of the axes.
      * @details The three axes are set according to the values provided. A check is performed to see if they are mutually orthogonal and unit vectors. If they are not, they are set to the three global vectors, and a false value is returned. If they are orthogonal, but not unit vectors, the function normalizes them.
      * @param axes Pointer to the array containing the vectors representing the three axes.
      * @return Boolean indicating success (true) or failure (false) of the operation.
      */
     bool setAxes(Vector3d* axes);
     /**
-     * @brief setOrigin Sets the value of the origin.
+     * @brief Sets the value of the origin.
      * @param origin Vector3d object containing the origin.
      */
     void setOrigin(Vector3d origin);
     /**
-     * @brief setBase Sets the pointer base to indicate the co-ordinate system in which the current system is expressed.
+     * @brief Sets the pointer base to indicate the co-ordinate system in which the current system is expressed.
      * @param b Pointer to the base co-ordinate system.
      */
     void setBase(CoordinateSystem* b);
     /**
-     * @brief setDefaultVectors Sets the vectors to the default global vectors.
+     * @brief Sets the vectors to the default global vectors.
      */
     void setDefaultVectors();
 
     // Access functions
     /**
-     * @brief getAxis Gets the axes indicated by the argument 0, 1 or 2. In all other cases a zero vector is returned.
+     * @brief Gets the axes indicated by the argument 0, 1 or 2. In all other cases a zero vector is returned.
      * @param i Index of the axis required: 0, 1, 2.
      * @return The vector containing the axis if i={0,1,2} or a zero vector.
      */
     Vector3d getAxis(int i) const;
     /**
-     * @brief getAxes Get all the three axes in an array.
+     * @brief Get all the three axes in an array.
      * @return Pointer to the array containing the three axes.
      */
-    Vector3d* getAxes() const;
+    Vector3d* getAxes();
     /**
-     * @brief getOrigin Returns the position vector of the origin.
+     * @brief Returns the position vector of the origin.
      * @return The position vector of the origin.
      */
     Vector3d getOrigin() const;
     /**
-     * @brief getBase Pointer to the base co-ordinate system.
+     * @brief Pointer to the base co-ordinate system.
      * @return Pointer to the base co-ordinate system.
      */
     CoordinateSystem* getBase() const;
     /**
-     * @brief getRotationMatrix Get the rotation matrix.
+     * @brief Get the rotation matrix.
      * @return The rotation matrix.
      */
     RotationMatrix getRotationMatrix() const;
 
     // Operations
     /**
-     * @brief calculateRotationMatrix Calculates the rotation matrix for rotation from the base to the local co-ordinate system.
+     * @brief Calculates the rotation matrix for rotation from the base to the local co-ordinate system.
      */
     void calculateRotationMatrix();
     /**
-     * @brief vector_BaseToLocal Converts a vector expressed in the base co-ordinate system to the local system.
+     * @brief Converts a vector expressed in the base co-ordinate system to the local system.
      * @param vBase The vector expressed in the base co-ordinate system.
      * @return The vector expressed in the local co-ordinate system.
      */
     Vector3d vector_BaseToLocal(Vector3d vBase);
     /**
-     * @brief vector_LocalToBase Converts a vector expressed in the local co-ordinate system to the base system.
+     * @brief Converts a vector expressed in the local co-ordinate system to the base system.
      * @param vLocal The vector expressed in the local co-ordinate system.
      * @return The vector expressed in the base co-ordinate system.
      */
     Vector3d vector_LocalToBase(Vector3d vLocal);
+    /**
+     * @brief Converts a vector expressed in the base co-ordinate system to the local system, but without the translation.
+     * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
+     * @param vBase The vector expressed in the base co-ordinate system.
+     * @return The vector expressed in the local co-ordinate system.
+     */
+    Vector3d vector_BaseToLocal_noTranslate(Vector3d vBase);
+    /**
+     * @brief Converts a vector expressed in the local co-ordinate system to the base system, but without the translation.
+     * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
+     * @param vLocal The vector expressed in the local co-ordinate system.
+     * @return The vector expressed in the local co-ordinate system.
+     */
+    Vector3d vector_LocalToBase_noTranslate(Vector3d vLocal);
+    /**
+     * @brief Rotates a stress tensor from the base to the local system.
+     * @param s The stress tensor to be rotated.
+     * @return The rotated stress tensor.
+     */
+    Stress stress_BaseToLocal(Stress s);
+    /**
+     * @brief Rotates a stress tensor from the local to the base system.
+     * @param s The stress tensor to be rotated.
+     * @return The rotated stress tensor.
+     */
+    Stress stress_LocalToBase(Stress s);
+    /**
+     * @brief Rotates a strain tensor from the base to the local system.
+     * @param s The strain tensor to be rotated.
+     * @return The rotated strain tensor.
+     */
+    Strain strain_BaseToLocal(Strain s);
+    /**
+     * @brief Rotates a strain tensor from the local to the base system.
+     * @param s The strain tensor to be rotated.
+     * @return The rotated strain tensor.
+     */
+    Strain strain_LocalToBase(Strain s);
 };
 
 #endif // COORDINATESYSTEM_H
