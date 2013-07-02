@@ -143,6 +143,25 @@ void Dislocation::setVelocity (Vector3d v)
   this->velocities.push_back (v);
 }
 
+/**
+ * @brief Create the dislocation co-ordinate system.
+ * @details The dislocation co-ordinate system is defined such that the z-axis is given by the line vector and the y-axis by the slip plane normal. The x-axis is then calculated by the cross product.
+ * @param base Pointer to the base (SlipPlane) co-ordinate system.
+ * @param n Normal to the slip plane.
+ */
+void Dislocation::createCoordinateSystem(CoordinateSystem* base, Vector3d n)
+{
+    this->coordinateSystem.setBase(base);
+    Vector3d e[3];
+
+    e[1] = n;           // Y-axis
+    e[2] = this->lvec;  // Z-axis
+    e[0] = e[1] ^ e[2]; // X-axis
+
+    this->coordinateSystem.setAxes(e);
+    this->coordinateSystem.calculateRotationMatrix();
+}
+
 // Access functions
 /**
  * @brief Gets the Burgers vector of the dislocation.

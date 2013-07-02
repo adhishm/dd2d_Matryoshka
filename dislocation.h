@@ -38,6 +38,7 @@
 #include "defect.h"
 #include "dislocationDefaults.h"
 #include "constants.h"
+#include "coordinatesystem.h"
 
 /**
  * @brief Dislocation class representing a dislocation in the simulation.
@@ -67,6 +68,11 @@ protected:
    * @details The magnitude of the Burgers vector is useful for several calculations such as stress field around the dislocation.
    */
   double bmag;
+
+  /**
+   * @brief The co-ordinate system of the dislocation.
+   */
+  CoordinateSystem coordinateSystem;
   
   /**
    * @brief The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa.
@@ -177,6 +183,14 @@ public:
    * @param v Velocity.
    */
   void setVelocity (Vector3d v);
+
+  /**
+   * @brief Create the dislocation co-ordinate system.
+   * @details The dislocation co-ordinate system is defined such that the z-axis is given by the line vector and the y-axis by the slip plane normal. The x-axis is then calculated by the cross product.
+   * @param base Pointer to the base (SlipPlane) co-ordinate system.
+   * @param n Normal to the slip plane.
+   */
+  void createCoordinateSystem(CoordinateSystem* base, Vector3d n);
   
   // Access functions
   /**
