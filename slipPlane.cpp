@@ -115,6 +115,7 @@ void SlipPlane::setPosition (Vector3d pos)
 
 /**
  * @brief Creates the co-ordinate system using information from the extremities, position, normal etc. The base co-ordinate system must be provided.
+ * @details The co-ordinate system of the slip plane is as follows: X-axis=line joining the extremities; Z-axis=Normal vector; Y-axis=cross(Z,X).
  * @param base Pointer to the base co-ordinate system.
  */
 void SlipPlane::createCoordinateSystem(CoordinateSystem* base)
@@ -204,6 +205,16 @@ Vector3d SlipPlane::getNormal () const
 Vector3d SlipPlane::getPosition () const
 {
     return (this->position);
+}
+
+/**
+ * @brief Gets a pointer to the co-ordinate system.
+ * @details The pointer to the co-ordinate system is useful for entities (defects) that lie on the slip plane.
+ * @return Pointer to the instance of CoordinateSystem that is a member of this class.
+ */
+CoordinateSystem* SlipPlane::getCoordinateSystem()
+{
+    return(*(this->coordinateSystem));
 }
 
 /**

@@ -153,6 +153,7 @@ public:
 
   /**
    * @brief Creates the co-ordinate system using information from the extremities, position, normal etc. The base co-ordinate system must be provided.
+   * @details The co-ordinate system of the slip plane is as follows: X-axis=line joining the extremities; Z-axis=Normal vector; Y-axis=cross(Z,X).
    * @param base Pointer to the base co-ordinate system.
    */
   void createCoordinateSystem(CoordinateSystem* base);
@@ -179,8 +180,7 @@ public:
    * @brief Inserted the provided dislocation source into the slip plane's dislocation source list.
    * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
    */
-  void insertDislocationSource (DislocationSource d);
-
+  void insertDislocationSource (DislocationSource d);  
   
   // Access functions
   /**
@@ -202,6 +202,13 @@ public:
    * @return Position vector of the slip plane, in a variable of type Vector3d.
    */
   Vector3d getPosition () const;
+
+  /**
+   * @brief Gets a pointer to the co-ordinate system.
+   * @details The pointer to the co-ordinate system is useful for entities (defects) that lie on the slip plane.
+   * @return Pointer to the instance of CoordinateSystem that is a member of this class.
+   */
+  CoordinateSystem* getCoordinateSystem();
   
   /**
    * @brief Get the dislocation on the slip plane indicated by the index provided as argument.
