@@ -101,6 +101,7 @@ void Defect::setCoordinateSystem (Vector3d* axes, Vector3d origin, CoordinateSys
     this->coordinateSystem.setAxes(axes);
     this->coordinateSystem.setOrigin(origin);
     this->coordinateSystem.setBase(base);
+    this->coordinateSystem.calculateRotationMatrix();
 }
 
 /**

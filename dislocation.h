@@ -70,17 +70,6 @@ protected:
   double bmag;
 
   /**
-   * @brief The co-ordinate system of the dislocation.
-   */
-  CoordinateSystem coordinateSystem;
-  
-  /**
-   * @brief The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa.
-   * @details This is the rotation matrix that represents the relationship between the global and local co-ordinate systems. It is used to convert tensors and vectors between the two systems. The rotation matrix needs to be calculated once and may be refreshed periodically if lattice rotation is implemented. In the absence of lattice rotation, the matrix will remain invariant.
-   */
-  RotationMatrix rotationMatrix;
-
-  /**
    * @brief The total stress experienced by the dislocation.
    * @details The dislocation experiences a stress that is the superposition of the externally applied stress and the stress fields of all the dislocations and other entities present in the simulation.
    */
@@ -138,6 +127,16 @@ public:
    * @param m Mobility (true/false).
    */
   Dislocation (Vector3d burgers, Vector3d line, Vector3d position, double bm, bool m);
+  /**
+   * @brief Constructor specifying dislocation parameters as well as slip plane co-ordinate system.
+   * @param burgers Burgers vector, in the slip-plane co-ordinate system.
+   * @param line Dislocation line vector, in the slip-plane co-ordinate system.
+   * @param position Position vector, in the slip-plane co-ordinate system (normally this should be a point on the slip-plane's x-axis).
+   * @param base Pointer to the slip-plane's co-ordinate system.
+   * @param bm Magnitude of the Burgers vector in metres.
+   * @param m Mobility (true/false).
+   */
+  Dislocation (Vector3d burgers, Vector3d line, Vector3d position, CoordinateSystem *base, double bm, bool m);
   
   // Assignment functions
   /**
@@ -183,14 +182,6 @@ public:
    * @param v Velocity.
    */
   void setVelocity (Vector3d v);
-
-  /**
-   * @brief Create the dislocation co-ordinate system.
-   * @details The dislocation co-ordinate system is defined such that the z-axis is given by the line vector and the y-axis by the slip plane normal. The x-axis is then calculated by the cross product.
-   * @param base Pointer to the base (SlipPlane) co-ordinate system.
-   * @param n Normal to the slip plane.
-   */
-  void createCoordinateSystem(CoordinateSystem* base, Vector3d n);
   
   // Access functions
   /**
@@ -255,13 +246,6 @@ public:
    * @return Total velocity at iteration i.
    */
   Vector3d getVelocityAtIteration (int i) const;
-  
-  // Rotation matrix
-  /**
-   * @brief Calculate the roation matrix.
-   * @details This function calculates the rotation matrix for this dislocation using the global and local co-ordinate systems. The matrix rotationMatrix is for rotation from the old (unprimed, global) to the new (primed, dislocation) system.
-   */
-  void calculateRotationMatrix ();
   
   // Stress field
   /**

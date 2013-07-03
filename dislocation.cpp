@@ -43,11 +43,13 @@
 Dislocation::Dislocation ()
     : Defect ( DISLOCATION, Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) )
 {
-  this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
-  this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
-  this->bmag = DEFAULT_BURGERS_MAGNITUDE;
-  this->mobile = true;
-  this->calculateRotationMatrix ();
+    this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
+    this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
+    this->bmag = DEFAULT_BURGERS_MAGNITUDE;
+    this->mobile = true;
+
+    this->coordinateSystem.setDefaultVectors();
+    this->coordinateSystem.setBase(NULL);
 }
 
 /**
@@ -62,11 +64,50 @@ Dislocation::Dislocation ()
 Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  double bm, bool m)
     : Defect ( DISLOCATION, position )
 {
-  this->bvec   = burgers;
-  this->lvec   = line;
-  this->mobile = m;
-  this->bmag   = bm;
-  this->calculateRotationMatrix ();
+    this->bvec   = burgers;
+    this->lvec   = line;
+    this->mobile = m;
+    this->bmag   = bm;
+
+    /* The y-axis of the dislocation will be the slip plane normal.
+     * In the slip plane's co-ordinate system, this will be [001].
+     * The dislocation line vector will be it's z-axis.
+     */
+    Vector3d axes[3];
+    axes[1] = Vector3d(0.0,0.0,1.0);
+    axes[2] = this->lvec;
+    axes[0] = axes[1] ^ axes[2];
+    this->coordinateSystem.setAxes(axes);
+
+    // Since no base is specified
+    this->coordinateSystem.setBase(NULL);
+}
+
+/**
+ * @brief Constructor specifying dislocation parameters as well as slip plane co-ordinate system.
+ * @param burgers Burgers vector, in the slip-plane co-ordinate system.
+ * @param line Dislocation line vector, in the slip-plane co-ordinate system.
+ * @param position Position vector, in the slip-plane co-ordinate system (normally this should be a point on the slip-plane's x-axis).
+ * @param base Pointer to the slip-plane's co-ordinate system.
+ * @param bm Magnitude of the Burgers vector in metres.
+ * @param m Mobility (true/false).
+ */
+Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position, CoordinateSystem *base, double bm, bool m)
+    : Defect ( DISLOCATION, position)
+{
+    Vector3d axes[3];
+
+    // The slip-plane normal, [001] in the slip-plane system is the y-axis here
+    axes[1] = Vector3d(0.0,0.0,1.0);
+    // The dislocation line vector is the z-axis
+    axes[2] = line;
+    axes[0] = axes[1] ^ axes[2];
+    this->setCoordinateSystem(axes,position,base);
+
+    this->lvec = Vector3d(0.0,0.0,1.0);
+    this->bvec = this->coordinateSystem.vector_BaseToLocal_noTranslate(burgers);
+    this->bmag = bm;
+    this->mobile = m;
 }
 
 // Assignment functions
@@ -75,7 +116,7 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  d
  */
 void Dislocation::setBurgers (Vector3d burgers)
 {
-  this->bvec = burgers;
+    this->bvec = burgers;
 }
 
 /**
@@ -92,7 +133,7 @@ void Dislocation::setBurgersMagnitude (double b)
  */
 void Dislocation::setLineVector (Vector3d line)
 {
-  this->lvec = line;
+    this->lvec = line;
 }
 
 /**
@@ -101,7 +142,7 @@ void Dislocation::setLineVector (Vector3d line)
  */
 void Dislocation::setMobile ()
 {
-  this->mobile = true;
+    this->mobile = true;
 }
 
 /**
@@ -110,7 +151,7 @@ void Dislocation::setMobile ()
  */
 void Dislocation::setPinned ()
 {
-  this->mobile = false;
+    this->mobile = false;
 }
 
 /**
@@ -119,8 +160,8 @@ void Dislocation::setPinned ()
  */
 void Dislocation::setTotalStress (Stress s)
 {
-  this->totalStress = s;
-  this->totalStresses.push_back (s);
+    this->totalStress = s;
+    this->totalStresses.push_back (s);
 }
 
 /**
@@ -129,8 +170,8 @@ void Dislocation::setTotalStress (Stress s)
  */
 void Dislocation::setTotalForce (Vector3d f)
 {
-  this->force = f;
-  this->forces.push_back (f);
+    this->force = f;
+    this->forces.push_back (f);
 }
 
 /**
@@ -139,27 +180,8 @@ void Dislocation::setTotalForce (Vector3d f)
  */
 void Dislocation::setVelocity (Vector3d v)
 {
-  this->velocity = v;
-  this->velocities.push_back (v);
-}
-
-/**
- * @brief Create the dislocation co-ordinate system.
- * @details The dislocation co-ordinate system is defined such that the z-axis is given by the line vector and the y-axis by the slip plane normal. The x-axis is then calculated by the cross product.
- * @param base Pointer to the base (SlipPlane) co-ordinate system.
- * @param n Normal to the slip plane.
- */
-void Dislocation::createCoordinateSystem(CoordinateSystem* base, Vector3d n)
-{
-    this->coordinateSystem.setBase(base);
-    Vector3d e[3];
-
-    e[1] = n;           // Y-axis
-    e[2] = this->lvec;  // Z-axis
-    e[0] = e[1] ^ e[2]; // X-axis
-
-    this->coordinateSystem.setAxes(e);
-    this->coordinateSystem.calculateRotationMatrix();
+    this->velocity = v;
+    this->velocities.push_back (v);
 }
 
 // Access functions
@@ -169,7 +191,7 @@ void Dislocation::createCoordinateSystem(CoordinateSystem* base, Vector3d n)
  */
 Vector3d Dislocation::getBurgers () const
 {
-  return ( this->bvec );
+    return ( this->bvec );
 }
 
 /**
@@ -187,7 +209,7 @@ double Dislocation::getBurgersMagnitude () const
  */
 Vector3d Dislocation::getLineVector () const
 {
-  return ( this->lvec );
+    return ( this->lvec );
 }
 
 /**
@@ -196,7 +218,7 @@ Vector3d Dislocation::getLineVector () const
  */
 bool Dislocation::isMobile () const
 {
-  return (this->mobile);
+    return (this->mobile);
 }
 
 /**
@@ -205,7 +227,7 @@ bool Dislocation::isMobile () const
  */
 Stress Dislocation::getTotalStress () const
 {
-  return (this->totalStress);
+    return (this->totalStress);
 }
 
 /**
@@ -214,7 +236,7 @@ Stress Dislocation::getTotalStress () const
  */
 Vector3d Dislocation::getTotalForce () const
 {
-  return (this->force);
+    return (this->force);
 }
 
 /**
@@ -223,7 +245,7 @@ Vector3d Dislocation::getTotalForce () const
  */
 Vector3d Dislocation::getVelocity () const
 {
-  return (this->velocity);
+    return (this->velocity);
 }
 
 /**
@@ -234,15 +256,15 @@ Vector3d Dislocation::getVelocity () const
  */
 Stress Dislocation::getTotalStressAtIteration (int i) const
 {
-  if (i < this->totalStresses.size())
+    if (i < this->totalStresses.size())
     {
-      // If the iteration number provided is valid
-      return (this->totalStresses[i]);
+        // If the iteration number provided is valid
+        return (this->totalStresses[i]);
     }
-  else
+    else
     {
-      // Invalid iteration number - return zeros
-      return (Stress());
+        // Invalid iteration number - return zeros
+        return (Stress());
     }
 }
 
@@ -254,15 +276,15 @@ Stress Dislocation::getTotalStressAtIteration (int i) const
  */
 Vector3d Dislocation::getTotalForceAtIteration (int i) const
 {
-  if (i < this->forces.size())
+    if (i < this->forces.size())
     {
-      // If the iteration number provided is valid
-      return (this->forces[i]);
+        // If the iteration number provided is valid
+        return (this->forces[i]);
     }
-  else
+    else
     {
-      // Invalid iteration number - return zeros
-      return (Vector3d());
+        // Invalid iteration number - return zeros
+        return (Vector3d());
     }
 }
 
@@ -274,44 +296,16 @@ Vector3d Dislocation::getTotalForceAtIteration (int i) const
  */
 Vector3d Dislocation::getVelocityAtIteration (int i) const
 {
-  if (i < this->velocities.size())
+    if (i < this->velocities.size())
     {
-      // If the iteration number provided is valid
-      return (this->velocities[i]);
+        // If the iteration number provided is valid
+        return (this->velocities[i]);
     }
-  else
+    else
     {
-      // Invalid iteration number - return zeros
-      return (Vector3d());
+        // Invalid iteration number - return zeros
+        return (Vector3d());
     }
-}
-
-// Rotation matrix
-/**
- * @brief Calculate the roation matrix.
- * @details This function calculates the rotation matrix for this dislocation using the global and local co-ordinate systems. The matrix rotationMatrix is for rotation from the old (unprimed, global) to the new (primed, dislocation) system.
- */
-void Dislocation::calculateRotationMatrix ()
-{
-  Vector3d *globalSystem = new Vector3d[3];	// Global co-ordinate systems
-  Vector3d *localSystem  = new Vector3d[3];	// Dislocation co-ordinate system
-
-  // Vectors of the global co-ordinate system
-  globalSystem[0] = Vector3d (1.0, 0.0, 0.0);
-  globalSystem[1] = Vector3d (0.0, 1.0, 0.0);
-  globalSystem[2] = Vector3d (0.0, 0.0, 1.0);
-
-  // Vectors of the dislocation co-ordinate system
-  localSystem[0] = bvec.normalize ();
-  localSystem[2] = lvec.normalize ();
-  localSystem[1] = (lvec ^ bvec).normalize ();
-
-  // Calculate rotation matrix
-  this->rotationMatrix = RotationMatrix (globalSystem, localSystem);
-
-  // Release memory
-  delete (globalSystem);  globalSystem = NULL;
-  delete (localSystem);   localSystem  = NULL;
 }
 
 // Stress field
@@ -325,21 +319,17 @@ void Dislocation::calculateRotationMatrix ()
  */
 Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
-  double principalStresses[3];
-  double shearStresses[3];
-  Vector3d r;  // Vector joining the present dislocation to the point p
+    // Translate and rotate the vector to present it in the local system
+    Vector3d rLocal = this->coordinateSystem.vector_BaseToLocal(p);
 
-  r = p - this->pos;	// Still in global coordinate system
-  Vector3d rLocal = this->rotationMatrix * r;	// Rotated to local co-ordinate system
+    // Calculate the stress field in the local co-ordinate system
+    Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
 
-  // Calculate the stress field in the local co-ordinate system
-  Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
+    // Calculate the stress field in the global co-ordinate system
+    //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
+    Stress sGlobal = this->coordinateSystem.stress_LocalToBase(sLocal);
 
-  // Calculate the stress field in the global co-ordinate system
-  //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
-  Stress sGlobal = sLocal.rotate (this->rotationMatrix);
-
-  return (sGlobal);
+    return (sGlobal);
 }
 
 /**
@@ -352,25 +342,25 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  */
 Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 {
-  double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+    double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
 
-  double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
+    double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
 
-  x = p.getValue (0);
-  y = p.getValue (1);
-  denominator = pow ( ((x*x) + (y*y)), 2);
+    x = p.getValue (0);
+    y = p.getValue (1);
+    denominator = pow ( ((x*x) + (y*y)), 2);
 
-  double principalStresses[3], shearStresses[3];
+    double principalStresses[3], shearStresses[3];
 
-  principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
-  principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
-  principalStresses[2] = nu * ( principalStresses[0] + principalStresses[1] );
+    principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
+    principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
+    principalStresses[2] = nu * ( principalStresses[0] + principalStresses[1] );
 
-  shearStresses[0] = D * x * ( (x*x) - (y*y) ) / denominator;
-  shearStresses[1] = 0.0;
-  shearStresses[2] = 0.0;
+    shearStresses[0] = D * x * ( (x*x) - (y*y) ) / denominator;
+    shearStresses[1] = 0.0;
+    shearStresses[2] = 0.0;
 
-  return (Stress(principalStresses, shearStresses));
+    return (Stress(principalStresses, shearStresses));
 }
 
 // Force
@@ -383,17 +373,17 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
  */
 Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
 {
-  // Stress in the local co-ordinate system
-  Stress sigmaLocal = sigma.rotate(this->rotationMatrix);
-  Vector3d force;
+    // Stress in the local co-ordinate system
+    Stress sigmaLocal = sigma.rotate(this->rotationMatrix);
+    Vector3d force;
 
-  // Check for CRSS condition
-  if (fabs(sigmaLocal.getValue(0,1)) >= tau_crss)
+    // Check for CRSS condition
+    if (fabs(sigmaLocal.getValue(0,1)) >= tau_crss)
     {
-      force = this->lvec ^ (sigma * this->bvec);
+        force = this->lvec ^ (sigma * this->bvec);
     }
 
-  return (force);
+    return (force);
 }
 
 /**
@@ -406,51 +396,51 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
  */
 double Dislocation::idealTimeIncrement (double minDistance, Defect d, Vector3d v1)
 {
-  Vector3d v0 = this->velocity;
-  double norm_v0 = v0.magnitude();
-  if (norm_v0 == 0.0)
+    Vector3d v0 = this->velocity;
+    double norm_v0 = v0.magnitude();
+    if (norm_v0 == 0.0)
     {
-      // This dislocation is not moving
-      return (1000.0);
+        // This dislocation is not moving
+        return (1000.0);
     }
 
-  // Positions
-  Vector3d p0 = this->getPosition();
-  Vector3d p1 = d.getPosition();
-  Vector3d p01 = p1 - p0;
-  double norm_p01 = p01.magnitude();
+    // Positions
+    Vector3d p0 = this->getPosition();
+    Vector3d p1 = d.getPosition();
+    Vector3d p01 = p1 - p0;
+    double norm_p01 = p01.magnitude();
 
-  if (norm_p01 <= 0.0)
+    if (norm_p01 <= 0.0)
     {
-      // The dislocation is lying on top of the obstacle - so it should not move
-      return (0.0);
+        // The dislocation is lying on top of the obstacle - so it should not move
+        return (0.0);
     }
-  else
+    else
     {
-      // Find out if the dislocation is approaching the defect or not
+        // Find out if the dislocation is approaching the defect or not
 
-      // Velocities
-      Vector3d v01 = v1 - v0;
-      double norm_v01 = v01.magnitude();
-      double dotProduct = v01 * p01;
-      double cosine = dotProduct/(norm_v01 * norm_p01);
-      if (cosine < 0.0)
-	{
-	  if (norm_p01 <= minDistance)
-	    {
-	      return (0.0);
-	    }
-	  else
-	    {
-	      // The dislocation is approaching the other defect
-	      return ( (norm_p01 - minDistance)/norm_v01 );
-	    }
-	}
-      else
-	{
-	  // They are diverging
-	  // So any time increment will do
-	  return (1000.0);
-	}
+        // Velocities
+        Vector3d v01 = v1 - v0;
+        double norm_v01 = v01.magnitude();
+        double dotProduct = v01 * p01;
+        double cosine = dotProduct/(norm_v01 * norm_p01);
+        if (cosine < 0.0)
+        {
+            if (norm_p01 <= minDistance)
+            {
+                return (0.0);
+            }
+            else
+            {
+                // The dislocation is approaching the other defect
+                return ( (norm_p01 - minDistance)/norm_v01 );
+            }
+        }
+        else
+        {
+            // They are diverging
+            // So any time increment will do
+            return (1000.0);
+        }
     }
 }
