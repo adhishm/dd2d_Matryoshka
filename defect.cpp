@@ -91,6 +91,20 @@ Defect::Defect (DefectType d, Vector3d p)
 }
 
 // Assignment functions
+
+/**
+ * @brief Set the co-ordinate system of the defect.
+ * @param axes Pointer to the array containing the three axis vectors.
+ * @param origin Position vector of the origin.
+ * @param base Pointer to the base co-ordinate system.
+ */
+virtual void Defect::setCoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* base)
+{
+    this->coordinateSystem.setAxes(axes);
+    this->coordinateSystem.setOrigin(origin);
+    this->coordinateSystem.setBase(base);
+}
+
 /**
  * @brief Sets the position of the defect.
  * @details The position of the defect is set to the co-ordinates present in the array pointed to by the argument.
