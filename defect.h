@@ -33,6 +33,7 @@
 
 #include "defectType.h"
 #include "stress.h"
+#include "coordinatesystem.h"
 
 /**
  * @brief Class Defect representing a generic defect in a material.
@@ -46,6 +47,11 @@ class Defect
    * @brief Position vector of the defect in 2D space.
    */
   Vector3d pos;
+
+  /**
+   * @brief The defect's own co-ordinate system.
+   */
+  CoordinateSystem coordinateSystem;
     
 public:
   /**
@@ -84,6 +90,14 @@ public:
   Defect (DefectType d, Vector3d p);
   
   // Assignment functions
+  /**
+   * @brief Set the co-ordinate system of the defect.
+   * @param axes Pointer to the array containing the three axis vectors.
+   * @param origin Position vector of the origin.
+   * @param base Pointer to the base co-ordinate system.
+   */
+  virtual void setCoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* base);
+
   /**
    * @brief Sets the position of the defect.
    * @details The position of the defect is set to the co-ordinates present in the array pointed to by the argument.
