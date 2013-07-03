@@ -317,7 +317,7 @@ Vector3d Dislocation::getVelocityAtIteration (int i) const
  * @param nu Poisson's ratio.
  * @return Stress tensor, expressed in the global co-ordinate system, giving the value of the stress field at position p.
  */
-Stress Dislocation::stressField (Vector3d p, double mu, double nu)
+virtual Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
     // Translate and rotate the vector to present it in the local system
     Vector3d rLocal = this->coordinateSystem.vector_BaseToLocal(p);

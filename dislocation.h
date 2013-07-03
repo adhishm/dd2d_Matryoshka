@@ -256,7 +256,7 @@ public:
    * @param nu Poisson's ratio.
    * @return Stress tensor, expressed in the global co-ordinate system, giving the value of the stress field at position p.
    */
-  Stress stressField (Vector3d p, double mu, double nu);
+  virtual Stress stressField (Vector3d p, double mu, double nu);
   
   /**
    * @brief Calculates the stress field due to the dislocation in the local co-ordinate system.
