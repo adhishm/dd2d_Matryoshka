@@ -1,8 +1,8 @@
 /**
  * @file defect.h
  * @author Adhish Majumdar
- * @version 1.0
- * @date 04/06/2013
+ * @version 1.1
+ * @date 03/07/2013
  * @brief Definition of the Defect class.
  * @details This file defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions. Later classes like dislocations, precipitates, boundaries etc will inherit from this class.
  */
@@ -35,6 +35,13 @@
 #include "stress.h"
 #include "coordinatesystem.h"
 
+#ifndef DEFAULT_DEFECT_POSITION
+#define DEFAULT_DEFECT_POSITION
+#define DEFAULT_DEFECT_POSITION_0 0.0
+#define DEFAULT_DEFECT_POSITION_1 0.0
+#define DEFAULT_DEFECT_POSITION_2 0.0
+#endif
+
 /**
  * @brief Class Defect representing a generic defect in a material.
  * @details Defines the Defect class representing an defect in the simulation. This is simply a generic description class with virtual functions.
@@ -58,25 +65,10 @@ public:
 // Constructors
   /**
    * @brief Default constructor.
-   * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is defined by the macro DEFAULT_DEFECT_TYPE in the file defectType.h.
+   * @details Creates the object with position given by the macros DEFAULT_DEFECT_POSITION_x. The default defect is defined by the macro DEFAULT_DEFECT_TYPE in the file defectType.h.
    */
   Defect ();
-  /**
-   * @brief Constructor specifying the position and type of defect.
-   * @details The object is initialized with the position specified by the arguments (x, y, z) and the type of defect.
-   * @param d The type of defect.
-   * @param x X-coordinate of the defect.
-   * @param y Y-coordinate of the defect
-   * @param z Z-coordinate of the defect.
-   */
-  Defect (DefectType d, double x, double y, double z );
-  /**
-   * @brief Constructor specifying the position and type of defect.
-   * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
-   * @param d The type of defect.
-   * @param p Pointer to the array containing the coordinates of the defect.
-   */
-  Defect (DefectType d, double* p);
+
   /**
    * @brief Constructor specifying the position and type of defect.
    * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
@@ -84,6 +76,23 @@ public:
    * @param p Vector3d prividing the position vector of the defect.
    */
   Defect (DefectType d, Vector3d p);
+
+  /**
+   * @brief Constructor specifying type, axes and origin.
+   * @param d The type of defect.
+   * @param p The position vector of the origin of the defect.
+   * @param axes Pointer to the array containing the axes of the defect.
+   */
+  Defect (DefectType d, Vector3d p, Vector3d* axes);
+
+  /**
+   * @brief Constructor specifying type, axes, origin and base co-ordinate system.
+   * @param d The type of defect.
+   * @param p The position vector of the defect (origin of the local co-ordinate system)
+   * @param axes Pointer to the array containing the axes of the defect.
+   * @param base Pointer ot the base co-ordinate system.
+   */
+  Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base);
   
   // Assignment functions
   /**
@@ -92,7 +101,7 @@ public:
    * @param origin Position vector of the origin.
    * @param base Pointer to the base co-ordinate system.
    */
-  virtual void setCoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* base);
+  void setCoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* base);
 
   /**
    * @brief Sets the position of the defect.
@@ -118,24 +127,6 @@ public:
    * @param a Position vector of the defect.
    */
   void setPosition (Vector3d a);
-  
-  /**
-   * @brief Sets the X-coordinate of the defect.
-   * @param x X-coordinate of the defect.
-   */
-  void setX (double x);
-  
-  /**
-   * @brief Sets the Y-coordinate of the defect.
-   * @param y Y-coordinate of the defect.
-   */
-  void setY (double y);
-  
-  /**
-   * @brief Sets the Z-coordinate of the defect.
-   * @param z Z-coordinate of the defect.
-   */
-  void setZ (double z);
 
   /**
    * @brief Sets the defect type.
@@ -145,35 +136,10 @@ public:
     
   // Access Functions
   /**
-   * @brief Returns the array position in a pre-allocated array.
-   * @details Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.
-   * @param a Pointer to the location where the defect coordinates are to be populated.
-   */
-  void getPosition (double* a) const;
-
-  /**
    * @brief Returns the position vector of the defect.
    * @return The position vector of the defect, in a variable of type Vector3d.
    */
   Vector3d getPosition () const;
-  
-  /**
-   * @brief Returns the X-coordinate of the defect.
-   * @return X-coordinate of the defect.
-   */
-  double getX () const;
-  
-  /**
-   * @brief Returns the Y-coordinate of the defect.
-   * @return Y-coordinate of the defect.
-   */
-  double getY () const;
-  
-  /**
-   * @brief Returns the Z-coordinate of the defect.
-   * @return Z-coordinate of the defect.
-   */
-  double getZ () const;
 
   /**
    * @brief Returns the the type of defect.

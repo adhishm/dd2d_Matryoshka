@@ -1,8 +1,8 @@
 /**
  * @file defect.cpp
  * @author Adhish Majumdar
- * @version 1.0
- * @date 04/06/2013
+ * @version 1.1
+ * @date 03/07/2013
  * @brief Definition of member functions of the Defect class.
  * @details This file defines the member functions of the Defect class representing a single defect in the simulation.
  */
@@ -34,50 +34,19 @@
 // Constructors
 /**
  * @brief Default constructor.
- * @details Creates the object with position (0.0, 0.0, 0.0). The default defect is defined by the macro DEFAULT_DEFECT_TYPE in the file defectType.h.
+ * @details Creates the object with position given by the macros DEFAULT_DEFECT_POSITION_x. The default defect is defined by the macro DEFAULT_DEFECT_TYPE in the file defectType.h.
  */
 Defect::Defect ()
 {
     this->defectType = DEFAULT_DEFECT_TYPE;
 
-    for (int i=0; i<3; i++)
-    {
-        this->pos.setValue(i, 0.0);
-    }
+    this->coordinateSystem.setDefaultVectors();
+    this->coordinateSystem.setOrigin(Vector3d(DEFAULT_DEFECT_POSITION_0,
+                                              DEFAULT_DEFECT_POSITION_1,
+                                              DEFAULT_DEFECT_POSITION_2));
+    this->coordinateSystem.setBase(NULL);
 }
 
-/**
- * @brief Constructor specifying the position and type of defect.
- * @details The object is initialized with the position specified by the arguments (x, y, z) and the type of defect.
- * @param d The type of defect.h
- * @param x X-coordinate of the defect.
- * @param y Y-coordinate of the defect
- * @param z Z-coordinate of the defect.
- */
-Defect::Defect (DefectType d, double x, double y, double z)
-{
-    this->defectType = d;
-
-    this->pos.setValue (0, x);
-    this->pos.setValue (1, y);
-    this->pos.setValue (2, z);
-}
-
-/**
- * @brief Constructor specifying the position and type of defect.
- * @details The object is initialized with the position specified in the array pointed to by the argument, and the type of defect specified.
- * @param d The type of defect.
- * @param p Pointer to the array containing the coordinates of the defect.
- */
-Defect::Defect (DefectType d, double* p)
-{
-    this->defectType = d;
-    for (int i=0; i<3; i++)
-    {
-        this->pos.setValue (i, p[i]);
-    }
-    this->coordinateSystem.setOrigin(this->pos);
-}
 
 /**
  * @brief Constructor specifying the position and type of defect.
@@ -88,8 +57,35 @@ Defect::Defect (DefectType d, double* p)
 Defect::Defect (DefectType d, Vector3d p)
 {
     this->defectType = d;
-    this->setPosition ( p );
-    this->coordinateSystem.setOrigin(this->pos);
+
+    this->coordinateSystem.setOrigin(p);
+}
+
+/**
+ * @brief Constructor specifying type, axes and origin.
+ * @param d The type of defect.
+ * @param p The position vector of the origin of the defect.
+ * @param axes Pointer to the array containing the axes of the defect.
+ */
+Defect::Defect (DefectType d, Vector3d p, Vector3d* axes)
+{
+    this->defectType = d;
+
+    this->coordinateSystem.setAxes(axes);
+    this->coordinateSystem.setOrigin(p);
+}
+
+/**
+ * @brief Constructor specifying type, axes, origin and base co-ordinate system.
+ * @param d The type of defect.
+ * @param p The position vector of the defect (origin of the local co-ordinate system)
+ * @param axes Pointer to the array containing the axes of the defect.
+ * @param base Pointer ot the base co-ordinate system.
+ */
+Defect::Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base)
+{
+    this->defectType = d;
+    this->setCoordinateSystem(axes, p, base);
 }
 
 // Assignment functions
@@ -100,7 +96,7 @@ Defect::Defect (DefectType d, Vector3d p)
  * @param origin Position vector of the origin.
  * @param base Pointer to the base co-ordinate system.
  */
-virtual void Defect::setCoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* base)
+void Defect::setCoordinateSystem (Vector3d* axes, Vector3d origin, CoordinateSystem* base)
 {
     this->coordinateSystem.setAxes(axes);
     this->coordinateSystem.setOrigin(origin);
@@ -115,7 +111,7 @@ virtual void Defect::setCoordinateSystem(Vector3d* axes, Vector3d origin, Coordi
  */
 void Defect::setPosition (double* a)
 {
-  this->pos.setVector (a);
+    this->coordinateSystem.setOrigin(Vector3d(a));
 }
 
 /**
@@ -128,9 +124,7 @@ void Defect::setPosition (double* a)
  */
 void Defect::setPosition (double x, double y, double z)
 {
-  this->pos.setValue (0, x);
-  this->pos.setValue (1, y);
-  this->pos.setValue (2, z);
+    this->coordinateSystem.setOrigin(Vector3d(x,y,z));
 }
 
 /**
@@ -140,34 +134,7 @@ void Defect::setPosition (double x, double y, double z)
  */
 void Defect::setPosition (Vector3d a)
 {
-  this->pos = a;
-}
-
-/**
- * @brief Sets the X-coordinate of the defect.
- * @param x X-coordinate of the defect.
- */
-void Defect::setX (double x)
-{
-  this->pos.setValue (0, x);
-}
-
-/**
- * @brief Sets the Y-coordinate of the defect.
- * @param y Y-coordinate of the defect.
- */
-void Defect::setY (double y)
-{
-  this->pos.setValue (1, y);
-}
-
-/**
- * @brief Sets the Z-coordinate of the defect.
- * @param z Z-coordinate of the defect.
- */
-void Defect::setZ (double z)
-{
-  this->pos.setValue (2, z);
+    this->coordinateSystem.setOrigin(this->pos);
 }
 
 /**
@@ -181,49 +148,12 @@ void Defect::setDefectType (DefectType d)
 
 // Access Functions
 /**
- * @brief Returns the array position in a pre-allocated array.
- * @details Returns in the array provided in the argument the position of the defect. The array must be pre-allocated.
- * @param a Pointer to the location where the defect coordinates are to be populated.
- */
-void Defect::getPosition (double* a) const
-{
-  a = this->pos.getVector ();
-}
-
-/**
  * @brief Returns the position vector of the defect.
  * @return The position vector of the defect, in a variable of type Vector3d.
  */
 Vector3d Defect::getPosition () const
 {
-  return (this->pos);
-}
-
-/**
- * @brief Returns the X-coordinate of the defect.
- * @return X-coordinate of the defect.
- */
-double Defect::getX () const
-{
-  return (this->pos.getValue (0));
-}
-
-/**
- * @brief Returns the Y-coordinate of the defect.
- * @return Y-coordinate of the defect.
- */
-double Defect::getY () const
-{
-  return (this->pos.getValue (1));
-}
-
-/**
- * @brief Returns the Z-coordinate of the defect.
- * @return Z-coordinate of the defect.
- */
-double Defect::getZ () const
-{
-  return (this->pos.getValue (2));
+    return (this->coordinateSystem.getOrigin());
 }
 
 /**
