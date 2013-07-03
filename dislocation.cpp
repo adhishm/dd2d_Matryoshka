@@ -371,7 +371,7 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
   // Check for CRSS condition
   if (fabs(sigmaLocal.getValue(0,1)) >= tau_crss)
     {
-      force = sigma * ((this->bvec)^(this->lvec));
+      force = this->lvec ^ (sigma * this->bvec);
     }
 
   return (force);
