@@ -76,6 +76,7 @@ Defect::Defect (DefectType d, double* p)
     {
         this->pos.setValue (i, p[i]);
     }
+    this->coordinateSystem.setOrigin(this->pos);
 }
 
 /**
@@ -88,6 +89,7 @@ Defect::Defect (DefectType d, Vector3d p)
 {
     this->defectType = d;
     this->setPosition ( p );
+    this->coordinateSystem.setOrigin(this->pos);
 }
 
 // Assignment functions

@@ -44,12 +44,8 @@ class Defect
 {
  protected:
   /**
-   * @brief Position vector of the defect in 2D space.
-   */
-  Vector3d pos;
-
-  /**
    * @brief The defect's own co-ordinate system.
+   * @details The co-ordinate system contains the vectors and the origin. This gives us the orientation and the position of the defect.
    */
   CoordinateSystem coordinateSystem;
     
