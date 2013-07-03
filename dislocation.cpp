@@ -315,7 +315,7 @@ Vector3d Dislocation::getVelocityAtIteration (int i) const
  * @param p Position vector of the point where the stress field is to be calculated.
  * @param mu Shear modulus in Pascals.
  * @param nu Poisson's ratio.
- * @return Stress tensor, expressed in the global co-ordinate system, giving the value of the stress field at position p.
+ * @return Stress tensor, expressed in the base co-ordinate system, giving the value of the stress field at position p.
  */
 virtual Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
@@ -325,11 +325,10 @@ virtual Stress Dislocation::stressField (Vector3d p, double mu, double nu)
     // Calculate the stress field in the local co-ordinate system
     Stress sLocal = this->stressFieldLocal (rLocal, mu, nu);
 
-    // Calculate the stress field in the global co-ordinate system
-    //Stress sGlobal = (this->rotationMatrix) * sLocal * (this->rotationMatrix.transpose());
-    Stress sGlobal = this->coordinateSystem.stress_LocalToBase(sLocal);
+    // Calculate the stress field in the base co-ordinate system
+    Stress sBase = this->coordinateSystem.stress_LocalToBase(sLocal);
 
-    return (sGlobal);
+    return (sBase);
 }
 
 /**
