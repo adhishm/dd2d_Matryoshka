@@ -214,7 +214,7 @@ Vector3d SlipPlane::getPosition () const
  */
 CoordinateSystem* SlipPlane::getCoordinateSystem()
 {
-    return(*(this->coordinateSystem));
+    return(&(this->coordinateSystem));
 }
 
 /**
