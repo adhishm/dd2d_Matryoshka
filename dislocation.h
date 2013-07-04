@@ -38,6 +38,7 @@
 #include "defect.h"
 #include "dislocationDefaults.h"
 #include "constants.h"
+#include "coordinatesystem.h"
 
 /**
  * @brief Dislocation class representing a dislocation in the simulation.
@@ -67,12 +68,6 @@ protected:
    * @details The magnitude of the Burgers vector is useful for several calculations such as stress field around the dislocation.
    */
   double bmag;
-  
-  /**
-   * @brief The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa.
-   * @details This is the rotation matrix that represents the relationship between the global and local co-ordinate systems. It is used to convert tensors and vectors between the two systems. The rotation matrix needs to be calculated once and may be refreshed periodically if lattice rotation is implemented. In the absence of lattice rotation, the matrix will remain invariant.
-   */
-  RotationMatrix rotationMatrix;
 
   /**
    * @brief The total stress experienced by the dislocation.
@@ -132,6 +127,16 @@ public:
    * @param m Mobility (true/false).
    */
   Dislocation (Vector3d burgers, Vector3d line, Vector3d position, double bm, bool m);
+  /**
+   * @brief Constructor specifying dislocation parameters as well as slip plane co-ordinate system.
+   * @param burgers Burgers vector, in the slip-plane co-ordinate system.
+   * @param line Dislocation line vector, in the slip-plane co-ordinate system.
+   * @param position Position vector, in the slip-plane co-ordinate system (normally this should be a point on the slip-plane's x-axis).
+   * @param base Pointer to the slip-plane's co-ordinate system.
+   * @param bm Magnitude of the Burgers vector in metres.
+   * @param m Mobility (true/false).
+   */
+  Dislocation (Vector3d burgers, Vector3d line, Vector3d position, CoordinateSystem *base, double bm, bool m);
   
   // Assignment functions
   /**
@@ -242,13 +247,6 @@ public:
    */
   Vector3d getVelocityAtIteration (int i) const;
   
-  // Rotation matrix
-  /**
-   * @brief Calculate the roation matrix.
-   * @details This function calculates the rotation matrix for this dislocation using the global and local co-ordinate systems. The matrix rotationMatrix is for rotation from the old (unprimed, global) to the new (primed, dislocation) system.
-   */
-  void calculateRotationMatrix ();
-  
   // Stress field
   /**
    * @brief Calculates the stress field due to this dislocation at the position given as argument.
@@ -256,9 +254,9 @@ public:
    * @param p Position vector of the point where the stress field is to be calculated.
    * @param mu Shear modulus in Pascals.
    * @param nu Poisson's ratio.
-   * @return Stress tensor, expressed in the global co-ordinate system, giving the value of the stress field at position p.
+   * @return Stress tensor, expressed in the base co-ordinate system, giving the value of the stress field at position p.
    */
-  Stress stressField (Vector3d p, double mu, double nu);
+  virtual Stress stressField (Vector3d p, double mu, double nu);
   
   /**
    * @brief Calculates the stress field due to the dislocation in the local co-ordinate system.
@@ -274,7 +272,7 @@ public:
   /**
    * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
    * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system. This function checks if the xy component of the stress tensorm expressed in the dislocation's local co-ordinate system, is greater than tau_crss. If it is, the force is calculated using the Peach-Koehler equation, otherwise, the force on the dislocation is zero.
-   * @param sigma The stress tensor, expressed in the global co-ordinate system.
+   * @param sigma The stress tensor, expressed in the base co-ordinate system.
    * @param tau_crss Critical Resolved Shear Stress in Pa.
    * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
    */

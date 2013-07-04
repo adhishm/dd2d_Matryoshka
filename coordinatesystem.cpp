@@ -222,6 +222,9 @@ void CoordinateSystem::calculateRotationMatrix()
         this->rotationMatrix = RotationMatrix(this->base->getAxes(), this->getAxes());
     }
     else {
+        // The base pointer is NULL
+        // This is the global co-ordinate system level
+        // The rotation matrix will be a unit matrix
         int i, j;
         for (i=0; i<3; i++) {
             for (j=0; j<3; j++) {
