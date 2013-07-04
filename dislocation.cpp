@@ -317,7 +317,7 @@ Vector3d Dislocation::getVelocityAtIteration (int i) const
  * @param nu Poisson's ratio.
  * @return Stress tensor, expressed in the base co-ordinate system, giving the value of the stress field at position p.
  */
-virtual Stress Dislocation::stressField (Vector3d p, double mu, double nu)
+Stress Dislocation::stressField (Vector3d p, double mu, double nu)
 {
     // Translate and rotate the vector to present it in the local system
     Vector3d rLocal = this->coordinateSystem.vector_BaseToLocal(p);
@@ -366,14 +366,14 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 /**
  * @brief Calculate the Peach-Koehler force acting on the dislocation due the stress.
  * @details This function calculates the Peach-Koehler force in the dislocation due to the stress (expressed in the global co-ordinate system) provided as argument. The force returned is also in the global co-ordinate system. This function checks if the xy component of the stress tensorm expressed in the dislocation's local co-ordinate system, is greater than tau_crss. If it is, the force is calculated using the Peach-Koehler equation, otherwise, the force on the dislocation is zero.
- * @param sigma The stress tensor, expressed in the global co-ordinate system.
+ * @param sigma The stress tensor, expressed in the base co-ordinate system.
  * @param tau_crss Critical Resolved Shear Stress in Pa.
- * @return The Peach-Koehler force on the dislocation, expressed in the global co-ordinate system.
+ * @return The Peach-Koehler force on the dislocation, expressed in the local co-ordinate system.
  */
 Vector3d Dislocation::forcePeachKoehler (Stress sigma, double tau_crss) const
 {
     // Stress in the local co-ordinate system
-    Stress sigmaLocal = sigma.rotate(this->rotationMatrix);
+    Stress sigmaLocal = this->coordinateSystem.stress_BaseToLocal(sigma);
     Vector3d force;
 
     // Check for CRSS condition
