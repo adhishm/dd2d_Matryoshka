@@ -154,6 +154,9 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         } while ( ignoreLine ( line ) );
         s->setPosition( readVectorFromLine ( line ) );
 
+        // Create the co-ordinate system
+        s->createCoordinateSystem(NULL);
+
         // Read number of dislocations
         do {
             if ( fp.good() ) {
