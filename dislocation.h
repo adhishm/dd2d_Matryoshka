@@ -38,7 +38,6 @@
 #include "defect.h"
 #include "dislocationDefaults.h"
 #include "constants.h"
-#include "coordinatesystem.h"
 
 /**
  * @brief Dislocation class representing a dislocation in the simulation.
