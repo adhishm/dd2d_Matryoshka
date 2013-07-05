@@ -104,14 +104,6 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
-    // Critical resolved shear stress
-    if ( first=="crss" || first=="CRSS" )
-    {
-        ss >> v;
-        this->tau_crss = atof ( v.c_str() );
-        return;
-    }
-
     // Applied stress
     if (first=="appliedStress")
     {

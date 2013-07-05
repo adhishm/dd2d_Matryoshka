@@ -289,10 +289,9 @@ public:
 
   /**
    * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
-   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress. The argument tau_crss is the Critical Resolved Shear Stress in Pa.
-   * @param tau_crss Critical Resolved Shear Stress in Pa.
+   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress.
    */
-  void calculateDislocationForces (double tau_crss);
+  void calculateDislocationForces ();
 
   /**
    * @brief Calculates the velocities of dislocations and stores them in the variable Vector3d Dislocation::velocity and also puts it at the end of std::vector<Vector3d> Dislocation::velocities.

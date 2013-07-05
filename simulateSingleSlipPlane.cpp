@@ -384,7 +384,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
 
         // Calculate forces on dislocations
-        slipPlane->calculateDislocationForces ( param->tau_crss );
+        slipPlane->calculateDislocationForces ();
 
         // Calculate dislocation velocities
         slipPlane->calculateVelocities ( param->B );
