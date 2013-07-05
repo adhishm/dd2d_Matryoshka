@@ -90,6 +90,8 @@ void SlipPlane::setExtremities (Vector3d *ends)
 {
     this->extremities[0].setPosition(ends[0]);
     this->extremities[1].setPosition(ends[1]);
+    this->defects.insert(this->defects.begin(),1,this->extremities);
+    this->defects.insert(this->defects.end(),1,this->extremities+1);
 }
 
 /**
@@ -132,12 +134,14 @@ void SlipPlane::createCoordinateSystem(CoordinateSystem* base)
 }
 
 /**
- * @brief Set the list of dislocations of the slip plane.
- * @param dislocationList A vector container of type Dislocation containing the dislocations lying on this slip plane.
+ * @brief Insert a list of dislocations into the slip plane's defect list
+ * @param dList The list of pointers to dislocations.
  */
-void SlipPlane::setDislocationList (std::vector<Dislocation> dislocationList)
+void SlipPlane::insertDislocationList (std::vector<Dislocation*> dList)
 {
-    this->dislocations = dislocationList;
+    this->defects.insert( this->defects.end() - 1,
+                          dList.begin(),
+                          dList.end() );
 }
 
 /**
@@ -146,17 +150,19 @@ void SlipPlane::setDislocationList (std::vector<Dislocation> dislocationList)
  */
 void SlipPlane::insertDislocation (Dislocation *d)
 {
-    this->defects.push_back(d);
+    this->defects.insert(this->defects.end()-1, 1, d);
     // this->dislocations.push_back( d );
 }
 
 /**
- * @brief Set the list of dislocation sources on the slip plane.
- * @param dislocationSourceList A vector container of type DislocationSource containing the dislocation sources lying on this slip plane.
+ * @brief Insert a list of dislocation sources on the slip plane.
+ * @param dislocationSourceList A vector container of type DislocationSource* containing pointers the dislocation sources lying on this slip plane.
  */
-void SlipPlane::setDislocationSourceList (std::vector<DislocationSource> dislocationSourceList)
+void SlipPlane::insertDislocationSourceList (std::vector<DislocationSource*> dislocationSourceList)
 {
-    this->dislocationSources = dislocationSourceList;
+    this->defects.insert( this->defects.end() - 1,
+                          dislocationSourceList.begin(),
+                          dislocationSourceList.end() );
 }
 
 /**
@@ -165,7 +171,7 @@ void SlipPlane::setDislocationSourceList (std::vector<DislocationSource> disloca
  */
 void SlipPlane::insertDislocationSource (DislocationSource *d)
 {
-    this->defects.push_back(d);
+    this->defects.insert(this->defects.end()-1, 1, d);
     // this->dislocationSources.push_back( d );
 }
 
@@ -601,6 +607,34 @@ double SlipPlane::distanceFromExtremity(Vector3d pos, int n)
 
     Vector3d r = this->extremities[n].getPosition();
     return ( (r-pos).magnitude() );
+}
+
+/**
+ * @brief Sorts the defects on the slip plane in the order of distance from the first extremity.
+ */
+void SlipPlane::sortDefects ()
+{
+    std::vector<Defect*>::iterator it, jt;  // Iterator for the defects
+    Defect* temp;   // Temporary variable
+
+    Vector3d p0 = this->defects[0]->getPosition();
+    Vector3d p1, p2;
+    double d1, d2;
+
+    for (it=this->defects.begin()+1; it!=this->defects.end()-1; it++) {
+        p1 = it->getPosition();
+        d1 = (p1-p0).magnitude();
+        for (jt=it+1; jt!=this->defects.end()-1; jt++) {
+            p2 = jt->getPosition();
+            d2 = (p2-p0).magnitude();
+            if (d2 < d1) {
+                // Swap the two
+                temp = *it;
+                *it = *jt;
+                *jt = temp;
+            }
+        }
+    }
 }
 
 /**

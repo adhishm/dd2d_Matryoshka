@@ -88,18 +88,6 @@ protected:
    * @details A slip plane contains simply a list of defects, which may be dislocations, or other defects. Pointers are used so that when virtual functions are called, they are point to the appropriate implementation.
    */
   std::vector<Defect*> defects;
-  
-  /**
-   * @brief STL vector container with dislocations.
-   * @details A slip plane may contain several dislocations. These are stored in this vector container dislocations.
-   */
-  std::vector<Dislocation> dislocations;
-
-  /**
-   * @brief STL vector container with dislocation sources.
-   * @details A slip plane may contain several dislocation sources. These are stored in this vector container dislocationSources.
-   */
-  std::vector<DislocationSource> dislocationSources;
 
   /**
    * @brief Time increment for the slip plane.
@@ -163,12 +151,12 @@ public:
    * @param base Pointer to the base co-ordinate system.
    */
   void createCoordinateSystem(CoordinateSystem* base);
-  
+
   /**
-   * @brief Set the list of dislocations of the slip plane.
-   * @param dislocationList A vector container of type Dislocation containing the dislocations lying on this slip plane.
+   * @brief Insert a list of dislocations into the slip plane's defect list
+   * @param dList The list of pointers to dislocations.
    */
-  void setDislocationList (std::vector<Dislocation> dislocationList);
+  void insertDislocationList (std::vector<Dislocation*> dList);
 
   /**
    * @brief Inserted the provided dislocation into the slip plane's dislocation list.
@@ -177,10 +165,10 @@ public:
   void insertDislocation (Dislocation* d);
     
   /**
-   * @brief Set the list of dislocation sources on the slip plane.
-   * @param dislocationSourceList A vector container of type DislocationSource containing the dislocation sources lying on this slip plane.
+   * @brief Insert a list of dislocation sources on the slip plane.
+   * @param dislocationSourceList A vector container of type DislocationSource* containing pointers the dislocation sources lying on this slip plane.
    */
-  void setDislocationSourceList (std::vector<DislocationSource> dislocationSourceList);
+  void insertDislocationSourceList (std::vector<DislocationSource*> dislocationSourceList);
 
   /**
    * @brief Inserted the provided dislocation source into the slip plane's dislocation source list.
@@ -329,6 +317,11 @@ public:
    * @return Distance of the point pos from the n^th extremity of the slip plane.
    */
   double distanceFromExtremity(Vector3d pos, int n);
+
+  /**
+   * @brief Sorts the defects on the slip plane in the order of distance from the first extremity.
+   */
+  void sortDefects ();
   
   /**
    * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
