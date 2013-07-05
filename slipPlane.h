@@ -82,6 +82,12 @@ protected:
    * @details This position vector is redundant because the combination of the position vectors of the extremities and the normal vector define the slip plane completely. However, this vector, position, is useful to locate the slip plane in a given slip system.
    */
   Vector3d position;
+
+  /**
+   * @brief STL vector container for defects.
+   * @details A slip plane contains simply a list of defects, which may be dislocations, or other defects. Pointers are used so that when virtual functions are called, they are point to the appropriate implementation.
+   */
+  std::vector<Defect*> defects;
   
   /**
    * @brief STL vector container with dislocations.
@@ -168,7 +174,7 @@ public:
    * @brief Inserted the provided dislocation into the slip plane's dislocation list.
    * @param d The dislocation that is to be inserted into the silp plane's dislocation list.
    */
-  void insertDislocation (Dislocation d);
+  void insertDislocation (Dislocation* d);
     
   /**
    * @brief Set the list of dislocation sources on the slip plane.
@@ -180,7 +186,7 @@ public:
    * @brief Inserted the provided dislocation source into the slip plane's dislocation source list.
    * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
    */
-  void insertDislocationSource (DislocationSource d);  
+  void insertDislocationSource (DislocationSource* d);
   
   // Access functions
   /**

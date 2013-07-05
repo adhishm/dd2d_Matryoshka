@@ -75,13 +75,10 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateS
     this->setPosition (pos);
     this->setDislocationList (dislocationList);
     this->setDislocationSourceList (dislocationSourceList);
-
     this->createCoordinateSystem(base);
 
     // Time increment
     this->dt = 0;
-
-    this->calculateRotationMatrix ();
 }
 
 // Assignment functions
@@ -145,11 +142,12 @@ void SlipPlane::setDislocationList (std::vector<Dislocation> dislocationList)
 
 /**
  * @brief Inserted the provided dislocation into the slip plane's dislocation list.
- * @param d The dislocation that is to be inserted into the silp plane's dislocation list.
+ * @param d Pointer to the dislocation that is to be inserted into the silp plane's dislocation list.
  */
-void SlipPlane::insertDislocation (Dislocation d)
+void SlipPlane::insertDislocation (Dislocation *d)
 {
-    this->dislocations.push_back( d );
+    this->defects.push_back(d);
+    // this->dislocations.push_back( d );
 }
 
 /**
@@ -163,11 +161,12 @@ void SlipPlane::setDislocationSourceList (std::vector<DislocationSource> disloca
 
 /**
  * @brief Inserted the provided dislocation source into the slip plane's dislocation source list.
- * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
+ * @param d Pointer the dislocation source that is to be inserted into the silp plane's dislocation source list.
  */
-void SlipPlane::insertDislocationSource (DislocationSource d)
+void SlipPlane::insertDislocationSource (DislocationSource *d)
 {
-    this->dislocationSources.push_back( d );
+    this->defects.push_back(d);
+    // this->dislocationSources.push_back( d );
 }
 
 // Access functions
