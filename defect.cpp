@@ -135,7 +135,7 @@ void Defect::setPosition (double x, double y, double z)
  */
 void Defect::setPosition (Vector3d a)
 {
-    this->coordinateSystem.setOrigin(this->pos);
+    this->coordinateSystem.setOrigin(a);
 }
 
 /**

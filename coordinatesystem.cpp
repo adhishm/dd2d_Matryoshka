@@ -239,7 +239,7 @@ void CoordinateSystem::calculateRotationMatrix()
  * @param vBase The vector expressed in the base co-ordinate system.
  * @return The vector expressed in the local co-ordinate system.
  */
-Vector3d CoordinateSystem::vector_BaseToLocal(Vector3d vBase)
+Vector3d CoordinateSystem::vector_BaseToLocal(Vector3d vBase) const
 {
     // Translation
     Vector3d vTranslated = vBase - this->o;
@@ -254,7 +254,7 @@ Vector3d CoordinateSystem::vector_BaseToLocal(Vector3d vBase)
  * @param vLocal The vector expressed in the local co-ordinate system.
  * @return The vector expressed in the base co-ordinate system.
  */
-Vector3d CoordinateSystem::vector_LocalToBase(Vector3d vLocal)
+Vector3d CoordinateSystem::vector_LocalToBase(Vector3d vLocal) const
 {
     // Rotation
     Vector3d vRotated = this->rotationMatrix.transpose() * vLocal;
@@ -270,7 +270,7 @@ Vector3d CoordinateSystem::vector_LocalToBase(Vector3d vLocal)
  * @param vBase The vector expressed in the base co-ordinate system.
  * @return The vector expressed in the local co-ordinate system.
  */
-Vector3d CoordinateSystem::vector_BaseToLocal_noTranslate(Vector3d vBase)
+Vector3d CoordinateSystem::vector_BaseToLocal_noTranslate(Vector3d vBase) const
 {
     Vector3d vLocal = this->rotationMatrix * vBase;
     return(vLocal);
@@ -282,7 +282,7 @@ Vector3d CoordinateSystem::vector_BaseToLocal_noTranslate(Vector3d vBase)
  * @param vLocal The vector expressed in the local co-ordinate system.
  * @return The vector expressed in the local co-ordinate system.
  */
-Vector3d CoordinateSystem::vector_LocalToBase_noTranslate(Vector3d vLocal)
+Vector3d CoordinateSystem::vector_LocalToBase_noTranslate(Vector3d vLocal) const
 {
     Vector3d vBase = this->rotationMatrix.transpose() * vLocal;
     return(vBase);
@@ -293,7 +293,7 @@ Vector3d CoordinateSystem::vector_LocalToBase_noTranslate(Vector3d vLocal)
  * @param s The stress tensor to be rotated.
  * @return The rotated stress tensor.
  */
-Stress CoordinateSystem::stress_BaseToLocal(Stress s)
+Stress CoordinateSystem::stress_BaseToLocal(Stress s) const
 {
     return (s.rotate(this->rotationMatrix));
 }
@@ -303,7 +303,7 @@ Stress CoordinateSystem::stress_BaseToLocal(Stress s)
  * @param s The stress tensor to be rotated.
  * @return The rotated stress tensor.
  */
-Stress CoordinateSystem::stress_LocalToBase(Stress s)
+Stress CoordinateSystem::stress_LocalToBase(Stress s) const
 {
     return (s.rotate(this->rotationMatrix.transpose()));
 }
@@ -313,7 +313,7 @@ Stress CoordinateSystem::stress_LocalToBase(Stress s)
  * @param s The strain tensor to be rotated.
  * @return The rotated strain tensor.
  */
-Strain CoordinateSystem::strain_BaseToLocal(Strain s)
+Strain CoordinateSystem::strain_BaseToLocal(Strain s) const
 {
     return (s.rotate(this->rotationMatrix));
 }
@@ -323,7 +323,7 @@ Strain CoordinateSystem::strain_BaseToLocal(Strain s)
  * @param s The strain tensor to be rotated.
  * @return The rotated strain tensor.
  */
-Strain CoordinateSystem::strain_LocalToBase(Strain s)
+Strain CoordinateSystem::strain_LocalToBase(Strain s) const
 {
     return (s.rotate(this->rotationMatrix.transpose()));
 }
