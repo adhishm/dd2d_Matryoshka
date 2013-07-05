@@ -52,8 +52,12 @@ SlipPlane::SlipPlane ()
     ends[1] = Vector3d(DEFAULT_SLIPPLANE_EXTREMITY2_0,
                        DEFAULT_SLIPPLANE_EXTREMITY2_1,
                        DEFAULT_SLIPPLANE_EXTREMITY2_2);
-    std::vector<Dislocation> dislocationList(1, Dislocation());
-    std::vector<DislocationSource> dislocationSourceList(1, DislocationSource());
+
+    Dislocation* d = new Dislocation();
+    DislocationSource* dSource = new DislocationSource();
+
+    std::vector<Dislocation*> dislocationList(1, d);
+    std::vector<DislocationSource*> dislocationSourceList(1, dSource);
 
     *this = SlipPlane(ends, normal, pos, NULL, dislocationList, dislocationSourceList);
 }
@@ -65,16 +69,18 @@ SlipPlane::SlipPlane ()
  * @param normal The normal vector of the slip plane.
  * @param pos The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system)
  * @param base Pointer to the co-ordinate system of the base.
- * @param dislocationList A vector container of type Dislocation containing the dislocations lying on this slip plane.
- * @param dislocationSourceList A vector container of type DislocationSource containing the dislocation sources lying on this slip plane.
+ * @param dislocationList A vector container of type Dislocation* containing the dislocations lying on this slip plane.
+ * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
  */
-SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation> dislocationList, std::vector<DislocationSource> dislocationSourceList)
+SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList)
 {
     this->setExtremities (ends);
     this->setNormal (normal);
     this->setPosition (pos);
-    this->setDislocationList (dislocationList);
-    this->setDislocationSourceList (dislocationSourceList);
+    // this->setDislocationList (dislocationList);
+    this->insertDislocationList(dislocationList);
+    // this->setDislocationSourceList (dislocationSourceList);
+    this->insertDislocationSourceList(dislocationSourceList);
     this->createCoordinateSystem(base);
 
     // Time increment
