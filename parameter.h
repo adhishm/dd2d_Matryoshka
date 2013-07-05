@@ -69,11 +69,6 @@ public:
      * @brief Drag coefficient (kg/s).
      */
     double B;
-
-    /**
-     * @brief Critical resolved shear stress (Pa).
-     */
-    double tau_crss;
     
     // Load
     /**
