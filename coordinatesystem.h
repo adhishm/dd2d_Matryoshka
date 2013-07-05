@@ -156,51 +156,51 @@ public:
      * @param vBase The vector expressed in the base co-ordinate system.
      * @return The vector expressed in the local co-ordinate system.
      */
-    Vector3d vector_BaseToLocal(Vector3d vBase);
+    Vector3d vector_BaseToLocal(Vector3d vBase) const;
     /**
      * @brief Converts a vector expressed in the local co-ordinate system to the base system.
      * @param vLocal The vector expressed in the local co-ordinate system.
      * @return The vector expressed in the base co-ordinate system.
      */
-    Vector3d vector_LocalToBase(Vector3d vLocal);
+    Vector3d vector_LocalToBase(Vector3d vLocal) const;
     /**
      * @brief Converts a vector expressed in the base co-ordinate system to the local system, but without the translation.
      * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
      * @param vBase The vector expressed in the base co-ordinate system.
      * @return The vector expressed in the local co-ordinate system.
      */
-    Vector3d vector_BaseToLocal_noTranslate(Vector3d vBase);
+    Vector3d vector_BaseToLocal_noTranslate(Vector3d vBase) const;
     /**
      * @brief Converts a vector expressed in the local co-ordinate system to the base system, but without the translation.
      * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
      * @param vLocal The vector expressed in the local co-ordinate system.
      * @return The vector expressed in the local co-ordinate system.
      */
-    Vector3d vector_LocalToBase_noTranslate(Vector3d vLocal);
+    Vector3d vector_LocalToBase_noTranslate(Vector3d vLocal) const;
     /**
      * @brief Rotates a stress tensor from the base to the local system.
      * @param s The stress tensor to be rotated.
      * @return The rotated stress tensor.
      */
-    Stress stress_BaseToLocal(Stress s);
+    Stress stress_BaseToLocal(Stress s) const;
     /**
      * @brief Rotates a stress tensor from the local to the base system.
      * @param s The stress tensor to be rotated.
      * @return The rotated stress tensor.
      */
-    Stress stress_LocalToBase(Stress s);
+    Stress stress_LocalToBase(Stress s) const;
     /**
      * @brief Rotates a strain tensor from the base to the local system.
      * @param s The strain tensor to be rotated.
      * @return The rotated strain tensor.
      */
-    Strain strain_BaseToLocal(Strain s);
+    Strain strain_BaseToLocal(Strain s) const;
     /**
      * @brief Rotates a strain tensor from the local to the base system.
      * @param s The strain tensor to be rotated.
      * @return The rotated strain tensor.
      */
-    Strain strain_LocalToBase(Strain s);
+    Strain strain_LocalToBase(Strain s) const;
 };
 
 #endif // COORDINATESYSTEM_H
