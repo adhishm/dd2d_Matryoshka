@@ -322,12 +322,6 @@ public:
    * @brief Sorts the defects on the slip plane in the order of distance from the first extremity.
    */
   void sortDefects ();
-  
-  /**
-   * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
-   * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
-   */
-  void sortDislocations ();
 
   /**
    * @brief Returns a vector containing the stress values at different points along a slip plane.

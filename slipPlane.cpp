@@ -638,39 +638,6 @@ void SlipPlane::sortDefects ()
 }
 
 /**
- * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
- * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
- */
-void SlipPlane::sortDislocations ()
-{
-    int nDisl = this->dislocations.size();
-    int i, j;
-    double di, dj;
-    Vector3d pi, pj;
-    Dislocation temp;
-
-    for (i=0; i<nDisl-1; i++)
-    {
-        for (j=i+1; j<nDisl; j++)
-        {
-            pi = this->dislocations[i].getPosition();
-            di = this->distanceFromExtremity(pi, 0);
-
-            pj = this->dislocations[j].getPosition();
-            dj = this->distanceFromExtremity(pj, 0);
-
-            if (dj < di)
-            {
-                // Swap the two
-                temp = this->dislocations[i];
-                this->dislocations[i] = this->dislocations[j];
-                this->dislocations[j] = temp;
-            }
-        }
-    }
-}
-
-/**
  * @brief Returns a vector containing the stress values at different points along a slip plane.
  * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
  * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
