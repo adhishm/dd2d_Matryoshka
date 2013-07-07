@@ -148,6 +148,7 @@ void SlipPlane::insertDislocationList (std::vector<Dislocation*> dList)
     this->defects.insert( this->defects.end() - 1,
                           dList.begin(),
                           dList.end() );
+    this->sortDefects();
 }
 
 /**
@@ -157,6 +158,7 @@ void SlipPlane::insertDislocationList (std::vector<Dislocation*> dList)
 void SlipPlane::insertDislocation (Dislocation *d)
 {
     this->defects.insert(this->defects.end()-1, 1, d);
+    this->sortDefects();
     // this->dislocations.push_back( d );
 }
 
@@ -169,6 +171,7 @@ void SlipPlane::insertDislocationSourceList (std::vector<DislocationSource*> dis
     this->defects.insert( this->defects.end() - 1,
                           dislocationSourceList.begin(),
                           dislocationSourceList.end() );
+    this->sortDefects();
 }
 
 /**
@@ -179,6 +182,7 @@ void SlipPlane::insertDislocationSource (DislocationSource *d)
 {
     this->defects.insert(this->defects.end()-1, 1, d);
     // this->dislocationSources.push_back( d );
+    this->sortDefects();
 }
 
 // Access functions
@@ -252,9 +256,18 @@ bool SlipPlane::getDislocation (int i, Dislocation* d) const
  * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
  * @return The vector of dislocations lying on this slip plane.
  */
-std::vector<Dislocation> SlipPlane::getDislocationList () const
+std::vector<Dislocation*> SlipPlane::getDislocationList () const
 {
-    return (this->dislocations);
+    std::vector<Defect*>::iterator it;
+    std::vector<Dislocation*> d;
+
+    for (it=this->defects.begin(); it!=this->defects.end(); it++) {
+        if ((*it)->getDefectType() == DISLOCATION) {
+            d.push_back(*it);
+        }
+    }
+
+    return (d);
 }
 
 /**
@@ -263,7 +276,7 @@ std::vector<Dislocation> SlipPlane::getDislocationList () const
  */
 int SlipPlane::getNumDislocations () const
 {
-    return (this->dislocations.size ());
+    return ((this->getDislocationList()).size());
 }
 
 /**

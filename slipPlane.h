@@ -217,7 +217,7 @@ public:
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
    * @return The vector of dislocations lying on this slip plane.
    */
-  std::vector<Dislocation> getDislocationList () const;
+  std::vector<Dislocation*> getDislocationList () const;
 
   /**
    * @brief Get the number of dislocations.
