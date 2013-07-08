@@ -323,7 +323,7 @@ int SlipPlane::getNumDislocationSources () const
  */
 RotationMatrix SlipPlane::getRotationMatrix () const
 {
-    return (this->rotationMatrix);
+    return (this->coordinateSystem.getRotationMatrix());
 }
 
 /**
@@ -380,28 +380,7 @@ Vector3d SlipPlane::getAxis (int i) const
  */
 void SlipPlane::calculateRotationMatrix ()
 {
-    Vector3d *unPrimed = new Vector3d[3];	// Old system (global)
-    Vector3d *primed   = new Vector3d[3];	// New system (local)
-
-    int i, j;
-
-    // Prepare the global and local systems
-    for (i=0; i<3; i++)
-    {
-        for (j=0; j<3; j++)
-        {
-            unPrimed[i].setValue(j, (double)(i==j));
-        }
-
-        primed[i] = this->getAxis(i);
-    }
-
-    // Calculate the rotationMatrix
-    this->rotationMatrix = RotationMatrix(unPrimed, primed);
-
-    // Free memory
-    delete(unPrimed);	unPrimed = NULL;
-    delete(primed);	primed = NULL;
+    this->coordinateSystem.calculateRotationMatrix();
 }
 
 /**
@@ -733,7 +712,7 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_local (std::vector<Vector3d> p
         }
 
         // Convert to local co-ordinate system
-        *s = sTemp.rotate(this->rotationMatrix);
+        *s = this->coordinateSystem.stress_BaseToLocal(sTemp);
 
         s++;
         p++;

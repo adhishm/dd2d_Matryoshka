@@ -100,12 +100,6 @@ protected:
    */
   CoordinateSystem coordinateSystem;
   
-  /**
-   * @brief Rotation matrix for co-ordinate system transformations.
-   * @details The slip plane's local co-ordinate system is defined as follows: z-axis||NormalVector; x-axis||slipPlane line. The rotation matrix is created using this convention.
-   */
-  RotationMatrix rotationMatrix;
-  
 public:
   // Constructors
   /**
