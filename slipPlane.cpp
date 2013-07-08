@@ -241,14 +241,11 @@ CoordinateSystem* SlipPlane::getCoordinateSystem()
  */
 bool SlipPlane::getDislocation (int i, Dislocation* d) const
 {
-
-    if (i>=0 && i<dList.size ())
-    {
-        *d = *(dList[i]);
+    if (i>=0 && i<(this->dislocations.size())) {
+        *d = *(this->dislocations[i]);
         return (true);
     }
-    else
-    {
+    else {
         return (false);
     }
 }
@@ -257,7 +254,7 @@ bool SlipPlane::getDislocation (int i, Dislocation* d) const
  * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
  * @return The vector of dislocations lying on this slip plane.
  */
-std::vector<Dislocation*> SlipPlane::getDislocationList () const
+std::vector<Dislocation*> SlipPlane::getDislocationList ()
 {
     std::vector<Defect*>::iterator it;
     std::vector<Dislocation*> d;
@@ -277,7 +274,7 @@ std::vector<Dislocation*> SlipPlane::getDislocationList () const
  */
 int SlipPlane::getNumDislocations () const
 {
-    return ((this->getDislocationList()).size());
+    return (this->dislocations.size());
 }
 
 /**
@@ -304,7 +301,7 @@ bool SlipPlane::getDislocationSource (int i, DislocationSource* dSource) const
  * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
  * @return The vector of dislocation sources lying on this slip plane.
  */
-std::vector<DislocationSource> SlipPlane::getDislocationSourceList () const
+std::vector<DislocationSource*> SlipPlane::getDislocationSourceList () const
 {
     return (this->dislocationSources);
 }
@@ -409,8 +406,8 @@ void SlipPlane::calculateRotationMatrix ()
  */
 void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, double nu)
 {
-    std::vector<Dislocation>::iterator d1;  // Iterator for each dislocation
-    std::vector<Dislocation>::iterator d2;  // Nested iterator
+    std::vector<Dislocation*>::iterator d1;  // Iterator for each dislocation
+    std::vector<Dislocation*>::iterator d2;  // Nested iterator
     Stress s;                               // Variable for stress
 
     Vector3d p;                             // Position vector
@@ -418,7 +415,7 @@ void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, d
     for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
     {
         s = appliedStress;
-        p = d1->getPosition();
+        p = (*d1)->getPosition();
         for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
         {
             if (d1==d2)
@@ -428,10 +425,10 @@ void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, d
             else
             {
                 // Superpose the stress fields of all other dislocations
-                s = s + d2->stressField(p, mu, nu);
+                s = s + (*d2)->stressField(p, mu, nu);
             }
         }
-        d1->setTotalStress (s);
+        (*d1)->setTotalStress (s);
     }
 }
 
@@ -441,11 +438,11 @@ void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, d
  */
 void SlipPlane::calculateDislocationForces ()
 {
-    std::vector<Dislocation>::iterator d;  // Iterator for dislocations
+    std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
 
     for (d = this->dislocations.begin(); d!=this->dislocations.end(); d++)
     {
-        d->setTotalForce ( d->forcePeachKoehler(d->getTotalStress()) );
+        (*d)->setTotalForce ( (*d)->forcePeachKoehler((*d)->getTotalStress()) );
     }
 }
 
@@ -456,7 +453,7 @@ void SlipPlane::calculateDislocationForces ()
  */
 void SlipPlane::calculateVelocities (double B)
 {
-    std::vector<Dislocation>::iterator d;  // Iterator for dislocations
+    std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
 
     Vector3d p0, p1, p01;
     double norm_v, norm_p01, cosine;
@@ -465,10 +462,10 @@ void SlipPlane::calculateVelocities (double B)
 
     for ( d=this->dislocations.begin(); d != this->dislocations.end(); d++)
     {
-        if (d->isMobile())
+        if ((*d)->isMobile())
         {
             // Velocity directly proportional to Peach-Koehler force
-            v =  (d->getTotalForce()) * (1.0/B);
+            v =  ((*d)->getTotalForce()) * (1.0/B);
             norm_v = v.magnitude();
 
             if (norm_v > 0.0)
@@ -488,7 +485,7 @@ void SlipPlane::calculateVelocities (double B)
             v = Vector3d(0.0, 0.0, 0.0);
         }
 
-        d->setVelocity (v);
+        (*d)->setVelocity (v);
     }
 }
 
