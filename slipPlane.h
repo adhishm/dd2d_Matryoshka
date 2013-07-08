@@ -90,6 +90,18 @@ protected:
   std::vector<Defect*> defects;
 
   /**
+   * @brief STL vector container for dislocations.
+   * @details This vector container holds pointers to all the dislocations on the slip plane.
+   */
+  std::vector<Dislocation*> dislocations;
+
+  /**
+   * @brief STL vector container for dislocation sources.
+   * @details This vector container holds pointers to all the dislocation sources on the slip plane.
+   */
+  std::vector<DislocationSource*> dislocationSources;
+
+  /**
    * @brief Time increment for the slip plane.
    * @details A time increment is calculated for each slip plane based on the distances traveled by the dislocations.
    */
@@ -258,6 +270,12 @@ public:
    * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.
    */
   Vector3d getAxis (int i) const;
+
+  // Update functions
+  /**
+   * @brief Update the variable dislcoations with the currest list of dislocations.
+   */
+  void updateDislcoationList();
   
   // Operations
   /**

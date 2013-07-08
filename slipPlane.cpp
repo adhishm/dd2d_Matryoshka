@@ -77,9 +77,7 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateS
     this->setExtremities (ends);
     this->setNormal (normal);
     this->setPosition (pos);
-    // this->setDislocationList (dislocationList);
     this->insertDislocationList(dislocationList);
-    // this->setDislocationSourceList (dislocationSourceList);
     this->insertDislocationSourceList(dislocationSourceList);
     this->createCoordinateSystem(base);
 
@@ -149,6 +147,7 @@ void SlipPlane::insertDislocationList (std::vector<Dislocation*> dList)
                           dList.begin(),
                           dList.end() );
     this->sortDefects();
+    this->dislocations = this->getDislocationList();
 }
 
 /**
@@ -159,7 +158,7 @@ void SlipPlane::insertDislocation (Dislocation *d)
 {
     this->defects.insert(this->defects.end()-1, 1, d);
     this->sortDefects();
-    // this->dislocations.push_back( d );
+    this->dislocations = this->getDislocationList();
 }
 
 /**
@@ -172,6 +171,7 @@ void SlipPlane::insertDislocationSourceList (std::vector<DislocationSource*> dis
                           dislocationSourceList.begin(),
                           dislocationSourceList.end() );
     this->sortDefects();
+    this->dislocations = this->getDislocationList();
 }
 
 /**
@@ -241,9 +241,10 @@ CoordinateSystem* SlipPlane::getCoordinateSystem()
  */
 bool SlipPlane::getDislocation (int i, Dislocation* d) const
 {
-    if (i>=0 && i<this->dislocations.size ())
+
+    if (i>=0 && i<dList.size ())
     {
-        *d = this->dislocations[i];
+        *d = *(dList[i]);
         return (true);
     }
     else
@@ -261,7 +262,7 @@ std::vector<Dislocation*> SlipPlane::getDislocationList () const
     std::vector<Defect*>::iterator it;
     std::vector<Dislocation*> d;
 
-    for (it=this->defects.begin(); it!=this->defects.end(); it++) {
+    for (it=(this->defects).begin(); it!=(this->defects).end(); it++) {
         if ((*it)->getDefectType() == DISLOCATION) {
             d.push_back(*it);
         }
@@ -371,6 +372,22 @@ Vector3d SlipPlane::getAxis (int i) const
     }
 
     return ( axis.normalize() );
+}
+
+// Update functions
+/**
+ * @brief Update the variable dislcoations with the currest list of dislocations.
+ */
+void SlipPlane::updateDislcoationList()
+{
+    std::vector<Defect*>::iterator it;
+    int i=0;
+
+    for (it=this->defects.begin(); it!=this->defects.end(); it++) {
+        if ((*it)->getDefectType() == DISLOCATION) {
+            this->dislocations[i++] = *it;
+        }
+    }
 }
 
 // Operations
