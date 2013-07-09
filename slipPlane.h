@@ -271,11 +271,12 @@ public:
    */
   Vector3d getAxis (int i) const;
 
-  // Update functions
+  // Vector create and update functions
   /**
-   * @brief Update the variable dislcoations with the currest list of dislocations.
+   * @brief Create the defects vector.
+   * @details The vector defects contains pointers to all defects lying on the slip plane. They are also sorted in ascending order of their distance from the first extremity of the slip plane.
    */
-  void updateDislcoationList();
+  void createDefects();
   
   // Operations
   /**
@@ -334,6 +335,16 @@ public:
    * @brief Sorts the defects on the slip plane in the order of distance from the first extremity.
    */
   void sortDefects ();
+
+  /**
+   * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
+   */
+  void sortDislocations ();
+
+  /**
+   * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
+   */
+  void sortDislocationSources ();
 
   /**
    * @brief Returns a vector containing the stress values at different points along a slip plane.
