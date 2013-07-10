@@ -37,52 +37,52 @@
  */
 void simulateSingleSlipPlane ()
 {
-  std::string fName;
-  std::string message;
+    std::string fName;
+    std::string message;
 
-  std::cout << "Parameter file name: ";
-  std::cin >> fName;
+    std::cout << "Parameter file name: ";
+    std::cin >> fName;
 
-  SlipPlane *slipPlane;
+    SlipPlane *slipPlane;
 
-  Parameter *param = new Parameter;
+    Parameter *param = new Parameter;
 
-  if ( param->getParameters( fName ) )
-  {
-      message = "Success: read file " + fName;
-      displayMessage ( message );
-      message.clear ();
+    if ( param->getParameters( fName ) )
+    {
+        message = "Success: read file " + fName;
+        displayMessage ( message );
+        message.clear ();
 
-      slipPlane = new SlipPlane;
+        slipPlane = new SlipPlane;
 
-      fName.clear ();
-      fName = param->input_dir + "/" + param->dislocationStructureFile;
-      if ( readSlipPlane ( fName, slipPlane ) )
-      {
-          message = "Success: read file " + fName;
-          displayMessage ( message );
-          message.clear ();
+        fName.clear ();
+        fName = param->input_dir + "/" + param->dislocationStructureFile;
+        if ( readSlipPlane ( fName, slipPlane ) )
+        {
+            message = "Success: read file " + fName;
+            displayMessage ( message );
+            message.clear ();
 
-          singleSlipPlane_iterate ( param, slipPlane );
-      }
-      else {
-          message = "Error: Unable to read slip plane from file " + fName;
-          displayMessage ( message );
-          message.clear ();
-      }
+            singleSlipPlane_iterate ( param, slipPlane );
+        }
+        else {
+            message = "Error: Unable to read slip plane from file " + fName;
+            displayMessage ( message );
+            message.clear ();
+        }
 
-      delete ( slipPlane );
-      slipPlane = NULL;
-      fName.clear ();
-  }
-  else {
-      message = "Error: Unable to read parameter file " + fName;
-      displayMessage ( message );
-      message.clear ();
-  }
+        delete ( slipPlane );
+        slipPlane = NULL;
+        fName.clear ();
+    }
+    else {
+        message = "Error: Unable to read parameter file " + fName;
+        displayMessage ( message );
+        message.clear ();
+    }
 
-  delete ( param );
-  param = NULL;
+    delete ( param );
+    param = NULL;
 }
 
 /**
@@ -208,7 +208,10 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         }
 
         fp.close();
-	return (true);
+
+        // Create the defects list
+        s->createDefects();
+        return (true);
     }
     else
     {
@@ -354,17 +357,17 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
     // Write statistics
     if ( param->dislocationPositions.ifWrite() ) {
-      fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-      slipPlane->writeSlipPlane ( fileName );
-      fileName.clear ();
+        fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
+        slipPlane->writeSlipPlane ( fileName );
+        fileName.clear ();
     }
 
     if ( param->slipPlaneStressDistributions.ifWrite() ) {
-      fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
-      slipPlane->writeSlipPlaneStressDistribution ( fileName,
-						    param->slipPlaneStressDistributions.parameters[0],
-						    param);
-      fileName.clear ();
+        fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
+        slipPlane->writeSlipPlaneStressDistribution ( fileName,
+                                                      param->slipPlaneStressDistributions.parameters[0],
+                param);
+        fileName.clear ();
     }
 
     while ( continueSimulation ) {
@@ -379,7 +382,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
             fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
-                                                          param);
+                    param);
             fileName.clear ();
         }
         // Calculate stresses
@@ -417,7 +420,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
             fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
-                                                          param);
+                    param);
             fileName.clear ();
         }
 
