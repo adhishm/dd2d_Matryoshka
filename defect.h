@@ -174,6 +174,18 @@ public:
   {
       return (Vector3d(0.0, 0.0, 0.0));
   }
+
+  /**
+   * @brief Virtual function for returning the time increment of a defect.
+   * @details The generic defect is immobile, so any time increment will do. Specific defects will override this behaviour.
+   * @param minDistance The minimim distance of approach allowed.
+   * @param d Pointer to the defect with respect to which the time increment is to be calculated.
+   * @return
+   */
+  virtual double idealTimeIncrement (double minDistance, Defect* d)
+  {
+      return (1000.0);
+  }
 };
 
 #endif

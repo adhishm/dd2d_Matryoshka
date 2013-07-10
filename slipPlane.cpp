@@ -378,7 +378,8 @@ Vector3d SlipPlane::getAxis (int i) const
 void SlipPlane::createDefects()
 {
     // Assign the extremities
-    this->defects.assign(this->extremities[0],this->extremities[1]);
+    Defect* extremity[] = {this->extremities, this->extremities+1};
+    this->defects.assign(extremity,extremity+1);
     // Insert the dislocations
     this->defects.insert(this->defects.begin()+1,
                          this->dislocations.begin(),
@@ -504,56 +505,25 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     // Get the number of dislocations
     int nDisl = this->dislocations.size();
 
-    // Pointers to store dislocation addresses
-    Dislocation* d0;
-    Dislocation* d1;
-    Dislocation* d2;
-
-    // Zero vector
-    Vector3d zeroVector(0.0, 0.0, 0.0);
-
     // Vector of time increments
     std::vector<double> timeIncrement(nDisl, 1000.0);
 
-    int i;         // Counter for the loop
+    int i=0;         // Counter for the loop
     double t1, t2;
     double dtMin;  // Minimum time increment
 
-    // For the first dislocation, the time increment has to be calculated
-    // for approach to both a dislocation and the slip plane extremity.
-    // Time for slip plane extremity
-    d0 = this->dislocations[0];
-    d1 = this->dislocations[1];
-    t1 = d0->idealTimeIncrement(minDistance, this->extremities[0], zeroVector);
-    t2 = d0->idealTimeIncrement(minDistance, d1, d1->getVelocity());
-    // Choose the smaller of the two
-    timeIncrement[0] = std::min ( t1, t2 );
+    std::vector<Defect*>::iterator defect_it;
+    Defect* defect;
 
-    for (i=1; i<(nDisl-1); i++)
-    {
-        d0 = this->dislocations[i-1];
-        d1 = this->dislocations[i];
-        d2 = this->dislocations[i+1];
-
-        t1 = d1->idealTimeIncrement(minDistance, d0, d0->getVelocity());
-        t2 = d1->idealTimeIncrement(minDistance, d1, d1->getVelocity());
-        timeIncrement[i] = std::min ( t1, t2 );
+    for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+        defect = *defect_it;
+        if (defect->getDefectType() == DISLOCATION) {
+            // Only dislocations have a time increment
+            t1 = defect->idealTimeIncrement(minDistance, *(defect_it-1));
+            t2 = defect->idealTimeIncrement(minDistance, (*defect_it+1));
+            timeIncrement[i++] = std::min(t1, t2);
+        }
     }
-
-    // For the last dislocation, the time increment has to be calculated
-    // for approach to both a dislocation and the slip plane extremity.
-    // Time for slip plane extremity
-    i=nDisl-1;
-    d0 = this->dislocations[i-1];
-    d1 = this->dislocations[i];
-    d2 = this->dislocations[i+1];
-
-    t1 = d1->idealTimeIncrement(minDistance, this->extremities[1], zeroVector);
-    t2 = d1->idealTimeIncrement(minDistance, d0, d0->getVelocity());
-    // Choose the smaller of the two
-    timeIncrement[i] = std::min ( t1, t2 );
-
-    //dtMin = *std::min_element ( timeIncrement.begin(), timeIncrement.end() );
 
     // Find smallest non-zero time increment
     dtMin = 1000.0;

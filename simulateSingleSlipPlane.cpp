@@ -240,9 +240,9 @@ Vector3d readVectorFromLine (std::string s)
 /**
  * @brief Reads the data from a line and builds a dislocation from it.
  * @param s The string that is to be read from.
- * @return The dislocation.
+ * @return Pointer to the dislocation.
  */
-Dislocation readDislocationFromLine (std::string s)
+Dislocation* readDislocationFromLine (std::string s)
 {
     std::stringstream ss ( s );
     std::string a;
@@ -278,15 +278,16 @@ Dislocation readDislocationFromLine (std::string s)
     ss >> a;
     mob = ( bool ) atoi ( a.c_str() );
 
-    return ( Dislocation ( bvec, lvec, pos, bmag, mob ) );
+    Dislocation* dislocation = new Dislocation ( bvec, lvec, pos, bmag, mob );
+    return (dislocation);
 }
 
 /**
  * @brief Reads the data from a line and builds a dislocation source from it.
  * @param s The string that is to be read from.
- * @return The dislocation source.
+ * @return Pointer to the dislocation source.
  */
-DislocationSource readDislocationSourceFromLine (std::string s)
+DislocationSource* readDislocationSourceFromLine(std::string s)
 {
     std::stringstream ss ( s );
     std::string a;
@@ -327,7 +328,8 @@ DislocationSource readDislocationSourceFromLine (std::string s)
     ss >> a;
     timeLimit = atof ( a.c_str() );
 
-    return ( DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit ) );
+    DislocationSource* dSource = new DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit );
+    return (dSource);
 }
 
 /**
