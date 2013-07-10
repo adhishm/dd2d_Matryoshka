@@ -504,16 +504,16 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     // Get the number of dislocations
     int nDisl = this->dislocations.size();
 
+    // Pointers to store dislocation addresses
+    Dislocation* d0;
+    Dislocation* d1;
+    Dislocation* d2;
+
+    // Zero vector
+    Vector3d zeroVector(0.0, 0.0, 0.0);
+
     // Vector of time increments
     std::vector<double> timeIncrement(nDisl, 1000.0);
-
-//    // Position vectors
-//    Vector3d p0, p1;
-//    double norm_p01;
-
-//    // Velocity vectors
-//    Vector3d v0, v1;
-//    double norm_v01;
 
     int i;         // Counter for the loop
     double t1, t2;
@@ -522,23 +522,21 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     // For the first dislocation, the time increment has to be calculated
     // for approach to both a dislocation and the slip plane extremity.
     // Time for slip plane extremity
-    t1 = this->dislocations[0]->idealTimeIncrement(minDistance,
-                                                  this->extremities[0],
-            Vector3d(0.0, 0.0, 0.0));
-    t2 = this->dislocations[0].idealTimeIncrement(minDistance,
-                                                  this->dislocations[1],
-            this->dislocations[1].getVelocity());
+    d0 = this->dislocations[0];
+    d1 = this->dislocations[1];
+    t1 = d0->idealTimeIncrement(minDistance, this->extremities[0], zeroVector);
+    t2 = d0->idealTimeIncrement(minDistance, d1, d1->getVelocity());
     // Choose the smaller of the two
     timeIncrement[0] = std::min ( t1, t2 );
 
     for (i=1; i<(nDisl-1); i++)
     {
-        t1 = this->dislocations[i].idealTimeIncrement(minDistance,
-                                                      this->dislocations[i-1],
-                this->dislocations[i-1].getVelocity());
-        t2 = this->dislocations[i].idealTimeIncrement(minDistance,
-                                                      this->dislocations[i+1],
-                this->dislocations[i+1].getVelocity());
+        d0 = this->dislocations[i-1];
+        d1 = this->dislocations[i];
+        d2 = this->dislocations[i+1];
+
+        t1 = d1->idealTimeIncrement(minDistance, d0, d0->getVelocity());
+        t2 = d1->idealTimeIncrement(minDistance, d1, d1->getVelocity());
         timeIncrement[i] = std::min ( t1, t2 );
     }
 
@@ -546,12 +544,12 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     // for approach to both a dislocation and the slip plane extremity.
     // Time for slip plane extremity
     i=nDisl-1;
-    t1 = this->dislocations[i].idealTimeIncrement(minDistance,
-                                                  this->extremities[1],
-            Vector3d(0.0, 0.0, 0.0));
-    t2 = this->dislocations[i].idealTimeIncrement(minDistance,
-                                                  this->dislocations[i-1],
-            this->dislocations[i-1].getVelocity());
+    d0 = this->dislocations[i-1];
+    d1 = this->dislocations[i];
+    d2 = this->dislocations[i+1];
+
+    t1 = d1->idealTimeIncrement(minDistance, this->extremities[1], zeroVector);
+    t2 = d1->idealTimeIncrement(minDistance, d0, d0->getVelocity());
     // Choose the smaller of the two
     timeIncrement[i] = std::min ( t1, t2 );
 
@@ -581,7 +579,7 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
  */
 void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 {
-    std::vector<Dislocation>::iterator d;
+    std::vector<Dislocation*>::iterator d;
     std::vector<double>::iterator t;
     Vector3d p;
 
@@ -590,17 +588,17 @@ void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 
     while (d != this->dislocations.end())
     {
-        p = d->getPosition();
+        p = (*d)->getPosition();
         if (*t <= this->dt)
         {
             // Move the dislocation up to the defect and stop it there
-            p += d->getVelocity() * (*t);
+            p += (*d)->getVelocity() * (*t);
         }
         else
         {
-            p += d->getVelocity() * (this->dt);
+            p += (*d)->getVelocity() * (this->dt);
         }
-        d->setPosition(p);
+        (*d)->setPosition(p);
 
         d++;
         t++;
@@ -735,12 +733,15 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_global (std::vector<Vector3d> 
 {
     // Initialize the vector for holding Stress values
     std::vector<Stress> stressVector(points.size(), Stress());
+    // Iterator for the stress
+    std::vector<Stress>::iterator s = stressVector.begin();
 
     // Iterator for the points
     std::vector<Vector3d>::iterator p = points.begin();
 
-    // Iterator for the stress
-    std::vector<Stress>::iterator s = stressVector.begin();
+    // Iterator for the defects
+    std::vector<Defect*>::iterator d = this->defects.begin();
+
 
     // Temporary variable for stress
     Stress sTemp;
@@ -748,11 +749,10 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_global (std::vector<Vector3d> 
     while (p != points.end())
     {
         sTemp = appliedStress;
-        // Iterator for the dislocations
-        std::vector<Dislocation>::iterator d = this->dislocations.begin();
-        while (d != this->dislocations.end())
+
+        while (d != this->defects.end())
         {
-            sTemp += d->stressField (*p, mu, nu);
+            sTemp += (*d)->stressField (*p, mu, nu);
             d++;
         }
         *s = sTemp;
@@ -777,12 +777,15 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_local (std::vector<Vector3d> p
 {
     // Initialize the vector for holding Stress values
     std::vector<Stress> stressVector(points.size(), Stress());
+    // Iterator for the stress
+    std::vector<Stress>::iterator s = stressVector.begin();
 
     // Iterator for the points
     std::vector<Vector3d>::iterator p = points.begin();
 
-    // Iterator for the stress
-    std::vector<Stress>::iterator s = stressVector.begin();
+    // Iterator for the defects
+    std::vector<Defect*>::iterator d = this->defects.begin();
+
 
     // Temporary variable for stress
     Stress sTemp;
@@ -790,11 +793,10 @@ std::vector<Stress> SlipPlane::getSlipPlaneStress_local (std::vector<Vector3d> p
     while (p != points.end())
     {
         sTemp = appliedStress;
-        // Iterator for the dislocations
-        std::vector<Dislocation>::iterator d = this->dislocations.begin();
-        while (d != this->dislocations.end())
+
+        while (d != this->defects.end())
         {
-            sTemp += d->stressField (*p, mu, nu);
+            sTemp += (*d)->stressField (*p, mu, nu);
             d++;
         }
 
