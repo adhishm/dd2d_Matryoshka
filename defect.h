@@ -164,6 +164,16 @@ public:
     Stress s;
     return (s);
   }
+
+  /**
+   * @brief Virtual function for returning a zero velocity.
+   * @details The generic defect is immobile, so it returns a zero velocity. Specific defects will return their velocities if they have one.
+   * @return Zero velocity returned.
+   */
+  virtual Vector3d getVelocity () const
+  {
+      return (Vector3d(0.0, 0.0, 0.0));
+  }
 };
 
 #endif
