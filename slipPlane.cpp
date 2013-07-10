@@ -95,6 +95,7 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateS
 void SlipPlane::setExtremities (Vector3d *ends)
 {
     // Default axes for the extremities
+    // The extremities take the same axes as the slip plane
     Vector3d *axes = new Vector3d[3];
     axes[0] = Vector3d(1.0, 0.0, 0.0);
     axes[1] = Vector3d(0.0, 1.0, 0.0);
