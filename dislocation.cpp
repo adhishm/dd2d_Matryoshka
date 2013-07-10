@@ -382,8 +382,7 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma) const
  * @brief Returns the ideal time increment for the dislocation.
  * @details A dislocation is not allowed to approach another defect beyond a certain distance, specified by the argument minDistance. This function calculates the ideal time increment for this dislocation to not collide with the defect.
  * @param minDistance Minimum distance of approach to the defect.
- * @param d The defect for which the present dislocation's time increment is to be calculated.
- * @param v1 Velocity of the other defect.
+ * @param d Pointer to the defect for which the present dislocation's time increment is to be calculated.
  * @return The ideal time increment for this dislocation.
  */
 double Dislocation::idealTimeIncrement (double minDistance, Defect* d)
