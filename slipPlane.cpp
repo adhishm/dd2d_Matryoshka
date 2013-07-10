@@ -379,7 +379,7 @@ Vector3d SlipPlane::getAxis (int i) const
 // Update functions
 /**
  * @brief Create the defects vector.
- * * @details The vector defects contains pointers to all defects lying on the slip plane. They are also sorted in ascending order of their distance from the first extremity of the slip plane.
+ * @details The vector defects contains pointers to all defects lying on the slip plane. They are also sorted in ascending order of their distance from the first extremity of the slip plane.
  */
 void SlipPlane::createDefects()
 {
