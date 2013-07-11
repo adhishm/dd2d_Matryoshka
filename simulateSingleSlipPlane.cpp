@@ -180,7 +180,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                 }
             } while ( ignoreLine ( line ) );
             s->insertDislocation ( readDislocationFromLine ( line ) );
-        }
+        }        
 
         // Read number of dislocation sources
         do {
@@ -205,12 +205,15 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                 }
             } while ( ignoreLine ( line ) );
             s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
-        }
+        }        
 
         fp.close();
 
-        // Create the defects list
-        s->createDefects();
+        // Sort the dislocation and dislocation source lists
+        s->sortDislocations();
+        s->sortDislocationSources();
+        // Update the defect list
+        s->updateDefects();
         return (true);
     }
     else
