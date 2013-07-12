@@ -82,18 +82,24 @@ protected:
    * @details This position vector is redundant because the combination of the position vectors of the extremities and the normal vector define the slip plane completely. However, this vector, position, is useful to locate the slip plane in a given slip system.
    */
   Vector3d position;
-  
-  /**
-   * @brief STL vector container with dislocations.
-   * @details A slip plane may contain several dislocations. These are stored in this vector container dislocations.
-   */
-  std::vector<Dislocation> dislocations;
 
   /**
-   * @brief STL vector container with dislocation sources.
-   * @details A slip plane may contain several dislocation sources. These are stored in this vector container dislocationSources.
+   * @brief STL vector container for defects.
+   * @details A slip plane contains simply a list of defects, which may be dislocations, or other defects. Pointers are used so that when virtual functions are called, they are point to the appropriate implementation.
    */
-  std::vector<DislocationSource> dislocationSources;
+  std::vector<Defect*> defects;
+
+  /**
+   * @brief STL vector container for dislocations.
+   * @details This vector container holds pointers to all the dislocations on the slip plane.
+   */
+  std::vector<Dislocation*> dislocations;
+
+  /**
+   * @brief STL vector container for dislocation sources.
+   * @details This vector container holds pointers to all the dislocation sources on the slip plane.
+   */
+  std::vector<DislocationSource*> dislocationSources;
 
   /**
    * @brief Time increment for the slip plane.
@@ -105,12 +111,6 @@ protected:
    * @brief The slip plane's own co-ordinate system.
    */
   CoordinateSystem coordinateSystem;
-  
-  /**
-   * @brief Rotation matrix for co-ordinate system transformations.
-   * @details The slip plane's local co-ordinate system is defined as follows: z-axis||NormalVector; x-axis||slipPlane line. The rotation matrix is created using this convention.
-   */
-  RotationMatrix rotationMatrix;
   
 public:
   // Constructors
@@ -127,10 +127,10 @@ public:
    * @param normal The normal vector of the slip plane.
    * @param pos The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system)
    * @param base Pointer to the co-ordinate system of the base.
-   * @param dislocationList A vector container of type Dislocation containing the dislocations lying on this slip plane.
-   * @param dislocationSourceList A vector container of type DislocationSource containing the dislocation sources lying on this slip plane.
+   * @param dislocationList A vector container of type Dislocation* containing the dislocations lying on this slip plane.
+   * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
    */
-  SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation> dislocationList, std::vector<DislocationSource> dislocationSourceList);
+  SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
   
   // Assignment functions
   /**
@@ -157,30 +157,30 @@ public:
    * @param base Pointer to the base co-ordinate system.
    */
   void createCoordinateSystem(CoordinateSystem* base);
-  
+
   /**
-   * @brief Set the list of dislocations of the slip plane.
-   * @param dislocationList A vector container of type Dislocation containing the dislocations lying on this slip plane.
+   * @brief Insert a list of dislocations into the slip plane's defect list
+   * @param dList The list of pointers to dislocations.
    */
-  void setDislocationList (std::vector<Dislocation> dislocationList);
+  void insertDislocationList (std::vector<Dislocation*> dList);
 
   /**
    * @brief Inserted the provided dislocation into the slip plane's dislocation list.
    * @param d The dislocation that is to be inserted into the silp plane's dislocation list.
    */
-  void insertDislocation (Dislocation d);
+  void insertDislocation (Dislocation* d);
     
   /**
-   * @brief Set the list of dislocation sources on the slip plane.
-   * @param dislocationSourceList A vector container of type DislocationSource containing the dislocation sources lying on this slip plane.
+   * @brief Insert a list of dislocation sources on the slip plane.
+   * @param dislocationSourceList A vector container of type DislocationSource* containing pointers the dislocation sources lying on this slip plane.
    */
-  void setDislocationSourceList (std::vector<DislocationSource> dislocationSourceList);
+  void insertDislocationSourceList (std::vector<DislocationSource*> dislocationSourceList);
 
   /**
    * @brief Inserted the provided dislocation source into the slip plane's dislocation source list.
    * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
    */
-  void insertDislocationSource (DislocationSource d);  
+  void insertDislocationSource (DislocationSource* d);
   
   // Access functions
   /**
@@ -223,7 +223,7 @@ public:
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
    * @return The vector of dislocations lying on this slip plane.
    */
-  std::vector<Dislocation> getDislocationList () const;
+  std::vector<Dislocation*> getDislocationList ();
 
   /**
    * @brief Get the number of dislocations.
@@ -250,7 +250,7 @@ public:
    * @brief Get the entire vector container which holds the dislocation sources lying on this slip plane.
    * @return The vector of dislocation sources lying on this slip plane.
    */
-  std::vector<DislocationSource> getDislocationSourceList () const;
+  std::vector<DislocationSource *> getDislocationSourceList() const;
   
   /**
    * @brief Get the rotation matrix for this slip plane.
@@ -270,6 +270,25 @@ public:
    * @return The desired axis of the slip plane's local co-ordinate system, expressed in the global co-ordinate system. In case of invalid argument, a zero vector is returned.
    */
   Vector3d getAxis (int i) const;
+
+  // Vector update functions
+  /**
+   * @brief Update the defects vector.
+   * @details The vector defects contains pointers to all defects lying on the slip plane. They are also sorted in ascending order of their distance from the first extremity of the slip plane.
+   */
+  void updateDefects();
+  /**
+   * @brief Clear the vector dislocations leaving the container with zero size.
+   */
+  void clearDislocations();
+  /**
+   * @brief Clear the vector dislocationSources leaving the container with zero size.
+   */
+  void clearDislocationSources();
+  /**
+   * @brief Clear the vector defects leaving the container with zero size.
+   */
+  void clearDefects();
   
   // Operations
   /**
@@ -323,12 +342,21 @@ public:
    * @return Distance of the point pos from the n^th extremity of the slip plane.
    */
   double distanceFromExtremity(Vector3d pos, int n);
-  
+
   /**
-   * @brief Sorts the dislocations present on the slip plane in the ascending order of distance from the first extremity.
-   * @details The dislocations present on the slip plane are sorted in ascending order of distance from the first extremity of the slip plane.
+   * @brief Sorts the defects on the slip plane in the order of distance from the first extremity.
+   */
+  void sortDefects ();
+
+  /**
+   * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
    */
   void sortDislocations ();
+
+  /**
+   * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
+   */
+  void sortDislocationSources ();
 
   /**
    * @brief Returns a vector containing the stress values at different points along a slip plane.

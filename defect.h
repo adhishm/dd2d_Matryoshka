@@ -164,6 +164,28 @@ public:
     Stress s;
     return (s);
   }
+
+  /**
+   * @brief Virtual function for returning a zero velocity.
+   * @details The generic defect is immobile, so it returns a zero velocity. Specific defects will return their velocities if they have one.
+   * @return Zero velocity returned.
+   */
+  virtual Vector3d getVelocity () const
+  {
+      return (Vector3d(0.0, 0.0, 0.0));
+  }
+
+  /**
+   * @brief Virtual function for returning the time increment of a defect.
+   * @details The generic defect is immobile, so any time increment will do. Specific defects will override this behaviour.
+   * @param minDistance The minimim distance of approach allowed.
+   * @param d Pointer to the defect with respect to which the time increment is to be calculated.
+   * @return
+   */
+  virtual double idealTimeIncrement (double minDistance, Defect* d)
+  {
+      return (1000.0);
+  }
 };
 
 #endif
