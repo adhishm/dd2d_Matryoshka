@@ -369,8 +369,9 @@ Vector3d SlipPlane::getAxis (int i) const
 void SlipPlane::updateDefects()
 {
     // Assign the extremities
-    Defect* extremity[] = {this->extremities, this->extremities+1};
-    this->defects.assign(extremity,extremity+1);
+    this->clearDefects();
+    this->defects.push_back(this->extremities);
+    this->defects.push_back(this->extremities + 1);
     // Insert the dislocations
     this->defects.insert(this->defects.begin()+1,
                          this->dislocations.begin(),
@@ -535,7 +536,7 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
         if (defect->getDefectType() == DISLOCATION) {
             // Only dislocations have a time increment
             t1 = defect->idealTimeIncrement(minDistance, *(defect_it-1));
-            t2 = defect->idealTimeIncrement(minDistance, (*defect_it+1));
+            t2 = defect->idealTimeIncrement(minDistance, *(defect_it+1));
             timeIncrement[i++] = std::min(t1, t2);
         }
     }
