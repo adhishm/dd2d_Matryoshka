@@ -168,19 +168,25 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
-        // Read the dislocations
-        for ( i=0; i<n; i++ ) {
-            do {
-                if ( fp.good() ) {
-                    getline ( fp, line );
-                }
-                else {
-                    fp.close ();
-                    return ( false );
-                }
-            } while ( ignoreLine ( line ) );
-            s->insertDislocation ( readDislocationFromLine ( line ) );
-        }        
+        if (n==0) {
+            // No dislocations on the slip plane
+            s->clearDislocations();
+        }
+        else {
+            // Read the dislocations
+            for ( i=0; i<n; i++ ) {
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                s->insertDislocation ( readDislocationFromLine ( line ) );
+            }
+        }
 
         // Read number of dislocation sources
         do {
@@ -193,19 +199,25 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
-        // Read the dislocation sources
-        for ( i=0; i<n; i++ ) {
-            do {
-                if ( fp.good() ) {
-                    getline ( fp, line );
-                }
-                else {
-                    fp.close ();
-                    return ( false );
-                }
-            } while ( ignoreLine ( line ) );
-            s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
-        }        
+        if (n==0) {
+            // No dislocation sources
+            s->clearDislocationSources();
+        }
+        else {
+            // Read the dislocation sources
+            for ( i=0; i<n; i++ ) {
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
+            }
+        }
 
         fp.close();
 
