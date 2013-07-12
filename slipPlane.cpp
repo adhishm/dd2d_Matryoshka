@@ -382,6 +382,30 @@ void SlipPlane::updateDefects()
     this->sortDefects();
 }
 
+/**
+ * @brief Clear the vector dislocations leaving the container with zero size.
+ */
+void SlipPlane::clearDislocations()
+{
+    this->dislocations.clear();
+}
+
+/**
+ * @brief Clear the vector dislocationSources leaving the container with zero size.
+ */
+void SlipPlane::clearDislocationSources()
+{
+    this->dislocationSources.clear();
+}
+
+/**
+ * @brief Clear the vector defects leaving the container with zero size.
+ */
+void SlipPlane::clearDefects()
+{
+    this->defects.clear();
+}
+
 // Operations
 /**
  * @brief Calculates the rotation matrix for this slip plane.

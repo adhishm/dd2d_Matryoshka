@@ -271,12 +271,24 @@ public:
    */
   Vector3d getAxis (int i) const;
 
-  // Vector create and update functions
+  // Vector update functions
   /**
    * @brief Update the defects vector.
    * @details The vector defects contains pointers to all defects lying on the slip plane. They are also sorted in ascending order of their distance from the first extremity of the slip plane.
    */
   void updateDefects();
+  /**
+   * @brief Clear the vector dislocations leaving the container with zero size.
+   */
+  void clearDislocations();
+  /**
+   * @brief Clear the vector dislocationSources leaving the container with zero size.
+   */
+  void clearDislocationSources();
+  /**
+   * @brief Clear the vector defects leaving the container with zero size.
+   */
+  void clearDefects();
   
   // Operations
   /**
