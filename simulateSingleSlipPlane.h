@@ -68,16 +68,16 @@ Vector3d readVectorFromLine (std::string s);
 /**
  * @brief Reads the data from a line and builds a dislocation from it.
  * @param s The string that is to be read from.
- * @return The dislocation.
+ * @return Pointer to the dislocation.
  */
-Dislocation readDislocationFromLine (std::string s);
+Dislocation* readDislocationFromLine (std::string s);
 
 /**
  * @brief Reads the data from a line and builds a dislocation source from it.
  * @param s The string that is to be read from.
- * @return The dislocation source.
+ * @return Pointer to the dislocation source.
  */
-DislocationSource readDislocationSourceFromLine (std::string s);
+DislocationSource* readDislocationSourceFromLine (std::string s);
 
 /**
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.

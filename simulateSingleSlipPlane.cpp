@@ -37,52 +37,52 @@
  */
 void simulateSingleSlipPlane ()
 {
-  std::string fName;
-  std::string message;
+    std::string fName;
+    std::string message;
 
-  std::cout << "Parameter file name: ";
-  std::cin >> fName;
+    std::cout << "Parameter file name: ";
+    std::cin >> fName;
 
-  SlipPlane *slipPlane;
+    SlipPlane *slipPlane;
 
-  Parameter *param = new Parameter;
+    Parameter *param = new Parameter;
 
-  if ( param->getParameters( fName ) )
-  {
-      message = "Success: read file " + fName;
-      displayMessage ( message );
-      message.clear ();
+    if ( param->getParameters( fName ) )
+    {
+        message = "Success: read file " + fName;
+        displayMessage ( message );
+        message.clear ();
 
-      slipPlane = new SlipPlane;
+        slipPlane = new SlipPlane;
 
-      fName.clear ();
-      fName = param->input_dir + "/" + param->dislocationStructureFile;
-      if ( readSlipPlane ( fName, slipPlane ) )
-      {
-          message = "Success: read file " + fName;
-          displayMessage ( message );
-          message.clear ();
+        fName.clear ();
+        fName = param->input_dir + "/" + param->dislocationStructureFile;
+        if ( readSlipPlane ( fName, slipPlane ) )
+        {
+            message = "Success: read file " + fName;
+            displayMessage ( message );
+            message.clear ();
 
-          singleSlipPlane_iterate ( param, slipPlane );
-      }
-      else {
-          message = "Error: Unable to read slip plane from file " + fName;
-          displayMessage ( message );
-          message.clear ();
-      }
+            singleSlipPlane_iterate ( param, slipPlane );
+        }
+        else {
+            message = "Error: Unable to read slip plane from file " + fName;
+            displayMessage ( message );
+            message.clear ();
+        }
 
-      delete ( slipPlane );
-      slipPlane = NULL;
-      fName.clear ();
-  }
-  else {
-      message = "Error: Unable to read parameter file " + fName;
-      displayMessage ( message );
-      message.clear ();
-  }
+        delete ( slipPlane );
+        slipPlane = NULL;
+        fName.clear ();
+    }
+    else {
+        message = "Error: Unable to read parameter file " + fName;
+        displayMessage ( message );
+        message.clear ();
+    }
 
-  delete ( param );
-  param = NULL;
+    delete ( param );
+    param = NULL;
 }
 
 /**
@@ -168,18 +168,24 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
-        // Read the dislocations
-        for ( i=0; i<n; i++ ) {
-            do {
-                if ( fp.good() ) {
-                    getline ( fp, line );
-                }
-                else {
-                    fp.close ();
-                    return ( false );
-                }
-            } while ( ignoreLine ( line ) );
-            s->insertDislocation ( readDislocationFromLine ( line ) );
+        if (n==0) {
+            // No dislocations on the slip plane
+            s->clearDislocations();
+        }
+        else {
+            // Read the dislocations
+            for ( i=0; i<n; i++ ) {
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                s->insertDislocation ( readDislocationFromLine ( line ) );
+            }
         }
 
         // Read number of dislocation sources
@@ -193,22 +199,34 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
-        // Read the dislocation sources
-        for ( i=0; i<n; i++ ) {
-            do {
-                if ( fp.good() ) {
-                    getline ( fp, line );
-                }
-                else {
-                    fp.close ();
-                    return ( false );
-                }
-            } while ( ignoreLine ( line ) );
-            s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
+        if (n==0) {
+            // No dislocation sources
+            s->clearDislocationSources();
+        }
+        else {
+            // Read the dislocation sources
+            for ( i=0; i<n; i++ ) {
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
+            }
         }
 
         fp.close();
-	return (true);
+
+        // Sort the dislocation and dislocation source lists
+        s->sortDislocations();
+        s->sortDislocationSources();
+        // Update the defect list
+        s->updateDefects();
+        return (true);
     }
     else
     {
@@ -240,9 +258,9 @@ Vector3d readVectorFromLine (std::string s)
 /**
  * @brief Reads the data from a line and builds a dislocation from it.
  * @param s The string that is to be read from.
- * @return The dislocation.
+ * @return Pointer to the dislocation.
  */
-Dislocation readDislocationFromLine (std::string s)
+Dislocation* readDislocationFromLine (std::string s)
 {
     std::stringstream ss ( s );
     std::string a;
@@ -278,15 +296,16 @@ Dislocation readDislocationFromLine (std::string s)
     ss >> a;
     mob = ( bool ) atoi ( a.c_str() );
 
-    return ( Dislocation ( bvec, lvec, pos, bmag, mob ) );
+    Dislocation* dislocation = new Dislocation ( bvec, lvec, pos, bmag, mob );
+    return (dislocation);
 }
 
 /**
  * @brief Reads the data from a line and builds a dislocation source from it.
  * @param s The string that is to be read from.
- * @return The dislocation source.
+ * @return Pointer to the dislocation source.
  */
-DislocationSource readDislocationSourceFromLine (std::string s)
+DislocationSource* readDislocationSourceFromLine(std::string s)
 {
     std::stringstream ss ( s );
     std::string a;
@@ -327,7 +346,8 @@ DislocationSource readDislocationSourceFromLine (std::string s)
     ss >> a;
     timeLimit = atof ( a.c_str() );
 
-    return ( DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit ) );
+    DislocationSource* dSource = new DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit );
+    return (dSource);
 }
 
 /**
@@ -352,17 +372,17 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
 
     // Write statistics
     if ( param->dislocationPositions.ifWrite() ) {
-      fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-      slipPlane->writeSlipPlane ( fileName );
-      fileName.clear ();
+        fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
+        slipPlane->writeSlipPlane ( fileName );
+        fileName.clear ();
     }
 
     if ( param->slipPlaneStressDistributions.ifWrite() ) {
-      fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
-      slipPlane->writeSlipPlaneStressDistribution ( fileName,
-						    param->slipPlaneStressDistributions.parameters[0],
-						    param);
-      fileName.clear ();
+        fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
+        slipPlane->writeSlipPlaneStressDistribution ( fileName,
+                                                      param->slipPlaneStressDistributions.parameters[0],
+                param);
+        fileName.clear ();
     }
 
     while ( continueSimulation ) {
@@ -377,7 +397,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
             fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
-                                                          param);
+                    param);
             fileName.clear ();
         }
         // Calculate stresses
@@ -415,7 +435,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
             fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
-                                                          param);
+                    param);
             fileName.clear ();
         }
 

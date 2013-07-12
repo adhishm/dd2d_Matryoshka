@@ -67,12 +67,6 @@ protected:
   double bmag;
   
   /**
-   * @brief The rotation matrix for rotating from the global to the local co-ordinate system and vice-versa.
-   * @details This is the rotation matrix that represents the relationship between the global and local co-ordinate systems. It is used to convert tensors and vectors between the two systems. The rotation matrix needs to be calculated once and may be refreshed periodically if lattice rotation is implemented. In the absence of lattice rotation, the matrix will remain invariant.
-   */
-  RotationMatrix rotationMatrix;
-  
-  /**
    * @brief Critical stress for the emission of a dislocation dipole.
    * @details A dislocation dipole source needs to experience a certain critical level of shear stress for a certain amount of time before it can emit a dipole. This critical stress is given by tauCritical.
    */
