@@ -491,8 +491,8 @@ void SlipPlane::calculateVelocities (double B)
             if (norm_v > 0.0)
             {
                 // Project the velocity on to the slip plane line
-                p0 = this->extremities[0].getPosition();
-                p1 = this->extremities[1].getPosition();
+                p0 = this->getExtremity(0);
+                p1 = this->getExtremity(1);
                 p01 = p1 - p0;
                 norm_p01 = p01.magnitude();
 
