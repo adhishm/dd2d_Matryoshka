@@ -386,20 +386,6 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     }
 
     while ( continueSimulation ) {
-        // Write statistics
-        if ( param->dislocationPositions.ifWrite() ) {
-            fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-            slipPlane->writeSlipPlane ( fileName );
-            fileName.clear ();
-        }
-
-        if ( param->slipPlaneStressDistributions.ifWrite() ) {
-            fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
-            slipPlane->writeSlipPlaneStressDistribution ( fileName,
-                                                          param->slipPlaneStressDistributions.parameters[0],
-                    param);
-            fileName.clear ();
-        }
         // Calculate stresses
         slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
 
