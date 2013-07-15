@@ -97,6 +97,9 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
     std::ifstream fp ( fileName.c_str() );
     std::string line;
 
+    Dislocation* disl;
+    DislocationSource* dSource;
+
     Vector3d *e;
     int i,  n;
 
@@ -184,7 +187,9 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                         return ( false );
                     }
                 } while ( ignoreLine ( line ) );
-                s->insertDislocation ( readDislocationFromLine ( line ) );
+                disl = readDislocationFromLine(line);
+                disl->coordinateSystem.setBase(s->coordinateSystem.getBase());
+                s->insertDislocation ( disl );
             }
         }
 
@@ -215,7 +220,9 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                         return ( false );
                     }
                 } while ( ignoreLine ( line ) );
-                s->insertDislocationSource ( readDislocationSourceFromLine ( line ) );
+                dSource = readDislocationSourceFromLine( line );
+                dSource->coordinateSystem.setBase(s->coordinateSystem.getBase());
+                s->insertDislocationSource ( dSource );
             }
         }
 
