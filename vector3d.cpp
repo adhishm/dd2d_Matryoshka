@@ -37,9 +37,9 @@
  */
 Vector3d::Vector3d ()
 {
-  this->x[0] = 0.0;
-  this->x[1] = 0.0;
-  this->x[2] = 0.0;
+    this->x[0] = 0.0;
+    this->x[1] = 0.0;
+    this->x[2] = 0.0;
 }
 
 /**
@@ -49,9 +49,9 @@ Vector3d::Vector3d ()
  */
 Vector3d::Vector3d (double* a)
 {
-  this->x[0] = a[0];
-  this->x[1] = a[1];
-  this->x[2] = a[2];
+    this->x[0] = a[0];
+    this->x[1] = a[1];
+    this->x[2] = a[2];
 }
 
 /**
@@ -63,9 +63,9 @@ Vector3d::Vector3d (double* a)
  */
 Vector3d::Vector3d (double a1, double a2, double a3)
 {
-  this->x[0] = a1;
-  this->x[1] = a2;
-  this->x[2] = a3;
+    this->x[0] = a1;
+    this->x[1] = a2;
+    this->x[2] = a3;
 }
 
 // Assignment functions
@@ -77,9 +77,9 @@ Vector3d::Vector3d (double a1, double a2, double a3)
  */
 void Vector3d::setValue (int index, double value)
 {
-  if (index>=0 && index <3)
+    if (index>=0 && index <3)
     {
-      this->x[index] = value;
+        this->x[index] = value;
     }
 }
 
@@ -90,9 +90,9 @@ void Vector3d::setValue (int index, double value)
  */
 void Vector3d::setVector (double* a)
 {
-  this->x[0] = a[0];
-  this->x[1] = a[1];
-  this->x[2] = a[2];
+    this->x[0] = a[0];
+    this->x[1] = a[1];
+    this->x[2] = a[2];
 }
 
 // Access functions
@@ -104,13 +104,13 @@ void Vector3d::setVector (double* a)
  */
 double Vector3d::getValue (int index) const
 {
-  if (index>=0 && index<3)
+    if (index>=0 && index<3)
     {
-      return (this->x[index]);
+        return (this->x[index]);
     }
-  else
+    else
     {
-      return (0);
+        return (0);
     }
 }
 
@@ -121,13 +121,13 @@ double Vector3d::getValue (int index) const
  */
 double* Vector3d::getVector () const
 {
-  double* a = new double[3];
-  
-  a[0] = this->x[0];
-  a[1] = this->x[1];
-  a[2] = this->x[2];
-  
-  return (a);
+    double* a = new double[3];
+
+    a[0] = this->x[0];
+    a[1] = this->x[1];
+    a[2] = this->x[2];
+
+    return (a);
 }
 
 /**
@@ -137,15 +137,15 @@ double* Vector3d::getVector () const
  */
 double Vector3d::sum () const
 {
-  double s = 0.0;
-  int i;
-  
-  for (i=0; i<3; i++)
+    double s = 0.0;
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      s += this->x[i];
+        s += this->x[i];
     }
-  
-  return (s);
+
+    return (s);
 }
 
 /**
@@ -155,15 +155,15 @@ double Vector3d::sum () const
  */
 double Vector3d::magnitude () const
 {
-  double s = 0.0;
-  int i;
-  
-  for (i=0; i<3; i++)
-  {
-    s += this->x[i] * this->x[i];
-  }
-  
-  return ( sqrt (s) );
+    double s = 0.0;
+    int i;
+
+    for (i=0; i<3; i++)
+    {
+        s += this->x[i] * this->x[i];
+    }
+
+    return ( sqrt (s) );
 }  
 
 /**
@@ -173,16 +173,16 @@ double Vector3d::magnitude () const
  */
 Vector3d Vector3d::normalize ()
 {
-  double m = this->magnitude ();
-  
-  if (m==0.0)
-  {
-    return (Vector3d ());
-  }
-  else
-  {
-    return ((*this) * (1.0/m));
-  }
+    double m = this->magnitude ();
+
+    if (m==0.0)
+    {
+        return (Vector3d ());
+    }
+    else
+    {
+        return ((*this) * (1.0/m));
+    }
 }
 
 // Operators
@@ -194,15 +194,15 @@ Vector3d Vector3d::normalize ()
  */
 Vector3d Vector3d::operator+ (const Vector3d& p) const
 {
-  Vector3d r (0.0, 0.0, 0.0);
-  int i;
-  
-  for (i=0; i<3; i++)
+    Vector3d r (0.0, 0.0, 0.0);
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      r.setValue(i, (this->x[i] + p.getValue(i)));
+        r.setValue(i, (this->x[i] + p.getValue(i)));
     }
-  
-  return (r);
+
+    return (r);
 }
 
 /**
@@ -211,11 +211,11 @@ Vector3d Vector3d::operator+ (const Vector3d& p) const
  */
 void Vector3d::operator+= (const Vector3d& p)
 {
-  int i;
-  
-  for (i=0; i<3; i++)
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      this->x[i] += p.x[i];
+        this->x[i] += p.x[i];
     }
 }
 
@@ -227,15 +227,15 @@ void Vector3d::operator+= (const Vector3d& p)
  */
 Vector3d Vector3d::operator- (const Vector3d& p) const
 {
-  Vector3d r(0.0, 0.0, 0.0);
-  int i;
-  
-  for (i=0; i<3; i++)
+    Vector3d r(0.0, 0.0, 0.0);
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      r.setValue(i, (this->x[i] - p.getValue(i)));
+        r.setValue(i, (this->x[i] - p.getValue(i)));
     }
-  
-  return (r);
+
+    return (r);
 }
 
 /**
@@ -244,11 +244,11 @@ Vector3d Vector3d::operator- (const Vector3d& p) const
  */
 void Vector3d::operator-= (const Vector3d& p)
 {
-  int i;
-  
-  for (i=0; i<3; i++)
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      this->x[i] -= p.getValue(i);
+        this->x[i] -= p.getValue(i);
     }
 }
 
@@ -260,28 +260,28 @@ void Vector3d::operator-= (const Vector3d& p)
  */
 Vector3d Vector3d::operator* (const double& p) const
 {
-  Vector3d r(0.0, 0.0, 0.0);
-  int i;
-  
-  for (i=0; i<3; i++)
+    Vector3d r(0.0, 0.0, 0.0);
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      r.setValue(i, (this->x[i] * p));
+        r.setValue(i, (this->x[i] * p));
     }
-  
-  return (r);
+
+    return (r);
 }
-   
+
 /**
  * @brief Operator for reflexive scaling of the vector by a scalar.
  * @details Scales the current vector by the scalar provided and populates the current vector elements with the result.
  */
 void Vector3d::operator*= (const double& p)
 {
-  int i;
-  
-  for (i=0; i<3; i++)
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      this->x[i] *= p;
+        this->x[i] *= p;
     }
 }
 
@@ -292,15 +292,15 @@ void Vector3d::operator*= (const double& p)
  */
 double Vector3d::operator* (const Vector3d& p) const
 {
-  double s = 0.0;
-  int i;
-  
-  for (i=0; i<3; i++)
+    double s = 0.0;
+    int i;
+
+    for (i=0; i<3; i++)
     {
-      s += this->x[i] * p.getValue(i);
+        s += this->x[i] * p.getValue(i);
     }
-  
-  return (s);
+
+    return (s);
 }
 
 /**
@@ -310,13 +310,13 @@ double Vector3d::operator* (const Vector3d& p) const
  */
 Vector3d Vector3d::operator^ (const Vector3d& p) const
 {
-  Vector3d r(0.0, 0.0, 0.0);
-  
-  r.setValue(0, ((this->x[1] * p.getValue(2)) - (this->x[2] * p.getValue(1))));
-  r.setValue(1, ((this->x[2] * p.getValue(0)) - (this->x[0] * p.getValue(2))));
-  r.setValue(2, ((this->x[0] * p.getValue(1)) - (this->x[1] * p.getValue(0))));
-  
-  return (r);
+    Vector3d r(0.0, 0.0, 0.0);
+
+    r.setValue(0, ((this->x[1] * p.getValue(2)) - (this->x[2] * p.getValue(1))));
+    r.setValue(1, ((this->x[2] * p.getValue(0)) - (this->x[0] * p.getValue(2))));
+    r.setValue(2, ((this->x[0] * p.getValue(1)) - (this->x[1] * p.getValue(0))));
+
+    return (r);
 }
 
 /**
@@ -325,10 +325,10 @@ Vector3d Vector3d::operator^ (const Vector3d& p) const
  */
 void Vector3d::operator^= (const Vector3d& p)
 {
-  Vector3d* r = new Vector3d(0.0, 0.0, 0.0);
+    Vector3d* r = new Vector3d(0.0, 0.0, 0.0);
 
-  *r = (*this)^p;
-  *this = *r;
-  delete (r);
-  r = NULL;
+    *r = (*this)^p;
+    *this = *r;
+    delete (r);
+    r = NULL;
 }

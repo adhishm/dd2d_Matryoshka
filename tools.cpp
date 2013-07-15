@@ -38,16 +38,16 @@
  */
 std::vector<Vector3d> permuteVector (Vector3d v)
 {
-  std::vector<Vector3d> vList;
-  std::vector<Vector3d> vTemp;
+    std::vector<Vector3d> vList;
+    std::vector<Vector3d> vTemp;
 
-  for (int i=0; i<3; i++)
+    for (int i=0; i<3; i++)
     {
-      vTemp = permuteVector_byIndex (v, i);
-      vList = concatenateVectors (vList, vTemp);
+        vTemp = permuteVector_byIndex (v, i);
+        vList = concatenateVectors (vList, vTemp);
     }
 
-  return ( eliminateDuplicatesFromVector (vList, true) );
+    return ( eliminateDuplicatesFromVector (vList, true) );
 }
 
 /**
@@ -59,28 +59,28 @@ std::vector<Vector3d> permuteVector (Vector3d v)
  */
 std::vector<Vector3d> permuteVector_byIndex (Vector3d v, int index)
 {
-  // The final vector that will be returned
-  std::vector<Vector3d> vList;
+    // The final vector that will be returned
+    std::vector<Vector3d> vList;
 
-  // The two possible vector lists
-  std::vector<Vector3d> vList1;
-  std::vector<Vector3d> vList2;
+    // The two possible vector lists
+    std::vector<Vector3d> vList1;
+    std::vector<Vector3d> vList2;
 
-  Vector3d v1 = Vector3d (v.getValue(index),
-			  v.getValue((index+1)%3),
-			  v.getValue((index+2)%3));
-  Vector3d v2 = Vector3d (v.getValue(index),
-			  v.getValue((index+2)%3),
-			  v.getValue((index+1)%3));
+    Vector3d v1 = Vector3d (v.getValue(index),
+                            v.getValue((index+1)%3),
+                            v.getValue((index+2)%3));
+    Vector3d v2 = Vector3d (v.getValue(index),
+                            v.getValue((index+2)%3),
+                            v.getValue((index+1)%3));
 
-// Create the permutations with the signs
- vList1 = permuteVector_bySign (v1);
- vList2 = permuteVector_bySign (v2);
+    // Create the permutations with the signs
+    vList1 = permuteVector_bySign (v1);
+    vList2 = permuteVector_bySign (v2);
 
- // Concatenate the two vectors
- vList = concatenateVectors (vList1, vList2);
+    // Concatenate the two vectors
+    vList = concatenateVectors (vList1, vList2);
 
- return (vList);
+    return (vList);
 }
 
 /**
@@ -91,19 +91,19 @@ std::vector<Vector3d> permuteVector_byIndex (Vector3d v, int index)
  */
 std::vector<Vector3d> permuteVector_bySign (Vector3d v)
 {
-  // The list that will contain the permuted vectors.
-  std::vector<Vector3d> vList (1, v);
-  Vector3d vTemp;  // A temporary vector
+    // The list that will contain the permuted vectors.
+    std::vector<Vector3d> vList (1, v);
+    Vector3d vTemp;  // A temporary vector
 
-  for (int i=0; i<3; i++)
+    for (int i=0; i<3; i++)
     {
-      vTemp = v;
-      // Switch the sign of the i^th
-      vTemp.setValue (i, (-1.0*vTemp.getValue(i)));
-      vList.push_back (vTemp);
+        vTemp = v;
+        // Switch the sign of the i^th
+        vTemp.setValue (i, (-1.0*vTemp.getValue(i)));
+        vList.push_back (vTemp);
     }
 
-  return (vList);
+    return (vList);
 }
 
 /**
@@ -114,9 +114,9 @@ std::vector<Vector3d> permuteVector_bySign (Vector3d v)
  */
 std::vector<Vector3d> concatenateVectors (std::vector<Vector3d> v1, std::vector<Vector3d> v2)
 {
-  v1.insert (v1.end(), v2.begin(), v2.end());
+    v1.insert (v1.end(), v2.begin(), v2.end());
 
-  return (v1);
+    return (v1);
 }
 
 /**
@@ -128,39 +128,39 @@ std::vector<Vector3d> concatenateVectors (std::vector<Vector3d> v1, std::vector<
  */
 std::vector<Vector3d> eliminateDuplicatesFromVector (std::vector<Vector3d> v, bool negatives)
 {
-  std::vector<Vector3d>::iterator vi;
-  std::vector<Vector3d>::iterator vj;
+    std::vector<Vector3d>::iterator vi;
+    std::vector<Vector3d>::iterator vj;
 
-  bool found;
+    bool found;
 
-  std::vector<Vector3d> vList;
-  Vector3d vPlus, vMinus;
+    std::vector<Vector3d> vList;
+    Vector3d vPlus, vMinus;
 
-  for (vi=v.begin();vi!=v.end();vi++)
+    for (vi=v.begin();vi!=v.end();vi++)
     {
-      for (vj=vi+1; vj!=v.end(); vj++)
-	{
-	  vMinus = (*vi) - (*vj);
+        for (vj=vi+1; vj!=v.end(); vj++)
+        {
+            vMinus = (*vi) - (*vj);
 
-	  found = (vMinus.magnitude()==0.0);
-	  if (negatives)
-	    {
-	      vPlus  = (*vi) + (*vj);
-	      found = found || (vPlus.magnitude()==0.0);
-	    }
+            found = (vMinus.magnitude()==0.0);
+            if (negatives)
+            {
+                vPlus  = (*vi) + (*vj);
+                found = found || (vPlus.magnitude()==0.0);
+            }
 
-	  if (found)
-	    {
-	      break;
-	    }
-	}
-      if (!found)
-	{
-	  vList.push_back(*vi);
-	}
+            if (found)
+            {
+                break;
+            }
+        }
+        if (!found)
+        {
+            vList.push_back(*vi);
+        }
     }
 
-  return (vList);
+    return (vList);
 }
 
 /**
