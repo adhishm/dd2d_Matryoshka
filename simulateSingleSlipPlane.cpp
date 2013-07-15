@@ -171,26 +171,22 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
-        if (n==0) {
-            // No dislocations on the slip plane
-            s->clearDislocations();
-        }
-        else {
-            // Read the dislocations
-            for ( i=0; i<n; i++ ) {
-                do {
-                    if ( fp.good() ) {
-                        getline ( fp, line );
-                    }
-                    else {
-                        fp.close ();
-                        return ( false );
-                    }
-                } while ( ignoreLine ( line ) );
-                disl = readDislocationFromLine(line);
-                disl->setBaseCoordinateSystem(s->getCoordinateSystem());
-                s->insertDislocation ( disl );
-            }
+        // Clear the dislocations vector before inserting new dislocations.
+        s->clearDislocations();
+        // Read the dislocations
+        for ( i=0; i<n; i++ ) {
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
+            disl = readDislocationFromLine(line);
+            disl->setBaseCoordinateSystem(s->getCoordinateSystem());
+            s->insertDislocation ( disl );
         }
 
         // Read number of dislocation sources
@@ -204,26 +200,22 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
-        if (n==0) {
-            // No dislocation sources
-            s->clearDislocationSources();
-        }
-        else {
-            // Read the dislocation sources
-            for ( i=0; i<n; i++ ) {
-                do {
-                    if ( fp.good() ) {
-                        getline ( fp, line );
-                    }
-                    else {
-                        fp.close ();
-                        return ( false );
-                    }
-                } while ( ignoreLine ( line ) );
-                dSource = readDislocationSourceFromLine( line );
-                dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
-                s->insertDislocationSource ( dSource );
-            }
+       // Clear the dislocationSources vector before inserting new dislocation sources
+        s->clearDislocationSources();
+        // Read the dislocation sources
+        for ( i=0; i<n; i++ ) {
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
+            dSource = readDislocationSourceFromLine( line );
+            dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
+            s->insertDislocationSource ( dSource );
         }
 
         fp.close();
