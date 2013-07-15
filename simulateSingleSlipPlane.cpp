@@ -160,6 +160,10 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         // Create the co-ordinate system
         s->createCoordinateSystem(NULL);
 
+        // Set the co-ordinate system for the extremities
+        s->extremities[0].setBaseCoordinateSystem(s->getCoordinateSystem());
+        s->extremities[1].setBaseCoordinateSystem(s->getCoordinateSystem());
+
         // Read number of dislocations
         do {
             if ( fp.good() ) {
