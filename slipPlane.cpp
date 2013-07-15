@@ -101,8 +101,8 @@ void SlipPlane::setExtremities (Vector3d *ends)
     axes[1] = Vector3d(0.0, 1.0, 0.0);
     axes[2] = Vector3d(0.0, 0.0, 1.0);
 
-    this->extremities[0] = Defect(GRAINBOUNDARY, ends[0], axes, this->coordinateSystem.getBase());
-    this->extremities[1] = Defect(GRAINBOUNDARY, ends[1], axes, this->coordinateSystem.getBase());
+    this->extremities[0] = Defect(GRAINBOUNDARY, ends[0], axes, this->getCoordinateSystem());
+    this->extremities[1] = Defect(GRAINBOUNDARY, ends[1], axes, this->getCoordinateSystem());
 }
 
 /**
