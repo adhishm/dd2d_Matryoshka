@@ -478,6 +478,12 @@ void SlipPlane::calculateVelocities (double B)
     Vector3d p0, p1, p01;
     double norm_v, norm_p01, cosine;
 
+    // Get the slip plane line = p1-p0
+    p0 = this->getExtremity(0);
+    p1 = this->getExtremity(1);
+    p01 = p1 - p0;
+    norm_p01 = p01.magnitude();
+
     Vector3d v;
 
     for ( d=this->dislocations.begin(); d != this->dislocations.end(); d++)
@@ -491,11 +497,6 @@ void SlipPlane::calculateVelocities (double B)
             if (norm_v > 0.0)
             {
                 // Project the velocity on to the slip plane line
-                p0 = this->getExtremity(0);
-                p1 = this->getExtremity(1);
-                p01 = p1 - p0;
-                norm_p01 = p01.magnitude();
-
                 cosine = (v * p01)/(norm_v * norm_p01);
                 v *= cosine;
             }

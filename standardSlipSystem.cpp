@@ -48,16 +48,16 @@ StandardSlipSystem::StandardSlipSystem()
  */
 StandardSlipSystem::StandardSlipSystem (CrystalStructure c)
 {
-  switch (c)
-  {
-  case CRYSTAL_STRUCTURE_FCC:
-      this->createFCCSlipSystems ();
-      break;
+    switch (c)
+    {
+    case CRYSTAL_STRUCTURE_FCC:
+        this->createFCCSlipSystems ();
+        break;
 
-  case CRYSTAL_STRUCTURE_BCC:
-      this->createBCCSlipSystems ();
-      break;
-  }
+    case CRYSTAL_STRUCTURE_BCC:
+        this->createBCCSlipSystems ();
+        break;
+    }
 }
 
 // Assignment functions
@@ -66,10 +66,10 @@ StandardSlipSystem::StandardSlipSystem (CrystalStructure c)
  */
 void StandardSlipSystem::createFCCSlipSystems ()
 {
-  Vector3d n (1.0, 1.0, 1.0);  // Normal vector
-  Vector3d d (1.0, 1.0, 0.0);  // Slip direction
+    Vector3d n (1.0, 1.0, 1.0);  // Normal vector
+    Vector3d d (1.0, 1.0, 0.0);  // Slip direction
 
-  this->createSlipSystems (n, d);
+    this->createSlipSystems (n, d);
 }
 
 /**
@@ -77,10 +77,10 @@ void StandardSlipSystem::createFCCSlipSystems ()
  */
 void StandardSlipSystem::createBCCSlipSystems ()
 {
-  Vector3d n (1.0, 1.0, 0.0);  // Normal vector
-  Vector3d d (1.0, 1.0, 1.0);  // Slip direction
+    Vector3d n (1.0, 1.0, 0.0);  // Normal vector
+    Vector3d d (1.0, 1.0, 1.0);  // Slip direction
 
-  this->createSlipSystems (n, d);
+    this->createSlipSystems (n, d);
 }
 
 /**
@@ -90,32 +90,32 @@ void StandardSlipSystem::createBCCSlipSystems ()
  */
 void StandardSlipSystem::createSlipSystems (Vector3d n, Vector3d d)
 {
-  std::vector<Vector3d> normals    = permuteVector (n);
-  std::vector<Vector3d> directions = permuteVector (d);
+    std::vector<Vector3d> normals    = permuteVector (n);
+    std::vector<Vector3d> directions = permuteVector (d);
 
-  std::vector<Vector3d>::iterator ni; // Iterator for normals
-  std::vector<Vector3d>::iterator di; // Iterator for directions
+    std::vector<Vector3d>::iterator ni; // Iterator for normals
+    std::vector<Vector3d>::iterator di; // Iterator for directions
 
-  double dotProduct;
+    double dotProduct;
 
-  ni = normals.begin ();
+    ni = normals.begin ();
 
-  this->nSlipSystems = 0;
+    this->nSlipSystems = 0;
 
-  while (ni != normals.end())
+    while (ni != normals.end())
     {
-      di = directions.begin();
-      while (di != directions.end())
-	{
-	  dotProduct = (*ni) * (*di);
-	  if ( 0.0 == dotProduct)
-	    {
-	      this->nSlipSystems ++;
-	      this->slipPlaneNormalVector.push_back (*ni);
-	      this->slipDirection.push_back (*di);
-	    }
-	  di++;
-	}
-      ni++;
+        di = directions.begin();
+        while (di != directions.end())
+        {
+            dotProduct = (*ni) * (*di);
+            if ( 0.0 == dotProduct)
+            {
+                this->nSlipSystems ++;
+                this->slipPlaneNormalVector.push_back (*ni);
+                this->slipDirection.push_back (*di);
+            }
+            di++;
+        }
+        ni++;
     }
 }

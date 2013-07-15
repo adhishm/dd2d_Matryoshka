@@ -44,7 +44,7 @@
 enum CrystalStructure {
     CRYSTAL_STRUCTURE_FCC,
     CRYSTAL_STRUCTURE_BCC
-  };
+};
 
 /**
   * @brief The default crystal structure is defined by this macro.
@@ -59,57 +59,57 @@ enum CrystalStructure {
  */
 class StandardSlipSystem
 {
- private:
-  /**
+private:
+    /**
    * @brief The normal vectors of the slip planes in this slip system.
    * @details These vectors are the normals to the slip planes. In cubic crystal systems (BCC, FCC), the Miller indices of the slip plane are identical to those of its normal vector. The vectors should be normalized so that they are always unit vectors.
    */
-  std::vector<Vector3d> slipPlaneNormalVector;
-  
-  /**
+    std::vector<Vector3d> slipPlaneNormalVector;
+
+    /**
    * @brief The vectors indicating the slip direction.
    * @details These vectors represent the direction of slip on the plane corresponding to its position in the list of slip planes. These vectors should be normalized so that they are always unit vectors.
    */
-  std::vector<Vector3d> slipDirection;
+    std::vector<Vector3d> slipDirection;
 
-  /**
+    /**
    * @brief Number of slip systems.
    */
-  int nSlipSystems;
-  
- public:
-  // Constructors
-  /**
+    int nSlipSystems;
+
+public:
+    // Constructors
+    /**
    * @brief Constructor for creating the standard slip system with all the possible normals and directions, for the default crystal structure.
    * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
    */
-  StandardSlipSystem ();
-  /**
+    StandardSlipSystem ();
+    /**
    * @brief Constructor for creating the standard slip system with all the possible normals and directions, depending on the crystal structure provided.
    * @details This contructor builds an instance of the class with all valid conbinations of the slip plane normal and slip direction.
    * @param c Enumerated type representing the crystal structure. 0=FCC. 1=BCC.
    */
-  StandardSlipSystem (CrystalStructure c);
+    StandardSlipSystem (CrystalStructure c);
 
-  // Assignment functions
-  /**
+    // Assignment functions
+    /**
    * @brief Creates the 12 possible FCC slip systems.
-   */  
-  void createFCCSlipSystems ();
-  
-  /**
+   */
+    void createFCCSlipSystems ();
+
+    /**
    * @brief Creates the 48 possible BCC slip systems.
    */
-  void createBCCSlipSystems ();
+    void createBCCSlipSystems ();
 
-  /**
+    /**
    * @brief Creates the possible slip systems using the normal and slip directions provided.
    * @param n Slip plane normal vector.
    * @param d Slip direction.
    */
-  void createSlipSystems (Vector3d n, Vector3d d);
-  
-  // Access functions
+    void createSlipSystems (Vector3d n, Vector3d d);
+
+    // Access functions
 };
 
 #endif
