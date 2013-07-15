@@ -105,6 +105,15 @@ void Defect::setCoordinateSystem (Vector3d* axes, Vector3d origin, CoordinateSys
 }
 
 /**
+ * @brief Set the base pointer of the defect's co-ordinate system.
+ * @param base Pointer to the base co-ordinate system.
+ */
+void Defect::setBaseCoordinateSystem(CoordinateSystem *base)
+{
+    this->coordinateSystem.setBase(base);
+}
+
+/**
  * @brief Sets the position of the defect.
  * @details The position of the defect is set to the co-ordinates present in the array pointed to by the argument.
  * Sets the position of the defect as the values in the array pointed to by the argument.
