@@ -373,9 +373,16 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma) const
 {
     // Stress in the local co-ordinate system
     Stress sigmaLocal = this->coordinateSystem.stress_BaseToLocal(sigma);
-    Vector3d force = this->lvec ^ (sigmaLocal * this->bvec);
 
-    return (force);
+    // Forces
+    Vector3d f_edge  = Vector3d(-1.0*sigmaLocal.getValue(0,1), sigmaLocal.getValue(0,0), 0.0) * this->bvec.getValue(0);
+    Vector3d f_screw = Vector3d(-1.0*sigmaLocal.getValue(1,2), sigmaLocal.getValue(0,2), 0.0) * this->bvec.getValue(2);
+    Vector3d force = f_edge + f_screw;
+
+    // Rotate to base system
+    Vector3d force_base = this->coordinateSystem.vector_LocalToBase_noTranslate(force);
+
+    return (force_base);
 }
 
 /**
