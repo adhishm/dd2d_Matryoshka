@@ -186,6 +186,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             } while ( ignoreLine ( line ) );
             disl = readDislocationFromLine(line);
             disl->setBaseCoordinateSystem(s->getCoordinateSystem());
+            disl->calculateRotationMatrix();
             s->insertDislocation ( disl );
         }
 
@@ -215,6 +216,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             } while ( ignoreLine ( line ) );
             dSource = readDislocationSourceFromLine( line );
             dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
+            dSource->calculateRotationMatrix();
             s->insertDislocationSource ( dSource );
         }
 
