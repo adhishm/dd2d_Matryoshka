@@ -476,15 +476,6 @@ void SlipPlane::calculateVelocities (double B)
     std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
     Dislocation* disl;
 
-    Vector3d p0, p1, p01;
-    double norm_v, norm_p01, cosine;
-
-    // Get the slip plane line = p1-p0
-    p0 = this->getExtremity(0);
-    p1 = this->getExtremity(1);
-    p01 = p1 - p0;
-    norm_p01 = p01.magnitude();
-
     Vector3d v;
 
     for ( d=this->dislocations.begin(); d != this->dislocations.end(); d++)
@@ -494,14 +485,9 @@ void SlipPlane::calculateVelocities (double B)
         {
             // Velocity directly proportional to Peach-Koehler force
             v =  disl->getTotalForce() * (1.0/B);
-            norm_v = v.magnitude();
 
-            if (norm_v > 0.0)
-            {
-                // Project the velocity on to the slip plane line
-                cosine = (v * p01)/(norm_v * norm_p01);
-                v *= cosine;
-            }
+            // No climb is allowed for the moment. Only gliding along slip plane line.
+            v = Vector3d(v.getValue(0), 0.0, 0.0);
         }
         else
         {

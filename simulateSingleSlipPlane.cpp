@@ -103,6 +103,11 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
     Vector3d *e;
     int i,  n;
 
+    /**
+     * @brief baseCoordinateSystem This is the basis for the slip plane co-ordinate system.
+     */
+    CoordinateSystem* baseCoordinateSystem = new CoordinateSystem();
+
     if ( fp.is_open() )
     {
         // Read the extremities
@@ -158,7 +163,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         s->setPosition( readVectorFromLine ( line ) );
 
         // Create the co-ordinate system
-        s->createCoordinateSystem(NULL);
+        s->createCoordinateSystem(baseCoordinateSystem);
 
         // Read number of dislocations
         do {
