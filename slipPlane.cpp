@@ -474,6 +474,7 @@ void SlipPlane::calculateDislocationForces ()
 void SlipPlane::calculateVelocities (double B)
 {
     std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
+    Dislocation* disl;
 
     Vector3d p0, p1, p01;
     double norm_v, norm_p01, cosine;
@@ -488,10 +489,11 @@ void SlipPlane::calculateVelocities (double B)
 
     for ( d=this->dislocations.begin(); d != this->dislocations.end(); d++)
     {
-        if ((*d)->isMobile())
+        disl = *d;
+        if (disl->isMobile())
         {
             // Velocity directly proportional to Peach-Koehler force
-            v =  ((*d)->getTotalForce()) * (1.0/B);
+            v =  disl->getTotalForce() * (1.0/B);
             norm_v = v.magnitude();
 
             if (norm_v > 0.0)
@@ -506,7 +508,7 @@ void SlipPlane::calculateVelocities (double B)
             v = Vector3d(0.0, 0.0, 0.0);
         }
 
-        (*d)->setVelocity (v);
+        disl->setVelocity (v);
     }
 }
 
