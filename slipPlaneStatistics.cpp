@@ -162,8 +162,8 @@ void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int reso
         p += segment;
     }
 
-    std::vector<Stress> stressLocal  = this->getSlipPlaneStress_local  ( points,  param->appliedStress, param->mu, param->nu );
-    std::vector<Stress> stressGlobal = this->getSlipPlaneStress_global ( points,  param->appliedStress, param->mu, param->nu );
+    std::vector<Stress> stressLocal  = this->getSlipPlaneStress_local  ( points, this->appliedStress_local, param->mu, param->nu );
+    std::vector<Stress> stressGlobal = this->getSlipPlaneStress_base ( points, this->appliedStress_base, param->mu, param->nu );
 
     for ( i=0; i<resolution; i++ ) {
         // Position

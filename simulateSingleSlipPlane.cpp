@@ -374,6 +374,9 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     std::string fileName;
     std::string message;
 
+    // Calculate stresses in slip plane system.
+    slipPlane->calculateSlipPlaneAppliedStress(param->appliedStress);
+
     displayMessage ( "Starting simulation..." );
 
     // Write statistics
@@ -387,13 +390,13 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
         slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                       param->slipPlaneStressDistributions.parameters[0],
-                param);
+                                                      param );
         fileName.clear ();
     }
 
     while ( continueSimulation ) {
         // Calculate stresses
-        slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
+        slipPlane->calculateDislocationStresses ( param->mu, param->nu );
 
         // Calculate forces on dislocations
         slipPlane->calculateDislocationForces ();
@@ -427,7 +430,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
             fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
-                    param);
+                                                          param );
             fileName.clear ();
         }
 
