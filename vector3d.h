@@ -2,7 +2,7 @@
  * @file vector3d.h
  * @author Adhish Majumdar
  * @version 1.0
- * @date 18/07/2013
+ * @date 17/07/2013
  * @brief Definition of the Vector3d class.
  * @details This file defines the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
