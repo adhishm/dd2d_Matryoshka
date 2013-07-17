@@ -349,6 +349,10 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
     y = p.getValue (1);
     denominator = pow ( ((x*x) + (y*y)), 2);
 
+    if (denominator==0.0) {
+        return (Stress());
+    }
+
     double principalStresses[3], shearStresses[3];
 
     principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
