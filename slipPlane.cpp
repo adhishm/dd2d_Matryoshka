@@ -2,7 +2,7 @@
  * @file slipPlane.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 03/06/2013
+ * @date 17/07/2013
  * @brief Definition of the member functions of the SlipPlane class.
  * @details This file defines the member functions of the SlipPlane class.
  */
