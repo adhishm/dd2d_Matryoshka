@@ -443,29 +443,32 @@ void SlipPlane::calculateRotationMatrix ()
  */
 void SlipPlane::calculateDislocationStresses (double mu, double nu)
 {
-    std::vector<Dislocation*>::iterator d1;  // Iterator for each dislocation
-    std::vector<Dislocation*>::iterator d2;  // Nested iterator
-    Stress s;                               // Variable for stress
+    std::vector<Dislocation*>::iterator disl_it;  // Iterator for each dislocation
+    std::vector<Defect*>::iterator defect_it;   // Iterator for defects
+    Stress s;                                // Variable for stress
 
-    Vector3d p;                             // Position vector
+    Dislocation* disl;
+    Defect* defect;
 
-    for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
-    {
+    Vector3d p;                              // Position vector
+
+    for (disl_it=this->dislocations.begin(); disl_it!=this->dislocations.end(); disl_it++) {
         s = this->appliedStress_local;
-        p = (*d1)->getPosition();
-        for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
-        {
-            if (d1==d2)
+        disl = *disl_it;
+        p = disl->getPosition();
+        for (defect_it = this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+            defect = *defect_it;
+            if (defect == disl)
             {
                 continue;
             }
             else
             {
                 // Superpose the stress fields of all other dislocations
-                s = s + (*d2)->stressField(p, mu, nu);
+                s = s + defect->stressField(p, mu, nu);
             }
         }
-        (*d1)->setTotalStress (s);
+        disl->setTotalStress (s);
     }
 }
 
