@@ -158,8 +158,7 @@ void CoordinateSystem::setBase(CoordinateSystem* b)
 void CoordinateSystem::setDefaultVectors()
 {
     for (int i=0; i<3; i++) {
-        this->e[i] = Vector3d();
-        this->e[i].setValue(i, 1.0);
+        this->e[i] = Vector3d::unitVector(i);
     }
 }
 
@@ -225,12 +224,7 @@ void CoordinateSystem::calculateRotationMatrix()
         // The base pointer is NULL
         // This is the global co-ordinate system level
         // The rotation matrix will be a unit matrix
-        int i, j;
-        for (i=0; i<3; i++) {
-            for (j=0; j<3; j++) {
-                this->rotationMatrix.setValue(i, j, (double)(i==j));
-            }
-        }
+        this->rotationMatrix = RotationMatrix(Matrix33::unitMatrix());
     }
 }
 
