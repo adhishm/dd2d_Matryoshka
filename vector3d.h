@@ -2,7 +2,7 @@
  * @file vector3d.h
  * @author Adhish Majumdar
  * @version 1.0
- * @date 04/06/2013
+ * @date 18/07/2013
  * @brief Definition of the Vector3d class.
  * @details This file defines the Vector3d class representing a single 3-dimensional vector in the simulation.
  */
@@ -118,6 +118,58 @@ public:
    * @return Normalized vector.
    */
     Vector3d normalize ();
+
+    // Standard vectors
+    /**
+     * @brief Creates a 3D vector with zeros.
+     * @return 3D vector with zeros.
+     */
+    static Vector3d zeros ()
+    {
+        return (Vector3d(0.0, 0.0, 0.0));
+    }
+
+    /**
+     * @brief Creates a 3D vector with ones.
+     * @return 3D vector with ones.
+     */
+    static Vector3d ones ()
+    {
+        return (Vector3d(1.0, 1.0, 1.0));
+    }
+
+    /**
+     * @brief Return a vector with the given index as 1 and the two others as 0.
+     * @param i The index to be set as 1.
+     * @return The unit vector.
+     */
+    static Vector3d unitVector (int i)
+    {
+        switch (i) {
+        case 0:
+            return (Vector3d(1.0, 0.0, 0.0));
+        case 1:
+            return (Vector3d(0.0, 1.0, 0.0));
+        case 2:
+            return (Vector3d(0.0, 0.0, 1.0));
+        default:
+            return (Vector3d(0.0, 0.0, 0.0));
+        }
+    }
+
+    /**
+     * @brief Creates the standard Cartesian axes [100], [010], [001].
+     * @return Pointer to the array containing the three axes.
+     */
+    static Vector3d* standardAxes ()
+    {
+        Vector3d *axes = new Vector3d[3];
+        for (int i=0; i<3; i++) {
+            axes[i] = Vector3d::unitVector(i);
+        }
+        return(axes);
+    }
+
 
     // Operators
     // Addition

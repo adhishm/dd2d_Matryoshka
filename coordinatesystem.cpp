@@ -219,12 +219,7 @@ void CoordinateSystem::calculateRotationMatrix()
 {
     if (this->base) {
         // Only valid for non-NULL nase pointers
-        Vector3d baseAxes[3];
-        baseAxes[0] = Vector3d(1.0, 0.0, 0.0);
-        baseAxes[1] = Vector3d(0.0, 1.0, 0.0);
-        baseAxes[2] = Vector3d(0.0, 0.0, 1.0);
-
-        this->rotationMatrix = RotationMatrix(baseAxes, this->getAxes());
+        this->rotationMatrix = RotationMatrix(Vector3d::standardAxes(), this->getAxes());
     }
     else {
         // The base pointer is NULL
