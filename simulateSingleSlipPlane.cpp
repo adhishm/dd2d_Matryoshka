@@ -2,7 +2,7 @@
  * @file simulateSingleSlipPlane.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 18/06/2013
+ * @date 17/07/2013
  * @brief Defintion various functions to simulate dislocation motion on a single slip plane.
  * @details This file defines various functions to simulate dislocation motion on a single slip plane. It also writes statistics to files which will be treated separately.
  */
@@ -103,6 +103,11 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
     Vector3d *e;
     int i,  n;
 
+    /**
+     * @brief baseCoordinateSystem This is the basis for the slip plane co-ordinate system.
+     */
+    CoordinateSystem* baseCoordinateSystem = new CoordinateSystem();
+
     if ( fp.is_open() )
     {
         // Read the extremities
@@ -158,7 +163,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         s->setPosition( readVectorFromLine ( line ) );
 
         // Create the co-ordinate system
-        s->createCoordinateSystem(NULL);
+        s->createCoordinateSystem(baseCoordinateSystem);
 
         // Read number of dislocations
         do {
@@ -186,6 +191,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             } while ( ignoreLine ( line ) );
             disl = readDislocationFromLine(line);
             disl->setBaseCoordinateSystem(s->getCoordinateSystem());
+            disl->calculateRotationMatrix();
             s->insertDislocation ( disl );
         }
 
@@ -215,6 +221,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             } while ( ignoreLine ( line ) );
             dSource = readDislocationSourceFromLine( line );
             dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
+            dSource->calculateRotationMatrix();
             s->insertDislocationSource ( dSource );
         }
 
@@ -367,6 +374,9 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     std::string fileName;
     std::string message;
 
+    // Calculate stresses in slip plane system.
+    slipPlane->calculateSlipPlaneAppliedStress(param->appliedStress);
+
     displayMessage ( "Starting simulation..." );
 
     // Write statistics
@@ -380,13 +390,13 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
         slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                       param->slipPlaneStressDistributions.parameters[0],
-                param);
+                                                      param );
         fileName.clear ();
     }
 
     while ( continueSimulation ) {
         // Calculate stresses
-        slipPlane->calculateDislocationStresses ( param->appliedStress, param->mu, param->nu );
+        slipPlane->calculateDislocationStresses ( param->mu, param->nu );
 
         // Calculate forces on dislocations
         slipPlane->calculateDislocationForces ();
@@ -420,7 +430,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
             fileName = param->output_dir + "/" + param->slipPlaneStressDistributions.name + doubleToString ( totalTime ) + ".txt";
             slipPlane->writeSlipPlaneStressDistribution ( fileName,
                                                           param->slipPlaneStressDistributions.parameters[0],
-                    param);
+                                                          param );
             fileName.clear ();
         }
 

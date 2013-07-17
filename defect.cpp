@@ -114,6 +114,15 @@ void Defect::setBaseCoordinateSystem(CoordinateSystem *base)
 }
 
 /**
+ * @brief Calculate the Rotation Matrix of the defect's co-ordinate system for conversions between the defect and base co-ordinate systems.
+ * @details The rotation matrix of the defect's co-ordinate system is calculated. This function should be called every time there is a modification in the co-ordinate system, or a change of base.
+ */
+void Defect::calculateRotationMatrix()
+{
+    this->coordinateSystem.calculateRotationMatrix();
+}
+
+/**
  * @brief Sets the position of the defect.
  * @details The position of the defect is set to the co-ordinates present in the array pointed to by the argument.
  * Sets the position of the defect as the values in the array pointed to by the argument.

@@ -2,7 +2,7 @@
  * @file slipPlane.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 18/06/2013
+ * @date 17/07/2013
  * @brief Definition of the SlipPlane class.
  * @details This file defines the SlipPlane class representing a slip plane in the simulation.
  */
@@ -106,6 +106,16 @@ protected:
    * @details A time increment is calculated for each slip plane based on the distances traveled by the dislocations.
    */
   double dt;
+
+  /**
+   * @brief The stress applied externally, expressed in the local co-ordinate system.
+   */
+  Stress appliedStress_local;
+
+  /**
+   * @brief The stress applied externally, expressed in the base co-ordinate system.
+   */
+  Stress appliedStress_base;
 
   /**
    * @brief The slip plane's own co-ordinate system.
@@ -271,6 +281,18 @@ public:
    */
   Vector3d getAxis (int i) const;
 
+  /**
+   * @brief Returns the applied stress expressed in the local co-ordinate system.
+   * @return Applied stress in the local co-ordinate system.
+   */
+  Stress getAppliedStress_local () const;
+
+  /**
+   * @brief Returns the applied stress expressed in the base co-ordinate system.
+   * @return Applied stress in the base co-ordinate system.
+   */
+  Stress getAppliedStress_base() const;
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
@@ -300,11 +322,10 @@ public:
   /**
    * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
    * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
-   * @param appliedStress The stress applied externally.
    * @param mu Shear modulus of the material.
    * @param nu Poisson's ratio.
    */
-  void calculateDislocationStresses (Stress appliedStress, double mu, double nu);
+  void calculateDislocationStresses (double mu, double nu);
 
   /**
    * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
@@ -358,16 +379,24 @@ public:
    */
   void sortDislocationSources ();
 
+  // Stresses
+  /**
+   * @brief Calculates the stress applied on the slip plane given the stress in the base system.
+   * @details Calculates the stress applied on the slip plane given the stress in the base system. The result is stored in the variable appliedStress_local.
+   * @param appliedStress The stress applied on the slip plane, expressed in the base co-ordinate system.
+   */
+  void calculateSlipPlaneAppliedStress (Stress appliedStress);
+
   /**
    * @brief Returns a vector containing the stress values at different points along a slip plane.
    * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
    * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
-   * @param appliedStress The externally applied stress (in the global co-ordinate system).
+   * @param appliedStress The externally applied stress (in the base co-ordinate system).
    * @param mu Shear modulus of the material in Pa.
    * @param nu Poisson's ratio.
    * @return STL vector container with the full stress tensor expressing the stress field (in the global co-ordinate system) at the points provided as input.
    */
-  std::vector<Stress> getSlipPlaneStress_global (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
+  std::vector<Stress> getSlipPlaneStress_base (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu);
 
   /**
    * @brief Returns a vector containing the stress values at different points along a slip plane.

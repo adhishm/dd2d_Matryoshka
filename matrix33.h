@@ -2,7 +2,7 @@
  * @file matrix33.h
  * @author Adhish Majumdar
  * @version 1.0
- * @date 04/06/2013
+ * @date 17/07/2013
  * @brief Definition of the Matrix33 class.
  * @details This file defines the Matrix33 class representing a 3x3 matrix in the simulation.
  */
@@ -103,6 +103,48 @@ public:
    * @return The transpose of the present matrix.
    */
     Matrix33 transpose () const;
+
+    // Standard matrices
+    /**
+     * @brief Creates a Matrix33 with all members equal to zero.
+     * @return Zero matrix.
+     */
+    static Matrix33 zeros ()
+    {
+        return (Matrix33());
+    }
+
+    /**
+     * @brief Creates a matrix with all members equal to one.
+     * @return Matrix with ones.
+     */
+    static Matrix33 ones ()
+    {
+        Matrix33 m;
+        int i, j;
+
+        for (i=0; i<3; i++)
+            for (j=0; j<3; j++)
+                m.setValue(i, j, 1.0);
+
+        return (m);
+    }
+
+    /**
+     * @brief Creates a unit matrix.
+     * @return Unit matrix.
+     */
+    static Matrix33 unitMatrix ()
+    {
+        Matrix33 m;
+        int i, j;
+
+        for (i=0; i<3; i++)
+            for (j=0; j<3; j++)
+                m.setValue(i, j, (double)(i==j));
+
+        return (m);
+    }
 
     // Operators
     // Addition

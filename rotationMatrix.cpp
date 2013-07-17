@@ -37,18 +37,7 @@
  */
 RotationMatrix::RotationMatrix ()
 {
-    int i,  j;
-
-    for ( i=0; i<3; i++ ) {
-        for ( j=0; j<3; j++ ) {
-            if ( i==j ) {
-                this->setValue ( i, j, 1.0 );
-            }
-            else {
-                this->setValue ( i, j, 0.0 );
-            }
-        }
-    }
+    *this = RotationMatrix (Matrix33::unitMatrix());
 }
 
 /**
@@ -58,14 +47,14 @@ RotationMatrix::RotationMatrix ()
  */
 RotationMatrix::RotationMatrix (Matrix33 m)
 {
-  int i, j;
+    int i, j;
 
-  for (i=0; i<3; i++)
+    for (i=0; i<3; i++)
     {
-      for (j=0; j<3; j++)
-	{
-	  this->setValue (i, j, (m.getValue(i,j)));
-	}
+        for (j=0; j<3; j++)
+        {
+            this->setValue (i, j, (m.getValue(i,j)));
+        }
     }
 }
 

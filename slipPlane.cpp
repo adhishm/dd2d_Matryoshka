@@ -2,7 +2,7 @@
  * @file slipPlane.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 03/06/2013
+ * @date 17/07/2013
  * @brief Definition of the member functions of the SlipPlane class.
  * @details This file defines the member functions of the SlipPlane class.
  */
@@ -361,6 +361,24 @@ Vector3d SlipPlane::getAxis (int i) const
     return ( axis.normalize() );
 }
 
+/**
+ * @brief Returns the applied stress expressed in the local co-ordinate system.
+ * @return Applied stress in the local co-ordinate system.
+ */
+Stress SlipPlane::getAppliedStress_local () const
+{
+    return (this->appliedStress_local);
+}
+
+/**
+ * @brief Returns the applied stress expressed in the base co-ordinate system.
+ * @return Applied stress in the base co-ordinate system.
+ */
+Stress SlipPlane::getAppliedStress_base() const
+{
+    return (this->appliedStress_base);
+}
+
 // Update functions
 /**
  * @brief Update the defects vector.
@@ -420,35 +438,30 @@ void SlipPlane::calculateRotationMatrix ()
 /**
  * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
  * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
- * @param appliedStress The stress applied externally.
  * @param mu Shear modulus of the material.
  * @param nu Poisson's ratio.
  */
-void SlipPlane::calculateDislocationStresses (Stress appliedStress, double mu, double nu)
+void SlipPlane::calculateDislocationStresses (double mu, double nu)
 {
-    std::vector<Dislocation*>::iterator d1;  // Iterator for each dislocation
-    std::vector<Dislocation*>::iterator d2;  // Nested iterator
-    Stress s;                               // Variable for stress
+    std::vector<Dislocation*>::iterator disl_it;  // Iterator for each dislocation
+    std::vector<Defect*>::iterator defect_it;   // Iterator for defects
+    Stress s;                                // Variable for stress
 
-    Vector3d p;                             // Position vector
+    Dislocation* disl;
+    Defect* defect;
 
-    for (d1=this->dislocations.begin(); d1!=this->dislocations.end(); d1++)
-    {
-        s = appliedStress;
-        p = (*d1)->getPosition();
-        for (d2 = this->dislocations.begin(); d2!=this->dislocations.end(); d2++)
-        {
-            if (d1==d2)
-            {
-                continue;
-            }
-            else
-            {
-                // Superpose the stress fields of all other dislocations
-                s = s + (*d2)->stressField(p, mu, nu);
-            }
+    Vector3d p;                              // Position vector
+
+    for (disl_it=this->dislocations.begin(); disl_it!=this->dislocations.end(); disl_it++) {
+        s = this->appliedStress_local;
+        disl = *disl_it;
+        p = disl->getPosition();
+        for (defect_it = this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+            defect = *defect_it;
+            // Superpose the stress fields of all other dislocations
+            s = s + defect->stressField(p, mu, nu);
         }
-        (*d1)->setTotalStress (s);
+        disl->setTotalStress (s);
     }
 }
 
@@ -474,39 +487,27 @@ void SlipPlane::calculateDislocationForces ()
 void SlipPlane::calculateVelocities (double B)
 {
     std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
-
-    Vector3d p0, p1, p01;
-    double norm_v, norm_p01, cosine;
-
-    // Get the slip plane line = p1-p0
-    p0 = this->getExtremity(0);
-    p1 = this->getExtremity(1);
-    p01 = p1 - p0;
-    norm_p01 = p01.magnitude();
+    Dislocation* disl;
 
     Vector3d v;
 
     for ( d=this->dislocations.begin(); d != this->dislocations.end(); d++)
     {
-        if ((*d)->isMobile())
+        disl = *d;
+        if (disl->isMobile())
         {
             // Velocity directly proportional to Peach-Koehler force
-            v =  ((*d)->getTotalForce()) * (1.0/B);
-            norm_v = v.magnitude();
+            v =  disl->getTotalForce() * (1.0/B);
 
-            if (norm_v > 0.0)
-            {
-                // Project the velocity on to the slip plane line
-                cosine = (v * p01)/(norm_v * norm_p01);
-                v *= cosine;
-            }
+            // No climb is allowed for the moment. Only gliding along slip plane line.
+            v = Vector3d(v.getValue(0), 0.0, 0.0);
         }
         else
         {
             v = Vector3d(0.0, 0.0, 0.0);
         }
 
-        (*d)->setVelocity (v);
+        disl->setVelocity (v);
     }
 }
 
@@ -707,16 +708,28 @@ void SlipPlane::sortDislocationSources ()
     }
 }
 
+// Stresses
+/**
+ * @brief Calculates the stress applied on the slip plane given the stress in the base system.
+ * @details Calculates the stress applied on the slip plane given the stress in the base system. The result is stored in the variable appliedStress_local.
+ * @param appliedStress The stress applied on the slip plane, expressed in the base co-ordinate system.
+ */
+void SlipPlane::calculateSlipPlaneAppliedStress (Stress appliedStress)
+{
+    this->appliedStress_base = appliedStress;
+    this->appliedStress_local = this->coordinateSystem.stress_BaseToLocal(appliedStress);
+}
+
 /**
  * @brief Returns a vector containing the stress values at different points along a slip plane.
  * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
  * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
- * @param appliedStress The externally applied stress (in the global co-ordinate system).
+ * @param appliedStress The externally applied stress (in the base co-ordinate system).
  * @param mu Shear modulus of the material in Pa.
  * @param nu Poisson's ratio.
  * @return STL vector container with the full stress tensor expressing the stress field (in the global co-ordinate system) at the points provided as input.
  */
-std::vector<Stress> SlipPlane::getSlipPlaneStress_global (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu)
+std::vector<Stress> SlipPlane::getSlipPlaneStress_base (std::vector<Vector3d> points, Stress appliedStress, double mu, double nu)
 {
     // Initialize the vector for holding Stress values
     std::vector<Stress> stressVector(points.size(), Stress());

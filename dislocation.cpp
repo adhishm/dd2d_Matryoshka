@@ -2,7 +2,7 @@
  * @file dislocation.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 04/06/2013
+ * @date 17/07/2013
  * @brief Definition of constructors and member functions of the Dislocation class.
  * @details This file defines the constructors and member functions of the Dislocation class. This class inherits from the Defect class.
  */
@@ -349,6 +349,10 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
     y = p.getValue (1);
     denominator = pow ( ((x*x) + (y*y)), 2);
 
+    if (denominator==0.0) {
+        return (Stress());
+    }
+
     double principalStresses[3], shearStresses[3];
 
     principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
@@ -373,9 +377,16 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma) const
 {
     // Stress in the local co-ordinate system
     Stress sigmaLocal = this->coordinateSystem.stress_BaseToLocal(sigma);
-    Vector3d force = this->lvec ^ (sigmaLocal * this->bvec);
 
-    return (force);
+    // Forces
+    Vector3d f_edge  = Vector3d(-1.0*sigmaLocal.getValue(0,1), sigmaLocal.getValue(0,0), 0.0) * this->bvec.getValue(0);
+    Vector3d f_screw = Vector3d(-1.0*sigmaLocal.getValue(1,2), sigmaLocal.getValue(0,2), 0.0) * this->bvec.getValue(2);
+    Vector3d force = f_edge + f_screw;
+
+    // Rotate to base system
+    Vector3d force_base = this->coordinateSystem.vector_LocalToBase_noTranslate(force);
+
+    return (force_base);
 }
 
 /**
