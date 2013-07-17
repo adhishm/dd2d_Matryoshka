@@ -2,7 +2,7 @@
  * @file coordinatesystem.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 01/07/2013
+ * @date 17/07/2013
  * @brief Definition of functions of the class CoordinateSystem.
  * @details This file defines the functions of the class CoordinateSystem to represent a given co-ordinate system and the base system in which it is expressed. This will be especially useful in the handling of various objects, each carrying its own frame of reference.
  */
@@ -158,8 +158,7 @@ void CoordinateSystem::setBase(CoordinateSystem* b)
 void CoordinateSystem::setDefaultVectors()
 {
     for (int i=0; i<3; i++) {
-        this->e[i] = Vector3d();
-        this->e[i].setValue(i, 1.0);
+        this->e[i] = Vector3d::unitVector(i);
     }
 }
 
@@ -219,18 +218,13 @@ void CoordinateSystem::calculateRotationMatrix()
 {
     if (this->base) {
         // Only valid for non-NULL nase pointers
-        this->rotationMatrix = RotationMatrix(this->base->getAxes(), this->getAxes());
+        this->rotationMatrix = RotationMatrix(Vector3d::standardAxes(), this->getAxes());
     }
     else {
         // The base pointer is NULL
         // This is the global co-ordinate system level
         // The rotation matrix will be a unit matrix
-        int i, j;
-        for (i=0; i<3; i++) {
-            for (j=0; j<3; j++) {
-                this->rotationMatrix.setValue(i, j, (double)(i==j));
-            }
-        }
+        this->rotationMatrix = RotationMatrix(Matrix33::unitMatrix());
     }
 }
 
