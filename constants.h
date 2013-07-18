@@ -2,7 +2,7 @@
  * @file constants.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 26/04/2013
+ * @date 18/07/2013
  * @brief Definition of constants used in the program.
  * @details This file defines the values of various constants used in the program.
  */
@@ -55,5 +55,10 @@
   * @brief Tolerance value for very small numbers.
   **/
 #define SMALL_NUMBER 1.0e-06
+
+/**
+  * @brief A large number.
+  **/
+#define LARGE_NUMBER 1.0e+03
 
 #endif
