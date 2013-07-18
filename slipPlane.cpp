@@ -524,7 +524,7 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     int nDisl = this->dislocations.size();
 
     // Vector of time increments
-    std::vector<double> timeIncrement(nDisl, 1000.0);
+    std::vector<double> timeIncrement(nDisl, LARGE_NUMBER);
 
     int i=0;         // Counter for the loop
     double t1, t2;
@@ -544,7 +544,7 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     }
 
     // Find smallest non-zero time increment
-    dtMin = 1000.0;
+    dtMin = LARGE_NUMBER;
     for (i=0; i<nDisl; i++)
     {
         if (timeIncrement[i] > 0.0)
@@ -557,6 +557,10 @@ std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, doubl
     }
 
     this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
+    if (this->dt == LARGE_NUMBER) {
+        // None of the time increments were smaller than LARGE_NUMBER
+        this->dt = minDt;
+    }
     return (timeIncrement);
 }
 
