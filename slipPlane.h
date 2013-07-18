@@ -357,6 +357,14 @@ public:
   void moveDislocations (std::vector<double> timeIncrement);
 
   /**
+   * @brief Function to move dislocations to local a equilibrium position.
+   * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
+   * @param minDistance Minimum distance of approach between two defects.
+   * @param dtGlobal The global time increment.
+   */
+  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal);
+
+  /**
    * @brief The distance of the point pos from the n^th extremity is returned.
    * @param pos Position vector of the point whose distance is to be calculated.
    * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
