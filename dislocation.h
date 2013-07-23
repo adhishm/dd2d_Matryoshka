@@ -284,6 +284,18 @@ public:
    * @return The ideal time increment for this dislocation.
    */
   double idealTimeIncrement (double minDistance, Defect *d);
+
+  // Interaction distance
+  /**
+   * @brief Calculates and returns the distance from the present dislocation at which the interaction force opposes the force provided as argument.
+   * @details This function calculates the distance at which the present dislocation's interaction force opposes the force provided as argument. This force is calculated using the generic interaction force between two parallel dislocations.
+   * @param force The total force, expressed in the base co-ordinate system, experienced by the other defect.
+   * @param burgers Burgers vector of the dislocation with which the interaction force is to be calculated, expressed in the base co-ordinate system.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument. This position vector is expressed in the base co-ordinate system.
+   */
+  virtual Vector3d forceBalanceDistance(Vector3d force, Vector3d burgers, double mu, double nu);
 };
 
 #endif

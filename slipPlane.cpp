@@ -598,6 +598,53 @@ void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 }
 
 /**
+ * @brief Function to move dislocations to local a equilibrium position.
+ * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
+ * @param minDistance Minimum distance of approach between two defects.
+ * @param dtGlobal The global time increment.
+ */
+void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal)
+{
+    std::vector<Defect*>::iterator dit; // Iterator for defects
+    Dislocation* disl;
+    Defect* def;
+    Vector3d velocity;
+    int vSign;  // The direction of the dislocation velocity
+    double maxDistance; // Maximum distance allowed for dislocation velocity and global time increment
+
+    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++) {
+        if ((*dit)->getDefectType() == DISLOCATION) {
+            disl = *dit;
+            velocity = disl->getVelocity();
+            // Maximum distance
+            maxDistance = velocity.magnitude() * dtGlobal;
+            // Direction of movement
+            vSign = sgn(velocity.getValue(0));
+            switch (vSign) {
+            case -1:
+                // The dislocation is moving towards the previous defect.
+                def = *(dit-1);
+                break;
+            case 0:
+                // The dislocation is not moving at all - do nothing
+                continue;
+                break;
+            case 1:
+                // The dislocation is moving towards the next defect.
+                def = *(dit+1);
+                break;
+            default:
+                // Unknown behaviour - do nothing
+                continue;
+                break;
+            }
+
+            // Treat the interaction according to the type of defect
+        }
+    }
+}
+
+/**
  * @brief The distance of the point pos from the n^th extremity is returned.
  * @param pos Position vector of the point whose distance is to be calculated.
  * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
