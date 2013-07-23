@@ -360,9 +360,11 @@ public:
    * @brief Function to move dislocations to local a equilibrium position.
    * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
    * @param minDistance Minimum distance of approach between two defects.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
    * @param dtGlobal The global time increment.
    */
-  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal);
+  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu);
 
   /**
    * @brief The distance of the point pos from the n^th extremity is returned.

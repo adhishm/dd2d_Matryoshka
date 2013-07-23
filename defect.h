@@ -208,7 +208,7 @@ public:
    * @param nu Poisson's ratio.
    * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument.
    */
-  virtual Vector3d forceBalanceDistance (Vector3d force, Vector3d burgers, double mu, double nu)
+  virtual Vector3d equilibriumDistance (Vector3d force, Vector3d burgers, double mu, double nu)
   {
       return (Vector3d::zeros());
   }

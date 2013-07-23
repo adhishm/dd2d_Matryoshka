@@ -457,7 +457,7 @@ double Dislocation::idealTimeIncrement (double minDistance, Defect* d)
  * @param nu Poisson's ratio.
  * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument. This position vector is expressed in the base co-ordinate system.
  */
-Vector3d Dislocation::forceBalanceDistance(Vector3d force, Vector3d burgers, double mu, double nu)
+Vector3d Dislocation::equilibriumDistance(Vector3d force, Vector3d burgers, double mu, double nu)
 {
     // Other dislocation's Burgers vector in local system.
     Vector3d bPrime = this->coordinateSystem.vector_BaseToLocal_noTranslate(burgers);
