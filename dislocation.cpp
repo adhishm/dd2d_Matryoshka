@@ -469,7 +469,8 @@ Vector3d Dislocation::forceBalanceDistance(Vector3d force, Vector3d burgers, dou
     // Calculate distance based on balancing forces along the x-axis
     double distance = (D / force_local.getValue(0)) * ( (this->bvec * bPrime) - (nu * this->bvec.getValue(2) * bPrime.getValue(2)) );
 
+    // Vectorize the distance, and convert to base system
+    // Since this is a position vector, it must be translated
     Vector3d equilibriumPosition = Vector3d (distance, 0.0, 0.0);
-
     return (this->coordinateSystem.vector_LocalToBase(equilibriumPosition));
 }
