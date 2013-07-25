@@ -658,6 +658,20 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
             if (distance_disl_eq >= (distance_disl_def - minDistance)) {
                 // There is an imminent collision
+                switch (def->getDefectType()) {
+                case DISLOCATION:
+                    // This is a dislocation of opposite Burgers vector.
+
+                    break;
+                case GRAINBOUNDARY:
+                    //
+                    break;
+                case FREESURFACE:
+                    //
+                    break;
+                default:
+                    break;
+                }
 
             }
             else {
