@@ -198,6 +198,20 @@ public:
   {
       return (1000.0);
   }
+
+  /**
+   * @brief Calculates and returns the distance from the present defect at which the present defect's force opposes the force provided as argument.
+   * @details This function calculates the distance at which the present defect's interaction force opposes the force provided as argument. For a generic defect, the stress field is zero, so the final distance is also zero.
+   * @param force The total force, expressed in the base co-ordinate system, experienced by the other defect.
+   * @param burgers Burgers vector of the dislocation with which the interaction force is to be calculated.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument.
+   */
+  virtual Vector3d equilibriumDistance (Vector3d force, Vector3d burgers, double mu, double nu)
+  {
+      return (Vector3d::zeros());
+  }
 };
 
 #endif
