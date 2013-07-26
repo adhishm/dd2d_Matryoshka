@@ -632,7 +632,7 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
     int vSign;  // The direction of the dislocation velocity
     double maxDistance; // Maximum distance allowed for dislocation velocity and global time increment
     Vector3d equilibriumPosition;
-    Vector3d pDisl, pDef;
+    Vector3d pDisl, pDef, middle, pDislPrime;
     double distance_disl_def;
     double distance_disl_eq;
 
@@ -684,6 +684,16 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                 switch (def->getDefectType()) {
                 case DISLOCATION:
                     // This is a dislocation of opposite Burgers vector.
+                    middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
+                    pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
+                    if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
+                        // The new position is not too far
+                        newPositions[count] = pDislPrime;
+                    }
+                    else {
+                        // Too far. Move only by maxDistance
+                        newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
+                    }
 
                     break;
                 case GRAINBOUNDARY:
