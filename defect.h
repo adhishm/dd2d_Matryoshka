@@ -210,7 +210,7 @@ public:
    */
   virtual Vector3d equilibriumDistance (Vector3d force, Vector3d burgers, double mu, double nu)
   {
-      return (Vector3d::zeros());
+      return (this->getPosition());
   }
 };
 
