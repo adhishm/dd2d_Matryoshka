@@ -250,6 +250,24 @@ bool SlipPlane::getDislocation (int i, Dislocation* d) const
 }
 
 /**
+ * @brief Get the entire vector container which holds the pointers to all the defects
+ * @return The vector of the defects lying on the slip plane.
+ */
+std::vector<Defect*> SlipPlane::getDefectList ()
+{
+    return (this->defects);
+}
+
+/**
+ * @brief Return the number of defects lying in the slip plane.
+ * @return The number of defects lying in the slip plane.
+ */
+int SlipPlane::getNumDefects () const
+{
+    return (this->defects.size());
+}
+
+/**
  * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
  * @return The vector of dislocations lying on this slip plane.
  */
@@ -618,7 +636,11 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
     double distance_disl_def;
     double distance_disl_eq;
 
-    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++) {
+    // Vector container with the new positions of defects on the slip plane. Initialized with zero vectors.
+    std::vector<Vector3d> newPositions(this->getNumDefects(), Vector3d::zeros());
+    int count = 0;
+
+    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++,count++) {
         if ((*dit)->getDefectType() == DISLOCATION) {
             disl = *dit;
             velocity = disl->getVelocity();
@@ -658,6 +680,7 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
             if (distance_disl_eq >= (distance_disl_def - minDistance)) {
                 // There is an imminent collision
+                // Treat according to the type of defect with which it may collide
                 switch (def->getDefectType()) {
                 case DISLOCATION:
                     // This is a dislocation of opposite Burgers vector.
@@ -679,10 +702,12 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                 // Check if distance is within velocity limit
                 if (distance_disl_eq <= maxDistance) {
                     // Within limits - move to equilibrium position
+                    newPositions[count] = equilibriumPosition;
                 }
                 else {
                     // The equilibrium distance is further than the max distance permitted by
                     // velocity and global time increment
+                    newPositions[count] = disl->getPosition() + ( disl->getVelocity() * dtGlobal );
                 }
             }
         }

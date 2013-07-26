@@ -228,6 +228,18 @@ public:
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the Dislocation data). Otherwise, the return value is false.
    */
   bool getDislocation (int i, Dislocation* d) const;
+
+  /**
+   * @brief Get the entire vector container which holds the pointers to all the defects
+   * @return The vector of the defects lying on the slip plane.
+   */
+  std::vector<Defect*> getDefectList ();
+
+  /**
+   * @brief Return the number of defects lying in the slip plane.
+   * @return The number of defects lying in the slip plane.
+   */
+  int getNumDefects () const;
   
   /**
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
