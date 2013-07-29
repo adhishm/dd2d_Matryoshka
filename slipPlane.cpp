@@ -686,36 +686,27 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                     // This is a dislocation of opposite Burgers vector.
                     middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
                     pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
-                    if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
-                        // The new position is not too far
-                        newPositions[count] = pDislPrime;
-                    }
-                    else {
-                        // Too far. Move only by maxDistance
-                        newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
-                    }
-
                     break;
                 case GRAINBOUNDARY:
                     // The other defect is a grain boundary
                     // The equilibrium position should be a point at the minDistance
                     // in order to create a pile up
                     pDislPrime = pDef - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
-                    if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
-                        // The new position is not too far
-                        newPositions[count] = pDislPrime;
-                    }
-                    else {
-                        // Too far. Move only by maxDistance
-                        newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
-                    }
-
                     break;
                 case FREESURFACE:
-                    //
                     break;
                 default:
                     break;
+                }
+
+                // Check how far the dislocation has to go to reach the equilibrium position
+                if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
+                    // The new position is not too far
+                    newPositions[count] = pDislPrime;
+                }
+                else {
+                    // Too far. Move only by maxDistance
+                    newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
                 }
 
             }
