@@ -701,30 +701,20 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                 default:
                     break;
                 }
-
-                // Check how far the dislocation has to go to reach the equilibrium position
-                if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
-                    // The new position is not too far
-                    newPositions[count] = pDislPrime;
-                }
-                else {
-                    // Too far. Move only by maxDistance
-                    newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
-                }
-
             }
             else {
-                // Safe to move the dislocation
-                // Check if distance is within velocity limit
-                if (distance_disl_eq <= maxDistance) {
-                    // Within limits - move to equilibrium position
-                    newPositions[count] = equilibriumPosition;
-                }
-                else {
-                    // The equilibrium distance is further than the max distance permitted by
-                    // velocity and global time increment
-                    newPositions[count] = disl->getPosition() + ( disl->getVelocity() * dtGlobal );
-                }
+                // No collision - so it is safe to move the dislocation to the equilibrium position
+                pDislPrime = equilibriumPosition;
+            }
+
+            // Check how far the dislocation has to go to reach the equilibrium position
+            if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
+                // The new position is not too far
+                newPositions[count] = pDislPrime;
+            }
+            else {
+                // Too far. Move only by maxDistance
+                newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
             }
         }
     }
