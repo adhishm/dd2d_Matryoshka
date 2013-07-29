@@ -694,6 +694,9 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                     pDislPrime = pDef - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
                     break;
                 case FREESURFACE:
+                    // The next defect is a free surface
+                    // The FREESURFACE is a sink for dislocations
+                    pDislPrime = pDef;
                     break;
                 default:
                     break;
