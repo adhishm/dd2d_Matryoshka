@@ -15,3 +15,4 @@ dd2d_gdb
 dd2d_v*
 build-dd2d*
 *.pro.user
+images/*
