@@ -682,23 +682,23 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                 // There is an imminent collision
                 // Treat according to the type of defect with which it may collide
                 switch (def->getDefectType()) {
-                case DISLOCATION:
+                case DISLOCATION :
                     // This is a dislocation of opposite Burgers vector.
                     middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
                     pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
                     break;
-                case GRAINBOUNDARY:
+                case GRAINBOUNDARY :
                     // The other defect is a grain boundary
                     // The equilibrium position should be a point at the minDistance
                     // in order to create a pile up
                     pDislPrime = pDef - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
                     break;
-                case FREESURFACE:
+                case FREESURFACE :
                     // The next defect is a free surface
                     // The FREESURFACE is a sink for dislocations
                     pDislPrime = pDef;
                     break;
-                default:
+                default :
                     // Unknown defect type - do nothing
                     pDislPrime = pDisl;
                     break;
