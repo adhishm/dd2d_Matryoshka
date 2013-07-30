@@ -699,6 +699,8 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                     pDislPrime = pDef;
                     break;
                 default:
+                    // Unknown defect type - do nothing
+                    pDislPrime = pDisl;
                     break;
                 }
             }
