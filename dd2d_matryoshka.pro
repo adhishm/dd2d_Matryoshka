@@ -22,7 +22,8 @@ SOURCES += main.cpp \
     defect.cpp \
     standardSlipSystem.cpp \
     coordinatesystem.cpp \
-    grainboundary.cpp
+    grainboundary.cpp \
+    freesurface.cpp
 
 HEADERS += \
     vector3d.h \
@@ -45,5 +46,6 @@ HEADERS += \
     standardSlipSystem.h \
     constants.h \
     coordinatesystem.h \
-    grainboundary.h
+    grainboundary.h \
+    freesurface.h
 
