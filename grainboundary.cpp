@@ -49,7 +49,7 @@ GrainBoundary::GrainBoundary()
  * @param n2 Index of the second neighbour. Default value: 0.
  */
 GrainBoundary::GrainBoundary(CoordinateSystem* base, Vector3d p, int n1, int n2)
-    : Defect (GRAINBOUNDARY, p, Vector3d::standardAxes())
+    : Defect (GRAINBOUNDARY, p, Vector3d::standardAxes(), base)
 {
     this->neighbour1 = n1;
     this->neighbour2 = n2;
