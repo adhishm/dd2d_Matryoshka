@@ -50,3 +50,38 @@ FreeSurface::FreeSurface (CoordinateSystem *base = NULL, Vector3d p=Vector3d::ze
 {
     // Nothing to do here
 }
+
+/**
+ * @brief Calculates the image force exerted by the free surface on a given dislocation.
+ * @param disl Pointer to the dislocation on which the image force is to be calculated.
+ * @param mu Shear modulus in Pa.
+ * @param nu Poisson's ratio.
+ * @return The vector containing the image force, expressed in the base co-ordinate system.
+ */
+Vector3d FreeSurface::imageForce (Dislocation* disl, double mu, double nu)
+{
+    // Calculate the position and Burgers vector of the image
+    Vector3d position = this->getPosition() + this->getPosition() - disl->getPosition();
+    Vector3d burgers_disl  = disl->getBurgers();
+    Vector3d burgers_image = burgers_disl * (-1.0);
+
+    // Create an immobile image dislocation
+    Dislocation* imageDislocation = new Dislocation(burgers_image,disl->getLineVector(),
+                                                    position,this->getCoordinateSystem(),
+                                                    disl->getBurgersMagnitude(),false);
+
+    // Distance between the two dislocations
+    double r = (disl->getPosition() - position).magnitude();
+    double D = mu / (2.0 * PI * (1.0-nu)*r);
+
+    // Variables for storing components
+    double *f = new double[3];
+
+    f[0] = D * ( ((1.0-nu)* burgers_disl.getValue(2) * burgers_image.getValue(2)) + (burgers_disl.getValue(0) * burgers_image.getValue(0)) + (burgers_disl.getValue(1) * burgers_image.getValue(1)) );
+    f[1] = D * (-1.0 * ( (burgers_disl.getValue(0) * burgers_image.getValue(1)) + (burgers_disl.getValue(1) * burgers_image.getValue(0)) ));
+    f[2] = 0.0;
+
+    // The force in the image dislocation system and the base system
+    Vector3d force = Vector3d(f);
+    // Vector3d force_base =
+}

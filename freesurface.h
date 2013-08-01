@@ -32,6 +32,7 @@
 #define FREESURFACE_H
 
 #include "defect.h"
+#include "dislocation.h"
 
 /**
  * @brief The FreeSurface class.
@@ -52,6 +53,15 @@ public:
      * @param p Position of the free surface. Default value: (0, 0, 0).
      */
     FreeSurface (CoordinateSystem *base = NULL, Vector3d p=Vector3d::zeros());
+
+    /**
+     * @brief Calculates the image force exerted by the free surface on a given dislocation.
+     * @param disl Pointer to the dislocation on which the image force is to be calculated.
+     * @param mu Shear modulus in Pa.
+     * @param nu Poisson's ratio.
+     * @return The vector containing the image force, expressed in the base co-ordinate system.
+     */
+    Vector3d imageForce (Dislocation* disl, double mu, double nu);
 };
 
 #endif // FREESURFACE_H
