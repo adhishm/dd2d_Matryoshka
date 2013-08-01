@@ -3,6 +3,8 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
+LIBS += -L/usr/lib -lgsl -lgslcblas -lm
+
 SOURCES += main.cpp \
     vector3d.cpp \
     tools.cpp \
