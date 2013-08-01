@@ -626,8 +626,15 @@ void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu)
 {
     std::vector<Defect*>::iterator dit; // Iterator for defects
+
+    // Dislocation access variables
+    int count_disl;
     Dislocation* disl;
+
+    // Defect access variables
+    int count_def;
     Defect* def;
+
     Vector3d velocity;
     int vSign;  // The direction of the dislocation velocity
     double maxDistance; // Maximum distance allowed for dislocation velocity and global time increment
@@ -638,11 +645,13 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
     // Vector container with the new positions of defects on the slip plane. Initialized with zero vectors.
     std::vector<Vector3d> newPositions(this->getNumDefects(), Vector3d::zeros());
-    int count = 0;
 
-    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++,count++) {
+    count_def = 0;
+    count_disl = 0;
+    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++,count_def++) {
         if ((*dit)->getDefectType() == DISLOCATION) {
-            disl = *dit;
+            // The only defect that will move
+            disl = this->dislocations[count_disl++];
             velocity = disl->getVelocity();
             // Maximum distance
             maxDistance = velocity.magnitude() * dtGlobal;
@@ -712,12 +721,16 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
             // Check how far the dislocation has to go to reach the equilibrium position
             if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
                 // The new position is not too far
-                newPositions[count] = pDislPrime;
+                newPositions[count_def] = pDislPrime;
             }
             else {
                 // Too far. Move only by maxDistance
-                newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
+                newPositions[count_def] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
             }
+        }
+        else {
+            // This defect is not a dislocation - it will remain immobile
+            newPositions[count_def] = (*dit)->getPosition();
         }
     }
 }

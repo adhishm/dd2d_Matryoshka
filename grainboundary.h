@@ -62,7 +62,7 @@ public:
      * @param n1 Index of the first neighbour. Default value: 0.
      * @param n2 Index of the second neighbour. Default value: 0.
      */
-    GrainBoundary(CoordinateSystem* base = NULL, Vector3d p = Vector3d::zeros(), int n1, int n2);
+    GrainBoundary(CoordinateSystem* base = NULL, Vector3d p = Vector3d::zeros(), int n1=0, int n2=0);
 };
 
 #endif // GRAINBOUNDARY_H
