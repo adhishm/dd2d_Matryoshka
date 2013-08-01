@@ -158,6 +158,12 @@ public:
    * @return The defect type in the form of a member of Defect::DefectType.
    */
   DefectType getDefectType () const;
+
+  /**
+   * @brief Returns a pointer to the co-ordinate system of the defect.
+   * @return Pointer to the co-ordinate system of the defect.
+   */
+  CoordinateSystem* getCoordinateSystem ();
     
   // Virtual functions
   /**

@@ -183,3 +183,12 @@ DefectType Defect::getDefectType () const
 {
     return ( this->defectType );
 }
+
+/**
+ * @brief Returns a pointer to the co-ordinate system of the defect.
+ * @return Pointer to the co-ordinate system of the defect.
+ */
+CoordinateSystem* Defect::getCoordinateSystem ()
+{
+    return (&(this->coordinateSystem));
+}
