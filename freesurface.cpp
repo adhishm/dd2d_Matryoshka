@@ -45,7 +45,7 @@ FreeSurface::FreeSurface()
  * @param base Pointer to the base co-ordinate system. Default value: NULL.
  * @param p Position of the free surface. Default value: (0, 0, 0).
  */
-FreeSurface::FreeSurface (CoordinateSystem *base = NULL, Vector3d p=Vector3d::zeros())
+FreeSurface::FreeSurface (CoordinateSystem *base, Vector3d p)
     : Defect (FREESURFACE, p, Vector3d::standardAxes(), base)
 {
     // Nothing to do here
