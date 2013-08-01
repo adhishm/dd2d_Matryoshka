@@ -56,6 +56,7 @@ public:
 
     /**
      * @brief Calculates the image force exerted by the free surface on a given dislocation.
+     * @details The image force exerted by the free surface on a dislocation is calculated by creating an image dislocation as if it were on the same slip plane, and then calculating the Peach-Koehler force on the present dislocation due to this image dislocation.
      * @param disl Pointer to the dislocation on which the image force is to be calculated.
      * @param mu Shear modulus in Pa.
      * @param nu Poisson's ratio.

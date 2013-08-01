@@ -53,6 +53,7 @@ FreeSurface::FreeSurface (CoordinateSystem *base = NULL, Vector3d p=Vector3d::ze
 
 /**
  * @brief Calculates the image force exerted by the free surface on a given dislocation.
+ * @details The image force exerted by the free surface on a dislocation is calculated by creating an image dislocation as if it were on the same slip plane, and then calculating the Peach-Koehler force on the present dislocation due to this image dislocation.
  * @param disl Pointer to the dislocation on which the image force is to be calculated.
  * @param mu Shear modulus in Pa.
  * @param nu Poisson's ratio.
@@ -69,19 +70,14 @@ Vector3d FreeSurface::imageForce (Dislocation* disl, double mu, double nu)
     Dislocation* imageDislocation = new Dislocation(burgers_image,disl->getLineVector(),
                                                     position,this->getCoordinateSystem(),
                                                     disl->getBurgersMagnitude(),false);
+    // Stress field of the image dislocation at the present dislocation position
+    Stress s = imageDislocation->stressField(disl->getPosition(),mu,nu);
+    // The resulting Peach-Koehler force
+    Vector3d force = disl->forcePeachKoehler(s);
 
-    // Distance between the two dislocations
-    double r = (disl->getPosition() - position).magnitude();
-    double D = mu / (2.0 * PI * (1.0-nu)*r);
+    // Clear memory
+    delete (imageDislocation);
+    imageDislocation = NULL;
 
-    // Variables for storing components
-    double *f = new double[3];
-
-    f[0] = D * ( ((1.0-nu)* burgers_disl.getValue(2) * burgers_image.getValue(2)) + (burgers_disl.getValue(0) * burgers_image.getValue(0)) + (burgers_disl.getValue(1) * burgers_image.getValue(1)) );
-    f[1] = D * (-1.0 * ( (burgers_disl.getValue(0) * burgers_image.getValue(1)) + (burgers_disl.getValue(1) * burgers_image.getValue(0)) ));
-    f[2] = 0.0;
-
-    // The force in the image dislocation system and the base system
-    Vector3d force = Vector3d(f);
-    // Vector3d force_base =
+    return (force);
 }
