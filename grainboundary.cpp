@@ -45,8 +45,8 @@ GrainBoundary::GrainBoundary()
  * @brief Creates a grain boundary
  * @param base Pointer to the base co-ordinate system. Default value: NULL.
  * @param p Position vector of the origin. Default value: Vector3d::zeros().
- * @param n1 Index of the first neighbour.
- * @param n2 Index of the second neighbour.
+ * @param n1 Index of the first neighbour. Default value: 0.
+ * @param n2 Index of the second neighbour. Default value: 0.
  */
 GrainBoundary::GrainBoundary(CoordinateSystem* base, Vector3d p, int n1, int n2)
     : Defect (GRAINBOUNDARY, p, Vector3d::standardAxes())
