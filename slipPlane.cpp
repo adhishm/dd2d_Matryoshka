@@ -645,6 +645,7 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
     // Vector container with the new positions of defects on the slip plane. Initialized with zero vectors.
     std::vector<Vector3d> newPositions(this->getNumDefects(), Vector3d::zeros());
+    std::vector<Vector3d>::iterator pit;    // Position iterator
 
     count_def = 0;
     count_disl = 0;
@@ -732,6 +733,11 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
             // This defect is not a dislocation - it will remain immobile
             newPositions[count_def] = (*dit)->getPosition();
         }
+    }
+
+    // Populate the new positions into the defects
+    for (pit=newPositions.begin(), dit = this->defects.begin(); pit != newPositions.end(); pit++, dit++) {
+        (*dit)->setPosition(*pit);
     }
 }
 
