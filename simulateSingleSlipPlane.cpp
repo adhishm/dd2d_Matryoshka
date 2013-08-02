@@ -408,7 +408,10 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         timeIncrement = slipPlane->calculateTimeIncrement ( ( param->limitingDistance * param->bmag ), param->limitingTimeStep );
 
         // Displace the dislocations
-        slipPlane->moveDislocations ( timeIncrement );
+        // slipPlane->moveDislocations ( timeIncrement );
+        slipPlane->moveDislocationsToLocalEquilibrium((param->limitingDistance * param->bmag),
+                                                      param->limitingTimeStep,
+                                                      param->mu, param->nu);
 
         // Increment counters
         totalTime += slipPlane->getTimeIncrement ();
