@@ -681,7 +681,7 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
             // Find equilibrium position
             equilibriumPosition = def->equilibriumDistance(disl->getTotalForce(), disl->getBurgers(), mu, nu);
-            pDisl = this->getPosition();
+            pDisl = disl->getPosition();
             pDef = def->getPosition();
 
             // Check for overtaking
