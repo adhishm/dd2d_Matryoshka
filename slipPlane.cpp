@@ -626,8 +626,15 @@ void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu)
 {
     std::vector<Defect*>::iterator dit; // Iterator for defects
+
+    // Dislocation access variables
+    int count_disl;
     Dislocation* disl;
+
+    // Defect access variables
+    int count_def;
     Defect* def;
+
     Vector3d velocity;
     int vSign;  // The direction of the dislocation velocity
     double maxDistance; // Maximum distance allowed for dislocation velocity and global time increment
@@ -638,11 +645,14 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
     // Vector container with the new positions of defects on the slip plane. Initialized with zero vectors.
     std::vector<Vector3d> newPositions(this->getNumDefects(), Vector3d::zeros());
-    int count = 0;
+    std::vector<Vector3d>::iterator pit;    // Position iterator
 
-    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++,count++) {
+    count_def = 0;
+    count_disl = 0;
+    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++,count_def++) {
         if ((*dit)->getDefectType() == DISLOCATION) {
-            disl = *dit;
+            // The only defect that will move
+            disl = this->dislocations[count_disl++];
             velocity = disl->getVelocity();
             // Maximum distance
             maxDistance = velocity.magnitude() * dtGlobal;
@@ -671,7 +681,7 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
 
             // Find equilibrium position
             equilibriumPosition = def->equilibriumDistance(disl->getTotalForce(), disl->getBurgers(), mu, nu);
-            pDisl = this->getPosition();
+            pDisl = disl->getPosition();
             pDef = def->getPosition();
 
             // Check for overtaking
@@ -682,45 +692,52 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                 // There is an imminent collision
                 // Treat according to the type of defect with which it may collide
                 switch (def->getDefectType()) {
-                case DISLOCATION:
+                case DISLOCATION :
                     // This is a dislocation of opposite Burgers vector.
                     middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
                     pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
-                    if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
-                        // The new position is not too far
-                        newPositions[count] = pDislPrime;
-                    }
-                    else {
-                        // Too far. Move only by maxDistance
-                        newPositions[count] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
-                    }
-
                     break;
-                case GRAINBOUNDARY:
-                    //
+                case GRAINBOUNDARY :
+                    // The other defect is a grain boundary
+                    // The equilibrium position should be a point at the minDistance
+                    // in order to create a pile up
+                    pDislPrime = pDef - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
                     break;
-                case FREESURFACE:
-                    //
+                case FREESURFACE :
+                    // The next defect is a free surface
+                    // The FREESURFACE is a sink for dislocations
+                    pDislPrime = pDef;
                     break;
-                default:
+                default :
+                    // Unknown defect type - do nothing
+                    pDislPrime = pDisl;
                     break;
                 }
-
             }
             else {
-                // Safe to move the dislocation
-                // Check if distance is within velocity limit
-                if (distance_disl_eq <= maxDistance) {
-                    // Within limits - move to equilibrium position
-                    newPositions[count] = equilibriumPosition;
-                }
-                else {
-                    // The equilibrium distance is further than the max distance permitted by
-                    // velocity and global time increment
-                    newPositions[count] = disl->getPosition() + ( disl->getVelocity() * dtGlobal );
-                }
+                // No collision - so it is safe to move the dislocation to the equilibrium position
+                pDislPrime = equilibriumPosition;
+            }
+
+            // Check how far the dislocation has to go to reach the equilibrium position
+            if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
+                // The new position is not too far
+                newPositions[count_def] = pDislPrime;
+            }
+            else {
+                // Too far. Move only by maxDistance
+                newPositions[count_def] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
             }
         }
+        else {
+            // This defect is not a dislocation - it will remain immobile
+            newPositions[count_def] = (*dit)->getPosition();
+        }
+    }
+
+    // Populate the new positions into the defects
+    for (pit=newPositions.begin(), dit = this->defects.begin(); pit != newPositions.end(); pit++, dit++) {
+        (*dit)->setPosition(*pit);
     }
 }
 
