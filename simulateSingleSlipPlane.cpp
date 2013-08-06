@@ -398,7 +398,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
     // Write statistics
     if ( param->dislocationPositions.ifWrite() ) {
         fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-        slipPlane->writeSlipPlane ( fileName );
+        slipPlane->writeSlipPlane ( fileName, totalTime );
         fileName.clear ();
     }
 
@@ -441,7 +441,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
             fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-            slipPlane->writeSlipPlane ( fileName );
+            slipPlane->writeSlipPlane ( fileName, totalTime );
             fileName.clear ();
         }
 
