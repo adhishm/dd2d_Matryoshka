@@ -59,13 +59,13 @@ void simulateSingleSlipPlane ()
 
         fName.clear ();
         fName = param->input_dir + "/" + param->dislocationStructureFile;
-        if ( readSlipPlane ( fName, slipPlane ) )
+        if ( readSlipPlane ( fName, slipPlane, &currentTime ) )
         {
             message = "Success: read file " + fName;
             displayMessage ( message );
             message.clear ();
 
-            singleSlipPlane_iterate ( param, slipPlane );
+            singleSlipPlane_iterate ( param, slipPlane, currentTime );
         }
         else {
             message = "Error: Unable to read slip plane from file " + fName;
@@ -375,10 +375,11 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
  * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
  * @param slipPlane Pointer to the instance of the SlipPlane class containing the data for the dislocation structure.
+ * @param currentTime The value of time at the beginning of the simulation.
  */
-void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
+void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double currentTime)
 {
-    double totalTime = 0.0;
+    double totalTime = currentTime;
     int nIterations = 0;
 
     std::vector<double> simulationTime;

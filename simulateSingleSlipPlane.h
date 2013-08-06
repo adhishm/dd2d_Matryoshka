@@ -84,7 +84,8 @@ DislocationSource* readDislocationSourceFromLine (std::string s);
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
  * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
  * @param slipPlane Pointer to the instance of the SlipPlane class containing the data for the dislocation structure.
+ * @param currentTime The value of time at the beginning of the simulation.
  */
-void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane);
+void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double currentTime);
 
 #endif
