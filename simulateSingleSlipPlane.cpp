@@ -47,6 +47,8 @@ void simulateSingleSlipPlane ()
 
     Parameter *param = new Parameter;
 
+    double currentTime;
+
     if ( param->getParameters( fName ) )
     {
         message = "Success: read file " + fName;
@@ -57,13 +59,13 @@ void simulateSingleSlipPlane ()
 
         fName.clear ();
         fName = param->input_dir + "/" + param->dislocationStructureFile;
-        if ( readSlipPlane ( fName, slipPlane ) )
+        if ( readSlipPlane ( fName, slipPlane, &currentTime ) )
         {
             message = "Success: read file " + fName;
             displayMessage ( message );
             message.clear ();
 
-            singleSlipPlane_iterate ( param, slipPlane );
+            singleSlipPlane_iterate ( param, slipPlane, currentTime );
         }
         else {
             message = "Error: Unable to read slip plane from file " + fName;
@@ -90,9 +92,10 @@ void simulateSingleSlipPlane ()
  * @details The details of the slip plane and its dislocations are stored in a file the name of which is provided. This file is read and the information is saved into the instance of the SlipPlane class, the pointer to which is given.
  * @param fileName String containing the name of the file.
  * @param s Pointer to the instance of SlipPlane into which all data is to be stored.
+ * @param currentTime Pointer to the variable storing the initial time.
  * @return Flag indicating the success or failure of the operation.
  */
-bool readSlipPlane (std::string fileName, SlipPlane *s)
+bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime)
 {
     std::ifstream fp ( fileName.c_str() );
     std::string line;
@@ -110,6 +113,18 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
 
     if ( fp.is_open() )
     {
+        // Read the initial time
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        *currentTime = atof(line.c_str());
+
         // Read the extremities
         e = new Vector3d[2];
         do {
@@ -360,10 +375,11 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
  * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
  * @param slipPlane Pointer to the instance of the SlipPlane class containing the data for the dislocation structure.
+ * @param currentTime The value of time at the beginning of the simulation.
  */
-void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
+void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double currentTime)
 {
-    double totalTime = 0.0;
+    double totalTime = currentTime;
     int nIterations = 0;
 
     std::vector<double> simulationTime;
@@ -382,7 +398,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     // Write statistics
     if ( param->dislocationPositions.ifWrite() ) {
         fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-        slipPlane->writeSlipPlane ( fileName );
+        slipPlane->writeSlipPlane ( fileName, totalTime );
         fileName.clear ();
     }
 
@@ -425,7 +441,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
             fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-            slipPlane->writeSlipPlane ( fileName );
+            slipPlane->writeSlipPlane ( fileName, totalTime );
             fileName.clear ();
         }
 
