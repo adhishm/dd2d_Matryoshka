@@ -54,9 +54,10 @@ void simulateSingleSlipPlane ();
  * @details The details of the slip plane and its dislocations are stored in a file the name of which is provided. This file is read and the information is saved into the instance of the SlipPlane class, the pointer to which is given.
  * @param fileName String containing the name of the file.
  * @param s Pointer to the instance of SlipPlane into which all data is to be stored.
+ * @param currentTime Pointer to the variable storing the initial time.
  * @return Flag indicating the success or failure of the operation.
  */
-bool readSlipPlane (std::string fileName, SlipPlane *s);
+bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime);
 
 /**
  * @brief Reads 3 values from a string and returns them in a Vector3d.
@@ -83,7 +84,8 @@ DislocationSource* readDislocationSourceFromLine (std::string s);
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
  * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
  * @param slipPlane Pointer to the instance of the SlipPlane class containing the data for the dislocation structure.
+ * @param currentTime The value of time at the beginning of the simulation.
  */
-void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane);
+void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double currentTime);
 
 #endif

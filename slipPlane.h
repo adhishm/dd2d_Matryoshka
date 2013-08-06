@@ -436,8 +436,9 @@ public:
    * @brief Writes the attributes of the slip plane and all defects lying on it.
    * @details This function writes to a file (the name of which is provided in the string filename) all the attributes of the slip plane and all defects lying on it. The file may be useful as statistics or to start the simulation off from an intermediate stage.
    * @param filename The name of the file to which all the attributes are to be written.
+   * @param totalTime The value of time at this point.
    */
-  void writeSlipPlane (std::string filename);
+  void writeSlipPlane (std::string filename, double totalTime);
   
   /**
    * @brief Writes the stress distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane with the given resolution.

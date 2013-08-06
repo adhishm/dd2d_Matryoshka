@@ -35,8 +35,9 @@
  * @brief Writes the attributes of the slip plane and all defects lying on it.
  * @details This function writes to a file (the name of which is provided in the string filename) all the attributes of the slip plane and all defects lying on it. The file may be useful as statistics or to start the simulation off from an intermediate stage.
  * @param filename The name of the file to which all the attributes are to be written.
+ * @param totalTime The value of time at this point.
  */
-void SlipPlane::writeSlipPlane (std::string filename)
+void SlipPlane::writeSlipPlane (std::string filename, double totalTime)
 {
     std::ofstream fp ( filename.c_str() );
     if ( !fp.is_open() ) {
@@ -47,6 +48,10 @@ void SlipPlane::writeSlipPlane (std::string filename)
     Vector3d v;
     Dislocation *d;
     DislocationSource *dSource;
+
+    // Total time
+    fp << "# Current time\n";
+    fp << totalTime << std::endl;
 
     // Extremities
     fp << "# Extremities\n";
