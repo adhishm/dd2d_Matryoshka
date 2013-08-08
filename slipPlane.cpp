@@ -142,6 +142,21 @@ void SlipPlane::createCoordinateSystem(CoordinateSystem* base)
     this->coordinateSystem.setBase(base);
     // Rotation matrix
     this->coordinateSystem.calculateRotationMatrix();
+
+    // In order to calculate the local co-ordinate system,
+    // it was necessary to express the extremity positions
+    // in the base co-ordinate system. Now that this is done,
+    // the extremity positions should be converted to the
+    // slip-plane's local system.
+    Vector3d pBase, pLocal;
+
+    pBase = this->extremities[0].getPosition();
+    pLocal = this->coordinateSystem.vector_BaseToLocal(pBase);
+    this->extremities[0].setPosition(pLocal);
+
+    pBase = this->extremities[1].getPosition();
+    pLocal = this->coordinateSystem.vector_BaseToLocal(pBase);
+    this->extremities[1].setPosition(pLocal);
 }
 
 /**
