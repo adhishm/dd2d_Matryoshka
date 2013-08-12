@@ -147,6 +147,20 @@ void Parameter::parseLineData (std::string line)
       return;
     }
 
+    // Time step kind
+    if (first=="TimeStep" || first=="timestep" || first=="Timestep" || first=="timeStep")
+    {
+        ss >> v;
+        if (v=="adaptive" || v=="Adaptive")
+        {
+            this->timeStepType = ADAPTIVE;
+        }
+        else
+        {
+            this->timeStepType = FIXED;
+        }
+    }
+
     // Limiting distance
     if (first=="limitingDistance" || first=="LimitingDistance")
     {

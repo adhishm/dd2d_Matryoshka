@@ -191,6 +191,12 @@ public:
    * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
    */
   void insertDislocationSource (DislocationSource* d);
+
+  /**
+   * @brief Set the time increment value for the slip plane.
+   * @param t The value of the time increment.
+   */
+  void setTimeIncrement (double t);
   
   // Access functions
   /**

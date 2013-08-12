@@ -420,14 +420,22 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
         // Calculate dislocation velocities
         slipPlane->calculateVelocities ( param->B );
 
-        // Calculate the time increment
-        timeIncrement = slipPlane->calculateTimeIncrement ( ( param->limitingDistance * param->bmag ), param->limitingTimeStep );
+        switch (param->timeStepType) {
+        case ADAPTIVE:
+            // Calculate the time increment
+            timeIncrement = slipPlane->calculateTimeIncrement ( ( param->limitingDistance * param->bmag ),
+                                                                param->limitingTimeStep );
+            // Displace the dislocations
+            slipPlane->moveDislocations ( timeIncrement );
+            break;
 
-        // Displace the dislocations
-        // slipPlane->moveDislocations ( timeIncrement );
-        slipPlane->moveDislocationsToLocalEquilibrium((param->limitingDistance * param->bmag),
-                                                      param->limitingTimeStep,
-                                                      param->mu, param->nu);
+        case FIXED:
+            slipPlane->setTimeIncrement(param->limitingTimeStep);
+            slipPlane->moveDislocationsToLocalEquilibrium((param->limitingDistance * param->bmag),
+                                                          param->limitingTimeStep,
+                                                          param->mu, param->nu);
+            break;
+        }
 
         // Increment counters
         totalTime += slipPlane->getTimeIncrement ();

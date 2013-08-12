@@ -199,6 +199,15 @@ void SlipPlane::insertDislocationSource (DislocationSource *d)
     this->dislocationSources.push_back(d);
 }
 
+/**
+ * @brief Set the time increment value for the slip plane.
+ * @param t The value of the time increment.
+ */
+void SlipPlane::setTimeIncrement (double t)
+{
+    this->dt = t;
+}
+
 // Access functions
 /**
  * @brief Get the position vector of the extremity whose index is provided as argument.
