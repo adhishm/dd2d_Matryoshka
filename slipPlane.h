@@ -191,6 +191,12 @@ public:
    * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
    */
   void insertDislocationSource (DislocationSource* d);
+
+  /**
+   * @brief Set the time increment value for the slip plane.
+   * @param t The value of the time increment.
+   */
+  void setTimeIncrement (double t);
   
   // Access functions
   /**
@@ -228,6 +234,18 @@ public:
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the Dislocation data). Otherwise, the return value is false.
    */
   bool getDislocation (int i, Dislocation* d) const;
+
+  /**
+   * @brief Get the entire vector container which holds the pointers to all the defects
+   * @return The vector of the defects lying on the slip plane.
+   */
+  std::vector<Defect*> getDefectList ();
+
+  /**
+   * @brief Return the number of defects lying in the slip plane.
+   * @return The number of defects lying in the slip plane.
+   */
+  int getNumDefects () const;
   
   /**
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
@@ -357,6 +375,16 @@ public:
   void moveDislocations (std::vector<double> timeIncrement);
 
   /**
+   * @brief Function to move dislocations to local a equilibrium position.
+   * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
+   * @param minDistance Minimum distance of approach between two defects.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @param dtGlobal The global time increment.
+   */
+  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu);
+
+  /**
    * @brief The distance of the point pos from the n^th extremity is returned.
    * @param pos Position vector of the point whose distance is to be calculated.
    * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
@@ -414,8 +442,9 @@ public:
    * @brief Writes the attributes of the slip plane and all defects lying on it.
    * @details This function writes to a file (the name of which is provided in the string filename) all the attributes of the slip plane and all defects lying on it. The file may be useful as statistics or to start the simulation off from an intermediate stage.
    * @param filename The name of the file to which all the attributes are to be written.
+   * @param totalTime The value of time at this point.
    */
-  void writeSlipPlane (std::string filename);
+  void writeSlipPlane (std::string filename, double totalTime);
   
   /**
    * @brief Writes the stress distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane with the given resolution.
@@ -425,6 +454,14 @@ public:
    * @param param Pointer to the instance of the parameter class which contains all the simulation parameters.
    */
   void writeSlipPlaneStressDistribution (std::string filename, int resolution, Parameter *param);
+
+  /**
+   * @brief Writes out the current time and the positions of all difects lying on the slip plane.
+   * @details This function writes out, in a row, the time and the positions of all defects along the slip plane x-axis at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+   * @param filename Name of the file into which the data is to be written.
+   * @param t Value of time.
+   */
+  void writeAllDefects (std::string filename, double t);
 };
 
 #endif

@@ -147,6 +147,20 @@ void Parameter::parseLineData (std::string line)
       return;
     }
 
+    // Time step kind
+    if (first=="TimeStep" || first=="timestep" || first=="Timestep" || first=="timeStep")
+    {
+        ss >> v;
+        if (v=="adaptive" || v=="Adaptive")
+        {
+            this->timeStepType = ADAPTIVE;
+        }
+        else
+        {
+            this->timeStepType = FIXED;
+        }
+    }
+
     // Limiting distance
     if (first=="limitingDistance" || first=="LimitingDistance")
     {
@@ -214,6 +228,20 @@ void Parameter::parseLineData (std::string line)
             // Read additional parameter: resolution
             ss >> v;
             this->slipPlaneStressDistributions.addParameter ( atof ( v.c_str() ) );
+        }
+        return;
+    }
+
+    // Statistics all defect positions
+    if (first=="statsAllDefects") {
+        ss >> v;
+        int write = atoi(v.c_str());
+        ss >> v;
+        this->allDefectPositions = Statistics ( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->allDefectPositions.addName(v);
         }
         return;
     }
