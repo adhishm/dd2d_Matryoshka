@@ -141,6 +141,16 @@ public:
    * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
    */
   SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class SlipPlane.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~SlipPlane ()
+  {
+
+  }
   
   // Assignment functions
   /**

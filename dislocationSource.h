@@ -103,6 +103,16 @@ public:
    * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
    */
   DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class DislocationSource.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~DislocationSource ()
+  {
+
+  }
   
   // Assignment functions
   /**

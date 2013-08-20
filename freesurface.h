@@ -41,6 +41,7 @@
 class FreeSurface : public Defect
 {
 public:
+    // Constructors
     /**
      * @brief Default constructor.
      * @details Creates a free surface with origin at (0, 0, 0).
@@ -53,6 +54,16 @@ public:
      * @param p Position of the free surface. Default value: (0, 0, 0).
      */
     FreeSurface (CoordinateSystem *base = NULL, Vector3d p=Vector3d::zeros());
+
+    // Destructor
+    /**
+     * @brief Destructor for the class FreeSurface.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~FreeSurface ()
+    {
+
+    }
 
     /**
      * @brief Calculates the image force exerted by the free surface on a given dislocation.

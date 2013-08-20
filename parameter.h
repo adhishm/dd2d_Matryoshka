@@ -156,6 +156,16 @@ public:
      */
     Statistics allDefectPositions;
 
+    // Destructor
+    /**
+     * @brief Destructor for the class Parameter.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~Parameter ()
+    {
+
+    }
+
     // Functions
     /**
      * @brief Read parameters from file whose name is provided.

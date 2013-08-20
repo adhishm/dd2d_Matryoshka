@@ -74,6 +74,16 @@ public:
    */
     Matrix33 (Vector3d a, Vector3d b);
 
+    // Destructor
+    /**
+     * @brief Destructor for the class Matrix33.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~Matrix33 ()
+    {
+
+    }
+
     // Functions
     /**
    * @brief Function to set the value of an element indicated by its position.

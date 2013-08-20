@@ -91,6 +91,16 @@ public:
    */
     StandardSlipSystem (CrystalStructure c);
 
+    // Destructor
+    /**
+     * @brief Destructor for the class StandardSlipSystem.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~StandardSlipSystem ()
+    {
+
+    }
+
     // Assignment functions
     /**
    * @brief Creates the 12 possible FCC slip systems.
