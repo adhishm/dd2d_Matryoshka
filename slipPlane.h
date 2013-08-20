@@ -454,6 +454,14 @@ public:
    * @param param Pointer to the instance of the parameter class which contains all the simulation parameters.
    */
   void writeSlipPlaneStressDistribution (std::string filename, int resolution, Parameter *param);
+
+  /**
+   * @brief Writes out the current time and the positions of all difects lying on the slip plane.
+   * @details This function writes out, in a row, the time and the positions of all defects along the slip plane x-axis at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+   * @param filename Name of the file into which the data is to be written.
+   * @param t Value of time.
+   */
+  void writeAllDefects (std::string filename, double t);
 };
 
 #endif
