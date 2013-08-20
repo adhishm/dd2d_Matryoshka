@@ -232,6 +232,20 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Statistics all defect positions
+    if (first=="statsAllDefects") {
+        ss >> v;
+        int write = atoi(v.c_str());
+        ss >> v;
+        this->allDefectPositions = Statistics ( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->allDefectPositions.addName(v);
+        }
+        return;
+    }
+
     // File names
     if ( first=="structure" || first=="Structure" )
     {

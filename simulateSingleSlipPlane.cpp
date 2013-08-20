@@ -461,6 +461,12 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
             fileName.clear ();
         }
 
+        if ( param->allDefectPositions.ifWrite() ) {
+            fileName = param->output_dir + "/" + param->allDefectPositions.name + ".txt";
+            slipPlane->writeAllDefects( fileName, totalTime );
+            fileName.clear();
+        }
+
         // Check for stopping criterion
         if ( param->stopAfterTime ) {
             // The stopping criterion is time
