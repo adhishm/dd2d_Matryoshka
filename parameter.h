@@ -151,6 +151,11 @@ public:
      */
     Statistics slipPlaneStressDistributions;
 
+    /**
+     * @brief Indicator for writing all defect positions to file.
+     */
+    Statistics allDefectPositions;
+
     // Functions
     /**
      * @brief Read parameters from file whose name is provided.
