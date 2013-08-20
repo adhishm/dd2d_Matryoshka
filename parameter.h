@@ -43,6 +43,15 @@
 #include "tools.h"
 
 /**
+ * @brief The timeStepType enum indicates the kind of time step that will be used.
+ * @details At the moment, two kinds of time step are allowed: ADAPTIVE and FIXED. In the adaptive step a time increment is calculated for each dislocation based on its velocity and distance to the next defect, while for the fixed time step, a global time increment is set and dislocations are moved according to their velocities.
+ */
+enum TimeStepType {
+    ADAPTIVE = 0,
+    FIXED
+};
+
+/**
  * @brief Parameter class to hold all simulation parameters.
  * @details The simulation needs several parameters - such as material properties, stopping criterion, time steps, etc. - in order to function. An instance of this class will hold all these values in one place for easy access throughout the simulation. All data in this class is made public to facilitate access throughout the simulation.
  */
@@ -108,6 +117,11 @@ public:
      * @details In the simulation, two defects may collide and the resulting reaction depends on the type of defects. This collision is considered to happen within a certain radius around the defect. This radius is given by this variable as a multiple of the Burgers vector magnitude. It should typically be just a little larger than the limitingDistance variable.
      */
     double reactionRadius;
+
+    /**
+     * @brief The kind of time step to be used.
+     */
+    TimeStepType timeStepType;
     
     /**
      * @brief The smallest time step permitted in an iteration.
@@ -136,6 +150,11 @@ public:
      * @brief Indicator about writing the slip plane stress distribution to file and its frequency.
      */
     Statistics slipPlaneStressDistributions;
+
+    /**
+     * @brief Indicator for writing all defect positions to file.
+     */
+    Statistics allDefectPositions;
 
     // Functions
     /**

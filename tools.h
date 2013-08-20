@@ -114,4 +114,14 @@ std::string intToString (int i);
  */
 std::string doubleToString (double i);
 
+/**
+ * @brief SGN function to return the sign of a number.
+ * @param v The value whose sign is to be found.
+ * @return The sign of the value (-1, 0, 1).
+ */
+template <typename T> int sgn(T v)
+{
+    return ( (T(0) < v) - (v < T(0)) );
+}
+
 #endif

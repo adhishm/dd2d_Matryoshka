@@ -446,3 +446,31 @@ double Dislocation::idealTimeIncrement (double minDistance, Defect* d)
         }
     }
 }
+
+// Interaction distance
+/**
+ * @brief Calculates and returns the distance from the present dislocation at which the interaction force opposes the force provided as argument.
+ * @details This function calculates the distance at which the present dislocation's interaction force opposes the force provided as argument. This force is calculated using the generic interaction force between two parallel dislocations.
+ * @param force The total force, expressed in the base co-ordinate system, experienced by the other defect.
+ * @param burgers Burgers vector of the dislocation with which the interaction force is to be calculated, expressed in the base co-ordinate system.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
+ * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument. This position vector is expressed in the base co-ordinate system.
+ */
+Vector3d Dislocation::equilibriumDistance(Vector3d force, Vector3d burgers, double mu, double nu)
+{
+    // Other dislocation's Burgers vector in local system.
+    Vector3d bPrime = this->coordinateSystem.vector_BaseToLocal_noTranslate(burgers);
+    // Force to be balanced, in local system.
+    Vector3d force_local = this->coordinateSystem.vector_BaseToLocal_noTranslate(force);
+
+    double D = mu / (2.0 * PI * (1.0 - nu));
+
+    // Calculate distance based on balancing forces along the x-axis
+    double distance = -1.0 * (D / force_local.getValue(0)) * ( (this->bvec * bPrime) - (nu * this->bvec.getValue(2) * bPrime.getValue(2)) );
+
+    // Vectorize the distance, and convert to base system
+    // Since this is a position vector, it must be translated
+    Vector3d equilibriumPosition = Vector3d (distance, 0.0, 0.0);
+    return (this->coordinateSystem.vector_LocalToBase(equilibriumPosition));
+}
