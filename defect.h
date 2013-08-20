@@ -93,6 +93,16 @@ public:
    * @param base Pointer ot the base co-ordinate system.
    */
   Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class Defect.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Defect ()
+  {
+
+  }
   
   // Assignment functions
   /**

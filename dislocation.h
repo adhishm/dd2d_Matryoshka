@@ -136,6 +136,16 @@ public:
    * @param m Mobility (true/false).
    */
   Dislocation (Vector3d burgers, Vector3d line, Vector3d position, CoordinateSystem *base, double bm, bool m);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class Dislocation.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Dislocation ()
+  {
+
+  }
   
   // Assignment functions
   /**

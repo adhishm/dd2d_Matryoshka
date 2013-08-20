@@ -49,6 +49,7 @@ protected:
      */
     int neighbour2;
 public:
+    // Constructors
     /**
      * @brief Default constructor.
      * @details Creates a default grain boundary with origin at (0, 0, 0) and neighbour indices 0.
@@ -63,6 +64,16 @@ public:
      * @param n2 Index of the second neighbour. Default value: 0.
      */
     GrainBoundary(CoordinateSystem* base = NULL, Vector3d p = Vector3d::zeros(), int n1=0, int n2=0);
+
+    // Destructor
+    /**
+     * @brief Destructor for the class GrainBoundary.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~GrainBoundary ()
+    {
+
+    }
 };
 
 #endif // GRAINBOUNDARY_H

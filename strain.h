@@ -72,6 +72,16 @@ class Strain : public Matrix33
    */
   Strain (Matrix33 m);
 
+  // Destructor
+  /**
+   * @brief Destructor for the class Strain.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Strain ()
+  {
+
+  }
+
   // Assignment functions
   /**
    * @brief Set the value of the principal strain indicated by the index.
