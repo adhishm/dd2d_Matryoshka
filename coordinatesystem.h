@@ -95,6 +95,16 @@ public:
      */
     CoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* b);
 
+    // Destructor
+    /**
+     * @brief Destructor for the class CoordinateSystem.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~CoordinateSystem ()
+    {
+
+    }
+
     // Assignment functions
     /**
      * @brief Set the values of the axes.

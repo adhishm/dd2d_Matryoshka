@@ -71,6 +71,16 @@ public:
    */
     Vector3d (double a1, double a2, double a3);
 
+    // Destructor
+    /**
+     * @brief Destructor for the class Vector3d.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~Vector3d ()
+    {
+
+    }
+
     // Assignment functions
     /**
    * @brief Function to set the value of an element of the vector.

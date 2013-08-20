@@ -62,6 +62,16 @@ class RotationMatrix : public Matrix33
    * @param primed Pointer to the array containing the three axes vectors of the primed (new) system.
    */
   RotationMatrix (Vector3d *unPrimed, Vector3d *primed);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class RotationMatrix.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~RotationMatrix ()
+  {
+
+  }
 };
 
 #endif

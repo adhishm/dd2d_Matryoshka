@@ -62,6 +62,7 @@ public:
    */
   std::string name;
   
+  // Constructors
   /**
    * @brief Default constructor.
    * @details Initialises the instance of this class with a false value for write and a frequency of 0.
@@ -74,6 +75,17 @@ public:
    * @param f Frequency of writing.
    */
   Statistics (bool w, int f);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class Statistics.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Statistics ()
+  {
+
+  }
+
   /**
    * @brief If the time to write the statistic has arrived.
    * @return True/false indicating if the statistic is to be written or not.
