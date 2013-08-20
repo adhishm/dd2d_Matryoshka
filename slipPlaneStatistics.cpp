@@ -194,7 +194,7 @@ void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int reso
  */
 void SlipPlane::writeAllDefects (std::string filename, double t)
 {
-    std::ofstream fp (filename, std::ios_base::app);
+    std::ofstream fp (filename.c_str(), std::ios_base::app);
     int nDefects, i;
     Defect* def;
     Vector3d p;
