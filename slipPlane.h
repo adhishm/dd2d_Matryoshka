@@ -417,6 +417,14 @@ public:
    */
   void sortDislocationSources ();
 
+  // Local reactions
+  /**
+   * @brief Function to check for local reactions between defects present on the slip plane.
+   * @details When two defects approach each other closer than the reaction radius, there is a possibility of an interaction between them. These interactions are detected and triggered by this function.
+   * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+   */
+  void checkLocalReactions (double reactionRadius);
+
   // Stresses
   /**
    * @brief Calculates the stress applied on the slip plane given the stress in the base system.
