@@ -425,6 +425,13 @@ public:
    */
   void checkLocalReactions (double reactionRadius);
 
+  /**
+   * @brief localReaction_dislocation_dislocation
+   * @param d0
+   * @param d1
+   */
+  void localReaction_dislocation_dislocation (Dislocation* d0, Dislocation* d1);
+
   // Stresses
   /**
    * @brief Calculates the stress applied on the slip plane given the stress in the base system.

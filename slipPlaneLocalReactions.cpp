@@ -2,7 +2,7 @@
  * @file slipPlaneLocalReactions.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 21/08/2013
+ * @date 26/08/2013
  * @brief Definition of all functions carrying out local reactions between defects on a slip plane.
  * @details This file defines functions of the SlipPlane class that carry out the local reactions between defects lying on the slip plane.
  */
@@ -37,5 +37,25 @@
  */
 void SlipPlane::checkLocalReactions(double reactionRadius)
 {
+    // Iterator for defects
+    std::vector<Defect*>::iterator dit;
+    std::vector<Defect*>::iterator dFirst = this->defects.begin();
+    std::vector<Defect*>::iterator dLast  = this->defects.end();
+    // Neighbouring defect pair and their positions
+    Defect* d0; Vector3d p0;
+    Defect* d1; Vector3d p1;
 
+
+    // Check for neighbouring defects that lie too close
+    for (dit=dFirst; dit!=(dLast-1); dit++) {
+        d0 = *dit;
+        d1 = *(dit + 1);
+
+        p0 = d0->getPosition();
+        p1 = d1->getPosition();
+
+        if ( (p1-p0).magnitude() <= reactionRadius ) {
+            // The two defects are close to each other - a local reaction is imminent
+        }
+    }
 }
