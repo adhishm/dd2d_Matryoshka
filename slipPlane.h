@@ -427,31 +427,28 @@ public:
 
   /**
    * @brief Identify the kind of local reaction that is to be applied to the defect pair and call the appropriate function.
+   * @details This function checks for the kind of local reaction that is to be applied to the defect pair, calls the appropriate function, and returns the iterator to the next defect that is to be checked for local reactions. Returning the iterator is important because the vector SlipPlane::defects may lose members as a result of a local reaction, and the iterators in the calling function may become invalid.
    * @param d0 Iterator of type std::vector<Defect*> indicating the first defect that participates in the local reaction.
    * @param d1 Iterator of type std::vector<Defect*> indicating the second defect that participates in the local reaction.
+   * @return Iterator to the next position that is to be checked for a local reaction.
    */
-  void identifyLocalReaction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+  std::vector<Defect*>::iterator identifyLocalReaction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   /**
    * @brief Absorb a dislocation into a free surface.
    * @details When a dislocation approaches a free surface, it is pulled toward it due to the diminishing strain energy, and eventually the dislocation gets absorbed into the surface. This function provides that functionality.
    * @param disl Pointer of type Defect* that is to be absorbed into the free surface.
+   * @return Iterator to the position of the new dislocation that occupies the place of the dislocation that was absorbed.
    */
-  void absorbDislocation (std::vector<Defect*>::iterator disl);
+  std::vector<Defect*>::iterator absorbDislocation (std::vector<Defect*>::iterator disl);
 
   /**
-   * @brief annihilateDislocations
-   * @param d0
-   * @param d1
+   * @brief Two dislocations of opposite Burgers vectors annihilate when they approach each other closer than the reaction radius.
+   * @param d0 Iterator of the vector SlipPlane::defects for the first dislocation.
+   * @param d1 Iterator of the vector SlipPlane::defects for the second dislocation.
+   * @return Iterator to the position of the new dislocation that occupies the place of the first dislocation that was annihilated.
    */
-  void annihilateDislocations (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
-
-  /**
-   * @brief localReaction_dislocation_dislocation
-   * @param d0
-   * @param d1
-   */
-  void localReaction_dislocation_dislocation (Dislocation* d0, Dislocation* d1);
+  std::vector<Defect*>::iterator annihilateDislocations (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   // Stresses
   /**

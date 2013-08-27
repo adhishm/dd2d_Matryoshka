@@ -47,7 +47,8 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 
 
     // Check for neighbouring defects that lie too close
-    for (dit=dFirst; dit!=(dLast-1); dit++) {
+    dit = this->defects.begin();
+    while (dit != this->defects.end()) {
         d0 = *dit;
         d1 = *(dit + 1);
 
@@ -56,31 +57,37 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 
         if ( (p1-p0).magnitude() <= reactionRadius ) {
             // The two defects are close to each other - a local reaction is imminent
-            this->identifyLocalReaction(d0, d1);
+            dit = this->identifyLocalReaction(dit, dit+1);
+        }
+        else {
+            // Nothing happens - defects too far away
+            dit++;
         }
     }
 }
 
 /**
  * @brief Identify the kind of local reaction that is to be applied to the defect pair and call the appropriate function.
+ * @details This function checks for the kind of local reaction that is to be applied to the defect pair, calls the appropriate function, and returns the iterator to the next defect that is to be checked for local reactions. Returning the iterator is important because the vector SlipPlane::defects may lose members as a result of a local reaction, and the iterators in the calling function may become invalid.
  * @param d0 Iterator of type std::vector<Defect*> indicating the first defect that participates in the local reaction.
  * @param d1 Iterator of type std::vector<Defect*> indicating the second defect that participates in the local reaction.
+ * @return Iterator to the next position that is to be checked for a local reaction.
  */
-void SlipPlane::identifyLocalReaction(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
+std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
 {
     Defect* def0 = *d0;
     Defect* def1 = *d1;
 
-    switch (def0->getDefectType()) {
+    switch ( def0->getDefectType() ) {
     case GRAINBOUNDARY:
         // No action
         break;
     case FREESURFACE:
         // If the other defect is a dislocation, it will be absorbed
-        switch (def1->getDefectType()) {
+        switch ( def1->getDefectType() ) {
         case DISLOCATION:
             // Dislocation should be absorbed
-            this->absorbDislocation(d1);
+            return ( this->absorbDislocation(d1) );
             break;
         default:
             // All other cases - nothing should be done
@@ -91,17 +98,21 @@ void SlipPlane::identifyLocalReaction(std::vector<Defect*>::iterator d0, std::ve
         // If the other defect is a dislocation, check for sign
         // If it is a free surface, it should be absorbed
         // If it is a grain boundary, no action
-        switch (def1->getDefectType()) {
+        switch ( def1->getDefectType() ) {
         case GRAINBOUNDARY:
             // Do nothing
             break;
         case FREESURFACE:
             // The dislocation should be absorbed
-            this->absorbDislocation(d0);
+            return ( this->absorbDislocation(d0) );
             break;
         case DISLOCATION:
+            Dislocation* disl0 = def0;
+            Dislocation* disl1 = def1;
             // Check for sign
-
+            if ( (disl0->getBurgers() - disl1->getBurgers()).magnitude() < SMALL_NUMBER ) {
+                return (this->annihilateDislocations(d0, d1));
+            }
             break;
         default:
             // Do nothing
@@ -112,15 +123,30 @@ void SlipPlane::identifyLocalReaction(std::vector<Defect*>::iterator d0, std::ve
         // No action
         break;
     }
+
+    // If we are here, no reaction took place
+    return (d0);
 }
 
 /**
  * @brief Absorb a dislocation into a free surface.
  * @details When a dislocation approaches a free surface, it is pulled toward it due to the diminishing strain energy, and eventually the dislocation gets absorbed into the surface. This function provides that functionality.
  * @param disl Pointer of type Defect* that is to be absorbed into the free surface.
+ * @return Iterator to the position of the new dislocation that occupies the place of the dislocation that was absorbed.
  */
-void SlipPlane::absorbDislocation (std::vector<Defect*>::iterator disl)
+std::vector<Defect*>::iterator SlipPlane::absorbDislocation (std::vector<Defect*>::iterator disl)
 {
     // Just remove the dislocation from the vector
-    this->defects.erase(disl);
+    return ( this->defects.erase(disl) );
+}
+
+/**
+ * @brief Two dislocations of opposite Burgers vectors annihilate when they approach each other closer than the reaction radius.
+ * @param d0 Iterator of the vector SlipPlane::defects for the first dislocation.
+ * @param d1 Iterator of the vector SlipPlane::defects for the second dislocation.
+ * @return Iterator to the position of the new dislocation that occupies the place of the first dislocation that was annihilated.
+ */
+std::vector<Defect*>::iterator SlipPlane::annihilateDislocations (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
+{
+    return (this->defects.erase(d0, d1));
 }
