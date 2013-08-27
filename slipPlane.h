@@ -426,6 +426,27 @@ public:
   void checkLocalReactions (double reactionRadius);
 
   /**
+   * @brief Identify the kind of local reaction that is to be applied to the defect pair and call the appropriate function.
+   * @param d0 Iterator of type std::vector<Defect*> indicating the first defect that participates in the local reaction.
+   * @param d1 Iterator of type std::vector<Defect*> indicating the second defect that participates in the local reaction.
+   */
+  void identifyLocalReaction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Absorb a dislocation into a free surface.
+   * @details When a dislocation approaches a free surface, it is pulled toward it due to the diminishing strain energy, and eventually the dislocation gets absorbed into the surface. This function provides that functionality.
+   * @param disl Pointer of type Defect* that is to be absorbed into the free surface.
+   */
+  void absorbDislocation (std::vector<Defect*>::iterator disl);
+
+  /**
+   * @brief annihilateDislocations
+   * @param d0
+   * @param d1
+   */
+  void annihilateDislocations (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
    * @brief localReaction_dislocation_dislocation
    * @param d0
    * @param d1

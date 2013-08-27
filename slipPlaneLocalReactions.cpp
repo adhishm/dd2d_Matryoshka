@@ -56,6 +56,71 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 
         if ( (p1-p0).magnitude() <= reactionRadius ) {
             // The two defects are close to each other - a local reaction is imminent
+            this->identifyLocalReaction(d0, d1);
         }
     }
+}
+
+/**
+ * @brief Identify the kind of local reaction that is to be applied to the defect pair and call the appropriate function.
+ * @param d0 Iterator of type std::vector<Defect*> indicating the first defect that participates in the local reaction.
+ * @param d1 Iterator of type std::vector<Defect*> indicating the second defect that participates in the local reaction.
+ */
+void SlipPlane::identifyLocalReaction(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
+{
+    Defect* def0 = *d0;
+    Defect* def1 = *d1;
+
+    switch (def0->getDefectType()) {
+    case GRAINBOUNDARY:
+        // No action
+        break;
+    case FREESURFACE:
+        // If the other defect is a dislocation, it will be absorbed
+        switch (def1->getDefectType()) {
+        case DISLOCATION:
+            // Dislocation should be absorbed
+            this->absorbDislocation(d1);
+            break;
+        default:
+            // All other cases - nothing should be done
+            break;
+        }
+        break;
+    case DISLOCATION:
+        // If the other defect is a dislocation, check for sign
+        // If it is a free surface, it should be absorbed
+        // If it is a grain boundary, no action
+        switch (def1->getDefectType()) {
+        case GRAINBOUNDARY:
+            // Do nothing
+            break;
+        case FREESURFACE:
+            // The dislocation should be absorbed
+            this->absorbDislocation(d0);
+            break;
+        case DISLOCATION:
+            // Check for sign
+
+            break;
+        default:
+            // Do nothing
+            break;
+        }
+        break;
+    default:
+        // No action
+        break;
+    }
+}
+
+/**
+ * @brief Absorb a dislocation into a free surface.
+ * @details When a dislocation approaches a free surface, it is pulled toward it due to the diminishing strain energy, and eventually the dislocation gets absorbed into the surface. This function provides that functionality.
+ * @param disl Pointer of type Defect* that is to be absorbed into the free surface.
+ */
+void SlipPlane::absorbDislocation (std::vector<Defect*>::iterator disl)
+{
+    // Just remove the dislocation from the vector
+    this->defects.erase(disl);
 }
