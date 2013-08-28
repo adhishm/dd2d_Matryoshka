@@ -75,61 +75,26 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
  */
 std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
 {
-    Defect* def0 = *d0;
-    Defect* def1 = *d1;
-
-    Dislocation* disl0;
-    Dislocation* disl1;
-
-    switch ( def0->getDefectType() ) {
+    switch ( (*d0)->getDefectType() ) {
     case GRAINBOUNDARY:
-        // No action
+        return (d0);
         break;
     case FREESURFACE:
-        // If the other defect is a dislocation, it will be absorbed
-        switch ( def1->getDefectType() ) {
-        case DISLOCATION:
-            // Dislocation should be absorbed
-            return ( this->absorbDislocation(d1) );
-            break;
-        default:
-            // All other cases - nothing should be done
-            break;
-        }
+        return (freeSurfaceInteractions (d0, d1));
+        break;
+    case FRANKREADSOURCE:
+        return (d0);
         break;
     case DISLOCATION:
-        // If the other defect is a dislocation, check for sign
-        // If it is a free surface, it should be absorbed
-        // If it is a grain boundary, no action
-        switch ( def1->getDefectType() ) {
-        case GRAINBOUNDARY:
-            // Do nothing
-            break;
-        case FREESURFACE:
-            // The dislocation should be absorbed
-            return ( this->absorbDislocation(d0) );
-            break;
-        case DISLOCATION:
-            disl0 = this->findDislocation(d0);
-            disl1 = this->findDislocation(d1);
-            // Check for sign
-            if ( (disl0->getBurgers() - disl1->getBurgers()).magnitude() < SMALL_NUMBER ) {
-                return (this->annihilateDislocations(disl0, disl1));
-            }
-            break;
-        default:
-            // Do nothing
-            break;
-        }
+        return (dislocationInteractions (d0, d1));
         break;
     default:
-        // No action
+        return (d0);
         break;
     }
-
-    // If we are here, no reaction took place
-    return (d0);
 }
+
+
 
 /**
  * @brief Absorb a dislocation into a free surface.
