@@ -421,6 +421,35 @@ Stress SlipPlane::getAppliedStress_base() const
     return (this->appliedStress_base);
 }
 
+/**
+ * @brief Finds the dislocation corresponding to a member of the vector defects.
+ * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+ * @return Pointer to the dislocation corresponding to the defect given by the iterator.
+ */
+Dislocation* SlipPlane::findDislocation(std::vector<Defect*>::iterator defect_iterator)
+{
+    std::vector<Defect*>::iterator dit = this->defects.begin();
+    std::vector<Dislocation*>::iterator dislocation_iterator = this->dislocations.begin();
+
+    while (dit != this->defects.end()) {
+        if ((*dit)->getDefectType() == DISLOCATION) {
+            // This defect is a dislocation - check if it is the one we need
+            if (dit == defect_iterator) {
+                // This is the dislocation we need
+                return ( *dislocation_iterator );
+            }
+            else {
+                // This is not the dislocation we need - increment the count
+                dislocation_iterator++;
+                dit++;
+            }
+        }
+    }
+
+    // If we are still here, the dislocation was not found
+    return (NULL);
+}
+
 // Update functions
 /**
  * @brief Update the defects vector.

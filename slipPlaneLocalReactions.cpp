@@ -78,6 +78,9 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
     Defect* def0 = *d0;
     Defect* def1 = *d1;
 
+    Dislocation* disl0;
+    Dislocation* disl1;
+
     switch ( def0->getDefectType() ) {
     case GRAINBOUNDARY:
         // No action
@@ -107,11 +110,11 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
             return ( this->absorbDislocation(d0) );
             break;
         case DISLOCATION:
-            Dislocation* disl0 = def0;
-            Dislocation* disl1 = def1;
+            disl0 = this->findDislocation(d0);
+            disl1 = this->findDislocation(d1);
             // Check for sign
             if ( (disl0->getBurgers() - disl1->getBurgers()).magnitude() < SMALL_NUMBER ) {
-                return (this->annihilateDislocations(d0, d1));
+                return (this->annihilateDislocations(disl0, disl1));
             }
             break;
         default:

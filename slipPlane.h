@@ -321,6 +321,13 @@ public:
    */
   Stress getAppliedStress_base() const;
 
+  /**
+   * @brief Finds the dislocation corresponding to a member of the vector defects.
+   * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+   * @return Pointer to the dislocation corresponding to the defect given by the iterator.
+   */
+  Dislocation* findDislocation (std::vector<Defect*>::iterator defect_iterator);
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
