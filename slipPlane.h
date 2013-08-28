@@ -328,6 +328,13 @@ public:
    */
   Dislocation* findDislocation (std::vector<Defect*>::iterator defect_iterator);
 
+  /**
+   * @brief Finds the dislocation corresponding to a member of the vector defects.
+   * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+   * @return Iterator indicating the element of SlipPlane::dislocations corresponding to the defect provided in the argument.
+   */
+  std::vector<Dislocation*>::iterator findDislocationIterator (std::vector<Defect*>::iterator defect_iterator);
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
@@ -440,6 +447,14 @@ public:
    * @return Iterator to the next position that is to be checked for a local reaction.
    */
   std::vector<Defect*>::iterator identifyLocalReaction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Identify the reaction to occur between a free surface and another defect.
+   * @param d0 Iterator indicating the free surface in SlipPlqne::defects.
+   * @param d1 Iterator indicating the other defect in freeSurfaceInteractions
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator freeSurfaceInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   /**
    * @brief Absorb a dislocation into a free surface.

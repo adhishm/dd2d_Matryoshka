@@ -94,6 +94,32 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
     }
 }
 
+/**
+ * @brief Identify the reaction to occur between a free surface and another defect.
+ * @param d0 Iterator indicating the free surface in SlipPlqne::defects.
+ * @param d1 Iterator indicating the other defect in freeSurfaceInteractions
+ * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+ */
+std::vector<Defect*>::iterator SlipPlane::freeSurfaceInteractions(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
+{
+    switch ( (*d1)->getDefectType() ) {
+    case GRAINBOUNDARY:
+    case FREESURFACE:
+    case FRANKREADSOURCE:
+        // In all the above cases, there is nothing to be done
+        return (d0);
+        break;
+    case DISLOCATION:
+        // The other defect is a dislocation
+        // It should be absorbed into the free surface
+        return (this->absorbDislocation(d1));
+        break;
+    default:
+        // Unknown defect type - do nothing
+        return (d0);
+        break;
+    }
+}
 
 
 /**
@@ -104,7 +130,8 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
  */
 std::vector<Defect*>::iterator SlipPlane::absorbDislocation (std::vector<Defect*>::iterator disl)
 {
-    // Just remove the dislocation from the vector
+    // Just remove the dislocation from the vectors
+    this->dislocations.erase( this->findDislocationIterator(disl) );
     return ( this->defects.erase(disl) );
 }
 
