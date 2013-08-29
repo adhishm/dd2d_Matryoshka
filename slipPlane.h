@@ -451,10 +451,18 @@ public:
   /**
    * @brief Identify the reaction to occur between a free surface and another defect.
    * @param d0 Iterator indicating the free surface in SlipPlane::defects.
-   * @param d1 Iterator indicating the other defect in freeSurfaceInteractions
+   * @param d1 Iterator indicating the other defect in SlipPlane::defects.
    * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
    */
   std::vector<Defect*>::iterator freeSurfaceInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Identify the reaction to occur between a dislocation and another defect.
+   * @param d0 Iterator indicating the dislocation in SlipPlane::defects.
+   * @param d1 Iterator indicating the other defect in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator dislocationInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   /**
    * @brief Absorb a dislocation into a free surface.
@@ -463,6 +471,14 @@ public:
    * @return Iterator to the position of the new dislocation that occupies the place of the dislocation that was absorbed.
    */
   std::vector<Defect*>::iterator absorbDislocation (std::vector<Defect*>::iterator disl);
+
+  /**
+   * @brief Checks for the kind of interaction between two dislocations.
+   * @param d0 Iterator giving the first dislocation in SlipPlane::defects.
+   * @param d1 Iterator giving the second dislocation in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator dislocation_dislocationInteraction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   /**
    * @brief Two dislocations of opposite Burgers vectors annihilate when they approach each other closer than the reaction radius.

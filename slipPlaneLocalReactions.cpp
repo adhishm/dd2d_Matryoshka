@@ -77,19 +77,19 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
 {
     switch ( (*d0)->getDefectType() ) {
     case GRAINBOUNDARY:
-        return (d0);
+        return (d0+1);
         break;
     case FREESURFACE:
         return (freeSurfaceInteractions (d0, d1));
         break;
     case FRANKREADSOURCE:
-        return (d0);
+        return (d0+1);
         break;
     case DISLOCATION:
         return (dislocationInteractions (d0, d1));
         break;
     default:
-        return (d0);
+        return (d0+1);
         break;
     }
 }
@@ -107,7 +107,7 @@ std::vector<Defect*>::iterator SlipPlane::freeSurfaceInteractions(std::vector<De
     case FREESURFACE:
     case FRANKREADSOURCE:
         // In all the above cases, there is nothing to be done
-        return (d0);
+        return (d0+1);
         break;
     case DISLOCATION:
         // The other defect is a dislocation
@@ -116,7 +116,33 @@ std::vector<Defect*>::iterator SlipPlane::freeSurfaceInteractions(std::vector<De
         break;
     default:
         // Unknown defect type - do nothing
-        return (d0);
+        return (d0+1);
+        break;
+    }
+}
+
+/**
+ * @brief Identify the reaction to occur between a dislocation and another defect.
+ * @param d0 Iterator indicating the dislocation in SlipPlane::defects.
+ * @param d1 Iterator indicating the other defect in SlipPlane::defects.
+ * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+ */
+std::vector<Defect*>::iterator SlipPlane::dislocationInteractions(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
+{
+    switch ( (*d1)->getDefectType() ) {
+    case GRAINBOUNDARY:
+        // Do nothing
+        return (d0+1);
+        break;
+    case FREESURFACE:
+        // The dislocation at d0 should be absorbed into the free surface d1
+        return (this->absorbDislocation(d0));
+        break;
+    case DISLOCATION:
+        return (this->dislocation_dislocationInteraction(d0, d1));
+        break;
+    default:
+        return (d0+1);
         break;
     }
 }
@@ -133,6 +159,36 @@ std::vector<Defect*>::iterator SlipPlane::absorbDislocation (std::vector<Defect*
     // Just remove the dislocation from the vectors
     this->dislocations.erase( this->findDislocationIterator(disl) );
     return ( this->defects.erase(disl) );
+}
+
+/**
+ * @brief Checks for the kind of interaction between two dislocations.
+ * @param d0 Iterator giving the first dislocation in SlipPlane::defects.
+ * @param d1 Iterator giving the second dislocation in SlipPlane::defects.
+ * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+ */
+std::vector<Defect*>::iterator SlipPlane::dislocation_dislocationInteraction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
+{
+    std::vector<Dislocation*>::iterator dislocation0_iterator = this->findDislocationIterator(d0);
+    std::vector<Dislocation*>::iterator dislocation1_iterator = this->findDislocationIterator(d1);
+
+    Dislocation* dislocation0 = *dislocation0_iterator;
+    Dislocation* dislocation1 = *dislocation1_iterator;
+
+    // Check for Burgers vectors
+    Vector3d b0 = dislocation0->getBurgers();
+    Vector3d b1 = dislocation1->getBurgers();
+
+    if ( (b1-b0).magnitude() < SMALL_NUMBER ) {
+        // The Burgers vectors are opposite - annihilate the dislocations
+        this->dislocations.erase(dislocation0_iterator);
+        this->dislocations.erase(dislocation1_iterator);
+        return (this->defects.erase(d0,d1));
+    }
+    else {
+        // No annihilation, no interaction
+        return (d0 + 1);
+    }
 }
 
 /**
