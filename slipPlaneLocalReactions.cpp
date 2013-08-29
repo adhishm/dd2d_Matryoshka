@@ -39,8 +39,7 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 {
     // Iterator for defects
     std::vector<Defect*>::iterator dit;
-    std::vector<Defect*>::iterator dFirst = this->defects.begin();
-    std::vector<Defect*>::iterator dLast  = this->defects.end();
+
     // Neighbouring defect pair and their positions
     Defect* d0; Vector3d p0;
     Defect* d1; Vector3d p1;

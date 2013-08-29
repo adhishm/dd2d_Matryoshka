@@ -441,7 +441,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
         }
 
         // Local reactions
-
+        slipPlane->checkLocalReactions(reactionRadius);
 
         // Increment counters
         totalTime += slipPlane->getTimeIncrement ();
