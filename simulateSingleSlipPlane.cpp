@@ -150,7 +150,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime)
         e[1] = readVectorFromLine ( line );
 
         s->setExtremities( e );
-        delete ( e );
+        delete[] ( e );
         e = NULL;
 
         // Read the normal vector
