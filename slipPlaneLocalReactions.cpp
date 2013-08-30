@@ -39,6 +39,7 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 {
     // Iterator for defects
     std::vector<Defect*>::iterator dit;
+    std::vector<Defect*>::iterator dLast;
     std::vector<Defect*>::iterator dnext;
 
     // Neighbouring defect pair and their positions
@@ -48,7 +49,8 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 
     // Check for neighbouring defects that lie too close
     dit = this->defects.begin();
-    while (dit != this->defects.end()) {
+    dLast = this->defects.end() - 1;    // The last defect to be checked for
+    while (dit != dLast) {
         dnext = dit + 1;
 
         d0 = *dit;
@@ -60,6 +62,8 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
         if ( (p1-p0).magnitude() <= reactionRadius ) {
             // The two defects are close to each other - a local reaction is imminent
             dit = this->identifyLocalReaction(dit, dnext);
+            // Maybe a defect was removed - update dLast
+            dLast = this->defects.end() - 1;
         }
         else {
             // Nothing happens - defects too far away
