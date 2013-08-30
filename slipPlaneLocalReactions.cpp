@@ -39,6 +39,7 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
 {
     // Iterator for defects
     std::vector<Defect*>::iterator dit;
+    std::vector<Defect*>::iterator dnext;
 
     // Neighbouring defect pair and their positions
     Defect* d0; Vector3d p0;
@@ -48,15 +49,17 @@ void SlipPlane::checkLocalReactions(double reactionRadius)
     // Check for neighbouring defects that lie too close
     dit = this->defects.begin();
     while (dit != this->defects.end()) {
+        dnext = dit + 1;
+
         d0 = *dit;
-        d1 = *(dit + 1);
+        d1 = *dnext;
 
         p0 = d0->getPosition();
         p1 = d1->getPosition();
 
         if ( (p1-p0).magnitude() <= reactionRadius ) {
             // The two defects are close to each other - a local reaction is imminent
-            dit = this->identifyLocalReaction(dit, dit+1);
+            dit = this->identifyLocalReaction(dit, dnext);
         }
         else {
             // Nothing happens - defects too far away
@@ -76,19 +79,19 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
 {
     switch ( (*d0)->getDefectType() ) {
     case GRAINBOUNDARY:
-        return (d0+1);
+        return (++d0);
         break;
     case FREESURFACE:
         return (freeSurfaceInteractions (d0, d1));
         break;
     case FRANKREADSOURCE:
-        return (d0+1);
+        return (++d0);
         break;
     case DISLOCATION:
         return (dislocationInteractions (d0, d1));
         break;
     default:
-        return (d0+1);
+        return (++d0);
         break;
     }
 }
@@ -106,7 +109,7 @@ std::vector<Defect*>::iterator SlipPlane::freeSurfaceInteractions(std::vector<De
     case FREESURFACE:
     case FRANKREADSOURCE:
         // In all the above cases, there is nothing to be done
-        return (d0+1);
+        return (++d0);
         break;
     case DISLOCATION:
         // The other defect is a dislocation
@@ -115,7 +118,7 @@ std::vector<Defect*>::iterator SlipPlane::freeSurfaceInteractions(std::vector<De
         break;
     default:
         // Unknown defect type - do nothing
-        return (d0+1);
+        return (++d0);
         break;
     }
 }
@@ -131,7 +134,7 @@ std::vector<Defect*>::iterator SlipPlane::dislocationInteractions(std::vector<De
     switch ( (*d1)->getDefectType() ) {
     case GRAINBOUNDARY:
         // Do nothing
-        return (d0+1);
+        return (++d0);
         break;
     case FREESURFACE:
         // The dislocation at d0 should be absorbed into the free surface d1
@@ -141,7 +144,7 @@ std::vector<Defect*>::iterator SlipPlane::dislocationInteractions(std::vector<De
         return (this->dislocation_dislocationInteraction(d0, d1));
         break;
     default:
-        return (d0+1);
+        return (++d0);
         break;
     }
 }
@@ -186,7 +189,7 @@ std::vector<Defect*>::iterator SlipPlane::dislocation_dislocationInteraction (st
     }
     else {
         // No annihilation, no interaction
-        return (d0 + 1);
+        return (++d0);
     }
 }
 
