@@ -103,7 +103,7 @@ std::vector<Defect*>::iterator SlipPlane::identifyLocalReaction(std::vector<Defe
 /**
  * @brief Identify the reaction to occur between a free surface and another defect.
  * @param d0 Iterator indicating the free surface in SlipPlane::defects.
- * @param d1 Iterator indicating the other defect in freeSurfaceInteractions
+ * @param d1 Iterator indicating the other defect in SlipPlane::defects.
  * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
  */
 std::vector<Defect*>::iterator SlipPlane::freeSurfaceInteractions(std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1)
