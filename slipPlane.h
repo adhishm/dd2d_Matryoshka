@@ -480,14 +480,6 @@ public:
    */
   std::vector<Defect*>::iterator dislocation_dislocationInteraction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
-  /**
-   * @brief Two dislocations of opposite Burgers vectors annihilate when they approach each other closer than the reaction radius.
-   * @param d0 Iterator of the vector SlipPlane::defects for the first dislocation.
-   * @param d1 Iterator of the vector SlipPlane::defects for the second dislocation.
-   * @return Iterator to the position of the new dislocation that occupies the place of the first dislocation that was annihilated.
-   */
-  std::vector<Defect*>::iterator annihilateDislocations (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
-
   // Stresses
   /**
    * @brief Calculates the stress applied on the slip plane given the stress in the base system.
