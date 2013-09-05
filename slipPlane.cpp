@@ -485,6 +485,9 @@ std::vector<Dislocation*>::iterator SlipPlane::findDislocationIterator (std::vec
                 dit++;
             }
         }
+        else {
+            dit++;
+        }
     }
 
     // If we are still here, the dislocation was not found
