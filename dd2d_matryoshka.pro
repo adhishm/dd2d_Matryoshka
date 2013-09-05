@@ -23,7 +23,8 @@ SOURCES += main.cpp \
     standardSlipSystem.cpp \
     coordinatesystem.cpp \
     grainboundary.cpp \
-    freesurface.cpp
+    freesurface.cpp \
+    slipPlaneLocalReactions.cpp
 
 HEADERS += \
     vector3d.h \

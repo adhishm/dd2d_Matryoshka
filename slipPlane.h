@@ -321,6 +321,20 @@ public:
    */
   Stress getAppliedStress_base() const;
 
+  /**
+   * @brief Finds the dislocation corresponding to a member of the vector defects.
+   * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+   * @return Pointer to the dislocation corresponding to the defect given by the iterator.
+   */
+  Dislocation* findDislocation (std::vector<Defect*>::iterator defect_iterator);
+
+  /**
+   * @brief Finds the dislocation corresponding to a member of the vector defects.
+   * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+   * @return Iterator indicating the element of SlipPlane::dislocations corresponding to the defect provided in the argument.
+   */
+  std::vector<Dislocation*>::iterator findDislocationIterator (std::vector<Defect*>::iterator defect_iterator);
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
@@ -424,6 +438,47 @@ public:
    * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
    */
   void checkLocalReactions (double reactionRadius);
+
+  /**
+   * @brief Identify the kind of local reaction that is to be applied to the defect pair and call the appropriate function.
+   * @details This function checks for the kind of local reaction that is to be applied to the defect pair, calls the appropriate function, and returns the iterator to the next defect that is to be checked for local reactions. Returning the iterator is important because the vector SlipPlane::defects may lose members as a result of a local reaction, and the iterators in the calling function may become invalid.
+   * @param d0 Iterator of type std::vector<Defect*> indicating the first defect that participates in the local reaction.
+   * @param d1 Iterator of type std::vector<Defect*> indicating the second defect that participates in the local reaction.
+   * @return Iterator to the next position that is to be checked for a local reaction.
+   */
+  std::vector<Defect*>::iterator identifyLocalReaction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Identify the reaction to occur between a free surface and another defect.
+   * @param d0 Iterator indicating the free surface in SlipPlane::defects.
+   * @param d1 Iterator indicating the other defect in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator freeSurfaceInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Identify the reaction to occur between a dislocation and another defect.
+   * @param d0 Iterator indicating the dislocation in SlipPlane::defects.
+   * @param d1 Iterator indicating the other defect in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator dislocationInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Absorb a dislocation into a free surface.
+   * @details When a dislocation approaches a free surface, it is pulled toward it due to the diminishing strain energy, and eventually the dislocation gets absorbed into the surface. This function provides that functionality.
+   * @param disl Pointer of type Defect* that is to be absorbed into the free surface.
+   * @return Iterator to the position of the new dislocation that occupies the place of the dislocation that was absorbed.
+   */
+  std::vector<Defect*>::iterator absorbDislocation (std::vector<Defect*>::iterator disl);
+
+  /**
+   * @brief Checks for the kind of interaction between two dislocations.
+   * @param d0 Iterator giving the first dislocation in SlipPlane::defects.
+   * @param d1 Iterator giving the second dislocation in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator dislocation_dislocationInteraction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   // Stresses
   /**
