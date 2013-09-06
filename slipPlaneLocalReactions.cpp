@@ -194,7 +194,7 @@ std::vector<Defect*>::iterator SlipPlane::dislocation_dislocationInteraction (st
         // Free memory occupied by the dislocations, remove the pointers from the vectors
         delete (dislocation0); this->dislocations.erase(dislocation0_iterator);
         delete (dislocation1); this->dislocations.erase(dislocation1_iterator);
-        return (this->defects.erase(d0,d1));
+        return (this->defects.erase(d0,d1+1));
     }
     else {
         // No annihilation, no interaction
