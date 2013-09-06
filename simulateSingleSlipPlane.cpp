@@ -390,6 +390,9 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
     std::string fileName;
     std::string message;
 
+    double limitingDistance = ( param->limitingDistance * param->bmag );
+    double reactionRadius = ( param->reactionRadius * param->bmag );
+
     // Calculate stresses in slip plane system.
     slipPlane->calculateSlipPlaneAppliedStress(param->appliedStress);
 
@@ -423,7 +426,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
         switch (param->timeStepType) {
         case ADAPTIVE:
             // Calculate the time increment
-            timeIncrement = slipPlane->calculateTimeIncrement ( ( param->limitingDistance * param->bmag ),
+            timeIncrement = slipPlane->calculateTimeIncrement ( limitingDistance,
                                                                 param->limitingTimeStep );
             // Displace the dislocations
             slipPlane->moveDislocations ( timeIncrement );
@@ -431,11 +434,14 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
 
         case FIXED:
             slipPlane->setTimeIncrement(param->limitingTimeStep);
-            slipPlane->moveDislocationsToLocalEquilibrium((param->limitingDistance * param->bmag),
-                                                          param->limitingTimeStep,
-                                                          param->mu, param->nu);
+            slipPlane->moveDislocationsToLocalEquilibrium( limitingDistance,
+                                                           param->limitingTimeStep,
+                                                           param->mu, param->nu );
             break;
         }
+
+        // Local reactions
+        slipPlane->checkLocalReactions(reactionRadius);
 
         // Increment counters
         totalTime += slipPlane->getTimeIncrement ();
