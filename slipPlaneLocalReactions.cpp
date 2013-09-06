@@ -192,8 +192,11 @@ std::vector<Defect*>::iterator SlipPlane::dislocation_dislocationInteraction (st
     if ( (b1+b0).magnitude() < SMALL_NUMBER ) {
         // The Burgers vectors are opposite - annihilate the dislocations
         // Free memory occupied by the dislocations, remove the pointers from the vectors
-        delete (dislocation0); this->dislocations.erase(dislocation0_iterator);
-        delete (dislocation1); this->dislocations.erase(dislocation1_iterator);
+        delete (dislocation0);
+        dislocation0 = NULL;
+        delete (dislocation1);
+        dislocation1 = NULL;
+        this->dislocations.erase(dislocation0_iterator, dislocation1_iterator+1);
         return (this->defects.erase(d0,d1+1));
     }
     else {
