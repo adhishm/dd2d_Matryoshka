@@ -11,3 +11,13 @@ function plotSlipPlane (filename)
 %  given time and does not try to connect the crosses across time, the
 %  order in which the entities appear is irrelevant.
 
+    %% Open the file
+    fid = fopen (filename(:));
+    
+    %% Read and parse line
+    oneline = fgetl(fid);
+    while ischar(oneline)
+        %
+    end
+    
+end
