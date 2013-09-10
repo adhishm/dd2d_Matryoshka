@@ -2,7 +2,7 @@
  * @file tools.h
  * @author Adhish Majumdar
  * @version 1.0
- * @date 18/06/2013
+ * @date 10/09/2013
  * @brief Declaration various tools.
  * @details This file declares various tools that may come in handy.
  */
@@ -38,6 +38,10 @@
 #include <iterator>
 #include <string>
 #include <sstream>
+
+// GNU Scientific Library files
+#include <gsl/gsl_rng.h>
+#include <gsl/gsl_randist.h>
 
 #include "vector3d.h"
 
@@ -123,5 +127,14 @@ template <typename T> int sgn(T v)
 {
     return ( (T(0) < v) - (v < T(0)) );
 }
+
+/**
+ * @brief Function to get a vector container filled with a Gaussian distribution of doubles with the given mean and standard deviation.
+ * @param n Number of doubles required.
+ * @param mean The mean value of the Gaussian distribution.
+ * @param stdev The standard deviation of the Gaussian distribution.
+ * @return Vector container with the doubles in a Gaussian distribution with the required mean and standard deviation.
+ */
+std::vector<double> rng_Gaussian (int n, double mean, double stdev);
 
 #endif

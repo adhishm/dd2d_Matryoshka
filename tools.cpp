@@ -2,7 +2,7 @@
  * @file tools.cpp
  * @author Adhish Majumdar
  * @version 1.0
- * @date 18/06/2013
+ * @date 10/09/2013
  * @brief Definition various tools.
  * @details This file defines various tools that may come in handy.
  */
@@ -212,4 +212,31 @@ std::string doubleToString (double i)
     std::ostringstream ss;
     ss << i;
     return ( ss.str() );
+}
+
+/**
+ * @brief Function to get a vector container filled with a Gaussian distribution of doubles with the given mean and standard deviation.
+ * @param n Number of doubles required.
+ * @param mean The mean value of the Gaussian distribution.
+ * @param stdev The standard deviation of the Gaussian distribution.
+ * @return Vector container with the doubles in a Gaussian distribution with the required mean and standard deviation.
+ */
+std::vector<double> rng_Gaussian (int n, double mean, double stdev)
+{
+    // Prepare the random number generator
+    gsl_rng* r;
+    const gsl_rng_type* T;
+    gsl_rng_env_setup();
+    T = gsl_rng_default;
+    r = gsl_rng_alloc(T);
+
+    // Allocate the vector container
+    std::vector<double> randoms(n);
+
+    while (n > 0) {
+        randoms[--n] = mean + gsl_ran_gaussian(r, stdev);
+    }
+
+    return (randoms);
+
 }
