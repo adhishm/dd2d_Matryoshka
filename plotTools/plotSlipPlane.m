@@ -28,8 +28,9 @@ function plotSlipPlane (filename, delimiter)
         %% Separate data
         nObjects = size(data,2)-1;
         positions = zeros(2, nObjects);
-        positions(1,:) = data(1,1);     % The first data is the time
-        positions(2,:) = data(1,2:end); % All the others are object positions
+	timeInstant = data(1,1) * 1000.0; % Scale to ms
+        positions(1,:) = timeInstant;     	% The first data is the time
+        positions(2,:) = data(1,2:end) * 1.0e06;% All the others are object positions (scaled to microns)
         plot (positions(1,:), positions(2,:), 'b.');
         oneline = fgetl(fid);
     end
@@ -39,7 +40,7 @@ function plotSlipPlane (filename, delimiter)
     
     %% Release the figure
     hold off;
-    xlabel('Time (s)');
-    ylabel('Positions (m)');
+    xlabel('Time (ms)');
+    ylabel('Positions (µm)');
     
 end
