@@ -26,12 +26,12 @@ function plotSlipPlane (filename, delimiter)
         data = parseLineData(oneline, delimiter);
         
         %% Separate data
-        timeInstant = data(1,1);        % The first data is the time
-        nObjects = size(data,2) - 1;    % All the others are object positions
-        positions = data(1,2:end);
-        for i=1:nObjects
-            plot (timeInstant, positions(1,i), 'bx');
-        end
+        nObjects = size(data,2)-1;
+        positions = zeros(2, nObjects);
+        positions(1,:) = data(1,1);     % The first data is the time
+        positions(2,:) = data(1,2:end); % All the others are object positions
+        plot (positions(1,:), positions(2,:), 'b.');
+        oneline = fgetl(fid);
     end
     
     %% Close the file
