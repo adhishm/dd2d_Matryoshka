@@ -16,3 +16,4 @@ dd2d_v*
 build-dd2d*
 *.pro.user
 images/*
+plotTools/*.txt
