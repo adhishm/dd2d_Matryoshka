@@ -78,6 +78,21 @@ public:
      * @brief Drag coefficient (kg/s).
      */
     double B;
+
+    /**
+     * @brief Mean value of the Critical nucleation shear stress for the nucleation of a dislocation dipole.
+     */
+    double tauCritical_mean;
+
+    /**
+     * @brief Standard deviation of the Critical nucleation shear stress for the nucleation of a dislocation dipole.
+     */
+    double tauCritical_stdev;
+
+    /**
+     * @brief Time for which the dislocation source must experience greater than threshold nucleation shear stress in order to emit a dipole.
+     */
+    double tauCritical_time;
     
     // Load
     /**
