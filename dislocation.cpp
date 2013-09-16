@@ -55,7 +55,7 @@ Dislocation::Dislocation ()
 /**
  * @brief Constructor that explicitly specifies all parameters.
  * @details All parameters: Burgers vector, line vector, position, are specified.
- * @param burgers Burgers vector.
+ * @param burgers Burgers vector, in the slip-plane co-ordinate system.
  * @param line Line vector.
  * @param position Position of the dislocation.
  * @param bm Magnitude of the Burgers vector in metres.
@@ -104,8 +104,8 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position, Co
     axes[0] = axes[1] ^ axes[2];
     this->setCoordinateSystem(axes,position,base);
 
-    this->lvec = Vector3d(0.0,0.0,1.0);
-    this->bvec = this->coordinateSystem.vector_BaseToLocal_noTranslate(burgers);
+    this->lvec = line;
+    this->bvec = burgers;
     this->bmag = bm;
     this->mobile = m;
 }
