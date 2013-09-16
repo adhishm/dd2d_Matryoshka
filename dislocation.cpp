@@ -55,7 +55,7 @@ Dislocation::Dislocation ()
 /**
  * @brief Constructor that explicitly specifies all parameters.
  * @details All parameters: Burgers vector, line vector, position, are specified.
- * @param burgers Burgers vector.
+ * @param burgers Burgers vector, in the slip-plane co-ordinate system.
  * @param line Line vector.
  * @param position Position of the dislocation.
  * @param bm Magnitude of the Burgers vector in metres.
