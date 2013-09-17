@@ -190,7 +190,7 @@ double DislocationSource::dipoleNucleationLength (double tau, double mu, double 
 {
   double L = 0.0;
 
-  if (tau >= tauCritical)
+  if (tau >= this->tauCritical)
   {
     L = (mu * this->bmag) / ( 2.0 * PI * (1.0 - nu) * this->tauCritical );
   }
