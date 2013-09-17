@@ -59,7 +59,7 @@ void simulateSingleSlipPlane ()
 
         fName.clear ();
         fName = param->input_dir + "/" + param->dislocationStructureFile;
-        if ( readSlipPlane ( fName, slipPlane, &currentTime ) )
+        if ( readSlipPlane ( fName, slipPlane, &currentTime, param ) )
         {
             message = "Success: read file " + fName;
             displayMessage ( message );
