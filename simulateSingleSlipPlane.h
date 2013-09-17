@@ -55,9 +55,10 @@ void simulateSingleSlipPlane ();
  * @param fileName String containing the name of the file.
  * @param s Pointer to the instance of SlipPlane into which all data is to be stored.
  * @param currentTime Pointer to the variable storing the initial time.
+ * @param param Pointer to the Parameter class object containing the simulation parameters.
  * @return Flag indicating the success or failure of the operation.
  */
-bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime);
+bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Parameter *param);
 
 /**
  * @brief Reads 3 values from a string and returns them in a Vector3d.
