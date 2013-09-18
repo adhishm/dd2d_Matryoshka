@@ -34,6 +34,7 @@
 #include "defectType.h"
 #include "stress.h"
 #include "coordinatesystem.h"
+#include "tools.h"
 
 #ifndef DEFAULT_DEFECT_POSITION
 #define DEFAULT_DEFECT_POSITION

@@ -236,6 +236,15 @@ public:
    */
   bool ifEmitDipole () const;
 
+  // Dipole emission check
+  /**
+   * @brief This function checks the stress on the dislocation source and returns the sign of the direction of movement of the dislocation.
+   * @details The stress in the dislocation source decides the opening up or closing of the source. The sign returned by this function shows the sign of movement of the dislocation within the source. If the value of the shear stress is less than the critical value for this source, the return value is 0.
+   * @param stress Stress experienced by the source, in the base co-ordinate system.
+   * @return Sign of the direction of movement of the dislocation within the source.
+   */
+  int checkStress (Stress stress);
+
   // Stress field
   /**
    * @brief Calculates the stress field due to this dislocation source at the position given as argument.
