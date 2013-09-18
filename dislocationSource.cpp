@@ -74,10 +74,9 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
     axes[1] = axes[2] ^ axes[0];    // y-axis calculated by cross product
 
     this->coordinateSystem.setAxes(axes);
-    this->coordinateSystem.setOrigin(position);
     this->coordinateSystem.calculateRotationMatrix();
 
-    // Prepare the dislocation
+    // Prepare the dislocation - with arguments in the local co-ordinate system
     this->d = Dislocation(this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec),
                           Vector3d::unitVector(2),
                           Vector3d::zeros(),
@@ -98,6 +97,7 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
  * @param base Pointer to the base co-ordinate system
  */
 DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit, CoordinateSystem *base)
+    : Defect (FRANKREADSOURCE, position)
 {
     this->bvec   = burgers;
     this->lvec   = line;
@@ -114,10 +114,9 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
 
     this->coordinateSystem.setBase(base);
     this->coordinateSystem.setAxes(axes);
-    this->coordinateSystem.setOrigin(position);
     this->coordinateSystem.calculateRotationMatrix();
 
-    // Prepare the dislocation
+    // Prepare the dislocation - with arguments in the local co-ordinate system
     this->d = Dislocation(this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec),
                           Vector3d::unitVector(2),
                           Vector3d::zeros(),
