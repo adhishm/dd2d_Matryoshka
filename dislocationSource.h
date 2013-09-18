@@ -101,14 +101,27 @@ public:
   /**
    * @brief Constructor that explicitly specifies all parameters.
    * @details All parameters: Burgers vector, line vector, position, are specified.
-   * @param burgers Burgers vector.
-   * @param line Line vector.
-   * @param position Position of the dislocation source.
+   * @param burgers Burgers vector, in the base co-ordinate system.
+   * @param line Line vector, in the base co-ordinate system.
+   * @param position Position of the dislocation source, in the base co-ordinate system.
    * @param bm Magnitude of the Burgers vector in metres.
    * @param tau Critical shear stress value.
    * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
    */
   DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit);
+
+  /**
+   * @brief Constructor that explicitly specifies all parameters.
+   * @details All parameters: Burgers vector, line vector, position, are specified.
+   * @param burgers Burgers vector, in the base co-ordinate system.
+   * @param line Line vector, in the base co-ordinate system.
+   * @param position Position of the dislocation source, in the base co-ordinate system.
+   * @param bm Magnitude of the Burgers vector in metres.
+   * @param tau Critical shear stress value.
+   * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
+   * @param base Pointer to the base co-ordinate system
+   */
+  DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit, CoordinateSystem *base);
 
   // Destructor
   /**
@@ -155,6 +168,12 @@ public:
    * @brief Sets the time counter to zero.
    */
   void resetTimeCounter ();
+
+  /**
+   * @brief Refresh the data stored in this->d.
+   * @details This function refreshes the data stored in the dislocation that represents the source. This function should be called whenever the source's co-ordinate system is modified.
+   */
+  void refreshDislocation ();
   
   // Access functions
   /**

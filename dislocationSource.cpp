@@ -50,9 +50,9 @@ DislocationSource::DislocationSource ()
 /**
  * @brief Constructor that explicitly specifies all parameters.
  * @details All parameters: Burgers vector, line vector, position, are specified.
- * @param burgers Burgers vector.
- * @param line Line vector.
- * @param position Position of the dislocation.
+ * @param burgers Burgers vector, in the base co-ordinate system.
+ * @param line Line vector, in the base co-ordinate system.
+ * @param position Position of the dislocation source, in the base co-ordinate system.
  * @param bm Magnitude of the Burgers vector in metres.
  * @param tau Critical shear stress value.
  * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
@@ -60,12 +60,70 @@ DislocationSource::DislocationSource ()
 DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit)
     : Defect ( FRANKREADSOURCE, position )
 {
-  this->bvec   = burgers;
-  this->lvec   = line;
-  this->bmag   = bm;
-  this->tauCritical = tau;
-  this->timeBeforeDipoleEmission = timeTillEmit;
-  this->countTimeTillDipoleEmission = 0;
+    this->bvec   = burgers;
+    this->lvec   = line;
+    this->bmag   = bm;
+    this->tauCritical = tau;
+    this->timeBeforeDipoleEmission = timeTillEmit;
+    this->countTimeTillDipoleEmission = 0;
+
+    // Prepare the local co-ordinate system
+    Vector3d *axes = new Vector3d[3];
+    axes[2] = line; // The line vector is the z-axis
+    axes[0] = Vector3d::unitVector(0);  // The slip plane's x-axis is also the source's x-axis
+    axes[1] = axes[2] ^ axes[0];    // y-axis calculated by cross product
+
+    this->coordinateSystem.setAxes(axes);
+    this->coordinateSystem.setOrigin(position);
+    this->coordinateSystem.calculateRotationMatrix();
+
+    // Prepare the dislocation
+    this->d = Dislocation(this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec),
+                          Vector3d::unitVector(2),
+                          Vector3d::zeros(),
+                          this->getCoordinateSystem(),
+                          this->bmag,
+                          true);
+}
+
+/**
+ * @brief Constructor that explicitly specifies all parameters.
+ * @details All parameters: Burgers vector, line vector, position, are specified.
+ * @param burgers Burgers vector, in the base co-ordinate system.
+ * @param line Line vector, in the base co-ordinate system.
+ * @param position Position of the dislocation source, in the base co-ordinate system.
+ * @param bm Magnitude of the Burgers vector in metres.
+ * @param tau Critical shear stress value.
+ * @param timeTillEmit Amount of time of experiencing critical stress before a dipole is emitted.
+ * @param base Pointer to the base co-ordinate system
+ */
+DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d position, double bm, double tau, double timeTillEmit, CoordinateSystem *base)
+{
+    this->bvec   = burgers;
+    this->lvec   = line;
+    this->bmag   = bm;
+    this->tauCritical = tau;
+    this->timeBeforeDipoleEmission = timeTillEmit;
+    this->countTimeTillDipoleEmission = 0;
+
+    // Prepare the local co-ordinate system
+    Vector3d *axes = new Vector3d[3];
+    axes[2] = line; // The line vector is the z-axis
+    axes[0] = Vector3d::unitVector(0);  // The slip plane's x-axis is also the source's x-axis
+    axes[1] = axes[2] ^ axes[0];    // y-axis calculated by cross product
+
+    this->coordinateSystem.setBase(base);
+    this->coordinateSystem.setAxes(axes);
+    this->coordinateSystem.setOrigin(position);
+    this->coordinateSystem.calculateRotationMatrix();
+
+    // Prepare the dislocation
+    this->d = Dislocation(this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec),
+                          Vector3d::unitVector(2),
+                          Vector3d::zeros(),
+                          this->getCoordinateSystem(),
+                          this->bmag,
+                          true);
 }
 
 // Assignment functions
@@ -120,6 +178,20 @@ void DislocationSource::setTimeTillDipoleEmission (double timeTillEmit)
 void DislocationSource::resetTimeCounter ()
 {
   this->countTimeTillDipoleEmission = 0.0;
+}
+
+/**
+ * @brief Refresh the data stored in this->d.
+ * @details This function refreshes the data stored in the dislocation that represents the source. This function should be called whenever the source's co-ordinate system is modified.
+ */
+void DislocationSource::refreshDislocation ()
+{
+    this->d = Dislocation(this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec),
+                          Vector3d::unitVector(2),
+                          Vector3d::zeros(),
+                          this->getCoordinateSystem(),
+                          this->bmag,
+                          true);
 }
 
 // Access functions

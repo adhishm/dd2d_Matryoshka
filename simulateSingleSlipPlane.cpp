@@ -242,6 +242,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Par
             dSource->setTauCritical(tauC_values[i]);
             dSource->setTimeTillDipoleEmission(param->tauCritical_time);
             dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
+            dSource->refreshDislocation();
             dSource->calculateRotationMatrix();
             s->insertDislocationSource ( dSource );
         }
