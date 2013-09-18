@@ -83,6 +83,12 @@ protected:
    * @details A dislocation source needs to experience a shear stress higher than a critical value, given by tauCritical, for a certain amount of time before it is triggered and it emits a dislocation dipole. This limiting time is given by the variable timeBeforeDipoleEmission, and this variable countTimeTillDipoleEmission is a counter variable. Once this limit is reached, a dipole is emitted and this counter variable is set to zero.
    */
   double countTimeTillDipoleEmission;
+
+  /**
+   * @brief The dislocation anchored between two points, which forms the Frank-Read source.
+   * @details In a Frank-Read source, there is a dislocation segment anchored between two points. This dislocation emits multiple dislocations as the source is activated.
+   */
+  Dislocation d;
   
 public:
   // Constructors
