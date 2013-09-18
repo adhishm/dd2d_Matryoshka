@@ -235,6 +235,17 @@ public:
    * @return The boolean result of whether the count of iterations is greater than the limiting number of iterations provided at input.
    */
   bool ifEmitDipole () const;
+
+  // Stress field
+  /**
+   * @brief Calculates the stress field due to this dislocation source at the position given as argument.
+   * @details The stress field of the dislocation is calculated at the position indicated by the argument.
+   * @param p Position vector of the point where the stress field is to be calculated.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return Stress tensor, expressed in the base co-ordinate system, giving the value of the stress field at position p.
+   */
+  virtual Stress stressField (Vector3d p, double mu, double nu);
 };
 
 #endif
