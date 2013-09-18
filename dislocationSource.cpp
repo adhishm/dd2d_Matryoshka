@@ -296,7 +296,7 @@ bool DislocationSource::ifEmitDipole () const
  * @param nu Poisson's ratio.
  * @return Stress tensor, expressed in the base co-ordinate system, giving the value of the stress field at position p.
  */
-virtual Stress DislocationSource::stressField (Vector3d p, double mu, double nu)
+Stress DislocationSource::stressField (Vector3d p, double mu, double nu)
 {
     // The stress field of the dislocation source is taken to be zero at a distant point
     Stress s;
