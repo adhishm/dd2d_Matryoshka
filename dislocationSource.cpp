@@ -285,7 +285,7 @@ void DislocationSource::incrementTimeCount (double dt)
  */
 bool DislocationSource::ifEmitDipole () const
 {
-  return ( this->countTimeTillDipoleEmission >= this->timeBeforeDipoleEmission );
+  return ( fabs(this->countTimeTillDipoleEmission) >= this->timeBeforeDipoleEmission );
 }
 
 /**
