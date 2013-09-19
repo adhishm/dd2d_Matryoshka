@@ -245,6 +245,15 @@ public:
    */
   int checkStress (Stress stress);
 
+  /**
+   * @brief Emit a dislocation dipole.
+   * @details This function is called when the dislocation source is supposed to emit a dislocation dipole. The two dislocations' co-ordinate systems are set to be the one which is the base for the dislocation source.
+   * @param Lnuc Dipole nucleation length.
+   * @param d0 Pointer to the leading dislocation. The memory must already be allocated.
+   * @param d1 Pointer to the second dislocation. The memory must already be allocated.
+   */
+  void emitDipole (double Lnuc, Dislocation *d0, Dislocation *d1);
+
   // Stress field
   /**
    * @brief Calculates the stress field due to this dislocation source at the position given as argument.
