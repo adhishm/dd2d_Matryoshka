@@ -377,5 +377,8 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
     // The new dislocations are ready and the dipole is emitted
     // Reset the counter to zero
     this->resetTimeCounter();
+    // Clear allocated memory
+    delete[] (a0);
+    delete[] (a1);
 
 }
