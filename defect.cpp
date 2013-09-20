@@ -165,6 +165,16 @@ void Defect::setDefectType (DefectType d)
     this->defectType = d;
 }
 
+/**
+ * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+ * @param s Stress.
+ */
+void Defect::setTotalStress (Stress s)
+{
+    this->totalStress = s;
+    this->totalStresses.push_back (s);
+}
+
 // Access Functions
 /**
  * @brief Returns the position vector of the defect.
@@ -191,4 +201,33 @@ DefectType Defect::getDefectType () const
 CoordinateSystem* Defect::getCoordinateSystem ()
 {
     return (&(this->coordinateSystem));
+}
+
+/**
+ * @brief Gets the total stress in the current iteration.
+ * @return Total stress in the current iteration.
+ */
+Stress Defect::getTotalStress () const
+{
+    return (this->totalStress);
+}
+
+/**
+ * @brief Returns the total stress at the iteration i.
+ * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
+ * @param i Iteration number for which the total stress is to be returned.
+ * @return Total stress at iteration i.
+ */
+Stress Defect::getTotalStressAtIteration (int i) const
+{
+    if (i < this->totalStresses.size())
+    {
+        // If the iteration number provided is valid
+        return (this->totalStresses[i]);
+    }
+    else
+    {
+        // Invalid iteration number - return zeros
+        return (Stress());
+    }
 }
