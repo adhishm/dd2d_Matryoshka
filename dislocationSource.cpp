@@ -366,6 +366,7 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
                                 this->coordinateSystem.getBase());
     }
     else {
+        // The counter is negative. The leading dislocation d0 will be on the negative side of the source
         d0->setCoordinateSystem(a0,
                                 this->coordinateSystem.vector_LocalToBase(minusSide),
                                 this->coordinateSystem.getBase());
