@@ -576,7 +576,7 @@ void SlipPlane::calculateDislocationStresses (double mu, double nu)
             // Superpose the stress fields of all other dislocations
             s = s + defect->stressField(p, mu, nu);
         }
-        disl->setTotalStress (s);
+        disl->setTotalStress(s);
     }
 }
 
