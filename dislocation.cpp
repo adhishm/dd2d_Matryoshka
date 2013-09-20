@@ -155,16 +155,6 @@ void Dislocation::setPinned ()
 }
 
 /**
- * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
- * @param s Stress.
- */
-void Dislocation::setTotalStress (Stress s)
-{
-    this->totalStress = s;
-    this->totalStresses.push_back (s);
-}
-
-/**
  * @brief Sets the total force in the class and the vector keeping track of forces in each iteration.
  * @param f Force.
  */
@@ -222,15 +212,6 @@ bool Dislocation::isMobile () const
 }
 
 /**
- * @brief Gets the total stress in the current iteration.
- * @return Total stress in the current iteration.
- */
-Stress Dislocation::getTotalStress () const
-{
-    return (this->totalStress);
-}
-
-/**
  * @brief Gets the total force on the dislocation in the current iteration.
  * @return Total force on the dislocation in the current iteration.
  */
@@ -248,25 +229,7 @@ Vector3d Dislocation::getVelocity () const
     return (this->velocity);
 }
 
-/**
- * @brief Returns the total stress at the iteration i.
- * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
- * @param i Iteration number for which the total stress is to be returned.
- * @return Total stress at iteration i.
- */
-Stress Dislocation::getTotalStressAtIteration (int i) const
-{
-    if (i < this->totalStresses.size())
-    {
-        // If the iteration number provided is valid
-        return (this->totalStresses[i]);
-    }
-    else
-    {
-        // Invalid iteration number - return zeros
-        return (Stress());
-    }
-}
+
 
 /**
  * @brief Returns the total force at the iteration i.
