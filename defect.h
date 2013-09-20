@@ -31,6 +31,9 @@
 #ifndef DEFECT_H
 #define DEFECT_H
 
+#include <vector>
+#include <algorithm>
+
 #include "defectType.h"
 #include "stress.h"
 #include "coordinatesystem.h"
@@ -56,6 +59,18 @@ class Defect
    * @details The co-ordinate system contains the vectors and the origin. This gives us the orientation and the position of the defect.
    */
   CoordinateSystem coordinateSystem;
+
+  /**
+   * @brief The total stress experienced by the defect.
+   * @details The defect experiences a stress that is the superposition of the externally applied stress and the stress fields of all the defects present in the simulation.
+   */
+  Stress totalStress;
+
+  /**
+   * @brief Keeps a trace of the total stress from every iteration.
+   * @details The total stress experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this variable may be useful for calculating average stresses over a given time period.
+   */
+  std::vector<Stress> totalStresses;
     
 public:
   /**
@@ -156,6 +171,12 @@ public:
    * @param d The defect type.
    */
   void setDefectType (DefectType d);
+
+  /**
+   * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+   * @param s Stress.
+   */
+  void setTotalStress (Stress s);
     
   // Access Functions
   /**
@@ -175,6 +196,20 @@ public:
    * @return Pointer to the co-ordinate system of the defect.
    */
   CoordinateSystem* getCoordinateSystem ();
+
+  /**
+   * @brief Gets the total stress in the current iteration.
+   * @return Total stress in the current iteration.
+   */
+  Stress getTotalStress () const;
+
+  /**
+   * @brief Returns the total stress at the iteration i.
+   * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
+   * @param i Iteration number for which the total stress is to be returned.
+   * @return Total stress at iteration i.
+   */
+  Stress getTotalStressAtIteration (int i) const;
     
   // Virtual functions
   /**
