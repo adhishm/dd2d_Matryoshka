@@ -439,6 +439,14 @@ public:
    */
   void calculateDislocationSourceStresses(double mu, double nu);
 
+  /**
+   * @brief Checks all the dislocation sources for emission of dislocation dipoles.
+   * @param timeIncrement The time increment at this iteration. This is required to measure the progress of a dislocation source till emission of a dipole.
+   * @param mu Shear modulus of the material.
+   * @param nu Poisson's ratio.
+   */
+  void checkDislocationSources (double timeIncrement, double mu, double nu);
+
   // Time increments
   /**
    * @brief Calculate the time increment based on the velocities of the dislocations.

@@ -846,6 +846,50 @@ void SlipPlane::calculateDislocationSourceStresses(double mu, double nu)
     }
 }
 
+/**
+ * @brief Checks all the dislocation sources for emission of dislocation dipoles.
+ * @param timeIncrement The time increment at this iteration. This is required to measure the progress of a dislocation source till emission of a dipole.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ */
+void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double nu)
+{
+    // Iterator and pointer to browse the dislocation source vector
+    std::vector<DislocationSource*>::iterator dSource_it;
+    DislocationSource *dSource;
+
+    // Dipole nucleation length and stress at the dislocation source
+    double Lnuc;
+    Stress tau;
+
+    // Pointers to the two dislocations that will form the dipoles that may be emitted
+    Dislocation *d0;
+    Dislocation *d1;
+
+    for (dSource_it=this->dislocationSources.begin(); dSource_it!=this->dislocationSources.end(); dSource_it++) {
+        dSource = *dSource_it;
+        tau = dSource->getTotalStress();
+        // Increment the time count according to the motion of the dislocation within the source
+        dSource->incrementTimeCount( timeIncrement * dSource->checkStress(tau) );
+        // Check if a dipole should be emitted
+        if (dSource->ifEmitDipole()) {
+            // Yes, a dipole will be emitted
+            Lnuc = dSource->dipoleNucleationLength(tau.getValue(0,2),mu,nu);
+            // Allocate memory to the new dislocations
+            d0 = new Dislocation;
+            d1 = new Dislocation;
+            dSource->emitDipole(Lnuc, d0, d1);
+            // Check for the positions of the new dislocations - they should not cross existing defects
+            /*
+             * We need here a function that will return a vector of defects lying between two given points p0 and p1.
+             * ordered in the order p0 to p1.
+             * Here, this will be used to find defects lying between the dislocation source centre and the dislocations
+             * that make up the dipole.
+             */
+        }
+    }
+}
+
 // Time increment
 /**
  * @brief Calculate the time increment based on the velocities of the dislocations.

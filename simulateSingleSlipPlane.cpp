@@ -411,15 +411,16 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
     }
 
     while ( continueSimulation ) {
-        // Calculate stresses
-        slipPlane->calculateDislocationStresses ( param->mu, param->nu );
+        // Calculate stresses on all defects
+        slipPlane->calculateDefectStresses ( param->mu, param->nu );
 
+        /*
+         * Treat the dislocations
+         */
         // Calculate forces on dislocations
         slipPlane->calculateDislocationForces ();
-
         // Calculate dislocation velocities
         slipPlane->calculateDislocationVelocities ( param->B );
-
         switch (param->timeStepType) {
         case ADAPTIVE:
             // Calculate the time increment
@@ -437,7 +438,12 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
             break;
         }
 
-        // Local reactions
+        /*
+         * Treat the dislocation sources
+         */
+
+
+        // Check for local reactions
         slipPlane->checkLocalReactions(reactionRadius);
 
         // Increment counters
