@@ -418,7 +418,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
         slipPlane->calculateDislocationForces ();
 
         // Calculate dislocation velocities
-        slipPlane->calculateVelocities ( param->B );
+        slipPlane->calculateDislocationVelocities ( param->B );
 
         switch (param->timeStepType) {
         case ADAPTIVE:

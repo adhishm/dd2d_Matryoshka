@@ -599,7 +599,7 @@ void SlipPlane::calculateDislocationForces ()
  * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
  * param B The drag coefficient.
  */
-void SlipPlane::calculateVelocities (double B)
+void SlipPlane::calculateDislocationVelocities (double B)
 {
     std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
     Dislocation* disl;
