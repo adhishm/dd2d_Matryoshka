@@ -354,59 +354,12 @@ public:
    */
   void clearDefects();
   
-  // Operations
+  // Operations concerning coordinate system and sorting defects
   /**
    * @brief Calculates the rotation matrix for this slip plane.
    * @details The slip plane has a local co-ordinate system whose axes are the following: z-axis||normal vector and x-axis||slip plane vector (vector joining the extremities). The rotation matrix is calculated in order to carry out transformations between the global and local co-ordinate systems.
    */
   void calculateRotationMatrix ();
-
-  /**
-   * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
-   * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
-   * @param mu Shear modulus of the material.
-   * @param nu Poisson's ratio.
-   */
-  void calculateDislocationStresses (double mu, double nu);
-
-  /**
-   * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
-   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress.
-   */
-  void calculateDislocationForces ();
-
-  /**
-   * @brief Calculates the velocities of dislocations and stores them in the variable Vector3d Dislocation::velocity and also puts it at the end of std::vector<Vector3d> Dislocation::velocities.
-   * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
-   * param B The drag coefficient.
-   */
-  void calculateVelocities (double B);
-
-  /**
-   * @brief Calculate the time increment based on the velocities of the dislocations.
-   * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
-   * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
-   * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
-   * @return STL vector container with the ideal time increments for all the dislocations.
-   */
-  std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
-
-  /**
-   * @brief Displaces the dislocations according to their velocities and the time increment.
-   * @details This function displaces the dislocations according to the velocities and time increment. If the time increment is smaller than the global time increment, the dislocation moves with this smaller value, effectively moving up to the limiting distance to the next defect and stopping there.
-   * @param timeIncrement STL vector containing the timeIncrements of all the dislocations.
-   */
-  void moveDislocations (std::vector<double> timeIncrement);
-
-  /**
-   * @brief Function to move dislocations to local a equilibrium position.
-   * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
-   * @param minDistance Minimum distance of approach between two defects.
-   * @param mu Shear modulus in Pascals.
-   * @param nu Poisson's ratio.
-   * @param dtGlobal The global time increment.
-   */
-  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu);
 
   /**
    * @brief The distance of the point pos from the n^th extremity is returned.
@@ -430,6 +383,57 @@ public:
    * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
    */
   void sortDislocationSources ();
+
+  // Treat dislocations
+  /**
+   * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
+   * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
+   * @param mu Shear modulus of the material.
+   * @param nu Poisson's ratio.
+   */
+  void calculateDislocationStresses (double mu, double nu);
+
+  /**
+   * @brief This function calculates the Peach-Koehler force experienced by each dislocation and stores it in Dislocation::force and puts it at the end of std::vector<Vector3d> Dislocation::forces.
+   * @details This function calculates the Peach-Koehler force experienced by each dislocation using the function Dislocation::forcePeachKoehler and the variable Stress Dislocation::totalStress.
+   */
+  void calculateDislocationForces ();
+
+  /**
+   * @brief Calculates the velocities of dislocations and stores them in the variable Vector3d Dislocation::velocity and also puts it at the end of std::vector<Vector3d> Dislocation::velocities.
+   * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
+   * param B The drag coefficient.
+   */
+  void calculateVelocities (double B);
+
+  /**
+   * @brief Displaces the dislocations according to their velocities and the time increment.
+   * @details This function displaces the dislocations according to the velocities and time increment. If the time increment is smaller than the global time increment, the dislocation moves with this smaller value, effectively moving up to the limiting distance to the next defect and stopping there.
+   * @param timeIncrement STL vector containing the timeIncrements of all the dislocations.
+   */
+  void moveDislocations (std::vector<double> timeIncrement);
+
+  /**
+   * @brief Function to move dislocations to local a equilibrium position.
+   * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
+   * @param minDistance Minimum distance of approach between two defects.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @param dtGlobal The global time increment.
+   */
+  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu);
+
+  // Treat dislocation sources
+
+  // Time increments
+  /**
+   * @brief Calculate the time increment based on the velocities of the dislocations.
+   * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+   * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+   * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+   * @return STL vector container with the ideal time increments for all the dislocations.
+   */
+  std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
 
   // Local reactions
   /**
