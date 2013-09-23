@@ -902,8 +902,9 @@ void SlipPlane::calculateDislocationSourceStresses(double mu, double nu)
  * @param timeIncrement The time increment at this iteration. This is required to measure the progress of a dislocation source till emission of a dipole.
  * @param mu Shear modulus of the material.
  * @param nu Poisson's ratio.
+ * @param limitingDistance Minimum distance permitted between adjacent defects.
  */
-void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double nu)
+void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance)
 {
     // Iterator and pointer to browse the dislocation source vector
     std::vector<DislocationSource*>::iterator dSource_it;
@@ -916,6 +917,14 @@ void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double
     // Pointers to the two dislocations that will form the dipoles that may be emitted
     Dislocation *d0;
     Dislocation *d1;
+
+    // Position vectors for the dislocation source and the dipole emitted
+    Vector3d ps, p0, p1;
+    Vector3d pn;    // New position for the dislocation, if needed
+
+    // Vector container for defects lying in between two positions
+    std::vector<Defect*> defectsLyingInBetween;
+    Defect *nearestDefect;
 
     for (dSource_it=this->dislocationSources.begin(); dSource_it!=this->dislocationSources.end(); dSource_it++) {
         dSource = *dSource_it;
@@ -931,14 +940,53 @@ void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double
             d1 = new Dislocation;
             dSource->emitDipole(Lnuc, d0, d1);
             // Check for the positions of the new dislocations - they should not cross existing defects
-            /*
-             * We need here a function that will return a vector of defects lying between two given points p0 and p1.
-             * ordered in the order p0 to p1.
-             * Here, this will be used to find defects lying between the dislocation source centre and the dislocations
-             * that make up the dipole.
-             */
+            ps = dSource->getPosition();
+            p0 = d0->getPosition();
+            p1 = d1->getPosition();
+
+            // Check for defects lying between the source and d0
+            defectsLyingInBetween = this->findDefectsBetweenPoints(ps, p0);
+            if ( ! defectsLyingInBetween.empty() ) {
+                // There are defects lying between the source and the theoretical position of the dislocation
+                nearestDefect = defectsLyingInBetween.front();
+                pn = nearestDefect->getPosition();
+                if ((ps-pn).magnitude() >= limitingDistance) {
+                    // New position for the dislocation - within limitingDistance of the defect nearest to the source
+                    d0->setPosition( pn + ((ps-pn).normalize() * limitingDistance) );
+                }
+                else {
+                    // The nearest defect is too close - place the dislocation midway between the two
+                    d0->setPosition((pn+ps)*0.5);
+                }
+            }
+            defectsLyingInBetween.clear();
+
+            // Check for defects lying between the source and d1
+            defectsLyingInBetween = this->findDefectsBetweenPoints(ps, p1);
+            if ( ! defectsLyingInBetween.empty() ) {
+                // There are defects lying between the source and the theoretical position of the dislocation
+                nearestDefect = defectsLyingInBetween.front();
+                pn = nearestDefect->getPosition();
+                if ((ps-pn).magnitude() >= limitingDistance) {
+                    // New position for the dislocation - within limitingDistance of the defect nearest to the source
+                    d1->setPosition( pn + ((ps-pn).normalize() * limitingDistance) );
+                }
+                else {
+                    // The nearest defect is too close - place the dislocation midway between the two
+                    d1->setPosition((pn+ps)*0.5);
+                }
+            }
+            defectsLyingInBetween.clear();
+
+            // The new dislocations are created and placed on the slip plane
+            // They should now be inserted into the slip plane list
+            this->insertDislocation(d0);
+            this->insertDislocation(d1);
         }
     }
+    // Sort the defects
+    this->sortDefects();
+    this->sortDislocations();
 }
 
 // Time increment

@@ -453,8 +453,9 @@ public:
    * @param timeIncrement The time increment at this iteration. This is required to measure the progress of a dislocation source till emission of a dipole.
    * @param mu Shear modulus of the material.
    * @param nu Poisson's ratio.
+   * @param limitingDistance Minimum distance permitted between adjacent defects.
    */
-  void checkDislocationSources (double timeIncrement, double mu, double nu);
+  void checkDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance);
 
   // Time increments
   /**
