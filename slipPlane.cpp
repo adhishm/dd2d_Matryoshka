@@ -598,6 +598,7 @@ std::vector<Defect*> SlipPlane::findDefectsBetweenPoints (Vector3d p0, Vector3d 
 
     // Iterator and pointer for browsing the defect list
     std::vector<Defect*>::iterator defects_it;
+    std::vector<Defect*>::reverse_iterator defects_rit;
     Defect *defect;
     Vector3d pd;
     double xd;
@@ -616,8 +617,8 @@ std::vector<Defect*> SlipPlane::findDefectsBetweenPoints (Vector3d p0, Vector3d 
     }
     else {
         // The direction of travel from p0 to p1 is opposite to the positive x-direction of the slip plane
-        for (defects_it=this->defects.end(); defects_it!=this->defects.begin(); --defects_it) {
-            defect = *defects_it;
+        for (defects_rit=this->defects.rbegin(); defects_rit!=this->defects.rend(); ++defects_rit) {
+            defect = *defects_rit;
             pd = defect->getPosition();
             xd = pd.getValue(0);
             if ( (xd>x1) && (xd<x0) ) {
