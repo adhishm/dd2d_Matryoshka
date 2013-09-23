@@ -1071,7 +1071,6 @@ double SlipPlane::distanceFromExtremity(Vector3d pos, int n)
 void SlipPlane::sortDefects ()
 {
     std::vector<Defect*>::iterator it, jt;  // Iterator for the defects
-    Defect* temp;   // Temporary variable
     Defect* di;
     Defect* dj;
 
@@ -1080,18 +1079,18 @@ void SlipPlane::sortDefects ()
     double d1, d2;
 
     for (it=this->defects.begin()+1; it!=this->defects.end()-1; it++) {
-        di = *it;
-        p1 = di->getPosition();
-        d1 = (p1-p0).magnitude();
         for (jt=it+1; jt!=this->defects.end()-1; jt++) {
+            di = *it;
+            p1 = di->getPosition();
+            d1 = (p1-p0).magnitude();
             dj = *jt;
             p2 = dj->getPosition();
             d2 = (p2-p0).magnitude();
             if (d2 < d1) {
                 // Swap the two
-                temp = di;
-                di = dj;
-                dj = temp;
+                *it = dj;
+                *jt = di;
+
             }
         }
     }
@@ -1107,24 +1106,22 @@ void SlipPlane::sortDislocations ()
 
     Dislocation* di;
     Dislocation* dj;
-    Dislocation* dtemp;
 
     Vector3d p0 = this->extremities[0].getPosition();
     Vector3d p1, p2;
     double d1, d2;
 
-    for (it=this->dislocations.begin(); it!=this->dislocations.end(); it++) {
-        di = *it;
-        p1 = di->getPosition();
-        d1 = (p1-p0).magnitude();
+    for (it=this->dislocations.begin(); it!=this->dislocations.end(); it++) {        
         for (jt=it+1; jt!=this->dislocations.end(); jt++) {
+            di = *it;
+            p1 = di->getPosition();
+            d1 = (p1-p0).magnitude();
             dj = *jt;
             p2 = dj->getPosition();
             d2 = (p2-p0).magnitude();
             if (d2 < d1) {
-                dtemp = di;
-                di = dj;
-                dj = dtemp;
+                *it = dj;
+                *jt = di;
             }
         }
     }
@@ -1140,24 +1137,22 @@ void SlipPlane::sortDislocationSources ()
 
     DislocationSource* di;
     DislocationSource* dj;
-    DislocationSource* dtemp;
 
     Vector3d p0 = this->extremities[0].getPosition();
     Vector3d p1, p2;
     double d1, d2;
 
-    for (it=this->dislocationSources.begin(); it!=this->dislocationSources.end(); it++) {
-        di = *it;
-        p1 = di->getPosition();
-        d1 = (p1-p0).magnitude();
+    for (it=this->dislocationSources.begin(); it!=this->dislocationSources.end(); it++) {        
         for (jt=it+1; jt!=this->dislocationSources.end(); jt++) {
+            di = *it;
+            p1 = di->getPosition();
+            d1 = (p1-p0).magnitude();
             dj = *jt;
             p2 = dj->getPosition();
             d2 = (p2-p0).magnitude();
             if (d2 < d1) {
-                dtemp = di;
-                di = dj;
-                dj = dtemp;
+                *it = dj;
+                *jt = di;
             }
         }
     }
