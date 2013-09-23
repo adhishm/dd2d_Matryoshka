@@ -2,7 +2,7 @@
  * @file slipPlane.h
  * @author Adhish Majumdar
  * @version 0.0
- * @date 17/07/2013
+ * @date 23/09/2013
  * @brief Definition of the SlipPlane class.
  * @details This file defines the SlipPlane class representing a slip plane in the simulation.
  */
@@ -424,6 +424,12 @@ public:
   void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu);
 
   // Treat dislocation sources
+  /**
+   * @brief This function calculates the total stress field acting on each dislocation source lying in the slip plane by superposing contributions from all defects in the simulation, and stores it in the data members Defect::totalStress and Defect::totalStresses.
+   * @param mu Shear modulus of the material.
+   * @param nu Poisson's ratio.
+   */
+  void calculateDislocationSourceStresses(double mu, double nu);
 
   // Time increments
   /**

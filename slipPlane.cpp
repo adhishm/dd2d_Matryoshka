@@ -2,7 +2,7 @@
  * @file slipPlane.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 17/07/2013
+ * @date 23/09/2013
  * @brief Definition of the member functions of the SlipPlane class.
  * @details This file defines the member functions of the SlipPlane class.
  */
@@ -550,6 +550,7 @@ void SlipPlane::calculateRotationMatrix ()
     this->coordinateSystem.calculateRotationMatrix();
 }
 
+// Treat the dislocations
 /**
  * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
  * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
@@ -624,59 +625,6 @@ void SlipPlane::calculateDislocationVelocities (double B)
 
         disl->setVelocity (v);
     }
-}
-
-/**
- * @brief Calculate the time increment based on the velocities of the dislocations.
- * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
- * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
- * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
- * @return STL vector container with the ideal time increments for all the dislocations.
- */
-std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
-{
-    // Get the number of dislocations
-    int nDisl = this->dislocations.size();
-
-    // Vector of time increments
-    std::vector<double> timeIncrement(nDisl, LARGE_NUMBER);
-
-    int i=0;         // Counter for the loop
-    double t1, t2;
-    double dtMin;  // Minimum time increment
-
-    std::vector<Defect*>::iterator defect_it;
-    Defect* defect;
-
-    for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
-        defect = *defect_it;
-        if (defect->getDefectType() == DISLOCATION) {
-            // Only dislocations have a time increment
-            t1 = defect->idealTimeIncrement(minDistance, *(defect_it-1));
-            t2 = defect->idealTimeIncrement(minDistance, *(defect_it+1));
-            timeIncrement[i++] = std::min(t1, t2);
-        }
-    }
-
-    // Find smallest non-zero time increment
-    dtMin = LARGE_NUMBER;
-    for (i=0; i<nDisl; i++)
-    {
-        if (timeIncrement[i] > 0.0)
-        {
-            if (timeIncrement[i] < dtMin)
-            {
-                dtMin = timeIncrement[i];
-            }
-        }
-    }
-
-    this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
-    if (this->dt == LARGE_NUMBER) {
-        // None of the time increments were smaller than LARGE_NUMBER
-        this->dt = minDt;
-    }
-    return (timeIncrement);
 }
 
 /**
@@ -837,6 +785,92 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
         (*dit)->setPosition(*pit);
     }
 }
+
+// Treat dislocation sources
+/**
+ * @brief This function calculates the total stress field acting on each dislocation source lying in the slip plane by superposing contributions from all defects in the simulation, and stores it in the data members Defect::totalStress and Defect::totalStresses.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ */
+void SlipPlane::calculateDislocationSourceStresses(double mu, double nu)
+{
+    std::vector<DislocationSource*>::iterator dSource_it;   // Iterator for each dislocation source
+    std::vector<Defect*>::iterator defect_it;               // Iterator for all defects
+    Stress s;                                               // Variable for stress
+
+    DislocationSource *dSource;
+    Defect *defect;
+
+    Vector3d p;                                             // Position vector
+
+    for (dSource_it=this->dislocationSources.begin(); dSource_it!=this->dislocationSources.end(); dSource_it++) {
+        s = this->appliedStress_local;
+        dSource = *dSource_it;
+        p = dSource->getPosition();
+        for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+            defect = *defect_it;
+            // Superpose the stress fields of all other defects
+            s = s + defect->stressField(p, mu, nu);
+        }
+        dSource->setTotalStress(s);
+    }
+}
+
+// Time increment
+/**
+ * @brief Calculate the time increment based on the velocities of the dislocations.
+ * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+ * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+ * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+ * @return STL vector container with the ideal time increments for all the dislocations.
+ */
+std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
+{
+    // Get the number of dislocations
+    int nDisl = this->dislocations.size();
+
+    // Vector of time increments
+    std::vector<double> timeIncrement(nDisl, LARGE_NUMBER);
+
+    int i=0;         // Counter for the loop
+    double t1, t2;
+    double dtMin;  // Minimum time increment
+
+    std::vector<Defect*>::iterator defect_it;
+    Defect* defect;
+
+    for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+        defect = *defect_it;
+        if (defect->getDefectType() == DISLOCATION) {
+            // Only dislocations have a time increment
+            t1 = defect->idealTimeIncrement(minDistance, *(defect_it-1));
+            t2 = defect->idealTimeIncrement(minDistance, *(defect_it+1));
+            timeIncrement[i++] = std::min(t1, t2);
+        }
+    }
+
+    // Find smallest non-zero time increment
+    dtMin = LARGE_NUMBER;
+    for (i=0; i<nDisl; i++)
+    {
+        if (timeIncrement[i] > 0.0)
+        {
+            if (timeIncrement[i] < dtMin)
+            {
+                dtMin = timeIncrement[i];
+            }
+        }
+    }
+
+    this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
+    if (this->dt == LARGE_NUMBER) {
+        // None of the time increments were smaller than LARGE_NUMBER
+        this->dt = minDt;
+    }
+    return (timeIncrement);
+}
+
+
 
 /**
  * @brief The distance of the point pos from the n^th extremity is returned.
