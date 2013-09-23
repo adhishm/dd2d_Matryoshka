@@ -983,11 +983,13 @@ void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double
             // They should now be inserted into the slip plane list
             this->insertDislocation(d0);
             this->insertDislocation(d1);
+            // Sort dislocations
+            this->sortDislocations();
+            // Update defects
+            this->updateDefects();
         }
     }
-    // Sort the defects
-    this->sortDefects();
-    this->sortDislocations();
+
 }
 
 // Time increment
