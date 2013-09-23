@@ -580,6 +580,57 @@ void SlipPlane::calculateDefectStresses (double mu, double nu)
     }
 }
 
+/**
+ * @brief This function looks for defects lying between the two points p0 and p1 provided. The elements of the vector are ordered such that they appear as they would when travelling from p0 to p1.
+ * @details The function creates a vector container with pointers to defects lying between two given position vectors p0 and p1 (both specified in the slip plane co-ordinate system). The order of pointers within the vector is the one that one would have when travels from p0 to p1. In the case where there are no defects lying in between these two points, an empty container is returned.
+ * @param p0 The position vector, in the slip-plane co-ordinate system, of the first point.
+ * @param p1 The position vector, in the slip-plane co-ordinate system, of the second point.
+ * @return A vector container with the defects that lie between p0 and p1, in the order as they would appear when travelling from p0 to p1.
+ */
+std::vector<Defect*> SlipPlane::findDefectsBetweenPoints (Vector3d p0, Vector3d p1)
+{
+    // The vector that will hold the pointers to the defects lying within the range
+    std::vector<Defect*> defectList;
+
+    // Since we are dealing only with the slip plane, extract the x co-ordinates of the limiting points
+    double x0 = p0.getValue(0);
+    double x1 = p1.getValue(0);
+
+    // Iterator and pointer for browsing the defect list
+    std::vector<Defect*>::iterator defects_it;
+    Defect *defect;
+    Vector3d pd;
+    double xd;
+
+    if (x0 < x1) {
+        // The direction of travel from p0 to p1 is the same as the positive x-direction of the slip plane
+        for (defects_it=this->defects.begin(); defects_it!=this->defects.end(); defects_it++) {
+            defect = *defects_it;
+            pd = defect->getPosition();
+            xd = pd.getValue(0);
+            if ( (xd>x0) && (xd<x1) ) {
+                // The defect lies in between
+                defectList.push_back(defect);
+            }
+        }
+    }
+    else {
+        // The direction of travel from p0 to p1 is opposite to the positive x-direction of the slip plane
+        for (defects_it=this->defects.end(); defects_it!=this->defects.begin(); --defects_it) {
+            defect = *defects_it;
+            pd = defect->getPosition();
+            xd = pd.getValue(0);
+            if ( (xd>x1) && (xd<x0) ) {
+                // The defect lies in between
+                defectList.push_back(defect);
+            }
+        }
+    }
+
+    return (defectList);
+
+}
+
 // Treat the dislocations
 /**
  * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.

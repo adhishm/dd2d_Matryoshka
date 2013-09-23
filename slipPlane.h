@@ -392,6 +392,15 @@ public:
    */
   void calculateDefectStresses (double mu, double nu);
 
+  /**
+   * @brief This function looks for defects lying between the two points p0 and p1 provided. The elements of the vector are ordered such that they appear as they would when travelling from p0 to p1.
+   * @details The function creates a vector container with pointers to defects lying between two given position vectors p0 and p1 (both specified in the slip plane co-ordinate system). The order of pointers within the vector is the one that one would have when travels from p0 to p1. In the case where there are no defects lying in between these two points, an empty container is returned.
+   * @param p0 The position vector, in the slip-plane co-ordinate system, of the first point.
+   * @param p1 The position vector, in the slip-plane co-ordinate system, of the second point.
+   * @return A vector container with the defects that lie between p0 and p1, in the order as they would appear when travelling from p0 to p1.
+   */
+  std::vector<Defect*> findDefectsBetweenPoints (Vector3d p0, Vector3d p1);
+
   // Treat dislocations
   /**
    * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
