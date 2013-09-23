@@ -384,6 +384,14 @@ public:
    */
   void sortDislocationSources ();
 
+  // Treat defects
+  /**
+   * @brief This function calculates the total stress fields on all defects lying on the slip plane and stores the stress field tensors in the members Defect::totalStress and Defect::totalStresses.
+   * @param mu Shear modulus of the material.
+   * @param nu Poisson's ratio.
+   */
+  void calculateDefectStresses (double mu, double nu);
+
   // Treat dislocations
   /**
    * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.

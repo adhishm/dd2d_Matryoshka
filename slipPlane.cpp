@@ -550,6 +550,36 @@ void SlipPlane::calculateRotationMatrix ()
     this->coordinateSystem.calculateRotationMatrix();
 }
 
+// Treat defects
+/**
+ * @brief This function calculates the total stress fields on all defects lying on the slip plane and stores the stress field tensors in the members Defect::totalStress and Defect::totalStresses.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ */
+void SlipPlane::calculateDefectStresses (double mu, double nu)
+{
+    std::vector<Defect*>::iterator destinationDefect_it;
+    std::vector<Defect*>::iterator sourceDefect_it;
+
+    Defect *destinationDefect;
+    Defect *sourceDefect;
+
+    Stress s;
+    Vector3d p;
+
+    for (destinationDefect_it=this->defects.begin(); destinationDefect_it!=this->defects.end(); destinationDefect_it++) {
+        s = this->appliedStress_local;
+        destinationDefect = *destinationDefect_it;
+        p = destinationDefect->getPosition();
+        for (sourceDefect_it=this->defects.begin(); sourceDefect_it!=this->defects.end(); sourceDefect_it++) {
+            sourceDefect = *sourceDefect_it;
+            // Superpose the stress fields of all other defects
+            s = s + sourceDefect->stressField(p, mu, nu);
+        }
+        destinationDefect->setTotalStress(s);
+    }
+}
+
 // Treat the dislocations
 /**
  * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
