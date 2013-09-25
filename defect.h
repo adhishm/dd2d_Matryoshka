@@ -210,6 +210,18 @@ public:
    * @return Total stress at iteration i.
    */
   Stress getTotalStressAtIteration (int i) const;
+
+  // Static functions
+  /**
+   * @brief Compares the distances of the defects pointed to by di and dj from the origin of the slip plane, and returns if di is closer to the origin than dj.
+   * @param di Pointer to the defect i.
+   * @param dj Pointer to the defect j.
+   * @return Boolean value indicating if di is closer to the origin than dj.
+   */
+  static bool compareDefectPositions (Defect *di, Defect *dj)
+  {
+      return (di->getPosition().getValue(0) < dj->getPosition().getValue(0));
+  }
     
   // Virtual functions
   /**

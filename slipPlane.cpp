@@ -1070,30 +1070,7 @@ double SlipPlane::distanceFromExtremity(Vector3d pos, int n)
  */
 void SlipPlane::sortDefects ()
 {
-    std::vector<Defect*>::iterator it, jt;  // Iterator for the defects
-    Defect* di;
-    Defect* dj;
-
-    Vector3d p0 = this->defects[0]->getPosition();
-    Vector3d p1, p2;
-    double d1, d2;
-
-    for (it=this->defects.begin()+1; it!=this->defects.end()-1; it++) {
-        for (jt=it+1; jt!=this->defects.end()-1; jt++) {
-            di = *it;
-            p1 = di->getPosition();
-            d1 = (p1-p0).magnitude();
-            dj = *jt;
-            p2 = dj->getPosition();
-            d2 = (p2-p0).magnitude();
-            if (d2 < d1) {
-                // Swap the two
-                *it = dj;
-                *jt = di;
-
-            }
-        }
-    }
+    std::sort (this->defects.begin(), this->defects.end(), Defect::compareDefectPositions);
 }
 
 /**
