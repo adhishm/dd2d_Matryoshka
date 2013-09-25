@@ -840,6 +840,7 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                     // The dislocation is allowed to approach it as it would approach another dislocation
                     middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
                     pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
+                    break;
                 default :
                     // Unknown defect type - do nothing
                     pDislPrime = pDisl;
