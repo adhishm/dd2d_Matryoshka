@@ -835,6 +835,11 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                     // The FREESURFACE is a sink for dislocations
                     pDislPrime = pDef;
                     break;
+                case FRANKREADSOURCE:
+                    // The next defect is a Frank-Read source
+                    // The dislocation is allowed to approach it as it would approach another dislocation
+                    middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
+                    pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
                 default :
                     // Unknown defect type - do nothing
                     pDislPrime = pDisl;
