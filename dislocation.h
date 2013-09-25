@@ -69,18 +69,6 @@ protected:
   double bmag;
 
   /**
-   * @brief The total stress experienced by the dislocation.
-   * @details The dislocation experiences a stress that is the superposition of the externally applied stress and the stress fields of all the dislocations and other entities present in the simulation.
-   */
-  Stress totalStress;
-
-  /**
-   * @brief Keeps a trace of the total stress from every iteration.
-   * @details The total stress experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this variable may be useful for calculating average stresses over a given time period.
-   */
-  std::vector<Stress> totalStresses;
-
-  /**
    * @brief The Peach-Koehler force experienced by the dislocation.
    * @details The Peach-Koehler force is the force experienced by the dislocation due to the total stress on it.
    */
