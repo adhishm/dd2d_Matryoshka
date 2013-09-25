@@ -351,10 +351,11 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
     int i;
     for (i=0; i<3; i++) {
         a0[i] = this->coordinateSystem.getAxis(i);
-        a1[i] = this->coordinateSystem.getAxis(i);
+        // a1[i] = this->coordinateSystem.getAxis(i);
     }
-    a1[2] = a1[2] * -1.0;   // The second dislocation has a line vector that is flipped around
-    a1[1] = (a1[2]^a1[0]).normalize();
+    a1[2] = a0[2] * -1.0;   // The second dislocation has a line vector that is flipped around
+    a1[1] = a1[1];          // But the same slip plane, so the same normal
+    a1[0] = (a1[1]^a1[2]).normalize();
 
     // The new positions should be according to the sign of the time counter
     if (this->countTimeTillDipoleEmission > 0.0) {
