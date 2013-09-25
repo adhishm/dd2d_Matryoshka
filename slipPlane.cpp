@@ -1078,30 +1078,7 @@ void SlipPlane::sortDefects ()
  */
 void SlipPlane::sortDislocations ()
 {
-    std::vector<Dislocation*>::iterator it;
-    std::vector<Dislocation*>::iterator jt;
-
-    Dislocation* di;
-    Dislocation* dj;
-
-    Vector3d p0 = this->extremities[0].getPosition();
-    Vector3d p1, p2;
-    double d1, d2;
-
-    for (it=this->dislocations.begin(); it!=this->dislocations.end(); it++) {        
-        for (jt=it+1; jt!=this->dislocations.end(); jt++) {
-            di = *it;
-            p1 = di->getPosition();
-            d1 = (p1-p0).magnitude();
-            dj = *jt;
-            p2 = dj->getPosition();
-            d2 = (p2-p0).magnitude();
-            if (d2 < d1) {
-                *it = dj;
-                *jt = di;
-            }
-        }
-    }
+    std::sort (this->dislocations.begin(), this->dislocations.end(), Defect::compareDefectPositions);
 }
 
 /**
@@ -1109,30 +1086,7 @@ void SlipPlane::sortDislocations ()
  */
 void SlipPlane::sortDislocationSources ()
 {
-    std::vector<DislocationSource*>::iterator it;
-    std::vector<DislocationSource*>::iterator jt;
-
-    DislocationSource* di;
-    DislocationSource* dj;
-
-    Vector3d p0 = this->extremities[0].getPosition();
-    Vector3d p1, p2;
-    double d1, d2;
-
-    for (it=this->dislocationSources.begin(); it!=this->dislocationSources.end(); it++) {        
-        for (jt=it+1; jt!=this->dislocationSources.end(); jt++) {
-            di = *it;
-            p1 = di->getPosition();
-            d1 = (p1-p0).magnitude();
-            dj = *jt;
-            p2 = dj->getPosition();
-            d2 = (p2-p0).magnitude();
-            if (d2 < d1) {
-                *it = dj;
-                *jt = di;
-            }
-        }
-    }
+    std::sort (this->dislocationSources.begin(), this->dislocationSources.end(), Defect::compareDefectPositions);
 }
 
 // Stresses
