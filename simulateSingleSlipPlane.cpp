@@ -441,7 +441,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
         /*
          * Treat the dislocation sources
          */
-        slipPlane->checkDislocationSources(slipPlane->getTimeIncrement(),param->mu, param->nu,param->limitingDistance);
+        slipPlane->checkDislocationSources(slipPlane->getTimeIncrement(),param->mu, param->nu,limitingDistance);
 
         // Check for local reactions
         slipPlane->checkLocalReactions(reactionRadius);
