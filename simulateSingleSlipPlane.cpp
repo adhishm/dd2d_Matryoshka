@@ -208,6 +208,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Par
             disl = readDislocationFromLine(line);
             disl->setBaseCoordinateSystem(s->getCoordinateSystem());
             disl->calculateRotationMatrix();
+            disl->calculateBurgersLocal();
             s->insertDislocation ( disl );
         }
 
