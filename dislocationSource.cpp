@@ -339,8 +339,10 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
     *d0 = this->d;
     *d1 = this->d;
 
+    // There is no need to change the Burgers vector of the second dislocation because from the point of view
+    // of the slip plane, the Burgers vector is conserved throughout the Frank-Read loop
     // The Burgers vector, in the base co-ordinate system should be flipped around
-    d1->setBurgers(this->bvec * -1.0);
+    //d1->setBurgers(this->bvec);
 
     // Provisionary position vectors of the dislocations in the dislocation source co-ordinate system
     Vector3d plusSide (Lnuc/2.0, 0.0, 0.0);
@@ -354,7 +356,7 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
         a0[i] = this->coordinateSystem.getAxis(i);
     }
     a1[2] = a0[2] * -1.0;   // The second dislocation has a line vector that is flipped around
-    a1[1] = a1[1];          // But the same slip plane, so the same normal
+    a1[1] = a0[1];          // But the same slip plane, so the same normal
     a1[0] = (a1[1]^a1[2]).normalize();
 
     // The new positions should be according to the sign of the time counter
