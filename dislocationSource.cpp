@@ -191,6 +191,7 @@ void DislocationSource::refreshDislocation ()
                           this->getCoordinateSystem(),
                           this->bmag,
                           true);
+    this->d.calculateBurgersLocal();
 }
 
 // Access functions

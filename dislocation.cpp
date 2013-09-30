@@ -321,7 +321,7 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
  */
 Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
-{
+{    
     double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
 
     double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
