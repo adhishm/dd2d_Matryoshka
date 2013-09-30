@@ -322,7 +322,54 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  */
 Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 {    
-    double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+    return ( this->stressFieldLocal_edge(p, mu, nu) + this->stressFieldLocal_screw(p, mu) );
+}
+
+/**
+ * @brief Calculates the stress field due to the screw component of the dislocation in the local co-ordinate system.
+ * @details The stress field due to the screw component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+ * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+ * @param mu Shear modulus in Pascals.
+ * @return Stress tensor due to the dislocations screw component, expressed in the dislocation's local co-ordinate system.
+ */
+Stress Dislocation::stressFieldLocal_screw (Vector3d p, double mu) const
+{
+    double D = ( mu * this->bmag * this->burgersLocal.getValue(2) ) / ( 2.0 * PI );	// Constant for all components of the stress tensor
+
+    double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
+
+    x = p.getValue (0);
+    y = p.getValue (1);
+    denominator = (x*x) + (y*y);
+
+    if (denominator==0.0) {
+        return (Stress());
+    }
+
+    double principalStresses[3], shearStresses[3];
+
+    principalStresses[0] = 0.0;
+    principalStresses[1] = 0.0;
+    principalStresses[2] = 0.0;
+
+    shearStresses[0] = 0.0;
+    shearStresses[1] = D * (y / denominator);
+    shearStresses[2] = -1.0 * D * (x / denominator);
+
+    return (Stress(principalStresses, shearStresses));
+}
+
+/**
+ * @brief Calculates the stress field due to the edge component of the dislocation in the local co-ordinate system.
+ * @details The stress field due to the edge component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+ * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
+ * @return Stress tensor due to the dislocations edge component, expressed in the dislocation's local co-ordinate system.
+ */
+Stress Dislocation::stressFieldLocal_edge (Vector3d p, double mu, double nu) const
+{
+    double D = ( mu * this->bmag * this->burgersLocal.getValue(0) ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
 
     double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
 
@@ -336,11 +383,11 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 
     double principalStresses[3], shearStresses[3];
 
-    principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
-    principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
+    principalStresses[0] = D * y * ( (x*x) - (y*y) ) / denominator;
+    principalStresses[1] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
     principalStresses[2] = nu * ( principalStresses[0] + principalStresses[1] );
 
-    shearStresses[0] = D * x * ( (x*x) - (y*y) ) / denominator;
+    shearStresses[0] = -1.0 * D * x * ( (x*x) - (y*y) ) / denominator;
     shearStresses[1] = 0.0;
     shearStresses[2] = 0.0;
 

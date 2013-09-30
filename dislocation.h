@@ -259,6 +259,25 @@ public:
    * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
    */
   Stress stressFieldLocal (Vector3d p, double mu, double nu) const;
+
+  /**
+   * @brief Calculates the stress field due to the screw component of the dislocation in the local co-ordinate system.
+   * @details The stress field due to the screw component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+   * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+   * @param mu Shear modulus in Pascals.
+   * @return Stress tensor due to the dislocations screw component, expressed in the dislocation's local co-ordinate system.
+   */
+  Stress stressFieldLocal_screw (Vector3d p, double mu) const;
+
+  /**
+   * @brief Calculates the stress field due to the edge component of the dislocation in the local co-ordinate system.
+   * @details The stress field due to the edge component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+   * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return Stress tensor due to the dislocations edge component, expressed in the dislocation's local co-ordinate system.
+   */
+  Stress stressFieldLocal_edge (Vector3d p, double mu, double nu) const;
   
   // Force
   /**
