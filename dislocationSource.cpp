@@ -376,6 +376,9 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
                                 this->coordinateSystem.getBase());
     }
 
+    d0->calculateBurgersLocal();
+    d1->calculateBurgersLocal();
+
     // The new dislocations are ready and the dipole is emitted
     // Reset the counter to zero
     this->resetTimeCounter();
