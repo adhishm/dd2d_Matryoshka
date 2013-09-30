@@ -120,6 +120,14 @@ void Dislocation::setBurgers (Vector3d burgers)
 }
 
 /**
+ * @brief Calculates the private variable burgersLocal representing the Burgers vector in the dislocation's co-ordinate system.
+ */
+void Dislocation::calculateBurgersLocal ()
+{
+    this->burgersLocal = this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec);
+}
+
+/**
  * @brief Sets the magnitude of the Burgers vector of the dislocation.
  * @param b Magnitude of the Burgers vector of the dislocation.
  */
@@ -182,6 +190,16 @@ void Dislocation::setVelocity (Vector3d v)
 Vector3d Dislocation::getBurgers () const
 {
     return ( this->bvec );
+}
+
+/**
+ * @brief Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+ * @details Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system. Note that the variable burgersLocal should have been calculated before calling this function.
+ * @return The Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+ */
+Vector3d Dislocation:: getBurgerLocal () const
+{
+    return (this->burgersLocal);
 }
 
 /**

@@ -50,6 +50,11 @@ protected:
    * @brief Burgers vector of the dislocation, in the slip-plane co-ordinate system.
    */
   Vector3d bvec;
+
+  /**
+   * @brief Burgers vector of the dislocation, in the dislocation co-ordinate system.
+   */
+  Vector3d burgersLocal;
   
   /**
    * @brief Line vector of the dislocation, in the slip-plane co-ordinate system.
@@ -142,6 +147,10 @@ public:
    */
   void setBurgers (Vector3d burgers);
   /**
+   * @brief Calculates the private variable burgersLocal representing the Burgers vector in the dislocation's co-ordinate system.
+   */
+  void calculateBurgersLocal ();
+  /**
    * @brief Sets the magnitude of the Burgers vector of the dislocation.
    * @param b Magnitude of the Burgers vector of the dislocation.
    */
@@ -180,6 +189,12 @@ public:
    * @return Burgers vector in a variable of type Vector3d.
    */
   Vector3d getBurgers () const;
+  /**
+   * @brief Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+   * @details Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system. Note that the variable burgersLocal should have been calculated before calling this function.
+   * @return The Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+   */
+  Vector3d getBurgerLocal () const;
   /**
    * @brief Gets the magnitude of the Burgers vector of the dislocation.
    * @return Magnitude of the Burgers vector.
