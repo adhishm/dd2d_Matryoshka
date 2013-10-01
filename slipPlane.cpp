@@ -2,7 +2,7 @@
  * @file slipPlane.cpp
  * @author Adhish Majumdar
  * @version 0.0
- * @date 17/07/2013
+ * @date 23/09/2013
  * @brief Definition of the member functions of the SlipPlane class.
  * @details This file defines the member functions of the SlipPlane class.
  */
@@ -550,6 +550,89 @@ void SlipPlane::calculateRotationMatrix ()
     this->coordinateSystem.calculateRotationMatrix();
 }
 
+// Treat defects
+/**
+ * @brief This function calculates the total stress fields on all defects lying on the slip plane and stores the stress field tensors in the members Defect::totalStress and Defect::totalStresses.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ */
+void SlipPlane::calculateDefectStresses (double mu, double nu)
+{
+    std::vector<Defect*>::iterator destinationDefect_it;
+    std::vector<Defect*>::iterator sourceDefect_it;
+
+    Defect *destinationDefect;
+    Defect *sourceDefect;
+
+    Stress s;
+    Vector3d p;
+
+    for (destinationDefect_it=this->defects.begin(); destinationDefect_it!=this->defects.end(); destinationDefect_it++) {
+        s = this->appliedStress_local;
+        destinationDefect = *destinationDefect_it;
+        p = destinationDefect->getPosition();
+        for (sourceDefect_it=this->defects.begin(); sourceDefect_it!=this->defects.end(); sourceDefect_it++) {
+            sourceDefect = *sourceDefect_it;
+            // Superpose the stress fields of all other defects
+            s = s + sourceDefect->stressField(p, mu, nu);
+        }
+        destinationDefect->setTotalStress(s);
+    }
+}
+
+/**
+ * @brief This function looks for defects lying between the two points p0 and p1 provided. The elements of the vector are ordered such that they appear as they would when travelling from p0 to p1.
+ * @details The function creates a vector container with pointers to defects lying between two given position vectors p0 and p1 (both specified in the slip plane co-ordinate system). The order of pointers within the vector is the one that one would have when travels from p0 to p1. In the case where there are no defects lying in between these two points, an empty container is returned.
+ * @param p0 The position vector, in the slip-plane co-ordinate system, of the first point.
+ * @param p1 The position vector, in the slip-plane co-ordinate system, of the second point.
+ * @return A vector container with the defects that lie between p0 and p1, in the order as they would appear when travelling from p0 to p1.
+ */
+std::vector<Defect*> SlipPlane::findDefectsBetweenPoints (Vector3d p0, Vector3d p1)
+{
+    // The vector that will hold the pointers to the defects lying within the range
+    std::vector<Defect*> defectList;
+
+    // Since we are dealing only with the slip plane, extract the x co-ordinates of the limiting points
+    double x0 = p0.getValue(0);
+    double x1 = p1.getValue(0);
+
+    // Iterator and pointer for browsing the defect list
+    std::vector<Defect*>::iterator defects_it;
+    std::vector<Defect*>::reverse_iterator defects_rit;
+    Defect *defect;
+    Vector3d pd;
+    double xd;
+
+    if (x0 < x1) {
+        // The direction of travel from p0 to p1 is the same as the positive x-direction of the slip plane
+        for (defects_it=this->defects.begin(); defects_it!=this->defects.end(); defects_it++) {
+            defect = *defects_it;
+            pd = defect->getPosition();
+            xd = pd.getValue(0);
+            if ( (xd>x0) && (xd<x1) ) {
+                // The defect lies in between
+                defectList.push_back(defect);
+            }
+        }
+    }
+    else {
+        // The direction of travel from p0 to p1 is opposite to the positive x-direction of the slip plane
+        for (defects_rit=this->defects.rbegin(); defects_rit!=this->defects.rend(); ++defects_rit) {
+            defect = *defects_rit;
+            pd = defect->getPosition();
+            xd = pd.getValue(0);
+            if ( (xd>x1) && (xd<x0) ) {
+                // The defect lies in between
+                defectList.push_back(defect);
+            }
+        }
+    }
+
+    return (defectList);
+
+}
+
+// Treat the dislocations
 /**
  * @brief Calculates the total stress field experienced by each dislocation and stores it in the Dislocation::totalStress and also puts it at the end of the std::vector<Stress> Dislocation::totalStresses.
  * @details The total stress field is calculated as a superposition of the applied stress field and the stress fields experienced by each dislocation due to every other dislocation in the simulation.
@@ -599,7 +682,7 @@ void SlipPlane::calculateDislocationForces ()
  * @details The velocities of the dislocations are calculated and stored in the variable Vector3d Dislocation::velocity and also put at the end of std::vector<Vector3d> Dislocation::velocities. The velocities are calculated using the proportionality law between them and the Peach-Koehler force, using the drag coefficient B as the constant of proportionality.
  * param B The drag coefficient.
  */
-void SlipPlane::calculateVelocities (double B)
+void SlipPlane::calculateDislocationVelocities (double B)
 {
     std::vector<Dislocation*>::iterator d;  // Iterator for dislocations
     Dislocation* disl;
@@ -624,59 +707,6 @@ void SlipPlane::calculateVelocities (double B)
 
         disl->setVelocity (v);
     }
-}
-
-/**
- * @brief Calculate the time increment based on the velocities of the dislocations.
- * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
- * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
- * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
- * @return STL vector container with the ideal time increments for all the dislocations.
- */
-std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
-{
-    // Get the number of dislocations
-    int nDisl = this->dislocations.size();
-
-    // Vector of time increments
-    std::vector<double> timeIncrement(nDisl, LARGE_NUMBER);
-
-    int i=0;         // Counter for the loop
-    double t1, t2;
-    double dtMin;  // Minimum time increment
-
-    std::vector<Defect*>::iterator defect_it;
-    Defect* defect;
-
-    for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
-        defect = *defect_it;
-        if (defect->getDefectType() == DISLOCATION) {
-            // Only dislocations have a time increment
-            t1 = defect->idealTimeIncrement(minDistance, *(defect_it-1));
-            t2 = defect->idealTimeIncrement(minDistance, *(defect_it+1));
-            timeIncrement[i++] = std::min(t1, t2);
-        }
-    }
-
-    // Find smallest non-zero time increment
-    dtMin = LARGE_NUMBER;
-    for (i=0; i<nDisl; i++)
-    {
-        if (timeIncrement[i] > 0.0)
-        {
-            if (timeIncrement[i] < dtMin)
-            {
-                dtMin = timeIncrement[i];
-            }
-        }
-    }
-
-    this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
-    if (this->dt == LARGE_NUMBER) {
-        // None of the time increments were smaller than LARGE_NUMBER
-        this->dt = minDt;
-    }
-    return (timeIncrement);
 }
 
 /**
@@ -805,6 +835,12 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
                     // The FREESURFACE is a sink for dislocations
                     pDislPrime = pDef;
                     break;
+                case FRANKREADSOURCE:
+                    // The next defect is a Frank-Read source
+                    // The dislocation is allowed to approach it as it would approach another dislocation
+                    middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
+                    pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
+                    break;
                 default :
                     // Unknown defect type - do nothing
                     pDislPrime = pDisl;
@@ -838,6 +874,186 @@ void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dt
     }
 }
 
+// Treat dislocation sources
+/**
+ * @brief This function calculates the total stress field acting on each dislocation source lying in the slip plane by superposing contributions from all defects in the simulation, and stores it in the data members Defect::totalStress and Defect::totalStresses.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ */
+void SlipPlane::calculateDislocationSourceStresses(double mu, double nu)
+{
+    std::vector<DislocationSource*>::iterator dSource_it;   // Iterator for each dislocation source
+    std::vector<Defect*>::iterator defect_it;               // Iterator for all defects
+    Stress s;                                               // Variable for stress
+
+    DislocationSource *dSource;
+    Defect *defect;
+
+    Vector3d p;                                             // Position vector
+
+    for (dSource_it=this->dislocationSources.begin(); dSource_it!=this->dislocationSources.end(); dSource_it++) {
+        s = this->appliedStress_local;
+        dSource = *dSource_it;
+        p = dSource->getPosition();
+        for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+            defect = *defect_it;
+            // Superpose the stress fields of all other defects
+            s = s + defect->stressField(p, mu, nu);
+        }
+        dSource->setTotalStress(s);
+    }
+}
+
+/**
+ * @brief Checks all the dislocation sources for emission of dislocation dipoles.
+ * @param timeIncrement The time increment at this iteration. This is required to measure the progress of a dislocation source till emission of a dipole.
+ * @param mu Shear modulus of the material.
+ * @param nu Poisson's ratio.
+ * @param limitingDistance Minimum distance permitted between adjacent defects.
+ */
+void SlipPlane::checkDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance)
+{
+    // Iterator and pointer to browse the dislocation source vector
+    std::vector<DislocationSource*>::iterator dSource_it;
+    DislocationSource *dSource;
+
+    // Dipole nucleation length and stress at the dislocation source
+    double Lnuc;
+    Stress tau;
+
+    // Pointers to the two dislocations that will form the dipoles that may be emitted
+    Dislocation *d0;
+    Dislocation *d1;
+
+    // Position vectors for the dislocation source and the dipole emitted
+    Vector3d ps, p0, p1;
+    Vector3d pn;    // New position for the dislocation, if needed
+
+    // Vector container for defects lying in between two positions
+    std::vector<Defect*> defectsLyingInBetween;
+    Defect *nearestDefect;
+
+    for (dSource_it=this->dislocationSources.begin(); dSource_it!=this->dislocationSources.end(); dSource_it++) {
+        dSource = *dSource_it;
+        tau = dSource->getTotalStress();
+        // Increment the time count according to the motion of the dislocation within the source
+        dSource->incrementTimeCount( timeIncrement * dSource->checkStress(tau) );
+        // Check if a dipole should be emitted
+        if (dSource->ifEmitDipole()) {
+            // Yes, a dipole will be emitted
+            Lnuc = dSource->dipoleNucleationLength(tau.getValue(0,2),mu,nu);
+            // Allocate memory to the new dislocations
+            d0 = new Dislocation;
+            d1 = new Dislocation;
+            dSource->emitDipole(Lnuc, d0, d1);
+            // Check for the positions of the new dislocations - they should not cross existing defects
+            ps = dSource->getPosition();
+            p0 = d0->getPosition();
+            p1 = d1->getPosition();
+
+            // Check for defects lying between the source and d0
+            defectsLyingInBetween = this->findDefectsBetweenPoints(ps, p0);
+            if ( ! defectsLyingInBetween.empty() ) {
+                // There are defects lying between the source and the theoretical position of the dislocation
+                nearestDefect = defectsLyingInBetween.front();
+                pn = nearestDefect->getPosition();
+                if ((ps-pn).magnitude() >= limitingDistance) {
+                    // New position for the dislocation - within limitingDistance of the defect nearest to the source
+                    d0->setPosition( pn + ((ps-pn).normalize() * limitingDistance) );
+                }
+                else {
+                    // The nearest defect is too close - place the dislocation midway between the two
+                    d0->setPosition((pn+ps)*0.5);
+                }
+            }
+            defectsLyingInBetween.clear();
+
+            // Check for defects lying between the source and d1
+            defectsLyingInBetween = this->findDefectsBetweenPoints(ps, p1);
+            if ( ! defectsLyingInBetween.empty() ) {
+                // There are defects lying between the source and the theoretical position of the dislocation
+                nearestDefect = defectsLyingInBetween.front();
+                pn = nearestDefect->getPosition();
+                if ((ps-pn).magnitude() >= limitingDistance) {
+                    // New position for the dislocation - within limitingDistance of the defect nearest to the source
+                    d1->setPosition( pn + ((ps-pn).normalize() * limitingDistance) );
+                }
+                else {
+                    // The nearest defect is too close - place the dislocation midway between the two
+                    d1->setPosition((pn+ps)*0.5);
+                }
+            }
+            defectsLyingInBetween.clear();
+
+            // The new dislocations are created and placed on the slip plane
+            // They should now be inserted into the slip plane list
+            this->insertDislocation(d0);
+            this->insertDislocation(d1);
+            // Sort dislocations
+            this->sortDislocations();
+            // Update defects
+            this->updateDefects();
+        }
+    }
+
+}
+
+// Time increment
+/**
+ * @brief Calculate the time increment based on the velocities of the dislocations.
+ * @details In order to avoid the collision of dislocations with similar sign of Burgers vector, it is important to specify a minimum distance of approach between dislocations. When a dislocation reaches this limit, it is pinned. The velocities of the dislocations all being different, a time increment needs to be evaluated, which will limit the distance traveled by the dislocations in a given iteration.
+ * @param minDistance Minimum distance of approach between dislocations having Burgers vectors of the same sign.
+ * @param minDt The smallest time step permissible. Dislocations having time steps smaller than this are made immobile for the present iteration.
+ * @return STL vector container with the ideal time increments for all the dislocations.
+ */
+std::vector<double> SlipPlane::calculateTimeIncrement (double minDistance, double minDt)
+{
+    // Get the number of dislocations
+    int nDisl = this->dislocations.size();
+
+    // Vector of time increments
+    std::vector<double> timeIncrement(nDisl, LARGE_NUMBER);
+
+    int i=0;         // Counter for the loop
+    double t1, t2;
+    double dtMin;  // Minimum time increment
+
+    std::vector<Defect*>::iterator defect_it;
+    Defect* defect;
+
+    for (defect_it=this->defects.begin(); defect_it!=this->defects.end(); defect_it++) {
+        defect = *defect_it;
+        if (defect->getDefectType() == DISLOCATION) {
+            // Only dislocations have a time increment
+            t1 = defect->idealTimeIncrement(minDistance, *(defect_it-1));
+            t2 = defect->idealTimeIncrement(minDistance, *(defect_it+1));
+            timeIncrement[i++] = std::min(t1, t2);
+        }
+    }
+
+    // Find smallest non-zero time increment
+    dtMin = LARGE_NUMBER;
+    for (i=0; i<nDisl; i++)
+    {
+        if (timeIncrement[i] > 0.0)
+        {
+            if (timeIncrement[i] < dtMin)
+            {
+                dtMin = timeIncrement[i];
+            }
+        }
+    }
+
+    this->dt = std::max ( dtMin, minDt );  // Choose dtMin greater than minDt.
+    if (this->dt == LARGE_NUMBER) {
+        // None of the time increments were smaller than LARGE_NUMBER
+        this->dt = minDt;
+    }
+    return (timeIncrement);
+}
+
+
+
 /**
  * @brief The distance of the point pos from the n^th extremity is returned.
  * @param pos Position vector of the point whose distance is to be calculated.
@@ -860,31 +1076,7 @@ double SlipPlane::distanceFromExtremity(Vector3d pos, int n)
  */
 void SlipPlane::sortDefects ()
 {
-    std::vector<Defect*>::iterator it, jt;  // Iterator for the defects
-    Defect* temp;   // Temporary variable
-    Defect* di;
-    Defect* dj;
-
-    Vector3d p0 = this->defects[0]->getPosition();
-    Vector3d p1, p2;
-    double d1, d2;
-
-    for (it=this->defects.begin()+1; it!=this->defects.end()-1; it++) {
-        di = *it;
-        p1 = di->getPosition();
-        d1 = (p1-p0).magnitude();
-        for (jt=it+1; jt!=this->defects.end()-1; jt++) {
-            dj = *jt;
-            p2 = dj->getPosition();
-            d2 = (p2-p0).magnitude();
-            if (d2 < d1) {
-                // Swap the two
-                temp = di;
-                di = dj;
-                dj = temp;
-            }
-        }
-    }
+    std::sort (this->defects.begin(), this->defects.end(), Defect::compareDefectPositions);
 }
 
 /**
@@ -892,32 +1084,7 @@ void SlipPlane::sortDefects ()
  */
 void SlipPlane::sortDislocations ()
 {
-    std::vector<Dislocation*>::iterator it;
-    std::vector<Dislocation*>::iterator jt;
-
-    Dislocation* di;
-    Dislocation* dj;
-    Dislocation* dtemp;
-
-    Vector3d p0 = this->extremities[0].getPosition();
-    Vector3d p1, p2;
-    double d1, d2;
-
-    for (it=this->dislocations.begin(); it!=this->dislocations.end(); it++) {
-        di = *it;
-        p1 = di->getPosition();
-        d1 = (p1-p0).magnitude();
-        for (jt=it+1; jt!=this->dislocations.end(); jt++) {
-            dj = *jt;
-            p2 = dj->getPosition();
-            d2 = (p2-p0).magnitude();
-            if (d2 < d1) {
-                dtemp = di;
-                di = dj;
-                dj = dtemp;
-            }
-        }
-    }
+    std::sort (this->dislocations.begin(), this->dislocations.end(), Defect::compareDefectPositions);
 }
 
 /**
@@ -925,32 +1092,7 @@ void SlipPlane::sortDislocations ()
  */
 void SlipPlane::sortDislocationSources ()
 {
-    std::vector<DislocationSource*>::iterator it;
-    std::vector<DislocationSource*>::iterator jt;
-
-    DislocationSource* di;
-    DislocationSource* dj;
-    DislocationSource* dtemp;
-
-    Vector3d p0 = this->extremities[0].getPosition();
-    Vector3d p1, p2;
-    double d1, d2;
-
-    for (it=this->dislocationSources.begin(); it!=this->dislocationSources.end(); it++) {
-        di = *it;
-        p1 = di->getPosition();
-        d1 = (p1-p0).magnitude();
-        for (jt=it+1; jt!=this->dislocationSources.end(); jt++) {
-            dj = *jt;
-            p2 = dj->getPosition();
-            d2 = (p2-p0).magnitude();
-            if (d2 < d1) {
-                dtemp = di;
-                di = dj;
-                dj = dtemp;
-            }
-        }
-    }
+    std::sort (this->dislocationSources.begin(), this->dislocationSources.end(), Defect::compareDefectPositions);
 }
 
 // Stresses
