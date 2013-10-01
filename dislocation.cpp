@@ -120,6 +120,14 @@ void Dislocation::setBurgers (Vector3d burgers)
 }
 
 /**
+ * @brief Calculates the private variable burgersLocal representing the Burgers vector in the dislocation's co-ordinate system.
+ */
+void Dislocation::calculateBurgersLocal ()
+{
+    this->burgersLocal = this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec);
+}
+
+/**
  * @brief Sets the magnitude of the Burgers vector of the dislocation.
  * @param b Magnitude of the Burgers vector of the dislocation.
  */
@@ -182,6 +190,16 @@ void Dislocation::setVelocity (Vector3d v)
 Vector3d Dislocation::getBurgers () const
 {
     return ( this->bvec );
+}
+
+/**
+ * @brief Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+ * @details Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system. Note that the variable burgersLocal should have been calculated before calling this function.
+ * @return The Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+ */
+Vector3d Dislocation:: getBurgerLocal () const
+{
+    return (this->burgersLocal);
 }
 
 /**
@@ -303,8 +321,55 @@ Stress Dislocation::stressField (Vector3d p, double mu, double nu)
  * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
  */
 Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
+{    
+    return ( this->stressFieldLocal_edge(p, mu, nu) + this->stressFieldLocal_screw(p, mu) );
+}
+
+/**
+ * @brief Calculates the stress field due to the screw component of the dislocation in the local co-ordinate system.
+ * @details The stress field due to the screw component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+ * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+ * @param mu Shear modulus in Pascals.
+ * @return Stress tensor due to the dislocations screw component, expressed in the dislocation's local co-ordinate system.
+ */
+Stress Dislocation::stressFieldLocal_screw (Vector3d p, double mu) const
 {
-    double D = ( mu * this->bmag ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
+    double D = ( mu * this->bmag * this->burgersLocal.getValue(2) ) / ( 2.0 * PI );	// Constant for all components of the stress tensor
+
+    double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
+
+    x = p.getValue (0);
+    y = p.getValue (1);
+    denominator = (x*x) + (y*y);
+
+    if (denominator==0.0) {
+        return (Stress());
+    }
+
+    double principalStresses[3], shearStresses[3];
+
+    principalStresses[0] = 0.0;
+    principalStresses[1] = 0.0;
+    principalStresses[2] = 0.0;
+
+    shearStresses[0] = 0.0;
+    shearStresses[1] = D * (y / denominator);
+    shearStresses[2] = -1.0 * D * (x / denominator);
+
+    return (Stress(principalStresses, shearStresses));
+}
+
+/**
+ * @brief Calculates the stress field due to the edge component of the dislocation in the local co-ordinate system.
+ * @details The stress field due to the edge component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+ * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
+ * @return Stress tensor due to the dislocations edge component, expressed in the dislocation's local co-ordinate system.
+ */
+Stress Dislocation::stressFieldLocal_edge (Vector3d p, double mu, double nu) const
+{
+    double D = ( mu * this->bmag * this->burgersLocal.getValue(0) ) / ( 2.0 * PI * ( 1.0 - nu ) );	// Constant for all components of the stress tensor
 
     double x, y, denominator;	// Terms that appear repeatedly in the stress tensor
 
@@ -318,11 +383,11 @@ Stress Dislocation::stressFieldLocal (Vector3d p, double mu, double nu) const
 
     double principalStresses[3], shearStresses[3];
 
-    principalStresses[0] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
-    principalStresses[1] = D * y * ( (x*x) - (y*y) ) / denominator;
+    principalStresses[0] = D * y * ( (x*x) - (y*y) ) / denominator;
+    principalStresses[1] = -1.0 * D * y * ( (3.0*x*x) + (y*y) ) / denominator;
     principalStresses[2] = nu * ( principalStresses[0] + principalStresses[1] );
 
-    shearStresses[0] = D * x * ( (x*x) - (y*y) ) / denominator;
+    shearStresses[0] = -1.0 * D * x * ( (x*x) - (y*y) ) / denominator;
     shearStresses[1] = 0.0;
     shearStresses[2] = 0.0;
 
@@ -340,11 +405,11 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma) const
 {
     // Stress in the local co-ordinate system
     Stress sigmaLocal = this->coordinateSystem.stress_BaseToLocal(sigma);
-    Vector3d burgersLocal = this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec);
+    //Vector3d burgersLocal = this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec);
 
     // Forces
-    Vector3d f_edge  = Vector3d(-1.0*sigmaLocal.getValue(0,1), sigmaLocal.getValue(0,0), 0.0) * burgersLocal.getValue(0);
-    Vector3d f_screw = Vector3d(-1.0*sigmaLocal.getValue(1,2), sigmaLocal.getValue(0,2), 0.0) * burgersLocal.getValue(2);
+    Vector3d f_edge  = Vector3d(-1.0*sigmaLocal.getValue(0,1), sigmaLocal.getValue(0,0), 0.0) * this->burgersLocal.getValue(0);
+    Vector3d f_screw = Vector3d(-1.0*sigmaLocal.getValue(1,2), sigmaLocal.getValue(0,2), 0.0) * this->burgersLocal.getValue(2);
     Vector3d force = f_edge + f_screw;
 
     // Rotate to base system
