@@ -141,6 +141,16 @@ public:
    * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
    */
   SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class SlipPlane.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~SlipPlane ()
+  {
+
+  }
   
   // Assignment functions
   /**
@@ -191,6 +201,12 @@ public:
    * @param d The dislocation source that is to be inserted into the silp plane's dislocation source list.
    */
   void insertDislocationSource (DislocationSource* d);
+
+  /**
+   * @brief Set the time increment value for the slip plane.
+   * @param t The value of the time increment.
+   */
+  void setTimeIncrement (double t);
   
   // Access functions
   /**
@@ -228,6 +244,18 @@ public:
    * @return True if the provided index is greater than or equal to 0 and less than the number of dislocations on the slip plane (the memory location pointed to by d is populated with the Dislocation data). Otherwise, the return value is false.
    */
   bool getDislocation (int i, Dislocation* d) const;
+
+  /**
+   * @brief Get the entire vector container which holds the pointers to all the defects
+   * @return The vector of the defects lying on the slip plane.
+   */
+  std::vector<Defect*> getDefectList ();
+
+  /**
+   * @brief Return the number of defects lying in the slip plane.
+   * @return The number of defects lying in the slip plane.
+   */
+  int getNumDefects () const;
   
   /**
    * @brief Get the entire vector container which holds the dislocations lying on this slip plane.
@@ -293,6 +321,20 @@ public:
    */
   Stress getAppliedStress_base() const;
 
+  /**
+   * @brief Finds the dislocation corresponding to a member of the vector defects.
+   * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+   * @return Pointer to the dislocation corresponding to the defect given by the iterator.
+   */
+  Dislocation* findDislocation (std::vector<Defect*>::iterator defect_iterator);
+
+  /**
+   * @brief Finds the dislocation corresponding to a member of the vector defects.
+   * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+   * @return Iterator indicating the element of SlipPlane::dislocations corresponding to the defect provided in the argument.
+   */
+  std::vector<Dislocation*>::iterator findDislocationIterator (std::vector<Defect*>::iterator defect_iterator);
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
@@ -357,6 +399,16 @@ public:
   void moveDislocations (std::vector<double> timeIncrement);
 
   /**
+   * @brief Function to move dislocations to local a equilibrium position.
+   * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
+   * @param minDistance Minimum distance of approach between two defects.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @param dtGlobal The global time increment.
+   */
+  void moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu);
+
+  /**
    * @brief The distance of the point pos from the n^th extremity is returned.
    * @param pos Position vector of the point whose distance is to be calculated.
    * @param n Index of the extremity. Can be only 0 or 1. In all other cases 0.0 is returned.
@@ -378,6 +430,55 @@ public:
    * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
    */
   void sortDislocationSources ();
+
+  // Local reactions
+  /**
+   * @brief Function to check for local reactions between defects present on the slip plane.
+   * @details When two defects approach each other closer than the reaction radius, there is a possibility of an interaction between them. These interactions are detected and triggered by this function.
+   * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+   */
+  void checkLocalReactions (double reactionRadius);
+
+  /**
+   * @brief Identify the kind of local reaction that is to be applied to the defect pair and call the appropriate function.
+   * @details This function checks for the kind of local reaction that is to be applied to the defect pair, calls the appropriate function, and returns the iterator to the next defect that is to be checked for local reactions. Returning the iterator is important because the vector SlipPlane::defects may lose members as a result of a local reaction, and the iterators in the calling function may become invalid.
+   * @param d0 Iterator of type std::vector<Defect*> indicating the first defect that participates in the local reaction.
+   * @param d1 Iterator of type std::vector<Defect*> indicating the second defect that participates in the local reaction.
+   * @return Iterator to the next position that is to be checked for a local reaction.
+   */
+  std::vector<Defect*>::iterator identifyLocalReaction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Identify the reaction to occur between a free surface and another defect.
+   * @param d0 Iterator indicating the free surface in SlipPlane::defects.
+   * @param d1 Iterator indicating the other defect in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator freeSurfaceInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Identify the reaction to occur between a dislocation and another defect.
+   * @param d0 Iterator indicating the dislocation in SlipPlane::defects.
+   * @param d1 Iterator indicating the other defect in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator dislocationInteractions (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
+
+  /**
+   * @brief Absorb a dislocation into a free surface.
+   * @details When a dislocation approaches a free surface, it is pulled toward it due to the diminishing strain energy, and eventually the dislocation gets absorbed into the surface. This function provides that functionality.
+   * @param disl Pointer of type Defect* that is to be absorbed into the free surface.
+   * @return Iterator to the position of the new dislocation that occupies the place of the dislocation that was absorbed.
+   */
+  std::vector<Defect*>::iterator absorbDislocation (std::vector<Defect*>::iterator disl);
+
+  /**
+   * @brief Checks for the kind of interaction between two dislocations.
+   * @param d0 Iterator giving the first dislocation in SlipPlane::defects.
+   * @param d1 Iterator giving the second dislocation in SlipPlane::defects.
+   * @return Iterator to the position from where the function SlipPlane::checkLocalReactions should continue.
+   */
+  std::vector<Defect*>::iterator dislocation_dislocationInteraction (std::vector<Defect*>::iterator d0, std::vector<Defect*>::iterator d1);
 
   // Stresses
   /**
@@ -414,8 +515,9 @@ public:
    * @brief Writes the attributes of the slip plane and all defects lying on it.
    * @details This function writes to a file (the name of which is provided in the string filename) all the attributes of the slip plane and all defects lying on it. The file may be useful as statistics or to start the simulation off from an intermediate stage.
    * @param filename The name of the file to which all the attributes are to be written.
+   * @param totalTime The value of time at this point.
    */
-  void writeSlipPlane (std::string filename);
+  void writeSlipPlane (std::string filename, double totalTime);
   
   /**
    * @brief Writes the stress distribution of stresses (in the slip plane's local co-ordinate system) along the slip plane with the given resolution.
@@ -425,6 +527,14 @@ public:
    * @param param Pointer to the instance of the parameter class which contains all the simulation parameters.
    */
   void writeSlipPlaneStressDistribution (std::string filename, int resolution, Parameter *param);
+
+  /**
+   * @brief Writes out the current time and the positions of all difects lying on the slip plane.
+   * @details This function writes out, in a row, the time and the positions of all defects along the slip plane x-axis at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+   * @param filename Name of the file into which the data is to be written.
+   * @param t Value of time.
+   */
+  void writeAllDefects (std::string filename, double t);
 };
 
 #endif

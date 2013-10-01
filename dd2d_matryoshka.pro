@@ -3,6 +3,8 @@ CONFIG += console
 CONFIG -= app_bundle
 CONFIG -= qt
 
+LIBS += -L/usr/lib -lgsl -lgslcblas -lm
+
 SOURCES += main.cpp \
     vector3d.cpp \
     tools.cpp \
@@ -19,7 +21,10 @@ SOURCES += main.cpp \
     dislocation.cpp \
     defect.cpp \
     standardSlipSystem.cpp \
-    coordinatesystem.cpp
+    coordinatesystem.cpp \
+    grainboundary.cpp \
+    freesurface.cpp \
+    slipPlaneLocalReactions.cpp
 
 HEADERS += \
     vector3d.h \
@@ -41,5 +46,7 @@ HEADERS += \
     defectType.h \
     standardSlipSystem.h \
     constants.h \
-    coordinatesystem.h
+    coordinatesystem.h \
+    grainboundary.h \
+    freesurface.h
 

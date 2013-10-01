@@ -47,12 +47,12 @@ class Dislocation : public Defect
 {
 protected:
   /**
-   * @brief Burgers vector of the dislocation.
+   * @brief Burgers vector of the dislocation, in the slip-plane co-ordinate system.
    */
   Vector3d bvec;
   
   /**
-   * @brief Line vector if the dislocation.
+   * @brief Line vector of the dislocation, in the slip-plane co-ordinate system.
    */
   Vector3d lvec;
   
@@ -119,7 +119,7 @@ public:
   /**
    * @brief Constructor that explicitly specifies all parameters.
    * @details All parameters: Burgers vector, line vector, position, are specified.
-   * @param burgers Burgers vector.
+   * @param burgers Burgers vector, in the slip-plane co-ordinate system.
    * @param line Line vector.
    * @param position Position of the dislocation.
    * @param bm Magnitude of the Burgers vector in metres.
@@ -136,6 +136,16 @@ public:
    * @param m Mobility (true/false).
    */
   Dislocation (Vector3d burgers, Vector3d line, Vector3d position, CoordinateSystem *base, double bm, bool m);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class Dislocation.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Dislocation ()
+  {
+
+  }
   
   // Assignment functions
   /**
@@ -163,12 +173,6 @@ public:
    * @details Sets the flag mobile to false.
    */
   void setPinned ();
-
-  /**
-   * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
-   * @param s Stress.
-   */
-  void setTotalStress (Stress s);
 
   /**
    * @brief Sets the total force in the class and the vector keeping track of forces in each iteration.
@@ -205,12 +209,6 @@ public:
   bool isMobile () const;
 
   /**
-   * @brief Gets the total stress in the current iteration.
-   * @return Total stress in the current iteration.
-   */
-  Stress getTotalStress () const;
-
-  /**
    * @brief Gets the total force on the dislocation in the current iteration.
    * @return Total force on the dislocation in the current iteration.
    */
@@ -221,14 +219,6 @@ public:
    * @return Velocity of the dislocation in the current iteration.
    */
   Vector3d getVelocity () const;
-
-  /**
-   * @brief Returns the total stress at the iteration i.
-   * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
-   * @param i Iteration number for which the total stress is to be returned.
-   * @return Total stress at iteration i.
-   */
-  Stress getTotalStressAtIteration (int i) const;
 
   /**
    * @brief Returns the total force at the iteration i.
@@ -284,6 +274,18 @@ public:
    * @return The ideal time increment for this dislocation.
    */
   double idealTimeIncrement (double minDistance, Defect *d);
+
+  // Interaction distance
+  /**
+   * @brief Calculates and returns the distance from the present dislocation at which the interaction force opposes the force provided as argument.
+   * @details This function calculates the distance at which the present dislocation's interaction force opposes the force provided as argument. This force is calculated using the generic interaction force between two parallel dislocations.
+   * @param force The total force, expressed in the base co-ordinate system, experienced by the other defect.
+   * @param burgers Burgers vector of the dislocation with which the interaction force is to be calculated, expressed in the base co-ordinate system.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument. This position vector is expressed in the base co-ordinate system.
+   */
+  virtual Vector3d equilibriumDistance(Vector3d force, Vector3d burgers, double mu, double nu);
 };
 
 #endif

@@ -43,6 +43,15 @@
 #include "tools.h"
 
 /**
+ * @brief The timeStepType enum indicates the kind of time step that will be used.
+ * @details At the moment, two kinds of time step are allowed: ADAPTIVE and FIXED. In the adaptive step a time increment is calculated for each dislocation based on its velocity and distance to the next defect, while for the fixed time step, a global time increment is set and dislocations are moved according to their velocities.
+ */
+enum TimeStepType {
+    ADAPTIVE = 0,
+    FIXED
+};
+
+/**
  * @brief Parameter class to hold all simulation parameters.
  * @details The simulation needs several parameters - such as material properties, stopping criterion, time steps, etc. - in order to function. An instance of this class will hold all these values in one place for easy access throughout the simulation. All data in this class is made public to facilitate access throughout the simulation.
  */
@@ -69,6 +78,23 @@ public:
      * @brief Drag coefficient (kg/s).
      */
     double B;
+
+    /**
+     * @brief Mean value of the Critical nucleation shear stress for the nucleation of a dislocation dipole.
+     * @details The critical shear stress for dipole nucleation is not the same for all dislocation dipoles in the simulation in order to avoid simultaneous activation of all sources. A Gaussian distribution of values is created with a mean and standard deviation speciefied in the parameters file. This value provides the mean.
+     */
+    double tauCritical_mean;
+
+    /**
+     * @brief Standard deviation of the Critical nucleation shear stress for the nucleation of a dislocation dipole.
+     * @details The critical shear stress for dipole nucleation is not the same for all dislocation dipoles in the simulation in order to avoid simultaneous activation of all sources. A Gaussian distribution of values is created with a mean and standard deviation speciefied in the parameters file. This value provides the standard deviation (SD). In a Gaussian distribution, 68% of the population is expected to lie within +/- 1 SD of the mean and 95% within +/- 2SD. Therefore, the value of SD provided should be roughly half of the maximum difference from the mean for values of the critical shear stress.
+     */
+    double tauCritical_stdev;
+
+    /**
+     * @brief Time for which the dislocation source must experience greater than threshold nucleation shear stress in order to emit a dipole.
+     */
+    double tauCritical_time;
     
     // Load
     /**
@@ -108,6 +134,11 @@ public:
      * @details In the simulation, two defects may collide and the resulting reaction depends on the type of defects. This collision is considered to happen within a certain radius around the defect. This radius is given by this variable as a multiple of the Burgers vector magnitude. It should typically be just a little larger than the limitingDistance variable.
      */
     double reactionRadius;
+
+    /**
+     * @brief The kind of time step to be used.
+     */
+    TimeStepType timeStepType;
     
     /**
      * @brief The smallest time step permitted in an iteration.
@@ -136,6 +167,21 @@ public:
      * @brief Indicator about writing the slip plane stress distribution to file and its frequency.
      */
     Statistics slipPlaneStressDistributions;
+
+    /**
+     * @brief Indicator for writing all defect positions to file.
+     */
+    Statistics allDefectPositions;
+
+    // Destructor
+    /**
+     * @brief Destructor for the class Parameter.
+     * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+     */
+    virtual ~Parameter ()
+    {
+
+    }
 
     // Functions
     /**

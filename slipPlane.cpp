@@ -142,6 +142,21 @@ void SlipPlane::createCoordinateSystem(CoordinateSystem* base)
     this->coordinateSystem.setBase(base);
     // Rotation matrix
     this->coordinateSystem.calculateRotationMatrix();
+
+    // In order to calculate the local co-ordinate system,
+    // it was necessary to express the extremity positions
+    // in the base co-ordinate system. Now that this is done,
+    // the extremity positions should be converted to the
+    // slip-plane's local system.
+    Vector3d pBase, pLocal;
+
+    pBase = this->extremities[0].getPosition();
+    pLocal = this->coordinateSystem.vector_BaseToLocal(pBase);
+    this->extremities[0].setPosition(pLocal);
+
+    pBase = this->extremities[1].getPosition();
+    pLocal = this->coordinateSystem.vector_BaseToLocal(pBase);
+    this->extremities[1].setPosition(pLocal);
 }
 
 /**
@@ -182,6 +197,15 @@ void SlipPlane::insertDislocationSourceList (std::vector<DislocationSource*> dis
 void SlipPlane::insertDislocationSource (DislocationSource *d)
 {
     this->dislocationSources.push_back(d);
+}
+
+/**
+ * @brief Set the time increment value for the slip plane.
+ * @param t The value of the time increment.
+ */
+void SlipPlane::setTimeIncrement (double t)
+{
+    this->dt = t;
 }
 
 // Access functions
@@ -247,6 +271,24 @@ bool SlipPlane::getDislocation (int i, Dislocation* d) const
     else {
         return (false);
     }
+}
+
+/**
+ * @brief Get the entire vector container which holds the pointers to all the defects
+ * @return The vector of the defects lying on the slip plane.
+ */
+std::vector<Defect*> SlipPlane::getDefectList ()
+{
+    return (this->defects);
+}
+
+/**
+ * @brief Return the number of defects lying in the slip plane.
+ * @return The number of defects lying in the slip plane.
+ */
+int SlipPlane::getNumDefects () const
+{
+    return (this->defects.size());
 }
 
 /**
@@ -379,6 +421,79 @@ Stress SlipPlane::getAppliedStress_base() const
     return (this->appliedStress_base);
 }
 
+/**
+ * @brief Finds the dislocation corresponding to a member of the vector defects.
+ * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+ * @return Pointer to the dislocation corresponding to the defect given by the iterator.
+ */
+Dislocation* SlipPlane::findDislocation(std::vector<Defect*>::iterator defect_iterator)
+{
+    /*
+    std::vector<Defect*>::iterator dit = this->defects.begin();
+    std::vector<Dislocation*>::iterator dislocation_iterator = this->dislocations.begin();
+
+    while (dit != this->defects.end()) {
+        if ((*dit)->getDefectType() == DISLOCATION) {
+            // This defect is a dislocation - check if it is the one we need
+            if (dit == defect_iterator) {
+                // This is the dislocation we need
+                return ( *dislocation_iterator );
+            }
+            else {
+                // This is not the dislocation we need - increment the count
+                dislocation_iterator++;
+                dit++;
+            }
+        }
+    }
+
+    // If we are still here, the dislocation was not found
+    return (NULL);
+    */
+
+    std::vector<Dislocation*>::iterator disl = this->findDislocationIterator(defect_iterator);
+
+    if (disl == this->dislocations.end()) {
+        // The dislocation was not found
+        return (NULL);
+    }
+    else {
+        return ( *disl );
+    }
+}
+
+/**
+ * @brief Finds the dislocation corresponding to a member of the vector defects.
+ * @param defect_iterator Iterator indicating an element of the vector SlipPlane::defects.
+ * @return Iterator indicating the element of SlipPlane::dislocations corresponding to the defect provided in the argument.
+ */
+std::vector<Dislocation*>::iterator SlipPlane::findDislocationIterator (std::vector<Defect*>::iterator defect_iterator)
+{
+    std::vector<Defect*>::iterator dit = this->defects.begin();
+    std::vector<Dislocation*>::iterator dislocation_iterator = this->dislocations.begin();
+
+    while (dit != this->defects.end()) {
+        if ((*dit)->getDefectType() == DISLOCATION) {
+            // This defect is a dislocation - check if it is the one we need
+            if (dit == defect_iterator) {
+                // This is the dislocation we need
+                return ( dislocation_iterator );
+            }
+            else {
+                // This is not the dislocation we need - increment the count
+                dislocation_iterator++;
+                dit++;
+            }
+        }
+        else {
+            dit++;
+        }
+    }
+
+    // If we are still here, the dislocation was not found
+    return (this->dislocations.end());
+}
+
 // Update functions
 /**
  * @brief Update the defects vector.
@@ -461,7 +576,7 @@ void SlipPlane::calculateDislocationStresses (double mu, double nu)
             // Superpose the stress fields of all other dislocations
             s = s + defect->stressField(p, mu, nu);
         }
-        disl->setTotalStress (s);
+        disl->setTotalStress(s);
     }
 }
 
@@ -594,6 +709,132 @@ void SlipPlane::moveDislocations (std::vector<double> timeIncrement)
 
         d++;
         t++;
+    }
+}
+
+/**
+ * @brief Function to move dislocations to local a equilibrium position.
+ * @details For each dislocation, an equilibrium position is calculated where the interaction force from the next defect, in the direction of the balances the total Peach-Koehler force experienced by it. If the next defect has no stress field, then the dislocation is moved to within the minimum permissible distance.
+ * @param minDistance Minimum distance of approach between two defects.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
+ * @param dtGlobal The global time increment.
+ */
+void SlipPlane::moveDislocationsToLocalEquilibrium(double minDistance, double dtGlobal, double mu, double nu)
+{
+    std::vector<Defect*>::iterator dit; // Iterator for defects
+
+    // Dislocation access variables
+    int count_disl;
+    Dislocation* disl;
+
+    // Defect access variables
+    int count_def;
+    Defect* def;
+
+    Vector3d velocity;
+    int vSign;  // The direction of the dislocation velocity
+    double maxDistance; // Maximum distance allowed for dislocation velocity and global time increment
+    Vector3d equilibriumPosition;
+    Vector3d pDisl, pDef, middle, pDislPrime;
+    double distance_disl_def;
+    double distance_disl_eq;
+
+    // Vector container with the new positions of defects on the slip plane. Initialized with zero vectors.
+    std::vector<Vector3d> newPositions(this->getNumDefects(), Vector3d::zeros());
+    std::vector<Vector3d>::iterator pit;    // Position iterator
+
+    count_def = 0;
+    count_disl = 0;
+    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++,count_def++) {
+        if ((*dit)->getDefectType() == DISLOCATION) {
+            // The only defect that will move
+            disl = this->dislocations[count_disl++];
+            velocity = disl->getVelocity();
+            // Maximum distance
+            maxDistance = velocity.magnitude() * dtGlobal;
+            // Direction of movement
+            vSign = sgn(velocity.getValue(0));
+            switch (vSign) {
+            case -1:
+                // The dislocation is moving towards the previous defect.
+                def = *(dit-1);
+                break;
+            case 0:
+                // The dislocation is not moving at all - do nothing
+                continue;
+                break;
+            case 1:
+                // The dislocation is moving towards the next defect.
+                def = *(dit+1);
+                break;
+            default:
+                // Unknown behaviour - do nothing
+                continue;
+                break;
+            }
+
+            /* Treat the interaction according to the type of defect */
+
+            // Find equilibrium position
+            equilibriumPosition = def->equilibriumDistance(disl->getTotalForce(), disl->getBurgers(), mu, nu);
+            pDisl = disl->getPosition();
+            pDef = def->getPosition();
+
+            // Check for overtaking
+            distance_disl_def = (pDef - pDisl).magnitude();
+            distance_disl_eq  = (equilibriumPosition - pDisl).magnitude();
+
+            if (distance_disl_eq >= (distance_disl_def - minDistance)) {
+                // There is an imminent collision
+                // Treat according to the type of defect with which it may collide
+                switch (def->getDefectType()) {
+                case DISLOCATION :
+                    // This is a dislocation of opposite Burgers vector.
+                    middle = ( pDisl + pDef ) * 0.5;    // Mid-point between the two
+                    pDislPrime = middle - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
+                    break;
+                case GRAINBOUNDARY :
+                    // The other defect is a grain boundary
+                    // The equilibrium position should be a point at the minDistance
+                    // in order to create a pile up
+                    pDislPrime = pDef - ( (pDef - pDisl) * (minDistance / distance_disl_def) );
+                    break;
+                case FREESURFACE :
+                    // The next defect is a free surface
+                    // The FREESURFACE is a sink for dislocations
+                    pDislPrime = pDef;
+                    break;
+                default :
+                    // Unknown defect type - do nothing
+                    pDislPrime = pDisl;
+                    break;
+                }
+            }
+            else {
+                // No collision - so it is safe to move the dislocation to the equilibrium position
+                pDislPrime = equilibriumPosition;
+            }
+
+            // Check how far the dislocation has to go to reach the equilibrium position
+            if ( (pDislPrime - pDisl).magnitude() <= maxDistance ) {
+                // The new position is not too far
+                newPositions[count_def] = pDislPrime;
+            }
+            else {
+                // Too far. Move only by maxDistance
+                newPositions[count_def] = pDisl + (Vector3d(vSign,0.0,0.0) * maxDistance);
+            }
+        }
+        else {
+            // This defect is not a dislocation - it will remain immobile
+            newPositions[count_def] = (*dit)->getPosition();
+        }
+    }
+
+    // Populate the new positions into the defects
+    for (pit=newPositions.begin(), dit = this->defects.begin(); pit != newPositions.end(); pit++, dit++) {
+        (*dit)->setPosition(*pit);
     }
 }
 

@@ -47,6 +47,8 @@ void simulateSingleSlipPlane ()
 
     Parameter *param = new Parameter;
 
+    double currentTime;
+
     if ( param->getParameters( fName ) )
     {
         message = "Success: read file " + fName;
@@ -57,13 +59,13 @@ void simulateSingleSlipPlane ()
 
         fName.clear ();
         fName = param->input_dir + "/" + param->dislocationStructureFile;
-        if ( readSlipPlane ( fName, slipPlane ) )
+        if ( readSlipPlane ( fName, slipPlane, &currentTime, param ) )
         {
             message = "Success: read file " + fName;
             displayMessage ( message );
             message.clear ();
 
-            singleSlipPlane_iterate ( param, slipPlane );
+            singleSlipPlane_iterate ( param, slipPlane, currentTime );
         }
         else {
             message = "Error: Unable to read slip plane from file " + fName;
@@ -90,9 +92,11 @@ void simulateSingleSlipPlane ()
  * @details The details of the slip plane and its dislocations are stored in a file the name of which is provided. This file is read and the information is saved into the instance of the SlipPlane class, the pointer to which is given.
  * @param fileName String containing the name of the file.
  * @param s Pointer to the instance of SlipPlane into which all data is to be stored.
+ * @param currentTime Pointer to the variable storing the initial time.
+ * @param param Pointer to the Parameter class object containing the simulation parameters.
  * @return Flag indicating the success or failure of the operation.
  */
-bool readSlipPlane (std::string fileName, SlipPlane *s)
+bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Parameter *param)
 {
     std::ifstream fp ( fileName.c_str() );
     std::string line;
@@ -110,6 +114,18 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
 
     if ( fp.is_open() )
     {
+        // Read the initial time
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        *currentTime = atof(line.c_str());
+
         // Read the extremities
         e = new Vector3d[2];
         do {
@@ -135,7 +151,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
         e[1] = readVectorFromLine ( line );
 
         s->setExtremities( e );
-        delete ( e );
+        delete[] ( e );
         e = NULL;
 
         // Read the normal vector
@@ -206,6 +222,8 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
+        // Create the Gaussian distribution of values for values of tauCritical
+        std::vector<double> tauC_values = rng_Gaussian( n, param->tauCritical_mean, param->tauCritical_stdev );
        // Clear the dislocationSources vector before inserting new dislocation sources
         s->clearDislocationSources();
         // Read the dislocation sources
@@ -220,7 +238,11 @@ bool readSlipPlane (std::string fileName, SlipPlane *s)
                 }
             } while ( ignoreLine ( line ) );
             dSource = readDislocationSourceFromLine( line );
+            // Set the tauCritical and time
+            dSource->setTauCritical(tauC_values[i]);
+            dSource->setTimeTillDipoleEmission(param->tauCritical_time);
             dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
+            dSource->refreshDislocation();
             dSource->calculateRotationMatrix();
             s->insertDislocationSource ( dSource );
         }
@@ -317,8 +339,6 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
     std::string a;
     Vector3d pos, bvec, lvec;
     double bmag;
-    double tau;
-    double timeLimit;
 
     int i;
 
@@ -344,15 +364,7 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
     ss >> a;
     bmag = atof ( a.c_str() );
 
-    // Read critical stress
-    ss >> a;
-    tau = atof ( a.c_str() );
-
-    // Read time limit for dipole emission
-    ss >> a;
-    timeLimit = atof ( a.c_str() );
-
-    DislocationSource* dSource = new DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit );
+    DislocationSource* dSource = new DislocationSource ( bvec, lvec, pos, bmag, 0.0, 0.0 );
     return (dSource);
 }
 
@@ -360,10 +372,11 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
  * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
  * @param slipPlane Pointer to the instance of the SlipPlane class containing the data for the dislocation structure.
+ * @param currentTime The value of time at the beginning of the simulation.
  */
-void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
+void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double currentTime)
 {
-    double totalTime = 0.0;
+    double totalTime = currentTime;
     int nIterations = 0;
 
     std::vector<double> simulationTime;
@@ -374,6 +387,9 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     std::string fileName;
     std::string message;
 
+    double limitingDistance = ( param->limitingDistance * param->bmag );
+    double reactionRadius = ( param->reactionRadius * param->bmag );
+
     // Calculate stresses in slip plane system.
     slipPlane->calculateSlipPlaneAppliedStress(param->appliedStress);
 
@@ -382,7 +398,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
     // Write statistics
     if ( param->dislocationPositions.ifWrite() ) {
         fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-        slipPlane->writeSlipPlane ( fileName );
+        slipPlane->writeSlipPlane ( fileName, totalTime );
         fileName.clear ();
     }
 
@@ -404,11 +420,25 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         // Calculate dislocation velocities
         slipPlane->calculateVelocities ( param->B );
 
-        // Calculate the time increment
-        timeIncrement = slipPlane->calculateTimeIncrement ( ( param->limitingDistance * param->bmag ), param->limitingTimeStep );
+        switch (param->timeStepType) {
+        case ADAPTIVE:
+            // Calculate the time increment
+            timeIncrement = slipPlane->calculateTimeIncrement ( limitingDistance,
+                                                                param->limitingTimeStep );
+            // Displace the dislocations
+            slipPlane->moveDislocations ( timeIncrement );
+            break;
 
-        // Displace the dislocations
-        slipPlane->moveDislocations ( timeIncrement );
+        case FIXED:
+            slipPlane->setTimeIncrement(param->limitingTimeStep);
+            slipPlane->moveDislocationsToLocalEquilibrium( limitingDistance,
+                                                           param->limitingTimeStep,
+                                                           param->mu, param->nu );
+            break;
+        }
+
+        // Local reactions
+        slipPlane->checkLocalReactions(reactionRadius);
 
         // Increment counters
         totalTime += slipPlane->getTimeIncrement ();
@@ -422,7 +452,7 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
         // Write statistics
         if ( param->dislocationPositions.ifWrite() ) {
             fileName = param->output_dir + "/" + param->dislocationPositions.name + doubleToString ( totalTime ) + ".txt";
-            slipPlane->writeSlipPlane ( fileName );
+            slipPlane->writeSlipPlane ( fileName, totalTime );
             fileName.clear ();
         }
 
@@ -432,6 +462,12 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane)
                                                           param->slipPlaneStressDistributions.parameters[0],
                                                           param );
             fileName.clear ();
+        }
+
+        if ( param->allDefectPositions.ifWrite() ) {
+            fileName = param->output_dir + "/" + param->allDefectPositions.name + ".txt";
+            slipPlane->writeAllDefects( fileName, totalTime );
+            fileName.clear();
         }
 
         // Check for stopping criterion

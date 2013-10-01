@@ -104,6 +104,27 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Tau critical mean
+    if ( first=="tauCritical_mean" ) {
+        ss >> v;
+        this->tauCritical_mean = atof ( v.c_str() );
+        return;
+    }
+
+    // Tau critical standard deviation
+    if ( first=="tauCritical_stdev" ) {
+        ss >> v;
+        this->tauCritical_stdev = atof ( v.c_str() );
+        return;
+    }
+
+    // Tau critical time
+    if ( first=="tauCritical_time" ) {
+        ss >> v;
+        this->tauCritical_time = atof ( v.c_str() );
+        return;
+    }
+
     // Applied stress
     if (first=="appliedStress")
     {
@@ -145,6 +166,20 @@ void Parameter::parseLineData (std::string line)
       }
 
       return;
+    }
+
+    // Time step kind
+    if (first=="TimeStep" || first=="timestep" || first=="Timestep" || first=="timeStep")
+    {
+        ss >> v;
+        if (v=="adaptive" || v=="Adaptive")
+        {
+            this->timeStepType = ADAPTIVE;
+        }
+        else
+        {
+            this->timeStepType = FIXED;
+        }
     }
 
     // Limiting distance
@@ -214,6 +249,20 @@ void Parameter::parseLineData (std::string line)
             // Read additional parameter: resolution
             ss >> v;
             this->slipPlaneStressDistributions.addParameter ( atof ( v.c_str() ) );
+        }
+        return;
+    }
+
+    // Statistics all defect positions
+    if (first=="statsAllDefects") {
+        ss >> v;
+        int write = atoi(v.c_str());
+        ss >> v;
+        this->allDefectPositions = Statistics ( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->allDefectPositions.addName(v);
         }
         return;
     }

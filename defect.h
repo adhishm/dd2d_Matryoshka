@@ -31,9 +31,13 @@
 #ifndef DEFECT_H
 #define DEFECT_H
 
+#include <vector>
+#include <algorithm>
+
 #include "defectType.h"
 #include "stress.h"
 #include "coordinatesystem.h"
+#include "tools.h"
 
 #ifndef DEFAULT_DEFECT_POSITION
 #define DEFAULT_DEFECT_POSITION
@@ -55,6 +59,18 @@ class Defect
    * @details The co-ordinate system contains the vectors and the origin. This gives us the orientation and the position of the defect.
    */
   CoordinateSystem coordinateSystem;
+
+  /**
+   * @brief The total stress experienced by the defect.
+   * @details The defect experiences a stress that is the superposition of the externally applied stress and the stress fields of all the defects present in the simulation.
+   */
+  Stress totalStress;
+
+  /**
+   * @brief Keeps a trace of the total stress from every iteration.
+   * @details The total stress experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this variable may be useful for calculating average stresses over a given time period.
+   */
+  std::vector<Stress> totalStresses;
     
 public:
   /**
@@ -93,6 +109,16 @@ public:
    * @param base Pointer ot the base co-ordinate system.
    */
   Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base);
+
+  // Destructor
+  /**
+   * @brief Destructor for the class Defect.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Defect ()
+  {
+
+  }
   
   // Assignment functions
   /**
@@ -145,6 +171,12 @@ public:
    * @param d The defect type.
    */
   void setDefectType (DefectType d);
+
+  /**
+   * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
+   * @param s Stress.
+   */
+  void setTotalStress (Stress s);
     
   // Access Functions
   /**
@@ -158,6 +190,26 @@ public:
    * @return The defect type in the form of a member of Defect::DefectType.
    */
   DefectType getDefectType () const;
+
+  /**
+   * @brief Returns a pointer to the co-ordinate system of the defect.
+   * @return Pointer to the co-ordinate system of the defect.
+   */
+  CoordinateSystem* getCoordinateSystem ();
+
+  /**
+   * @brief Gets the total stress in the current iteration.
+   * @return Total stress in the current iteration.
+   */
+  Stress getTotalStress () const;
+
+  /**
+   * @brief Returns the total stress at the iteration i.
+   * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
+   * @param i Iteration number for which the total stress is to be returned.
+   * @return Total stress at iteration i.
+   */
+  Stress getTotalStressAtIteration (int i) const;
     
   // Virtual functions
   /**
@@ -197,6 +249,20 @@ public:
   virtual double idealTimeIncrement (double minDistance, Defect* d)
   {
       return (1000.0);
+  }
+
+  /**
+   * @brief Calculates and returns the distance from the present defect at which the present defect's force opposes the force provided as argument.
+   * @details This function calculates the distance at which the present defect's interaction force opposes the force provided as argument. For a generic defect, the stress field is zero, so the final distance is also zero.
+   * @param force The total force, expressed in the base co-ordinate system, experienced by the other defect.
+   * @param burgers Burgers vector of the dislocation with which the interaction force is to be calculated.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument.
+   */
+  virtual Vector3d equilibriumDistance (Vector3d force, Vector3d burgers, double mu, double nu)
+  {
+      return (this->getPosition());
   }
 };
 

@@ -55,7 +55,7 @@ Dislocation::Dislocation ()
 /**
  * @brief Constructor that explicitly specifies all parameters.
  * @details All parameters: Burgers vector, line vector, position, are specified.
- * @param burgers Burgers vector.
+ * @param burgers Burgers vector, in the slip-plane co-ordinate system.
  * @param line Line vector.
  * @param position Position of the dislocation.
  * @param bm Magnitude of the Burgers vector in metres.
@@ -104,8 +104,8 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position, Co
     axes[0] = axes[1] ^ axes[2];
     this->setCoordinateSystem(axes,position,base);
 
-    this->lvec = Vector3d(0.0,0.0,1.0);
-    this->bvec = this->coordinateSystem.vector_BaseToLocal_noTranslate(burgers);
+    this->lvec = line;
+    this->bvec = burgers;
     this->bmag = bm;
     this->mobile = m;
 }
@@ -152,16 +152,6 @@ void Dislocation::setMobile ()
 void Dislocation::setPinned ()
 {
     this->mobile = false;
-}
-
-/**
- * @brief Sets the total stress value in the class and the vector keeping track of stresses in each iteration.
- * @param s Stress.
- */
-void Dislocation::setTotalStress (Stress s)
-{
-    this->totalStress = s;
-    this->totalStresses.push_back (s);
 }
 
 /**
@@ -222,15 +212,6 @@ bool Dislocation::isMobile () const
 }
 
 /**
- * @brief Gets the total stress in the current iteration.
- * @return Total stress in the current iteration.
- */
-Stress Dislocation::getTotalStress () const
-{
-    return (this->totalStress);
-}
-
-/**
  * @brief Gets the total force on the dislocation in the current iteration.
  * @return Total force on the dislocation in the current iteration.
  */
@@ -248,25 +229,7 @@ Vector3d Dislocation::getVelocity () const
     return (this->velocity);
 }
 
-/**
- * @brief Returns the total stress at the iteration i.
- * @details The total stress at the iteration i is returned. If an invalid value of i is provided, a zero stress tensor is returned.
- * @param i Iteration number for which the total stress is to be returned.
- * @return Total stress at iteration i.
- */
-Stress Dislocation::getTotalStressAtIteration (int i) const
-{
-    if (i < this->totalStresses.size())
-    {
-        // If the iteration number provided is valid
-        return (this->totalStresses[i]);
-    }
-    else
-    {
-        // Invalid iteration number - return zeros
-        return (Stress());
-    }
-}
+
 
 /**
  * @brief Returns the total force at the iteration i.
@@ -377,10 +340,11 @@ Vector3d Dislocation::forcePeachKoehler (Stress sigma) const
 {
     // Stress in the local co-ordinate system
     Stress sigmaLocal = this->coordinateSystem.stress_BaseToLocal(sigma);
+    Vector3d burgersLocal = this->coordinateSystem.vector_BaseToLocal_noTranslate(this->bvec);
 
     // Forces
-    Vector3d f_edge  = Vector3d(-1.0*sigmaLocal.getValue(0,1), sigmaLocal.getValue(0,0), 0.0) * this->bvec.getValue(0);
-    Vector3d f_screw = Vector3d(-1.0*sigmaLocal.getValue(1,2), sigmaLocal.getValue(0,2), 0.0) * this->bvec.getValue(2);
+    Vector3d f_edge  = Vector3d(-1.0*sigmaLocal.getValue(0,1), sigmaLocal.getValue(0,0), 0.0) * burgersLocal.getValue(0);
+    Vector3d f_screw = Vector3d(-1.0*sigmaLocal.getValue(1,2), sigmaLocal.getValue(0,2), 0.0) * burgersLocal.getValue(2);
     Vector3d force = f_edge + f_screw;
 
     // Rotate to base system
@@ -445,4 +409,32 @@ double Dislocation::idealTimeIncrement (double minDistance, Defect* d)
             return (1000.0);
         }
     }
+}
+
+// Interaction distance
+/**
+ * @brief Calculates and returns the distance from the present dislocation at which the interaction force opposes the force provided as argument.
+ * @details This function calculates the distance at which the present dislocation's interaction force opposes the force provided as argument. This force is calculated using the generic interaction force between two parallel dislocations.
+ * @param force The total force, expressed in the base co-ordinate system, experienced by the other defect.
+ * @param burgers Burgers vector of the dislocation with which the interaction force is to be calculated, expressed in the base co-ordinate system.
+ * @param mu Shear modulus in Pascals.
+ * @param nu Poisson's ratio.
+ * @return The position vector of the point at which this defect's interaction force balances out the force provided as argument. This position vector is expressed in the base co-ordinate system.
+ */
+Vector3d Dislocation::equilibriumDistance(Vector3d force, Vector3d burgers, double mu, double nu)
+{
+    // Other dislocation's Burgers vector in local system.
+    Vector3d bPrime = this->coordinateSystem.vector_BaseToLocal_noTranslate(burgers);
+    // Force to be balanced, in local system.
+    Vector3d force_local = this->coordinateSystem.vector_BaseToLocal_noTranslate(force);
+
+    double D = mu / (2.0 * PI * (1.0 - nu));
+
+    // Calculate distance based on balancing forces along the x-axis
+    double distance = -1.0 * (D / force_local.getValue(0)) * ( (this->bvec * bPrime) - (nu * this->bvec.getValue(2) * bPrime.getValue(2)) );
+
+    // Vectorize the distance, and convert to base system
+    // Since this is a position vector, it must be translated
+    Vector3d equilibriumPosition = Vector3d (distance, 0.0, 0.0);
+    return (this->coordinateSystem.vector_LocalToBase(equilibriumPosition));
 }

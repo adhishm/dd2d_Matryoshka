@@ -72,6 +72,16 @@ class Stress : public Matrix33
    */
   Stress (Matrix33 m);
 
+  // Destructor
+  /**
+   * @brief Destructor for the class Stress.
+   * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+   */
+  virtual ~Stress ()
+  {
+
+  }
+
   // Assignment functions
   /**
    * @brief Set the value of the principal stress indicated by the index.

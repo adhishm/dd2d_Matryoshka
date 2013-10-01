@@ -35,8 +35,9 @@
  * @brief Writes the attributes of the slip plane and all defects lying on it.
  * @details This function writes to a file (the name of which is provided in the string filename) all the attributes of the slip plane and all defects lying on it. The file may be useful as statistics or to start the simulation off from an intermediate stage.
  * @param filename The name of the file to which all the attributes are to be written.
+ * @param totalTime The value of time at this point.
  */
-void SlipPlane::writeSlipPlane (std::string filename)
+void SlipPlane::writeSlipPlane (std::string filename, double totalTime)
 {
     std::ofstream fp ( filename.c_str() );
     if ( !fp.is_open() ) {
@@ -47,6 +48,10 @@ void SlipPlane::writeSlipPlane (std::string filename)
     Vector3d v;
     Dislocation *d;
     DislocationSource *dSource;
+
+    // Total time
+    fp << "# Current time\n";
+    fp << totalTime << std::endl;
 
     // Extremities
     fp << "# Extremities\n";
@@ -179,4 +184,30 @@ void SlipPlane::writeSlipPlaneStressDistribution (std::string filename, int reso
     }
 
     fp.close ();
+}
+
+/**
+ * @brief Writes out the current time and the positions of all difects lying on the slip plane.
+ * @details This function writes out, in a row, the time and the positions of all defects along the slip plane x-axis at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+ * @param filename Name of the file into which the data is to be written.
+ * @param t Value of time.
+ */
+void SlipPlane::writeAllDefects (std::string filename, double t)
+{
+    std::ofstream fp (filename.c_str(), std::ios_base::app);
+    int nDefects, i;
+    Defect* def;
+    Vector3d p;
+
+    if (fp.is_open()) {
+        nDefects = this->getNumDefects();
+        fp << t << " ";
+        for (i=0; i<nDefects; i++) {
+            def = this->defects.at(i);
+            p = def->getPosition();
+            fp << p.getValue(0) << " ";
+        }
+        fp << std::endl;
+        fp.close();
+    }
 }
