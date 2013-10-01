@@ -104,6 +104,27 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Tau critical mean
+    if ( first=="tauCritical_mean" ) {
+        ss >> v;
+        this->tauCritical_mean = atof ( v.c_str() );
+        return;
+    }
+
+    // Tau critical standard deviation
+    if ( first=="tauCritical_stdev" ) {
+        ss >> v;
+        this->tauCritical_stdev = atof ( v.c_str() );
+        return;
+    }
+
+    // Tau critical time
+    if ( first=="tauCritical_time" ) {
+        ss >> v;
+        this->tauCritical_time = atof ( v.c_str() );
+        return;
+    }
+
     // Applied stress
     if (first=="appliedStress")
     {

@@ -78,6 +78,23 @@ public:
      * @brief Drag coefficient (kg/s).
      */
     double B;
+
+    /**
+     * @brief Mean value of the Critical nucleation shear stress for the nucleation of a dislocation dipole.
+     * @details The critical shear stress for dipole nucleation is not the same for all dislocation dipoles in the simulation in order to avoid simultaneous activation of all sources. A Gaussian distribution of values is created with a mean and standard deviation speciefied in the parameters file. This value provides the mean.
+     */
+    double tauCritical_mean;
+
+    /**
+     * @brief Standard deviation of the Critical nucleation shear stress for the nucleation of a dislocation dipole.
+     * @details The critical shear stress for dipole nucleation is not the same for all dislocation dipoles in the simulation in order to avoid simultaneous activation of all sources. A Gaussian distribution of values is created with a mean and standard deviation speciefied in the parameters file. This value provides the standard deviation (SD). In a Gaussian distribution, 68% of the population is expected to lie within +/- 1 SD of the mean and 95% within +/- 2SD. Therefore, the value of SD provided should be roughly half of the maximum difference from the mean for values of the critical shear stress.
+     */
+    double tauCritical_stdev;
+
+    /**
+     * @brief Time for which the dislocation source must experience greater than threshold nucleation shear stress in order to emit a dipole.
+     */
+    double tauCritical_time;
     
     // Load
     /**

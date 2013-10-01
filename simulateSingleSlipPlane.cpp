@@ -59,7 +59,7 @@ void simulateSingleSlipPlane ()
 
         fName.clear ();
         fName = param->input_dir + "/" + param->dislocationStructureFile;
-        if ( readSlipPlane ( fName, slipPlane, &currentTime ) )
+        if ( readSlipPlane ( fName, slipPlane, &currentTime, param ) )
         {
             message = "Success: read file " + fName;
             displayMessage ( message );
@@ -93,9 +93,10 @@ void simulateSingleSlipPlane ()
  * @param fileName String containing the name of the file.
  * @param s Pointer to the instance of SlipPlane into which all data is to be stored.
  * @param currentTime Pointer to the variable storing the initial time.
+ * @param param Pointer to the Parameter class object containing the simulation parameters.
  * @return Flag indicating the success or failure of the operation.
  */
-bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime)
+bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Parameter *param)
 {
     std::ifstream fp ( fileName.c_str() );
     std::string line;
@@ -207,6 +208,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime)
             disl = readDislocationFromLine(line);
             disl->setBaseCoordinateSystem(s->getCoordinateSystem());
             disl->calculateRotationMatrix();
+            disl->calculateBurgersLocal();
             s->insertDislocation ( disl );
         }
 
@@ -221,6 +223,8 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime)
             }
         } while ( ignoreLine ( line ) );
         n = atoi ( line.c_str() );
+        // Create the Gaussian distribution of values for values of tauCritical
+        std::vector<double> tauC_values = rng_Gaussian( n, param->tauCritical_mean, param->tauCritical_stdev );
        // Clear the dislocationSources vector before inserting new dislocation sources
         s->clearDislocationSources();
         // Read the dislocation sources
@@ -235,7 +239,11 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime)
                 }
             } while ( ignoreLine ( line ) );
             dSource = readDislocationSourceFromLine( line );
+            // Set the tauCritical and time
+            dSource->setTauCritical(tauC_values[i]);
+            dSource->setTimeTillDipoleEmission(param->tauCritical_time);
             dSource->setBaseCoordinateSystem(s->getCoordinateSystem());
+            dSource->refreshDislocation();
             dSource->calculateRotationMatrix();
             s->insertDislocationSource ( dSource );
         }
@@ -332,8 +340,6 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
     std::string a;
     Vector3d pos, bvec, lvec;
     double bmag;
-    double tau;
-    double timeLimit;
 
     int i;
 
@@ -359,15 +365,7 @@ DislocationSource* readDislocationSourceFromLine(std::string s)
     ss >> a;
     bmag = atof ( a.c_str() );
 
-    // Read critical stress
-    ss >> a;
-    tau = atof ( a.c_str() );
-
-    // Read time limit for dipole emission
-    ss >> a;
-    timeLimit = atof ( a.c_str() );
-
-    DislocationSource* dSource = new DislocationSource ( bvec, lvec, pos, bmag, tau, timeLimit );
+    DislocationSource* dSource = new DislocationSource ( bvec, lvec, pos, bmag, 0.0, 0.0 );
     return (dSource);
 }
 
@@ -414,15 +412,16 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
     }
 
     while ( continueSimulation ) {
-        // Calculate stresses
-        slipPlane->calculateDislocationStresses ( param->mu, param->nu );
+        // Calculate stresses on all defects
+        slipPlane->calculateDefectStresses ( param->mu, param->nu );
 
+        /*
+         * Treat the dislocations
+         */
         // Calculate forces on dislocations
         slipPlane->calculateDislocationForces ();
-
         // Calculate dislocation velocities
-        slipPlane->calculateVelocities ( param->B );
-
+        slipPlane->calculateDislocationVelocities ( param->B );
         switch (param->timeStepType) {
         case ADAPTIVE:
             // Calculate the time increment
@@ -440,7 +439,12 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
             break;
         }
 
-        // Local reactions
+        /*
+         * Treat the dislocation sources
+         */
+        slipPlane->checkDislocationSources(slipPlane->getTimeIncrement(),param->mu, param->nu,limitingDistance);
+
+        // Check for local reactions
         slipPlane->checkLocalReactions(reactionRadius);
 
         // Increment counters
