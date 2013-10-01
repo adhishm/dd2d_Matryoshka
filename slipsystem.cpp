@@ -21,6 +21,9 @@
 
 #include "slipsystem.h"
 
-slipSystem::slipSystem()
+/**
+ * @brief Default constructor for the class SlipSystem
+ */
+SlipSystem::SlipSystem()
 {
 }

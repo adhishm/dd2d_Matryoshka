@@ -25,7 +25,7 @@
 #include "slipPlane.h"
 
 
-class slipSystem
+class SlipSystem
 {
 protected:
     /**
@@ -37,7 +37,10 @@ protected:
      */
     CoordinateSystem coordinateSystem;
 public:
-    slipSystem();
+    /**
+     * @brief Default constructor for the class SlipSystem
+     */
+    SlipSystem();
 };
 
 #endif // SLIPSYSTEM_H
