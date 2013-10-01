@@ -339,10 +339,13 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
     *d0 = this->d;
     *d1 = this->d;
 
-    // There is no need to change the Burgers vector of the second dislocation because from the point of view
-    // of the slip plane, the Burgers vector is conserved throughout the Frank-Read loop
-    // The Burgers vector, in the base co-ordinate system should be flipped around
-    //d1->setBurgers(this->bvec);
+    // Both dislocations are part of the same loop, so the Burgers vector is conserved
+    d0->setBurgers(this->bvec);
+    d1->setBurgers(this->bvec);
+
+    // The line vectors are opposed
+    d0->setLineVector(this->lvec);
+    d1->setLineVector(this->lvec * -1.0);
 
     // Provisionary position vectors of the dislocations in the dislocation source co-ordinate system
     Vector3d plusSide (Lnuc/2.0, 0.0, 0.0);
