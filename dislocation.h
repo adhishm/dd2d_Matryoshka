@@ -50,6 +50,11 @@ protected:
    * @brief Burgers vector of the dislocation, in the slip-plane co-ordinate system.
    */
   Vector3d bvec;
+
+  /**
+   * @brief Burgers vector of the dislocation, in the dislocation co-ordinate system.
+   */
+  Vector3d burgersLocal;
   
   /**
    * @brief Line vector of the dislocation, in the slip-plane co-ordinate system.
@@ -67,18 +72,6 @@ protected:
    * @details The magnitude of the Burgers vector is useful for several calculations such as stress field around the dislocation.
    */
   double bmag;
-
-  /**
-   * @brief The total stress experienced by the dislocation.
-   * @details The dislocation experiences a stress that is the superposition of the externally applied stress and the stress fields of all the dislocations and other entities present in the simulation.
-   */
-  Stress totalStress;
-
-  /**
-   * @brief Keeps a trace of the total stress from every iteration.
-   * @details The total stress experienced by the dislocation is stored into this vector in each iteration. The time stamps are stored at the global level by a similar vector that stores the time. The data in this variable may be useful for calculating average stresses over a given time period.
-   */
-  std::vector<Stress> totalStresses;
 
   /**
    * @brief The Peach-Koehler force experienced by the dislocation.
@@ -154,6 +147,10 @@ public:
    */
   void setBurgers (Vector3d burgers);
   /**
+   * @brief Calculates the private variable burgersLocal representing the Burgers vector in the dislocation's co-ordinate system.
+   */
+  void calculateBurgersLocal ();
+  /**
    * @brief Sets the magnitude of the Burgers vector of the dislocation.
    * @param b Magnitude of the Burgers vector of the dislocation.
    */
@@ -192,6 +189,12 @@ public:
    * @return Burgers vector in a variable of type Vector3d.
    */
   Vector3d getBurgers () const;
+  /**
+   * @brief Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+   * @details Gets the Burgers vector of the dislocation, expressed in the dislocation co-ordinate system. Note that the variable burgersLocal should have been calculated before calling this function.
+   * @return The Burgers vector of the dislocation, expressed in the dislocation co-ordinate system.
+   */
+  Vector3d getBurgerLocal () const;
   /**
    * @brief Gets the magnitude of the Burgers vector of the dislocation.
    * @return Magnitude of the Burgers vector.
@@ -256,6 +259,25 @@ public:
    * @return Stress tensor, expressed in the dislocation's local co-ordinate system.
    */
   Stress stressFieldLocal (Vector3d p, double mu, double nu) const;
+
+  /**
+   * @brief Calculates the stress field due to the screw component of the dislocation in the local co-ordinate system.
+   * @details The stress field due to the screw component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+   * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+   * @param mu Shear modulus in Pascals.
+   * @return Stress tensor due to the dislocations screw component, expressed in the dislocation's local co-ordinate system.
+   */
+  Stress stressFieldLocal_screw (Vector3d p, double mu) const;
+
+  /**
+   * @brief Calculates the stress field due to the edge component of the dislocation in the local co-ordinate system.
+   * @details The stress field due to the edge component of the dislocation is calculated at the position indicated by the argument. The stress tensor is expressed in the dislocation's local co-ordinate system.
+   * @param p Position vector of the point where the stress field is to be calculated. This position vector is calculated in the local co-ordinate system, taking the dislocation as the origin.
+   * @param mu Shear modulus in Pascals.
+   * @param nu Poisson's ratio.
+   * @return Stress tensor due to the dislocations edge component, expressed in the dislocation's local co-ordinate system.
+   */
+  Stress stressFieldLocal_edge (Vector3d p, double mu, double nu) const;
   
   // Force
   /**
