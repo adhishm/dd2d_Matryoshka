@@ -28,6 +28,7 @@ using namespace std;
 
 int main ()
 {
+    cout << "GIT testbranch";
     simulateSingleSlipPlane ();
     return (0);
 }
