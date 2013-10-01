@@ -191,6 +191,7 @@ void DislocationSource::refreshDislocation ()
                           this->getCoordinateSystem(),
                           this->bmag,
                           true);
+    this->d.calculateBurgersLocal();
 }
 
 // Access functions
@@ -261,7 +262,7 @@ double DislocationSource::dipoleNucleationLength (double tau, double mu, double 
 {
   double L = 0.0;
 
-  if (tau >= this->tauCritical)
+  if (fabs(tau) >= this->tauCritical)
   {
     L = (mu * this->bmag) / ( 2.0 * PI * (1.0 - nu) * this->tauCritical );
   }
@@ -323,4 +324,72 @@ int DislocationSource::checkStress (Stress stress)
     // Calculate force on dislocation
     Vector3d force = this->d.forcePeachKoehler(stress_local);
     return (sgn(force.getValue(0))); // Return the sign of the x-component of the force
+}
+
+/**
+ * @brief Emit a dislocation dipole.
+ * @details This function is called when the dislocation source is supposed to emit a dislocation dipole. The two dislocations' co-ordinate systems are set to be the one which is the base for the dislocation source.
+ * @param Lnuc Dipole nucleation length.
+ * @param d0 Pointer to the leading dislocation. The memory must already be allocated.
+ * @param d1 Pointer to the second dislocation. The memory must already be allocated.
+ */
+void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d1)
+{
+    // Set the properties of the dislocations d0 and d1 to be same as the main dislocation segment
+    *d0 = this->d;
+    *d1 = this->d;
+
+    // Both dislocations are part of the same loop, so the Burgers vector is conserved
+    d0->setBurgers(this->bvec);
+    d1->setBurgers(this->bvec);
+
+    // The line vectors are opposed
+    d0->setLineVector(this->lvec);
+    d1->setLineVector(this->lvec * -1.0);
+
+    // Provisionary position vectors of the dislocations in the dislocation source co-ordinate system
+    Vector3d plusSide (Lnuc/2.0, 0.0, 0.0);
+    Vector3d minusSide (-Lnuc/2.0, 0.0, 0.0);
+
+    // Axes for the dislocations
+    Vector3d *a0 = new Vector3d[3];
+    Vector3d *a1 = new Vector3d[3];
+    int i;
+    for (i=0; i<3; i++) {
+        a0[i] = this->coordinateSystem.getAxis(i);
+    }
+    a1[2] = a0[2] * -1.0;   // The second dislocation has a line vector that is flipped around
+    a1[1] = a0[1];          // But the same slip plane, so the same normal
+    a1[0] = (a1[1]^a1[2]).normalize();
+
+    // The new positions should be according to the sign of the time counter
+    if (this->countTimeTillDipoleEmission > 0.0) {
+        // The counter is positive. The leading dislocation d0 will be on the positive side of the source
+        d0->setCoordinateSystem(a0,
+                                this->coordinateSystem.vector_LocalToBase(plusSide),
+                                this->coordinateSystem.getBase());
+        d1->setCoordinateSystem(a1,
+                                this->coordinateSystem.vector_LocalToBase(minusSide),
+                                this->coordinateSystem.getBase());
+    }
+    else {
+        // The counter is negative. The leading dislocation d0 will be on the negative side of the source
+        d0->setCoordinateSystem(a0,
+                                this->coordinateSystem.vector_LocalToBase(minusSide),
+                                this->coordinateSystem.getBase());
+        d1->setCoordinateSystem(a1,
+                                this->coordinateSystem.vector_LocalToBase(plusSide),
+                                this->coordinateSystem.getBase());
+    }
+
+    d0->calculateBurgersLocal();
+    d1->calculateBurgersLocal();
+
+    // The new dislocations are ready and the dipole is emitted
+    // Reset the counter to zero
+    this->resetTimeCounter();
+    // Clear allocated memory
+    delete[] (a0);
+    delete[] (a1);
+
 }

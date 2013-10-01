@@ -208,6 +208,7 @@ bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Par
             disl = readDislocationFromLine(line);
             disl->setBaseCoordinateSystem(s->getCoordinateSystem());
             disl->calculateRotationMatrix();
+            disl->calculateBurgersLocal();
             s->insertDislocation ( disl );
         }
 
@@ -411,15 +412,16 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
     }
 
     while ( continueSimulation ) {
-        // Calculate stresses
-        slipPlane->calculateDislocationStresses ( param->mu, param->nu );
+        // Calculate stresses on all defects
+        slipPlane->calculateDefectStresses ( param->mu, param->nu );
 
+        /*
+         * Treat the dislocations
+         */
         // Calculate forces on dislocations
         slipPlane->calculateDislocationForces ();
-
         // Calculate dislocation velocities
-        slipPlane->calculateVelocities ( param->B );
-
+        slipPlane->calculateDislocationVelocities ( param->B );
         switch (param->timeStepType) {
         case ADAPTIVE:
             // Calculate the time increment
@@ -437,7 +439,12 @@ void singleSlipPlane_iterate (Parameter *param, SlipPlane *slipPlane, double cur
             break;
         }
 
-        // Local reactions
+        /*
+         * Treat the dislocation sources
+         */
+        slipPlane->checkDislocationSources(slipPlane->getTimeIncrement(),param->mu, param->nu,limitingDistance);
+
+        // Check for local reactions
         slipPlane->checkLocalReactions(reactionRadius);
 
         // Increment counters
