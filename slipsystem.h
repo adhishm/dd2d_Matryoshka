@@ -32,6 +32,7 @@
 #define SLIPSYSTEM_H
 
 #include "slipPlane.h"
+#include "standardSlipSystem.h"
 
 /**
  * @brief The SlipSystem class representing a slip system in the simulation.
@@ -50,7 +51,7 @@ protected:
     CoordinateSystem coordinateSystem;
 public:
     /**
-     * @brief Default constructor for the class SlipSystem
+     * @brief Default constructor for the class SlipSystem.
      */
     SlipSystem();
 };
