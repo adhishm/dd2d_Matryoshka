@@ -1,3 +1,12 @@
+/**
+ * @file slipSystem.h
+ * @author Adhish Majumdar
+ * @version 0.0
+ * @date 02/10/2013
+ * @brief Definition of the SlipSystem class.
+ * @details This file defines the Slipsystem class representing a slip system in the simulation. A slip system is considered to be a set of slip planes, all parallel to each other. The attributes of a slip system are the slip plane normal and the slip direction, both expressed in the frame of reference of the grain.
+ */
+
 /*
     DD2D-Matryoshka approach.
     A set of classes defining the behaviour of crystalline defects,
@@ -24,7 +33,10 @@
 
 #include "slipPlane.h"
 
-
+/**
+ * @brief The SlipSystem class representing a slip system in the simulation.
+ * @details In the simulation, a slip system is considered to be a collection of slip planes, all parallel to each other. The slip system is characterized by a slip plane normal and a slip direction, both represented in the crystal co-ordinate system, ie, the frame of reference of a grain.
+ */
 class SlipSystem
 {
 protected:
