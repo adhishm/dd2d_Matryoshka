@@ -49,6 +49,14 @@ protected:
      * @brief The slip system's local co-ordinate system.
      */
     CoordinateSystem coordinateSystem;
+    /**
+     * @brief The normal to the slip planes making up this slip system, expressed in the crystal (grain) co-ordinate system.
+     */
+    Vector3d slipPlaneNormal;
+    /**
+     * @brief The slip direction, expressed in the crystal (grain) co-ordinate system.
+     */
+    Vector3d slipDirection;
 public:
     /**
      * @brief Default constructor for the class SlipSystem.
