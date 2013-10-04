@@ -60,30 +60,21 @@ protected:
      * @brief The normal to the slip planes making up this slip system, expressed in the crystal (grain) co-ordinate system.
      */
     Vector3d slipPlaneNormal;
-    /**
-     * @brief The slip direction, expressed in the crystal (grain) co-ordinate system.
-     */
-    Vector3d slipDirection;
+
 public:
     /**
      * @brief Default constructor for the class SlipSystem.
      */
     SlipSystem();
-    /**
-     * @brief Constructor for the class SlipSystem creating a standard slip systemfor the crystal structure provided as argument.
-     * @details This constructor uses the default values for the kind of standard slip system corresponding to the crystal structure specified as argument. The crystal structures are FCC, BCC.
-     * @param c Variable indicating the crystal structure for which a standard slip system is to be created.
-     */
-    SlipSystem(CrystalStructure c);
+
     /**
      * @brief Constructor for the class SlipSystem, mentioning details of the slip system.
      * @param pos Position of the origin of the slip system, expressed in the base co-ordinate system.
      * @param normal The normal to the slip planes that are present in this slip system, expressed in the base co-ordinate system.
-     * @param direction The slip direction, , expressed in the base co-ordinate system.
      * @param base Pointer to the base co-ordinate system.
      * @param s The vector container with pointers to the slip planes that are part of the slip system.
      */
-    SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, CoordinateSystem *base, std::vector<SlipPlane*> s);
+    SlipSystem(Vector3d pos, Vector3d normal, CoordinateSystem *base, std::vector<SlipPlane*> s);
 };
 
 #endif // SLIPSYSTEM_H
