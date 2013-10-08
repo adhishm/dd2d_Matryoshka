@@ -390,6 +390,17 @@ public:
    */
   void sortDislocationSources ();
 
+  // Stress field
+  /**
+   * @brief Calculate the total stress field due to all defects on this slip plane, at a position p.
+   * @details All defects in the simulation have a stress field (some of them have zero stress fields). This function superposes the stress fields of all defects lying on the slip plane at a position p provided as argument. Both the position p and the stress field returned are expressed in the base co-ordinate system.
+   * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+   * @param mu Shear modulus (Pa).
+   * @param nu Poisson's ratio.
+   * @return Stress field, in the base co-ordinate system, due to all defects on this slip plane.
+   */
+  Stress slipPlaneStressField (Vector3d p, double mu, double nu);
+
   // Treat defects
   /**
    * @brief This function calculates the total stress fields on all defects lying on the slip plane and stores the stress field tensors in the members Defect::totalStress and Defect::totalStresses.

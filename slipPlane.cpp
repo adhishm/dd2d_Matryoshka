@@ -1117,6 +1117,32 @@ void SlipPlane::calculateSlipPlaneAppliedStress (Stress appliedStress)
 }
 
 /**
+ * @brief Calculate the total stress field due to all defects on this slip plane, at a position p.
+ * @details All defects in the simulation have a stress field (some of them have zero stress fields). This function superposes the stress fields of all defects lying on the slip plane at a position p provided as argument. Both the position p and the stress field returned are expressed in the base co-ordinate system.
+ * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @return Stress field, in the base co-ordinate system, due to all defects on this slip plane.
+ */
+Stress SlipPlane::slipPlaneStressField (Vector3d p, double mu, double nu)
+{
+    // Convert position vector to local system
+    Vector3d p_local = this->coordinateSystem.vector_BaseToLocal(p);
+    // Stress
+    Stress s;
+    // Iterator for defects
+    std::vector<Defect*>::iterator dit;
+    Defect *d;
+
+    for (dit=this->defects.begin(); dit!=this->defects.end(); dit++) {
+        d = *dit;
+        s += d->stressField(p_local, mu, nu);
+    }
+
+    return (this->coordinateSystem.stress_LocalToBase(s));
+}
+
+/**
  * @brief Returns a vector containing the stress values at different points along a slip plane.
  * @details The stress field (expressed in the global co-ordinate system) is calculated at points along the slip plane given as argument. This function only takes into account the dislocations present on itself for calculating the stress field.
  * @param points STL vector container with position vectors (Vector3d) of points at which the stress field is to be calculated.
