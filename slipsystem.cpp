@@ -35,7 +35,7 @@
  */
 SlipSystem::SlipSystem()
 {
-    this->slipPlanes (SLIPSYSTEM_DEFAULT_NUMBERPLANES, SlipPlane());
+    this->slipPlanes = std::vector<SlipPlane*> (SLIPSYSTEM_DEFAULT_NUMBERPLANES, new SlipPlane);
     this->slipPlaneNormal = Vector3d(DEFAULT_SLIPPLANE_NORMALVECTOR_0,
                                      DEFAULT_SLIPPLANE_NORMALVECTOR_1,
                                      DEFAULT_SLIPPLANE_NORMALVECTOR_2);
