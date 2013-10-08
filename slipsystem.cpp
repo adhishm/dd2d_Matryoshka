@@ -45,10 +45,11 @@ SlipSystem::SlipSystem()
  * @brief Constructor for the class SlipSystem, mentioning details of the slip system.
  * @param pos Position of the origin of the slip system, expressed in the base co-ordinate system.
  * @param normal The normal to the slip planes that are present in this slip system, expressed in the base co-ordinate system.
+ * @param direction The direction of the slip plane, expressed in the crystal (grain) co-ordinate system.
  * @param base Pointer to the base co-ordinate system.
  * @param s The vector container with pointers to the slip planes that are part of the slip system.
  */
-SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, CoordinateSystem *base, std::vector<SlipPlane*> s)
+SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, CoordinateSystem *base, std::vector<SlipPlane*> s)
 {
     // Set the origin
     this->coordinateSystem.setOrigin(pos);
