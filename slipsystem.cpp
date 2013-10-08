@@ -1,5 +1,5 @@
 /**
- * @file slipSystem.cpp
+ * @file slipsystem.cpp
  * @author Adhish Majumdar
  * @version 0.0
  * @date 02/10/2013

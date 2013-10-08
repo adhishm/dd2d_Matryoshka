@@ -1,5 +1,5 @@
 /**
- * @file slipSystem.h
+ * @file slipsystem.h
  * @author Adhish Majumdar
  * @version 0.0
  * @date 02/10/2013
