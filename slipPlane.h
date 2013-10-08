@@ -207,6 +207,12 @@ public:
    * @param t The value of the time increment.
    */
   void setTimeIncrement (double t);
+
+  /**
+   * @brief Set the Base CoordinateSystem for the slip plane.
+   * @param base Pointer to the base coordinate system.
+   */
+  void setBaseCoordinateSystem (CoordinateSystem *base);
   
   // Access functions
   /**

@@ -208,6 +208,15 @@ void SlipPlane::setTimeIncrement (double t)
     this->dt = t;
 }
 
+/**
+ * @brief Set the Base CoordinateSystem for the slip plane.
+ * @param base Pointer to the base coordinate system.
+ */
+void SlipPlane::setBaseCoordinateSystem (CoordinateSystem *base)
+{
+    this->coordinateSystem.setBase(base);
+}
+
 // Access functions
 /**
  * @brief Get the position vector of the extremity whose index is provided as argument.

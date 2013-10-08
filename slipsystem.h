@@ -80,6 +80,19 @@ public:
      * @param s The vector container with pointers to the slip planes that are part of the slip system.
      */
     SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, CoordinateSystem *base, std::vector<SlipPlane*> s);
+
+    // Assignment functions
+    /**
+     * @brief Set the co-ordinate systems for all the slip planes.
+     */
+    void setSlipPlaneCoordinateSystems ();
+
+    // Access functions
+    /**
+     * @brief Gets the co-ordinate system of the slip system.
+     * @return Pointer to the co-ordinate system of the slip system.
+     */
+    CoordinateSystem* getCoordinateSystem ();
 };
 
 #endif // SLIPSYSTEM_H

@@ -67,4 +67,34 @@ SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, Coordi
     this->slipPlanes = s;
     // Set the slip plane normal
     this->slipPlaneNormal = normal;
+    // Set the slip direction
+    this->slipPlaneDirection = direction;
+
+    // Refresh the rotation matrices of the slip planes
+    this->setSlipPlaneCoordinateSystems();
+}
+
+/**
+ * @brief Set the co-ordinate systems for all the slip planes.
+ */
+void SlipSystem::setSlipPlaneCoordinateSystems ()
+{
+    std::vector<SlipPlane*>::iterator sit;
+    SlipPlane *s;
+
+    for (sit=this->slipPlanes.begin(); sit!=this->slipPlanes.end(); sit++) {
+        s = *sit;
+        s->setBaseCoordinateSystem(this->getCoordinateSystem());
+        s->calculateRotationMatrix();
+    }
+}
+
+// Access functions
+/**
+ * @brief Gets the co-ordinate system of the slip system.
+ * @return Pointer to the co-ordinate system of the slip system.
+ */
+CoordinateSystem* SlipSystem::getCoordinateSystem ()
+{
+    return (&(this->coordinateSystem));
 }
