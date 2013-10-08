@@ -93,6 +93,27 @@ public:
      * @return Pointer to the co-ordinate system of the slip system.
      */
     CoordinateSystem* getCoordinateSystem ();
+    /**
+     * @brief Get the normal to all slip planes in the slip system.
+     * @return Normal to the slip system.
+     */
+    Vector3d getNormal () const;
+    /**
+     * @brief Get the direction of all slip planes in the slip system.
+     * @return The direction of slip planes in the slip system.
+     */
+    Vector3d getDirection () const;
+    /**
+     * @brief Get the vector container with pointers to all slip planes.
+     * @return Vector container with pointers to all slip planes.
+     */
+    std::vector<SlipPlane*> getSlipPlanes ();
+    /**
+     * @brief Get the pointer to a specific slip plane, indicated by the argument. If the argument is greater than the size, a NULL pointer is returned.
+     * @param i Index of the slip plane the pointer to which is required.
+     * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
+     */
+    SlipPlane* getSlipPlane (int i);
 };
 
 #endif // SLIPSYSTEM_H
