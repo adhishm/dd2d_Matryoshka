@@ -59,7 +59,7 @@ SlipPlane::SlipPlane ()
     std::vector<Dislocation*> dislocationList(1, d);
     std::vector<DislocationSource*> dislocationSourceList(1, dSource);
 
-    *this = SlipPlane(ends, normal, pos, NULL, dislocationList, dislocationSourceList);
+    *this = SlipPlane(ends, pos, NULL, dislocationList, dislocationSourceList);
 }
 
 /**
