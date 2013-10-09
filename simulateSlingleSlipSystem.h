@@ -40,21 +40,12 @@
 #include "slipsystem.h"
 #include "parameter.h"
 #include "tools.h"
+#include "readFromFile.h"
 
 /**
  * @brief This function is the point of entry for simulating a single slip system.
  * @details This function handles the simulation of a single slip system, from reading input files, to calling managing the iterations.
  */
 void simulateSingleSlipSystem ();
-
-/**
- * @brief Read the slip system from file.
- * @param fileName Name of the file containing the data of the slip system.
- * @param s Pointer to the instance of the SlipSystem class that will contain the data. Memory for this instance should be pre-allocated.
- * @param currentTime Pointer to the variable holding the present time. Memory for this varibale should be pre-allocated.
- * @param param Pointer to the instance of the Parameter class, containing the parameters for the simulation.
- * @return Boolean flag indicating success or failure of the reading operation.
- */
-bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, Parameter *param);
 
 #endif // SIMULATESLINGLESLIPSYSTEM_H

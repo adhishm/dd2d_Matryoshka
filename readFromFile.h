@@ -57,6 +57,16 @@
 bool readSlipPlane (std::string fileName, SlipPlane *s, double *currentTime, Parameter *param);
 
 /**
+ * @brief Read the slip system from file.
+ * @param fileName Name of the file containing the data of the slip system.
+ * @param s Pointer to the instance of the SlipSystem class that will contain the data. Memory for this instance should be pre-allocated.
+ * @param currentTime Pointer to the variable holding the present time. Memory for this varibale should be pre-allocated.
+ * @param param Pointer to the instance of the Parameter class, containing the parameters for the simulation.
+ * @return Boolean flag indicating success or failure of the reading operation.
+ */
+bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, Parameter *param);
+
+/**
  * @brief Reads 3 values from a string and returns them in a Vector3d.
  * @param s The string that is to be read from.
  * @return Vector3d object containing the 3 values read.
