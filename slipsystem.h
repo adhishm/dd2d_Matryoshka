@@ -86,6 +86,21 @@ public:
      * @brief Set the co-ordinate systems for all the slip planes.
      */
     void setSlipPlaneCoordinateSystems ();
+    /**
+     * @brief Set the normal vector for the slip system.
+     * @param normal The normal vector of the slip system, in the base co-ordinate system.
+     */
+    void setNormal (Vector3d normal);
+    /**
+     * @brief Set the direction of the slip planes in the slip system.
+     * @param direction The direction vector for the slip planes in the slip system.
+     */
+    void setDirection (Vector3d direction);
+    /**
+     * @brief Set the base co-ordinate system for the slip system.
+     * @param base Pointer to the base co-ordinate system.
+     */
+    void setBaseCoordinateSystem (CoordinateSystem *base);
 
     // Access functions
     /**

@@ -74,6 +74,7 @@ SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, Coordi
     this->setSlipPlaneCoordinateSystems();
 }
 
+// Assignment functions
 /**
  * @brief Set the co-ordinate systems for all the slip planes.
  */
@@ -87,6 +88,33 @@ void SlipSystem::setSlipPlaneCoordinateSystems ()
         s->setBaseCoordinateSystem(this->getCoordinateSystem());
         s->calculateRotationMatrix();
     }
+}
+
+/**
+ * @brief Set the normal vector for the slip system.
+ * @param normal The normal vector of the slip system, in the base co-ordinate system.
+ */
+void SlipSystem::setNormal (Vector3d normal)
+{
+    this->slipPlaneNormal = normal;
+}
+
+/**
+ * @brief Set the direction of the slip planes in the slip system.
+ * @param direction The direction vector for the slip planes in the slip system.
+ */
+void SlipSystem::setDirection (Vector3d direction)
+{
+    this->slipPlaneDirection = direction;
+}
+
+/**
+ * @brief Set the base co-ordinate system for the slip system.
+ * @param base Pointer to the base co-ordinate system.
+ */
+void SlipSystem::setBaseCoordinateSystem (CoordinateSystem *base)
+{
+    this->coordinateSystem.setBase(base);
 }
 
 // Access functions
