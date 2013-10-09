@@ -134,13 +134,12 @@ public:
    * @brief Constructor that specifies all members explicitly.
    * @details The slip plane is initialized with parameters specified in the arguments.
    * @param ends Pointer to an array of type Vector3d, containing the position vectors of the extremities of the slip plane in consecutive locations.
-   * @param normal The normal vector of the slip plane.
    * @param pos The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system)
    * @param base Pointer to the co-ordinate system of the base.
    * @param dislocationList A vector container of type Dislocation* containing the dislocations lying on this slip plane.
    * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
    */
-  SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
+  SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
 
   // Destructor
   /**

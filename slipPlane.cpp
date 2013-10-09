@@ -66,22 +66,22 @@ SlipPlane::SlipPlane ()
  * @brief Constructor that specifies all members explicitly.
  * @details The slip plane is initialized with parameters specified in the arguments.
  * @param ends Pointer to an array of type Vector3d, containing the position vectors of the extremities of the slip plane in consecutive locations.
- * @param normal The normal vector of the slip plane.
  * @param pos The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system)
  * @param base Pointer to the co-ordinate system of the base.
  * @param dislocationList A vector container of type Dislocation* containing the dislocations lying on this slip plane.
  * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
  */
-SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList)
+SlipPlane::SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList)
 {
-    this->setExtremities (ends);
-    this->setNormal (normal);
     this->setPosition (pos);
+    this->createCoordinateSystem(base);
+    this->setExtremities(ends);
+    this->setNormal(Vector3d::unitVector(2));   // The normal to the slip plane is the Z-axis of the slip system
     this->dislocations = dislocationList;
     this->insertDislocationList(dislocationList);
     this->dislocationSources = dislocationSourceList;
     this->insertDislocationSourceList(dislocationSourceList);
-    this->createCoordinateSystem(base);
+
 
     // Time increment
     this->dt = 0;
@@ -94,15 +94,14 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateS
  */
 void SlipPlane::setExtremities (Vector3d *ends)
 {
-    // Default axes for the extremities
-    // The extremities take the same axes as the slip plane
-    Vector3d *axes = new Vector3d[3];
-    axes[0] = Vector3d(1.0, 0.0, 0.0);
-    axes[1] = Vector3d(0.0, 1.0, 0.0);
-    axes[2] = Vector3d(0.0, 0.0, 1.0);
-
-    this->extremities[0] = Defect(GRAINBOUNDARY, ends[0], axes, this->getCoordinateSystem());
-    this->extremities[1] = Defect(GRAINBOUNDARY, ends[1], axes, this->getCoordinateSystem());
+    this->extremities[0] = Defect(GRAINBOUNDARY,
+                                  this->coordinateSystem.vector_BaseToLocal(ends[0]),
+                                  Vector3d::standardAxes(),
+                                  this->getCoordinateSystem());
+    this->extremities[1] = Defect(GRAINBOUNDARY,
+                                  this->coordinateSystem.vector_BaseToLocal(ends[1]),
+                                  Vector3d::standardAxes(),
+                                  this->getCoordinateSystem());
 }
 
 /**
@@ -132,31 +131,12 @@ void SlipPlane::createCoordinateSystem(CoordinateSystem* base)
 {
     // Calculate the local co-ordinate system
     this->coordinateSystem.setOrigin(this->position);
-    // Calculate axes
-    Vector3d axes[3];
-    axes[0] = this->extremities[1].getPosition() - this->extremities[0].getPosition();  // X-axis
-    axes[2] = this->getNormal();    // Z-axis
-    axes[1] = axes[2] ^ axes[0];    // Y-axis
-    this->coordinateSystem.setAxes(axes);
+    // No need to calculate axes because the slip plane has the same axes as the slip system
+    this->coordinateSystem.setAxes(Vector3d::standardAxes());
     // Base co-ordinate system
     this->coordinateSystem.setBase(base);
     // Rotation matrix
     this->coordinateSystem.calculateRotationMatrix();
-
-    // In order to calculate the local co-ordinate system,
-    // it was necessary to express the extremity positions
-    // in the base co-ordinate system. Now that this is done,
-    // the extremity positions should be converted to the
-    // slip-plane's local system.
-    Vector3d pBase, pLocal;
-
-    pBase = this->extremities[0].getPosition();
-    pLocal = this->coordinateSystem.vector_BaseToLocal(pBase);
-    this->extremities[0].setPosition(pLocal);
-
-    pBase = this->extremities[1].getPosition();
-    pLocal = this->coordinateSystem.vector_BaseToLocal(pBase);
-    this->extremities[1].setPosition(pLocal);
 }
 
 /**
