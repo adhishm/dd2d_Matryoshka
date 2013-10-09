@@ -25,7 +25,8 @@ SOURCES += main.cpp \
     grainboundary.cpp \
     freesurface.cpp \
     slipPlaneLocalReactions.cpp \
-    slipsystem.cpp
+    slipsystem.cpp \
+    readFromFile.cpp
 
 HEADERS += \
     vector3d.h \
@@ -51,5 +52,6 @@ HEADERS += \
     grainboundary.h \
     freesurface.h \
     slipsystem.h \
-    simulateSlingleSlipSystem.h
+    simulateSlingleSlipSystem.h \
+    readFromFile.h
 
