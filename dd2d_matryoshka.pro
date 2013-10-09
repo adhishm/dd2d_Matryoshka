@@ -50,5 +50,6 @@ HEADERS += \
     coordinatesystem.h \
     grainboundary.h \
     freesurface.h \
-    slipsystem.h
+    slipsystem.h \
+    simulateSlingleSlipSystem.h
 
