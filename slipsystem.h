@@ -110,6 +110,11 @@ public:
      * @param base Pointer to the base co-ordinate system.
      */
     void setBaseCoordinateSystem (CoordinateSystem *base);
+    /**
+     * @brief Create the slip system's co-ordinate system.
+     * @param base Pointer to the base co-ordinate system.
+     */
+    void createCoordinateSystem (CoordinateSystem *base);
 
     // Access functions
     /**

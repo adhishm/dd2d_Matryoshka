@@ -52,23 +52,15 @@ SlipSystem::SlipSystem()
 SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, CoordinateSystem *base, std::vector<SlipPlane*> s)
 {
     // Set the origin
-    this->coordinateSystem.setOrigin(pos);
-    // Set the axes
-    Vector3d *axes = new Vector3d[3];
-    axes[2] = normal;
-    axes[0] = direction;
-    axes[1] = axes[2] ^ axes[0];
-    this->coordinateSystem.setAxes(axes);
-    delete [] axes;
-    // Set the base co-ordinate system
-    this->coordinateSystem.setBase(base);
-    this->coordinateSystem.calculateRotationMatrix();
-    // Set the slip planes
-    this->slipPlanes = s;
+    this->position = pos;
     // Set the slip plane normal
     this->slipPlaneNormal = normal;
     // Set the slip direction
     this->slipPlaneDirection = direction;
+    // Create the co-ordinate system
+    this->createCoordinateSystem(base);
+    // Set the slip planes
+    this->slipPlanes = s;
 
     // Refresh the rotation matrices of the slip planes
     this->setSlipPlaneCoordinateSystems();
@@ -82,7 +74,6 @@ SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, Coordi
 void SlipSystem::setPosition (Vector3d pos)
 {
     this->position = pos;
-    this->coordinateSystem.setOrigin(pos);
 }
 
 /**
@@ -125,6 +116,26 @@ void SlipSystem::setDirection (Vector3d direction)
 void SlipSystem::setBaseCoordinateSystem (CoordinateSystem *base)
 {
     this->coordinateSystem.setBase(base);
+}
+
+/**
+ * @brief Create the slip system's co-ordinate system.
+ * @param base Pointer to the base co-ordinate system.
+ */
+void SlipSystem::createCoordinateSystem (CoordinateSystem *base)
+{
+    // Set the origin
+    this->coordinateSystem.setOrigin(this->position);
+    // Set the axes
+    Vector3d *axes = new Vector3d[3];
+    axes[2] = this->slipPlaneNormal;
+    axes[0] = this->slipPlaneDirection;
+    axes[1] = axes[2] ^ axes[0];
+    this->coordinateSystem.setAxes(axes);
+    delete [] axes;
+    // Set the base co-ordinate system
+    this->coordinateSystem.setBase(base);
+    this->coordinateSystem.calculateRotationMatrix();
 }
 
 // Access functions
