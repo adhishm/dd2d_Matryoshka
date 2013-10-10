@@ -52,6 +52,6 @@ HEADERS += \
     grainboundary.h \
     freesurface.h \
     slipsystem.h \
-    simulateSlingleSlipSystem.h \
-    readFromFile.h
+    readFromFile.h \
+    simulateSingleSlipSystem.h
 
