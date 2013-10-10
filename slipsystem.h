@@ -31,6 +31,8 @@
 #ifndef SLIPSYSTEM_H
 #define SLIPSYSTEM_H
 
+#include <algorithm>
+
 #include "slipPlane.h"
 #include "standardSlipSystem.h"
 
@@ -158,6 +160,12 @@ public:
      * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
      */
     SlipPlane* getSlipPlane (int i);
+
+    // Sort functions
+    /**
+     * @brief Sort the slip planes in ascending order based on their positions.
+     */
+    void sortSlipPlanes ();
 
     // Clean up functions
     /**

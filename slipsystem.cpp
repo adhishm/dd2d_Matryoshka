@@ -222,6 +222,15 @@ SlipPlane* SlipSystem::getSlipPlane (int i)
     return (s);
 }
 
+// Sort functions
+/**
+ * @brief Sort the slip planes in ascending order based on their positions.
+ */
+void SlipSystem::sortSlipPlanes ()
+{
+    std::sort (this->slipPlanes.begin(), this->slipPlanes.end(), SlipPlane::compareSlipPlanePositions);
+}
+
 // Clean up functions
 /**
  * @brief Clear the vector containing SlipPlanes.
