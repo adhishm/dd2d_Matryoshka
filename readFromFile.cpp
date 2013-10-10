@@ -412,6 +412,10 @@ bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, P
                 dSource = readDislocationSourceFromLine( line );
                 // Set the tauCritical and time
                 dSource->setTauCritical(tauC_values[dSourceCount++]);
+                if (dSourceCount == tauC_values.size()) {
+                    displayMessage("Total number of dislocation sources exceeded population of critical stress values. Adjust variable MEAN_NUM_DISLOCATION_SOURCES_PERSLIPPLANE in file slipPlaneDefaults.h");
+                    dSourceCount = 0;
+                }
                 dSource->setTimeTillDipoleEmission(param->tauCritical_time);
                 dSource->setBaseCoordinateSystem(slipPlane->getCoordinateSystem());
                 dSource->refreshDislocation();
