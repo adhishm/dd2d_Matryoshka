@@ -113,4 +113,6 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
     slipSystem->calculateSlipPlaneAppliedStress();
 
     displayMessage ( "Starting simulation..." );
+
+    //
 }

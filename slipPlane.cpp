@@ -272,6 +272,48 @@ std::vector<Defect*> SlipPlane::getDefectList ()
 }
 
 /**
+ * @brief Return the positions of all the defects, expressed in the slip plane base co-ordinate system.
+ * @return STL vector container with position vectors of all the defects, expressed in the the slip plane base co-ordinate system.
+ */
+std::vector<Vector3d> SlipPlane::getAllDefectPositions_base ()
+{
+    // Get positions in loal system
+    std::vector<Vector3d> defectPositions = this->getAllDefectPositions_local();
+    std::vector<Vector3d>::iterator defect_it = defectPositions.begin();
+
+    while (defect_it!=defectPositions.end()) {
+        *defect_it = this->coordinateSystem.vector_LocalToBase(*defect_it);
+        defect_it++;
+    }
+
+    return (defectPositions);
+}
+
+/**
+ * @brief Return the positions of all the defects, expressed in the slip plane local co-ordinate system.
+ * @return STL vector container with position vectors of all the defects, expressed in the the slip plane local co-ordinate system.
+ */
+std::vector<Vector3d> SlipPlane::getAllDefectPositions_local ()
+{
+    std::vector<Vector3d> defectPositions (this->getNumDefects(),Vector3d());
+    std::vector<Vector3d>::iterator position_it;
+
+    std::vector<Defect*>::iterator defect_it;
+    Defect* defect;
+
+    defect_it = this->defects.begin();
+    position_it = defectPositions.begin();
+    while (defect_it!=this->defects.end()) {
+        defect = *defect_it;
+        *position_it = defect->getPosition();
+        defect_it++;
+        position_it++;
+    }
+
+    return (defectPositions);
+}
+
+/**
  * @brief Return the number of defects lying in the slip plane.
  * @return The number of defects lying in the slip plane.
  */
