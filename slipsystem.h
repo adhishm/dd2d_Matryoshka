@@ -64,6 +64,10 @@ protected:
      * @brief The direction of the slip plane, normal to the slip plane normal, expressed in the crystal (grain) co-ordinate system.
      */
     Vector3d slipPlaneDirection;
+    /**
+     * @brief Position of the origin of the slip system.
+     */
+    Vector3d position;
 
 public:
     /**
@@ -82,6 +86,11 @@ public:
     SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, CoordinateSystem *base, std::vector<SlipPlane*> s);
 
     // Assignment functions
+    /**
+     * @brief Set the position of the origin of the slip system.
+     * @param pos The position vector of the origin, in the base co-ordinate system.
+     */
+    void setPosition (Vector3d pos);
     /**
      * @brief Set the co-ordinate systems for all the slip planes.
      */
@@ -108,6 +117,11 @@ public:
      * @return Pointer to the co-ordinate system of the slip system.
      */
     CoordinateSystem* getCoordinateSystem ();
+    /**
+     * @brief Get the position vector of the origin of the slip system.
+     * @return The position vector of the origin of the slip system.
+     */
+    Vector3d getPosition () const;
     /**
      * @brief Get the normal to all slip planes in the slip system.
      * @return Normal to the slip system.

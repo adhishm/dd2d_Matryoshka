@@ -76,6 +76,16 @@ SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, Coordi
 
 // Assignment functions
 /**
+ * @brief Set the position of the origin of the slip system.
+ * @param pos The position vector of the origin, in the base co-ordinate system.
+ */
+void SlipSystem::setPosition (Vector3d pos)
+{
+    this->position = pos;
+    this->coordinateSystem.setOrigin(pos);
+}
+
+/**
  * @brief Set the co-ordinate systems for all the slip planes.
  */
 void SlipSystem::setSlipPlaneCoordinateSystems ()
@@ -127,6 +137,14 @@ CoordinateSystem* SlipSystem::getCoordinateSystem ()
     return (&(this->coordinateSystem));
 }
 
+/**
+ * @brief Get the position vector of the origin of the slip system.
+ * @return The position vector of the origin of the slip system.
+ */
+Vector3d SlipSystem::getPosition () const
+{
+    return (this->position);
+}
 /**
  * @brief Get the normal to all slip planes in the slip system.
  * @return Normal to the slip system.
