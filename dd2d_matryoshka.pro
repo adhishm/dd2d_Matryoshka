@@ -26,7 +26,8 @@ SOURCES += main.cpp \
     freesurface.cpp \
     slipPlaneLocalReactions.cpp \
     slipsystem.cpp \
-    readFromFile.cpp
+    readFromFile.cpp \
+    simulateSingleSlipSystem.cpp
 
 HEADERS += \
     vector3d.h \

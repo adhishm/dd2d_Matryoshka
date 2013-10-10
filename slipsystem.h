@@ -70,6 +70,14 @@ protected:
      * @brief Position of the origin of the slip system.
      */
     Vector3d position;
+    /**
+     * @brief The externally applied stress, in the base co-ordinate system.
+     */
+    Stress appliedStress_base;
+    /**
+     * @brief The externally applied stress, in the local co-ordinate system.
+     */
+    Stress appliedStress_local;
 
 public:
     /**
@@ -160,6 +168,16 @@ public:
      * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
      */
     SlipPlane* getSlipPlane (int i);
+    /**
+     * @brief Get the applied stress in the slip system's local co-ordinate system.
+     * @return The applied stress in the slip system's local co-ordinate system.
+     */
+    Stress getAppliedStress_local () const;
+    /**
+     * @brief Get the applied stress in the slip system's base co-ordinate system.
+     * @return The applied stress in the slip system's base co-ordinate system.
+     */
+    Stress getAppliedStress_base () const;
 
     // Sort functions
     /**
@@ -172,6 +190,17 @@ public:
      * @brief Clear the vector containing SlipPlanes.
      */
     void clearSlipPlanes ();
+
+    // Stresses
+    /**
+     * @brief Calculate the applied stress, in the slip system co-ordinate system.
+     * @param appliedStress
+     */
+    void calculateSlipSystemAppliedStress (Stress appliedStress);
+    /**
+     * @brief Calculate the applied stress on the slip planes, in their respective co-ordinate systems.
+     */
+    void calculateSlipPlaneAppliedStress ();
 };
 
 #endif // SLIPSYSTEM_H

@@ -222,6 +222,24 @@ SlipPlane* SlipSystem::getSlipPlane (int i)
     return (s);
 }
 
+/**
+ * @brief Get the applied stress in the slip system's local co-ordinate system.
+ * @return The applied stress in the slip system's local co-ordinate system.
+ */
+Stress SlipSystem::getAppliedStress_local () const
+{
+    return (this->appliedStress_local);
+}
+
+/**
+ * @brief Get the applied stress in the slip system's base co-ordinate system.
+ * @return The applied stress in the slip system's base co-ordinate system.
+ */
+Stress SlipSystem::getAppliedStress_base () const
+{
+    return (this->appliedStress_base);
+}
+
 // Sort functions
 /**
  * @brief Sort the slip planes in ascending order based on their positions.
@@ -238,4 +256,29 @@ void SlipSystem::sortSlipPlanes ()
 void SlipSystem::clearSlipPlanes ()
 {
     this->slipPlanes.clear();
+}
+
+// Stresses
+/**
+ * @brief Calculate the applied stress, in the slip system co-ordinate system.
+ * @param appliedStress
+ */
+void SlipSystem::calculateSlipSystemAppliedStress (Stress appliedStress)
+{
+    this->appliedStress_base = appliedStress;
+    this->appliedStress_local = this->coordinateSystem.stress_BaseToLocal(appliedStress);
+}
+
+/**
+ * @brief Calculate the applied stress on the slip planes, in their respective co-ordinate systems.
+ */
+void SlipSystem::calculateSlipPlaneAppliedStress ()
+{
+    std::vector<SlipPlane*>::iterator sit;
+    SlipPlane* s;
+
+    for (sit=this->slipPlanes.begin(); sit!=this->slipPlanes.end(); sit++) {
+        s = *sit;
+        s->calculateSlipPlaneAppliedStress(this->appliedStress_local);
+    }
 }
