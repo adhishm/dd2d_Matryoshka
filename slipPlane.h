@@ -340,6 +340,18 @@ public:
    */
   std::vector<Dislocation*>::iterator findDislocationIterator (std::vector<Defect*>::iterator defect_iterator);
 
+  // Static functions
+  /**
+   * @brief Compares the positions of the slip planes pointed to by si and sj in the frame of reference of the slip system, and returns if the position of si is less than sj.
+   * @param si Pointer to the slip plane i.
+   * @param sj Pointer to the slip plane j.
+   * @return Boolean value indicating if the position of si is less than that of sj.
+   */
+  static bool compareSlipPlanePositions (SlipPlane *si, SlipPlane *sj)
+  {
+      return (si->getPosition().getValue(2) < sj->getPosition().getValue(2));
+  }
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
