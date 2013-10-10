@@ -148,6 +148,12 @@ public:
      * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
      */
     SlipPlane* getSlipPlane (int i);
+
+    // Clean up functions
+    /**
+     * @brief Clear the vector containing SlipPlanes.
+     */
+    void clearSlipPlanes ();
 };
 
 #endif // SLIPSYSTEM_H

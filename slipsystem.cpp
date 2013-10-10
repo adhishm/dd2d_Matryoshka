@@ -201,3 +201,12 @@ SlipPlane* SlipSystem::getSlipPlane (int i)
 
     return (s);
 }
+
+// Clean up functions
+/**
+ * @brief Clear the vector containing SlipPlanes.
+ */
+void SlipSystem::clearSlipPlanes ()
+{
+    this->slipPlanes.clear();
+}
