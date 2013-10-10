@@ -115,6 +115,16 @@ public:
      * @param base Pointer to the base co-ordinate system.
      */
     void createCoordinateSystem (CoordinateSystem *base);
+    /**
+     * @brief Insert a slip plane into the the list of slip planes.
+     * @param s Pointer to the slip plane that is to be inserted.
+     */
+    void insertSlipPlane (SlipPlane *s);
+    /**
+     * @brief Insert a  list of slip planes.
+     * @param sList STL vector container with pointers to slip planes.
+     */
+    void insertSlipPlaneList (std::vector<SlipPlane*> sList);
 
     // Access functions
     /**

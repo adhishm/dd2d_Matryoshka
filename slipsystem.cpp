@@ -138,6 +138,26 @@ void SlipSystem::createCoordinateSystem (CoordinateSystem *base)
     this->coordinateSystem.calculateRotationMatrix();
 }
 
+/**
+ * @brief Insert a slip plane into the the list of slip planes.
+ * @param s Pointer to the slip plane that is to be inserted.
+ */
+void SlipSystem::insertSlipPlane (SlipPlane *s)
+{
+    this->slipPlanes.push_back(s);
+}
+
+/**
+ * @brief Insert a  list of slip planes.
+ * @param sList STL vector container with pointers to slip planes.
+ */
+void SlipSystem::insertSlipPlaneList (std::vector<SlipPlane*> sList)
+{
+    this->slipPlanes.insert(this->slipPlanes.end(),
+                            sList.begin(),
+                            sList.end());
+}
+
 // Access functions
 /**
  * @brief Gets the co-ordinate system of the slip system.
