@@ -114,5 +114,8 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
 
     displayMessage ( "Starting simulation..." );
 
-    //
+    // Start the simulation
+    while (continueSimulation) {
+        //
+    }
 }

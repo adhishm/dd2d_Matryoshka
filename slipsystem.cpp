@@ -282,3 +282,18 @@ void SlipSystem::calculateSlipPlaneAppliedStress ()
         s->calculateSlipPlaneAppliedStress(this->appliedStress_local);
     }
 }
+
+/**
+ * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+ * @param mu Shear modulus of the material (Pa).
+ * @param nu Poisson's ratio.
+ */
+void SlipSystem::calculateAllStresses (double mu, double nu)
+{
+    std::vector<SlipPlane*>::iterator source_slipPlane;
+    std::vector<SlipPlane*>::iterator destination_slipPlane;
+
+    for (destination_slipPlane = this->slipPlanes.begin();destination_slipPlane!=this->slipPlanes.end(); destination_slipPlane++) {
+        //
+    }
+}

@@ -201,6 +201,12 @@ public:
      * @brief Calculate the applied stress on the slip planes, in their respective co-ordinate systems.
      */
     void calculateSlipPlaneAppliedStress ();
+    /**
+     * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+     * @param mu Shear modulus of the material (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void calculateAllStresses (double mu, double nu);
 
     // Statistics
     /**
