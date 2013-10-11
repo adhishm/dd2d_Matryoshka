@@ -290,10 +290,44 @@ void SlipSystem::calculateSlipPlaneAppliedStress ()
  */
 void SlipSystem::calculateAllStresses (double mu, double nu)
 {
-    std::vector<SlipPlane*>::iterator source_slipPlane;
-    std::vector<SlipPlane*>::iterator destination_slipPlane;
+    std::vector<SlipPlane *>::iterator source_slipPlane_it;
+    std::vector<SlipPlane *>::iterator destination_slipPlane_it;
 
-    for (destination_slipPlane = this->slipPlanes.begin();destination_slipPlane!=this->slipPlanes.end(); destination_slipPlane++) {
-        //
+    SlipPlane *destination_slipPlane;
+    SlipPlane *source_slipPlane;
+
+    Stress totalStress;
+    Stress totalStress_slipPlane;
+    Stress totalStress_defect;
+
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d>::iterator defectPositions_it;
+
+    std::vector<Defect *> defects;
+    std::vector<Defect *>::iterator defects_it;
+    Defect *defect;
+
+    for (destination_slipPlane_it=this->slipPlanes.begin(); destination_slipPlane_it!=this->slipPlanes.end(); destination_slipPlane_it++) {
+        destination_slipPlane = *destination_slipPlane_it;
+        totalStress = this->appliedStress_local;
+        // Get all defects and their position vectors
+        defects = destination_slipPlane->getDefectList();
+        defectPositions = destination_slipPlane->getAllDefectPositions_base();
+        for (defectPositions_it=defectPositions.begin(), defects_it=defects.begin();
+             defectPositions_it!=defectPositions.end();
+             defectPositions_it++, defects_it++) {
+            for (source_slipPlane_it=this->slipPlanes.begin(); source_slipPlane_it!=this->slipPlanes.end(); source_slipPlane_it++) {
+                source_slipPlane = *source_slipPlane_it;
+                // Add the source slip plane's stress field to the total stress field at this position
+                totalStress += source_slipPlane->slipPlaneStressField(*defectPositions_it, mu, nu);
+            }
+            // The stress is in the slip system co-ordinate system
+            // It should be converted to the slip plane co-ordinate system
+            // and then to the defect co-ordinate system
+            defect = *defects_it;
+            totalStress_slipPlane = destination_slipPlane->getCoordinateSystem()->stress_BaseToLocal(totalStress);
+            totalStress_defect = defect->getCoordinateSystem()->stress_BaseToLocal(totalStress_slipPlane);
+            defect->setTotalStress(totalStress_defect);
+        }
     }
 }
