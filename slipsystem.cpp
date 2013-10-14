@@ -158,6 +158,15 @@ void SlipSystem::insertSlipPlaneList (std::vector<SlipPlane*> sList)
                             sList.end());
 }
 
+/**
+ * @brief Set the time increment for the slip system
+ * @param t The value of the time increment.
+ */
+void SlipSystem::setTimeIncrement (double t)
+{
+    this->dt = t;
+}
+
 // Access functions
 /**
  * @brief Gets the co-ordinate system of the slip system.
@@ -336,7 +345,7 @@ void SlipSystem::calculateAllStresses (double mu, double nu)
  * @brief Calculate the forces on all the dislocations on all the slip planes.
  * @param B The drag coefficient for the dislocations.
  */
-void SlipSystem::calculateSlipPlaneDislocationForcesVelocities(double B)
+void SlipSystem::calculateSlipPlaneDislocationForcesVelocities (double B)
 {
     std::vector<SlipPlane*>::iterator slipPlanes_it;
     SlipPlane *s;
@@ -346,4 +355,29 @@ void SlipSystem::calculateSlipPlaneDislocationForcesVelocities(double B)
         s->calculateDislocationForces();
         s->calculateDislocationVelocities(B);
     }
+}
+
+// Time increment
+/**
+ * @brief Calculates the ideal time increments of all the slip planes in the slip system.
+ * @param minDistance The minimum distance allowed between adjacent defects.
+ * @param minDt The smallest time step allowed.
+ * @return STL vector container with teh time increments for each slip plane.
+ */
+std::vector<double> SlipSystem::calculateTimeIncrement (double minDistance, double minDt)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+    std::vector<double> timeIncrements (this->slipPlanes.size(), 0.0);
+    std::vector<double>::iterator timeIncrements_it;
+
+    for (slipPlanes_it=this->slipPlanes.begin(), timeIncrements_it=timeIncrements.begin();
+         slipPlanes_it!=this->slipPlanes.end();
+         slipPlanes_it++, timeIncrements_it++) {
+        s = *slipPlanes_it;
+        s->calculateTimeIncrement(minDistance, minDt);
+        *timeIncrements_it = s->getTimeIncrement();
+    }
+
+    return (timeIncrements);
 }

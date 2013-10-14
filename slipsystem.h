@@ -78,6 +78,10 @@ protected:
      * @brief The externally applied stress, in the local co-ordinate system.
      */
     Stress appliedStress_local;
+    /**
+     * @brief Time increment for the slip system.
+     */
+    double dt;
 
 public:
     /**
@@ -135,6 +139,11 @@ public:
      * @param sList STL vector container with pointers to slip planes.
      */
     void insertSlipPlaneList (std::vector<SlipPlane*> sList);
+    /**
+     * @brief Set the time increment for the slip system
+     * @param t The value of the time increment.
+     */
+    void setTimeIncrement (double t);
 
     // Access functions
     /**
@@ -213,6 +222,14 @@ public:
      */
     void calculateSlipPlaneDislocationForcesVelocities (double B);
 
+    // Time increment
+    /**
+     * @brief Calculates the ideal time increments of all the slip planes in the slip system.
+     * @param minDistance The minimum distance allowed between adjacent defects.
+     * @param minDt The smallest time step allowed.
+     * @return STL vector container with teh time increments for each slip plane.
+     */
+    std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
 
     // Statistics
     /**

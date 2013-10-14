@@ -121,5 +121,18 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
 
         // Calculate dislocation velocities
         slipSystem->calculateSlipPlaneDislocationForcesVelocities(param->B);
+
+        // Time increment
+        switch (param->timeStepType) {
+        case ADAPTIVE:
+            // This part is pending
+            break;
+
+        case FIXED:
+            //
+            break;
+        }
+
+        //
     }
 }
