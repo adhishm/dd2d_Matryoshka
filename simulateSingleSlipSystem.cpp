@@ -116,6 +116,10 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
 
     // Start the simulation
     while (continueSimulation) {
-        //
+        // Calculate stresses on all defects
+        slipSystem->calculateAllStresses(param->mu, param->nu);
+
+        // Calculate dislocation velocities
+        slipSystem->calculateSlipPlaneDislocationForcesVelocities(param->B);
     }
 }

@@ -207,6 +207,12 @@ public:
      * @param nu Poisson's ratio.
      */
     void calculateAllStresses (double mu, double nu);
+    /**
+     * @brief Calculate the forces on all the dislocations on all the slip planes.
+     * @param B The drag coefficient for the dislocations.
+     */
+    void calculateSlipPlaneDislocationForcesVelocities (double B);
+
 
     // Statistics
     /**

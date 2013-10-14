@@ -331,3 +331,19 @@ void SlipSystem::calculateAllStresses (double mu, double nu)
         }
     }
 }
+
+/**
+ * @brief Calculate the forces on all the dislocations on all the slip planes.
+ * @param B The drag coefficient for the dislocations.
+ */
+void SlipSystem::calculateSlipPlaneDislocationForcesVelocities(double B)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->calculateDislocationForces();
+        s->calculateDislocationVelocities(B);
+    }
+}
