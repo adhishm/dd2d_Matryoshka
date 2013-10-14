@@ -187,6 +187,16 @@ public:
      * @return The applied stress in the slip system's base co-ordinate system.
      */
     Stress getAppliedStress_base () const;
+    /**
+     * @brief Get the slip system time increment.
+     * @return The slip system time increment.
+     */
+    double getTimeIncrement () const;
+    /**
+     * @brief Get the time increments of all the slip planes.
+     * @return STL vector container with the time increments of all the slip planes.
+     */
+    std::vector<double> getSlipPlaneTimeIncrements ();
 
     // Sort functions
     /**

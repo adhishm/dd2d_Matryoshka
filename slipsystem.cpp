@@ -249,6 +249,38 @@ Stress SlipSystem::getAppliedStress_base () const
     return (this->appliedStress_base);
 }
 
+/**
+ * @brief Get the slip system time increment.
+ * @return The slip system time increment.
+ */
+double SlipSystem::getTimeIncrement () const
+{
+    return (this->dt);
+}
+
+/**
+ * @brief Get the time increments of all the slip planes.
+ * @return STL vector container with the time increments of all the slip planes.
+ */
+std::vector<double> SlipSystem::getSlipPlaneTimeIncrements ()
+{
+    std::vector<double> timeIncrements (this->slipPlanes.size(), 0.0);
+    std::vector<double>::iterator timeIncrements_it;
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    timeIncrements_it = timeIncrements.begin();
+    slipPlanes_it = this->slipPlanes.begin();
+
+    while (timeIncrements_it != timeIncrements.end()) {
+        s = *slipPlanes_it;
+        *timeIncrements_it = s->getTimeIncrement();
+        timeIncrements_it++;
+        slipPlanes_it++;
+    }
+    return (timeIncrements);
+}
+
 // Sort functions
 /**
  * @brief Sort the slip planes in ascending order based on their positions.
