@@ -152,7 +152,7 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
 
         // Write statistics
         if (param->slipSystemObjectPositions.ifWrite()) {
-            fileName = param->output_dir + "/" + param->slipSystemObjectPositions.name + doubleToString ( totalTime ) + ".txt";
+            fileName = param->output_dir + "/" + param->slipSystemObjectPositions.name + ".txt";
             slipSystem->writeAllDefects( fileName, totalTime );
             fileName.clear ();
         }
