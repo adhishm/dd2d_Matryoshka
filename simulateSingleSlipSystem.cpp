@@ -156,5 +156,15 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
             slipSystem->writeAllDefects( fileName, totalTime );
             fileName.clear ();
         }
+
+        // Check for stopping criterion
+        if ( param->stopAfterTime ) {
+            // The stopping criterion is time
+            continueSimulation = ( totalTime <= param->stopTime );
+        }
+        else {
+            // The stopping criterion is iterations
+            continueSimulation = ( nIterations <= param->stopIterations );
+        }
     }
 }
