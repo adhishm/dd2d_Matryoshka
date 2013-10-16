@@ -126,6 +126,7 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
         switch (param->timeStepType) {
         case ADAPTIVE:
             // This part is pending
+            timeIncrement = slipSystem->calculateTimeIncrement(limitingDistance, param->limitingTimeStep);
             break;
 
         case FIXED:
@@ -149,6 +150,11 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
         displayMessage ( message );
         message.clear ();
 
-
+        // Write statistics
+        if (param->slipSystemObjectPositions.ifWrite()) {
+            fileName = param->output_dir + "/" + param->slipSystemObjectPositions.name + doubleToString ( totalTime ) + ".txt";
+            slipSystem->writeAllDefects( fileName, totalTime );
+            fileName.clear ();
+        }
     }
 }
