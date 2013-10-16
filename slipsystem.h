@@ -252,6 +252,16 @@ public:
      */
     void moveSlipPlaneDislocations (double minDistance, double dtGlobal, double mu, double nu);
 
+    // Check dislocation sources
+    /**
+     * @brief Check the dislocation sources lying on all the slip planes for dipole emissions.
+     * @param timeIncrement The time increment for the current iteration.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @param limitingDistance Minimum distance allowed between two defects.
+     */
+    void checkSlipPlaneDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance);
+
     // Statistics
     /**
      * @brief Writes out the current time and the positions of all defects on the slip planes that belong to the slip system.

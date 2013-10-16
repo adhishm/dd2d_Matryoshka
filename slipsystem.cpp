@@ -433,3 +433,22 @@ void SlipSystem::moveSlipPlaneDislocations (double minDistance, double dtGlobal,
         s->moveDislocationsToLocalEquilibrium(minDistance, dtGlobal, mu, nu);
     }
 }
+
+// Check dislocation sources
+/**
+ * @brief Check the dislocation sources lying on all the slip planes for dipole emissions.
+ * @param timeIncrement The time increment for the current iteration.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @param limitingDistance Minimum distance allowed between two defects.
+ */
+void SlipSystem::checkSlipPlaneDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->checkDislocationSources(timeIncrement, mu, nu, limitingDistance);
+    }
+}

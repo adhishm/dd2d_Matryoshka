@@ -129,10 +129,12 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
             break;
 
         case FIXED:
-            //
+            slipSystem->setTimeIncrement(param->limitingTimeStep);
+            slipSystem->moveSlipPlaneDislocations(limitingDistance, param->limitingTimeStep, param->mu, param->nu);
             break;
         }
 
-        //
+        // Check dislocation sources on all slip planes
+        slipSystem->checkSlipPlaneDislocationSources(param->limitingTimeStep, param->mu, param->nu, limitingDistance);
     }
 }
