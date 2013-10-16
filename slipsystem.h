@@ -262,6 +262,13 @@ public:
      */
     void checkSlipPlaneDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance);
 
+    // Local reactions
+    /**
+     * @brief Check for local reactions on all the slip planes.
+     * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+     */
+    void checkSlipPlaneLocalReactions (double reactionRadius);
+
     // Statistics
     /**
      * @brief Writes out the current time and the positions of all defects on the slip planes that belong to the slip system.

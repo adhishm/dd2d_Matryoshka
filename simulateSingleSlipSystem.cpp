@@ -136,5 +136,19 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
 
         // Check dislocation sources on all slip planes
         slipSystem->checkSlipPlaneDislocationSources(param->limitingTimeStep, param->mu, param->nu, limitingDistance);
+
+        // Check local reactions on all slip planes
+        slipSystem->checkSlipPlaneLocalReactions(reactionRadius);
+
+        // Increment counters
+        totalTime += slipSystem->getTimeIncrement ();
+        simulationTime.push_back ( totalTime );
+        nIterations++;
+
+        message = "Iteration " + intToString ( nIterations ) + "; Total time " + doubleToString ( totalTime );
+        displayMessage ( message );
+        message.clear ();
+
+
     }
 }

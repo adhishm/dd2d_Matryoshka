@@ -452,3 +452,20 @@ void SlipSystem::checkSlipPlaneDislocationSources (double timeIncrement, double 
         s->checkDislocationSources(timeIncrement, mu, nu, limitingDistance);
     }
 }
+
+// Local reactions
+/**
+ * @brief Check for local reactions on all the slip planes.
+ * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+ */
+void SlipSystem::checkSlipPlaneLocalReactions (double reactionRadius)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->checkLocalReactions(reactionRadius);
+    }
+}
+
