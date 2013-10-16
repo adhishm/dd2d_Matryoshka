@@ -126,7 +126,7 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
         switch (param->timeStepType) {
         case ADAPTIVE:
             // This part is pending
-            // break;
+            break;
 
         case FIXED:
             //

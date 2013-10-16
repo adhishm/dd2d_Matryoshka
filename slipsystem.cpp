@@ -394,7 +394,7 @@ void SlipSystem::calculateSlipPlaneDislocationForcesVelocities (double B)
  * @brief Calculates the ideal time increments of all the slip planes in the slip system.
  * @param minDistance The minimum distance allowed between adjacent defects.
  * @param minDt The smallest time step allowed.
- * @return STL vector container with teh time increments for each slip plane.
+ * @return STL vector container with the time increments for each slip plane.
  */
 std::vector<double> SlipSystem::calculateTimeIncrement (double minDistance, double minDt)
 {
@@ -412,4 +412,24 @@ std::vector<double> SlipSystem::calculateTimeIncrement (double minDistance, doub
     }
 
     return (timeIncrements);
+}
+
+// Move dislocations on all slip planes
+/**
+ * @brief This function moves all the dislocations on all slip planes belonging to the slip system.
+ * @details The function uses a constant time increment, and uses the function SlipPlane::moveDislocationsToLocalEquilibrium to bring dislocations to an equilibrium position (if this position is not too far away).
+ * @param minDistance The minimum allowed distance between two defects.
+ * @param dtGlobal The global time increment.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void SlipSystem::moveSlipPlaneDislocations (double minDistance, double dtGlobal, double mu, double nu)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->moveDislocationsToLocalEquilibrium(minDistance, dtGlobal, mu, nu);
+    }
 }
