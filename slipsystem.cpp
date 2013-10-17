@@ -158,6 +158,15 @@ void SlipSystem::insertSlipPlaneList (std::vector<SlipPlane*> sList)
                             sList.end());
 }
 
+/**
+ * @brief Set the time increment for the slip system
+ * @param t The value of the time increment.
+ */
+void SlipSystem::setTimeIncrement (double t)
+{
+    this->dt = t;
+}
+
 // Access functions
 /**
  * @brief Gets the co-ordinate system of the slip system.
@@ -222,6 +231,56 @@ SlipPlane* SlipSystem::getSlipPlane (int i)
     return (s);
 }
 
+/**
+ * @brief Get the applied stress in the slip system's local co-ordinate system.
+ * @return The applied stress in the slip system's local co-ordinate system.
+ */
+Stress SlipSystem::getAppliedStress_local () const
+{
+    return (this->appliedStress_local);
+}
+
+/**
+ * @brief Get the applied stress in the slip system's base co-ordinate system.
+ * @return The applied stress in the slip system's base co-ordinate system.
+ */
+Stress SlipSystem::getAppliedStress_base () const
+{
+    return (this->appliedStress_base);
+}
+
+/**
+ * @brief Get the slip system time increment.
+ * @return The slip system time increment.
+ */
+double SlipSystem::getTimeIncrement () const
+{
+    return (this->dt);
+}
+
+/**
+ * @brief Get the time increments of all the slip planes.
+ * @return STL vector container with the time increments of all the slip planes.
+ */
+std::vector<double> SlipSystem::getSlipPlaneTimeIncrements ()
+{
+    std::vector<double> timeIncrements (this->slipPlanes.size(), 0.0);
+    std::vector<double>::iterator timeIncrements_it;
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    timeIncrements_it = timeIncrements.begin();
+    slipPlanes_it = this->slipPlanes.begin();
+
+    while (timeIncrements_it != timeIncrements.end()) {
+        s = *slipPlanes_it;
+        *timeIncrements_it = s->getTimeIncrement();
+        timeIncrements_it++;
+        slipPlanes_it++;
+    }
+    return (timeIncrements);
+}
+
 // Sort functions
 /**
  * @brief Sort the slip planes in ascending order based on their positions.
@@ -239,3 +298,174 @@ void SlipSystem::clearSlipPlanes ()
 {
     this->slipPlanes.clear();
 }
+
+// Stresses
+/**
+ * @brief Calculate the applied stress, in the slip system co-ordinate system.
+ * @param appliedStress
+ */
+void SlipSystem::calculateSlipSystemAppliedStress (Stress appliedStress)
+{
+    this->appliedStress_base = appliedStress;
+    this->appliedStress_local = this->coordinateSystem.stress_BaseToLocal(appliedStress);
+}
+
+/**
+ * @brief Calculate the applied stress on the slip planes, in their respective co-ordinate systems.
+ */
+void SlipSystem::calculateSlipPlaneAppliedStress ()
+{
+    std::vector<SlipPlane*>::iterator sit;
+    SlipPlane* s;
+
+    for (sit=this->slipPlanes.begin(); sit!=this->slipPlanes.end(); sit++) {
+        s = *sit;
+        s->calculateSlipPlaneAppliedStress(this->appliedStress_local);
+    }
+}
+
+/**
+ * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+ * @param mu Shear modulus of the material (Pa).
+ * @param nu Poisson's ratio.
+ */
+void SlipSystem::calculateAllStresses (double mu, double nu)
+{
+    std::vector<SlipPlane *>::iterator source_slipPlane_it;
+    std::vector<SlipPlane *>::iterator destination_slipPlane_it;
+
+    SlipPlane *destination_slipPlane;
+    SlipPlane *source_slipPlane;
+
+    Stress totalStress;
+    Stress totalStress_slipPlane;
+    Stress totalStress_defect;
+
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d>::iterator defectPositions_it;
+
+    std::vector<Defect *> defects;
+    std::vector<Defect *>::iterator defects_it;
+    Defect *defect;
+
+    for (destination_slipPlane_it=this->slipPlanes.begin(); destination_slipPlane_it!=this->slipPlanes.end(); destination_slipPlane_it++) {
+        destination_slipPlane = *destination_slipPlane_it;
+        totalStress = this->appliedStress_local;
+        // Get all defects and their position vectors
+        defects = destination_slipPlane->getDefectList();
+        defectPositions = destination_slipPlane->getAllDefectPositions_base();
+        for (defectPositions_it=defectPositions.begin(), defects_it=defects.begin();
+             defectPositions_it!=defectPositions.end();
+             defectPositions_it++, defects_it++) {
+            for (source_slipPlane_it=this->slipPlanes.begin(); source_slipPlane_it!=this->slipPlanes.end(); source_slipPlane_it++) {
+                source_slipPlane = *source_slipPlane_it;
+                // Add the source slip plane's stress field to the total stress field at this position
+                totalStress += source_slipPlane->slipPlaneStressField(*defectPositions_it, mu, nu);
+            }
+            // The stress is in the slip system co-ordinate system
+            // It should be converted to the slip plane co-ordinate system
+            // and then to the defect co-ordinate system
+            defect = *defects_it;
+            totalStress_slipPlane = destination_slipPlane->getCoordinateSystem()->stress_BaseToLocal(totalStress);
+            totalStress_defect = defect->getCoordinateSystem()->stress_BaseToLocal(totalStress_slipPlane);
+            defect->setTotalStress(totalStress_defect);
+        }
+    }
+}
+
+/**
+ * @brief Calculate the forces on all the dislocations on all the slip planes.
+ * @param B The drag coefficient for the dislocations.
+ */
+void SlipSystem::calculateSlipPlaneDislocationForcesVelocities (double B)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->calculateDislocationForces();
+        s->calculateDislocationVelocities(B);
+    }
+}
+
+// Time increment
+/**
+ * @brief Calculates the ideal time increments of all the slip planes in the slip system.
+ * @param minDistance The minimum distance allowed between adjacent defects.
+ * @param minDt The smallest time step allowed.
+ * @return STL vector container with the time increments for each slip plane.
+ */
+std::vector<double> SlipSystem::calculateTimeIncrement (double minDistance, double minDt)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+    std::vector<double> timeIncrements (this->slipPlanes.size(), 0.0);
+    std::vector<double>::iterator timeIncrements_it;
+
+    for (slipPlanes_it=this->slipPlanes.begin(), timeIncrements_it=timeIncrements.begin();
+         slipPlanes_it!=this->slipPlanes.end();
+         slipPlanes_it++, timeIncrements_it++) {
+        s = *slipPlanes_it;
+        s->calculateTimeIncrement(minDistance, minDt);
+        *timeIncrements_it = s->getTimeIncrement();
+    }
+
+    return (timeIncrements);
+}
+
+// Move dislocations on all slip planes
+/**
+ * @brief This function moves all the dislocations on all slip planes belonging to the slip system.
+ * @details The function uses a constant time increment, and uses the function SlipPlane::moveDislocationsToLocalEquilibrium to bring dislocations to an equilibrium position (if this position is not too far away).
+ * @param minDistance The minimum allowed distance between two defects.
+ * @param dtGlobal The global time increment.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void SlipSystem::moveSlipPlaneDislocations (double minDistance, double dtGlobal, double mu, double nu)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->moveDislocationsToLocalEquilibrium(minDistance, dtGlobal, mu, nu);
+    }
+}
+
+// Check dislocation sources
+/**
+ * @brief Check the dislocation sources lying on all the slip planes for dipole emissions.
+ * @param timeIncrement The time increment for the current iteration.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @param limitingDistance Minimum distance allowed between two defects.
+ */
+void SlipSystem::checkSlipPlaneDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->checkDislocationSources(timeIncrement, mu, nu, limitingDistance);
+    }
+}
+
+// Local reactions
+/**
+ * @brief Check for local reactions on all the slip planes.
+ * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+ */
+void SlipSystem::checkSlipPlaneLocalReactions (double reactionRadius)
+{
+    std::vector<SlipPlane*>::iterator slipPlanes_it;
+    SlipPlane *s;
+
+    for (slipPlanes_it=this->slipPlanes.begin(); slipPlanes_it!=this->slipPlanes.end(); slipPlanes_it++) {
+        s = *slipPlanes_it;
+        s->checkLocalReactions(reactionRadius);
+    }
+}
+

@@ -302,6 +302,8 @@ bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, P
         std::vector<double> tauC_values = rng_Gaussian( nSlipPlanes*MEAN_NUM_DISLOCATION_SOURCES_PERSLIPPLANE,
                                                         param->tauCritical_mean, param->tauCritical_stdev );
 
+        // Clear the slip planes
+        s->clearSlipPlanes();
         // Read the slip planes
         for (i=0; i<nSlipPlanes; i++) {
             // Allocate memory for the new slip plane

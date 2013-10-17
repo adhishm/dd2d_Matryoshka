@@ -257,6 +257,18 @@ public:
   std::vector<Defect*> getDefectList ();
 
   /**
+   * @brief Return the positions of all the defects, expressed in the slip plane base co-ordinate system.
+   * @return STL vector container with position vectors of all the defects, expressed in the the slip plane base co-ordinate system.
+   */
+  std::vector<Vector3d> getAllDefectPositions_base ();
+
+  /**
+   * @brief Return the positions of all the defects, expressed in the slip plane local co-ordinate system.
+   * @return STL vector container with position vectors of all the defects, expressed in the the slip plane local co-ordinate system.
+   */
+  std::vector<Vector3d> getAllDefectPositions_local ();
+
+  /**
    * @brief Return the number of defects lying in the slip plane.
    * @return The number of defects lying in the slip plane.
    */

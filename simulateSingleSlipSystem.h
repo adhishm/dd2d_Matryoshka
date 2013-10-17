@@ -48,4 +48,12 @@
  */
 void simulateSingleSlipSystem ();
 
+/**
+ * @brief Carry out the iterations for the simulation of dislocation motion on a single slip system.
+ * @param param Pointer to the instance of the Parameter class containing all simulation parameters.
+ * @param slipSystem Pointer to the instance of the SlipSystem class containing the data for the dislocation structure.
+ * @param currentTime The value of time at the beginning of the simulation.
+ */
+void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double currentTime);
+
 #endif // SIMULATESLINGLESLIPSYSTEM_H
