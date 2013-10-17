@@ -23,12 +23,13 @@
 
 #include "parameter.h"
 #include "simulateSingleSlipPlane.h"
+#include "simulateSingleSlipSystem.h"
 
 using namespace std;
 
 int main ()
 {
-    simulateSingleSlipPlane ();
+    simulateSingleSlipSystem();
     return (0);
 }
 

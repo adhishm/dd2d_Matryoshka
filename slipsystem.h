@@ -70,6 +70,18 @@ protected:
      * @brief Position of the origin of the slip system.
      */
     Vector3d position;
+    /**
+     * @brief The externally applied stress, in the base co-ordinate system.
+     */
+    Stress appliedStress_base;
+    /**
+     * @brief The externally applied stress, in the local co-ordinate system.
+     */
+    Stress appliedStress_local;
+    /**
+     * @brief Time increment for the slip system.
+     */
+    double dt;
 
 public:
     /**
@@ -127,6 +139,11 @@ public:
      * @param sList STL vector container with pointers to slip planes.
      */
     void insertSlipPlaneList (std::vector<SlipPlane*> sList);
+    /**
+     * @brief Set the time increment for the slip system
+     * @param t The value of the time increment.
+     */
+    void setTimeIncrement (double t);
 
     // Access functions
     /**
@@ -160,6 +177,26 @@ public:
      * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
      */
     SlipPlane* getSlipPlane (int i);
+    /**
+     * @brief Get the applied stress in the slip system's local co-ordinate system.
+     * @return The applied stress in the slip system's local co-ordinate system.
+     */
+    Stress getAppliedStress_local () const;
+    /**
+     * @brief Get the applied stress in the slip system's base co-ordinate system.
+     * @return The applied stress in the slip system's base co-ordinate system.
+     */
+    Stress getAppliedStress_base () const;
+    /**
+     * @brief Get the slip system time increment.
+     * @return The slip system time increment.
+     */
+    double getTimeIncrement () const;
+    /**
+     * @brief Get the time increments of all the slip planes.
+     * @return STL vector container with the time increments of all the slip planes.
+     */
+    std::vector<double> getSlipPlaneTimeIncrements ();
 
     // Sort functions
     /**
@@ -172,6 +209,74 @@ public:
      * @brief Clear the vector containing SlipPlanes.
      */
     void clearSlipPlanes ();
+
+    // Stresses
+    /**
+     * @brief Calculate the applied stress, in the slip system co-ordinate system.
+     * @param appliedStress
+     */
+    void calculateSlipSystemAppliedStress (Stress appliedStress);
+    /**
+     * @brief Calculate the applied stress on the slip planes, in their respective co-ordinate systems.
+     */
+    void calculateSlipPlaneAppliedStress ();
+    /**
+     * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+     * @param mu Shear modulus of the material (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void calculateAllStresses (double mu, double nu);
+    /**
+     * @brief Calculate the forces on all the dislocations on all the slip planes.
+     * @param B The drag coefficient for the dislocations.
+     */
+    void calculateSlipPlaneDislocationForcesVelocities (double B);
+
+    // Time increment
+    /**
+     * @brief Calculates the ideal time increments of all the slip planes in the slip system.
+     * @param minDistance The minimum distance allowed between adjacent defects.
+     * @param minDt The smallest time step allowed.
+     * @return STL vector container with the time increments for each slip plane.
+     */
+    std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
+
+    // Move dislocations on all slip planes
+    /**
+     * @brief This function moves all the dislocations on all slip planes belonging to the slip system.
+     * @details The function uses a constant time increment, and uses the function SlipPlane::moveDislocationsToLocalEquilibrium to bring dislocations to an equilibrium position (if this position is not too far away).
+     * @param minDistance The minimum allowed distance between two defects.
+     * @param dtGlobal The global time increment.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void moveSlipPlaneDislocations (double minDistance, double dtGlobal, double mu, double nu);
+
+    // Check dislocation sources
+    /**
+     * @brief Check the dislocation sources lying on all the slip planes for dipole emissions.
+     * @param timeIncrement The time increment for the current iteration.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @param limitingDistance Minimum distance allowed between two defects.
+     */
+    void checkSlipPlaneDislocationSources (double timeIncrement, double mu, double nu, double limitingDistance);
+
+    // Local reactions
+    /**
+     * @brief Check for local reactions on all the slip planes.
+     * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+     */
+    void checkSlipPlaneLocalReactions (double reactionRadius);
+
+    // Statistics
+    /**
+     * @brief Writes out the current time and the positions of all defects on the slip planes that belong to the slip system.
+     * @details This function writes out, in a row, the time and the positions of all defects on the slip planes at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+     * @param fileName Name of the file into which the data is to be written.
+     * @param t Value of time.
+     */
+    void writeAllDefects (std::string fileName, double t);
 };
 
 #endif // SLIPSYSTEM_H
