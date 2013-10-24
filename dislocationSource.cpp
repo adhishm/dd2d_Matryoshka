@@ -365,8 +365,8 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
     a1[0] = (a1[1]^a1[2]).normalize();
 
     // The new positions should be according to the sign of the time counter
-    if (this->countTimeTillDipoleEmission > 0.0) {
-        // The counter is positive. The leading dislocation d0 will be on the positive side of the source
+    if (this->countTimeTillDipoleEmission < 0.0) {
+        // The counter is negative. The leading dislocation d0 will be on the positive side of the source
         d0->setCoordinateSystem(a0,
                                 this->coordinateSystem.vector_LocalToBase(plusSide),
                                 this->coordinateSystem.getBase());
@@ -375,7 +375,7 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
                                 this->coordinateSystem.getBase());
     }
     else {
-        // The counter is negative. The leading dislocation d0 will be on the negative side of the source
+        // The counter is positive. The leading dislocation d0 will be on the negative side of the source
         d0->setCoordinateSystem(a0,
                                 this->coordinateSystem.vector_LocalToBase(minusSide),
                                 this->coordinateSystem.getBase());
