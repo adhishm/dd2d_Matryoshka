@@ -70,8 +70,8 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
     // Prepare the local co-ordinate system
     Vector3d *axes = new Vector3d[3];
     axes[2] = line; // The line vector is the z-axis
-    axes[0] = Vector3d::unitVector(0);  // The slip plane's x-axis is also the source's x-axis
-    axes[1] = axes[2] ^ axes[0];    // y-axis calculated by cross product
+    axes[1] = Vector3d::unitVector(2);  // The slip plane's z-axis is the source's y-axis
+    axes[0] = (axes[1] ^ axes[2]).normalize();    // y-axis calculated by cross product
 
     this->coordinateSystem.setAxes(axes);
     this->coordinateSystem.calculateRotationMatrix();
@@ -109,8 +109,8 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
     // Prepare the local co-ordinate system
     Vector3d *axes = new Vector3d[3];
     axes[2] = line; // The line vector is the z-axis
-    axes[0] = Vector3d::unitVector(0);  // The slip plane's x-axis is also the source's x-axis
-    axes[1] = axes[2] ^ axes[0];    // y-axis calculated by cross product
+    axes[1] = Vector3d::unitVector(2);  // The slip plane's z-axis is the source's y-axis
+    axes[0] = (axes[1] ^ axes[2]).normalize();    // y-axis calculated by cross product
 
     this->coordinateSystem.setBase(base);
     this->coordinateSystem.setAxes(axes);
@@ -355,6 +355,8 @@ void DislocationSource::emitDipole (double Lnuc, Dislocation *d0, Dislocation *d
     Vector3d *a0 = new Vector3d[3];
     Vector3d *a1 = new Vector3d[3];
     int i;
+
+    // The lead dislocation has the same system as the dislocation source
     for (i=0; i<3; i++) {
         a0[i] = this->coordinateSystem.getAxis(i);
     }
