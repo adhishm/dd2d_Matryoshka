@@ -96,4 +96,10 @@
  */
 #define DEFAULT_SLIPPLANE_EXTREMITY2_2 0.0
 
+/**
+ * @brief The mean number of dislocation sources per slip plane.
+ * @details This number gives us the average number of dislocation sources per slip plane. It is required in order to generate a population of critical stress values with a Gaussian distribution before knowing the actual number of dislocation sources in the simulation.
+ */
+#define MEAN_NUM_DISLOCATION_SOURCES_PERSLIPPLANE 20
+
 #endif

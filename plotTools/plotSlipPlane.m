@@ -1,5 +1,5 @@
 function plotSlipPlane (filename, delimiter)
-%% plotDislocations (filename, delimiter)
+%% plotSlipPlane (filename, delimiter)
 %  This function simply plots the positions (on the y-axis) of various
 %  defects present on a slip plane as a function of time (on the x-axis).
 %  The data is provided by the file whose name is given in the variable
