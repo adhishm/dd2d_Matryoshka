@@ -173,6 +173,11 @@ public:
      */
     Statistics allDefectPositions;
 
+    /**
+     * @brief Indicator about writing slip system object positions to file.
+     */
+    Statistics slipSystemObjectPositions;
+
     // Destructor
     /**
      * @brief Destructor for the class Parameter.

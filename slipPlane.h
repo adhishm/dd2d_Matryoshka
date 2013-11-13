@@ -134,13 +134,12 @@ public:
    * @brief Constructor that specifies all members explicitly.
    * @details The slip plane is initialized with parameters specified in the arguments.
    * @param ends Pointer to an array of type Vector3d, containing the position vectors of the extremities of the slip plane in consecutive locations.
-   * @param normal The normal vector of the slip plane.
    * @param pos The position vector of the slip plane. (This parameter is useful for locating the slip plane within a slip system)
    * @param base Pointer to the co-ordinate system of the base.
    * @param dislocationList A vector container of type Dislocation* containing the dislocations lying on this slip plane.
    * @param dislocationSourceList A vector container of type DislocationSource* containing the dislocation sources lying on this slip plane.
    */
-  SlipPlane (Vector3d *ends, Vector3d normal, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
+  SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std::vector<Dislocation*> dislocationList, std::vector<DislocationSource*> dislocationSourceList);
 
   // Destructor
   /**
@@ -207,6 +206,12 @@ public:
    * @param t The value of the time increment.
    */
   void setTimeIncrement (double t);
+
+  /**
+   * @brief Set the Base CoordinateSystem for the slip plane.
+   * @param base Pointer to the base coordinate system.
+   */
+  void setBaseCoordinateSystem (CoordinateSystem *base);
   
   // Access functions
   /**
@@ -250,6 +255,18 @@ public:
    * @return The vector of the defects lying on the slip plane.
    */
   std::vector<Defect*> getDefectList ();
+
+  /**
+   * @brief Return the positions of all the defects, expressed in the slip plane base co-ordinate system.
+   * @return STL vector container with position vectors of all the defects, expressed in the the slip plane base co-ordinate system.
+   */
+  std::vector<Vector3d> getAllDefectPositions_base ();
+
+  /**
+   * @brief Return the positions of all the defects, expressed in the slip plane local co-ordinate system.
+   * @return STL vector container with position vectors of all the defects, expressed in the the slip plane local co-ordinate system.
+   */
+  std::vector<Vector3d> getAllDefectPositions_local ();
 
   /**
    * @brief Return the number of defects lying in the slip plane.
@@ -335,6 +352,18 @@ public:
    */
   std::vector<Dislocation*>::iterator findDislocationIterator (std::vector<Defect*>::iterator defect_iterator);
 
+  // Static functions
+  /**
+   * @brief Compares the positions of the slip planes pointed to by si and sj in the frame of reference of the slip system, and returns if the position of si is less than sj.
+   * @param si Pointer to the slip plane i.
+   * @param sj Pointer to the slip plane j.
+   * @return Boolean value indicating if the position of si is less than that of sj.
+   */
+  static bool compareSlipPlanePositions (SlipPlane *si, SlipPlane *sj)
+  {
+      return (si->getPosition().getValue(2) < sj->getPosition().getValue(2));
+  }
+
   // Vector update functions
   /**
    * @brief Update the defects vector.
@@ -383,6 +412,17 @@ public:
    * @brief Sorts the dislocations on the slip plane in ascending order of distance from the first extremity.
    */
   void sortDislocationSources ();
+
+  // Stress field
+  /**
+   * @brief Calculate the total stress field due to all defects on this slip plane, at a position p.
+   * @details All defects in the simulation have a stress field (some of them have zero stress fields). This function superposes the stress fields of all defects lying on the slip plane at a position p provided as argument. Both the position p and the stress field returned are expressed in the base co-ordinate system.
+   * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+   * @param mu Shear modulus (Pa).
+   * @param nu Poisson's ratio.
+   * @return Stress field, in the base co-ordinate system, due to all defects on this slip plane.
+   */
+  Stress slipPlaneStressField (Vector3d p, double mu, double nu);
 
   // Treat defects
   /**

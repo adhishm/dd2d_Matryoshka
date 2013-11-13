@@ -267,6 +267,20 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Statistics slip system positions
+    if (first=="statsSlipSystemObjects") {
+        ss >> v;
+        int write = atoi(v.c_str());
+        ss >> v;
+        this->slipSystemObjectPositions = Statistics ( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->slipSystemObjectPositions.addName(v);
+        }
+        return;
+    }
+
     // File names
     if ( first=="structure" || first=="Structure" )
     {
