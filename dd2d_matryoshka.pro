@@ -28,7 +28,8 @@ SOURCES += main.cpp \
     slipsystem.cpp \
     readFromFile.cpp \
     simulateSingleSlipSystem.cpp \
-    slipSystemStatistics.cpp
+    slipSystemStatistics.cpp \
+    uniqueid.cpp
 
 HEADERS += \
     vector3d.h \
@@ -55,5 +56,6 @@ HEADERS += \
     freesurface.h \
     slipsystem.h \
     readFromFile.h \
-    simulateSingleSlipSystem.h
+    simulateSingleSlipSystem.h \
+    uniqueid.h
 
