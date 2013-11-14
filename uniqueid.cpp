@@ -55,12 +55,12 @@ int UniqueID::getCurrentIndex () const
 
 /**
  * @brief Creates a new index for the object.
- * @details This function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. Depending on the type of defect, the STL vector parameters specifies the parameters, which are then
+ * @details This function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. The pointer parameters gives the location in memory of the parameters for this defect.
  * @param defectType The type of defect.
- * @param parameters Parameters of the defect.
+ * @param parameters Pointer to an array containing the parameters of the defect.
  * @return New index to be given to the object.
  */
-int UniqueID::newIndex (DefectType defectType, std::vector<double> parameters)
+int UniqueID::newIndex (DefectType defectType, double* parameters)
 {
     this->currentIndex++;
     this->defectTypeVector.push_back(defectType);
@@ -96,4 +96,44 @@ DefectType UniqueID::getDefectType(int uid)
     else {
         return(0);
     }
+}
+
+/**
+ * @brief Writes the unique ids , defect types and parameters of all defects to file.
+ * @param filename std::string containing the name of the file to which the data is to be written.
+ */
+void UniqueID::writeDefects(std::string filename)
+{
+    std::ofstream fp (filename.c_str());
+    if ( !fp.is_open() ) {
+        return;
+    }
+
+    int i, j;
+    double* p;
+
+    for (i=0; i<this->currentIndex; i++) {
+        fp << i << " " << this->defectTypeVector.at(i) << " ";
+        switch (this->defectTypeVector.at(i)) {
+        case VACANCY:
+        case INTERSTITIAL:
+        case GRAINBOUNDARY:
+        case FREESURFACE:
+            // Nothing to write
+            break;
+        case DISLOCATION:
+        case FRANKREADSOURCE:
+            p = this->parameters.at(i);
+            // Write the Burgers vector and line vector
+            for (j=0; j<6; j++) {
+                fp << " " << p[j];
+            }
+            break;
+        default:
+            break;
+        }
+        fp << std::endl;
+    }
+
+    fp.close();
 }

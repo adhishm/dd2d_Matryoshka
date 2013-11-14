@@ -32,6 +32,8 @@
 #define UNIQUEID_H
 
 #include <vector>
+#include <string>
+#include <fstream>
 
 #include "defectType.h"
 
@@ -88,10 +90,10 @@ public:
      * @brief Creates a new index for the object.
      * @details This function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. Depending on the type of defect, the STL vector parameters specifies the parameters, which are then
      * @param defectType The type of defect.
-     * @param parameters Parameters of the defect.
+     * @param parameters Pointer to an array containing the parameters of the defect.
      * @return New index to be given to the object.
      */
-    int newIndex (DefectType defectType, std::vector<double> parameters);
+    int newIndex (DefectType defectType, double *parameters);
 
     /**
      * @brief Get the parameters associated with a defect given its unique id.
@@ -106,6 +108,12 @@ public:
      * @return The DefectType of the defect.
      */
     DefectType getDefectType(int uid);
+
+    /**
+     * @brief Writes the unique ids , defect types and parameters of all defects to file.
+     * @param filename std::string containing the name of the file to which the data is to be written.
+     */
+    void writeDefects(std::string filename);
 };
 
 #endif // UNIQUEID_H
