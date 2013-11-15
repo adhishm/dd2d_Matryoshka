@@ -295,6 +295,9 @@ public:
       return (this->getPosition());
   }
 
+  /**
+   * @brief Set the parameters in the unique id list.
+   */
   virtual void setParametersUniquesList () const
   {
       // Get the instance
