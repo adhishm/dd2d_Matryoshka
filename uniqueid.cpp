@@ -57,14 +57,14 @@ int UniqueID::getCurrentIndex () const
  * @brief Creates a new index for the object.
  * @details This function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. The pointer parameters gives the location in memory of the parameters for this defect.
  * @param defectType The type of defect.
- * @param parameters Pointer to an array containing the parameters of the defect.
+ * @param p Pointer to an array containing the parameters of the defect.
  * @return New index to be given to the object.
  */
-int UniqueID::newIndex (DefectType defectType, double* parameters)
+int UniqueID::newIndex (DefectType defectType, double* p)
 {
     this->currentIndex++;
     this->defectTypeVector.push_back(defectType);
-    this->parameters.push_back(parameters.data());
+    this->parameters.push_back(p);
     return(this->currentIndex);
 }
 
