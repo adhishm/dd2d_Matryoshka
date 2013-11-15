@@ -46,10 +46,7 @@ Defect::Defect ()
                                               DEFAULT_DEFECT_POSITION_2));
     this->coordinateSystem.setBase(NULL);
 
-    UniqueID* uid_instance = UniqueID::getInstance();
-    double* p = new double;
-    *p = 0.0;
-    this->uniqueID = uid_instance->newIndex(this->defectType,p);
+    this->setUniqueID();
 }
 
 
@@ -64,6 +61,8 @@ Defect::Defect (DefectType d, Vector3d p)
     this->defectType = d;
 
     this->coordinateSystem.setOrigin(p);
+
+    this->setUniqueID();
 }
 
 /**
@@ -78,6 +77,8 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d* axes)
 
     this->coordinateSystem.setAxes(axes);
     this->coordinateSystem.setOrigin(p);
+
+    this->setUniqueID();
 }
 
 /**
@@ -94,6 +95,14 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base
 }
 
 // Assignment functions
+/**
+ * @brief Set the unique id for this defect.
+ */
+void Defect::setUniqueID ()
+{
+    UniqueID* uid_instance = UniqueID::getInstance();
+    this->uniqueID = uid_instance->newIndex(this->defectType);
+}
 
 /**
  * @brief Set the co-ordinate system of the defect.

@@ -129,6 +129,11 @@ public:
   
   // Assignment functions
   /**
+   * @brief Set the unique id for this defect.
+   */
+  void setUniqueID ();
+
+  /**
    * @brief Set the co-ordinate system of the defect.
    * @param axes Pointer to the array containing the three axis vectors.
    * @param origin Position vector of the origin.
