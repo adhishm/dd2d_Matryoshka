@@ -245,3 +245,12 @@ Stress Defect::getTotalStressAtIteration (int i) const
         return (Stress());
     }
 }
+
+/**
+ * @brief Get the defect's uniqueID
+ * @return The defect's uniqueID.
+ */
+long int Defect::getUniqueID () const
+{
+    return (this->uniqueID);
+}

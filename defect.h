@@ -223,6 +223,12 @@ public:
    */
   Stress getTotalStressAtIteration (int i) const;
 
+  /**
+   * @brief Get the defect's uniqueID
+   * @return The defect's uniqueID.
+   */
+  long int getUniqueID () const;
+
   // Static functions
   /**
    * @brief Compares the distances of the defects pointed to by di and dj from the origin of the slip plane, and returns if di is closer to the origin than dj.
@@ -287,6 +293,16 @@ public:
   virtual Vector3d equilibriumDistance (Vector3d force, Vector3d burgers, double mu, double nu)
   {
       return (this->getPosition());
+  }
+
+  virtual void setParametersUniquesList () const
+  {
+      // Get the instance
+      UniqueID* uid_instance = UniqueID::getInstance();
+
+      // The generic defect has no parameters. So it sends only one with 0.
+      double* p = new double(0.0);
+      uid_instance->setParameters(this->uniqueID, p);
   }
 };
 
