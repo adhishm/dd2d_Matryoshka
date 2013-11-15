@@ -118,7 +118,7 @@ DefectType UniqueID::getDefectType(int uid)
         return(this->defectTypeVector.at(uid));
     }
     else {
-        return(0);
+        return(VACANCY);
     }
 }
 
