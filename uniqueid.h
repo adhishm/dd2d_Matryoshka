@@ -87,13 +87,27 @@ public:
     int getCurrentIndex () const;
 
     /**
-     * @brief Creates a new index for the object.
-     * @details This function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. The pointer parameters gives the location in memory of the parameters for this defect.
+     * @brief Creates a new index for the defect.
+     * @param defectType The type of defect.
+     * @return New index to be given to the defect.
+     */
+    int newIndex (DefectType defectType);
+
+    /**
+     * @brief Creates a new index for the object, sets its defect type and parameters.
+     * @details This overloaded function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. The pointer parameters gives the location in memory of the parameters for this defect.
      * @param defectType The type of defect.
      * @param p Pointer to an array containing the parameters of the defect.
      * @return New index to be given to the object.
      */
     int newIndex (DefectType defectType, double *p);
+
+    /**
+     * @brief Sets the parameters pointer for a defect given its unique index.
+     * @param uid The index of the defect.
+     * @param p Pointer to the parameters array.
+     */
+    void setParameters(int uid, double *p);
 
     /**
      * @brief Get the parameters associated with a defect given its unique id.

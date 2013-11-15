@@ -54,8 +54,20 @@ int UniqueID::getCurrentIndex () const
 }
 
 /**
- * @brief Creates a new index for the object.
- * @details This function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. The pointer parameters gives the location in memory of the parameters for this defect.
+ * @brief Creates a new index for the defect.
+ * @param defectType The type of defect.
+ * @return New index to be given to the defect.
+ */
+int UniqueID::newIndex (DefectType defectType)
+{
+    this->currentIndex++;
+    this->defectTypeVector.push_back(defectType);
+    return(this->currentIndex);
+}
+
+/**
+ * @brief Creates a new index for the object, sets its defect type and parameters.
+ * @details This overloaded function increments the current index by 1, and returns this value. The argument defectType tells the function what kind of defect it is. The pointer parameters gives the location in memory of the parameters for this defect.
  * @param defectType The type of defect.
  * @param p Pointer to an array containing the parameters of the defect.
  * @return New index to be given to the object.
@@ -66,6 +78,18 @@ int UniqueID::newIndex (DefectType defectType, double* p)
     this->defectTypeVector.push_back(defectType);
     this->parameters.push_back(p);
     return(this->currentIndex);
+}
+
+/**
+ * @brief Sets the parameters pointer for a defect given its unique index.
+ * @param uid The index of the defect.
+ * @param p Pointer to the parameters array.
+ */
+void UniqueID::setParameters(int uid, double *p)
+{
+    if ((uid>=0) && (uid<this->currentIndex)) {
+        this->parameters.push_back(p);
+    }
 }
 
 /**
@@ -94,7 +118,7 @@ DefectType UniqueID::getDefectType(int uid)
         return(this->defectTypeVector.at(uid));
     }
     else {
-        return(0);
+        return(VACANCY);
     }
 }
 
