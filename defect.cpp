@@ -45,6 +45,11 @@ Defect::Defect ()
                                               DEFAULT_DEFECT_POSITION_1,
                                               DEFAULT_DEFECT_POSITION_2));
     this->coordinateSystem.setBase(NULL);
+
+    UniqueID* uid_instance = UniqueID::getInstance();
+    double* p = new double;
+    *p = 0.0;
+    this->uniqueID = uid_instance->newIndex(this->defectType,p);
 }
 
 

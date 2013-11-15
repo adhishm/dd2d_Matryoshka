@@ -38,6 +38,7 @@
 #include "stress.h"
 #include "coordinatesystem.h"
 #include "tools.h"
+#include "uniqueid.h"
 
 #ifndef DEFAULT_DEFECT_POSITION
 #define DEFAULT_DEFECT_POSITION
@@ -77,6 +78,12 @@ public:
    * @brief Instance of the enumerated class DefectType to indicate the kind of defect that this is.
    */
   DefectType defectType;
+
+  /**
+   * @brief This integer is an identification number for the defect.
+   * @details There exists in the singleton instance of the class UniqueID vectors with defect types and attributes for alld efects in positions corresponding to the uniqueID of that defect.
+   */
+  long int uniqueID;
   
 // Constructors
   /**
