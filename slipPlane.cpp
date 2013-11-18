@@ -87,6 +87,54 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std:
     this->dt = 0;
 }
 
+// Destructor
+/**
+ * @brief Destructor for the class SlipPlane.
+ * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+ */
+SlipPlane::~SlipPlane ()
+{
+    // Must delete all the defects
+    std::vector<Dislocation*>::iterator dislocation_iterator;
+    Dislocation* dislocation;
+
+    for (dislocation_iterator=this->dislocations.begin();
+         dislocation_iterator!=this->dislocations.end();
+         dislocation_iterator++) {
+        dislocation = *dislocation_iterator;
+        delete (dislocation);
+        dislocation = NULL;
+    }
+
+    std::vector<DislocationSource*>::iterator dislocationSource_iterator;
+    DislocationSource* dislocationSource;
+
+    for (dislocationSource_iterator=this->dislocationSources.begin();
+         dislocationSource_iterator!=this->dislocationSources.end();
+         dislocationSource_iterator++) {
+        dislocationSource = *dislocationSource_iterator;
+        delete (dislocationSource);
+        dislocationSource = NULL;
+    }
+
+    std::vector<Defect*>::iterator defect_iterator;
+    Defect* defect;
+
+    for (defect_iterator=this->defects.begin();
+         defect_iterator!=this->defects.end();
+         defect_iterator++) {
+        defect = *defect_iterator;
+        if (defect->getDefectType()!=DISLOCATION && defect->getDefectType()!=FRANKREADSOURCE) {
+            delete (defect);
+            defect = NULL;
+        }
+    }
+
+    this->defects.clear();
+    this->dislocations.clear();
+    this->dislocationSources.clear();
+}
+
 // Assignment functions
 /**
  * @brief Set the extremities of the slip plane.

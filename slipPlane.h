@@ -146,10 +146,7 @@ public:
    * @brief Destructor for the class SlipPlane.
    * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
    */
-  virtual ~SlipPlane ()
-  {
-
-  }
+  virtual ~SlipPlane ();
   
   // Assignment functions
   /**
