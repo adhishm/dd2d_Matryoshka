@@ -85,11 +85,10 @@ void simulateSingleSlipPlane ()
 
     delete ( param );
     param = NULL;
+
+    delete (slipPlane);
+    slipPlane = NULL;
 }
-
-
-
-
 
 /**
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
