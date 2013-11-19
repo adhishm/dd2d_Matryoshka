@@ -93,6 +93,7 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base
 {
     this->defectType = d;
     this->setCoordinateSystem(axes, p, base);
+    this->setParametersUniquesList();
 }
 
 // Assignment functions
