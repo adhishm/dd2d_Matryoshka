@@ -66,6 +66,24 @@ SlipSystem::SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, Coordi
     this->setSlipPlaneCoordinateSystems();
 }
 
+// Destructor
+/**
+ * @brief Destructor for the class SlipSystem.
+ */
+SlipSystem::~SlipSystem ()
+{
+    std::vector<SlipPlane*>::iterator sp_it;
+    SlipPlane* sp;
+
+    for (sp_it=this->slipPlanes.begin(); sp_it!=this->slipPlanes.end(); sp_it++) {
+        sp = *sp_it;
+        delete (sp);
+        sp = NULL;
+    }
+
+    this->slipPlanes.clear();
+}
+
 // Assignment functions
 /**
  * @brief Set the position of the origin of the slip system.

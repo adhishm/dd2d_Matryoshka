@@ -99,6 +99,12 @@ public:
      */
     SlipSystem(Vector3d pos, Vector3d normal, Vector3d direction, CoordinateSystem *base, std::vector<SlipPlane*> s);
 
+    // Destructor
+    /**
+     * @brief Destructor for the class SlipSystem.
+     */
+    virtual ~SlipSystem ();
+
     // Assignment functions
     /**
      * @brief Set the position of the origin of the slip system.
