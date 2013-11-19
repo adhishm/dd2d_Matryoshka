@@ -42,9 +42,7 @@ SlipPlane::SlipPlane ()
     Vector3d pos(DEFAULT_SLIPPLANE_POSITION_0,
                  DEFAULT_SLIPPLANE_POSITION_1,
                  DEFAULT_SLIPPLANE_POSITION_2);
-    Vector3d normal(DEFAULT_SLIPPLANE_NORMALVECTOR_0,
-                    DEFAULT_SLIPPLANE_NORMALVECTOR_1,
-                    DEFAULT_SLIPPLANE_NORMALVECTOR_2);
+
     Vector3d ends[2];
     ends[0] = Vector3d(DEFAULT_SLIPPLANE_EXTREMITY1_0,
                        DEFAULT_SLIPPLANE_EXTREMITY1_1,
@@ -59,7 +57,19 @@ SlipPlane::SlipPlane ()
     std::vector<Dislocation*> dislocationList(1, d);
     std::vector<DislocationSource*> dislocationSourceList(1, dSource);
 
-    *this = SlipPlane(ends, pos, NULL, dislocationList, dislocationSourceList);
+    CoordinateSystem *nullBase = NULL;
+
+    this->setPosition (pos);
+    this->createCoordinateSystem(nullBase);
+    this->setExtremities(ends);
+    this->setNormal(Vector3d::unitVector(2));   // The normal to the slip plane is the Z-axis of the slip system
+    this->dislocations = dislocationList;
+    this->insertDislocationList(dislocationList);
+    this->dislocationSources = dislocationSourceList;
+    this->insertDislocationSourceList(dislocationSourceList);
+
+    // Time increment
+    this->dt = 0;
 }
 
 /**
