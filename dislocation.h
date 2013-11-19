@@ -182,6 +182,23 @@ public:
    * @param v Velocity.
    */
   void setVelocity (Vector3d v);
+
+  /**
+   * @brief Set the parameters in the unique id list.
+   */
+  virtual void setParametersUniquesList() const
+  {
+      // Get the UniqueID instance
+      UniqueID* uid_instance = UniqueID::getInstance();
+
+      // Prepare the parameters
+      double* p = new double[6];
+      for (int i=0; i<3; i++) {
+          p[i] = this->bvec.getValue(i);
+          p[i+3] = this->lvec.getValue(i);
+      }
+      uid_instance->setParameters(this->uniqueID, p);
+  }
   
   // Access functions
   /**

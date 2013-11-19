@@ -87,10 +87,6 @@ void simulateSingleSlipPlane ()
     param = NULL;
 }
 
-
-
-
-
 /**
  * @brief Carry out the iterations for the simulation of dislocation motion on a single slip plane.
  * @param param Pointer to the instance of the Parameter class containing all simulation parameters.

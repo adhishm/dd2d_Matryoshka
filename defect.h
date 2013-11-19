@@ -38,6 +38,7 @@
 #include "stress.h"
 #include "coordinatesystem.h"
 #include "tools.h"
+#include "uniqueid.h"
 
 #ifndef DEFAULT_DEFECT_POSITION
 #define DEFAULT_DEFECT_POSITION
@@ -77,6 +78,12 @@ public:
    * @brief Instance of the enumerated class DefectType to indicate the kind of defect that this is.
    */
   DefectType defectType;
+
+  /**
+   * @brief This integer is an identification number for the defect.
+   * @details There exists in the singleton instance of the class UniqueID vectors with defect types and attributes for alld efects in positions corresponding to the uniqueID of that defect.
+   */
+  long int uniqueID;
   
 // Constructors
   /**
@@ -121,6 +128,11 @@ public:
   }
   
   // Assignment functions
+  /**
+   * @brief Set the unique id for this defect.
+   */
+  void setUniqueID ();
+
   /**
    * @brief Set the co-ordinate system of the defect.
    * @param axes Pointer to the array containing the three axis vectors.
@@ -211,6 +223,12 @@ public:
    */
   Stress getTotalStressAtIteration (int i) const;
 
+  /**
+   * @brief Get the defect's uniqueID
+   * @return The defect's uniqueID.
+   */
+  long int getUniqueID () const;
+
   // Static functions
   /**
    * @brief Compares the distances of the defects pointed to by di and dj from the origin of the slip plane, and returns if di is closer to the origin than dj.
@@ -275,6 +293,25 @@ public:
   virtual Vector3d equilibriumDistance (Vector3d force, Vector3d burgers, double mu, double nu)
   {
       return (this->getPosition());
+  }
+
+  /**
+   * @brief Set the parameters in the unique id list.
+   */
+  virtual void setParametersUniquesList () const
+  {
+      // The generic defect has no parameters. So it sends only one with 0.
+      switch (this->defectType) {
+      case VACANCY:
+      case INTERSTITIAL:
+      case GRAINBOUNDARY:
+      case FREESURFACE:
+          double* p = new double(0.0);
+          // Get the instance
+          UniqueID* uid_instance = UniqueID::getInstance();
+          uid_instance->setParameters(this->uniqueID, p);
+          break;
+      }
   }
 };
 

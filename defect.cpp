@@ -45,6 +45,8 @@ Defect::Defect ()
                                               DEFAULT_DEFECT_POSITION_1,
                                               DEFAULT_DEFECT_POSITION_2));
     this->coordinateSystem.setBase(NULL);
+
+    this->setUniqueID();
 }
 
 
@@ -59,6 +61,9 @@ Defect::Defect (DefectType d, Vector3d p)
     this->defectType = d;
 
     this->coordinateSystem.setOrigin(p);
+
+    this->setUniqueID();
+    this->setParametersUniquesList();
 }
 
 /**
@@ -73,6 +78,9 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d* axes)
 
     this->coordinateSystem.setAxes(axes);
     this->coordinateSystem.setOrigin(p);
+
+    this->setUniqueID();
+    this->setParametersUniquesList();
 }
 
 /**
@@ -86,9 +94,19 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base
 {
     this->defectType = d;
     this->setCoordinateSystem(axes, p, base);
+    this->setUniqueID();
+    this->setParametersUniquesList();
 }
 
 // Assignment functions
+/**
+ * @brief Set the unique id for this defect.
+ */
+void Defect::setUniqueID ()
+{
+    UniqueID* uid_instance = UniqueID::getInstance();
+    this->uniqueID = uid_instance->newIndex(this->defectType);
+}
 
 /**
  * @brief Set the co-ordinate system of the defect.
@@ -230,4 +248,13 @@ Stress Defect::getTotalStressAtIteration (int i) const
         // Invalid iteration number - return zeros
         return (Stress());
     }
+}
+
+/**
+ * @brief Get the defect's uniqueID
+ * @return The defect's uniqueID.
+ */
+long int Defect::getUniqueID () const
+{
+    return (this->uniqueID);
 }

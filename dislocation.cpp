@@ -50,6 +50,8 @@ Dislocation::Dislocation ()
 
     this->coordinateSystem.setDefaultVectors();
     this->coordinateSystem.setBase(NULL);
+
+    this->setParametersUniquesList();
 }
 
 /**
@@ -81,6 +83,8 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position,  d
 
     // Since no base is specified
     this->coordinateSystem.setBase(NULL);
+
+    this->setParametersUniquesList();
 }
 
 /**
@@ -108,6 +112,8 @@ Dislocation::Dislocation (Vector3d burgers, Vector3d line, Vector3d position, Co
     this->bvec = burgers;
     this->bmag = bm;
     this->mobile = m;
+
+    this->setParametersUniquesList();
 }
 
 // Assignment functions
