@@ -311,8 +311,6 @@ public:
           UniqueID* uid_instance = UniqueID::getInstance();
           uid_instance->setParameters(this->uniqueID, p);
           break;
-      default:
-          break;
       }
   }
 };
