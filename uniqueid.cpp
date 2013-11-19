@@ -60,9 +60,8 @@ int UniqueID::getCurrentIndex () const
  */
 int UniqueID::newIndex (DefectType defectType)
 {
-    this->currentIndex++;
     this->defectTypeVector.push_back(defectType);
-    return(this->currentIndex);
+    return(this->currentIndex++);
 }
 
 /**
@@ -74,10 +73,9 @@ int UniqueID::newIndex (DefectType defectType)
  */
 int UniqueID::newIndex (DefectType defectType, double* p)
 {
-    this->currentIndex++;
     this->defectTypeVector.push_back(defectType);
     this->parameters.push_back(p);
-    return(this->currentIndex);
+    return(this->currentIndex++);
 }
 
 /**
