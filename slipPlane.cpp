@@ -104,40 +104,48 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std:
  */
 SlipPlane::~SlipPlane ()
 {
-    // Must delete all the defects
+    // Declare iterators and pointers
+    std::vector<Defect*>::iterator defect_iterator;
+    Defect* defect;
+    
     std::vector<Dislocation*>::iterator dislocation_iterator;
     Dislocation* dislocation;
-
-    for (dislocation_iterator=this->dislocations.begin();
-         dislocation_iterator!=this->dislocations.end();
-         dislocation_iterator++) {
-        dislocation = *dislocation_iterator;
-        delete (dislocation);
-        dislocation = NULL;
-    }
-
+    
     std::vector<DislocationSource*>::iterator dislocationSource_iterator;
     DislocationSource* dislocationSource;
 
-    for (dislocationSource_iterator=this->dislocationSources.begin();
-         dislocationSource_iterator!=this->dislocationSources.end();
-         dislocationSource_iterator++) {
-        dislocationSource = *dislocationSource_iterator;
-        delete (dislocationSource);
-        dislocationSource = NULL;
-    }
-
-    std::vector<Defect*>::iterator defect_iterator;
-    Defect* defect;
-
-    for (defect_iterator=this->defects.begin();
-         defect_iterator!=this->defects.end();
-         defect_iterator++) {
+    // Initialize all iterators
+    defect_iterator = this->defects.begin();
+    dislocation_iterator = this->dislocations.begin();
+    dislocationSource_iterator = this->dislocationSources.begin();
+    
+    while (defect_iterator!=this->defects.end()) {
         defect = *defect_iterator;
-        if (defect->getDefectType()!=DISLOCATION && defect->getDefectType()!=FRANKREADSOURCE) {
+        switch (defect->getDefectType()) {
+        case DISLOCATION:
+            // Delete the dislocation (automatically deletes the defect)
+            dislocation = *dislocation_iterator;
+            delete (dislocation);
+            dislocation = NULL;
+            *dislocation_iterator = NULL;
+            dislocation_iterator++;
+            break;
+        case FRANKREADSOURCE:
+            // Delete the dislocation source (automatically deletes the defect)
+            dislocationSource = *dislocationSource_iterator;
+            delete (dislocationSource);
+            dislocationSource = NULL;
+            *dislocationSource_iterator = NULL;
+            dislocationSource_iterator++;
+            break;
+        default:
             delete (defect);
-            defect = NULL;
+            break;
         }
+        // The defect has been deleted, the entry in the vector has to be set to NULL
+        defect = NULL;
+        *defect_iterator = NULL;
+        defect_iterator++;
     }
 
     this->defects.clear();
