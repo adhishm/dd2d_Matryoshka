@@ -136,22 +136,20 @@ void UniqueID::writeDefects(std::string filename)
 
     for (i=0; i<this->currentIndex; i++) {
         fp << i << " " << this->defectTypeVector.at(i) << " ";
+        p = this->parameters.at(i);
         switch (this->defectTypeVector.at(i)) {
         case VACANCY:
         case INTERSTITIAL:
         case GRAINBOUNDARY:
         case FREESURFACE:
-            // Nothing to write
+            fp << " " << *p;
             break;
         case DISLOCATION:
         case FRANKREADSOURCE:
-            p = this->parameters.at(i);
             // Write the Burgers vector and line vector
             for (j=0; j<6; j++) {
                 fp << " " << p[j];
             }
-            break;
-        default:
             break;
         }
         fp << std::endl;
