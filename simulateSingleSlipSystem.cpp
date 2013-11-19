@@ -167,4 +167,9 @@ void singleSlipSystem_iterate (Parameter *param, SlipSystem *slipSystem, double 
             continueSimulation = ( nIterations <= param->stopIterations );
         }
     }
+
+    UniqueID* uid_instance = UniqueID::getInstance();
+    std::string uniquesFileName = param->output_dir + "/uniquesFile.txt";
+    uid_instance->writeDefects(uniquesFileName);
+    uniquesFileName.clear();
 }
