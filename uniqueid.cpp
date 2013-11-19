@@ -133,11 +133,13 @@ void UniqueID::writeDefects(std::string filename)
 
     int i, j;
     double* p;
+    DefectType t;
 
     for (i=0; i<this->currentIndex; i++) {
-        fp << i << " " << this->defectTypeVector.at(i) << " ";
+        t = this->defectTypeVector.at(i);
+        fp << i << " " << t << " ";
         p = this->parameters.at(i);
-        switch (this->defectTypeVector.at(i)) {
+        switch (t) {
         case VACANCY:
         case INTERSTITIAL:
         case GRAINBOUNDARY:

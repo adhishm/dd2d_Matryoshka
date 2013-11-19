@@ -63,6 +63,7 @@ Defect::Defect (DefectType d, Vector3d p)
     this->coordinateSystem.setOrigin(p);
 
     this->setUniqueID();
+    this->setParametersUniquesList();
 }
 
 /**
@@ -93,6 +94,7 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d *axes, CoordinateSystem* base
 {
     this->defectType = d;
     this->setCoordinateSystem(axes, p, base);
+    this->setUniqueID();
     this->setParametersUniquesList();
 }
 
