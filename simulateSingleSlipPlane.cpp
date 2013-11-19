@@ -85,9 +85,6 @@ void simulateSingleSlipPlane ()
 
     delete ( param );
     param = NULL;
-
-    delete (slipPlane);
-    slipPlane = NULL;
 }
 
 /**

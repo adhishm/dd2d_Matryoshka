@@ -83,9 +83,6 @@ void simulateSingleSlipSystem ()
 
     delete ( param );
     param = NULL;
-
-    delete (slipSystem);
-    slipSystem = NULL;
 }
 
 /**
