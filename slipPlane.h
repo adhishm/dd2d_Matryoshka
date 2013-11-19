@@ -66,10 +66,16 @@ class SlipPlane
 {
 protected:
   /**
-   * @brief The extremities of the slip plane.
-   * @details The slip plane is represented as a straight line in these two dimensional simulations. The position vectors of the two ends are given here.
+   * @brief The first extremity of the slip plane.
+   * @details The slip plane is represented as a straight line in these two dimensional simulations. The position vector of the first end is given here.
    */
-  Defect extremities[2];
+  Defect *extremity0;
+
+  /**
+   * @brief The second extremity of the slip plane.
+   * @details The slip plane is represented as a straight line in these two dimensional simulations. The position vector of the second end is given here.
+   */
+  Defect* extremity1;
   
   /**
    * @brief The normal vector to the slip plane.
