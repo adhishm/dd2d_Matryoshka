@@ -79,6 +79,7 @@ Defect::Defect (DefectType d, Vector3d p, Vector3d* axes)
     this->coordinateSystem.setOrigin(p);
 
     this->setUniqueID();
+    this->setParametersUniquesList();
 }
 
 /**

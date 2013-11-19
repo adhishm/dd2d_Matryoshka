@@ -39,12 +39,14 @@
 DislocationSource::DislocationSource ()
     : Defect ( FRANKREADSOURCE, Vector3d ( DEFAULT_POSITION_0, DEFAULT_POSITION_1, DEFAULT_POSITION_2 ) )
 {
-  this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
-  this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
-  this->bmag = DEFAULT_BURGERS_MAGNITUDE;
-  this->tauCritical = DEFAULT_TAU_CRITICAL;
-  this->timeBeforeDipoleEmission = DEFAULT_DIPOLEEMISSIONTIMELIMIT;
-  this->countTimeTillDipoleEmission = 0.0;
+    this->setBurgers ( Vector3d ( DEFAULT_BURGERS_0, DEFAULT_BURGERS_1, DEFAULT_BURGERS_2 ) );
+    this->setLineVector ( Vector3d ( DEFAULT_LINEVECTOR_0, DEFAULT_LINEVECTOR_1, DEFAULT_LINEVECTOR_2) );
+    this->bmag = DEFAULT_BURGERS_MAGNITUDE;
+    this->tauCritical = DEFAULT_TAU_CRITICAL;
+    this->timeBeforeDipoleEmission = DEFAULT_DIPOLEEMISSIONTIMELIMIT;
+    this->countTimeTillDipoleEmission = 0.0;
+
+    this->setParametersUniquesList();
 }
 
 /**
@@ -83,6 +85,8 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
                           this->getCoordinateSystem(),
                           this->bmag,
                           true);
+
+    this->setParametersUniquesList();
 }
 
 /**
@@ -123,6 +127,8 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
                           this->getCoordinateSystem(),
                           this->bmag,
                           true);
+
+    this->setParametersUniquesList();
 }
 
 // Assignment functions
@@ -132,7 +138,7 @@ DislocationSource::DislocationSource (Vector3d burgers, Vector3d line, Vector3d 
  */
 void DislocationSource::setBurgers (Vector3d burgers)
 {
-  this->bvec = burgers;
+    this->bvec = burgers;
 }
 
 /**
@@ -141,7 +147,7 @@ void DislocationSource::setBurgers (Vector3d burgers)
  */
 void DislocationSource::setLineVector (Vector3d line)
 {
-  this->lvec = line;
+    this->lvec = line;
 }
 
 /**
@@ -150,7 +156,7 @@ void DislocationSource::setLineVector (Vector3d line)
  */
 void DislocationSource::setBurgersMagnitude (double bm)
 {
-  this->bmag = bm;
+    this->bmag = bm;
 }
 
 /**
@@ -159,7 +165,7 @@ void DislocationSource::setBurgersMagnitude (double bm)
  */
 void DislocationSource::setTauCritical (double tauC)
 {
-  this->tauCritical = tauC;
+    this->tauCritical = tauC;
 }
 
 /**
@@ -176,7 +182,7 @@ void DislocationSource::setTimeTillDipoleEmission (double timeTillEmit)
  */
 void DislocationSource::resetTimeCounter ()
 {
-  this->countTimeTillDipoleEmission = 0.0;
+    this->countTimeTillDipoleEmission = 0.0;
 }
 
 /**
@@ -201,7 +207,7 @@ void DislocationSource::refreshDislocation ()
  */
 Vector3d DislocationSource::getBurgers () const
 {
-  return (this->bvec);
+    return (this->bvec);
 }
 
 /**
@@ -210,7 +216,7 @@ Vector3d DislocationSource::getBurgers () const
  */
 Vector3d DislocationSource::getLineVector () const
 {
-  return (this->lvec);
+    return (this->lvec);
 }
 
 /**
@@ -219,7 +225,7 @@ Vector3d DislocationSource::getLineVector () const
  */
 double DislocationSource::getBurgersMag () const
 {
-  return (this->bmag);
+    return (this->bmag);
 }
 
 /**
@@ -228,7 +234,7 @@ double DislocationSource::getBurgersMag () const
  */
 double DislocationSource::getTauCritical () const
 {
-  return (this->tauCritical);
+    return (this->tauCritical);
 }
 
 /**
@@ -260,14 +266,14 @@ double DislocationSource::getTimeCount () const
  */
 double DislocationSource::dipoleNucleationLength (double tau, double mu, double nu) const
 {
-  double L = 0.0;
+    double L = 0.0;
 
-  if (fabs(tau) >= this->tauCritical)
-  {
-    L = (mu * this->bmag) / ( 2.0 * PI * (1.0 - nu) * this->tauCritical );
-  }
+    if (fabs(tau) >= this->tauCritical)
+    {
+        L = (mu * this->bmag) / ( 2.0 * PI * (1.0 - nu) * this->tauCritical );
+    }
 
-  return (L);
+    return (L);
 }
 
 /**
@@ -286,7 +292,7 @@ void DislocationSource::incrementTimeCount (double dt)
  */
 bool DislocationSource::ifEmitDipole () const
 {
-  return ( fabs(this->countTimeTillDipoleEmission) >= this->timeBeforeDipoleEmission );
+    return ( fabs(this->countTimeTillDipoleEmission) >= this->timeBeforeDipoleEmission );
 }
 
 /**

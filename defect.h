@@ -300,12 +300,20 @@ public:
    */
   virtual void setParametersUniquesList () const
   {
-      // Get the instance
-      UniqueID* uid_instance = UniqueID::getInstance();
-
       // The generic defect has no parameters. So it sends only one with 0.
-      double* p = new double(0.0);
-      uid_instance->setParameters(this->uniqueID, p);
+      switch (this->defectType) {
+      case VACANCY:
+      case INTERSTITIAL:
+      case GRAINBOUNDARY:
+      case FREESURFACE:
+          double* p = new double(0.0);
+          // Get the instance
+          UniqueID* uid_instance = UniqueID::getInstance();
+          uid_instance->setParameters(this->uniqueID, p);
+          break;
+      default:
+          break;
+      }
   }
 };
 
