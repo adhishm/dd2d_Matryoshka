@@ -42,9 +42,7 @@ SlipPlane::SlipPlane ()
     Vector3d pos(DEFAULT_SLIPPLANE_POSITION_0,
                  DEFAULT_SLIPPLANE_POSITION_1,
                  DEFAULT_SLIPPLANE_POSITION_2);
-    Vector3d normal(DEFAULT_SLIPPLANE_NORMALVECTOR_0,
-                    DEFAULT_SLIPPLANE_NORMALVECTOR_1,
-                    DEFAULT_SLIPPLANE_NORMALVECTOR_2);
+
     Vector3d ends[2];
     ends[0] = Vector3d(DEFAULT_SLIPPLANE_EXTREMITY1_0,
                        DEFAULT_SLIPPLANE_EXTREMITY1_1,
@@ -59,7 +57,19 @@ SlipPlane::SlipPlane ()
     std::vector<Dislocation*> dislocationList(1, d);
     std::vector<DislocationSource*> dislocationSourceList(1, dSource);
 
-    *this = SlipPlane(ends, pos, NULL, dislocationList, dislocationSourceList);
+    CoordinateSystem *nullBase = NULL;
+
+    this->setPosition (pos);
+    this->createCoordinateSystem(nullBase);
+    this->setExtremities(ends);
+    this->setNormal(Vector3d::unitVector(2));   // The normal to the slip plane is the Z-axis of the slip system
+    this->dislocations = dislocationList;
+    this->insertDislocationList(dislocationList);
+    this->dislocationSources = dislocationSourceList;
+    this->insertDislocationSourceList(dislocationSourceList);
+
+    // Time increment
+    this->dt = 0;
 }
 
 /**
@@ -87,6 +97,65 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std:
     this->dt = 0;
 }
 
+// Destructor
+/**
+ * @brief Destructor for the class SlipPlane.
+ * @details The destructor is declared as virtual in order to avoid conflicts with derived class destructors.
+ */
+SlipPlane::~SlipPlane ()
+{
+    // Declare iterators and pointers
+    std::vector<Defect*>::iterator defect_iterator;
+    Defect* defect;
+    
+    std::vector<Dislocation*>::iterator dislocation_iterator;
+    Dislocation* dislocation;
+    
+    std::vector<DislocationSource*>::iterator dislocationSource_iterator;
+    DislocationSource* dislocationSource;
+
+    // Initialize all iterators
+    defect_iterator = this->defects.begin();
+    dislocation_iterator = this->dislocations.begin();
+    dislocationSource_iterator = this->dislocationSources.begin();
+    
+    while (defect_iterator!=this->defects.end()) {
+        defect = *defect_iterator;
+        switch (defect->getDefectType()) {
+        case DISLOCATION:
+            // Delete the dislocation (automatically deletes the defect)
+            dislocation = *dislocation_iterator;
+            delete (dislocation);
+            dislocation = NULL;
+            *dislocation_iterator = NULL;
+            dislocation_iterator++;
+            break;
+        case FRANKREADSOURCE:
+            // Delete the dislocation source (automatically deletes the defect)
+            dislocationSource = *dislocationSource_iterator;
+            delete (dislocationSource);
+            dislocationSource = NULL;
+            *dislocationSource_iterator = NULL;
+            dislocationSource_iterator++;
+            break;
+        default:
+            delete (defect);
+            break;
+        }
+        // The defect has been deleted, the entry in the vector has to be set to NULL
+        defect = NULL;
+        *defect_iterator = NULL;
+        defect_iterator++;
+    }
+
+    this->extremity0 = NULL;
+    this->extremity1 = NULL;
+
+    this->defects.clear();
+    this->dislocations.clear();
+    this->dislocationSources.clear();
+}
+
 // Assignment functions
 /**
  * @brief Set the extremities of the slip plane.
@@ -94,11 +163,11 @@ SlipPlane::SlipPlane (Vector3d *ends, Vector3d pos, CoordinateSystem* base, std:
  */
 void SlipPlane::setExtremities (Vector3d *ends)
 {
-    this->extremities[0] = Defect(GRAINBOUNDARY,
+    this->extremity0 = new Defect(GRAINBOUNDARY,
                                   this->coordinateSystem.vector_BaseToLocal(ends[0]),
                                   Vector3d::standardAxes(),
                                   this->getCoordinateSystem());
-    this->extremities[1] = Defect(GRAINBOUNDARY,
+    this->extremity1 = new Defect(GRAINBOUNDARY,
                                   this->coordinateSystem.vector_BaseToLocal(ends[1]),
                                   Vector3d::standardAxes(),
                                   this->getCoordinateSystem());
@@ -205,13 +274,16 @@ void SlipPlane::setBaseCoordinateSystem (CoordinateSystem *base)
  */
 Vector3d SlipPlane::getExtremity (int i) const
 {
-    if (i==0 || i==1)
-    {
-        return (this->extremities[i].getPosition());
-    }
-    else
-    {
-        return (Vector3d());
+    switch (i) {
+    case 0:
+        return (this->extremity0->getPosition());
+        break;
+    case 1:
+        return (this->extremity1->getPosition());
+        break;
+    default:
+        return (Vector3d::zeros());
+        break;
     }
 }
 
@@ -417,8 +489,8 @@ Vector3d SlipPlane::getAxis (int i) const
         Vector3d *e1 = new Vector3d;
         Vector3d *e2 = new Vector3d;
 
-        *e1 = this->extremities[0].getPosition();
-        *e2 = this->extremities[1].getPosition();
+        *e1 = this->extremity0->getPosition();
+        *e2 = this->extremity1->getPosition();
         axis = ((*e2) - (*e1));
 
         delete(e1);  e1 = NULL;
@@ -459,29 +531,6 @@ Stress SlipPlane::getAppliedStress_base() const
  */
 Dislocation* SlipPlane::findDislocation(std::vector<Defect*>::iterator defect_iterator)
 {
-    /*
-    std::vector<Defect*>::iterator dit = this->defects.begin();
-    std::vector<Dislocation*>::iterator dislocation_iterator = this->dislocations.begin();
-
-    while (dit != this->defects.end()) {
-        if ((*dit)->getDefectType() == DISLOCATION) {
-            // This defect is a dislocation - check if it is the one we need
-            if (dit == defect_iterator) {
-                // This is the dislocation we need
-                return ( *dislocation_iterator );
-            }
-            else {
-                // This is not the dislocation we need - increment the count
-                dislocation_iterator++;
-                dit++;
-            }
-        }
-    }
-
-    // If we are still here, the dislocation was not found
-    return (NULL);
-    */
-
     std::vector<Dislocation*>::iterator disl = this->findDislocationIterator(defect_iterator);
 
     if (disl == this->dislocations.end()) {
@@ -534,8 +583,8 @@ void SlipPlane::updateDefects()
 {
     // Assign the extremities
     this->clearDefects();
-    this->defects.push_back(this->extremities);
-    this->defects.push_back(this->extremities + 1);
+    this->defects.push_back(this->extremity0);
+    this->defects.push_back(this->extremity1);
     // Insert the dislocations
     this->defects.insert(this->defects.begin()+1,
                          this->dislocations.begin(),
@@ -1098,7 +1147,14 @@ double SlipPlane::distanceFromExtremity(Vector3d pos, int n)
         return (0.0);
     }
 
-    Vector3d r = this->extremities[n].getPosition();
+    Vector3d r;
+    if (n==0) {
+        r = this->extremity0->getPosition();
+    }
+    else {
+        r = this->extremity1->getPosition();
+    }
+
     return ( (r-pos).magnitude() );
 }
 
