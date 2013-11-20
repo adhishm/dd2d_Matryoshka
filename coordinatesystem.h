@@ -81,6 +81,11 @@ public:
      */
     CoordinateSystem(Vector3d* axes);
     /**
+     * @brief Constructor specifying the three Euler angles (Bunge's notation) for the rotation from the base to the local system.
+     * @param p Pointer to the array containing the three Euler angles.
+     */
+    CoordinateSystem(double* p);
+    /**
      * @brief Constructor specifying the axes as well as the origin of the co-ordinate system.
      * @details This constructor specifies the axes and the origin. The base pointer is set to NULL.
      * @param axes Pointer to the array containing the vectors representing the three axes.
