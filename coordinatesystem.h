@@ -93,12 +93,25 @@ public:
      */
     CoordinateSystem(Vector3d* axes, Vector3d origin);
     /**
+     * @brief Constructor specifying the Euler angles and the origin of the co-ordinate system.
+     * @param p Pointer to the array containing the three Euler angles.
+     * @param origin The origin of the co-ordinate system.
+     */
+    CoordinateSystem(double* p, Vector3d origin);
+    /**
      * @brief Constructor specifying all details: Axes, origin and base system.
      * @param axes Pointer to the array containing the vectors representing the three axes.
      * @param origin The origin of the co-ordinate system.
      * @param b Pointer to the instance of this class representing the base co-ordinate system.
      */
     CoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSystem* b);
+    /**
+     * @brief Constructor specifying the Euler angles, origin of the co-ordinate system and a pointer to the base.
+     * @param p Pointer to the array containing the three Euler angles.
+     * @param origin The origin of the co-ordinate system.
+     * @param b Pointer to the instance of this class representing the base co-ordinate system.
+     */
+    CoordinateSystem(double* p, Vector3d origin, CoordinateSystem* b);
 
     // Destructor
     /**
