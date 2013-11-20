@@ -33,6 +33,19 @@
 
 #include "slipsystem.h"
 
+#ifndef GRAIN_DEFAULTS
+#define GRAIN_DEFAULTS
+
+#define DEFAULT_ORIENTATION_PHI1 0.0
+#define DEFAULT_ORIENTATION_PHI  0.0
+#define DEFAULT_ORIENTATION_PHI2 0.0
+
+#define DEFAULT_CENTROID_X1 0.0
+#define DEFAULT_CENTROID_X2 0.0
+#define DEFAULT_CENTROID_X3 0.0
+
+#endif
+
 class Grain
 {
 protected:
@@ -40,11 +53,31 @@ protected:
      * @brief STL vector container with pointers to all slip systems that belong to this grain.
      */
     std::vector<SlipSystem*> slipSystems;
+    /**
+     * @brief The grain's co-ordinate system.
+     * @details The origin of the co-ordinate system should tyipcally be the centroid of the grain. The axes depend on the crystallographic orientation with respect to the global (polycrystal) co-ordinate system.
+     */
+    CoordinateSystem coordinateSystem;
+    /**
+     * @brief Crystallographic orientation of the grain using the three Euler angles (Bunge's notation).
+     * @details Bunge's notation for the three Euler angles gives the angles of rotation about the Z, X and Z axes, in that order.
+     */
+    double phi[3];
 public:
+    // Constructors
     /**
      * @brief Default constructor for the Grain class.
      */
     Grain();
+    /**
+     * @brief Constructor for the class Grain specifying the centroid and the crystallographic orientation.
+     * @param centroid Position vector of the grain's centroid.
+     * @param phi Pointer to the array containing the grain's crystallographic orientation.
+     */
+    Grain(Vector3d centroid, double* phi);
+
+    // Destructor
+    virtual ~Grain();
 };
 
 #endif // GRAIN_H
