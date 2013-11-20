@@ -94,7 +94,7 @@ CoordinateSystem::CoordinateSystem(double* p)
 
     this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
 
-    Vector3d* ax = new double[3];
+    Vector3d* ax = new Vector3d[3];
     for (int i=0; i<3; i++) {
         ax[i] = Vector3d(this->rotationMatrix.getValue(i,0), this->rotationMatrix.getValue(i,1), this->rotationMatrix.getValue(i,2));
     }
@@ -158,7 +158,7 @@ CoordinateSystem::CoordinateSystem(double* p, Vector3d origin)
 
     this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
 
-    Vector3d* ax = new double[3];
+    Vector3d* ax = new Vector3d[3];
     for (int i=0; i<3; i++) {
         ax[i] = Vector3d(this->rotationMatrix.getValue(i,0), this->rotationMatrix.getValue(i,1), this->rotationMatrix.getValue(i,2));
     }
@@ -223,7 +223,7 @@ CoordinateSystem::CoordinateSystem(double* p, Vector3d origin, CoordinateSystem*
 
     this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
 
-    Vector3d* ax = new double[3];
+    Vector3d* ax = new Vector3d[3];
     for (int i=0; i<3; i++) {
         ax[i] = Vector3d(this->rotationMatrix.getValue(i,0), this->rotationMatrix.getValue(i,1), this->rotationMatrix.getValue(i,2));
     }
