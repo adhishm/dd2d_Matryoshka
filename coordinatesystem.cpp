@@ -56,6 +56,56 @@ CoordinateSystem::CoordinateSystem(Vector3d* axes)
 }
 
 /**
+ * @brief Constructor specifying the three Euler angles (Bunge's notation) for the rotation from the base to the local system.
+ * @param p Pointer to the array containing the three Euler angles.
+ */
+CoordinateSystem::CoordinateSystem(double* p)
+{
+    // No origin specified
+    this->setOrigin(Vector3d::zeros());
+    Matrix33 phi1 = Matrix33::unitMatrix();
+    Matrix33 phi  = Matrix33::unitMatrix();
+    Matrix33 phi2 = Matrix33::unitMatrix();
+
+    double c;
+    double s;
+
+    // Set the rotation matrices
+    c = cos(p[0]);
+    s = sin(p[0]);
+    phi1.setValue(0, 0, c);
+    phi1.setValue(0, 1, s);
+    phi1.setValue(1, 0,-s);
+    phi1.setValue(1, 1, c);
+
+    c = cos(p[1]);
+    s = sin(p[1]);
+    phi.setValue(1, 1, c);
+    phi.setValue(1, 2, s);
+    phi.setValue(2, 1,-s);
+    phi.setValue(2, 2, c);
+
+    c = cos(p[2]);
+    s = sin(p[2]);
+    phi2.setValue(0, 0, c);
+    phi2.setValue(0, 1, s);
+    phi2.setValue(1, 0,-s);
+    phi2.setValue(1, 1, c);
+
+    this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
+
+    Vector3d* ax = new Vector3d[3];
+    for (int i=0; i<3; i++) {
+        ax[i] = Vector3d(this->rotationMatrix.getValue(i,0), this->rotationMatrix.getValue(i,1), this->rotationMatrix.getValue(i,2));
+    }
+    this->setAxes(ax);
+    delete[] (ax);
+    ax = NULL;
+
+    this->base = NULL;
+}
+
+/**
  * @brief Constructor specifying the axes as well as the origin of the co-ordinate system.
  * @details This constructor specifies the axes and the origin. The base pointer is set to NULL.
  * @param axes Pointer to the array containing the vectors representing the three axes.
@@ -65,6 +115,57 @@ CoordinateSystem::CoordinateSystem(Vector3d* axes, Vector3d origin)
 {
     this->setAxes(axes);
     this->setOrigin(origin);
+    this->base = NULL;
+}
+
+/**
+ * @brief Constructor specifying the Euler angles and the origin of the co-ordinate system.
+ * @param p Pointer to the array containing the three Euler angles.
+ * @param origin The origin of the co-ordinate system.
+ */
+CoordinateSystem::CoordinateSystem(double* p, Vector3d origin)
+{
+    this->setOrigin(origin);
+
+    Matrix33 phi1 = Matrix33::unitMatrix();
+    Matrix33 phi  = Matrix33::unitMatrix();
+    Matrix33 phi2 = Matrix33::unitMatrix();
+
+    double c;
+    double s;
+
+    // Set the rotation matrices
+    c = cos(p[0]);
+    s = sin(p[0]);
+    phi1.setValue(0, 0, c);
+    phi1.setValue(0, 1, s);
+    phi1.setValue(1, 0,-s);
+    phi1.setValue(1, 1, c);
+
+    c = cos(p[1]);
+    s = sin(p[1]);
+    phi.setValue(1, 1, c);
+    phi.setValue(1, 2, s);
+    phi.setValue(2, 1,-s);
+    phi.setValue(2, 2, c);
+
+    c = cos(p[2]);
+    s = sin(p[2]);
+    phi2.setValue(0, 0, c);
+    phi2.setValue(0, 1, s);
+    phi2.setValue(1, 0,-s);
+    phi2.setValue(1, 1, c);
+
+    this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
+
+    Vector3d* ax = new Vector3d[3];
+    for (int i=0; i<3; i++) {
+        ax[i] = Vector3d(this->rotationMatrix.getValue(i,0), this->rotationMatrix.getValue(i,1), this->rotationMatrix.getValue(i,2));
+    }
+    this->setAxes(ax);
+    delete[] (ax);
+    ax = NULL;
+
     this->base = NULL;
 }
 
@@ -79,6 +180,58 @@ CoordinateSystem::CoordinateSystem(Vector3d* axes, Vector3d origin, CoordinateSy
     this->setAxes(axes);
     this->setOrigin(origin);
     this->setBase(b);
+}
+
+/**
+ * @brief Constructor specifying the Euler angles, origin of the co-ordinate system and a pointer to the base.
+ * @param p Pointer to the array containing the three Euler angles.
+ * @param origin The origin of the co-ordinate system.
+ * @param b Pointer to the instance of this class representing the base co-ordinate system.
+ */
+CoordinateSystem::CoordinateSystem(double* p, Vector3d origin, CoordinateSystem* b)
+{
+    this->setOrigin(origin);
+
+    Matrix33 phi1 = Matrix33::unitMatrix();
+    Matrix33 phi  = Matrix33::unitMatrix();
+    Matrix33 phi2 = Matrix33::unitMatrix();
+
+    double c;
+    double s;
+
+    // Set the rotation matrices
+    c = cos(p[0]);
+    s = sin(p[0]);
+    phi1.setValue(0, 0, c);
+    phi1.setValue(0, 1, s);
+    phi1.setValue(1, 0,-s);
+    phi1.setValue(1, 1, c);
+
+    c = cos(p[1]);
+    s = sin(p[1]);
+    phi.setValue(1, 1, c);
+    phi.setValue(1, 2, s);
+    phi.setValue(2, 1,-s);
+    phi.setValue(2, 2, c);
+
+    c = cos(p[2]);
+    s = sin(p[2]);
+    phi2.setValue(0, 0, c);
+    phi2.setValue(0, 1, s);
+    phi2.setValue(1, 0,-s);
+    phi2.setValue(1, 1, c);
+
+    this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
+
+    Vector3d* ax = new Vector3d[3];
+    for (int i=0; i<3; i++) {
+        ax[i] = Vector3d(this->rotationMatrix.getValue(i,0), this->rotationMatrix.getValue(i,1), this->rotationMatrix.getValue(i,2));
+    }
+    this->setAxes(ax);
+    delete[] (ax);
+    ax = NULL;
+
+    this->base = b;
 }
 
 // Assignment functions
