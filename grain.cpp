@@ -57,7 +57,21 @@ Grain::Grain(Vector3d centroid, double* phi)
  */
 Grain::Grain(Vector3d centroid, double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, Vector3d slipDirection)
 {
-    //
+    this->coordinateSystem = CoordinateSystem(phi, centroid);
+
+    /**
+     * @brief viewPlaneNormal This is the polycrystal Z-axis, expressed in the local co-ordinate system.
+     */
+    Vector3d viewPlaneNormal = this->coordinateSystem.vector_BaseToLocal_noTranslate(Vector3d::unitVector(2));
+
+    /**
+     * @brief slipPlaneTrace The trace of the slip plane on the view plane.
+     * @details The trace of the slip plane on the view plane is required in order to calculate the extremities of the slip planes, which in turn will define the boundaries of the grain.
+     */
+    Vector3d slipPlaneTrace = viewPlaneNormal ^ slipSystemNormal;
+
+    // Get the grain boundary points in the local co-ordinate system
+    std::vector<Vector3d> gbPoints = this->coordinateSystem.vector_BaseToLocal(points);
 }
 
 // Destructor
