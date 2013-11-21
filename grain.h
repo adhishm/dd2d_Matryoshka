@@ -77,6 +77,9 @@ public:
     Grain(Vector3d centroid, double* phi);
 
     // Destructor
+    /**
+     * @brief Destructor for the class Grain.
+     */
     virtual ~Grain();
 };
 

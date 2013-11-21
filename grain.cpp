@@ -36,3 +36,24 @@
 Grain::Grain()
 {
 }
+
+// Destructor
+/**
+ * @brief Destructor for the class Grain.
+ */
+Grain::~Grain()
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    // Delete individual slip systems
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        delete (s);
+        s = NULL;
+        *s_it = NULL;
+    }
+
+    // Clear the vector of pointers
+    this->slipSystems.clear();
+}
