@@ -37,6 +37,29 @@ Grain::Grain()
 {
 }
 
+/**
+ * @brief Constructor for the class Grain specifying the centroid and the crystallographic orientation.
+ * @param centroid Position vector of the grain's centroid.
+ * @param phi Pointer to the array containing the grain's crystallographic orientation.
+ */
+Grain::Grain(Vector3d centroid, double* phi)
+{
+    this->coordinateSystem = CoordinateSystem(phi, centroid);
+}
+
+/**
+ * @brief Constructor for the class Grain, specifying all details.
+ * @param centroid Position vector, in the base (polycrystal) co-ordinate system, of the grain co-ordinate system's origin.
+ * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
+ * @param points An STL vector container with the position vectors, in the base (polycrystal) co-ordinate system, of the points that make up the grain boundary. These points must be given in a fixed sequence, either clockwise or anti-clockwise.
+ * @param slipSystemNormal Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip system normal.
+ * @param slipDirection Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip direction.
+ */
+Grain::Grain(Vector3d centroid, double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, Vector3d slipDirection)
+{
+    //
+}
+
 // Destructor
 /**
  * @brief Destructor for the class Grain.
