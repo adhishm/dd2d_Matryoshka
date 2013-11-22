@@ -85,6 +85,7 @@ public:
     Grain(Vector3d centroid, double* phi);
     /**
      * @brief Constructor for the class Grain, specifying all details.
+     * @details All details are provided to the constructor.  For the moment only one slip system is active per grain, so only one normal and only one slip direction are given. This may be modified in the future when multiple slip will be handled.
      * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
      * @param points An STL vector container with the position vectors, in the base (polycrystal) co-ordinate system, of the points that make up the grain boundary. These points must be given in a fixed sequence, either clockwise or anti-clockwise.
      * @param slipSystemNormal Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip system normal.
