@@ -63,6 +63,14 @@ protected:
      * @details Bunge's notation for the three Euler angles gives the angles of rotation about the Z, X and Z axes, in that order.
      */
     double phi[3];
+    /**
+     * @brief STL vector container with position vectors, expressed in the base co-ordinate system, of points lying on the grain boundary, in sequential order.
+     */
+    std::vector<Vector3d> gbPoints_base;
+    /**
+     * @brief STL vector container with position vectors, expressed in the local co-ordinate system, of points lying on the grain boundary, in sequential order.
+     */
+    std::vector<Vector3d> gbPoints_local;
 public:
     // Constructors
     /**
