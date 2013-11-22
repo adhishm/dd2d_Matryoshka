@@ -240,3 +240,83 @@ std::vector<double> rng_Gaussian (int n, double mean, double stdev)
     return (randoms);
 
 }
+
+/**
+ * @brief Function to check for the intersection between a line parallel to the vector V, passing through the point R, with the line joining P and Q.
+ * @details Description of the method: The intersection point S is given by the aprametric forms of the line equations. For the line passing through R and parallel to V, S = R + uV, - infinity < u < + infinity. For the line passing through P and Q, S = P + t(Q-P), 0 <= t <= 1. Therefore we need to solve the equations R + uV = P + t(Q-P), for t and u. Since all the vector quantities are known, the equation may be simplified to uV = A + tB, where A = P-R, B = Q-P. Performing a cross product with V on both sides, we have 0 = (AxV) + t(BxV). If the solutions for t from all three possible pairs of equations are the same, it proves the coplanarity of the points P, Q, R and the vector V. If t is bounded between 0 and 1, then the intersection lies between P and Q, else it is outside. If it is bounded, we calculate the position S = P + tB.
+ * @param R Position vector of the point through which the line passes.
+ * @param V Vector to which the line is parallel.
+ * @param P Position vector of the first point.
+ * @param Q Position vector of the second point.
+ * @param S Pointer to the Vector3d instance that will contain the intersection point, if there is one. The memory must be pre-allocated.
+ * @return Boolean flag indicating if the lines intersect (true) or not (false).
+ */
+bool intersection (Vector3d R, Vector3d V, Vector3d P, Vector3d Q, Vector3d* S)
+{
+    /*
+     * Description of the method:
+     * The intersection point S is given by the aprametric forms of the line equations.
+     * For the line passing through R and parallel to V, S = R + uV, - \infty < u < + \infty.
+     * For the line passing through P and Q, S = P + t(Q-P), 0 <= t <= 1.
+     * Therefore we need to solve the equations R + uV = P + t(Q-P), for t and u.
+     * Since all the vector quantities are known, the equation may be simplified to uV = A + tB, where A = P-R, B = Q-P.
+     * Performing a cross product with V on both sides, we have 0 = (AxV) + t(BxV).
+     * If the solutions for t from all three possible pairs of equations are the same, it proves the coplanarity of the points P, Q, R and the vector V.
+     * If t is bounded between 0 and 1, then the intersection lies between P and Q, else it is outside.
+     * If it is bounded, we calculate the position S = P + tB.
+     */
+
+    Vector3d A = P - R;
+    Vector3d B = Q - P;
+    Vector3d AV = A ^ V;
+    Vector3d BV = B ^ V;
+
+    double t, s;
+    int i;
+
+    if (BV.magnitude() >= SMALL_NUMBER) {
+        i = 0;
+        // Find the first non-zero component of BV in order to calculate t
+        while (i < 3) {
+            if (fabs(BV.getValue(i)) >= 0.0) {
+                t = - (AV.getValue(i) / BV.getValue(i));
+                i++;
+                break;
+            }
+            else {
+                i++;
+            }
+        }
+
+        // Check for the remaining values (if any)
+        while (i < 3) {
+            if (fabs(BV.getValue(i)) >= SMALL_NUMBER ) {
+                s = - (AV.getValue(i) / BV.getValue(i));
+                if ( fabs(s-t) >= SMALL_NUMBER ) {
+                    // The values of t from the different equations are too far apart
+                    // The points are not coplanar.
+                    return (false);
+                }
+            }
+            i++;
+        }
+        // All the values that could be checked have converged
+        // t can be used to calculate S
+        if ( (t>=SMALL_NUMBER) && ((1.0-t)>=SMALL_NUMBER) ) {
+            // The intersection point lies between P and Q
+            *S = P + (B*t);
+            return (true);
+        }
+        else {
+            // The intersection is outside P and Q
+            return (false);
+        }
+    }
+    else {
+        /*
+         * B and V are parallel, so there are either no intersection points,
+         * or an infinite number of them if R is collinear with P and Q.
+         */
+        return (false);
+    }
+}

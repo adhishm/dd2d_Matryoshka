@@ -49,14 +49,15 @@ Grain::Grain(Vector3d centroid, double* phi)
 
 /**
  * @brief Constructor for the class Grain, specifying all details.
- * @param centroid Position vector, in the base (polycrystal) co-ordinate system, of the grain co-ordinate system's origin.
  * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
  * @param points An STL vector container with the position vectors, in the base (polycrystal) co-ordinate system, of the points that make up the grain boundary. These points must be given in a fixed sequence, either clockwise or anti-clockwise.
  * @param slipSystemNormal Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip system normal.
  * @param slipDirection Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip direction.
  */
-Grain::Grain(Vector3d centroid, double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, Vector3d slipDirection)
+Grain::Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, Vector3d slipDirection)
 {
+    Vector3d centroid = mean (points);
+
     this->coordinateSystem = CoordinateSystem(phi, centroid);
 
     /**
@@ -71,7 +72,8 @@ Grain::Grain(Vector3d centroid, double* phi, std::vector<Vector3d> points, Vecto
     Vector3d slipPlaneTrace = viewPlaneNormal ^ slipSystemNormal;
 
     // Get the grain boundary points in the local co-ordinate system
-    std::vector<Vector3d> gbPoints = this->coordinateSystem.vector_BaseToLocal(points);
+    this->gbPoints_base = points;
+    this->gbPoints_local = this->coordinateSystem.vector_BaseToLocal(points);
 }
 
 // Destructor
