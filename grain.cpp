@@ -147,6 +147,52 @@ void Grain::setOrientation (double *p)
     this->phi[2] = p[2];
 }
 
+/**
+ * @brief Overloaded function to set crystallographic orientation of the grain.
+ * @param p Vector3d variable containing the three Euler angles.
+ */
+void Grain::setOrientation (Vector3d p)
+{
+    this->phi[0] = p.getValue(0);
+    this->phi[1] = p.getValue(1);
+    this->phi[2] = p.getValue(2);
+}
+
+/**
+ * @brief Set the points that make up the grain boundary.
+ * @param gbPoints Vector container with the grain boundary points expressed in the base co-ordinate system.
+ */
+void Grain::setGBPoints (std::vector<Vector3d> gbPoints)
+{
+    this->gbPoints_base = gbPoints;
+}
+
+/**
+ * @brief Calculate the coordinateSystem of the grain.
+ */
+void Grain::calculateCoordinateSystem ()
+{
+    Vector3d centroid = mean (this->gbPoints_base);
+    this->coordinateSystem = CoordinateSystem(this->phi, centroid);
+}
+
+/**
+ * @brief Set the Base CoordinateSystem.
+ * @param base Pointer ot the base co-ordinate system.
+ */
+void Grain::setBaseCoordinateSystem (CoordinateSystem* base)
+{
+    this->coordinateSystem.setBase(base);
+}
+
+/**
+ * @brief Calculate the grain boundary point locations in the local CoordinateSystem.
+ */
+void Grain::calculateGBPointsLocal ()
+{
+    this->gbPoints_local = this->coordinateSystem.vector_BaseToLocal(this->gbPoints_base);
+}
+
 // Clear functions
 /**
  * @brief Clear out all the slip systems of the grain.

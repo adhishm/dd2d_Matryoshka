@@ -452,6 +452,109 @@ bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, P
 }
 
 /**
+ * @brief Read the grain from file.
+ * @param fileName Name of the file containing the data of the grain.
+ * @param g Pointer to the instance of the Grain class that will contain the data. Memory for this instance should be pre-allocated.
+ * @param currentTime Pointer to the variable holding the present time. Memory for this varibale should be pre-allocated.
+ * @param param Pointer to the instance of the Parameter class, containing the parameters for the simulation.
+ * @return Boolean flag indicating success or failure of the reading operation.
+ */
+bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *param)
+{
+    std::ifstream fp ( fileName.c_str() );
+    std::string line;
+
+    Dislocation* disl;
+    DislocationSource* dSource;
+    SlipPlane* slipPlane;
+    SlipSystem* slipSystem;
+
+    Vector3d *e;
+
+    int nSlipPlanes, nDislocations, nDislocationSources, nGBPoints;
+    int i, j;
+    int dSourceCount = 0;
+    std::vector<Vector3d> gbPoints;
+
+    /**
+     * @brief baseCoordinateSystem This is the basis for the grain co-ordinate system.
+     */
+    CoordinateSystem* baseCoordinateSystem = new CoordinateSystem();
+
+    if ( fp.is_open() )
+    {
+        // Read the initial time
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        *currentTime = atof(line.c_str());
+
+        // Read the grain orientation
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        g->setOrientation(readVectorFromLine(line));
+
+        // Read the grain boundary points
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        nGBPoints = atof(line.c_str());
+
+        gbPoints.clear();
+        for (i=0; i<nGBPoints; i++) {
+            do {
+                if ( fp.good() ) {
+                    getline (fp, line);
+                }
+                else {
+                    fp.close();
+                    return (false);
+                }
+            } while ( ignoreLine(line) );
+            gbPoints.push_back(readVectorFromLine(line));
+        }
+        g->setGBPoints(gbPoints);
+
+        g->calculateCoordinateSystem();
+        g->setBaseCoordinateSystem(baseCoordinateSystem);
+        g->calculateGBPointsLocal();
+
+        // Read Slip system
+            // Read Slip plane
+                // Read defects
+            // Read Slip plane
+                // Read defects
+            // ...
+
+
+        fp.close();
+        return (true);
+    }
+    else {
+        return (false);
+    }
+}
+
+/**
  * @brief Reads 3 values from a string and returns them in a Vector3d.
  * @param s The string that is to be read from.
  * @return Vector3d object containing the 3 values read.
