@@ -92,15 +92,24 @@ public:
      * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
      * @param points An STL vector container with the position vectors, in the base (polycrystal) co-ordinate system, of the points that make up the grain boundary. These points must be given in a fixed sequence, either clockwise or anti-clockwise.
      * @param slipSystemNormal Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip system normal.
-     * @param slipDirection Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip direction.
+     * @param slipPlanePositions STL vector containing the positions of slip planes on the slip system normal.
+     * @param dislocations Pointer to an array of vector containers with dislocations for the slip planes.
+     * @param dislocationSources Pointer to an array of vector containers with dislocation sources for the slip planes.
      */
-    Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, Vector3d slipDirection);
+    Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, std::vector<double> slipPlanePositions, std::vector<Dislocation*> *dislocations, std::vector<DislocationSource*> *dislocationSources);
 
     // Destructor
     /**
      * @brief Destructor for the class Grain.
      */
     virtual ~Grain();
+
+    // Access functions
+    /**
+     * @brief Get a pointer to the Grain CoordinateSystem.
+     * @return Pointer to the Grain co-ordinate system.
+     */
+    CoordinateSystem* getCoordinateSystem ();
 };
 
 #endif // GRAIN_H

@@ -53,9 +53,11 @@ Grain::Grain(Vector3d centroid, double* phi)
  * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
  * @param points An STL vector container with the position vectors, in the base (polycrystal) co-ordinate system, of the points that make up the grain boundary. These points must be given in a fixed sequence, either clockwise or anti-clockwise.
  * @param slipSystemNormal Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip system normal.
- * @param slipDirection Miller indices, in the crystallographic frame (grain co-ordinate system), of the slip direction.
+ * @param slipPlanePositions STL vector containing the positions of slip planes on the slip system normal.
+ * @param dislocations Pointer to an array of vector containers with dislocations for the slip planes.
+ * @param dislocationSources Pointer to an array of vector containers with dislocation sources for the slip planes.
  */
-Grain::Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, Vector3d slipDirection)
+Grain::Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNormal, std::vector<double> slipPlanePositions, std::vector<Dislocation*> *dislocations, std::vector<DislocationSource*> *dislocationSources)
 {
     Vector3d centroid = mean (points);
 
@@ -70,13 +72,60 @@ Grain::Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNorma
      * @brief slipPlaneTrace The trace of the slip plane on the view plane.
      * @details The trace of the slip plane on the view plane is required in order to calculate the extremities of the slip planes, which in turn will define the boundaries of the grain.
      */
-    Vector3d slipPlaneTrace = viewPlaneNormal ^ slipSystemNormal;
+    Vector3d slipPlaneTrace = (viewPlaneNormal ^ slipSystemNormal).normalize();
+
+    /**
+     * @brief slipNormalTrace The trace of the slip system normal on the view plane.
+     * @details The trace of the slip system normal is the projection of the slip system normal on to the view plane. It is perpendicular to both the slip splane trace and the view plane normal.
+     */
+    Vector3d slipNormalTrace = (viewPlaneNormal ^ slipPlaneTrace).normalize();
 
     // Get the grain boundary points in the local co-ordinate system
     this->gbPoints_base = points;
     this->gbPoints_local = this->coordinateSystem.vector_BaseToLocal(points);
 
+    // Create the slip system
+    SlipSystem* s = new SlipSystem;
+    s->setPosition(centroid);
+    s->setNormal(slipSystemNormal);
+    s->setDirection(slipPlaneTrace);
+    s->createCoordinateSystem(this->getCoordinateSystem());
+    this->slipSystems.clear();
 
+    // Go through slip plane positions
+    std::vector<double>::iterator slipPlanePositions_it;
+    std::vector<Vector3d>::iterator gbPoints_it;
+    Vector3d P, Q, R;   // Vectors for detecting intersections with the grain boundary
+    Vector3d R_slipSystem;  // Slip Plane position in the Slip System frame of reference
+    Vector3d* S = new Vector3d[2];
+    Vector3d* S_slipSystem = new Vector3d[2];
+    SlipPlane* slipPlane;
+    int nIntersections;
+    int nSlipPlane = 0;
+    for (slipPlanePositions_it=slipPlanePositions.begin(); slipPlanePositions_it!=slipPlanePositions.end(); slipPlanePositions_it++) {
+        // Point through which the slip plane vector will pass
+        R = slipNormalTrace * (*slipPlanePositions_it);
+        nIntersections = 0;
+        for (gbPoints_it = this->gbPoints_local.begin(); gbPoints_it!=this->gbPoints_local.end()-1; gbPoints_it++) {
+            P = *gbPoints_it;
+            Q = *(gbPoints_it+1);
+            if (intersection(R, slipPlaneTrace, P, Q, (S+nIntersections))) {
+                nIntersections++;
+            }
+            if (nIntersections==2) {
+                break;
+            }
+        }
+        R_slipSystem = (s->getCoordinateSystem())->vector_BaseToLocal(R);
+        S_slipSystem[0] = (s->getCoordinateSystem())->vector_BaseToLocal(S[0]);
+        S_slipSystem[1] = (s->getCoordinateSystem())->vector_BaseToLocal(S[1]);
+        slipPlane = new SlipPlane(S_slipSystem, R_slipSystem, s->getCoordinateSystem(), dislocations[nSlipPlane], dislocationSources[nSlipPlane]);
+        nSlipPlane++;
+    }
+
+    // Delete the position vectors allocated
+    delete[] (S);
+    delete[] (S_slipSystem);
 }
 
 // Destructor
@@ -98,4 +147,14 @@ Grain::~Grain()
 
     // Clear the vector of pointers
     this->slipSystems.clear();
+}
+
+// Access functions
+/**
+ * @brief Get a pointer to the Grain CoordinateSystem.
+ * @return Pointer to the Grain co-ordinate system.
+ */
+CoordinateSystem* Grain::getCoordinateSystem ()
+{
+    return (&(this->coordinateSystem));
 }

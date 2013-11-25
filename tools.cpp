@@ -243,7 +243,7 @@ std::vector<double> rng_Gaussian (int n, double mean, double stdev)
 
 /**
  * @brief Function to check for the intersection between a line parallel to the vector V, passing through the point R, with the line joining P and Q.
- * @details Description of the method: The intersection point S is given by the aprametric forms of the line equations. For the line passing through R and parallel to V, S = R + uV, - infinity < u < + infinity. For the line passing through P and Q, S = P + t(Q-P), 0 <= t <= 1. Therefore we need to solve the equations R + uV = P + t(Q-P), for t and u. Since all the vector quantities are known, the equation may be simplified to uV = A + tB, where A = P-R, B = Q-P. Performing a cross product with V on both sides, we have 0 = (AxV) + t(BxV). If the solutions for t from all three possible pairs of equations are the same, it proves the coplanarity of the points P, Q, R and the vector V. If t is bounded between 0 and 1, then the intersection lies between P and Q, else it is outside. If it is bounded, we calculate the position S = P + tB.
+ * @details Description of the method: The intersection point S is given by the parametric forms of the line equations. For the line passing through R and parallel to V, S = R + uV, - infinity < u < + infinity. For the line passing through P and Q, S = P + t(Q-P), 0 <= t <= 1. Therefore we need to solve the equations R + uV = P + t(Q-P), for t and u. Since all the vector quantities are known, the equation may be simplified to uV = A + tB, where A = P-R, B = Q-P. Performing a cross product with V on both sides, we have 0 = (AxV) + t(BxV). If the solutions for t from all three possible pairs of equations are the same, it proves the coplanarity of the points P, Q, R and the vector V. If t is bounded between 0 and 1, then the intersection lies between P and Q, else it is outside. If it is bounded, we calculate the position S = P + tB.
  * @param R Position vector of the point through which the line passes.
  * @param V Vector to which the line is parallel.
  * @param P Position vector of the first point.
@@ -278,7 +278,7 @@ bool intersection (Vector3d R, Vector3d V, Vector3d P, Vector3d Q, Vector3d* S)
         i = 0;
         // Find the first non-zero component of BV in order to calculate t
         while (i < 3) {
-            if (fabs(BV.getValue(i)) >= 0.0) {
+            if (fabs(BV.getValue(i)) >= SMALL_NUMBER) {
                 t = - (AV.getValue(i) / BV.getValue(i));
                 i++;
                 break;
