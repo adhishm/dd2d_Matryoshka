@@ -46,6 +46,9 @@
 
 #endif
 
+/**
+ * @brief The Grain class represents a grain in the simulation. A grain is seen as a collection of slip systems. The extremities of the slip planes of the grains define the grain boundaries.
+ */
 class Grain
 {
 protected:
