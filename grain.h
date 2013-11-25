@@ -77,16 +77,6 @@ protected:
 public:
     // Constructors
     /**
-     * @brief Default constructor for the Grain class.
-     */
-    Grain();
-    /**
-     * @brief Constructor for the class Grain specifying the centroid and the crystallographic orientation.
-     * @param centroid Position vector of the grain's centroid.
-     * @param phi Pointer to the array containing the grain's crystallographic orientation.
-     */
-    Grain(Vector3d centroid, double* phi);
-    /**
      * @brief Constructor for the class Grain, specifying all details.
      * @details All details are provided to the constructor.  For the moment only one slip system is active per grain, so only one normal and only one slip direction are given. This may be modified in the future when multiple slip will be handled.
      * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
@@ -104,7 +94,32 @@ public:
      */
     virtual ~Grain();
 
+    // Assignment functions
+    /**
+     * @brief Set the crystallographic orientation of the grain.
+     * @param p Pointer to an array containing the three Euler angles.
+     */
+    void setOrientation (double *p);
+
     // Access functions
+    /**
+     * @brief Get the crystallographic orientation of the grain.
+     * @param p Pointer to the array of type double with 3 available pre-allocated memory locations.
+     */
+    void getOrientation(double* p) const;
+
+    /**
+     * @brief Get the grain boundary points expressed in the grain's local co-ordinate system.
+     * @return Vector container with teh position vectors of the grain boundary points expressed in the local co-ordinate system.
+     */
+    std::vector<Vector3d> getGBPoints_local () const;
+
+    /**
+     * @brief Get the grain boundary points expressed in the base co-ordinate system.
+     * @return Vector container with teh position vectors of the grain boundary points expressed in the base co-ordinate system.
+     */
+    std::vector<Vector3d> getGBPoints_base () const;
+
     /**
      * @brief Get a pointer to the Grain CoordinateSystem.
      * @return Pointer to the Grain co-ordinate system.

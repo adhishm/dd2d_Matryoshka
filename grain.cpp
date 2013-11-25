@@ -31,23 +31,6 @@
 #include "grain.h"
 
 /**
- * @brief Default constructor for the Grain class.
- */
-Grain::Grain()
-{
-}
-
-/**
- * @brief Constructor for the class Grain specifying the centroid and the crystallographic orientation.
- * @param centroid Position vector of the grain's centroid.
- * @param phi Pointer to the array containing the grain's crystallographic orientation.
- */
-Grain::Grain(Vector3d centroid, double* phi)
-{
-    this->coordinateSystem = CoordinateSystem(phi, centroid);
-}
-
-/**
  * @brief Constructor for the class Grain, specifying all details.
  * @details All details are provided to the constructor.  For the moment only one slip system is active per grain, so only one normal and only one slip direction are given. This may be modified in the future when multiple slip will be handled.
  * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
@@ -149,7 +132,48 @@ Grain::~Grain()
     this->slipSystems.clear();
 }
 
+// Assignment functions
+/**
+ * @brief Set the crystallographic orientation of the grain.
+ * @param p Pointer to an array containing the three Euler angles.
+ */
+void Grain::setOrientation (double *p)
+{
+    this->phi[0] = p[0];
+    this->phi[1] = p[1];
+    this->phi[2] = p[2];
+}
+
 // Access functions
+/**
+ * @brief Get the crystallographic orientation of the grain.
+ * @param p Pointer to the array of type double with 3 available pre-allocated memory locations.
+ */
+void Grain::getOrientation(double* p) const
+{
+    p[0] = this->phi[0];
+    p[1] = this->phi[1];
+    p[2] = this->phi[2];
+}
+
+/**
+ * @brief Get the grain boundary points expressed in the grain's local co-ordinate system.
+ * @return Vector container with teh position vectors of the grain boundary points expressed in the local co-ordinate system.
+ */
+std::vector<Vector3d> Grain::getGBPoints_local () const
+{
+    return (this->gbPoints_local);
+}
+
+/**
+ * @brief Get the grain boundary points expressed in the base co-ordinate system.
+ * @return Vector container with teh position vectors of the grain boundary points expressed in the base co-ordinate system.
+ */
+std::vector<Vector3d> Grain::getGBPoints_base () const
+{
+    return (this->gbPoints_base);
+}
+
 /**
  * @brief Get a pointer to the Grain CoordinateSystem.
  * @return Pointer to the Grain co-ordinate system.
