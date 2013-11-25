@@ -74,6 +74,8 @@ Grain::Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNorma
     s->setDirection(slipPlaneTrace);
     s->createCoordinateSystem(this->getCoordinateSystem());
     this->slipSystems.clear();
+    this->slipSystems.push_back(s);
+    s->clearSlipPlanes();
 
     // Go through slip plane positions
     std::vector<double>::iterator slipPlanePositions_it;
@@ -104,6 +106,7 @@ Grain::Grain(double* phi, std::vector<Vector3d> points, Vector3d slipSystemNorma
         S_slipSystem[1] = (s->getCoordinateSystem())->vector_BaseToLocal(S[1]);
         slipPlane = new SlipPlane(S_slipSystem, R_slipSystem, s->getCoordinateSystem(), dislocations[nSlipPlane], dislocationSources[nSlipPlane]);
         nSlipPlane++;
+        s->insertSlipPlane(slipPlane);
     }
 
     // Delete the position vectors allocated
