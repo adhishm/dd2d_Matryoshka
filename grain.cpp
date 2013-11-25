@@ -147,6 +147,15 @@ void Grain::setOrientation (double *p)
     this->phi[2] = p[2];
 }
 
+// Clear functions
+/**
+ * @brief Clear out all the slip systems of the grain.
+ */
+void Grain::clearSlipSystems ()
+{
+    this->slipSystems.clear();
+}
+
 // Access functions
 /**
  * @brief Get the crystallographic orientation of the grain.

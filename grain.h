@@ -101,6 +101,12 @@ public:
      */
     void setOrientation (double *p);
 
+    // Clear functions
+    /**
+     * @brief Clear out all the slip systems of the grain.
+     */
+    void clearSlipSystems ();
+
     // Access functions
     /**
      * @brief Get the crystallographic orientation of the grain.
