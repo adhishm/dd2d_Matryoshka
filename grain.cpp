@@ -193,6 +193,15 @@ void Grain::calculateGBPointsLocal ()
     this->gbPoints_local = this->coordinateSystem.vector_BaseToLocal(this->gbPoints_base);
 }
 
+/**
+ * @brief Insert a new slip system into the grain.
+ * @param s Pointer to the slip system (instance of class SlipSystem).
+ */
+void Grain::insertSlipSystem (SlipSystem* s)
+{
+    this->slipSystems.push_back(s);
+}
+
 // Clear functions
 /**
  * @brief Clear out all the slip systems of the grain.

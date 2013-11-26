@@ -129,6 +129,12 @@ public:
      */
     void setBaseCoordinateSystem (CoordinateSystem* base);
 
+    /**
+     * @brief Insert a new slip system into the grain.
+     * @param s Pointer to the slip system (instance of class SlipSystem).
+     */
+    void insertSlipSystem (SlipSystem* s);
+
     // Clear functions
     /**
      * @brief Clear out all the slip systems of the grain.
