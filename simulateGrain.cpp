@@ -39,7 +39,7 @@ void simulateSingleGrain ()
     std::string message;
 
     std::cout << "Parameter file name: ";
-    std::cin >> fName;
+    std::cin >> fileName;
 
     Grain *grain;
     Parameter *param = new Parameter;
@@ -56,14 +56,14 @@ void simulateSingleGrain ()
         fileName.clear();
         fileName = param->input_dir + "/" + param->dislocationStructureFile;
         if (readGrain(fileName, grain, &currentTime, param)) {
-            message = "Success: read file " + fName;
+            message = "Success: read file " + fileName;
             displayMessage ( message );
             message.clear ();
 
             grain_iterate(param, grain, currentTime);
         }
         else {
-            message = "Error: Unable to read grain from file " + fName;
+            message = "Error: Unable to read grain from file " + fileName;
             displayMessage ( message );
             message.clear ();
         }
@@ -105,14 +105,14 @@ void simulateSingleGrain(std::string fileName)
         fileName.clear();
         fileName = param->input_dir + "/" + param->dislocationStructureFile;
         if (readGrain(fileName, grain, &currentTime, param)) {
-            message = "Success: read file " + fName;
+            message = "Success: read file " + fileName;
             displayMessage ( message );
             message.clear ();
 
             grain_iterate(param, grain, currentTime);
         }
         else {
-            message = "Error: Unable to read grain from file " + fName;
+            message = "Error: Unable to read grain from file " + fileName;
             displayMessage ( message );
             message.clear ();
         }

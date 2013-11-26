@@ -31,6 +31,21 @@
 #include "grain.h"
 
 /**
+ * @brief Default constructor for the Grain class.
+ */
+Grain::Grain ()
+{
+    Vector3d centroid (DEFAULT_CENTROID_X1, DEFAULT_CENTROID_X2, DEFAULT_CENTROID_X3);
+    double phi[3];
+
+    phi[0] = DEFAULT_ORIENTATION_PHI1;
+    phi[1] = DEFAULT_ORIENTATION_PHI;
+    phi[2] = DEFAULT_ORIENTATION_PHI2;
+
+    this->coordinateSystem(phi, centroid);
+}
+
+/**
  * @brief Constructor for the class Grain, specifying all details.
  * @details All details are provided to the constructor.  For the moment only one slip system is active per grain, so only one normal and only one slip direction are given. This may be modified in the future when multiple slip will be handled.
  * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.

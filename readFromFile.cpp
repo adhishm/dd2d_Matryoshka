@@ -627,7 +627,7 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
                 slipPlane->setPosition ( readVectorFromLine(line) );
 
                 // Create the slip plane co-ordinate system
-                slipPlane->createCoordinateSystem(s->getCoordinateSystem());
+                slipPlane->createCoordinateSystem(slipSystem->getCoordinateSystem());
 
                 // Read the extremities
                 e = new Vector3d[2];
