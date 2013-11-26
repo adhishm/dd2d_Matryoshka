@@ -139,5 +139,28 @@ void simulateSingleGrain(std::string fileName)
  */
 void grain_iterate (Parameter* param, Grain* grain, double currentTime)
 {
+    double totalTime = currentTime;
+    int nIterations = 0;
 
+    std::vector<double> simulationTime;
+    std::vector<double> timeIncrement;
+
+    bool continueSimulation = true;
+
+    std::string fileName;
+    std::string message;
+
+    double limitingDistance = ( param->limitingDistance * param->bmag );
+    double reactionRadius = ( param->reactionRadius * param->bmag );
+
+    // Calculate the applied stress on the grain and it's slip systems
+    grain->calculateGrainAppliedStress(param->appliedStress);
+    grain->calculateSlipSystemAppliedStress();
+
+    displayMessage("Starting simulation...");
+
+    // Start the simulation
+    while (continueSimulation) {
+        // Calculate the stresses on all slip defects
+    }
 }

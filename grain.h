@@ -36,12 +36,30 @@
 #ifndef GRAIN_DEFAULTS
 #define GRAIN_DEFAULTS
 
+/**
+ * @brief Default value of the phi1 angle of the Euler angles representing the crystallographic orientation.
+ */
 #define DEFAULT_ORIENTATION_PHI1 0.0
+/**
+ * @brief Default value of the phi angle of the Euler angles representing the crystallographic orientation.
+ */
 #define DEFAULT_ORIENTATION_PHI  0.0
+/**
+ * @brief Default value of the phi2 angle of the Euler angles representing the crystallographic orientation.
+ */
 #define DEFAULT_ORIENTATION_PHI2 0.0
 
+/**
+ * @brief Default x co-ordinate of the grain centroid.
+ */
 #define DEFAULT_CENTROID_X1 0.0
+/**
+ * @brief Default y co-ordinate of the grain centroid.
+ */
 #define DEFAULT_CENTROID_X2 0.0
+/**
+ * @brief Default z co-ordinate of the grain centroid.
+ */
 #define DEFAULT_CENTROID_X3 0.0
 
 #endif
@@ -74,6 +92,15 @@ protected:
      * @brief STL vector container with position vectors, expressed in the local co-ordinate system, of points lying on the grain boundary, in sequential order.
      */
     std::vector<Vector3d> gbPoints_local;
+    /**
+     * @brief The externally applied stress, in the base co-ordinate system.
+     */
+    Stress appliedStress_base;
+    /**
+     * @brief The externally applied stress, in the local co-ordinate system.
+     */
+    Stress appliedStress_local;
+
 public:
     // Constructors
     /**
@@ -139,6 +166,18 @@ public:
      * @param s Pointer to the slip system (instance of class SlipSystem).
      */
     void insertSlipSystem (SlipSystem* s);
+
+    // Stress functions
+    /**
+     * @brief Calculate the externally applied stress in the grain co-ordinate system
+     * @param s Stress applied externally, expressed in the base co-ordinate system.
+     */
+    void calculateGrainAppliedStress (Stress s);
+
+    /**
+     * @brief Calculate the applied stress on all the slip systems.
+     */
+    void calculateSlipSystemAppliedStress();
 
     // Clear functions
     /**

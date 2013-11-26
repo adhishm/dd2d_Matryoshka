@@ -217,6 +217,32 @@ void Grain::insertSlipSystem (SlipSystem* s)
     this->slipSystems.push_back(s);
 }
 
+// Stress functions
+/**
+ * @brief Calculate the externally applied stress in the grain co-ordinate system
+ * @param s Stress applied externally, expressed in the base co-ordinate system.
+ */
+void Grain::calculateGrainAppliedStress (Stress s)
+{
+    this->appliedStress_base = s;
+    this->appliedStress_local = this->coordinateSystem.stress_BaseToLocal(s);
+}
+
+/**
+ * @brief Calculate the applied stress on all the slip systems.
+ */
+void Grain::calculateSlipSystemAppliedStress()
+{
+    std::vector<SlipSystem*>::iterator sit;
+    SlipSystem* s;
+
+    for (sit=this->slipSystems.begin(); sit!=this->slipSystems.end(); sit++) {
+        s = *sit;
+        s->calculateSlipSystemAppliedStress(this->appliedStress_local);
+        s->calculateSlipPlaneAppliedStress();
+    }
+}
+
 // Clear functions
 /**
  * @brief Clear out all the slip systems of the grain.
