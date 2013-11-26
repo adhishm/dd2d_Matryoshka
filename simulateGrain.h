@@ -42,6 +42,12 @@
 void simulateSingleGrain ();
 
 /**
+ * @brief This is an overloaded function. This function manages the simulation of dislocation motion in a single grain. It is the point of entry into the simulation.
+ * @param fileName String containing the name of the parameters file.
+ */
+void simulateSingleGrain(std::string fileName);
+
+/**
  * @brief This function handles the iterations in the simulation of dislocation motion in a single grain.
  * @param param Pointer to the instance of the Parameter class containing the simulation parameters.
  * @param grain Pointer to the instance of the Grain class containing all data for the grain.

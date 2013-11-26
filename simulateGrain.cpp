@@ -33,7 +33,103 @@
 /**
  * @brief This function manages the simulation of dislocation motion in a single grain. It is the point of entry into the simulation.
  */
-void simulateSingleGrain ();
+void simulateSingleGrain ()
+{
+    std::string fileName;
+    std::string message;
+
+    std::cout << "Parameter file name: ";
+    std::cin >> fName;
+
+    Grain *grain;
+    Parameter *param = new Parameter;
+
+    double currentTime;
+
+    if (param->getParameters(fileName)) {
+        message = "Success: read file " + fileName;
+        displayMessage ( message );
+        message.clear ();
+
+        grain = new Grain;
+
+        fileName.clear();
+        fileName = param->input_dir + "/" + param->dislocationStructureFile;
+        if (readGrain(fileName, grain, &currentTime, param)) {
+            message = "Success: read file " + fName;
+            displayMessage ( message );
+            message.clear ();
+
+            grain_iterate(param, grain, currentTime);
+        }
+        else {
+            message = "Error: Unable to read grain from file " + fName;
+            displayMessage ( message );
+            message.clear ();
+        }
+
+        delete (grain);
+        grain = NULL;
+        fileName.clear();
+    }
+    else {
+        message = "Error: Unable to read parameter file " + fileName;
+        displayMessage ( message );
+        message.clear ();
+    }
+
+    delete (param);
+    param = NULL;
+}
+
+/**
+ * @brief This is an overloaded function. This function manages the simulation of dislocation motion in a single grain. It is the point of entry into the simulation.
+ * @param fileName String containing the name of the parameters file.
+ */
+void simulateSingleGrain(std::string fileName)
+{
+    std::string message;
+
+    Grain *grain;
+    Parameter *param = new Parameter;
+
+    double currentTime;
+
+    if (param->getParameters(fileName)) {
+        message = "Success: read file " + fileName;
+        displayMessage ( message );
+        message.clear ();
+
+        grain = new Grain;
+
+        fileName.clear();
+        fileName = param->input_dir + "/" + param->dislocationStructureFile;
+        if (readGrain(fileName, grain, &currentTime, param)) {
+            message = "Success: read file " + fName;
+            displayMessage ( message );
+            message.clear ();
+
+            grain_iterate(param, grain, currentTime);
+        }
+        else {
+            message = "Error: Unable to read grain from file " + fName;
+            displayMessage ( message );
+            message.clear ();
+        }
+
+        delete (grain);
+        grain = NULL;
+        fileName.clear();
+    }
+    else {
+        message = "Error: Unable to read parameter file " + fileName;
+        displayMessage ( message );
+        message.clear ();
+    }
+
+    delete (param);
+    param = NULL;
+}
 
 /**
  * @brief This function handles the iterations in the simulation of dislocation motion in a single grain.
@@ -41,4 +137,7 @@ void simulateSingleGrain ();
  * @param grain Pointer to the instance of the Grain class containing all data for the grain.
  * @param currentTime The value of the current simulation time.
  */
-void grain_iterate (Parameter* param, Grain* grain, double currentTime);
+void grain_iterate (Parameter* param, Grain* grain, double currentTime)
+{
+
+}

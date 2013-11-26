@@ -24,12 +24,26 @@
 #include "parameter.h"
 #include "simulateSingleSlipPlane.h"
 #include "simulateSingleSlipSystem.h"
+#include "simulateGrain.h"
 
 using namespace std;
 
-int main ()
+int main (int argc, char* argv[])
 {
-    simulateSingleSlipSystem();
+    if (argc == 1) {
+        // No input arguments
+        simulateSingleGrain();
+    }
+    else {
+        // Argument list provided
+        std::string filename;
+        while (argc > 1) {
+            filename = std::string(argv[--argc]);
+            simulateSingleGrain(filename);
+            filename.clear();
+        }
+    }
+
     return (0);
 }
 
