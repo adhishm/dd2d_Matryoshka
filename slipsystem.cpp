@@ -299,6 +299,37 @@ std::vector<double> SlipSystem::getSlipPlaneTimeIncrements ()
     return (timeIncrements);
 }
 
+/**
+ * @brief Return the position of all the defects, expressed in the slip system co-ordinate system.
+ * @return Vector container with the positions of all defects expressed in the slip system co-ordinate system.
+ */
+std::vector<Vector3d> SlipSystem::getAllDefectPositions_local ()
+{
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d> slipPlaneDefects;
+
+    std::vector<SlipPlane*>::iterator s_it;
+    SlipPlane* s;
+
+    defectPositions.clear();
+    for (s_it=this->slipPlanes.begin(); s_it!=this->slipPlanes.end(); s_it++) {
+        s = *s_it;
+        slipPlaneDefects = s->getAllDefectPositions_base();
+        defectPositions.insert(defectPositions.end(), slipPlaneDefects.begin(), slipPlaneDefects.end());
+    }
+
+    return (defectPositions);
+}
+
+/**
+ * @brief Return the position of all the defects, expressed in the base co-ordinate system.
+ * @return Vector container with the positions of all defects expressed in the base co-ordinate system.
+ */
+std::vector<Vector3d> SlipSystem::getAllDefectPositions_base ()
+{
+    return (this->coordinateSystem.vector_LocalToBase(this->getAllDefectPositions_local()));
+}
+
 // Sort functions
 /**
  * @brief Sort the slip planes in ascending order based on their positions.

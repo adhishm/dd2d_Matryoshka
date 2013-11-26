@@ -349,16 +349,7 @@ std::vector<Defect*> SlipPlane::getDefectList ()
  */
 std::vector<Vector3d> SlipPlane::getAllDefectPositions_base ()
 {
-    // Get positions in loal system
-    std::vector<Vector3d> defectPositions = this->getAllDefectPositions_local();
-    std::vector<Vector3d>::iterator defect_it = defectPositions.begin();
-
-    while (defect_it!=defectPositions.end()) {
-        *defect_it = this->coordinateSystem.vector_LocalToBase(*defect_it);
-        defect_it++;
-    }
-
-    return (defectPositions);
+    return (this->coordinateSystem.vector_LocalToBase(this->getAllDefectPositions_local()));
 }
 
 /**

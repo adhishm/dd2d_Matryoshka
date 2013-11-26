@@ -179,6 +179,13 @@ public:
      */
     void calculateSlipSystemAppliedStress();
 
+    /**
+     * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+     * @param mu Shear modulus of the material (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void calculateAllStresses (double mu, double nu);
+
     // Clear functions
     /**
      * @brief Clear out all the slip systems of the grain.
@@ -209,6 +216,18 @@ public:
      * @return Pointer to the Grain co-ordinate system.
      */
     CoordinateSystem* getCoordinateSystem ();
+
+    /**
+     * @brief Get the positions of all the defects in this grain, expressed in the base co-ordinate system.
+     * @return Vector container with the positions of all the defects in this grain, expressed in the base co-ordinate system.
+     */
+    std::vector<Vector3d> getAllDefectPositions_base();
+
+    /**
+     * @brief Get the positions of all the defects in this grain, expressed in the local co-ordinate system.
+     * @return Vector container with the positions of all the defects in this grain, expressed in the local co-ordinate system.
+     */
+    std::vector<Vector3d> getAllDefectPositions_local();
 };
 
 #endif // GRAIN_H

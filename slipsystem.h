@@ -203,6 +203,16 @@ public:
      * @return STL vector container with the time increments of all the slip planes.
      */
     std::vector<double> getSlipPlaneTimeIncrements ();
+    /**
+     * @brief Return the position of all the defects, expressed in the slip system co-ordinate system.
+     * @return Vector container with the positions of all defects expressed in the slip system co-ordinate system.
+     */
+    std::vector<Vector3d> getAllDefectPositions_local ();
+    /**
+     * @brief Return the position of all the defects, expressed in the base co-ordinate system.
+     * @return Vector container with the positions of all defects expressed in the base co-ordinate system.
+     */
+    std::vector<Vector3d> getAllDefectPositions_base ();
 
     // Sort functions
     /**

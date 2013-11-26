@@ -243,6 +243,23 @@ void Grain::calculateSlipSystemAppliedStress()
     }
 }
 
+/**
+ * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+ * @param mu Shear modulus of the material (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Grain::calculateAllStresses (double mu, double nu)
+{
+    std::vector<SlipSystem*>::iterator sourceSlipSystem_it;
+    std::vector<SlipSystem*>::iterator destinationSlipSystem_it;
+
+    SlipSystem* sourceSlipSystem;
+    SlipSystem* destinationSlipSystem;
+
+
+
+}
+
 // Clear functions
 /**
  * @brief Clear out all the slip systems of the grain.
@@ -289,4 +306,35 @@ std::vector<Vector3d> Grain::getGBPoints_base () const
 CoordinateSystem* Grain::getCoordinateSystem ()
 {
     return (&(this->coordinateSystem));
+}
+
+/**
+ * @brief Get the positions of all the defects in this grain, expressed in the base co-ordinate system.
+ * @return Vector container with the positions of all the defects in this grain, expressed in the base co-ordinate system.
+ */
+std::vector<Vector3d> Grain::getAllDefectPositions_base()
+{
+    return (this->coordinateSystem.vector_LocalToBase(this->getAllDefectPositions_local()));
+}
+
+/**
+ * @brief Get the positions of all the defects in this grain, expressed in the local co-ordinate system.
+ * @return Vector container with the positions of all the defects in this grain, expressed in the local co-ordinate system.
+ */
+std::vector<Vector3d> Grain::getAllDefectPositions_local()
+{
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d> slipSystemDefects;
+
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    defectPositions.clear();
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        slipSystemDefects = s->getAllDefectPositions_base();
+        defectPositions.insert(defectPositions.end(), slipSystemDefects.begin(), slipSystemDefects.end());
+    }
+
+    return (defectPositions);
 }
