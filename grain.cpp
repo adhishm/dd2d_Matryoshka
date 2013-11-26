@@ -294,6 +294,21 @@ void Grain::calculateAllStresses (double mu, double nu)
 }
 
 /**
+ * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
+ * @param B The drag coefficient.
+ */
+void Grain::calculateDislocationVelocities (double B)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->calculateSlipPlaneDislocationForcesVelocities(B);
+    }
+}
+
+/**
  * @brief The total stress field due to all defects in the grain at the position p.
  * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
  * @param mu Shear modulus (Pa).

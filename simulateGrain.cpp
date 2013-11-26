@@ -162,5 +162,6 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
     // Start the simulation
     while (continueSimulation) {
         // Calculate the stresses on all slip defects
+        grain->calculateAllStresses(param->mu, param->nu);
     }
 }

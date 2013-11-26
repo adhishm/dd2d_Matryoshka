@@ -187,6 +187,12 @@ public:
     void calculateAllStresses (double mu, double nu);
 
     /**
+     * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
+     * @param B The drag coefficient.
+     */
+    void calculateDislocationVelocities (double B);
+
+    /**
      * @brief The total stress field due to all defects in the grain at the position p.
      * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
      * @param mu Shear modulus (Pa).
