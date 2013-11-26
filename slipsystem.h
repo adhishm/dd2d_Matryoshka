@@ -178,6 +178,11 @@ public:
      */
     std::vector<SlipPlane*> getSlipPlanes ();
     /**
+     * @brief Get a vector container with pointers to all defects in the slip system.
+     * @return Vector container with pointers to all defects in the slip system.
+     */
+    std::vector<Defect*> getDefects ();
+    /**
      * @brief Get the pointer to a specific slip plane, indicated by the argument. If the argument is greater than the size, a NULL pointer is returned.
      * @param i Index of the slip plane the pointer to which is required.
      * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
@@ -247,6 +252,15 @@ public:
      * @param B The drag coefficient for the dislocations.
      */
     void calculateSlipPlaneDislocationForcesVelocities (double B);
+
+    /**
+     * @brief The total stress field due to all defects in the slip system at the position p.
+     * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @return Stress field, in the base co-ordinate system, due to all defects in this slip system.
+     */
+    Stress slipSystemStressField (Vector3d p, double mu, double nu);
 
     // Time increment
     /**

@@ -256,7 +256,41 @@ void Grain::calculateAllStresses (double mu, double nu)
     SlipSystem* sourceSlipSystem;
     SlipSystem* destinationSlipSystem;
 
+    std::vector<Defect*> defects;
+    std::vector<Defect*>::iterator defects_it;
+    Defect* defect;
 
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d>::iterator defectPositions_it;
+
+    Stress totalStress;
+    Stress totalStress_slipSystem;
+    Stress totalStress_slipPlane;
+    Stress totalStress_defect;
+
+    for (destinationSlipSystem_it=this->slipSystems.begin(); destinationSlipSystem_it!=this->slipSystems.end(); destinationSlipSystem_it++) {
+        destinationSlipSystem = *destinationSlipSystem_it;
+        // Get all the defects and their position vectors
+        defects = destinationSlipSystem->getDefects();
+        defectPositions = destinationSlipSystem->getAllDefectPositions_base();
+        for (defectPositions_it=defectPositions.begin(), defects_it=defects.begin();
+             defectPositions_it!=defectPositions.end();
+             defectPositions_it++, defects_it++) {
+            // Set the total stress to the grain's local applied stress
+            totalStress = this->appliedStress_local;
+            defect = *defects_it;
+            for (sourceSlipSystem_it=this->slipSystems.begin(); sourceSlipSystem_it!=this->slipSystems.end(); sourceSlipSystem_it++) {
+                sourceSlipSystem = *sourceSlipSystem_it;
+                totalStress += sourceSlipSystem->slipSystemStressField(*defectPositions_it, mu, nu);
+            }
+            // The total stress is in the grain co-ordinate system
+            defect = *defects_it;
+            totalStress_slipSystem = destinationSlipSystem->getCoordinateSystem()->stress_BaseToLocal(totalStress);
+            totalStress_slipPlane  = defect->getCoordinateSystem()->getBase()->stress_BaseToLocal(totalStress_slipSystem);
+            totalStress_defect     = defect->getCoordinateSystem()->stress_BaseToLocal(totalStress_slipPlane);
+            defect->setTotalStress(totalStress_defect);
+        }
+    }
 
 }
 

@@ -32,14 +32,14 @@ int main (int argc, char* argv[])
 {
     if (argc == 1) {
         // No input arguments
-        simulateSingleGrain();
+        simulateSingleSlipSystem();
     }
     else {
         // Argument list provided
         std::string filename;
         while (argc > 1) {
             filename = std::string(argv[--argc]);
-            simulateSingleGrain(filename);
+            simulateSingleSlipSystem();
             filename.clear();
         }
     }
