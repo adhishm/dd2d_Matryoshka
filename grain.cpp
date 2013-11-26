@@ -42,7 +42,7 @@ Grain::Grain ()
     phi[1] = DEFAULT_ORIENTATION_PHI;
     phi[2] = DEFAULT_ORIENTATION_PHI2;
 
-    this->coordinateSystem(phi, centroid);
+    this->coordinateSystem = CoordinateSystem(phi, centroid);
 }
 
 /**
