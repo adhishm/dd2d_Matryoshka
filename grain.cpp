@@ -291,7 +291,29 @@ void Grain::calculateAllStresses (double mu, double nu)
             defect->setTotalStress(totalStress_defect);
         }
     }
+}
 
+/**
+ * @brief The total stress field due to all defects in the grain at the position p.
+ * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @return Stress field, in the base co-ordinate system, due to all defects in this grain.
+ */
+Stress Grain::grainStressField (Vector3d p, double mu, double nu)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* ss;
+    Stress s;
+
+    Vector3d p_local = this->coordinateSystem.vector_BaseToLocal(p);
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        sp = *s_it;
+        s += ss->slipSystemStressField(p_local, mu, nu);
+    }
+
+    return (this->coordinateSystem.stress_LocalToBase(s));
 }
 
 // Clear functions

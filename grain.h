@@ -186,6 +186,15 @@ public:
      */
     void calculateAllStresses (double mu, double nu);
 
+    /**
+     * @brief The total stress field due to all defects in the grain at the position p.
+     * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @return Stress field, in the base co-ordinate system, due to all defects in this grain.
+     */
+    Stress grainStressField (Vector3d p, double mu, double nu);
+
     // Clear functions
     /**
      * @brief Clear out all the slip systems of the grain.
