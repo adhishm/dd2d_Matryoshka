@@ -163,5 +163,16 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
     while (continueSimulation) {
         // Calculate the stresses on all slip defects
         grain->calculateAllStresses(param->mu, param->nu);
+
+        // Calculate the forces and velocities of the dislocations
+        grain->calculateDislocationVelocities(param->B);
+
+        // Time increment
+        switch (param->timeStepType) {
+        case ADAPTIVE:
+            break;
+        case FIXED:
+            break;
+        }
     }
 }
