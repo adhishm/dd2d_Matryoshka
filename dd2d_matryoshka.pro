@@ -30,7 +30,9 @@ SOURCES += main.cpp \
     simulateSingleSlipSystem.cpp \
     slipSystemStatistics.cpp \
     uniqueid.cpp \
-    grain.cpp
+    grain.cpp \
+    simulateGrain.cpp \
+    grainStatistics.cpp
 
 HEADERS += \
     vector3d.h \
@@ -59,5 +61,6 @@ HEADERS += \
     readFromFile.h \
     simulateSingleSlipSystem.h \
     uniqueid.h \
-    grain.h
+    grain.h \
+    simulateGrain.h
 

@@ -231,6 +231,27 @@ std::vector<SlipPlane*> SlipSystem::getSlipPlanes ()
 }
 
 /**
+ * @brief Get a vector container with pointers to all defects in the slip system.
+ * @return Vector container with pointers to all defects in the slip system.
+ */
+std::vector<Defect*> SlipSystem::getDefects ()
+{
+    std::vector<Defect*> defects;
+    std::vector<Defect*> slipPlaneDefects;
+    std::vector<SlipPlane*>::iterator s_it;
+    SlipPlane* s;
+
+    defects.clear();
+    for (s_it=this->slipPlanes.begin(); s_it!=this->slipPlanes.end(); s_it++) {
+        s = *s_it;
+        slipPlaneDefects = s->getDefectList();
+        defects.insert(defects.end(), slipPlaneDefects.begin(), slipPlaneDefects.end());
+    }
+
+    return (defects);
+}
+
+/**
  * @brief Get the pointer to a specific slip plane, indicated by the argument. If the argument is greater than the size, a NULL pointer is returned.
  * @param i Index of the slip plane the pointer to which is required.
  * @return Pointer to the slip plane indicated by the argument. If the argument is greater than the size of the vector, a NULL pointer is returned.
@@ -297,6 +318,37 @@ std::vector<double> SlipSystem::getSlipPlaneTimeIncrements ()
         slipPlanes_it++;
     }
     return (timeIncrements);
+}
+
+/**
+ * @brief Return the position of all the defects, expressed in the slip system co-ordinate system.
+ * @return Vector container with the positions of all defects expressed in the slip system co-ordinate system.
+ */
+std::vector<Vector3d> SlipSystem::getAllDefectPositions_local ()
+{
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d> slipPlaneDefects;
+
+    std::vector<SlipPlane*>::iterator s_it;
+    SlipPlane* s;
+
+    defectPositions.clear();
+    for (s_it=this->slipPlanes.begin(); s_it!=this->slipPlanes.end(); s_it++) {
+        s = *s_it;
+        slipPlaneDefects = s->getAllDefectPositions_base();
+        defectPositions.insert(defectPositions.end(), slipPlaneDefects.begin(), slipPlaneDefects.end());
+    }
+
+    return (defectPositions);
+}
+
+/**
+ * @brief Return the position of all the defects, expressed in the base co-ordinate system.
+ * @return Vector container with the positions of all defects expressed in the base co-ordinate system.
+ */
+std::vector<Vector3d> SlipSystem::getAllDefectPositions_base ()
+{
+    return (this->coordinateSystem.vector_LocalToBase(this->getAllDefectPositions_local()));
 }
 
 // Sort functions
@@ -368,13 +420,14 @@ void SlipSystem::calculateAllStresses (double mu, double nu)
 
     for (destination_slipPlane_it=this->slipPlanes.begin(); destination_slipPlane_it!=this->slipPlanes.end(); destination_slipPlane_it++) {
         destination_slipPlane = *destination_slipPlane_it;
-        totalStress = this->appliedStress_local;
         // Get all defects and their position vectors
         defects = destination_slipPlane->getDefectList();
         defectPositions = destination_slipPlane->getAllDefectPositions_base();
         for (defectPositions_it=defectPositions.begin(), defects_it=defects.begin();
              defectPositions_it!=defectPositions.end();
              defectPositions_it++, defects_it++) {
+            // Set the total stress to the slip system's local applied stress
+            totalStress = this->appliedStress_local;
             for (source_slipPlane_it=this->slipPlanes.begin(); source_slipPlane_it!=this->slipPlanes.end(); source_slipPlane_it++) {
                 source_slipPlane = *source_slipPlane_it;
                 // Add the source slip plane's stress field to the total stress field at this position
@@ -405,6 +458,29 @@ void SlipSystem::calculateSlipPlaneDislocationForcesVelocities (double B)
         s->calculateDislocationForces();
         s->calculateDislocationVelocities(B);
     }
+}
+
+/**
+ * @brief The total stress field due to all defects in the slip system at the position p.
+ * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @return Stress field, in the base co-ordinate system, due to all defects in this slip system.
+ */
+Stress SlipSystem::slipSystemStressField (Vector3d p, double mu, double nu)
+{
+    std::vector<SlipPlane*>::iterator s_it;
+    SlipPlane* sp;
+    Stress s;
+
+    Vector3d p_local = this->coordinateSystem.vector_BaseToLocal(p);
+
+    for (s_it=this->slipPlanes.begin(); s_it!=this->slipPlanes.end(); s_it++) {
+        sp = *s_it;
+        s += sp->slipPlaneStressField(p_local, mu, nu);
+    }
+
+    return (this->coordinateSystem.stress_LocalToBase(s));
 }
 
 // Time increment

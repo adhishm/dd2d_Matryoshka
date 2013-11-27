@@ -31,6 +31,21 @@
 #include "grain.h"
 
 /**
+ * @brief Default constructor for the Grain class.
+ */
+Grain::Grain ()
+{
+    Vector3d centroid (DEFAULT_CENTROID_X1, DEFAULT_CENTROID_X2, DEFAULT_CENTROID_X3);
+    double phi[3];
+
+    phi[0] = DEFAULT_ORIENTATION_PHI1;
+    phi[1] = DEFAULT_ORIENTATION_PHI;
+    phi[2] = DEFAULT_ORIENTATION_PHI2;
+
+    this->coordinateSystem = CoordinateSystem(phi, centroid);
+}
+
+/**
  * @brief Constructor for the class Grain, specifying all details.
  * @details All details are provided to the constructor.  For the moment only one slip system is active per grain, so only one normal and only one slip direction are given. This may be modified in the future when multiple slip will be handled.
  * @param phi Pointer to the array containing the three Euler angles representing the grain orientation.
@@ -147,6 +162,270 @@ void Grain::setOrientation (double *p)
     this->phi[2] = p[2];
 }
 
+/**
+ * @brief Overloaded function to set crystallographic orientation of the grain.
+ * @param p Vector3d variable containing the three Euler angles.
+ */
+void Grain::setOrientation (Vector3d p)
+{
+    this->phi[0] = p.getValue(0);
+    this->phi[1] = p.getValue(1);
+    this->phi[2] = p.getValue(2);
+}
+
+/**
+ * @brief Set the points that make up the grain boundary.
+ * @param gbPoints Vector container with the grain boundary points expressed in the base co-ordinate system.
+ */
+void Grain::setGBPoints (std::vector<Vector3d> gbPoints)
+{
+    this->gbPoints_base = gbPoints;
+}
+
+/**
+ * @brief Calculate the coordinateSystem of the grain.
+ */
+void Grain::calculateCoordinateSystem ()
+{
+    Vector3d centroid = mean (this->gbPoints_base);
+    this->coordinateSystem = CoordinateSystem(this->phi, centroid);
+}
+
+/**
+ * @brief Set the Base CoordinateSystem.
+ * @param base Pointer ot the base co-ordinate system.
+ */
+void Grain::setBaseCoordinateSystem (CoordinateSystem* base)
+{
+    this->coordinateSystem.setBase(base);
+}
+
+/**
+ * @brief Calculate the grain boundary point locations in the local CoordinateSystem.
+ */
+void Grain::calculateGBPointsLocal ()
+{
+    this->gbPoints_local = this->coordinateSystem.vector_BaseToLocal(this->gbPoints_base);
+}
+
+/**
+ * @brief Insert a new slip system into the grain.
+ * @param s Pointer to the slip system (instance of class SlipSystem).
+ */
+void Grain::insertSlipSystem (SlipSystem* s)
+{
+    this->slipSystems.push_back(s);
+}
+
+// Stress functions
+/**
+ * @brief Calculate the externally applied stress in the grain co-ordinate system
+ * @param s Stress applied externally, expressed in the base co-ordinate system.
+ */
+void Grain::calculateGrainAppliedStress (Stress s)
+{
+    this->appliedStress_base = s;
+    this->appliedStress_local = this->coordinateSystem.stress_BaseToLocal(s);
+}
+
+/**
+ * @brief Calculate the applied stress on all the slip systems.
+ */
+void Grain::calculateSlipSystemAppliedStress()
+{
+    std::vector<SlipSystem*>::iterator sit;
+    SlipSystem* s;
+
+    for (sit=this->slipSystems.begin(); sit!=this->slipSystems.end(); sit++) {
+        s = *sit;
+        s->calculateSlipSystemAppliedStress(this->appliedStress_local);
+        s->calculateSlipPlaneAppliedStress();
+    }
+}
+
+/**
+ * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+ * @param mu Shear modulus of the material (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Grain::calculateAllStresses (double mu, double nu)
+{
+    std::vector<SlipSystem*>::iterator sourceSlipSystem_it;
+    std::vector<SlipSystem*>::iterator destinationSlipSystem_it;
+
+    SlipSystem* sourceSlipSystem;
+    SlipSystem* destinationSlipSystem;
+
+    std::vector<Defect*> defects;
+    std::vector<Defect*>::iterator defects_it;
+    Defect* defect;
+
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d>::iterator defectPositions_it;
+
+    Stress totalStress;
+    Stress totalStress_slipSystem;
+    Stress totalStress_slipPlane;
+    Stress totalStress_defect;
+
+    for (destinationSlipSystem_it=this->slipSystems.begin(); destinationSlipSystem_it!=this->slipSystems.end(); destinationSlipSystem_it++) {
+        destinationSlipSystem = *destinationSlipSystem_it;
+        // Get all the defects and their position vectors
+        defects = destinationSlipSystem->getDefects();
+        defectPositions = destinationSlipSystem->getAllDefectPositions_base();
+        for (defectPositions_it=defectPositions.begin(), defects_it=defects.begin();
+             defectPositions_it!=defectPositions.end();
+             defectPositions_it++, defects_it++) {
+            // Set the total stress to the grain's local applied stress
+            totalStress = this->appliedStress_local;
+            defect = *defects_it;
+            for (sourceSlipSystem_it=this->slipSystems.begin(); sourceSlipSystem_it!=this->slipSystems.end(); sourceSlipSystem_it++) {
+                sourceSlipSystem = *sourceSlipSystem_it;
+                totalStress += sourceSlipSystem->slipSystemStressField(*defectPositions_it, mu, nu);
+            }
+            // The total stress is in the grain co-ordinate system
+            defect = *defects_it;
+            totalStress_slipSystem = destinationSlipSystem->getCoordinateSystem()->stress_BaseToLocal(totalStress);
+            totalStress_slipPlane  = defect->getCoordinateSystem()->getBase()->stress_BaseToLocal(totalStress_slipSystem);
+            totalStress_defect     = defect->getCoordinateSystem()->stress_BaseToLocal(totalStress_slipPlane);
+            defect->setTotalStress(totalStress_defect);
+        }
+    }
+}
+
+/**
+ * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
+ * @param B The drag coefficient.
+ */
+void Grain::calculateDislocationVelocities (double B)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->calculateSlipPlaneDislocationForcesVelocities(B);
+    }
+}
+
+/**
+ * @brief The total stress field due to all defects in the grain at the position p.
+ * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @return Stress field, in the base co-ordinate system, due to all defects in this grain.
+ */
+Stress Grain::grainStressField (Vector3d p, double mu, double nu)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* ss;
+    Stress s;
+
+    Vector3d p_local = this->coordinateSystem.vector_BaseToLocal(p);
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        ss = *s_it;
+        s += ss->slipSystemStressField(p_local, mu, nu);
+    }
+
+    return (this->coordinateSystem.stress_LocalToBase(s));
+}
+
+// Time increments
+/**
+ * @brief Set the time increments for all slip systems.
+ * @param dt The value of the time increment.
+ */
+void Grain::setSlipSystemTimeIncrements (double dt)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->setTimeIncrement(dt);
+    }
+}
+
+/**
+ * @brief Calculates the ideal time increments of all the slip planes in all the slip systems in the grain.
+ * @param minDistance The minimum distance allowed between adjacent defects.
+ * @param minDt The smallest time step allowed.
+ * @return STL vector container with the time increments for each slip plane.
+ */
+std::vector<double> Grain::calculateTimeIncrement (double minDistance, double minDt)
+{
+    std::vector<double> timeIncrements;
+    std::vector<double> slipSystemTimeIncrements;
+
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    timeIncrements.clear();
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        slipSystemTimeIncrements = s->calculateTimeIncrement(minDistance, minDt);
+        timeIncrements.insert(timeIncrements.end(), slipSystemTimeIncrements.begin(), slipSystemTimeIncrements.end());
+        slipSystemTimeIncrements.clear();
+    }
+
+    return (timeIncrements);
+}
+
+// Displacement
+/**
+ * @brief Displace all the dislocations.
+ * @param minDistance The minimum distance allowed between two defects.
+ * @param dt The value of the time increment.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Grain::moveAllDislocations (double minDistance, double dt, double mu, double nu)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->moveSlipPlaneDislocations(minDistance, dt, mu, nu);
+    }
+}
+
+// Dislocation sources
+/**
+ * @brief Check all the dislocation sources in the grain for dislocation dipole emissions.
+ * @param dt The time increment in this iteration.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @param minDistance The limiting distance of approach between two defects.
+ */
+void Grain::checkDislocationSources (double dt, double mu, double nu, double minDistance)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->checkSlipPlaneDislocationSources(dt, mu, nu, minDistance);
+    }
+}
+
+// Local reactions
+/**
+ * @brief Check the local reactions between defects within the grain.
+ * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+ */
+void Grain::checkGrainLocalReactions (double reactionRadius)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->checkSlipPlaneLocalReactions(reactionRadius);
+    }
+}
+
 // Clear functions
 /**
  * @brief Clear out all the slip systems of the grain.
@@ -193,4 +472,35 @@ std::vector<Vector3d> Grain::getGBPoints_base () const
 CoordinateSystem* Grain::getCoordinateSystem ()
 {
     return (&(this->coordinateSystem));
+}
+
+/**
+ * @brief Get the positions of all the defects in this grain, expressed in the base co-ordinate system.
+ * @return Vector container with the positions of all the defects in this grain, expressed in the base co-ordinate system.
+ */
+std::vector<Vector3d> Grain::getAllDefectPositions_base()
+{
+    return (this->coordinateSystem.vector_LocalToBase(this->getAllDefectPositions_local()));
+}
+
+/**
+ * @brief Get the positions of all the defects in this grain, expressed in the local co-ordinate system.
+ * @return Vector container with the positions of all the defects in this grain, expressed in the local co-ordinate system.
+ */
+std::vector<Vector3d> Grain::getAllDefectPositions_local()
+{
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d> slipSystemDefects;
+
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    defectPositions.clear();
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        slipSystemDefects = s->getAllDefectPositions_base();
+        defectPositions.insert(defectPositions.end(), slipSystemDefects.begin(), slipSystemDefects.end());
+    }
+
+    return (defectPositions);
 }

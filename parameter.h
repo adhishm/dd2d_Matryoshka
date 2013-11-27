@@ -178,6 +178,11 @@ public:
      */
     Statistics slipSystemObjectPositions;
 
+    /**
+     * @brief Indicator about writing grain object positions to file.
+     */
+    Statistics grainObjectPositions;
+
     // Destructor
     /**
      * @brief Destructor for the class Parameter.

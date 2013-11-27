@@ -36,12 +36,30 @@
 #ifndef GRAIN_DEFAULTS
 #define GRAIN_DEFAULTS
 
+/**
+ * @brief Default value of the phi1 angle of the Euler angles representing the crystallographic orientation.
+ */
 #define DEFAULT_ORIENTATION_PHI1 0.0
+/**
+ * @brief Default value of the phi angle of the Euler angles representing the crystallographic orientation.
+ */
 #define DEFAULT_ORIENTATION_PHI  0.0
+/**
+ * @brief Default value of the phi2 angle of the Euler angles representing the crystallographic orientation.
+ */
 #define DEFAULT_ORIENTATION_PHI2 0.0
 
+/**
+ * @brief Default x co-ordinate of the grain centroid.
+ */
 #define DEFAULT_CENTROID_X1 0.0
+/**
+ * @brief Default y co-ordinate of the grain centroid.
+ */
 #define DEFAULT_CENTROID_X2 0.0
+/**
+ * @brief Default z co-ordinate of the grain centroid.
+ */
 #define DEFAULT_CENTROID_X3 0.0
 
 #endif
@@ -74,8 +92,22 @@ protected:
      * @brief STL vector container with position vectors, expressed in the local co-ordinate system, of points lying on the grain boundary, in sequential order.
      */
     std::vector<Vector3d> gbPoints_local;
+    /**
+     * @brief The externally applied stress, in the base co-ordinate system.
+     */
+    Stress appliedStress_base;
+    /**
+     * @brief The externally applied stress, in the local co-ordinate system.
+     */
+    Stress appliedStress_local;
+
 public:
     // Constructors
+    /**
+     * @brief Default constructor for the Grain class.
+     */
+    Grain ();
+
     /**
      * @brief Constructor for the class Grain, specifying all details.
      * @details All details are provided to the constructor.  For the moment only one slip system is active per grain, so only one normal and only one slip direction are given. This may be modified in the future when multiple slip will be handled.
@@ -100,6 +132,116 @@ public:
      * @param p Pointer to an array containing the three Euler angles.
      */
     void setOrientation (double *p);
+
+    /**
+     * @brief Overloaded function to set crystallographic orientation of the grain.
+     * @param p Vector3d variable containing the three Euler angles.
+     */
+    void setOrientation (Vector3d p);
+
+    /**
+     * @brief Set the points that make up the grain boundary.
+     * @param gbPoints Vector container with the grain boundary points expressed in the base co-ordinate system.
+     */
+    void setGBPoints (std::vector<Vector3d> gbPoints);
+
+    /**
+     * @brief Calculate the coordinateSystem of the grain.
+     */
+    void calculateCoordinateSystem ();
+
+    /**
+     * @brief Calculate the grain boundary point locations in the local CoordinateSystem.
+     */
+    void calculateGBPointsLocal ();
+
+    /**
+     * @brief Set the Base CoordinateSystem.
+     * @param base Pointer ot the base co-ordinate system.
+     */
+    void setBaseCoordinateSystem (CoordinateSystem* base);
+
+    /**
+     * @brief Insert a new slip system into the grain.
+     * @param s Pointer to the slip system (instance of class SlipSystem).
+     */
+    void insertSlipSystem (SlipSystem* s);
+
+    // Stress functions
+    /**
+     * @brief Calculate the externally applied stress in the grain co-ordinate system
+     * @param s Stress applied externally, expressed in the base co-ordinate system.
+     */
+    void calculateGrainAppliedStress (Stress s);
+
+    /**
+     * @brief Calculate the applied stress on all the slip systems.
+     */
+    void calculateSlipSystemAppliedStress();
+
+    /**
+     * @brief Calculate the total stresses experienced by all defects on all the slip planes.
+     * @param mu Shear modulus of the material (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void calculateAllStresses (double mu, double nu);
+
+    /**
+     * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
+     * @param B The drag coefficient.
+     */
+    void calculateDislocationVelocities (double B);
+
+    /**
+     * @brief The total stress field due to all defects in the grain at the position p.
+     * @param p Position vector, in the base co-ordinate system, of the point at which the stress field is to be calculated.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @return Stress field, in the base co-ordinate system, due to all defects in this grain.
+     */
+    Stress grainStressField (Vector3d p, double mu, double nu);
+
+    // Time increments
+    /**
+     * @brief Set the time increments for all slip systems.
+     * @param dt The value of the time increment.
+     */
+    void setSlipSystemTimeIncrements (double dt);
+
+    /**
+     * @brief Calculates the ideal time increments of all the slip planes in all the slip systems in the grain.
+     * @param minDistance The minimum distance allowed between adjacent defects.
+     * @param minDt The smallest time step allowed.
+     * @return STL vector container with the time increments for each slip plane.
+     */
+    std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
+
+    // Displacement
+    /**
+     * @brief Displace all the dislocations.
+     * @param minDistance The minimum distance allowed between two defects.
+     * @param dt The value of the time increment.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void moveAllDislocations (double minDistance, double dt, double mu, double nu);
+
+    // Dislocation sources
+    /**
+     * @brief Check all the dislocation sources in the grain for dislocation dipole emissions.
+     * @param dt The time increment in this iteration.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @param minDistance The limiting distance of approach between two defects.
+     */
+    void checkDislocationSources (double dt, double mu, double nu, double minDistance);
+
+    // Local reactions
+    /**
+     * @brief Check the local reactions between defects within the grain.
+     * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+     */
+    void checkGrainLocalReactions (double reactionRadius);
 
     // Clear functions
     /**
@@ -131,6 +273,27 @@ public:
      * @return Pointer to the Grain co-ordinate system.
      */
     CoordinateSystem* getCoordinateSystem ();
+
+    /**
+     * @brief Get the positions of all the defects in this grain, expressed in the base co-ordinate system.
+     * @return Vector container with the positions of all the defects in this grain, expressed in the base co-ordinate system.
+     */
+    std::vector<Vector3d> getAllDefectPositions_base();
+
+    /**
+     * @brief Get the positions of all the defects in this grain, expressed in the local co-ordinate system.
+     * @return Vector container with the positions of all the defects in this grain, expressed in the local co-ordinate system.
+     */
+    std::vector<Vector3d> getAllDefectPositions_local();
+
+    // Statistics
+    /**
+     * @brief Writes out the current time and the positions of all defects on the slip planes that belong to all the slip systems within this grain.
+     * @details This function writes out, in a row, the time and the positions of all defects on the slip planes at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+     * @param fileName Name of the file into which the data is to be written.
+     * @param t Value of time.
+     */
+    void writeAllDefects (std::string fileName, double t);
 };
 
 #endif // GRAIN_H

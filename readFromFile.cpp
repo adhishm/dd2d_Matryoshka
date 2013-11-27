@@ -452,6 +452,308 @@ bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, P
 }
 
 /**
+ * @brief Read the grain from file.
+ * @param fileName Name of the file containing the data of the grain.
+ * @param g Pointer to the instance of the Grain class that will contain the data. Memory for this instance should be pre-allocated.
+ * @param currentTime Pointer to the variable holding the present time. Memory for this varibale should be pre-allocated.
+ * @param param Pointer to the instance of the Parameter class, containing the parameters for the simulation.
+ * @return Boolean flag indicating success or failure of the reading operation.
+ */
+bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *param)
+{
+    std::ifstream fp ( fileName.c_str() );
+    std::string line;
+
+    Dislocation* disl;
+    DislocationSource* dSource;
+    SlipPlane* slipPlane;
+    SlipSystem* slipSystem;
+
+    Vector3d *e;
+
+    int nSlipSystems, nSlipPlanes, nDislocations, nDislocationSources, nGBPoints;
+    int i, j, k;
+    int dSourceCount = 0;
+    std::vector<Vector3d> gbPoints;
+
+    /**
+     * @brief baseCoordinateSystem This is the basis for the grain co-ordinate system.
+     */
+    CoordinateSystem* baseCoordinateSystem = new CoordinateSystem();
+
+    if ( fp.is_open() )
+    {
+        // Read the initial time
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        *currentTime = atof(line.c_str());
+
+        // Read the grain orientation
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        g->setOrientation(readVectorFromLine(line));
+
+        // Read the grain boundary points
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        nGBPoints = atof(line.c_str());
+
+        gbPoints.clear();
+        for (i=0; i<nGBPoints; i++) {
+            do {
+                if ( fp.good() ) {
+                    getline (fp, line);
+                }
+                else {
+                    fp.close();
+                    return (false);
+                }
+            } while ( ignoreLine(line) );
+            gbPoints.push_back(readVectorFromLine(line));
+        }
+        g->setGBPoints(gbPoints);
+
+        g->calculateCoordinateSystem();
+        g->setBaseCoordinateSystem(baseCoordinateSystem);
+        g->calculateGBPointsLocal();
+
+        // Read number of slip systems
+        do {
+            if ( fp.good() ) {
+                getline (fp, line);
+            }
+            else {
+                fp.close();
+                return (false);
+            }
+        } while ( ignoreLine(line) );
+        nSlipSystems = atoi (line.c_str());
+
+        // Create the Gaussian distribution of values for values of tauCritical
+        std::vector<double> tauC_values = rng_Gaussian( nSlipSystems*MEAN_NUM_SLIPPLANES_PER_SLIPSYSTEM*MEAN_NUM_DISLOCATION_SOURCES_PERSLIPPLANE,
+                                                        param->tauCritical_mean, param->tauCritical_stdev );
+
+        g->clearSlipSystems();
+        for (i=0; i<nSlipSystems; i++) {
+            // Allocate memory for the slip system
+            slipSystem = new SlipSystem;
+            // Read the position
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
+            slipSystem->setPosition( readVectorFromLine ( line ) );
+
+            // Read the normal
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
+            slipSystem->setNormal ( readVectorFromLine(line) );
+
+            // Read the direction
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
+            slipSystem->setDirection ( readVectorFromLine(line) );
+
+            // Create the co-ordinate system
+            slipSystem->createCoordinateSystem(g->getCoordinateSystem());
+
+            // Read number of slip planes
+            do {
+                if ( fp.good() ) {
+                    getline ( fp, line );
+                }
+                else {
+                    fp.close ();
+                    return ( false );
+                }
+            } while ( ignoreLine ( line ) );
+            nSlipPlanes = atoi ( line.c_str() );
+
+            slipSystem->clearSlipPlanes();
+            for (j=0; j<nSlipPlanes; j++) {
+                // Allocate memory for the slip plane
+                slipPlane = new SlipPlane;
+
+                // Read the position
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                slipPlane->setPosition ( readVectorFromLine(line) );
+
+                // Create the slip plane co-ordinate system
+                slipPlane->createCoordinateSystem(slipSystem->getCoordinateSystem());
+
+                // Read the extremities
+                e = new Vector3d[2];
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                e[0] = readVectorFromLine ( line );
+
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                e[1] = readVectorFromLine ( line );
+
+                slipPlane->setExtremities( e );
+                delete[] ( e );
+                e = NULL;
+
+                // The normal to the slip plane is the z-axis of the slip system
+                slipPlane->setNormal(Vector3d::unitVector(2));
+
+                // Read number of dislocations
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                nDislocations = atoi ( line.c_str() );
+                // Clear the dislocations vector before inserting new dislocations.
+                slipPlane->clearDislocations();
+                // Read the dislocations
+                for (k=0; k<nDislocations; k++) {
+                    do {
+                        if ( fp.good() ) {
+                            getline ( fp, line );
+                        }
+                        else {
+                            fp.close ();
+                            return ( false );
+                        }
+                    } while ( ignoreLine ( line ) );
+                    disl = readDislocationFromLine(line);
+                    disl->setBaseCoordinateSystem(slipPlane->getCoordinateSystem());
+                    disl->calculateRotationMatrix();
+                    disl->calculateBurgersLocal();
+                    slipPlane->insertDislocation ( disl );
+                }
+
+                // Read number of dislocation sources
+                do {
+                    if ( fp.good() ) {
+                        getline ( fp, line );
+                    }
+                    else {
+                        fp.close ();
+                        return ( false );
+                    }
+                } while ( ignoreLine ( line ) );
+                nDislocationSources = atoi ( line.c_str() );
+
+               // Clear the dislocationSources vector before inserting new dislocation sources
+                slipPlane->clearDislocationSources();
+                // Read the dislocation sources
+                for ( k=0; k<nDislocationSources; k++ ) {
+                    do {
+                        if ( fp.good() ) {
+                            getline ( fp, line );
+                        }
+                        else {
+                            fp.close ();
+                            return ( false );
+                        }
+                    } while ( ignoreLine ( line ) );
+                    dSource = readDislocationSourceFromLine( line );
+                    // Set the tauCritical and time
+                    dSource->setTauCritical(tauC_values[dSourceCount++]);
+                    if (dSourceCount == tauC_values.size()) {
+                        displayMessage("Total number of dislocation sources exceeded population of critical stress values. Adjust variable MEAN_NUM_DISLOCATION_SOURCES_PERSLIPPLANE in file slipPlaneDefaults.h");
+                        dSourceCount = 0;
+                    }
+                    dSource->setTimeTillDipoleEmission(param->tauCritical_time);
+                    dSource->setBaseCoordinateSystem(slipPlane->getCoordinateSystem());
+                    dSource->refreshDislocation();
+                    dSource->calculateRotationMatrix();
+                    slipPlane->insertDislocationSource ( dSource );
+                }
+
+                // All data for the slip plane has been read
+                // Sort the dislocation and dislocation source lists
+                slipPlane->sortDislocations();
+                slipPlane->sortDislocationSources();
+                // Update the defect list
+                slipPlane->updateDefects();
+
+                // Insert the slip plane into the vector containing slip planes
+                slipSystem->insertSlipPlane(slipPlane);
+            }
+
+            // Insert slip system into grain
+            g->insertSlipSystem(slipSystem);
+        }
+
+        fp.close();
+        return (true);
+    }
+    else {
+        return (false);
+    }
+}
+
+/**
  * @brief Reads 3 values from a string and returns them in a Vector3d.
  * @param s The string that is to be read from.
  * @return Vector3d object containing the 3 values read.
