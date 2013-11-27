@@ -331,6 +331,101 @@ Stress Grain::grainStressField (Vector3d p, double mu, double nu)
     return (this->coordinateSystem.stress_LocalToBase(s));
 }
 
+// Time increments
+/**
+ * @brief Set the time increments for all slip systems.
+ * @param dt The value of the time increment.
+ */
+void Grain::setSlipSystemTimeIncrements (double dt)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->setTimeIncrement(dt);
+    }
+}
+
+/**
+ * @brief Calculates the ideal time increments of all the slip planes in all the slip systems in the grain.
+ * @param minDistance The minimum distance allowed between adjacent defects.
+ * @param minDt The smallest time step allowed.
+ * @return STL vector container with the time increments for each slip plane.
+ */
+std::vector<double> Grain::calculateTimeIncrement (double minDistance, double minDt)
+{
+    std::vector<double> timeIncrements;
+    std::vector<double> slipSystemTimeIncrements;
+
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    timeIncrements.clear();
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        slipSystemTimeIncrements = s->calculateTimeIncrement(minDistance, minDt);
+        timeIncrements.insert(timeIncrements.end(), slipSystemTimeIncrements.begin(), slipSystemTimeIncrements.end());
+        slipSystemTimeIncrements.clear();
+    }
+
+    return (timeIncrements);
+}
+
+// Displacement
+/**
+ * @brief Displace all the dislocations.
+ * @param minDistance The minimum distance allowed between two defects.
+ * @param dt The value of the time increment.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Grain::moveAllDislocations (double minDistance, double dt, double mu, double nu)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->moveSlipPlaneDislocations(minDistance, dt, mu, nu);
+    }
+}
+
+// Dislocation sources
+/**
+ * @brief Check all the dislocation sources in the grain for dislocation dipole emissions.
+ * @param dt The time increment in this iteration.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @param minDistance The limiting distance of approach between two defects.
+ */
+void Grain::checkDislocationSources (double dt, double mu, double nu, double minDistance)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->checkSlipPlaneDislocationSources(dt, mu, nu, minDistance);
+    }
+}
+
+// Local reactions
+/**
+ * @brief Check the local reactions between defects within the grain.
+ * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+ */
+void Grain::checkGrainLocalReactions (double reactionRadius)
+{
+    std::vector<SlipSystem*>::iterator s_it;
+    SlipSystem* s;
+
+    for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
+        s = *s_it;
+        s->checkSlipPlaneLocalReactions(reactionRadius);
+    }
+}
+
 // Clear functions
 /**
  * @brief Clear out all the slip systems of the grain.

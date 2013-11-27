@@ -170,9 +170,19 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
         // Time increment
         switch (param->timeStepType) {
         case ADAPTIVE:
+            // This part is incomplete
+            timeIncrement = grain->calculateTimeIncrement(limitingDistance, param->limitingTimeStep);
             break;
         case FIXED:
+            grain->setSlipSystemTimeIncrements(param->limitingTimeStep);
+            grain->moveAllDislocations(limitingDistance, param->limitingTimeStep, param->mu, param->nu);
             break;
         }
+
+        // Check dislocation sources for dipole emissions
+        grain->checkDislocationSources(param->limitingTimeStep, param->mu, param->nu, limitingDistance);
+
+        // Check for local reactions
+        grain->checkGrainLocalReactions(reactionRadius);
     }
 }

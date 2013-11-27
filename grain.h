@@ -201,6 +201,48 @@ public:
      */
     Stress grainStressField (Vector3d p, double mu, double nu);
 
+    // Time increments
+    /**
+     * @brief Set the time increments for all slip systems.
+     * @param dt The value of the time increment.
+     */
+    void setSlipSystemTimeIncrements (double dt);
+
+    /**
+     * @brief Calculates the ideal time increments of all the slip planes in all the slip systems in the grain.
+     * @param minDistance The minimum distance allowed between adjacent defects.
+     * @param minDt The smallest time step allowed.
+     * @return STL vector container with the time increments for each slip plane.
+     */
+    std::vector<double> calculateTimeIncrement (double minDistance, double minDt);
+
+    // Displacement
+    /**
+     * @brief Displace all the dislocations.
+     * @param minDistance The minimum distance allowed between two defects.
+     * @param dt The value of the time increment.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void moveAllDislocations (double minDistance, double dt, double mu, double nu);
+
+    // Dislocation sources
+    /**
+     * @brief Check all the dislocation sources in the grain for dislocation dipole emissions.
+     * @param dt The time increment in this iteration.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @param minDistance The limiting distance of approach between two defects.
+     */
+    void checkDislocationSources (double dt, double mu, double nu, double minDistance);
+
+    // Local reactions
+    /**
+     * @brief Check the local reactions between defects within the grain.
+     * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+     */
+    void checkGrainLocalReactions (double reactionRadius);
+
     // Clear functions
     /**
      * @brief Clear out all the slip systems of the grain.
