@@ -184,5 +184,32 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
 
         // Check for local reactions
         grain->checkGrainLocalReactions(reactionRadius);
+
+        // Increment counters
+        totalTime += slipSystem->getTimeIncrement ();
+        simulationTime.push_back ( totalTime );
+        nIterations++;
+
+        message = "Iteration " + intToString ( nIterations ) + "; Total time " + doubleToString ( totalTime );
+        displayMessage ( message );
+        message.clear ();
+
+        // Write statistics
+
+        // Check for stopping criterion
+        if ( param->stopAfterTime ) {
+            // The stopping criterion is time
+            continueSimulation = ( totalTime <= param->stopTime );
+        }
+        else {
+            // The stopping criterion is iterations
+            continueSimulation = ( nIterations <= param->stopIterations );
+        }
+
     }
+
+    UniqueID* uid_instance = UniqueID::getInstance();
+    std::string uniquesFileName = param->output_dir + "/uniquesFile.txt";
+    uid_instance->writeDefects(uniquesFileName);
+    uniquesFileName.clear();
 }
