@@ -296,10 +296,10 @@ Defect* SlipPlane::getGrainBoundary (int i)
 {
     switch (i) {
     case 0:
-        return (&(this->extremity0));
+        return (this->extremity0);
         break;
     case 1:
-        return (&(this->extremity1));
+        return (this->extremity1);
         break;
     default:
         return (NULL);
