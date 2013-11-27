@@ -281,6 +281,20 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Statistics grain object positions
+    if (first=="statsGrainObjects") {
+        ss >> v;
+        int write = atoi(v.c_str());
+        ss >> v;
+        this->grainObjectPositions = Statistics ( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->grainObjectPositions.addName(v);
+        }
+        return;
+    }
+
     // File names
     if ( first=="structure" || first=="Structure" )
     {

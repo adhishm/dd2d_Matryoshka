@@ -195,6 +195,11 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
         message.clear ();
 
         // Write statistics
+        if (param->grainObjectPositions.ifWrite()) {
+            fileName = param->output_dir + "/" + param->grainObjectPositions.name + ".txt";
+            grain->writeAllDefects( fileName, totalTime );
+            fileName.clear ();
+        }
 
         // Check for stopping criterion
         if ( param->stopAfterTime ) {
