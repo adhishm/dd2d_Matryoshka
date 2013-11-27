@@ -470,11 +470,16 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
     SlipSystem* slipSystem;
 
     Vector3d *e;
+    Vector3d slipPlaneTrace;
+    Vector3d S[2];
+    Vector3d R, P, Q;
 
     int nSlipSystems, nSlipPlanes, nDislocations, nDislocationSources, nGBPoints;
     int i, j, k;
     int dSourceCount = 0;
+    int nIntersections;
     std::vector<Vector3d> gbPoints;
+    int d0d, d1d;
 
     /**
      * @brief baseCoordinateSystem This is the basis for the grain co-ordinate system.
@@ -653,6 +658,34 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
                 } while ( ignoreLine ( line ) );
                 e[1] = readVectorFromLine ( line );
 
+                // Check for the intersections with the grain boundary
+                slipPlaneTrace = e[1] - e[0];   // Slip plane trace in the slip system co-ordinate system
+                slipPlaneTrace = slipSystem->getCoordinateSystem()->vector_LocalToBase_noTranslate(slipPlaneTrace); // Slip plane trace in the grain co-ordinate system
+                R = slipSystem->getCoordinateSystem()->vector_LocalToBase(slipPlane->getPosition());
+                gbPoints = g->getGBPoints_local();  // Grain boundary points in the grain co-ordinate system
+                // Detect intersections
+                nIntersections = 0;
+                for (k=0; k<(nGBPoints-1); k++) {
+                    P = gbPoints.at(k);
+                    Q = gbPoints.at(k+1);
+                    if (intersection(R, slipPlaneTrace, P, Q, (S+nIntersections))) {
+                        nIntersections++;
+                        if (nIntersections==2) {
+                            break;
+                        }
+                    }
+                }
+
+                if (nIntersections==2) {
+                    // Both intersections were found. We can now create the slip plane
+                    s[0] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[0]);
+                    s[1] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[1]);
+                    slipPlane->setExtremities(S);
+                }
+                else {
+                    continue;   // Go to next slip plane
+                }
+
                 slipPlane->setExtremities( e );
                 delete[] ( e );
                 e = NULL;
@@ -688,7 +721,12 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
                     disl->setBaseCoordinateSystem(slipPlane->getCoordinateSystem());
                     disl->calculateRotationMatrix();
                     disl->calculateBurgersLocal();
-                    slipPlane->insertDislocation ( disl );
+                    d0d = (int) Defect::compareDefectPositions(slipPlane->getGrainBoundary(0), disl);
+                    d1d = (int) Defect::compareDefectPositions(slipPlane->getGrainBoundary(1), disl);
+                    if (d0d != d1d) {
+                        // The dislocation is really inside the slip plane
+                        slipPlane->insertDislocation ( disl );
+                    }
                 }
 
                 // Read number of dislocation sources
