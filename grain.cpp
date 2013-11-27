@@ -324,7 +324,7 @@ Stress Grain::grainStressField (Vector3d p, double mu, double nu)
     Vector3d p_local = this->coordinateSystem.vector_BaseToLocal(p);
 
     for (s_it=this->slipSystems.begin(); s_it!=this->slipSystems.end(); s_it++) {
-        sp = *s_it;
+        ss = *s_it;
         s += ss->slipSystemStressField(p_local, mu, nu);
     }
 
