@@ -285,6 +285,15 @@ public:
      * @return Vector container with the positions of all the defects in this grain, expressed in the local co-ordinate system.
      */
     std::vector<Vector3d> getAllDefectPositions_local();
+
+    // Statistics
+    /**
+     * @brief Writes out the current time and the positions of all defects on the slip planes that belong to all the slip systems within this grain.
+     * @details This function writes out, in a row, the time and the positions of all defects on the slip planes at that time. The function will be called several times during a simulation, so the file must be opened in append mode and the function should insert a newline after each entry.
+     * @param fileName Name of the file into which the data is to be written.
+     * @param t Value of time.
+     */
+    void writeAllDefects (std::string fileName, double t);
 };
 
 #endif // GRAIN_H

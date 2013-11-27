@@ -186,7 +186,7 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
         grain->checkGrainLocalReactions(reactionRadius);
 
         // Increment counters
-        totalTime += slipSystem->getTimeIncrement ();
+        totalTime += param->limitingTimeStep;
         simulationTime.push_back ( totalTime );
         nIterations++;
 
