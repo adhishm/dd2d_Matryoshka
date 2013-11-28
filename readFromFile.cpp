@@ -694,6 +694,16 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
                     }
                 }
 
+                if (nIntersections == 1) {
+                    // Check for intersection with the last segment
+                    P = gbPoints.at(k);
+                    Q = gbPoints.at(0);
+                    if (intersection(R, slipPlaneTrace, P, Q, (S+nIntersections))) {
+                        nIntersections++;
+                    }
+                }
+
+
                 if (nIntersections==2) {
                     // Both intersections were found. We can now create the slip plane
                     S[0] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[0]);

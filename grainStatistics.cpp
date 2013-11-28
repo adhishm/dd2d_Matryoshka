@@ -49,7 +49,7 @@ void Grain::writeAllDefects (std::string fileName, double t)
         defectPositions_it = defectPositions.begin();
         while (defectPositions_it!=defectPositions.end()) {
             defectPosition = *defectPositions_it;
-            fp << defectPosition.getValue(0) << " " << defectPosition.getValue(1) << " " << defectPosition.getValue(2) << " ";
+            fp << defectPosition.getValue(0) << " " << defectPosition.getValue(1) << " "; // << defectPosition.getValue(2) << " ";
             defectPositions_it++;
         }
 

@@ -179,7 +179,7 @@ void Grain::setOrientation (Vector3d p)
  */
 void Grain::setGBPoints (std::vector<Vector3d> gbPoints)
 {
-    this->gbPoints_base = gbPoints;
+    this->gbPoints_base.assign(gbPoints.begin(), gbPoints.end());
 }
 
 /**
