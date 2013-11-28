@@ -678,8 +678,8 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
 
                 if (nIntersections==2) {
                     // Both intersections were found. We can now create the slip plane
-                    s[0] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[0]);
-                    s[1] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[1]);
+                    S[0] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[0]);
+                    S[1] = slipSystem->getCoordinateSystem()->vector_BaseToLocal(S[1]);
                     slipPlane->setExtremities(S);
                 }
                 else {
