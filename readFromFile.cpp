@@ -512,7 +512,7 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
                 return (false);
             }
         } while ( ignoreLine(line) );
-        g->setOrientation(readVectorFromLine(line));
+        g->setOrientation(readVectorFromLine(line) * DEG2RAD);
 
         // Read the grain boundary points
         do {
