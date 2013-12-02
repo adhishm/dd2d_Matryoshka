@@ -37,6 +37,16 @@
 #define PI 3.141592654
 
 /**
+ * @brief The constant to convert from degrees to radians.
+ */
+#define DEG2RAD (PI/180.0)
+
+/**
+ * @brief The constant to convert from radians to degrees.
+ */
+#define RAD2DEG (180.0/PI)
+
+/**
  * @brief The square root of 2.
  */
 #define SQRT2 1.414213562

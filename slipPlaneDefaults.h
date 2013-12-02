@@ -102,4 +102,10 @@
  */
 #define MEAN_NUM_DISLOCATION_SOURCES_PERSLIPPLANE 20
 
+/**
+ * @brief The mean number of slip planes in a slip system.
+ * @details This number gives us the average number of slip planes per slip system. It is required in order to generate a population of critical stress values with a Gaussian distribution before knowing the actual number of dislocation sources in the simulation.
+ */
+#define MEAN_NUM_SLIPPLANES_PER_SLIPSYSTEM 10
+
 #endif

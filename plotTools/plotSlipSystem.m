@@ -12,12 +12,18 @@ function plotSlipSystem (filename, delimiter)
 %  given time and does not try to connect the crosses across time, the
 %  order in which the entities appear is irrelevant.
 
+    %% Open the file
+    fid = fopen (filename(:));
+    
+    if (fid == -1)
+        % Could not open the file
+        disp ('Unable to open the file!');
+        return
+    end
+    
     %% Initialize the figure
     figure;
     hold on;
-
-    %% Open the file
-    fid = fopen (filename(:));
     
     %% Read the file one line at a time
     oneline = fgetl(fid);
