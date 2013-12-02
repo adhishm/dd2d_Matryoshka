@@ -44,6 +44,10 @@
 #include <gsl/gsl_randist.h>
 
 #include "vector3d.h"
+#include "constants.h"
+#include "matrix33.h"
+#include "stress.h"
+#include "strain.h"
 
 /**
  * @brief Creates all possible permutations of vectors having the same elements.
@@ -136,5 +140,35 @@ template <typename T> int sgn(T v)
  * @return Vector container with the doubles in a Gaussian distribution with the required mean and standard deviation.
  */
 std::vector<double> rng_Gaussian (int n, double mean, double stdev);
+
+/**
+ * @brief Finds the arithmetic mean of values given as a vector. The addition operator must be defined, as well as the division by a scalar.
+ * @param p STL vector container with the values whose mean is to be found.
+ * @return The mean of the values provided in p.
+ */
+template <typename T> T mean (std::vector<T> p)
+{
+    T m;
+    int n = p.size();
+    if (n != 0) {
+        for (int i=0; i<n; i++) {
+            m += p.at(i);
+        }
+        m *= (1.0/n);
+    }
+    return (m);
+}
+
+/**
+ * @brief Function to check for the intersection between a line parallel to the vector V, passing through the point R, with the line joining P and Q.
+ * @details Description of the method: The intersection point S is given by the parametric forms of the line equations. For the line passing through R and parallel to V, S = R + uV, - infinity < u < + infinity. For the line passing through P and Q, S = P + t(Q-P), 0 <= t <= 1. Therefore we need to solve the equations R + uV = P + t(Q-P), for t and u. Since all the vector quantities are known, the equation may be simplified to uV = A + tB, where A = P-R, B = Q-P. Performing a cross product with V on both sides, we have 0 = (AxV) + t(BxV). If the solutions for t from all three possible pairs of equations are the same, it proves the coplanarity of the points P, Q, R and the vector V. If t is bounded between 0 and 1, then the intersection lies between P and Q, else it is outside. If it is bounded, we calculate the position S = P + tB.
+ * @param R Position vector of the point through which the line passes.
+ * @param V Vector to which the line is parallel.
+ * @param P Position vector of the first point.
+ * @param Q Position vector of the second point.
+ * @param S Pointer to the Vector3d instance that will contain the intersection point, if there is one. The memory must be pre-allocated.
+ * @return Boolean flag indicating if the lines intersect (true) or not (false).
+ */
+bool intersection (Vector3d R, Vector3d V, Vector3d P, Vector3d Q, Vector3d* S);
 
 #endif

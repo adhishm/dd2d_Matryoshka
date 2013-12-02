@@ -223,6 +223,13 @@ public:
    * @return Position vector of the extremity indicated by the argument, returned as a variable of type Vector3d.
    */
   Vector3d getExtremity (int i) const;
+
+  /**
+   * @brief Get a pointer to the grain boundary defect.
+   * @param i Index of the grain boundary defect. Should be 0 or 1.
+   * @return Pointer to the grain boundary defect.
+   */
+  Defect* getGrainBoundary (int i);
   
   /**
    * @brief Get the normal vector of the slip plane.

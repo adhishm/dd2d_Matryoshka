@@ -186,11 +186,23 @@ public:
      */
     Vector3d vector_BaseToLocal(Vector3d vBase) const;
     /**
+     * @brief Overloaded function to convert a vector container containing vectors expressed in the base co-ordinate system to the local system.
+     * @param vBase The vector container containing vectors expressed in the base co-ordinate system.
+     * @return The vector container containing vectors expressed in the local co-ordinate system.
+     */
+    std::vector<Vector3d> vector_BaseToLocal(std::vector<Vector3d> vBase) const;
+    /**
      * @brief Converts a vector expressed in the local co-ordinate system to the base system.
      * @param vLocal The vector expressed in the local co-ordinate system.
      * @return The vector expressed in the base co-ordinate system.
      */
     Vector3d vector_LocalToBase(Vector3d vLocal) const;
+    /**
+     * @brief Overloaded function to convert vectors expressed in the local co-ordinate system to the base system.
+     * @param vLocal The vector container containing vectors expressed in the local co-ordinate system.
+     * @return The vector container containing vectors expressed in the base co-ordinate system.
+     */
+    std::vector<Vector3d> vector_LocalToBase(std::vector<Vector3d> vLocal) const;
     /**
      * @brief Converts a vector expressed in the base co-ordinate system to the local system, but without the translation.
      * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
@@ -199,12 +211,26 @@ public:
      */
     Vector3d vector_BaseToLocal_noTranslate(Vector3d vBase) const;
     /**
+     * @brief Overloaded function  to convert vectors expressed in the base co-ordinate system to the local system, but without the translation.
+     * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
+     * @param vBase The vector container containing vectors expressed in the base co-ordinate system.
+     * @return The vector container containing vectors expressed in the local co-ordinate system.
+     */
+    std::vector<Vector3d> vector_BaseToLocal_noTranslate(std::vector<Vector3d> vBase) const;
+    /**
      * @brief Converts a vector expressed in the local co-ordinate system to the base system, but without the translation.
      * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
      * @param vLocal The vector expressed in the local co-ordinate system.
      * @return The vector expressed in the local co-ordinate system.
      */
     Vector3d vector_LocalToBase_noTranslate(Vector3d vLocal) const;
+    /**
+     * @brief Overloaded function to convert vectors expressed in the local co-ordinate system to the base system, but without the translation.
+     * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
+     * @param vLocal The vector container containing vectors expressed in the local co-ordinate system.
+     * @return The vector container containing vectors expressed in the local co-ordinate system.
+     */
+    std::vector<Vector3d> vector_LocalToBase_noTranslate(std::vector<Vector3d> vLocal) const;
     /**
      * @brief Rotates a stress tensor from the base to the local system.
      * @param s The stress tensor to be rotated.

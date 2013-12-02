@@ -288,6 +288,26 @@ Vector3d SlipPlane::getExtremity (int i) const
 }
 
 /**
+ * @brief Get a pointer to the grain boundary defect.
+ * @param i Index of the grain boundary defect. Should be 0 or 1.
+ * @return Pointer to the grain boundary defect.
+ */
+Defect* SlipPlane::getGrainBoundary (int i)
+{
+    switch (i) {
+    case 0:
+        return (this->extremity0);
+        break;
+    case 1:
+        return (this->extremity1);
+        break;
+    default:
+        return (NULL);
+        break;
+    }
+}
+
+/**
  * @brief Get the normal vector of the slip plane.
  * @return The normal vector of the slip plane, in a variable of type Vector3d.
  */
@@ -349,16 +369,7 @@ std::vector<Defect*> SlipPlane::getDefectList ()
  */
 std::vector<Vector3d> SlipPlane::getAllDefectPositions_base ()
 {
-    // Get positions in loal system
-    std::vector<Vector3d> defectPositions = this->getAllDefectPositions_local();
-    std::vector<Vector3d>::iterator defect_it = defectPositions.begin();
-
-    while (defect_it!=defectPositions.end()) {
-        *defect_it = this->coordinateSystem.vector_LocalToBase(*defect_it);
-        defect_it++;
-    }
-
-    return (defectPositions);
+    return (this->coordinateSystem.vector_LocalToBase(this->getAllDefectPositions_local()));
 }
 
 /**

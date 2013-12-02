@@ -135,22 +135,22 @@ CoordinateSystem::CoordinateSystem(double* p, Vector3d origin)
     double s;
 
     // Set the rotation matrices
-    c = cos(p[0]);
-    s = sin(p[0]);
+    c = cos(-p[0]);
+    s = sin(-p[0]);
     phi1.setValue(0, 0, c);
     phi1.setValue(0, 1, s);
     phi1.setValue(1, 0,-s);
     phi1.setValue(1, 1, c);
 
-    c = cos(p[1]);
-    s = sin(p[1]);
+    c = cos(-p[1]);
+    s = sin(-p[1]);
     phi.setValue(1, 1, c);
     phi.setValue(1, 2, s);
     phi.setValue(2, 1,-s);
     phi.setValue(2, 2, c);
 
-    c = cos(p[2]);
-    s = sin(p[2]);
+    c = cos(-p[2]);
+    s = sin(-p[2]);
     phi2.setValue(0, 0, c);
     phi2.setValue(0, 1, s);
     phi2.setValue(1, 0,-s);
@@ -200,22 +200,22 @@ CoordinateSystem::CoordinateSystem(double* p, Vector3d origin, CoordinateSystem*
     double s;
 
     // Set the rotation matrices
-    c = cos(p[0]);
-    s = sin(p[0]);
+    c = cos(-p[0]);
+    s = sin(-p[0]);
     phi1.setValue(0, 0, c);
     phi1.setValue(0, 1, s);
     phi1.setValue(1, 0,-s);
     phi1.setValue(1, 1, c);
 
-    c = cos(p[1]);
-    s = sin(p[1]);
+    c = cos(-p[1]);
+    s = sin(-p[1]);
     phi.setValue(1, 1, c);
     phi.setValue(1, 2, s);
     phi.setValue(2, 1,-s);
     phi.setValue(2, 2, c);
 
-    c = cos(p[2]);
-    s = sin(p[2]);
+    c = cos(-p[2]);
+    s = sin(-p[2]);
     phi2.setValue(0, 0, c);
     phi2.setValue(0, 1, s);
     phi2.setValue(1, 0,-s);
@@ -397,6 +397,25 @@ Vector3d CoordinateSystem::vector_BaseToLocal(Vector3d vBase) const
 }
 
 /**
+ * @brief Overloaded function to convert a vector container containing vectors expressed in the base co-ordinate system to the local system.
+ * @param vBase The vector container containing vectors expressed in the base co-ordinate system.
+ * @return The vector container containing vectors expressed in the local co-ordinate system.
+ */
+std::vector<Vector3d> CoordinateSystem::vector_BaseToLocal(std::vector<Vector3d> vBase) const
+{
+    std::vector<Vector3d>::iterator v_it;
+
+    v_it = vBase.begin();
+
+    while (v_it != vBase.end()) {
+        *v_it = this->vector_BaseToLocal(*v_it);
+        v_it++;
+    }
+
+    return (vBase);
+}
+
+/**
  * @brief Converts a vector expressed in the local co-ordinate system to the base system.
  * @param vLocal The vector expressed in the local co-ordinate system.
  * @return The vector expressed in the base co-ordinate system.
@@ -412,6 +431,25 @@ Vector3d CoordinateSystem::vector_LocalToBase(Vector3d vLocal) const
 }
 
 /**
+ * @brief Overloaded function to Convert a vector expressed in the local co-ordinate system to the base system.
+ * @param vLocal The vector container containing vectors expressed in the local co-ordinate system.
+ * @return The vector container containing vectors expressed in the base co-ordinate system.
+ */
+std::vector<Vector3d> CoordinateSystem::vector_LocalToBase(std::vector<Vector3d> vLocal) const
+{
+    std::vector<Vector3d>::iterator v_it;
+
+    v_it = vLocal.begin();
+
+    while (v_it != vLocal.end()) {
+        *v_it = this->vector_LocalToBase(*v_it);
+        v_it++;
+    }
+
+    return (vLocal);
+}
+
+/**
  * @brief Converts a vector expressed in the base co-ordinate system to the local system, but without the translation.
  * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
  * @param vBase The vector expressed in the base co-ordinate system.
@@ -424,6 +462,26 @@ Vector3d CoordinateSystem::vector_BaseToLocal_noTranslate(Vector3d vBase) const
 }
 
 /**
+ * @brief Overloaded function  to convert vectors expressed in the base co-ordinate system to the local system, but without the translation.
+ * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
+ * @param vBase The vector container containing vectors expressed in the base co-ordinate system.
+ * @return The vector container containing vectors expressed in the local co-ordinate system.
+ */
+std::vector<Vector3d> CoordinateSystem::vector_BaseToLocal_noTranslate(std::vector<Vector3d> vBase) const
+{
+    std::vector<Vector3d>::iterator v_it;
+
+    v_it = vBase.begin();
+
+    while (v_it != vBase.end()) {
+        *v_it = this->vector_BaseToLocal_noTranslate(*v_it);
+        v_it++;
+    }
+
+    return (vBase);
+}
+
+/**
  * @brief Converts a vector expressed in the local co-ordinate system to the base system, but without the translation.
  * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
  * @param vLocal The vector expressed in the local co-ordinate system.
@@ -433,6 +491,26 @@ Vector3d CoordinateSystem::vector_LocalToBase_noTranslate(Vector3d vLocal) const
 {
     Vector3d vBase = this->rotationMatrix.transpose() * vLocal;
     return(vBase);
+}
+
+/**
+ * @brief Overloaded function to convert vectors expressed in the local co-ordinate system to the base system, but without the translation.
+ * @details Some vectors, like force, should not be translated when changing from one system to another. This function is for such vectors.
+ * @param vLocal The vector container containing vectors expressed in the local co-ordinate system.
+ * @return The vector container containing vectors expressed in the local co-ordinate system.
+ */
+std::vector<Vector3d> CoordinateSystem::vector_LocalToBase_noTranslate(std::vector<Vector3d> vLocal) const
+{
+    std::vector<Vector3d>::iterator v_it;
+
+    v_it = vLocal.begin();
+
+    while (v_it != vLocal.end()) {
+        *v_it = this->vector_LocalToBase_noTranslate(*v_it);
+        v_it++;
+    }
+
+    return (vLocal);
 }
 
 /**
