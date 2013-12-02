@@ -156,7 +156,7 @@ CoordinateSystem::CoordinateSystem(double* p, Vector3d origin)
     phi2.setValue(1, 0,-s);
     phi2.setValue(1, 1, c);
 
-    this->rotationMatrix = RotationMatrix((phi2 * (phi * phi1)));
+    this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
 
     Vector3d* ax = new Vector3d[3];
     for (int i=0; i<3; i++) {
@@ -200,28 +200,28 @@ CoordinateSystem::CoordinateSystem(double* p, Vector3d origin, CoordinateSystem*
     double s;
 
     // Set the rotation matrices
-    c = cos(p[0]);
-    s = sin(p[0]);
+    c = cos(-p[0]);
+    s = sin(-p[0]);
     phi1.setValue(0, 0, c);
     phi1.setValue(0, 1, s);
     phi1.setValue(1, 0,-s);
     phi1.setValue(1, 1, c);
 
-    c = cos(p[1]);
-    s = sin(p[1]);
+    c = cos(-p[1]);
+    s = sin(-p[1]);
     phi.setValue(1, 1, c);
     phi.setValue(1, 2, s);
     phi.setValue(2, 1,-s);
     phi.setValue(2, 2, c);
 
-    c = cos(p[2]);
-    s = sin(p[2]);
+    c = cos(-p[2]);
+    s = sin(-p[2]);
     phi2.setValue(0, 0, c);
     phi2.setValue(0, 1, s);
     phi2.setValue(1, 0,-s);
     phi2.setValue(1, 1, c);
 
-    this->rotationMatrix = RotationMatrix((phi2 * (phi * phi1)).transpose());
+    this->rotationMatrix = RotationMatrix(phi2 * (phi * phi1));
 
     Vector3d* ax = new Vector3d[3];
     for (int i=0; i<3; i++) {
