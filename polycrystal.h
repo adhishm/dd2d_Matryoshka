@@ -72,6 +72,34 @@ public:
      * @brief Destructor for the Polycrystal class.
      */
     virtual ~Polycrystal();
+
+    // Assignment functions
+    /**
+     * @brief Set the Voronoi tessellation for the polycrystal from the tessellation file provided.
+     * @param tessellationFileName Name of the files containing the Voronoi tessellation.
+     */
+    void setTessellation (std::string tessellationFileName);
+
+    /**
+     * @brief Set the orientations vector by reading orientations from a file.
+     * @param orientationsFileName Name of the file containing the orientations.
+     */
+    void setOrientations (std::string orientationsFileName);
+
+    /**
+     * @brief Initialize the Grain vector.
+     */
+    void initializeGrainVector ();
+
+    /**
+     * @brief Set the grain boundaries for each grain using data from the tessellation.
+     */
+    void setGrainBoundaries ();
+
+    /**
+     * @brief Set the grain orientations from the orientations list.
+     */
+    void setGrainOrientations ();
 };
 
 #endif // POLYCRYSTAL_H

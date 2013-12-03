@@ -197,3 +197,12 @@ int Tess2d::getNVertices (unsigned int i)
         return (this->nVertices.at(i));
     }
 }
+
+/**
+ * @brief Get the number of cells.
+ * @return The number of Voronoi cells.
+ */
+int Tess2d::getNumberOfCells () const
+{
+    return (this->cells.size());
+}

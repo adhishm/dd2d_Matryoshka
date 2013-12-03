@@ -38,3 +38,94 @@ Polycrystal::Polycrystal()
 
     this->coordinateSystem = CoordinateSystem();
 }
+
+// Assignment functions
+/**
+ * @brief Set the Voronoi tessellation for the polycrystal from the tessellation file provided.
+ * @param tessellationFileName Name of the files containing the Voronoi tessellation.
+ */
+void Polycrystal::setTessellation (std::string tessellationFileName)
+{
+    this->tessellation = Tess2d(tessellationFileName);
+}
+
+/**
+ * @brief Set the orientations vector by reading orientations from a file.
+ * @param orientationsFileName Name of the file containing the orientations.
+ */
+void Polycrystal::setOrientations (std::string orientationsFileName)
+{
+    this->orientations.clear();
+    std::ifstream fp (orientationsFileName.c_str());
+    std::string line;
+
+    if (fp.is_open()) {
+        while (fp.good()) {
+            do {
+                if (fp.good()) {
+                    getline (fp, line);
+                }
+                else {
+                    fp.close();
+                    return;
+                }
+            } while (ignoreLine(line));
+            this->orientations.push_back(readVectorFromLine(line));
+        }
+        fp.close();
+    }
+}
+
+/**
+ * @brief Initialize the Grain vector.
+ */
+void Polycrystal::initializeGrainVector ()
+{
+    this->grains.clear();
+    this->grains.assign(this->tessellation.getNumberOfCells(), new Grain);
+}
+
+/**
+ * @brief Set the grain boundaries for each grain using data from the tessellation.
+ */
+void Polycrystal::setGrainBoundaries ()
+{
+    std::vector<Vector3d> gbPoints;
+
+    int nGrains = this->grains.size();
+    int nPoints;
+    int i, j;
+    Grain* g;
+    int* cell;
+
+    for (i=0; i<nGrains; i++) {
+        g = this->grains.at(i);
+
+        cell = this->tessellation.getCell(i);
+        nPoints = this->tessellation.getNVertices(i);
+        gbPoints.clear();
+        for (j=0; j<nPoints; j++) {
+            gbPoints.push_back(this->tessellation.getVertex(cell[j]));
+        }
+
+        g->setGBPoints(gbPoints);
+    }
+}
+
+/**
+ * @brief Set the grain orientations from the orientations list.
+ */
+void Polycrystal::setGrainOrientations ()
+{
+    if (this->grains.size() > this->orientations.size()) {
+        return;
+    }
+
+    int i;
+    Grain* g;
+
+    for (i=0; i<this->grains.size(); i++) {
+        g = this->grains.at(i);
+        g->setOrientation(this->orientations.at(i));
+    }
+}
