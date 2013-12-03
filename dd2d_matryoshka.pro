@@ -33,7 +33,8 @@ SOURCES += main.cpp \
     grain.cpp \
     simulateGrain.cpp \
     grainStatistics.cpp \
-    polycrystal.cpp
+    polycrystal.cpp \
+    tess2d.cpp
 
 HEADERS += \
     vector3d.h \
@@ -64,5 +65,5 @@ HEADERS += \
     uniqueid.h \
     grain.h \
     simulateGrain.h \
-    polycrystal.h
-
+    polycrystal.h \
+    tess2d.h
