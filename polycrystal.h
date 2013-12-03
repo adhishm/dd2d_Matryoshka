@@ -39,6 +39,17 @@
  */
 class Polycrystal
 {
+protected:
+    /**
+     * @brief STL vector container with pointers to the grains.
+     * @details
+     */
+    std::vector<Grain*> grains;
+
+    /**
+     * @brief STL vector with the crystallographic orientations of the grains.
+     */
+    std::vector<Vector3d> orientations;
 public:
     /**
      * @brief Default constructor for the Polycrystal class.
