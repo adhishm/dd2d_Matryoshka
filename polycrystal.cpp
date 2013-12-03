@@ -30,6 +30,9 @@
 
 #include "polycrystal.h"
 
+/**
+ * @brief Default constructor for the Polycrystal class.
+ */
 Polycrystal::Polycrystal()
 {
     this->grains.clear();
@@ -37,6 +40,24 @@ Polycrystal::Polycrystal()
     this->tessellation = Tess2d();
 
     this->coordinateSystem = CoordinateSystem();
+}
+
+/**
+ * @brief Destructor for the Polycrystal class.
+ */
+Polycrystal::~Polycrystal()
+{
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        delete (g);
+        *g_it = NULL;
+    }
+
+    this->grains.clear();
+    this->orientations.clear();
 }
 
 // Assignment functions
