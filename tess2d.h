@@ -95,6 +95,13 @@ public:
      */
     void readCells (std::string cllFileName);
 
+    /**
+     * @brief Read the cell vertex indices from a line.
+     * @details The cll file contains lines with vertex indices for each cell, with the first integer indicating the number of vertices.
+     * @param line String containing the line data.
+     */
+    void readCellFromLine (std::string line);
+
     // Assignment functions
 
     // Access functions
@@ -103,21 +110,21 @@ public:
      * @param i Index giving the position fo the vertex.
      * @return The vertex at the i^th position in the vector Tess2d::vertices.
      */
-    Vector3d getVertex (int i);
+    Vector3d getVertex (unsigned int i);
 
     /**
      * @brief Get the pointer to the cell vertex array at position i in the vector Tess2d::cells.
      * @param i Indexof the position of the cell array.
      * @return Pointer to the cell vertex array at position i in the vector Tess2d::cells.
      */
-    int* getCell (int i);
+    int* getCell (unsigned int i);
 
     /**
      * @brief Get the number of vertices for the i^th cell from the vector Tess2d::nVertices.
      * @param i Indexof the position in the vector.
      * @return Number of vertices for the i^th cell from the vector Tess2d::nVertices.
      */
-    int getNVertices (int i);
+    int getNVertices (unsigned int i);
 };
 
 #endif // TESS2D_H

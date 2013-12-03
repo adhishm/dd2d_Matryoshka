@@ -129,11 +129,36 @@ void Tess2d::readCells (std::string cllFileName)
                 }
             } while (ignoreLine(line));
             // Now to read the vertices from the line
-            this->cells.push_back(readIntegersFromLine(line, &vertexCount));
-            this->nVertices.push_back(vertexCount);
+            this->readCellFromLine(line);
         }
         fp.close();
     }
+}
+
+/**
+ * @brief Read the cell vertex indices from a line.
+ * @details The cll file contains lines with vertex indices for each cell, with the first integer indicating the number of vertices.
+ * @param line String containing the line data.
+ */
+void Tess2d::readCellFromLine (std::string line)
+{
+    std::stringstream ss (line);
+    std::string a;
+
+    int n;
+
+    // Get the number of vertices
+    ss >> a;
+    n = atoi(a.c_str());
+    this->nVertices.push_back(n);
+    int* c = new int[n];
+
+    for (int i=0; i<n; i++) {
+        ss >> a;
+        c[i] = atoi(a.c_str());
+    }
+
+    this->cells.push_back(c);
 }
 
 // Access functions
@@ -142,7 +167,7 @@ void Tess2d::readCells (std::string cllFileName)
  * @param i Index giving the position fo the vertex.
  * @return The vertex at the i^th position in the vector Tess2d::vertices.
  */
-Vector3d Tess2d::getVertex (int i)
+Vector3d Tess2d::getVertex (unsigned int i)
 {
     if (i < this->vertices.size()) {
         return (this->vertices.at(i));
@@ -154,7 +179,7 @@ Vector3d Tess2d::getVertex (int i)
  * @param i Indexof the position of the cell array.
  * @return Pointer to the cell vertex array at position i in the vector Tess2d::cells.
  */
-int* Tess2d::getCell (int i)
+int* Tess2d::getCell (unsigned int i)
 {
     if (i < this->cells.size()) {
         return (this->cells.at(i));
@@ -166,7 +191,7 @@ int* Tess2d::getCell (int i)
  * @param i Indexof the position in the vector.
  * @return Number of vertices for the i^th cell from the vector Tess2d::nVertices.
  */
-int Tess2d::getNVertices (int i)
+int Tess2d::getNVertices (unsigned int i)
 {
     if (i < this->nVertices.size()) {
         return (this->nVertices.at(i));
