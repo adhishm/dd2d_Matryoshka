@@ -855,6 +855,37 @@ Vector3d readVectorFromLine (std::string s)
 }
 
 /**
+ * @brief Read integers from a line.
+ * @param s The string containing the line.
+ * @param n Pointer to the integer in which we will store the number of integers read from the line.
+ * @return Pointer to the memory location where the integers are stored.
+ */
+int* readIntegersFromLine (std::string s, int* n)
+{
+    std::string t = s;
+    std::stringstream ss (s);
+    std::stringstream st (t);
+    std::string a;
+
+    // Count the number of integers
+    *n = 0;
+    do {
+        ss >> a;
+        (*n)++;
+    } while (a != '\n');
+
+    int* i = new int[*n];
+    int j;
+
+    for (j=0; j<(*n); j++) {
+        st >> a;
+        i[j] = atoi(a.c_str());
+    }
+
+    return (i);
+}
+
+/**
  * @brief Reads the data from a line and builds a dislocation from it.
  * @param s The string that is to be read from.
  * @return Pointer to the dislocation.

@@ -85,6 +85,14 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
 Vector3d readVectorFromLine (std::string s);
 
 /**
+ * @brief Read integers from a line.
+ * @param s The string containing the line.
+ * @param n Pointer to the integer in which we will store the number of integers read from the line.
+ * @return Pointer to the memory location where the integers are stored.
+ */
+int* readIntegersFromLine (std::string s, int* n);
+
+/**
  * @brief Reads the data from a line and builds a dislocation from it.
  * @param s The string that is to be read from.
  * @return Pointer to the dislocation.
