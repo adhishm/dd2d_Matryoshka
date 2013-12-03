@@ -32,4 +32,7 @@
 
 Polycrystal::Polycrystal()
 {
+    this->grains.clear();
+    this->orientations.clear();
+    this->tessellation = Tess2d();
 }

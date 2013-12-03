@@ -31,6 +31,7 @@
 #ifndef POLYCRYSTAL_H
 #define POLYCRYSTAL_H
 
+#include "tess2d.h"
 #include "grain.h"
 
 /**
@@ -50,6 +51,17 @@ protected:
      * @brief STL vector with the crystallographic orientations of the grains.
      */
     std::vector<Vector3d> orientations;
+
+    /**
+     * @brief The Voronoi tessellation that represents the microstructure in 2 dimensions.
+     */
+    Tess2d tessellation;
+
+    /**
+     * @brief The polycrystal's local co-ordinate system.
+     * @details This variable holds the polycrystal's local co-ordinate system. This is the highest level in the simulation, so it will be a standard co-ordinate system with the standard axes, and the base pointer will be NULL.
+     */
+    CoordinateSystem coordinateSystem;
 public:
     /**
      * @brief Default constructor for the Polycrystal class.
