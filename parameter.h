@@ -183,6 +183,8 @@ public:
      */
     Statistics grainObjectPositions;
 
+    Statistics grainStressField;
+
     // Destructor
     /**
      * @brief Destructor for the class Parameter.

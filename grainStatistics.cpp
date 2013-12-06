@@ -76,7 +76,7 @@ void Grain::writeStressField (std::string fileName, double t, Vector3d p0, Vecto
     }
 
     std::string outFileName = fileName + doubleToString(t) + ".txt";
-    std::ofstream fp (outFileName.c_str());
+    std::ofstream fp (outFileName.c_str(), std::ios_base::app);
 
     if (fp.is_open()) {
         Vector3d p = p0;
