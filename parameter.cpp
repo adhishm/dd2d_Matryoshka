@@ -296,7 +296,7 @@ void Parameter::parseLineData (std::string line)
     }
 
     // Statistics grain stress field
-    if (first=="statsStressField") {
+    if (first=="statsGrainStressField") {
         ss >> v;
         int write = atoi(v.c_str());
         ss >> v;
