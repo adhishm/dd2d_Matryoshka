@@ -295,6 +295,20 @@ void Parameter::parseLineData (std::string line)
         return;
     }
 
+    // Statistics grain stress field
+    if (first=="statsGrainStressField") {
+        ss >> v;
+        int write = atoi(v.c_str());
+        ss >> v;
+        this->grainStressField = Statistics ( (write==1), atof(v.c_str()));
+        if ( write ) {
+            // Read name
+            ss >> v;
+            this->grainStressField.addName(v);
+        }
+        return;
+    }
+
     // File names
     if ( first=="structure" || first=="Structure" )
     {
