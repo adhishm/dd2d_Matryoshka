@@ -57,3 +57,41 @@ void Grain::writeAllDefects (std::string fileName, double t)
         fp.close();
     }
 }
+
+/**
+ * @brief Write the six unique components of the stress field tensor, expressed in the base co-ordinate system, along the line between p0 and p1 with a resolution that is specified.
+ * @param fileName Name of the file into which the data will be written.
+ * @param t The current value of time in the simulation.
+ * @param p0 Position vector, in the base co-ordinate system, of the starting point.
+ * @param p1 Position vector, in the base co-ordinate system, of the ending point.
+ * @param resolution The number of points, starting from p0, at which the stress field will be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Grain::writeStressField (std::string fileName, double t, Vector3d p0, Vector3d p1, int resolution, double mu, double nu)
+{
+    if (resolution <= 0) {
+        // Invalid resolution
+        return;
+    }
+
+    std::string outFileName = fileName + doubleToString(t) + ".txt";
+    std::ofstream fp (outFileName.c_str());
+
+    if (fp.is_open()) {
+        Vector3d p = p0;
+        Vector3d r = (p1-p0)*(1.0/resolution);
+        Stress s;
+
+        int i=0;
+        while (i < resolution) {
+            p += (r*i);
+            s = this->grainStressField(p, mu, nu);
+
+            fp << p.getValue(0) << " " << p.getValue(1) << " " << s.getPrincipalStress(0) << " " << s.getPrincipalStress(1) << " " << s.getPrincipalStress(2) << " " << s.getShearStress(0) << " " << s.getShearStress(1) << " " << s.getShearStress(2) << std::endl;
+            i++;
+        }
+
+        fp.close();
+    }
+}

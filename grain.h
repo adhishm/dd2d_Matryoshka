@@ -294,6 +294,18 @@ public:
      * @param t Value of time.
      */
     void writeAllDefects (std::string fileName, double t);
+
+    /**
+     * @brief Write the six unique components of the stress field tensor, expressed in the base co-ordinate system, along the line between p0 and p1 with a resolution that is specified.
+     * @param fileName Name of the file into which the data will be written.
+     * @param t The current value of time in the simulation.
+     * @param p0 Position vector, in the base co-ordinate system, of the starting point.
+     * @param p1 Position vector, in the base co-ordinate system, of the ending point.
+     * @param resolution The number of points, starting from p0, at which the stress field will be calculated.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void writeStressField (std::string fileName, double t, Vector3d p0, Vector3d p1, int resolution, double mu, double nu);
 };
 
 #endif // GRAIN_H
