@@ -85,7 +85,7 @@ void Grain::writeStressField (std::string fileName, double t, Vector3d p0, Vecto
 
         int i=0;
         while (i < resolution) {
-            p += (r*i);
+            p += r;
             s = this->grainStressField(p, mu, nu);
 
             fp << p.getValue(0) << " " << p.getValue(1) << " " << s.getPrincipalStress(0) << " " << s.getPrincipalStress(1) << " " << s.getPrincipalStress(2) << " " << s.getShearStress(0) << " " << s.getShearStress(1) << " " << s.getShearStress(2) << std::endl;
@@ -106,11 +106,11 @@ void Grain::writeStressField (std::string fileName, double t, Vector3d p0, Vecto
  */
 void Grain::writeGrainBoundaryStressField (std::string fileName, double t, int resolution, double mu, double nu)
 {
-    unsigned int s = this->gbPoints_base.size();
+    int s = this->gbPoints_base.size();
     int i;
     Vector3d p0, p1;
 
-    p0 = this->gbPoints_base.at(s);
+    p0 = this->gbPoints_base.back();
     i = 0;
     while (i < s) {
         p1 = this->gbPoints_base.at(i);
