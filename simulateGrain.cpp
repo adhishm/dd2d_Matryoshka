@@ -203,7 +203,7 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
 
         if (param->grainStressField.ifWrite()) {
             fileName = param->output_dir + "/" + param->grainStressField.name;
-            grain->writeGrainBoundaryStressField(fileName, totalTime, 10, param->mu, param->nu);
+            grain->writeGrainBoundaryStressField(fileName, totalTime, 100, param->mu, param->nu);
             fileName.clear();
         }
 
