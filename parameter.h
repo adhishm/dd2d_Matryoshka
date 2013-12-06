@@ -183,6 +183,9 @@ public:
      */
     Statistics grainObjectPositions;
 
+    /**
+     * @brief Parameter indicating if the stress field along the grain boundary is to be written.
+     */
     Statistics grainStressField;
 
     // Destructor

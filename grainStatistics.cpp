@@ -95,3 +95,27 @@ void Grain::writeStressField (std::string fileName, double t, Vector3d p0, Vecto
         fp.close();
     }
 }
+
+/**
+ * @brief Write the stress field along the grain boundary points of the grain.
+ * @param fileName The name of the file to which the  data is to be written.
+ * @param t The value of he current time.
+ * @param resolution The number of points along each grain boundary.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Grain::writeGrainBoundaryStressField (std::string fileName, double t, int resolution, double mu, double nu)
+{
+    unsigned int s = this->gbPoints_base.size();
+    int i;
+    Vector3d p0, p1;
+
+    p0 = this->gbPoints_base.at(s);
+    i = 0;
+    while (i < s) {
+        p1 = this->gbPoints_base.at(i);
+        this->writeStressField(fileName, t, p0, p1, resolution, mu, nu);
+        p0 = p1;
+        i++;
+    }
+}
