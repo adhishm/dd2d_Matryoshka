@@ -201,6 +201,12 @@ void grain_iterate (Parameter* param, Grain* grain, double currentTime)
             fileName.clear ();
         }
 
+        if (param->grainStressField.ifWrite()) {
+            fileName = param->output_dir + "/" + param->grainStressField.name;
+            grain->writeGrainBoundaryStressField(fileName, totalTime, 100, param->mu, param->nu);
+            fileName.clear();
+        }
+
         // Check for stopping criterion
         if ( param->stopAfterTime ) {
             // The stopping criterion is time

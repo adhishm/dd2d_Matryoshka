@@ -32,7 +32,8 @@ SOURCES += main.cpp \
     uniqueid.cpp \
     grain.cpp \
     simulateGrain.cpp \
-    grainStatistics.cpp
+    grainStatistics.cpp \
+    tess2d.cpp
 
 HEADERS += \
     vector3d.h \
@@ -62,5 +63,6 @@ HEADERS += \
     simulateSingleSlipSystem.h \
     uniqueid.h \
     grain.h \
-    simulateGrain.h
+    simulateGrain.h \
+    tess2d.h
 
