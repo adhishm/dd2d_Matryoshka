@@ -1,5 +1,5 @@
-function plotSlipSystem (filename, delimiter)
-%% plotSlipSystem (filename, delimiter)
+function plotDefects (filename, delimiter)
+%% plotDefects (filename, delimiter)
 %  This function simply plots the positions (on the xy-plane) of various
 %  defects present in a slip system as a function of time (on the z-axis).
 %  The data is provided by the file whose name is given in the variable
