@@ -53,6 +53,7 @@ Tess2d::Tess2d(std::string fileName)
     std::string cllFileName = fileName + ".cll";
 
     this->readVertices(nodFileName);
+    this->readCells(cllFileName);
 }
 
 /**
