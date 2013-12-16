@@ -160,6 +160,60 @@ void Polycrystal::insertGrain (Grain* g)
     this->grains.push_back(g);
 }
 
+/**
+ * @brief Set the applied stress on the polycrystal.
+ * @param s The value of the applied stress.
+ */
+void Polycrystal::setAppliedStress (Stress s)
+{
+    this->appliedStress_base = s;
+    this->appliedStress_local = this->coordinateSystem.stress_BaseToLocal(s);
+}
+
+// Access functions
+/**
+ * @brief Get the pointer to a grain indicated by the index given as argument.
+ * @details The grains are stored in memory and pointers to them are stored in the vector Polycrystal::grains. The index i provided as argument indicates which grain is required and the pointer to that grain is returned. If the index is invalid, NULL is returned.
+ * @param i Index of the grain in the vector Polycrystal::grains.
+ * @return Pointer to the grain at the position i.
+ */
+Grain* Polycrystal::getGrain (int i)
+{
+    if ( (i>=0) && (i<this->grains.size()) ) {
+        return (this->grains.at(i));
+    }
+    else {
+        return (NULL);
+    }
+}
+
+/**
+ * @brief Get the applied stress on the polycrystal, expressed in the base co-ordinate system.
+ * @return The applied stress on the polycrystal, expressed in the base co-ordinate system.
+ */
+Stress Polycrystal::getAppliedStress_base () const
+{
+    return (this->appliedStress_base);
+}
+
+/**
+ * @brief Get the applied stress on the polycrystal, expressed in the local co-ordinate system.
+ * @return The applied stress on the polycrystal, expressed in the local co-ordinate system.
+ */
+Stress Polycrystal::getAppliedStress_local () const
+{
+    return (this->appliedStress_local);
+}
+
+/**
+ * @brief Get a pointer to the Grain CoordinateSystem.
+ * @return Pointer to the Grain co-ordinate system.
+ */
+CoordinateSystem* Polycrystal::getCoordinateSystem()
+{
+    return (&(this->coordinateSystem));
+}
+
 // Stresses
 /**
  * @brief Calculate the applied stress on all the grains in the polycrystal.
@@ -171,7 +225,7 @@ void Polycrystal::calculateGrainAppliedStress ()
 
     for (git=this->grains.begin(); git!=this->grains.end(); git++) {
         g = *git;
-        g->calculateGrainAppliedStress(this->appliedStress);
+        g->calculateGrainAppliedStress(this->appliedStress_local);
         g->calculateSlipSystemAppliedStress();
     }
 }
