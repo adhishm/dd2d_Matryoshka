@@ -125,6 +125,12 @@ public:
      * @return Number of vertices for the i^th cell from the vector Tess2d::nVertices.
      */
     int getNVertices (unsigned int i);
+
+    /**
+     * @brief Get the number of cells.
+     * @return The number of Voronoi cells.
+     */
+    int getNumberOfCells () const;
 };
 
 #endif // TESS2D_H

@@ -62,6 +62,17 @@ protected:
      * @details This variable holds the polycrystal's local co-ordinate system. This is the highest level in the simulation, so it will be a standard co-ordinate system with the standard axes, and the base pointer will be NULL.
      */
     CoordinateSystem coordinateSystem;
+
+    /**
+     * @brief The externally applied stress on the polycrystal, expressed in the base co-ordinate system.
+     */
+    Stress appliedStress_base;
+
+    /**
+     * @brief The externally applied stress on the polycrystal, expressed in the local co-ordinate system.
+     */
+    Stress appliedStress_local;
+
 public:
     /**
      * @brief Default constructor for the Polycrystal class.
@@ -72,6 +83,79 @@ public:
      * @brief Destructor for the Polycrystal class.
      */
     virtual ~Polycrystal();
+
+    // Assignment functions
+    /**
+     * @brief Set the Voronoi tessellation for the polycrystal from the tessellation file provided.
+     * @param tessellationFileName Name of the files containing the Voronoi tessellation.
+     */
+    void setTessellation (std::string tessellationFileName);
+
+    /**
+     * @brief Set the orientations vector by reading orientations from a file.
+     * @param orientationsFileName Name of the file containing the orientations.
+     */
+    void setOrientations (std::string orientationsFileName);
+
+    /**
+     * @brief Initialize the Grain vector.
+     */
+    void initializeGrainVector ();
+
+    /**
+     * @brief Set the grain boundaries for each grain using data from the tessellation.
+     */
+    void setGrainBoundaries ();
+
+    /**
+     * @brief Set the grain orientations from the orientations list.
+     */
+    void setGrainOrientations ();
+
+    /**
+     * @brief Insert a new grain into the polycrystal.
+     * @param g Pointer to the grain (instance of the class Grain).
+     */
+    void insertGrain (Grain* g);
+
+    /**
+     * @brief Set the applied stress on the polycrystal.
+     * @param s The value of the applied stress.
+     */
+    void setAppliedStress (Stress s);
+
+    // Access functions
+    /**
+     * @brief Get the pointer to a grain indicated by the index given as argument.
+     * @details The grains are stored in memory and pointers to them are stored in the vector Polycrystal::grains. The index i provided as argument indicates which grain is required and the pointer to that grain is returned. If the index is invalid, NULL is returned.
+     * @param i Index of the grain in the vector Polycrystal::grains.
+     * @return Pointer to the grain at the position i.
+     */
+    Grain* getGrain (int i);
+
+    /**
+     * @brief Get a pointer to the Grain CoordinateSystem.
+     * @return Pointer to the Grain co-ordinate system.
+     */
+    CoordinateSystem* getCoordinateSystem();
+
+    /**
+     * @brief Get the applied stress on the polycrystal, expressed in the base co-ordinate system.
+     * @return The applied stress on the polycrystal, expressed in the base co-ordinate system.
+     */
+    Stress getAppliedStress_base () const;
+
+    /**
+     * @brief Get the applied stress on the polycrystal, expressed in the local co-ordinate system.
+     * @return The applied stress on the polycrystal, expressed in the local co-ordinate system.
+     */
+    Stress getAppliedStress_local () const;
+
+    // Stresses
+    /**
+     * @brief Calculate the applied stress on all the grains in the polycrystal.
+     */
+    void calculateGrainAppliedStress ();
 };
 
 #endif // POLYCRYSTAL_H

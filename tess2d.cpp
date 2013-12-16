@@ -53,6 +53,7 @@ Tess2d::Tess2d(std::string fileName)
     std::string cllFileName = fileName + ".cll";
 
     this->readVertices(nodFileName);
+    this->readCells(cllFileName);
 }
 
 /**
@@ -196,4 +197,13 @@ int Tess2d::getNVertices (unsigned int i)
     if (i < this->nVertices.size()) {
         return (this->nVertices.at(i));
     }
+}
+
+/**
+ * @brief Get the number of cells.
+ * @return The number of Voronoi cells.
+ */
+int Tess2d::getNumberOfCells () const
+{
+    return (this->cells.size());
 }
