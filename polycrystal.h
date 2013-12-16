@@ -62,6 +62,12 @@ protected:
      * @details This variable holds the polycrystal's local co-ordinate system. This is the highest level in the simulation, so it will be a standard co-ordinate system with the standard axes, and the base pointer will be NULL.
      */
     CoordinateSystem coordinateSystem;
+
+    /**
+     * @brief The externally applied stress on the polycrystal.
+     */
+    Stress appliedStress;
+
 public:
     /**
      * @brief Default constructor for the Polycrystal class.
@@ -106,6 +112,12 @@ public:
      * @param g Pointer to the grain (instance of the class Grain).
      */
     void insertGrain (Grain* g);
+
+    // Stresses
+    /**
+     * @brief Calculate the applied stress on all the grains in the polycrystal.
+     */
+    void calculateGrainAppliedStress ();
 };
 
 #endif // POLYCRYSTAL_H

@@ -159,3 +159,19 @@ void Polycrystal::insertGrain (Grain* g)
 {
     this->grains.push_back(g);
 }
+
+// Stresses
+/**
+ * @brief Calculate the applied stress on all the grains in the polycrystal.
+ */
+void Polycrystal::calculateGrainAppliedStress ()
+{
+    std::vector<Grain*>::iterator git;
+    Grain* g;
+
+    for (git=this->grains.begin(); git!=this->grains.end(); git++) {
+        g = *git;
+        g->calculateGrainAppliedStress(this->appliedStress);
+        g->calculateSlipSystemAppliedStress();
+    }
+}
