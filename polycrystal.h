@@ -100,6 +100,12 @@ public:
      * @brief Set the grain orientations from the orientations list.
      */
     void setGrainOrientations ();
+
+    /**
+     * @brief Insert a new grain into the polycrystal.
+     * @param g Pointer to the grain (instance of the class Grain).
+     */
+    void insertGrain (Grain* g);
 };
 
 #endif // POLYCRYSTAL_H

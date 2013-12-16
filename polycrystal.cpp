@@ -150,3 +150,12 @@ void Polycrystal::setGrainOrientations ()
         g->setOrientation(this->orientations.at(i));
     }
 }
+
+/**
+ * @brief Insert a new grain into the polycrystal.
+ * @param g Pointer to the grain (instance of the class Grain).
+ */
+void Polycrystal::insertGrain (Grain* g)
+{
+    this->grains.push_back(g);
+}
