@@ -34,7 +34,8 @@ SOURCES += main.cpp \
     simulateGrain.cpp \
     grainStatistics.cpp \
     polycrystal.cpp \
-    tess2d.cpp
+    tess2d.cpp \
+    simulatePolycrystal.cpp
 
 HEADERS += \
     vector3d.h \
@@ -66,4 +67,5 @@ HEADERS += \
     grain.h \
     simulateGrain.h \
     polycrystal.h \
-    tess2d.h
+    tess2d.h \
+    simulatePolycrystal.h

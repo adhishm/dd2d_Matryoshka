@@ -600,20 +600,6 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
             // Since the slipPlaneTrace gives the slip direction, there is no need to get the slipDirection from file
             slipSystem->setDirection( slipPlaneTrace );
 
-            /*
-            // Read the direction
-            do {
-                if ( fp.good() ) {
-                    getline ( fp, line );
-                }
-                else {
-                    fp.close ();
-                    return ( false );
-                }
-            } while ( ignoreLine ( line ) );
-            slipSystem->setDirection ( readVectorFromLine(line) );
-            */
-
             // Create the co-ordinate system
             slipSystem->createCoordinateSystem(g->getCoordinateSystem());
 
@@ -648,36 +634,6 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
 
                 // Create the slip plane co-ordinate system
                 slipPlane->createCoordinateSystem(slipSystem->getCoordinateSystem());
-
-                // Read the extremities
-                /*
-                e = new Vector3d[2];
-                do {
-                    if ( fp.good() ) {
-                        getline ( fp, line );
-                    }
-                    else {
-                        fp.close ();
-                        return ( false );
-                    }
-                } while ( ignoreLine ( line ) );
-                e[0] = readVectorFromLine ( line );
-
-                do {
-                    if ( fp.good() ) {
-                        getline ( fp, line );
-                    }
-                    else {
-                        fp.close ();
-                        return ( false );
-                    }
-                } while ( ignoreLine ( line ) );
-                e[1] = readVectorFromLine ( line );
-                */
-
-                // Check for the intersections with the grain boundary
-                // slipPlaneTrace = e[1] - e[0];   // Slip plane trace in the slip system co-ordinate system
-                // slipPlaneTrace = slipSystem->getCoordinateSystem()->vector_LocalToBase_noTranslate(slipPlaneTrace); // Slip plane trace in the grain co-ordinate system
 
                 R = slipSystem->getCoordinateSystem()->vector_LocalToBase(slipPlane->getPosition());    // Slip Plane position in grain co-ordinate system
                 gbPoints = g->getGBPoints_local();  // Grain boundary points in the grain co-ordinate system
@@ -831,6 +787,19 @@ bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *
     else {
         return (false);
     }
+}
+
+/**
+ * @brief Read a polycrystal from file.
+ * @param fileName Name of the file containing the polycrystal data.
+ * @param p Pointer to the instance of the Polycrystal class that will contain the data. Memory for this instance must be pre-allocated.
+ * @param currentTime Pointer to the variable holding the present simulation time. Memory for this variable should be pre-allocated.
+ * @param param Pointer to the instance of the Parameter class, containing the parameter of the simulation.
+ * @return  Boolean flag indicating the success or failure of the reading operation.
+ */
+bool readPolycrystal (std::string fileName, Polycrystal *p, double *currentTime, Parameter *param)
+{
+    //
 }
 
 /**

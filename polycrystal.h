@@ -156,6 +156,13 @@ public:
      * @brief Calculate the applied stress on all the grains in the polycrystal.
      */
     void calculateGrainAppliedStress ();
+
+    /**
+     * @brief Calculate all the stresses in all the defects in the simulation.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void calculateAllStresses (double mu, double nu);
 };
 
 #endif // POLYCRYSTAL_H

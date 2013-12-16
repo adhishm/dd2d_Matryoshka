@@ -284,7 +284,6 @@ void Grain::calculateAllStresses (double mu, double nu)
                 totalStress += sourceSlipSystem->slipSystemStressField(*defectPositions_it, mu, nu);
             }
             // The total stress is in the grain co-ordinate system
-            defect = *defects_it;
             totalStress_slipSystem = destinationSlipSystem->getCoordinateSystem()->stress_BaseToLocal(totalStress);
             totalStress_slipPlane  = defect->getCoordinateSystem()->getBase()->stress_BaseToLocal(totalStress_slipSystem);
             totalStress_defect     = defect->getCoordinateSystem()->stress_BaseToLocal(totalStress_slipPlane);

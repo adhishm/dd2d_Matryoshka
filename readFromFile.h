@@ -36,6 +36,7 @@
 #include <vector>
 #include <string>
 
+#include "polycrystal.h"
 #include "grain.h"
 #include "slipsystem.h"
 #include "slipPlane.h"
@@ -71,11 +72,21 @@ bool readSlipSystem (std::string fileName, SlipSystem *s, double *currentTime, P
  * @brief Read the grain from file.
  * @param fileName Name of the file containing the data of the grain.
  * @param g Pointer to the instance of the Grain class that will contain the data. Memory for this instance should be pre-allocated.
- * @param currentTime Pointer to the variable holding the present time. Memory for this varibale should be pre-allocated.
+ * @param currentTime Pointer to the variable holding the present time. Memory for this variable should be pre-allocated.
  * @param param Pointer to the instance of the Parameter class, containing the parameters for the simulation.
  * @return Boolean flag indicating success or failure of the reading operation.
  */
 bool readGrain (std::string fileName, Grain *g, double *currentTime, Parameter *param);
+
+/**
+ * @brief Read a polycrystal from file.
+ * @param fileName Name of the file containing the polycrystal data.
+ * @param p Pointer to the instance of the Polycrystal class that will contain the data. Memory for this instance must be pre-allocated.
+ * @param currentTime Pointer to the variable holding the present simulation time. Memory for this variable should be pre-allocated.
+ * @param param Pointer to the instance of the Parameter class, containing the parameter of the simulation.
+ * @return  Boolean flag indicating the success or failure of the reading operation.
+ */
+bool readPolycrystal (std::string fileName, Polycrystal *p, double *currentTime, Parameter *param);
 
 /**
  * @brief Reads 3 values from a string and returns them in a Vector3d.

@@ -229,3 +229,54 @@ void Polycrystal::calculateGrainAppliedStress ()
         g->calculateSlipSystemAppliedStress();
     }
 }
+
+/**
+ * @brief Calculate all the stresses in all the defects in the simulation.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Polycrystal::calculateAllStresses (double mu, double nu)
+{
+    std::vector<Grain*>::iterator sourceGrain_it;
+    std::vector<Grain*>::iterator destinationGrain_it;
+
+    Grain* sourceGrain;
+    Grain* destinationGrain;
+
+    std::vector<Defect*> defects;
+    std::vector<Defect*> defects_it;
+    Defect* defect;
+
+    std::vector<Vector3d> defectPositions;
+    std::vector<Vector3d> defectPositions_it;
+
+    Stress totalStress;
+    Stress totalStress_grain;
+    Stress totalStress_slipSystem;
+    Stress totalStress_slipPlane;
+    Stress totalStress_defect;
+
+    for (destinationGrain_it=this->grains.begin(); destinationGrain_it!=this->grains.end(); destinationGrain_it++) {
+        destinationGrain = *destinationGrain_it;
+        // Get all the defect position vectors
+        defects = destinationGrain->getAllDefectPositions_base();
+        defectPositions = destinationGrain->getAllDefectPositions_base();
+        for (defectPositions_it=defectPositions.begin(), defects_it=defects.begin();
+             defectPositions_it!=defectPositions.end();
+             defectPositions_it++, defects_it++) {
+            // Set the total stress to the polycrystal applied stress
+            totalStress = this->appliedStress_local;
+            defect = *defects_it;
+            for (sourceGrain_it=this->grains.begin(); sourceGrain_it!=this->grains.end(); sourceGrain_it++) {
+                sourceGrain = *sourceGrain_it;
+                totalStress += sourceGrain->grainStressField(*defectPositions_it, mu, nu);
+            }
+            // The total stress is in the polycrystal co-ordinate system
+            totalStress_grain = destinationGrain->getCoordinateSystem()->stress_BaseToLocal(totalStress);
+            totalStress_slipSystem = defect->getCoordinateSystem()->getBase()->getBase()->stress_BaseToLocal(totalStress_grain);
+            totalStress_slipPlane  = defect->getCoordinateSystem()->getBase()->stress_BaseToLocal(totalStress_slipSystem);
+            totalStress_defect     = defect->getCoordinateSystem()->stress_BaseToLocal(totalStress_slipPlane);
+            defect->setTotalStress(totalStress_defect);
+        }
+    }
+}
