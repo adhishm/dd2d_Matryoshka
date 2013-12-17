@@ -125,5 +125,32 @@ void polycrystal_iterate (Parameter* param, Polycrystal* polycrystal, double cur
     while (continueSimulation) {
         // Calculate the stress on all defects
         polycrystal->calculateAllStresses(param->mu, param->nu);
+
+        // Calculate dislocation velocities
+
+        // Time increment
+
+        // Check dislocation sources for dipole emissions
+
+        // Check for local reactions
+
+        // Increment counters
+
+        // Write statistics
+
+        // Check for stopping criterion
+        if ( param->stopAfterTime ) {
+            // The stopping criterion is time
+            continueSimulation = ( totalTime <= param->stopTime );
+        }
+        else {
+            // The stopping criterion is iterations
+            continueSimulation = ( nIterations <= param->stopIterations );
+        }
     }
+
+    UniqueID* uid_instance = UniqueID::getInstance();
+    std::string uniquesFileName = param->output_dir + "/uniquesFile.txt";
+    uid_instance->writeDefects(uniquesFileName);
+    uniquesFileName.clear();
 }
