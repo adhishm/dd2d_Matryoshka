@@ -170,6 +170,23 @@ public:
      * @param B The drag coefficient.
      */
     void calculateDislocationVelocities (double B);
+
+    // Time increments
+    /**
+     * @brief Set the time increments on all the slip systems of all the grains.
+     * @param dt The time increment.
+     */
+    void setGrainTimeIncrements (double dt);
+
+    // Move dislocations
+    /**
+     * @brief Displace all the dislocations.
+     * @param minDistance The minimum distance allowed between two defects.
+     * @param dt The value of the time increment.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     */
+    void moveAllDislocations (double minDistance, double dt, double mu, double nu);
 };
 
 #endif // POLYCRYSTAL_H

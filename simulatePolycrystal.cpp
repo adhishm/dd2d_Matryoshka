@@ -127,8 +127,18 @@ void polycrystal_iterate (Parameter* param, Polycrystal* polycrystal, double cur
         polycrystal->calculateAllStresses(param->mu, param->nu);
 
         // Calculate dislocation velocities
+        polycrystal->calculateDislocationVelocities(param->B);
 
         // Time increment
+        switch (param->timeStepType) {
+        case ADAPTIVE:
+            // This section is incomplete; do nothing
+            break;
+        case FIXED:
+            polycrystal->setGrainTimeIncrements(param->limitingTimeStep);
+            polycrystal->moveAllDislocations(limitingDistance, param->limitingTimeStep, param->mu, param->nu);
+            break;
+        }
 
         // Check dislocation sources for dipole emissions
 

@@ -296,3 +296,38 @@ void Polycrystal::calculateDislocationVelocities (double B)
         g->calculateDislocationVelocities(B);
     }
 }
+
+// Time increments
+/**
+ * @brief Set the time increments on all the slip systems of all the grains.
+ * @param dt The time increment.
+ */
+void Polycrystal::setGrainTimeIncrements (double dt)
+{
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        g->setSlipSystemTimeIncrements(dt);
+    }
+}
+
+// Move dislocations
+/**
+ * @brief Displace all the dislocations.
+ * @param minDistance The minimum distance allowed between two defects.
+ * @param dt The value of the time increment.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ */
+void Polycrystal::moveAllDislocations (double minDistance, double dt, double mu, double nu)
+{
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        g->moveAllDislocations(minDistance, dt, mu, nu);
+    }
+}
