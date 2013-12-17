@@ -280,3 +280,19 @@ void Polycrystal::calculateAllStresses (double mu, double nu)
         }
     }
 }
+
+// Iteration functions
+/**
+ * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
+ * @param B The drag coefficient.
+ */
+void Polycrystal::calculateDislocationVelocities (double B)
+{
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        g->calculateDislocationVelocities(B);
+    }
+}

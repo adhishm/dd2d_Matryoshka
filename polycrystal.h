@@ -163,6 +163,13 @@ public:
      * @param nu Poisson's ratio.
      */
     void calculateAllStresses (double mu, double nu);
+
+    // Iteration functions
+    /**
+     * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
+     * @param B The drag coefficient.
+     */
+    void calculateDislocationVelocities (double B);
 };
 
 #endif // POLYCRYSTAL_H
