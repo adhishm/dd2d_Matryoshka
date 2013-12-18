@@ -164,6 +164,15 @@ public:
      */
     void calculateAllStresses (double mu, double nu);
 
+    /**
+     * @brief Return the total stress at the point p.
+     * @param p Position vector, in the polycrystal co-ordinate system where the stress is to be calculated.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @return
+     */
+    Stress totalStress (Vector3d p, double mu, double nu);
+
     // Iteration functions
     /**
      * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
@@ -204,6 +213,14 @@ public:
      * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
      */
     void checkPolycrystalLocalReactions (double reactionRadius);
+
+    // Statistics
+    /**
+     * @brief Write the positions of all defects to file.
+     * @param fileName The name mask for the file into which the data will be written.
+     * @param t The time instant.
+     */
+    void writeAllDefects (std::string fileName, double t);
 };
 
 #endif // POLYCRYSTAL_H

@@ -281,6 +281,25 @@ void Polycrystal::calculateAllStresses (double mu, double nu)
     }
 }
 
+/**
+ * @brief Return the total stress at the point p.
+ * @param p Position vector, in the polycrystal co-ordinate system where the stress is to be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @return
+ */
+Stress Polycrystal::totalStress (Vector3d p, double mu, double nu)
+{
+    Stress s = this->appliedStress_local;
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        s += g->grainStressField(p, mu, nu);
+    }
+}
+
 // Iteration functions
 /**
  * @brief Calculate the Peach-Koehler force on all dislocations and their resulting velocities.
