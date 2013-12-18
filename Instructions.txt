@@ -1,0 +1,13 @@
+This file describes how to use the code delivered in this folder. In order to obtain a more recent and up-to-date version, clone the git repository using the following command:
+~/...<folder>$ git clone git@github.com:adhishm/dd2d_Matryoshka.git <project folder name>
+
+The ownership of the repository may also be transferred to someone else. If this is the case, please replace the name 'adhishm' with the github username of the new owner.
+
+Running the program:
+The folder containing the executable should a parameters file. It should also have two folders called 'input' and 'output', or the names as provided in the parameters file.
+
+The folder input contains the input files. The executable needs the name of the parameter file. For example you can run the executable with the following command:
+~/.../executable$ ./dd2d_Matryoshka ./input/grain_parameters.txt
+This will load the parameter file called grain_parameters.txt. This file specifies the material properties, simulation parameters and the grain structure file grain_3sp.txt. The grain structure file grain_3sp.txt specifies the positions of dislocations and other defects within the grain.
+Similarly, if you want to run a simulation for a single slip system, you should use the file input/slipSystem_parameters.txt.
+The structures of the input files is specified in the wiki (https://github.com/adhishm/dd2d_Matryoshka/wiki), also found in the folder documentation/wiki/.
