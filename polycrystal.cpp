@@ -350,3 +350,19 @@ void Polycrystal::checkDislocationSources (double dt, double mu, double nu, doub
         g->checkDislocationSources(dt, mu, nu, minDistance);
     }
 }
+
+// Local reactions
+/**
+ * @brief Check the local reactions between defects within all the grains.
+ * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+ */
+void Polycrystal::checkPolycrystalLocalReactions (double reactionRadius)
+{
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        g->checkGrainLocalReactions(reactionRadius);
+    }
+}

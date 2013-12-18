@@ -144,8 +144,12 @@ void polycrystal_iterate (Parameter* param, Polycrystal* polycrystal, double cur
         polycrystal->checkDislocationSources(param->limitingTimeStep, param->mu, param->nu, limitingDistance);
 
         // Check for local reactions
+        polycrystal->checkPolycrystalLocalReactions(reactionRadius);
 
         // Increment counters
+        totalTime += param->limitingTimeStep;
+        simulationTime.push_back ( totalTime );
+        nIterations++;
 
         // Write statistics
 

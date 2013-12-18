@@ -197,6 +197,13 @@ public:
      * @param minDistance The limiting distance of approach between two defects.
      */
     void checkDislocationSources (double dt, double mu, double nu, double minDistance);
+
+    // Local reactions
+    /**
+     * @brief Check the local reactions between defects within all the grains.
+     * @param reactionRadius The limiting distance between to defects for which a local reaction can take place.
+     */
+    void checkPolycrystalLocalReactions (double reactionRadius);
 };
 
 #endif // POLYCRYSTAL_H
