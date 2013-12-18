@@ -141,6 +141,7 @@ void polycrystal_iterate (Parameter* param, Polycrystal* polycrystal, double cur
         }
 
         // Check dislocation sources for dipole emissions
+        polycrystal->checkDislocationSources(param->limitingTimeStep, param->mu, param->nu, limitingDistance);
 
         // Check for local reactions
 

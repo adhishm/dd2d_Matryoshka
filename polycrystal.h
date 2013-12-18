@@ -187,6 +187,16 @@ public:
      * @param nu Poisson's ratio.
      */
     void moveAllDislocations (double minDistance, double dt, double mu, double nu);
+
+    // Dipole emissions
+    /**
+     * @brief Check all the dislocation sources in all the grains for dislocation dipole emissions.
+     * @param dt The time increment in this iteration.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @param minDistance The limiting distance of approach between two defects.
+     */
+    void checkDislocationSources (double dt, double mu, double nu, double minDistance);
 };
 
 #endif // POLYCRYSTAL_H

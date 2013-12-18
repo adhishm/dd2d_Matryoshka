@@ -331,3 +331,22 @@ void Polycrystal::moveAllDislocations (double minDistance, double dt, double mu,
         g->moveAllDislocations(minDistance, dt, mu, nu);
     }
 }
+
+// Dipole emissions
+/**
+ * @brief Check all the dislocation sources in all the grains for dislocation dipole emissions.
+ * @param dt The time increment in this iteration.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @param minDistance The limiting distance of approach between two defects.
+ */
+void Polycrystal::checkDislocationSources (double dt, double mu, double nu, double minDistance)
+{
+    std::vector<Grain*>::iterator g_it;
+    Grain* g;
+
+    for (g_it=this->grains.begin(); g_it!=this->grains.end(); g_it++) {
+        g = *g_it;
+        g->checkDislocationSources(dt, mu, nu, minDistance);
+    }
+}
