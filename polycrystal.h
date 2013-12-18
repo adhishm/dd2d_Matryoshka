@@ -171,7 +171,16 @@ public:
      * @param nu Poisson's ratio.
      * @return
      */
-    Stress totalStress (Vector3d p, double mu, double nu);
+    Stress totalStress_local (Vector3d p, double mu, double nu);
+
+    /**
+     * @brief Return the total stress at the point p, expressed in the base co-ordinate system.
+     * @param p Position vector, in the base co-ordinate system where the stress is to be calculated.
+     * @param mu Shear modulus (Pa).
+     * @param nu Poisson's ratio.
+     * @return
+     */
+    Stress totalStress_base (Vector3d p, double mu, double nu);
 
     // Iteration functions
     /**

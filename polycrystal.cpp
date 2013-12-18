@@ -288,7 +288,7 @@ void Polycrystal::calculateAllStresses (double mu, double nu)
  * @param nu Poisson's ratio.
  * @return
  */
-Stress Polycrystal::totalStress (Vector3d p, double mu, double nu)
+Stress Polycrystal::totalStress_local (Vector3d p, double mu, double nu)
 {
     Stress s = this->appliedStress_local;
     std::vector<Grain*>::iterator g_it;
@@ -298,6 +298,20 @@ Stress Polycrystal::totalStress (Vector3d p, double mu, double nu)
         g = *g_it;
         s += g->grainStressField(p, mu, nu);
     }
+}
+
+/**
+ * @brief Return the total stress at the point p, expressed in the base co-ordinate system.
+ * @param p Position vector, in the base co-ordinate system where the stress is to be calculated.
+ * @param mu Shear modulus (Pa).
+ * @param nu Poisson's ratio.
+ * @return
+ */
+Stress Polycrystal::totalStress_base (Vector3d p, double mu, double nu)
+{
+    Vector3d p_local = this->coordinateSystem.vector_BaseToLocal(p);
+    Stress s_local = this->totalStress_local(p_local, mu, nu);
+    return (this->coordinateSystem.stress_LocalToBase(s_local));
 }
 
 // Iteration functions
